@@ -14,6 +14,8 @@ class PsErrorLevels extends Model
     
     public $incrementing = false;
 
+    protected $guarded = [];
+    
     public function error_list()
     {
     	return $this->hasMany('App\Models\PsErrorsList', 'err_level');

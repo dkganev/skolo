@@ -14,6 +14,8 @@ class PsErrorsList extends Model
     
     public $incrementing = false;
 
+    protected $guarded = [];
+    
     public function err_lvl()
     {
 		return $this->belongsTo(PsErrorLevels::class, 'err_level', 'err_level');

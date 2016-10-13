@@ -15,6 +15,8 @@ class PsCounters extends Model
     
     public $incrementing = false; 
 
+    protected $guarded = [];
+    
     public function server_ps()
     {
         return $this->belongsTo(ServerPs::class, 'psid', 'psid');

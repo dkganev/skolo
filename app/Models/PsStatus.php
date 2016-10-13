@@ -14,6 +14,8 @@ class PsStatus extends Model
 
     protected $primaryKey = 'psid'; 
     
+    protected $guarded = [];
+
     public function server_ps()
     {
     	return $this->belongsTo(ServerPs::class, 'psid', 'psid');

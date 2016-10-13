@@ -13,4 +13,6 @@ class Langs extends Model
 	protected $primaryKey = 'langid';
 	
     public $incrementing = false;
+    
+    protected $guarded = [];
 }

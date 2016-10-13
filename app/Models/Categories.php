@@ -14,6 +14,8 @@ class Categories extends Model
 	
     public $incrementing = false;
 
+    protected $guarded = [];
+    
     public function game()
     {
     	return $this->hasMany('App\Models\Games', 'game_category', 'idx');

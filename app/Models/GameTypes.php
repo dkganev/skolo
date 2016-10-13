@@ -14,6 +14,8 @@ class GameTypes extends Model
     
     public $incrementing = false;
 
+    protected $guarded = [];
+    
     public function games()
     {
         return $this->hasMany(Games::class, 'game_type','game_type');
