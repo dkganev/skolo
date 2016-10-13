@@ -13,7 +13,7 @@ class PsCounters extends Model
 
     public $timestamps = false;
     
-    public $incrementing = false; 
+    public $incrementing = false;
 
     protected $guarded = [];
     
@@ -27,22 +27,22 @@ class PsCounters extends Model
         $this->counter = self::mutateToPgArray($counters);
     }
 
-    // Statistics counters
-
-    // all Counters
+    // all counters
     public function getCounters()
     {
         $counters = $this->counter;
 
-        $type = strpos($counters, ']');
+        // Checks for prefix in postgres arrays 
+        $type = strpos($counters, '[0:256]');
 
+        // If there is prefix, remove it
         if($type !== false)
         {
             $arr = explode('=', $counters);
-
             $counters = $arr[1];
         }
 
+        //Parse psql to php array
         return self::accessPgArray($counters);
     }
 
@@ -54,7 +54,6 @@ class PsCounters extends Model
 
         // Counters Indexes // Keys are -1 indexed
         $keys = [199, 20, 12];
-
         foreach ($keys as $key)
         {
           $sum += $counters[$key];
@@ -67,12 +66,10 @@ class PsCounters extends Model
     public function totalOut()
     {
         $counters = $this->getCounters();
-
         $sum = 0;
 
         // Counters Indexes
         $keys = [202, 21, 23];
-
         foreach ($keys as $key)
         {
           $sum += $counters[$key];
@@ -108,24 +105,7 @@ class PsCounters extends Model
     {
         $totalCredit = $this->totalIn() + $this->totalWin() - $this->totalOut() - $this->totalBet();
 
-        return $totalCredit;
-    }
-
-    // all Counters
-    public function counters()
-    {
-        $counters = $this->counter;
-
-        $type = strpos($counters, ']');
-
-        if($type !== false)
-        {
-            $arr = explode('=', $counters);
-
-            $counters = $arr[1];
-        }
-
-        return self::accessPgArray($counters);
+        return abs($totalCredit);
     }
 
 }

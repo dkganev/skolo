@@ -11,7 +11,7 @@ class AjaxCasinoController extends Controller
 {
    public function index(Request $request)
     {
-    	$dataNewCasino = $request['newCasino'];
+        $dataNewCasino = $request['newCasino'];
         $casino = Casinos::select(['casinoid', 'casinoname'])->where('casinoid', $dataNewCasino)->get();
         $firstCasinos = array('casinoid' => $casino->first()->casinoid,'casinoname' => $casino->first()->casinoname );
         session(['Casino' => $firstCasinos ]);        
@@ -28,7 +28,7 @@ class AjaxCasinoController extends Controller
     
     public function casinoBox(Request $request)
     {
-    	$TerminalPreview = new TerminalPreviewDB2();
+        $TerminalPreview = new TerminalPreviewDB2();
         $TerminalPreview->terminalID = $request['targetDataID'];
         $TerminalPreview->topP = round($request['newBoxTop']);
         $TerminalPreview->leftP = round($request['newBoxLeft']);

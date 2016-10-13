@@ -53,7 +53,6 @@
                     </thead>
                     <tbody>
                         @foreach($server_ps as $ps)
-                        @include('modals.terminal-update-modal')
                             <tr>
                                 <td>{{ $ps->dallasid }}</td>
                                 <td>{{ $ps->psid }}</td>
@@ -96,6 +95,7 @@
                                     <span><i class="fa fa-retweet fa-lg" aria-hidden="true"></i></span></a>
                                 </td>
                             </tr>
+                        @include('modals.terminal-update-modal')
                         @endforeach
                     </tbody>
                 </table>

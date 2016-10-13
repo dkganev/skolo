@@ -36,10 +36,7 @@ Route::post('/machine/add', [
 	'as'   => 'add.machine'
 ]);
 
-Route::post('/machine/update', [
-	'uses' => 'TerminalsController@updateMachine',
-	'as'   => 'edit'
-]);
+Route::post('machine/update', 'TerminalsController@updateMachine');
 
 Route::get('/exportTerminals', [
 	'uses' => 'TerminalsController@exportTerminals',

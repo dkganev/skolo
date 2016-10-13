@@ -95,6 +95,7 @@ class TerminalsController extends Controller
 
     public function updateMachine(Request $request)
     {
+
         $this->validate($request, [
             'psid' => 'required',
             'seatid' => 'required',
@@ -109,16 +110,15 @@ class TerminalsController extends Controller
         $server_ps->update();
         
         $ps_settings = PsSettings::where('psid', '=', $request['psid'])->first();
+        
         $ps_settings->psdescription = $request['psdescription'];
         $ps_settings->ps_type = $request['ps_type'];
         $ps_settings->enable_lang = '{' . $request['langname'] . '}';
 
         $ps_settings->default_game = $request['default_game'];
 
-        if($request['games'])
-        {
-            $ps_settings->setSubscribedGames($request['games']);
-        }
+        $ps_settings->setSubscribedGames($request['games']);
+        $ps_settings->update();
 
         $msg = 'Machine Updated Successfully';
         return $request->session()->flash('alert-success', $msg);

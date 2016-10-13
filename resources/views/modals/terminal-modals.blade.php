@@ -121,14 +121,12 @@
             default_game: $('#addMachineModal select[name="default_game"]').val() ,
             _token: token 
         } 
-    })
-
-    .done(function () {
-            $('#addMachineModal').modal('hide');
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
-            //window.location.reload();
-            javascript:ajaxLoad('{{url('settings/terminals')}}');
+    }).done(function () {
+          $('#addMachineModal').modal('hide');
+          $('body').removeClass('modal-open');
+          $('.modal-backdrop').remove();
+          //window.location.reload();
+          javascript:ajaxLoad('{{url('settings/terminals')}}');
         });
     });
 </script>

@@ -1,4 +1,5 @@
 
+
 <div class="row">
 <div class="modal fade" id="updateMachineModal-{{ $ps->psid }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" >
@@ -9,7 +10,7 @@
       
       <div class="modal-body">
 
-          <form class="form-horizontal update-machine bootstrap-modal-form" id='{{ $ps->psid }}' action="{{ route('edit') }}"> 
+          <form class="form-horizontal update-machine bootstrap-modal-form" id="{{ $ps->psid }}"> 
 
             <div class="form-group" style="width:270px; display: inline-block;">
                 <label for="dallasid">Machine ID:</label><br>
@@ -94,7 +95,7 @@ $(function() {
   $('#machine-update-{{ $ps->psid }}').on('click', function() {
      $.ajax({
        method: 'POST',
-       url: '{{ route('edit') }}',
+       url: '{{ url('machine/update') }}',
        data: { 
          psdescription: $('#updateMachineModal-{{ $ps->psid }} input[name="psdescription"]').val() ,
          dallasid: $('#updateMachineModal-{{ $ps->psid }} input[name="dallasid"]').val() ,
@@ -104,13 +105,15 @@ $(function() {
          games: $('#updateMachineModal-{{ $ps->psid }} select[name="games[]"]').val() ,
          default_game: $('#updateMachineModal-{{ $ps->psid }} select[name="default_game"]').val() ,
          _token: '{{ Session::token() }}'
-       } 
-     })
-     .done(function (msg) {
-       console.log(msg['message']);
-       $('#updateMachineModal-{{ $ps->psid }}').modal('hide');
-       window.location.reload();
+       }
+     }).done(function () {
+        $('#updateMachineModal-{{ $ps->psid }}').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+
+        javascript:ajaxLoad('{{url('settings/terminals')}}');
      });
   });
 }); // => End Ready Function
 </script>
+

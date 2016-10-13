@@ -28,17 +28,17 @@
                             data-toggle="table"
                             data-locale="en-US"
                             data-sortable="true"
-                            data-show-columns="true"
+
                   
 
-                            data-show-pagination-switch="true"
+
                             data-pagination="true"
                             data-side-pagination="client"
                             data-page-list="[3, 5, 10, 15]"
 
                             data-classes="table-condensed"
                     >
-                    <thead class="w3-indigo">
+                    <thead class="w3-dark-grey">
                         <tr>
                             <th data-sortable="true">PS ID</th>
                             <th data-sortable="true">Dallas ID</th>
