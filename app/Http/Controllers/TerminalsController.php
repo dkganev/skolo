@@ -35,10 +35,12 @@ class TerminalsController extends Controller
         $languages = Langs::orderBy('langid', 'asc')->get();
         $clientgameids = ClientGameIds::orderBy('client_game_id', 'asc')->get();
 
-    	return view('settings.terminals', [ 'server_ps' => $server_ps,
-                                            'casinos' => $casinos,
-                                            'languages' => $languages,
-                                            'clientgameids' => $clientgameids]);
+    	return view('settings.terminals', [
+            'server_ps' => $server_ps,
+            'casinos' => $casinos,
+            'languages' => $languages,
+            'clientgameids' => $clientgameids
+        ]);
     }
 
     public function addTerminal(Request $request)
@@ -48,18 +50,17 @@ class TerminalsController extends Controller
             'dallasid' => 'required|unique:server_ps',
         ]);
         
-        // Initialize new ServerPS
-        $server_ps = new ServerPs();
-        $server_ps->psid = $request['psid'];
-        $server_ps->dallasid = $request['dallasid']; // Machine Id
-        $server_ps->seatid = $request['seatid'];
+        // Initialize current casino
+        $casino = Casinos::where('casinoid', $request->casinoid)->first();
 
-        $casino = Casinos::where('casinoid', '=', $request['casinoid'])->first();
-        $casino->server_ps()->save($server_ps);
-        $casino->save();
-        $server_ps->save();
+        // Server Ps Model
+        $server_ps = $casino->server_ps()->create([
+            'psid'     => $request->psid,
+            'dallasid' => $request->dallasid,
+            'seatid'   => $request->seatid
+        ]);
         
-        // Update and save Ps Settings
+        // Ps Settings Model
         $ps_settings = new PsSettings();
         $ps_settings->psdescription = $request['psdescription'];
         $ps_settings->ps_type = $request['ps_type'];
@@ -69,10 +70,9 @@ class TerminalsController extends Controller
     	$server_ps->ps_settings()->save($ps_settings);
         $ps_settings->save();
 
-        // Initialize all relation tables
+        // Ps Counters Model
         $ps_counter = new PsCounters();
 
-        // Initialize counters         
         $counters = array();
         for ($i = 0; $i <= 255; $i++)
         {
@@ -80,17 +80,14 @@ class TerminalsController extends Controller
         }
 
         $ps_counter->setCounters($counters);
-
         $server_ps->ps_counters()->save($ps_counter);
         $ps_counter->save();
 
-        $billing_config = new BillingConfig();
-        $server_ps->billing_config()->save($billing_config);
-        $billing_config->save();
+        // Billing Config Model
+        $billing_config = $server_ps->billing_config()->create([]);
 
-        $ps_status = new PsStatus();
-        $server_ps->ps_status()->save($ps_status);
-        $ps_status->save();
+        // Ps Status Model
+        $ps_status = $server_ps->ps_status()->create([]);
 
     	$msg = 'Machine added sucessfully!';
         return $request->session()->flash('alert-success', $msg);
@@ -121,12 +118,6 @@ class TerminalsController extends Controller
         if($request['games'])
         {
             $ps_settings->setSubscribedGames($request['games']);
-        }
-
-        if(!$ps_settings->update())
-        {
-            $msg = 'Error Updating Machine';
-            return $request->session()->flash('alert-danger', $msg);
         }
 
         $msg = 'Machine Updated Successfully';

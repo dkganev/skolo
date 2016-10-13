@@ -24,11 +24,12 @@ class GameServersController extends Controller
         $categories = Categories::orderBy('idx', 'asc')->get();
         $game_types = GameTypes::all();
 
-    	return view('settings.gameservers', [ 'game_clients' => $game_clients,
-                                              'games'        => $games,
-                                              'categories'   => $categories,
-                                              'game_types'   => $game_types
-                                            ]);
+    	return view('settings.gameservers', [
+            'game_clients' => $game_clients,
+            'games'        => $games,
+            'categories'   => $categories,
+            'game_types'   => $game_types
+        ]);
 	}
 
     public function addGameClient(Request $request)
