@@ -1,14 +1,16 @@
+
 @include('modals.casinoTerminalInfo-modals')
 <link rel="stylesheet" href="/css/casinoProview.css">
 <div class="row">
      <!--  page header -->
     <div class="col-lg-12">
-        <h1 class="page-header" style="margin-top: 0px;">Casino</h1>
+        <h1 class="page-header">Casino</h1>
     </div>
      <!-- end  page header -->
 </div>
+
 	
-<div class="row">
+<div class="row" style="user-select: none;">
     
     <div class="col-md-12 "> 
         <!-- Start Panel-->
@@ -43,11 +45,11 @@
                     <div class="col-md-12 ">
                 <button class="btn btn-info btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal" style="visibility: visible;  ">
                     Free
-                    <span class="badge ng-binding" style="background-color: #303030;color: #fff;"> {{$PsSettingsFree}} </span>
+                    <span id="BtnFree" class="badge ng-binding" style="background-color: #303030;color: #fff;"> {{$PsSettingsFree}} </span>
                 </button>
                 <button class="btn-success btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal" style="visibility: visible; ">
                     Active
-                    <span class="badge ng-binding" style="background-color: #303030;color: #fff;"> {{$PsSettingsActive}} </span>
+                    <span id="BtnActive" class="badge ng-binding" style="background-color: #303030;color: #fff;"> {{$PsSettingsActive}} </span>
                 </button>
                 <button class="btn  btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal" style="visibility: visible; background-color: #ccb2ff; ">
                     Call Attend
@@ -59,7 +61,7 @@
                 </button>
                 <button class="btn btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal" style="visibility: visible; background-color: #9c9c9c; ">
                     Offline
-                    <span class="badge ng-binding" style="background-color: #303030;color: #fff;"> {{$PsSettingsOffline}} </span>
+                    <span id="BtnOffline" class="badge ng-binding" style="background-color: #303030;color: #fff;"> {{$PsSettingsOffline}} </span>
                 </button>
                 <button class="btn btn-danger btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal" style="visibility: visible; ">
                     <i class="glyphicon glyphicon-remove"></i>

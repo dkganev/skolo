@@ -20,7 +20,6 @@ class CasinoController extends Controller
         //$data123 = session()->all();
         //var_dump($data123);
         $casinos = Casinos::select(['casinoid', 'casinoname'])->get();
-        
         $currentCasinos = session()->get('Casino.casinoname');
         $dataGet = session()->get('LoginUser.lang');
         app()->setLocale($dataGet);
@@ -44,28 +43,35 @@ class CasinoController extends Controller
                 $PsStatus = PsStatus::where('psid', $value['psid'])->get();
                 if ( $PsStatus->count()){
                     if ( $PsStatus->first()->bonline == FALSE){
-                        $PsSettingsOffline++; 
-                        $server_ps[$key]['boxColor'] = '#9c9c9c';
-                        $server_ps[$key]['boxStatus'] = 'Offline';
+                        //if ( $PsStatus->first()->attendant == FALSE){
+                            $PsSettingsOffline++; 
+                            $server_ps[$key]['boxColor'] = '#9c9c9c';
+                            $server_ps[$key]['boxStatus'] = 'Offline';
+                        /*}else{
+                            $PsSettingsAttendant++;
+                            $server_ps[$key]['boxColor'] = '#ccb2ff';
+                            $server_ps[$key]['boxStatus'] = 'Call Attend';
+                        }*/
+                       
                     }else{
-                       if ( $PsStatus->first()->current_credit == 0){
-                           $PsSettingsFree++;
-                           $server_ps[$key]['boxColor'] = '#5bc0de';
-                           $server_ps[$key]['boxStatus'] = 'Free';
-                       }else{
-                           $PsSettingsActive++;
-                           $server_ps[$key]['boxColor'] = '#5cb85c';
-                           $server_ps[$key]['boxStatus'] = 'Active';
-                       }
+                        if ( $PsStatus->first()->attendant == FALSE){
+                            if ( $PsStatus->first()->current_credit == 0){
+                                $PsSettingsFree++;
+                                $server_ps[$key]['boxColor'] = '#5bc0de';
+                                $server_ps[$key]['boxStatus'] = 'Free';
+                            }else{
+                                $PsSettingsActive++;
+                                $server_ps[$key]['boxColor'] = '#5cb85c';
+                                $server_ps[$key]['boxStatus'] = 'Active';
+                            }
+                        }else{
+                            $PsSettingsAttendant++;
+                            $server_ps[$key]['boxColor'] = '#ccb2ff';
+                            $server_ps[$key]['boxStatus'] = 'Call Attend';
+                        }
+                       
                     }
-                    if ( $PsStatus->first()->attendant == FALSE){
-                        //$PsSettingsAttendant++; 
-                        //$server_ps[$key]['boxColor'] = "transperant";
-                    }else{
-                        $PsSettingsAttendant++;
-                        $server_ps[$key]['boxColor'] = '#ccb2ff';
-                        $server_ps[$key]['boxStatus'] = 'Call Attend';
-                    }
+                    
                     
                     if ( $PsStatus->first()->current_game_i == 0){
                         $server_ps[$key]['current_game'] = "";
