@@ -7,11 +7,12 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    
     <title>Control Monitoring System</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/w3.css">
+    <link href="/css/flag-icon.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/font-awesome.css" />
 
     <link href="/css/app.css" rel="stylesheet">
@@ -86,6 +87,6 @@
             });
         }
     </script>
-
+    <script src="/js/main.js"></script>
 </body>
 </html>
