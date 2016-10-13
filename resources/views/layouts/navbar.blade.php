@@ -50,9 +50,9 @@
 
         <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">
-<!--             <a href="#" id="MenuLang" class="dropdown-toggle2" data-toggle="dropdown" role="button" aria-expanded="false">
-                <span id="LangMenu"><strong>lang('messages.language'): </strong><strong><!-- dataGet--></strong></span> <span id="LangFlag" class="flag-icon flag-icon-$dataGet == "en" ? "gb" : $dataGet flag-icon-squared"></span><span class="caret"></span>
-            </a> -->
+            <a href="#" id="MenuLang" class="dropdown-toggle2" data-toggle="dropdown" role="button" aria-expanded="false">
+                <span id="LangMenu"><strong>@lang('messages.language'): </strong><strong>{{$dataGet}}</strong></span> <span id="LangFlag" class="flag-icon flag-icon-{{$dataGet == "en" ? "gb" : $dataGet}} flag-icon-squared"></span><span class="caret"></span>
+            </a> 
 
                 <ul class="dropdown-menu" role="menu">
                     <li>
@@ -73,9 +73,19 @@
       <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">
             <a href="#" id="MenuCasino" class="dropdown-toggle2" data-toggle="dropdown" role="button" aria-expanded="false">
-                <span ><strong>@lang('messages.casino'): </strong><strong id="CasinoMenu"> Current Casino</strong></span> <span class="caret"></span>
+                <span ><strong>@lang('messages.casino'): </strong><strong id="CasinoMenu"> {{ $currentCasinos }}</strong></span> <span class="caret"></span>
             </a>
-
+                <ul class="dropdown-menu" role="menu">
+                    @foreach($casinos as $casino)
+                    <li>
+                        <a href="#" class="CasinoName" data-casino="{{ $casino->casinoid  }}">
+                            
+                               {{ $casino->casinoname  }}
+                        </a>
+                    </li>
+                     @endforeach
+                   
+               </ul>    
         </li>  
       </ul>  
 
