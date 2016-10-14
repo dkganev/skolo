@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Casinos;
 use App\Models\TerminalPreviewDB2;
+use App\Models\Games;
 
 class AjaxCasinoController extends Controller
 {
@@ -46,5 +47,21 @@ class AjaxCasinoController extends Controller
         );
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
-    
+    public function NewGame(Request $request)
+    {
+        $gameid = $request['idGame'];
+       
+        $curentGames = Games::where('gameid',  $gameid)->get();
+            //$server_ps[$key]['current_game'] = $curentGames->first()->short_name;
+            //$server_ps[$key]['current_game_color'] = $curentGames->first()->color;
+                      
+        $dataArray1 = array(
+            "success" => "success",
+            "short_name" => $curentGames->first()->short_name,
+            "color" => $curentGames->first()->color
+        );
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT); 
+        
+        
+    }
 }

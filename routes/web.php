@@ -15,6 +15,7 @@ Route::get('/casino', 'CasinoController@casino')->name('casino');
 Route::post('/ajax_lang', 'AjaxLangController@index');
 Route::post('/ajax_casino', 'AjaxCasinoController@index'); 
 Route::post('/ajax_casinoBox', 'AjaxCasinoController@casinoBox'); 
+Route::post('/ajax_NewGame', 'AjaxCasinoController@NewGame');
 
 Route::get('/settings', 'TerminalsController@settings')->name('settings');
 

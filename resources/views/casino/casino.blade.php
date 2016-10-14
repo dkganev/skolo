@@ -53,7 +53,7 @@
                 </button>
                 <button class="btn  btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal" style="visibility: visible; background-color: #ccb2ff; ">
                     Call Attend
-                    <span class="badge ng-binding" style="background-color: #303030;color: #fff;"> {{$PsSettingsAttendant}} </span>
+                    <span id="BtnCallAttend" class="badge ng-binding" style="background-color: #303030;color: #fff;"> {{$PsSettingsAttendant}} </span>
                 </button>
                 <button class="btn btn-warning btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal" style="visibility: visible; ">
                     Cash Out
@@ -66,7 +66,7 @@
                 <button class="btn btn-danger btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal" style="visibility: visible; ">
                     <i class="glyphicon glyphicon-remove"></i>
                     Errors
-                    <span class="badge ng-binding" style="background-color: #303030;color: #fff;"> 14 </span>
+                    <span id="BtnErrors" class="badge ng-binding" style="background-color: #303030;color: #fff;"> {{$PsSettingsError}} </span>
                 </button>
                 <button class="btn btn-default btn-sm bootstrap-modal-form-open" data-toggle="modal"  data-target="#addMachineModal" style="visibility: visible; ">
                     <i class="glyphicon glyphicon-user"></i>
@@ -82,18 +82,18 @@
                     @foreach($server_ps as $ps)    
                         <div class="" >
                             <div  id="box{{ $ps->psid }}" data_boxStatus="{{ $ps->boxStatus }}" draggable="folse" ondragstart="drag(event)"  class="box disableTextSelect offline bootstrap-modal-form-open" data-toggle="modal" data-target="#casinoTerminalInfo"  onclick="boxModalWindow({{ $ps->psid }})"   data-id="{{ $ps->psid }}" style=" height: 66px; width: 66px; -moz-user-select: text; left: {{ $ps->leftP }}px; top: {{ $ps->topP }}px;background-color: {{$ps->boxColor}} ">
-                                <div class="ps_title" style="background-color: {{$ps->current_game_color !== null ? $ps->current_game_color : 'inherit'}}">
+                                <div class="ps_title shortNameColor" style="background-color: {{$ps->current_game_color !== null ? $ps->current_game_color : 'inherit'}}">
                                     <span class="shortName ng-binding" >{{$ps->current_game}}</span>
                                     <span class="ng-binding" > {{ $ps->seatid }} </span>
                                     <i class="glyphicon glyphicon-asterisk ng-hide" style="color: red; display: none;" aria-hidden="true"></i>
                                     <i class="glyphicon glyphicon-user"  aria-hidden="false"></i>
                                 </div>
                                 <div class="ps_body" style="font-size: 11px;" aria-hidden="false">
-                                    <div class="ps_text pull-left">Credit:</div>
-                                    <div id="boxCdredit" class="ng-binding" style="line-height: 16px;font-size: 11px;" ><?php echo number_format($ps->ps_status->current_credit / 100, 2 ); ?></div>
+                                    <div class="ps_text pull-left">Credit: </div>
+                                    <div class="ng-binding boxCdredit" style="line-height: 16px;font-size: 11px;" ><?php echo number_format($ps->ps_status->current_credit / 100, 2 ); ?></div>
                                     <div class="ps_text pull-left" style="line-height: 16px;">
                                         Bet:
-                                        <span class="bold ng-binding" ><?php echo number_format($ps->ps_status->current_bet / 100, 2 ); ?></span>
+                                        <span class="bold ng-binding boxBet" ><?php echo number_format($ps->ps_status->current_bet / 100, 2 ); ?></span>
                                     </div>
                                 </div>
                                 <div class="ps_body ng-hide" style="font-size: 11px;  display: none;" aria-hidden="true">
