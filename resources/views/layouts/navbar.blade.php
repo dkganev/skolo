@@ -41,7 +41,7 @@
                     </li>
                     <li>
                         <a href="{{ url('logout') }}" class="UserSupport" data-lang="en">
-                            <i class="fa fa-btn fa-sign-out  fa-2x"></i>@lang('messages.logout')
+                            @lang('messages.logout') <i class="fa fa-btn fa-sign-out  fa-2x" style="font-size: 18px;"></i>
                         </a>
                     </li>
                </ul>

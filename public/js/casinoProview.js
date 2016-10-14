@@ -84,7 +84,7 @@ $( "#GridBingoFeed" ).click(function() {
 });
 function boxModalWindow(bixID) {
     $('#ModalBoxID').text(bixID);
-    $('#ModalCredit').text($("#box" + bixID + " #boxCdredit").text());
+    $('#ModalCredit').text($("#box" + bixID + " .boxCdredit").text());
     $('#ModalStatus').text($("#box" + bixID).attr('data_boxStatus'));
     
     //alert($("#box" + bixID + " #boxCdredit").text()); data_boxStatus
