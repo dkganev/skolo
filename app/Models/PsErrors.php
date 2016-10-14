@@ -12,6 +12,8 @@ class PsErrors extends Model
 	
     public $incrementing = false;
 
+    protected $guarded = [];
+    
     public function server_ps()
     {
     	return $this->belongsTo('App\Models\ServerPs', 'psid', 'psid');

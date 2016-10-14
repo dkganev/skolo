@@ -14,6 +14,8 @@ class Games extends Model
 
 	public $incrementing = false;
 
+    protected $guarded = [];
+    
     public function client_game_ids()
     {
     	return $this->belongsTo(ClientGameIds::class, 'client_game_id','client_game_id');

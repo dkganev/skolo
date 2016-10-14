@@ -17,6 +17,8 @@ class PsSettings extends Model
     
     public $incrementing = false; 
 
+    protected $guarded = ['psid'];
+    
     public function server_ps()
     {
     	return $this->belongsTo(ServerPs::class, 'psid','psid');

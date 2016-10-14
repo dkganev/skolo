@@ -14,6 +14,8 @@ class Casinos extends Model
 	
     public $incrementing = false;
 
+    protected $guarded = [];
+    
     public function server_ps()
     {
     	return $this->hasMany(ServerPs::class, 'casinoid', 'casinoid');

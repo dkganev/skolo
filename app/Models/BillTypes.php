@@ -14,6 +14,8 @@ class BillTypes extends Model
 
 	public $primaryKey = 'idtype';
 
+	protected $guarded = [];
+	
 	public function billing_config()
 	{
 		return $this->hasOne(BillingConfig::class);
