@@ -47,7 +47,7 @@ class AjaxCasinoController extends Controller
         );
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
-<<<<<<< HEAD
+
     public function NewGame(Request $request)
     {
         $gameid = $request['idGame'];
@@ -66,7 +66,3 @@ class AjaxCasinoController extends Controller
         
     }
 }
-=======
-    
-}
->>>>>>> eabf0de654420eed723caf95443f58b0dee44352
