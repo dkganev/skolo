@@ -33,14 +33,16 @@
 
             .title {
                 font-size: 72px;
+                font-weight: bold;
                 margin-bottom: 40px;
+                color:black;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                <div class="title">CMS Down. Be right back.</div>
             </div>
         </div>
     </body>

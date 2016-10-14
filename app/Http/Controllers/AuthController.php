@@ -42,7 +42,7 @@ class AuthController extends Controller
             session(['LoginUser' => $loginUser ]);//
             $UserMenu = array('menu' => "casino", 'subMenu' => "casino");
             session(['UserMenu' => $UserMenu ]);//
-    	return redirect()->route('settings');
+    	       return redirect()->route('settings');
     }
 
     public function logout()

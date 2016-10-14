@@ -19,6 +19,11 @@ use Excel;
 
 class TerminalsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function settings()
     {   
         $casinos = Casinos::select(['casinoid', 'casinoname'])->get();

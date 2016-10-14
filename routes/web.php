@@ -101,6 +101,10 @@ Route::post('/settings/addErrorList', 'ErrorsController@addErrorList');
 
 #Statistics
 
-Route::get('/statistics', 'StatisticsController@index');
+Route::get('statistics', 'StatisticsController@index');
+
+Route::get('statistics/terminals', 'StatisticsController@terminals_statistics');
+
+Route::get('statistics/games', 'StatisticsController@games_statistics');
 
 });

@@ -24,36 +24,26 @@
         ]); ?>
     </script>
 
-    <script src="jquery-3.1.1.js"></script>
     <!-- JQUERY -->
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    <script src="jquery-3.1.1.js"></script>
 
     <!-- BOOSTRAP -->
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
 
     <script src="bootstrap/js/bootstrap.js"></script>
 
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-
     <!-- SELECT -->
     <link rel="stylesheet" type="text/css" href="boostrap-select/bootstrap-select.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css"> -->
     <script src="boostrap-select/bootstrap-select.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script> -->
 
     <!-- TABLE -->
     <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.css" /> -->
 
     <script src="bootstrap-table/bootstrap-table.js"></script>
     <script src="bootstrap-table/bootstrap-table-locale-all.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table-locale-all.js"></script> -->
+
 </head>
 <body style="background-image: url('images/background.jpg'); ">
 
@@ -88,5 +78,8 @@
         }
     </script>
     <script src="/js/main.js"></script>
+    <script >
+        var var1 = "{{ URL::current() }}";
+    </script>
 </body>
 </html>

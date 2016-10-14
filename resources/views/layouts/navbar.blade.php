@@ -99,6 +99,13 @@
   </div>
 @endif
 
+@if(Request::is('statistics*'))
+  <div class="container">
+    @include('statistics.navbar')
+  </div>
+@endif
+
+
 @if(Request::is('casino*'))
   <div class="container">
     @include('casino.navbar')
