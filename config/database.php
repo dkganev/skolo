@@ -92,6 +92,20 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
+        
+        'pgsql3' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST3', '10.0.0.190'),
+            'port' => env('DB_PORT3', '5432'),
+            'database' => env('DB_DATABASE3', 'forge'),
+            'username' => env('DB_USERNAME3', 'forge'),
+            'password' => env('DB_PASSWORD3', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],        
 
 
     ],

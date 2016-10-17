@@ -13,10 +13,6 @@ use Excel;
 
 class GameServersController extends Controller
 {
-    /**
-     * Game Servers Home View
-     * @return [view]
-     */
 	public function getGameServers()
 	{
 		$game_clients = ClientGameIds::orderBy('client_game_id','asc')->get();

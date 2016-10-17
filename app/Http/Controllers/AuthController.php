@@ -32,7 +32,7 @@ class AuthController extends Controller
     	if(!Auth::attempt(['name' => $request['name'], 'password' => $request['password']]))
     	{
                 
-    		return redirect()->route('index');
+    		return redirect()->back();
     	}
             $casinos = Casinos::select(['casinoid', 'casinoname'])->get();
             $firstCasinos = array('casinoid' => $casinos->first()->casinoid,'casinoname' => $casinos->first()->casinoname );

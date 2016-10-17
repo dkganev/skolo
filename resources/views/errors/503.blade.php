@@ -35,14 +35,15 @@
                 font-size: 72px;
                 font-weight: bold;
                 margin-bottom: 40px;
-                color:black;
+                color:#474747;
             }
         </style>
     </head>
     <body>
         <div class="container">
+            <h1 style="color: black; font-size: 60px;"> #503 Error</h3>
             <div class="content">
-                <div class="title">CMS Down. Be right back.</div>
+                <div class="title">Maintance Going on...Be right back</div>
             </div>
         </div>
     </body>

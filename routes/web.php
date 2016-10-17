@@ -1,5 +1,4 @@
 <?php
-
 # Auth Routes
 
 Route::get('/', 'AuthController@index');
@@ -32,17 +31,11 @@ Route::get('/casino/events', 'CasinoController@getEvents');
 
 Route::get('/settings/terminals', 'TerminalsController@terminals');
 
-Route::post('/machine/add', [
-	'uses' => 'TerminalsController@addTerminal',
-	'as'   => 'add.machine'
-]);
+Route::post('/machine/add', 'TerminalsController@addTerminal')->name('add.machine');
 
 Route::post('machine/update', 'TerminalsController@updateMachine');
 
-Route::get('/exportTerminals', [
-	'uses' => 'TerminalsController@exportTerminals',
-	'as'   => 'export.terminals'
-]);
+Route::get('/exportTerminals', 'TerminalsController@exportTerminals')->name('export.terminals');
 
 Route::get('/resetps', 'TerminalsController@reset_ps');
 
@@ -99,6 +92,9 @@ Route::post('/settings/addErrorLvl', 'ErrorsController@addErrorLevel');
 
 Route::post('/settings/addErrorList', 'ErrorsController@addErrorList');
 
+# Settings Errors Routes
+
+Route::get('/settings/bingo', 'BingoController@index');
 
 #Statistics
 
