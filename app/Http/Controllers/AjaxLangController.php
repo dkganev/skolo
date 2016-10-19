@@ -17,6 +17,7 @@ class AjaxLangController extends Controller
             "set" => $dataGet,
             "lang" => $dataLang
         );
+        
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
 }
