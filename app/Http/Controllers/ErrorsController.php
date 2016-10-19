@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -10,8 +10,7 @@ use App\Models\PsErrorsList;
 
 class ErrorsController extends Controller
 {
-    public function getErrors()
-    {
+    public function getErrors() {
     	$error_lvls = PsErrorLevels::orderBy('err_level', 'asc')->get();
         $error_list = PsErrorsList::orderBy('err_code', 'asc')->get();
 
