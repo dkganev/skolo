@@ -23,7 +23,7 @@ class CasinoController extends Controller
         $currentCasinos = session()->get('Casino.casinoname');
         $dataGet = session()->get('LoginUser.lang');
         app()->setLocale($dataGet);
-    return view('casino.index', ['dataGet' => $dataGet,'casinos' => $casinos, 'currentCasinos' => $currentCasinos]);
+        return view('casino.index', ['dataGet' => $dataGet,'casinos' => $casinos, 'currentCasinos' => $currentCasinos]);
     }
     public function getCasino(){
         $currentCasinos = session()->get('Casino.casinoid');

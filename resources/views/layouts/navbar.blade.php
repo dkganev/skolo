@@ -50,42 +50,47 @@
 
         <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">
-            <a href="#" id="MenuLang" class="dropdown-toggle2" data-toggle="dropdown" role="button" aria-expanded="false">
-                <span id="LangMenu"><strong>@lang('messages.language'): </strong><strong>{{$dataGet}}</strong></span> <span id="LangFlag" class="flag-icon flag-icon-{{$dataGet == "en" ? "gb" : $dataGet}} flag-icon-squared"></span><span class="caret"></span>
-            </a> 
 
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                        <a href="#" class="langSupport" data-lang="bg">
-                            <span class="flag-icon flag-icon-bg flag-icon-squared"></span>
-                                bg
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="langSupport" data-lang="en">
-                            <span class="flag-icon flag-icon-gb flag-icon-squared"></span>
-                            en
-                        </a>
-                    </li>
-               </ul>
+              <a href="" data-toggle="dropdown">
+                <strong>@lang('messages.language')</strong>
+                <span class="caret"></span> 
+              </a>
+
+              <ul class="dropdown-menu" role="menu">
+                  <li>
+                      <a href="#" class="langSupport" data-lang="bg">
+                          <span class="flag-icon flag-icon-bg flag-icon-squared"></span>
+                          bg
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" class="langSupport" data-lang="en">
+                          <span class="flag-icon flag-icon-gb flag-icon-squared"></span>
+                          en
+                      </a>
+                  </li>
+              </ul>
+              
         </li>  
       </ul>
       <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">
-            <a href="#" id="MenuCasino" class="dropdown-toggle2" data-toggle="dropdown" role="button" aria-expanded="false">
-                <span ><strong>@lang('messages.casino'): </strong><strong id="CasinoMenu"> {{ $currentCasinos }}</strong></span> <span class="caret"></span>
+            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <strong>@lang('messages.casino'): </strong>
+                <strong>
+                  {{ Session::get('casino')->casinoname }}
+                </strong>
+                <span class="caret"></span>
             </a>
-                <ul class="dropdown-menu" role="menu">
-                    @foreach($casinos as $casino)
-                    <li>
-                        <a href="#" class="CasinoName" data-casino="{{ $casino->casinoid  }}">
-                            
-                               {{ $casino->casinoname  }}
-                        </a>
-                    </li>
-                     @endforeach
-                   
-               </ul>    
+
+            <!-- For Each With View Composer Later -->
+            <ul class="dropdown-menu" role="menu">
+                <li>
+                    <a href="#" class="CasinoName" >
+                         {{ Session::get('casino')->casinoname }}
+                    </a>
+                </li>
+           </ul>
         </li>  
       </ul>  
 

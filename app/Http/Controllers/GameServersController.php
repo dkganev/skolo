@@ -150,17 +150,12 @@ class GameServersController extends Controller
 
     public function updateGame(Request $request)
     {
-        //$id = $request['client_game_id'];
-
         $game = Games::where('gameid', $request['gameid'])->first();
 
         $game_client = ClientGameIds::where('client_game_id','=', $request['client_game_id'])->first();
         $game->client_game_ids()->associate($game_client);
         $game->save();
 
-        //$game->gameid = $request['gameid'];
-
-        //$game->game_type = $request['game_type'];
         $game->short_name = $request['short_name'];
         $game->description = $request['description'];
         $game->db_name = $request['db_name'];
