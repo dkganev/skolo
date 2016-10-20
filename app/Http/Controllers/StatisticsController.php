@@ -65,4 +65,15 @@ class StatisticsController extends Controller
 
         return view('statistics.games', ['dataGet' => $dataGet,'casinos' => $casinos, 'currentCasinos' => $currentCasinos, 'games' => $games]);
     }
+    public function history_statistics()
+    {
+        $casinos = Casinos::select(['casinoid', 'casinoname'])->get();
+        $currentCasinos = session()->get('Casino.casinoname');
+        $dataGet = session()->get('LoginUser.lang');
+        app()->setLocale($dataGet);
+
+        $games = Games::orderBy('gameid', 'asc')->get();
+
+        return view('statistics.history', ['data2' => 'test11', dataGet' => $dataGet,'casinos' => $casinos, 'currentCasinos' => $currentCasinos, 'games' => $games]);
+    }
 }

@@ -7,6 +7,8 @@
               <li><a href="javascript:ajaxLoad('{{url('statistics/terminals')}}')">Machine Statistics</a></li>
 
               <li><a href="javascript:ajaxLoad('{{url('statistics/games')}}')">Game Statistics</a></li>
+              
+              <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Game History</a></li>
 
             </ul>
         </div>
