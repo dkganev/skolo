@@ -53,7 +53,6 @@
     <div class="container">
         <div id="content"></div>
         <div class="loading"></div>
-
     </div>
         @yield('content')
     <script>
@@ -63,11 +62,11 @@
             $.ajax({
                 type: "GET",
                 url: filename,
-
                 success: function (data) {
                     //console.log(data);
                     $('.loading').delay(300).hide(0);
                     $("#" + content).html(data);
+                    console.log(filename);
                 },
                 error: function (xhr, status, error) {
                     alert(xhr.responseText);
@@ -78,8 +77,5 @@
         }
     </script>
     <script src="/js/main.js"></script>
-    <script >
-        var var1 = "{{ URL::current() }}";
-    </script>
 </body>
 </html>

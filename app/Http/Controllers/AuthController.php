@@ -36,7 +36,6 @@ class AuthController extends Controller
 
         // Get first(default) Casino and store it in the session)
         $casino = Casinos::first();
-        //TO RENAME 'Casino' TO casino LATER
         session(['casino' => $casino]);
 
         \App::setLocale(Auth::user()->lang);

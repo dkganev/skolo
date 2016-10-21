@@ -10,7 +10,8 @@ Route::get('/logout', 'AuthController@logout')->middleware('auth');
 # Auth Protected Routes
 Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/casino', 'CasinoController@casino')->name('casino');
+Route::get('/casino', 'CasinoController@index');
+
 Route::post('/ajax_lang', 'AjaxLangController@index');
 Route::post('/ajax_casino', 'AjaxCasinoController@index'); 
 Route::post('/ajax_casinoBox', 'AjaxCasinoController@casinoBox'); 

@@ -1,5 +1,25 @@
+<div class="row">
+     <!--  page header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">Casino</h1>
+    </div>
+     <!-- end  page header -->
+</div>
 
- <style>
+<div class="row">
+    
+    <div class="col-md-12 ">
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body" style="border: 1px solid #d1d1e0; border-radius:5px;  min-height: 600px">
+              Error 
+              Maybe, the casino  don't have terminals.
+            </div>
+        </div>
+    </div> 
+</div>
+
+<style>
 .box { 
     background-color: #9c9c9c;
     border-radius: 10px;
@@ -87,30 +107,5 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-                      
-                  }    
- </style>
-<div class="row">
-     <!--  page header -->
-    <div class="col-lg-12">
-        <h1 class="page-header">Casino</h1>
-    </div>
-     <!-- end  page header -->
-</div>
-
-	
-<div class="row">
-    
-    <div class="col-md-12 ">
-        <div class="panel panel-default">
-            <div class="panel-heading"></div>
-            <div class="panel-body" style="border: 1px solid #d1d1e0; border-radius:5px;  min-height: 600px">
-              Error 
-              Maybe, the casino  don't have terminals.
-               
-                
-            </div>
-        </div>
-    </div> 
-</div>
-
+                                  }    
+</style>
