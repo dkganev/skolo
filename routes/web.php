@@ -93,10 +93,13 @@ Route::post('/settings/addErrorLvl', 'ErrorsController@addErrorLevel');
 
 Route::post('/settings/addErrorList', 'ErrorsController@addErrorList');
 
-# Settings Errors Routes
+# Settings Bingo Routes
 
-Route::get('/settings/bingo', 'BingoController@index');
+Route::get('/settings/bingo/mainconfig', 'BingoController@main_config');
 
+Route::get('/settings/bingo/mybonus', 'BingoController@my_bonus');
+
+Route::get('/settings/bingo/maxballs', 'BingoController@max_balls');
 #Statistics
 
 Route::get('statistics', 'StatisticsController@index');

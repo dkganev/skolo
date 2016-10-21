@@ -16,5 +16,4 @@ class LocalizationController extends Controller
 
 		return response()->json(['message' => 'success']);
 	}
-
 }

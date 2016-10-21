@@ -1,6 +1,7 @@
 @include('modals.reset-ps-modal')
 @include('modals.terminal-modals')
 
+<div class="container">
 <div class="row">
      <!--  page header -->
     <div class="col-lg-12" >
@@ -103,6 +104,7 @@
         </div><!--End Panel -->
     </div>
 </div> <!--End Row -->
+</div> <!--End Container -->
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 
 <script src="bootstrap-table/bootstrap-table.js"></script>

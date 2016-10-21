@@ -1,5 +1,5 @@
 @include('modals.gameservers-modals')
-
+<div class="container">
 <!-- Games -->
 <div class="row">
      <!--  page header -->
@@ -220,3 +220,4 @@
 
 <script src="bootstrap-table/bootstrap-table.js"></script>
 <script src="/js/modals/gameservers.js" type="text/javascript"></script>
+</div>

@@ -13,7 +13,6 @@ use App\Models\Games;
 
 class StatisticsController extends Controller
 {
-
     public function index()
     {
         return view('statistics.index');
@@ -32,6 +31,7 @@ class StatisticsController extends Controller
 
         return view('statistics.games', [ 'games' => $games]);
     }
+
     public function history_statistics()
     {
         $games = Games::orderBy('gameid', 'asc')->get();

@@ -1,16 +1,16 @@
-<!-- Games -->
+<div class="container">
 <div class="row">
     <div class="col-lg-4">
-        <h1 style="margin-top: 0px;" class="page-header">Bingo</h1>
-        <div class="page-header" style="padding-top:2px; margin-top: 0px; background-color: none;">
+        <h1 style="margin-top: 0px;" class="page-header">Bingo - Main Confing</h1>
+        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
 
-              <li><a href="#">Bingo</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
 
-              <li><a href="#">Conf</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
 
-              <li><a href="#">Other</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
 
             </ul>
         </div>
@@ -20,14 +20,9 @@
 <!-- Bingo Main Conf Panel -->
 <div class="row">
 	<div class="col-lg-12">
-		<div class="panel panel-primary">
-
-		  <div  class="panel-heading">
-		    <h3 class="panel-title text-center">Main Configurations</h3>
-		  </div>
 
 		  <!-- SETTINGS -->
-		  <div class="panel-body">
+		  <div class="well">
 
 		  	<div class="row">
 
@@ -179,11 +174,11 @@
 
 			</div>
 
-		  </div><!-- End Panel Body -->
-		  <div class="panel-footer">
-		  		<button style="width:200px; margin: 5px;" class="btn btn-info">Update</button>
-		  </div>
 
-		</div><!-- End Panel -->
+		  	<button style="width:200px; margin: 5px;" class="btn btn-warning">Update</button>
+
+
+		</div><!-- End Well -->
 	</div><!-- End Col -->
 </div><!-- End Row -->
+</div><!-- End Container -->

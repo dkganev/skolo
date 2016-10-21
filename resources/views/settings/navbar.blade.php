@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12 "> 
-        <div class="page-header" style="padding-top:6px; margin-top: 0px; background-color: none;">
+        <div style="padding-top:6px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
 
@@ -16,7 +16,7 @@
 
               <li><a href="javascript:ajaxLoad('{{url('settings/errors')}}')">Errors</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('settings/bingo')}}')">Bingo</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('settings/bingo/mainconfig')}}')">Bingo</a></li>
 
             </ul>
         </div>

@@ -7,9 +7,9 @@ use App\Http\Requests;
 
 class AjaxLangController extends Controller
 {
-   public function index(Request $request)
+    public function index(Request $request)
     {
-    	$dataLang = $request['lang'];
+        $dataLang = $request->lang;
         $dataSet = session(['LoginUser.lang' => $dataLang]); 
         $dataGet = session()->get('LoginUser.lang');
         $dataArray1 = array(
@@ -17,7 +17,7 @@ class AjaxLangController extends Controller
             "set" => $dataGet,
             "lang" => $dataLang
         );
-        
+    
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
 }

@@ -50,11 +50,10 @@
     @include('layouts.alerts')
     @include('layouts.navbar')
 
-    <div class="container">
-        <div id="content"></div>
-        <div class="loading"></div>
-    </div>
-        @yield('content')
+    <div id="content"></div>
+    <div class="loading"></div>
+    @yield('content')
+
     <script>
         function ajaxLoad(filename, content) {
             content = typeof content !== 'undefined' ? content : 'content';

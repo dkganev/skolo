@@ -25,12 +25,8 @@ class TerminalsController extends Controller
     }
 
     public function settings()
-    {   
-        $casinos = Casinos::select(['casinoid', 'casinoname'])->get();
-        $currentCasinos = session()->get('Casino.casinoname');
-        $dataGet = session()->get('LoginUser.lang');
-        app()->setLocale($dataGet);
-        return view('settings.index', ['dataGet' => $dataGet,'casinos' => $casinos, 'currentCasinos' => $currentCasinos]);
+    {
+        return view('settings.index');
     }
 
     public function terminals()
@@ -78,7 +74,7 @@ class TerminalsController extends Controller
         // Ps Counters Model
         $ps_counter = new PsCounters();
 
-        $counters = array();
+        $counters = [];
         for ($i = 0; $i <= 255; $i++)
         {
             $counters[] = 0;
@@ -100,7 +96,6 @@ class TerminalsController extends Controller
 
     public function updateMachine(Request $request)
     {
-
         $this->validate($request, [
             'psid' => 'required',
             'seatid' => 'required',

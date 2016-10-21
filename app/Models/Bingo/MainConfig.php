@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Bingo;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BingoConf extends Model
+class MainConfig extends Model
 {
 	protected $connection = 'pgsql3';
 
@@ -15,5 +15,4 @@ class BingoConf extends Model
 	public $increments = false;
 
 	protected $guarded = [];
-	
 }
