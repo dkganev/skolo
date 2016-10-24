@@ -1,16 +1,14 @@
-@include('modals.casinoTerminalInfo-modals')
+@include('modals.bingoHistory-modal')
 
 <div class="col-md-12 "> 
         <div class="page-header" style="padding-left:15px; margin-top: 0px; margin-right: -15px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
-
-              <li><a href="javascript:ajaxLoad('{{url('statistics/terminals')}}')">Machine Statistics</a></li>
-
-              <li><a href="javascript:ajaxLoad('{{url('statistics/games')}}')">Game Statistics</a></li>
-              
-              <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Game History</a></li>
-
+              <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
+              <li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li>
+              <li><a href="javascript:ajaxLoad('#')">Roulette</a></li>
+              <li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>
+              <li><a href="javascript:ajaxLoad('#')">Slots </a></li>
             </ul>
         </div>
         
