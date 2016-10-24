@@ -1,5 +1,5 @@
 @include('modals.casino-modals')
-<div class="container">
+<div class="container-fluid">
 <div class="row">
      <!--  page header -->
     <div class="col-lg-4">

@@ -1,5 +1,5 @@
 @include('modals.gameservers-modals')
-<div class="container">
+<div class="container-full">
 <!-- Games -->
 <div class="row">
      <!--  page header -->
@@ -158,7 +158,7 @@
             </div>
 
             <div class="panel-body">
-               <table class="table table-striped table-bordered table-hover data-table-table game-servers" id="gameTable" role="grid"
+                <table class="table table-striped table-bordered table-hover data-table-table game-servers" id="gameTable" role="grid"
                     data-toggle="table"
                     data-sortable="true"
                     data-show-columns="true"
@@ -170,7 +170,7 @@
                     data-side-pagination="client"
                     data-page-list="[3, 6, 9]"
                     data-classes="table-condensed"
-               >
+                >
                     <thead class="w3-blue-grey">
                         <tr>
                             <th data-sortable="true">Client Game ID</th>
@@ -215,9 +215,8 @@
         </div>
     </div>
 </div>
-
+</div>
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 
 <script src="bootstrap-table/bootstrap-table.js"></script>
 <script src="/js/modals/gameservers.js" type="text/javascript"></script>
-</div>

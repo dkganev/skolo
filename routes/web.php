@@ -1,4 +1,7 @@
 <?php
+// BINGO
+
+
 # Auth Routes
 
 Route::get('/', 'AuthController@index');
@@ -100,6 +103,10 @@ Route::get('/settings/bingo/mainconfig', 'BingoController@main_config');
 Route::get('/settings/bingo/mybonus', 'BingoController@my_bonus');
 
 Route::get('/settings/bingo/maxballs', 'BingoController@max_balls');
+
+Route::post('/settings/bingo/mainconfig/edit', 'BingoController@edit');
+
+Route::post('/maxballs/edit', 'BingoController@max_balls_edit');
 #Statistics
 
 Route::get('statistics', 'StatisticsController@index');

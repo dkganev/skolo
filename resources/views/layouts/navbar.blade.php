@@ -101,9 +101,7 @@
 </nav>
 
 @if(Request::is('settings*'))
-  <div class="container">
     @include('settings.navbar')
-  </div>
 @endif
 
 @if(Request::is('statistics*'))

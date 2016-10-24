@@ -10,9 +10,10 @@ class MainConfig extends Model
 
 	protected $table = 'mainconf';
 
+	protected $primaryKey = null;
+
 	public $timestamps = false;
 
 	public $increments = false;
 
-	protected $guarded = [];
 }
