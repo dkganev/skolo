@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Models\PsCounters;
 use App\Models\Casinos;
 use App\Models\Games;
+use App\Models\BingoHistory;
 
 
 class StatisticsController extends Controller
@@ -34,8 +35,8 @@ class StatisticsController extends Controller
     }
     public function history_statistics()
     {
-        $games = Games::orderBy('gameid', 'asc')->get();
+        $historys = BingoHistory::orderBy('tstamp', 'desc')->get();
 
-        return view('statistics.history', ['games' => $games]);
+        return view('statistics.history', ['historys' => $historys]);
     }
 }
