@@ -1,14 +1,10 @@
 $(".langSupport").click(function() {
     token = $('meta[name="csrf-token"]').attr('content');
-   // $.ajaxSetup({
-    //    headers: {
-    //        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //    }
-    //});
+
     lang = $(this).attr("data-lang");
     $.ajax({
        type:'POST',
-       url:'ajax_lang',
+       url:'localize',
        dataType: "json",
        data:{'lang': lang , _token: token},
        success:function(data){
@@ -23,6 +19,7 @@ $(".langSupport").click(function() {
         }
     });
 });
+
 $(".CasinoName").click(function() {
     token = $('meta[name="csrf-token"]').attr('content');
     newCasino = $(this).attr("data-casino");

@@ -15,7 +15,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/casino', 'CasinoController@index');
 
-Route::post('/ajax_lang', 'AjaxLangController@index');
+
 Route::post('/ajax_casino', 'AjaxCasinoController@index'); 
 Route::post('/ajax_casinoBox', 'AjaxCasinoController@casinoBox'); 
 Route::post('/ajax_NewGame', 'AjaxCasinoController@NewGame');
@@ -88,6 +88,10 @@ Route::post('settings/addLang', 'LangsController@addLanguage')->name('add.langua
 Route::post('settings/updatelang', 'LangsController@updateLanguage')->name('update.language');
 
 Route::get('/settings/exportLanguages', 'LangsController@exportLangs')->name('export.languages');
+
+# Localization Routes
+
+Route::post('/localize', 'LocalizationController@index');
 
 # Settings Errors Routes
 Route::get('/settings/errors', 'ErrorsController@getErrors')->name('errors');
