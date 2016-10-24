@@ -115,5 +115,5 @@ Route::get('statistics/terminals', 'StatisticsController@terminals_statistics');
 
 Route::get('statistics/games', 'StatisticsController@games_statistics');
 Route::get('statistics/history', 'StatisticsController@history_statistics');
-
+//Route::get('statistics/{id}', 'StatisticsController@navbar');
 });
