@@ -1,5 +1,5 @@
 <div class="container">
-
+@include('settings.bingo.my-bonus-modals')
 <div class="row">
     <div class="col-lg-4">
         <h1 style="margin-top: 0px;" class="page-header">Bingo - My Bonus</h1>
@@ -29,49 +29,52 @@
             </div>
 
             <div class="panel-body">
-                <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
-                    data-toggle="table"
-                    data-locale="en-US"
 
-                    data-pagination="true"
-                    data-side-pagination="client"
-                    data-page-list="[3, 5]"
 
-                    data-classes="table-condensed"
-                  >
+                 <table class="table table-bordered">
                     <thead class="w3-blue-grey">
-                        <tr>
-                            <th data-sortable="true">ID</th>                          
-                            <th data-sortable="true">Ticket Cost</th>
-                            <th data-sortable="true">Max Ball</th>
-
-                            <th>Action</th>
-                        </tr>
+                      <tr>
+                        <th>ID</th>
+                        <th>Ticket Cost</th>
+                        <th>Max Ball</th>
+                        <th>Action</th>
+                      </tr>
                     </thead>
                     <tbody>
-                      	@foreach($my_bonus as $bonus)
-                        <tr>
-                        <form method="POST" action="#">
-                            <td><span class="badge">{{ $bonus->id }}</span></td>
-                            <td>
-								<input style="height:30px;" class="form-control" value="{{ $bonus->ticket_cnt }}" type="text" placeholder="Ticket Count">
-                            </td>
-                            <td>
-								<input style="height:30px;" class="form-control" value="{{ $bonus->max_ball_idx }}" type="text" placeholder="Max Ball">
-                            </td>
 
-                            <td>
-                                <button type="submit" class="btn btn-warning btn-xs">Update</button>
-                            </td>
-                        </form>
+                    @foreach($my_bonus as $bonus)
+                        <tr>
+                                <td><span class="badge">{{ $bonus->id }}</span></td>
+
+                                <td>
+                                    <input disabled name="ticket_cnt" style="height:30px;" class="form-control" value="{{ $bonus->ticket_cnt }}" type="text" placeholder="Ticket Count">
+                                </td>
+                                <td>
+                                    <input disabled name="max_ball_idx" style="height:30px;" class="form-control" value="{{ $bonus->max_ball_idx }}" type="text" placeholder="Max Ball">
+                                </td>
+                                <td>
+                                    <a href="#" 
+                                        class="btn btn-danger btn-xs"
+                                        role="button" data-toggle="modal"
+                                        data-toggle="modal"
+                                        data-target="#updateMyBonus"
+                                        data-id="{{ $bonus->id }}"
+                                        data-ticket-cost="{{ $bonus->ticket_cnt }}"
+                                        data-max-ball="{{ $bonus->max_ball_idx }}"
+                                    >
+                                        Update
+                                    </a>
+                                </td>
+
                         </tr>
-                        @endforeach
+                    @endforeach
+
                     </tbody>
-                </table>
+                  </table>
+
             </div> <!--End Panel Body -->
         </div> <!--End Panel -->
 
     </div><!--End Col -->
 </div><!--End Row -->
-
 </div><!--End Container -->

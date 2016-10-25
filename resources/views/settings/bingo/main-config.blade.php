@@ -38,7 +38,7 @@
 			    	<label style="color: #474747">Ticket Cost:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">$</span>
-						<input name="ticket" value="{{ $bingo->bingo_ticket_cost }}" type="text" class="form-control" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="bingo_ticket_cost" value="{{ $bingo->bingo_ticket_cost }}" type="text" class="form-control" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
@@ -156,8 +156,7 @@
 
 			</div><!-- End Col -->
 
-			<input style="width:315px; margin-left: 17px;" value="Update" type="submit" name="submit" class="btn btn-danger">
-			<!-- <button style="width:315px; margin-left: 17px;" type="submit" class="btn btn-danger">Update</button> -->
+			<button name="Submit" value="Login" type="Submit" style="width:315px; margin-left: 17px;" type="submit" class="btn btn-danger">Update</button>
 			</form>
 
 
@@ -168,3 +167,6 @@
 </div><!-- End Col -->
 </div><!-- End Row -->
 </div><!-- End Container -->
+
+
+

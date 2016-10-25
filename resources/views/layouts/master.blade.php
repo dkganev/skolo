@@ -50,8 +50,8 @@
     @include('layouts.alerts')
     @include('layouts.navbar')
 
-    <div id="content"></div>
-    <div class="loading"></div>
+    <div style="display:none;" id="content"></div>
+    <!-- <div class="loading"></div> -->
     @yield('content')
 
     <script>
@@ -64,10 +64,10 @@
                 url: filename,
                 success: function (data) {
                     //$('.loading').delay(300).hide(0);
-                    $("#" + content).html(data).hide().fadeIn(400);
+                    $("#" + content).css('display','none').html(data).hide().fadeIn(400);
                 },
                 error: function (xhr, status, error) {
-                    console.log(xhr.responseText);
+                    console.log(error);
                 }
             }).done(function() {
                 $('select').selectpicker('refresh');
