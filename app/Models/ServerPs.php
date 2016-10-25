@@ -36,7 +36,6 @@ class ServerPs extends Model
 		return $this->hasOne(PsCounters::class, 'psid', 'psid');
 	}
 
-
 	public function billing_config()
 	{
 		return $this->hasOne(BillingConfig::class, 'psid', 'psid');

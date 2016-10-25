@@ -1,5 +1,6 @@
 @include('modals.casino-modals')
-<div class="container-fluid">
+
+<div class="container">
 <div class="row">
      <!--  page header -->
     <div class="col-lg-4">
@@ -7,9 +8,11 @@
     </div>
      <!-- end  page header -->
 </div>
+</div>
 
+<div class="container-full" style="width:70%;">
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-12">
 
         <div class="panel panel-default">
            
