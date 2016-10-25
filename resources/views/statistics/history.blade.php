@@ -1,4 +1,5 @@
 @include('modals.bingoHistory-modal')
+@include('modals.bingoHistory2-modal')
 
 <div class="col-md-12 "> 
         <div class="page-header" style="padding-left:15px; margin-top: 0px; margin-right: -15px; background-color: none;">
@@ -47,7 +48,7 @@
                     >
                     <thead class="w3-dark-grey">
                         <tr>
-                            <th colspan="5"style='text-align: center !Important;'>Game Info</th>
+                            <th colspan="5"style='text-align: center !Important; '>Game Info</th>
                             <th colspan="2">Line</th>
                             <th colspan="2">Bingo</th>
                             <th colspan="2">My Bonus</th>
@@ -83,28 +84,28 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr onclick="boxModalWindow()" id='Row{{ $history->bingo_seq }}' data_id='{{ $history->bingo_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open" data-toggle="modal" data-target="#casinoTerminalInfo" onclick="boxModalWindow()" >
+                                <tr onclick="boxModalWindow()" id='Row{{ $history->bingo_seq }}' data_id='{{ $history->bingo_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open" data-toggle="modal" data-target="#bingoHistory_modal" onclick="boxModalWindow()" >
                        
-                                    <td onclick='alert("qwe");'><?php echo date("Y-m-d H:i:s", strtotime($history->tstamp)); ?></td>
-                                    <td> <a onclick='alert("qwe");'>{{ $history->bingo_seq }} </a> </td>
-                                    <td><?php echo number_format($history->ticket_cost / 100, 2 ); ?></td>
-                                    <td><div class='testrow'>{{ $history->players }}</div></td>
-                                    <td>{{ $history->tickets }}</td>
-                                    <td>{{ $history->line }}</td>
-                                    <td><?php echo number_format($history->BingoWins_History->where('win_type', 1)->sum('win_val') / 100, 2 ); ?></td>
-                                    <td>{{ $history->bingo }}</td>
-                                    <td><?php echo number_format($history->BingoWins_History->where('win_type', 2)->sum('win_val') / 100, 2 ); ?></td>
-                                    <td>{{ $history->mybonus }}</td>
-                                    <td><?php echo number_format($history->BingoWins_History->where('win_type', 7)->sum('win_val') / 100, 2 ); ?></td>
-                                    <td>{{ $history->bonus_line }}</td>
-                                    <td><?php echo number_format($history->BingoWins_History->where('win_type', 3)->sum('win_val') / 100, 2 ); ?></td>
-                                    <td>{{ $history->bonus_bingo }}</td>
-                                    <td><?php echo number_format($history->BingoWins_History->where('win_type', 4)->sum('win_val') / 100, 2 ); ?></td>
-                                    <td>{{ $history->jackpot_line }}</td>
-                                    <td><?php echo number_format($history->BingoWins_History->where('win_type', 5)->sum('win_val') / 100, 2 ); ?></td>
-                                    <td>{{ $history->jackpot_bingo }}</td>
-                                    <td><?php echo number_format($history->BingoWins_History->where('win_type', 6)->sum('win_val') / 100, 2 ); ?></td>
-                                    <td>{{ $history->BingoWins_History->where('win_type', 8)->count() ? "Game Cancelled" : ' ' }}</td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'><?php echo date("Y-m-d H:i:s", strtotime($history->tstamp)); ?></a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->bingo_seq }} </a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'><?php echo number_format($history->ticket_cost / 100, 2 ); ?></a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->players }}</a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->tickets }}</a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->line }}</a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'><?php echo number_format($history->BingoWins_History->where('win_type', 1)->sum('win_val') / 100, 2 ); ?></a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->bingo }}</a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'><?php echo number_format($history->BingoWins_History->where('win_type', 2)->sum('win_val') / 100, 2 ); ?></a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->mybonus }}</a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'><?php echo number_format($history->BingoWins_History->where('win_type', 7)->sum('win_val') / 100, 2 ); ?></a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->bonus_line }}</a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'><?php echo number_format($history->BingoWins_History->where('win_type', 3)->sum('win_val') / 100, 2 ); ?></a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->bonus_bingo }}</a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'><?php echo number_format($history->BingoWins_History->where('win_type', 4)->sum('win_val') / 100, 2 ); ?></a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->jackpot_line }}</a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'><?php echo number_format($history->BingoWins_History->where('win_type', 5)->sum('win_val') / 100, 2 ); ?></a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->jackpot_bingo }}</a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'><?php echo number_format($history->BingoWins_History->where('win_type', 6)->sum('win_val') / 100, 2 ); ?></a> </td>
+                                    <td><a class='decorationNone' style="text-decoration: none; color: #333" onclick='boxModalWindow({{ $history->bingo_seq }});'>{{ $history->BingoWins_History->where('win_type', 8)->count() ? "Game Cancelled" : ' ' }}</a> </td>
                               
                                 </tr>
                             @endforeach
@@ -122,17 +123,48 @@
 <script src="bootstrap-table/bootstrap-table.js"></script>
 
 <script >
-function boxModalWindow(bixID) {
-    //$('#ModalBoxID').text(bixID);
-    //$('#ModalCredit').text($("#box" + bixID + " .boxCdredit").text());
-    //$('#ModalStatus').text($("#box" + bixID).attr('data_boxStatus'));
-    alert("ttte");
-    //alert($("#box" + bixID + " #boxCdredit").text()); data_boxStatus
+function boxModalWindow(boxID) {
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type:'POST',
+        url:'ajax_statBingoHistory',
+        dataType: "json",
+        data:{'boxID': boxID , _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#bingoPurchase_History').html(data.html);
+               //alert(boxID); 
+            }
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+        }
+        
+    });
+    
 }
     
-$(".disableTextSelect").click(function() {
-   alert("tes"); 
-});
+function boxModalWindow2(bingo_seq, psid) {
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type:'POST',
+        url:'ajax_statBingoHistoryTickets',
+        dataType: "json",
+        data:{'bingo_seq': bingo_seq, "psid": psid, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#bingoPurchase_History').html(data.html);
+               //alert(boxID); 
+            }
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+        }
+        
+    });
+    
+}
+    
 
 
 
