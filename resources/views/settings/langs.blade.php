@@ -1,4 +1,5 @@
 @include('modals.languages-modals')
+<div class="container">
 <!-- Games -->
 <div class="row">
      <!--  page header -->
@@ -66,6 +67,7 @@
         </div>
         <!--  end  Context Classes  -->
     </div>
+</div>
 </div>
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 

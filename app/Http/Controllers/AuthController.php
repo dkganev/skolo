@@ -23,7 +23,6 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required',
             'password' => 'required'
@@ -38,7 +37,8 @@ class AuthController extends Controller
         $casino = Casinos::first();
         session(['casino' => $casino]);
 
-        \App::setLocale(Auth::user()->lang);
+        $locale = \App::setLocale(Auth::user()->lang);
+        session(['locale' => $locale]);
 
         return redirect()->route('settings');
     }

@@ -50,31 +50,35 @@
     @include('layouts.alerts')
     @include('layouts.navbar')
 
-    <div class="container">
-        <div id="content"></div>
-        <div class="loading"></div>
-    </div>
-        @yield('content')
+    <div id="content"></div>
+    <div class="loading"></div>
+    @yield('content')
+
     <script>
+
         function ajaxLoad(filename, content) {
             content = typeof content !== 'undefined' ? content : 'content';
-            $('.loading').show(0);
+            //$('.loading').show(0);
             $.ajax({
                 type: "GET",
                 url: filename,
                 success: function (data) {
-                    //console.log(data);
-                    $('.loading').delay(300).hide(0);
-                    $("#" + content).html(data);
-                    console.log(filename);
+                    //$('.loading').delay(300).hide(0);
+                    $("#" + content).html(data).hide().fadeIn(400);
                 },
                 error: function (xhr, status, error) {
-                    alert(xhr.responseText);
+                    console.log(xhr.responseText);
                 }
             }).done(function() {
                 $('select').selectpicker('refresh');
             });
         }
+
+        $('ul a').on('click', function () {
+              $('a').removeClass('active');
+              $(this).addClass('active');
+        });
+
     </script>
     <script src="/js/main.js"></script>
 </body>

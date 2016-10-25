@@ -1,5 +1,5 @@
 @include('modals.casino-modals')
-
+<div class="container-fluid">
 <div class="row">
      <!--  page header -->
     <div class="col-lg-4">
@@ -73,6 +73,7 @@
 
     </div> <!--End Col -->
 </div> <!--End Row -->
+</div>
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 
 <script src="bootstrap-table/bootstrap-table.js"></script>

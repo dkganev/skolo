@@ -1,4 +1,7 @@
 <?php
+// BINGO
+
+
 # Auth Routes
 
 Route::get('/', 'AuthController@index');
@@ -12,7 +15,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/casino', 'CasinoController@index');
 
-Route::post('/ajax_lang', 'AjaxLangController@index');
+
 Route::post('/ajax_casino', 'AjaxCasinoController@index'); 
 Route::post('/ajax_casinoBox', 'AjaxCasinoController@casinoBox'); 
 Route::post('/ajax_NewGame', 'AjaxCasinoController@NewGame');
@@ -86,6 +89,10 @@ Route::post('settings/updatelang', 'LangsController@updateLanguage')->name('upda
 
 Route::get('/settings/exportLanguages', 'LangsController@exportLangs')->name('export.languages');
 
+# Localization Routes
+
+Route::post('/localize', 'LocalizationController@index');
+
 # Settings Errors Routes
 Route::get('/settings/errors', 'ErrorsController@getErrors')->name('errors');
 
@@ -93,10 +100,17 @@ Route::post('/settings/addErrorLvl', 'ErrorsController@addErrorLevel');
 
 Route::post('/settings/addErrorList', 'ErrorsController@addErrorList');
 
-# Settings Errors Routes
+# Settings Bingo Routes
 
-Route::get('/settings/bingo', 'BingoController@index');
+Route::get('/settings/bingo/mainconfig', 'BingoController@main_config');
 
+Route::get('/settings/bingo/mybonus', 'BingoController@my_bonus');
+
+Route::get('/settings/bingo/maxballs', 'BingoController@max_balls');
+
+Route::post('/settings/bingo/mainconfig/edit', 'BingoController@edit');
+
+Route::post('/maxballs/edit', 'BingoController@max_balls_edit');
 #Statistics
 
 Route::get('statistics', 'StatisticsController@index');

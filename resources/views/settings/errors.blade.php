@@ -1,5 +1,5 @@
 @include('modals.errors-modals')
-
+<div class="container">
 <!-- Games -->
 <div class="row">
      <!--  page header -->
@@ -117,6 +117,7 @@
         </div>  <!--End Panel -->
     </div> <!--End Col -->
 </div> <!--End Row -->
+</div>
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 
 <script src="bootstrap-table/bootstrap-table.js"></script>

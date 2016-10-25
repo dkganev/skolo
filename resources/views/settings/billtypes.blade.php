@@ -1,4 +1,5 @@
 @include('modals.billtype-modals')
+<div class="container">
 <!-- Games -->
 <div class="row">
      <!--  page header -->
@@ -65,6 +66,7 @@
         </div> <!--End Panel -->
 
     </div>
+</div>
 </div>
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 

@@ -15,7 +15,6 @@ use App\Models\ServerPs;
 
 class StatisticsController extends Controller
 {
-
     public function index()
     {
         return view('statistics.index');
@@ -34,6 +33,7 @@ class StatisticsController extends Controller
 
         return view('statistics.games', [ 'games' => $games]);
     }
+
     public function history_statistics()
     {
         $historys = BingoHistory::orderBy('tstamp', 'desc')->get();
