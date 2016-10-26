@@ -1,7 +1,7 @@
 @include('modals.reset-ps-modal')
 @include('modals.terminal-modals')
 
-<div class="container">
+<div class="container-full">
 <div class="row">
      <!--  page header -->
     <div class="col-lg-12" >
@@ -9,7 +9,9 @@
     </div>
      <!-- end  page header -->
 </div>
+</div>
 
+<div class="container-full">
 <div class="row">
     <div class="col-lg-12">
 

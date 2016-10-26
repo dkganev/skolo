@@ -7,13 +7,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class TerminalPreviewDB2 extends Authenticatable
 {
-   	    protected $connection = 'pgsql2';
+	protected $connection = 'pgsql2';
 
-        public $timestamps = false;
-	
-        protected $table = 'PreviewTerminals';
+	public $timestamps = false;
 
-        public $primaryKey = 'id';
-    
-        public $incrementing = false; 
+	protected $table = 'PreviewTerminals';
+
+	public $primaryKey = 'id';
+
+	public $incrementing = false; 
 }

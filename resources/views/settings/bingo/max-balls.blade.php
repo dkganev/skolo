@@ -23,55 +23,59 @@
 <div class="col-lg-12">
 
 <form class="form-inline">
+<!--    Context Classes  -->
+<div class="panel panel-default">
+   
+    <div class="panel-heading">
+        <a id="toggle-max-balls" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addMaxBallsModal">
+            Add New
+        </a>
+        
 
-         <!--    Context Classes  -->
-        <div class="panel panel-default">
-           
-            <div class="panel-heading">
-                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addBillModal">
-                    Add New
-                </button>
+        <a href="{{ url('/settings/exportBillTypes') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export</a>
 
-                <a href="{{ url('/settings/exportBillTypes') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export</a>
+    </div>
 
-            </div>
+    <div class="panel-body">
+        <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
+                data-toggle="table"
+                data-locale="en-US"
 
-            <div class="panel-body">
-                <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
-                            data-toggle="table"
-                            data-locale="en-US"
+                data-pagination="true"
+                data-side-pagination="client"
+                data-page-list="[3, 5]"
 
-                            data-pagination="true"
-                            data-side-pagination="client"
-                            data-page-list="[3, 5]"
+                data-classes="table-condensed"
+        >
+          <thead class="w3-blue-grey">
+            <tr>
+              <th data-sortable="true">ID</th>
+              <th data-sortable="true">Fixed Cost</th>                         
+              <th data-sortable="true">Ticket Cost</th>
+              <th data-sortable="true">JB. Max Ball</th>
+              <th data-sortable="true">JL. Max Ball</th>
+              <th data-sortable="true">BL. Max Ball</th>
+              <th data-sortable="true">BB. Max Ball</th>
+              <th data-sortable="true">JL. Ticket Count</th>
+              <th data-sortable="true">JB. Ticket Count</th>
+              <th data-sortable="true">BL. Ticket Count</th>
+              <th data-sortable="true">BB. Ticket Count</th>
 
-                            data-classes="table-condensed"
-                  >
-                    <thead class="w3-blue-grey">
-                        <tr>
-                            <th data-sortable="true">ID</th>                          
-                            <th data-sortable="true">Ticket Cost</th>
-                            <th data-sortable="true">BL. Max Ball</th>
-                            <th data-sortable="true">Max Ball</th>
-                            <th data-sortable="true">Max Ball</th>
-                            <th data-sortable="true">BL. Max Ball</th>
-                            <th data-sortable="true">Max Ball</th>
-                            <th data-sortable="true">BL. Max Ball</th>
-                            <th data-sortable="true"> Ball</th>
-                            <th data-sortable="true"> Ball</th>
-                            <th data-sortable="true"> Ball</th>
-
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      @foreach($jackpot_steps as $steps)
+              <th>Action</th>
+            </tr>
+          </thead>
+            <tbody>
+            @foreach($jackpot_steps as $steps)
       <tr>
           <td><span class="badge">{{ $steps->id }}</span></td>
 
           <form action="{{ url('/settings/bingo/maxballs/edit') }}" method="POST">
           
           <input type="hidden" name="id" value="{{ $steps->id }}">
+
+          <td style="width:20px;">
+            <input name="bingo_cost_fixed" type="checkbox" {{ $steps->bingo_cost_fixed ? " checked" : "" }}>
+          </td>
 
           <td>
             <input style="width:110px; height: 30px;" name="bingo_ticket_cost" value="{{ $steps->bingo_ticket_cost }}" type="text" class="form-control">
@@ -101,13 +105,20 @@
           <td>
             <input style="width:110px; height: 30px;" name="bonus_bingo_ticket_cnt" value="{{ $steps->bonus_bingo_ticket_cnt }}" type="text" class="form-control">
           </td>
-
-          <td>
-            <input type="checkbox" {{ $steps->bingo_cost_fixed ? " checked" : "" }}></input>
-          </td>
           <td>
               <!-- <button type="submit" class="btn btn-warning btn-xs">Update</button> -->
             <input value="Update" type="submit" name="submit" class="btn btn-warning btn-xs">
+            <!-- <input value="Delete" type="submit" name="submit" class="btn btn-warning btn-xs"> -->
+
+            <a href="#" 
+                class="btn btn-danger btn-xs"
+                role="button" data-toggle="modal"
+                data-toggle="modal"
+                data-target="#deleteMaxBallModal"
+                data-id="{{ $steps->id }}"
+            >
+                Delete
+            </a>
           </td>
 
           </form>
@@ -124,6 +135,9 @@
 </div><!-- End Row -->
 </div><!-- End Container Fluid -->
 
+
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 
 <script src="bootstrap-table/bootstrap-table.js"></script>
+
+@include('settings.bingo.max-balls-modals')

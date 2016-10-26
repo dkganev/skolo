@@ -1,7 +1,6 @@
 @include('modals.gameservers-modals')
-<div class="container-full">
+<div class="container">
 <!-- Games -->
-<div class="row">
      <!--  page header -->
     <div class="col-lg-6">
         <h1 style="margin-top: 0px;" class="page-header">Client Game IDs</h1>
@@ -11,8 +10,11 @@
     <div class="col-lg-5">
         <h1 style="margin-top: 0px;" class="page-header">Game Categories</h1>
     </div>
+
 </div>
 
+
+<div class="container-full">
 <div class="row">
     <div class="col-lg-6">
          <!--    Context Classes  -->

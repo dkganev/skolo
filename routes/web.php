@@ -103,14 +103,15 @@ Route::post('/settings/addErrorList', 'ErrorsController@addErrorList');
 # Settings Bingo Routes
 
 Route::get('/settings/bingo/mainconfig', 'BingoController@main_config');
+Route::post('/settings/bingo/mainconfig/edit', 'BingoController@main_config_edit');
 
 Route::get('/settings/bingo/mybonus', 'BingoController@my_bonus');
+Route::post('/settings/bingo/mybonus/edit', 'BingoController@my_bonus_edit');
 
 Route::get('/settings/bingo/maxballs', 'BingoController@max_balls');
+Route::post('/settings/bingo/maxballs/store', 'BingoController@max_balls_store');
+Route::post('/settings/bingo/maxballs/destroy', 'BingoController@max_balls_destroy');
 
-Route::post('/settings/bingo/mainconfig/edit', 'BingoController@edit');
-
-Route::post('/maxballs/edit', 'BingoController@max_balls_edit');
 #Statistics
 
 Route::get('statistics', 'StatisticsController@index');
@@ -121,5 +122,7 @@ Route::get('statistics/games', 'StatisticsController@games_statistics');
 Route::get('statistics/history', 'StatisticsController@history_statistics');
 //Route::get('statistics/{id}', 'StatisticsController@navbar');  ajax_statBingoHistory 
 Route::post('/ajax_statBingoHistory', 'StatisticsController@ajax_statBingoHistory');
+
 Route::post('/ajax_statBingoHistoryTickets', 'StatisticsController@ajax_statBingoHistoryTickets');
+
 });

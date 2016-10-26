@@ -8,7 +8,9 @@
     </div>
      <!-- end  page header -->
 </div>
+</div>
 
+<div class="container">
 <div class="row">
     <div class="col-lg-9">
          <!--    Context Classes  -->
