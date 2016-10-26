@@ -121,5 +121,5 @@ Route::get('statistics/games', 'StatisticsController@games_statistics');
 Route::get('statistics/history', 'StatisticsController@history_statistics');
 //Route::get('statistics/{id}', 'StatisticsController@navbar');  ajax_statBingoHistory 
 Route::post('/ajax_statBingoHistory', 'StatisticsController@ajax_statBingoHistory');
-Route::post('/ajax_statBingoHistoryTickets', 'StatisticsController@ajax_statBingoHistory');
+Route::post('/ajax_statBingoHistoryTickets', 'StatisticsController@ajax_statBingoHistoryTickets');
 });

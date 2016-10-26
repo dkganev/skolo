@@ -153,8 +153,12 @@ function boxModalWindow2(bingo_seq, psid) {
         data:{'bingo_seq': bingo_seq, "psid": psid, _token: token},
         success:function(data){
             if (data.success == "success"){
-                $('#bingoPurchase_History').html(data.html);
-               //alert(boxID); 
+                $('#ticketNumber').html(data.server_ps_seatid);
+                $('#gameNumber').html(bingo_seq);
+                $('#balsHistory').html(data.BingoBallsHTML);
+                
+                $('#bingoTickets_History').html(data.html);
+               //alert(boxID); balsHistory
             }
         },
         error: function (error) {
