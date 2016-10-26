@@ -10,16 +10,11 @@
 
                 <li>
                     <a id="CasinoEvents" href="javascript:ajaxLoad('{{url('casino/events')}}')">
-                           Events
+                        Events
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
-                        Playlist
-                    </a>
-                </li>
+                <li><a href="">Bingo Playlist</a></li>
             </ul>
-
     </div>
 </div>
