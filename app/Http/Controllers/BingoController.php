@@ -21,8 +21,6 @@ class BingoController extends Controller
 
     public function main_config_edit(Request $request)
     {
-        //$bingo_config = MainConfig::first();
-
         DB::connection('pgsql3')->table('mainconf')->where('casino_id', 1)->update([
             // Settings
             'bingo_ticket_cost' => $request['bingo_ticket_cost'],
@@ -86,9 +84,11 @@ class BingoController extends Controller
             'jackpo_bingo_ticket_cnt' => $request->jackpo_bingo_ticket_cnt,
             'bonus_line_ticket_cnt' => $request->bonus_line_ticket_cnt,
             'bonus_bingo_ticket_cnt' => $request->bonus_bingo_ticket_cnt,
-            'bingo_cost_fixed' => isset($request->$bingo_cost_fixed) ? true : false
+            'bingo_cost_fixed' => isset($request->bingo_cost_fixed) ? true : false
 
         ]);
+
+        return redirect('/settings');
     }
 
     public function max_balls_edit(Request $request)
@@ -113,7 +113,5 @@ class BingoController extends Controller
     public function max_balls_destroy(Request $request)
     {
         DB::connection('pgsql3')->table('jackpot_steps')->where('id', $request->id)->delete();
-
-        return response()->json(['message' => 'success'], 200);
     }
 }

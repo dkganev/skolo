@@ -25,6 +25,8 @@ class CasinoController extends Controller
         // get current casino and display its terminals
         $casino = session()->get('casino');
         $games = Games::orderBy('gameid', 'asc')->get();
+
+        // Fetch Terminals For current Casino
         $server_ps = ServerPs::where('casinoid', $casino->casinoid)->orderBy('psid', 'asc')->get();
 
         if ($server_ps->count())

@@ -1,6 +1,5 @@
 @include('modals.reset-ps-modal')
 @include('modals.terminal-modals')
-
 <div class="container-full">
 <div class="row">
      <!--  page header -->
