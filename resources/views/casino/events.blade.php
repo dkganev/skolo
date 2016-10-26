@@ -1,3 +1,4 @@
+<div class="container-full">
 <div class="row">
      <!--  page header -->
     <div class="col-lg-12">
@@ -60,4 +61,4 @@
         </div> <!-- End Panel-->
     </div>
 </div>
-
+</div>

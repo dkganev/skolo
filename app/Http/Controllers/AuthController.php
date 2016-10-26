@@ -32,7 +32,7 @@ class AuthController extends Controller
         {
             return redirect()->route('index');
         }
-
+        
         // Get first(default) Casino and store it in the session)
         $casino = Casinos::first();
         session(['casino' => $casino]);

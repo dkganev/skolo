@@ -86,8 +86,7 @@ class BingoController extends Controller
             'jackpo_bingo_ticket_cnt' => $request->jackpo_bingo_ticket_cnt,
             'bonus_line_ticket_cnt' => $request->bonus_line_ticket_cnt,
             'bonus_bingo_ticket_cnt' => $request->bonus_bingo_ticket_cnt,
-
-            'bingo_cost_fixed' => $request->$bingo_cost_fixed,
+            'bingo_cost_fixed' => isset($request->$bingo_cost_fixed) ? true : false
 
         ]);
     }

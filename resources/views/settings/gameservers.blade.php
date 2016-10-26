@@ -1,23 +1,14 @@
 @include('modals.gameservers-modals')
-<div class="container">
-<!-- Games -->
-     <!--  page header -->
-    <div class="col-lg-6">
-        <h1 style="margin-top: 0px;" class="page-header">Client Game IDs</h1>
-    </div>
-     <!-- end  page header -->
-
-    <div class="col-lg-5">
-        <h1 style="margin-top: 0px;" class="page-header">Game Categories</h1>
-    </div>
-
+<div class="container-full">
+<!-- Keep For Styling -->
 </div>
-
 
 <div class="container-full">
 <div class="row">
     <div class="col-lg-6">
          <!--    Context Classes  -->
+        <h1 style="margin-top: 0px;" class="page-header">Client Game IDs</h1>
+
         <div class="panel panel-default">
            
             <div class="panel-heading">
@@ -78,6 +69,7 @@
 
     <div class="col-lg-6">
          <!--    Context Classes  -->
+        <h1 style="margin-top: 0px;" class="page-header">Game Categories</h1>
         <div class="panel panel-default">
            
             <div class="panel-heading">
