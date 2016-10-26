@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
       <div class="col-lg-5">
-          <h2 style="margin-top: 0px;" class="page-header">Playlist</h2>
+          <h2 style="margin-top: 0px;" class="page-header">Templates</h2>
           <div style="padding-top:2px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
 
-              <li><a class="active" href="javascript:ajaxLoad('{{url('/casino/playlist')}}')">Playlist</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('/casino/playlist')}}')">Playlist</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/casino/templates')}}')">Templates</a></li>
+              <li><a class="active" href="javascript:ajaxLoad('{{url('/casino/templates')}}')">Templates</a></li>
 
               </ul>
           </div>
@@ -18,11 +18,9 @@
 
 <div class="container">
   <div class="well">
-
     <div class="row">
       <div class="col-lg-5">
-        <button class="btn btn-primary btn-sm">Add Next Game</button>
-        <button class="btn btn-primary btn-sm">Load Template</button>
+        <button class="btn btn-primary btn-sm">Create Template</button>
       </div><!-- End Col-->
     </div>
 

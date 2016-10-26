@@ -5,7 +5,7 @@
 <div class="row">
      <!--  page header -->
     <div class="col-lg-12">
-        <h1 style="margin-top: 0px;" class="page-header">Casino</h1>
+        <h2 style="margin-top: 0px;" class="page-header">Casino</h2>
     </div>
      <!-- end  page header -->
 </div>
@@ -74,12 +74,15 @@
                     Players
                     <span class="badge ng-binding" style="background-color: #303030;color: #fff;"> 14 </span>
                 </button>
-                <a href="#" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export</a>
+
                     </div>
                 </div>
             </div>
-            <div class="panel-body" style="border: 1px solid #d1d1e0; border-radius:5px;  min-height: 600px">
-                <div id="casinoPreview" ondrop="drop(event)" ondragover="allowDrop(event)" style="height: 770px;" >  
+            <div class="panel-body" style="background: #283048; /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to left, #283048 , #859398); /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to left, #283048 , #859398); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */border: 1px solid #d1d1e0; border-radius:5px;  min-height: 400px">
+
+                <div id="casinoPreview" ondrop="drop(event)" ondragover="allowDrop(event)" style="height: 650px; " >  
                     @foreach($server_ps as $ps)    
                         <div class="" >
                             <div  id="box{{ $ps->psid }}" data_boxStatus="{{ $ps->boxStatus }}" draggable="folse" ondragstart="drag(event)"  class="box disableTextSelect offline bootstrap-modal-form-open" data-toggle="modal" data-target="#casinoTerminalInfo"  onclick="boxModalWindow({{ $ps->psid }})"   data-id="{{ $ps->psid }}" style=" height: 66px; width: 66px; -moz-user-select: text; left: {{ $ps->leftP }}px; top: {{ $ps->topP }}px;background-color: {{$ps->boxColor}} ">

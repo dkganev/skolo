@@ -14,14 +14,20 @@ Route::get('/logout', 'AuthController@logout')->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
 
 /**
- *  CASINO
+ * CASINO / PREVIEW
 **/
 Route::get('/casino', 'Casino\CasinoController@index');
 Route::post('/ajax_casino', 'Casino\AjaxCasinoController@index'); 
 Route::post('/ajax_casinoBox', 'Casino\AjaxCasinoController@casinoBox'); 
 Route::post('/ajax_NewGame', 'Casino\AjaxCasinoController@NewGame');
 Route::get('/casino/casino', 'Casino\CasinoController@getCasino');
-Route::get('/casino/events', 'Casino\CasinoController@getEvents');
+Route::get('/casino/events', 'Casino\CasinoController@getEvents'); // CASINO EVENTS
+
+/**
+ * CASINO / BINGO PLAYLIST
+**/
+Route::get('/casino/playlist', 'Casino\BingoPlaylistController@index_playlist');
+Route::get('/casino/templates', 'Casino\BingoPlaylistController@index_templates');
 
 /**
  * SETTINGS / TERMINALS

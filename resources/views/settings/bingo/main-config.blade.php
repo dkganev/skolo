@@ -24,7 +24,7 @@
 <div class="col-lg-12">
 
 <!-- SETTINGS -->
-<div class="well" style="background: rgb(247, 247, 239);">
+<div class="well" style="background: #ffffff;">
 	<div class="row">
 
 	<form action="/settings/bingo/mainconfig/edit" method="POST" role="form">

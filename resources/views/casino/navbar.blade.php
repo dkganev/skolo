@@ -14,7 +14,7 @@
                     </a>
                 </li>
 
-                <li><a href="">Bingo Playlist</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('casino/playlist')}}')">Bingo Playlist</a></li>
             </ul>
     </div>
 </div>

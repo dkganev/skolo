@@ -20,5 +20,4 @@ class ClientGameIds extends Model
 	{
 		return $this->hasMany(Games::class, 'client_game_id','client_game_id');
 	}
-	
 }
