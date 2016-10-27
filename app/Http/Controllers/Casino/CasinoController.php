@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\PsErrors;
-use App\Models\ServerPs;
-use App\Models\PsStatus;
-use App\Models\Casinos;
+use App\Models\Accounting\PsErrors;
+use App\Models\Accounting\ServerPs;
+use App\Models\Accounting\PsStatus;
+use App\Models\Accounting\Casinos;
 use App\Models\TerminalPreviewDB2;
-use App\Models\Games;
+use App\Models\Accounting\Games;
 use Excel;
 
 class CasinoController extends Controller

@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\PsErrorLevels;
-use App\Models\PsErrorsList;
+use App\Models\Accounting\PsErrorLevels;
+use App\Models\Accounting\PsErrorsList;
 
 class ErrorsController extends Controller
 {

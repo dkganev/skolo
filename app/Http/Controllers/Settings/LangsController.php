@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\Langs;
+use App\Models\Accounting\Langs;
 use Excel;
 
 class LangsController extends Controller

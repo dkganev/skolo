@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\BillTypes;
+use App\Models\Accounting\BillTypes;
 use Excel;
 
 class BillTypesController extends Controller

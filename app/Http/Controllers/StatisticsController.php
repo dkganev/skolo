@@ -6,16 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Models\PsCounters;
-use App\Models\Casinos;
-use App\Models\Games;
-use App\Models\BingoHistory;
-use App\Models\BingoPurchase_History;
-use App\Models\BingoWins_History;
+use App\Models\Accounting\PsCounters;
+use App\Models\Accounting\Casinos;
+use App\Models\Accounting\Games;
+use App\Models\Bingo\BingoHistory;
+use App\Models\Bingo\BingoPurchase_History;
+use App\Models\Bingo\BingoPurchase_History;
 use App\Models\BingoBall_History;
 use App\Models\Bingo\Tickets;
 use App\Models\Bingo\psTicketsArchive;
-use App\Models\ServerPs;
+use App\Models\Accounting\ServerPs;
 
 class StatisticsController extends Controller
 {

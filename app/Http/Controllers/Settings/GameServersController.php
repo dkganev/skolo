@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\ClientGameIds;
-use App\Models\Games;
-use App\Models\Categories;
-use App\Models\GameTypes;
+use App\Models\Accounting\ClientGameIds;
+use App\Models\Accounting\Games;
+use App\Models\Accounting\Categories;
+use App\Models\Accounting\GameTypes;
 use Excel;
 
 class GameServersController extends Controller

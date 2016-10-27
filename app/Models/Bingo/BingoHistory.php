@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Bingo;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BingoPurchase_History extends Model
+class BingoHistory extends Model
 {
 	protected $connection = 'pgsql3';
 
-	protected $table = 'purchase_history';
+	protected $table = 'history';
         //protected $primaryKey = 'psid';
 
-	//public $timestamps = false;
+	public $timestamps = false;
 
 	public $increments = false;
 

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\Casinos;
+use App\Models\Accounting\Casinos;
 use Excel;
 use Ajax;
 

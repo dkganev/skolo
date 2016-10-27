@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 
 use DB;
 use App\Http\Requests;
-use App\Models\ServerPs;
-use App\Models\PsSettings;
-use App\Models\PsCounters;
-use App\Models\BillingConfig;
-use App\Models\PsStatus;
-use App\Models\Casinos;
-use App\Models\Langs;
-use App\Models\ClientGameIds;
+use App\Models\Accounting\ServerPs;
+use App\Models\Accounting\PsSettings;
+use App\Models\Accounting\PsCounters;
+use App\Models\Accounting\BillingConfig;
+use App\Models\Accounting\PsStatus;
+use App\Models\Accounting\Casinos;
+use App\Models\Accounting\Langs;
+use App\Models\Accounting\ClientGameIds;
 use Excel;
 
 

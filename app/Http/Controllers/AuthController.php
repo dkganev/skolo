@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\Casinos;
+use App\Models\Accounting\Casinos;
 
 class AuthController extends Controller
 {

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\PsErrorLevels;
+use App\Models\Accounting\PsErrorLevels;
 
 class PsErrorsLevelSeeder extends Seeder
 {

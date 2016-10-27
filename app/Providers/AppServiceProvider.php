@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Session;
 use App\Extensions\MongoSessionStore;
 use Illuminate\Support\Facades\View;
-use App\Models\Casinos;
+use App\Models\Accounting\Casinos;
 
 class AppServiceProvider extends ServiceProvider
 {

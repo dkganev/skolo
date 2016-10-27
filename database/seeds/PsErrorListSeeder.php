@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\PsErrorsList;
+use App\Models\Accounting\PsErrorsList;
 class PsErrorsListSeeder extends Seeder
 {
     /**

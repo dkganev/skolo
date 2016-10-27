@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\Casinos;
+use App\Models\Accounting\Casinos;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {
