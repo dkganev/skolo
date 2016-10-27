@@ -14,6 +14,7 @@ use App\Models\BingoPurchase_History;
 use App\Models\BingoWins_History;
 use App\Models\BingoBall_History;
 use App\Models\Bingo\Tickets;
+use App\Models\Bingo\psTicketsArchive;
 use App\Models\ServerPs;
 
 class StatisticsController extends Controller
@@ -80,7 +81,9 @@ class StatisticsController extends Controller
         $ticketIDfirst = unpack("L",stream_get_contents($bingoStr, 4, 0));
         $ticketIDLast = unpack("L",stream_get_contents($bingoStr, 4, $bingoCount * 4));
         $bingoTickets = Tickets::where('idx', '>=' , $ticketIDfirst)->where('idx', '<=' , $ticketIDLast)->get();
-        //var_dump($ticketIDfirst);
+        $psTicketsArchive = psTicketsArchive::where('bingo_seq', $databingo_seq)->first();
+        $psTicketsArchiveHTML = "My Bonus Numbers: " . $psTicketsArchive->mybonus_b1 . ", " . $psTicketsArchive->mybonus_b2 . ", " . $psTicketsArchive->mybonus_b3;
+        //var_dump($ticketIDfirst);psTicketsArchive
         //var_dump($ticketIDLast);
         //var_dump($ticketIDfirst . "--" . $ticketIDLast);
         $BingoBallsHTML = "Balls: ";
@@ -104,6 +107,7 @@ class StatisticsController extends Controller
             "success" => "success",
             "server_ps_seatid" => $server_ps_seatid,
             "BingoBallsHTML" => $BingoBallsHTML,
+            "psTicketsArchiveHTML" => $psTicketsArchiveHTML,
             "html" => $testPage,
         );
         

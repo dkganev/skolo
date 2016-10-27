@@ -48,7 +48,7 @@
                     >
                     <thead class="w3-dark-grey">
                         <tr>
-                            <th colspan="5"style='text-align: center !Important; '>Game Info</th>
+                            <th colspan="5" style='text-align: center !Important; '>Game Info</th>
                             <th colspan="2">Line</th>
                             <th colspan="2">Bingo</th>
                             <th colspan="2">My Bonus</th>
@@ -56,31 +56,32 @@
                             <th colspan="2">Bonus Bingo</th>
                             <th colspan="2">Jackpot Line</th>
                             <th colspan="2">Jackpot Bingo</th>
-                            <th data-sortable="true" rowspan="2">Game<br/>Cancelled</th>
+                            <th data-field="sort20" data-sortable="true" rowspan="2">Game<br/>Cancelled</th>
                         </tr>
                         <tr>
-                            <th data-sortable="true">Time</th>
-                            <th data-sortable="true">Game #</th>
-                            <th data-sortable="true" >Ticket<br/>Cost</th>
-                            <th data-sortable="true">Players</th>
-                            <th data-sortable="true">Tickets</th>
-                            <th data-sortable="true">at<br/>ball</th>
-                            <th data-sortable="true">$</th>
-                            <th data-sortable="true">at<br/>ball</th>
-                            <th data-sortable="true">$</th>
-                            <th data-sortable="true">at<br/>ball</th>
-                            <th data-sortable="true">$</th>
-                            <th data-sortable="true">at<br/>ball</th>
-                            <th data-sortable="true">$</th>
-                            <th data-sortable="true">at<br/>ball</th>
-                            <th data-sortable="true">$</th>
-                            <th data-sortable="true">at<br/>ball</th>
-                            <th data-sortable="true">$</th>
-                            <th data-sortable="true">at<br/>ball</th> 
-                            <th data-sortable="true">$</th>
+                            <th data-field="sort1" data-sortable="true">Time</th>
+                            <th data-field="sort2" data-sortable="true">Game #</th>
+                            <th data-field="sort3" data-sortable="true" >Ticket<br/>Cost</th>
+                            <th data-field="sort4" data-sortable="true">Players</th>
+                            <th data-field="sort5" data-sortable="true">Tickets</th>
+                            <th data-field="sort6" data-sortable="true">at<br/>ball</th>
+                            <th data-field="sort7" data-sortable="true">$</th>
+                            <th data-field="sort8" data-sortable="true">at<br/>ball</th>
+                            <th data-field="sort9" data-sortable="true">$</th>
+                            <th data-field="sort10" data-sortable="true">at<br/>ball</th>
+                            <th data-field="sort11" data-sortable="true">$</th>
+                            <th data-field="sort12" data-sortable="true">at<br/>ball</th>
+                            <th data-field="sort13" data-sortable="true">$</th>
+                            <th data-field="sort14" data-sortable="true">at<br/>ball</th>
+                            <th data-field="sort15" data-sortable="true">$</th>
+                            <th data-field="sort16" data-sortable="true">at<br/>ball</th>
+                            <th data-field="sort17" data-sortable="true">$</th>
+                            <th data-field="sort18" data-sortable="true">at<br/>ball</th> 
+                            <th data-field="sort19" data-sortable="true">$</th>
+                            
                             
                         </tr>
-                        
+                    </thead>
 
                         <tbody>
                             @foreach($historys as $history)
@@ -156,6 +157,7 @@ function boxModalWindow2(bingo_seq, psid) {
                 $('#ticketNumber').html(data.server_ps_seatid);
                 $('#gameNumber').html(bingo_seq);
                 $('#balsHistory').html(data.BingoBallsHTML);
+                $('#psTicketsArchive').html(data.psTicketsArchiveHTML);
                 
                 $('#bingoTickets_History').html(data.html);
                //alert(boxID); balsHistory

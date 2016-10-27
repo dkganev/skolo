@@ -23,7 +23,27 @@ $allRows = ceil($allThickets / 8);
 //var_dump($allThickets . "---" . $allRows)
 ?>
 <table class="table table-striped">
+<!--<table class="table table-striped table-bordered table-hover data-table-table" role="grid"
+    data-toggle="table"
+    data-locale="en-US"
+    data-sortable="true"
+    data-pagination="true"
+    data-side-pagination="client"
+    data-page-list="[3, 5, 10, 15]"
+
+    data-classes="table-condensed"
+> -->
     <tbody>
+       <!-- <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+        </tr>-->
         @for ($n = 0; $n < $allRows; $n++)
             <tr>
                 @for ($i = 0; $i < 8; $i++)
@@ -35,10 +55,14 @@ $allRows = ceil($allThickets / 8);
                                 $ticketID = unpack("L",stream_get_contents($bingoLineStr, 4, $bingoLine * 4)); 
                                 $bingoTicket = unpack("C15", stream_get_contents($bingoTickets->where('idx', $ticketID[1])->first()->content, 15, 0)); //$BingoBallsArray
                             ?>
+                            <div id="wonL{{$bingoLine}}" style="position: absolute; background-color: #fff;margin-left: 5px; margin-top: 30px; min-width: 100px; min-height: 20px; border-radius: 5px; border: 1px solid #333; display: none;">
+                                Bingo: {{number_format($wins_history->where('psid', $datapsid)->where('win_type', 1)->first()->win_val / 100,2)}}<br/>
+                                <?php $wins_history->where('psid', $datapsid)->where('win_type', 3)->count() ?  print ('Bonus Bingo: ' . number_format($wins_history->where('psid', $datapsid)->where('win_type', 3)->first()->win_val / 100,2)) : "" ?>
+                            </div>
                                 <table style='border: 1px solid #428bca; text-align: center; border-collapse: separate; border-spacing: 4px;'>
                                      <tbody>
                                         <tr>
-                                            <th colspan="5" style='border: 1px solid #428bca; text-align: center; background-color: #428bca; color: #fff; border-collapse: collapse; '>Ticket ID: {{$ticketID[1]}}</th>
+                                            <th colspan="5" style='border: 1px solid #428bca; text-align: center; background-color: #428bca; color: #fff; border-collapse: collapse; ' onmouseover="$('#wonL{{$bingoLine}}').show();" onmouseout="$('#wonL{{$bingoLine}}').hide();">Ticket ID: {{$ticketID[1]}}</th>
                                         </tr>
                                         <tr>
                                             <td style='border: 1px solid #428bca; text-align: center; background-color: <?php in_array($bingoTicket[1], $BingoBallsArray) ? print '#e0f0ff' : print '#fff' ; ?>; border-collapse: unset; border-spacing: 4px;'>{{$bingoTicket[1]}}</td>
@@ -83,10 +107,14 @@ $allRows = ceil($allThickets / 8);
                                 $bingoTicket = unpack("C15", stream_get_contents($bingoTickets->where('idx', $ticketID[1])->first()->content, 15, 0));
                                 //echo $ticketID[1];
                              ?>
+                            <div id="wonB{{$bingoBingo}}" style="position: absolute; background-color: #fff;margin-left: 5px; margin-top: 30px; min-width: 100px; min-height: 20px; border-radius: 5px; border: 1px solid #333; display: none;">
+                                Bingo: {{number_format($wins_history->where('psid', $datapsid)->where('win_type', 2)->first()->win_val / 100,2)}}<br/>
+                                <?php $wins_history->where('psid', $datapsid)->where('win_type', 4)->count() ?  print ('Bonus Bingo: ' . number_format($wins_history->where('psid', $datapsid)->where('win_type', 4)->first()->win_val / 100,2)) : "" ?>
+                            </div>
                                  <table style='border: 1px solid #428bca; text-align: center; border-collapse: separate; border-spacing: 4px;'>
                                      <tbody>
                                         <tr>
-                                            <th colspan="5" style='border: 1px solid #428bca; text-align: center; background-color: #428bca; color: #fff; border-collapse: collapse; '>Ticket ID: {{$ticketID[1]}}</th>
+                                            <th colspan="5" style='border: 1px solid #428bca; text-align: center; background-color: #428bca; color: #fff; border-collapse: collapse; ' onmouseover="$('#wonB{{$bingoBingo}}').show();" onmouseout="$('#wonB{{$bingoBingo}}').hide();">Ticket ID: {{$ticketID[1]}}</th>
                                         </tr>
                                         <tr>
                                             <td style='border: 1px solid #428bca; text-align: center; background-color: <?php in_array($bingoTicket[1], $BingoBallsArray) ? print '#e0f0ff' : print '#fff' ; ?>; border-collapse: unset; border-spacing: 4px;'>{{$bingoTicket[1]}}</td>
@@ -179,3 +207,4 @@ $allRows = ceil($allThickets / 8);
        
     </tbody>
 </table> 
+                            <!--<script src="bootstrap-table/bootstrap-table.js"></script>-->
