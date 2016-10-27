@@ -27,24 +27,36 @@
     </div>
 
   <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-10">
       <form id="game-type-form" class="form-inline" style="padding-top: 15px;">
 
           <div class="form-group">
             <label for="game_type">Game Type: </label><br>
             <select name="game_type" class="form-control selectpicker" id="game_type">
               <option selected="true" disabled="disabled">Choose Game Type</option>
-                <option value=""></option>
+                <option value="0">Standard</option>
+                <option value="1">Fixed</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="ticket_cost">Ticket Cost:</label><br>
+            <label for="ticket_cost">Ticket Cost (cents):</label><br>
             <input class="form-control" type="text" name="ticket_cost" id="ticket_cost">
 
-            <input class="btn btn-info btn-sm form-control" type="submit" name="submit" value="Load">
+           
           </div>
 
+          <div id="line-cost-form-group"  class="form-group" style="display: none;">
+            <label for="line_cost">Line Cost (cents):</label><br>
+            <input class="form-control" type="text" name="line_cost" id="lineline_cost">
+          </div>
+
+          <div id="bingo-cost-form-group" class="form-group" style="display: none;">
+            <label for="bingo_cost">Bingo Cost (cents):</label><br>
+            <input class="form-control" type="text" name="bingo_cost" id="bingo_cost">
+          </div>
+
+           <input style="margin-top: 25px;"  class="btn btn-info btn-sm form-control" type="submit" name="submit" value="Load">
         </form>
     </div>
   </div>
@@ -61,7 +73,7 @@
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" >
             <input style="margin-top: 25px;" class="btn btn-info btn-sm" type="submit" name="submit" value="Load">
           </div>
 
@@ -107,6 +119,23 @@
       $('#game-type-form').hide();
       $('#load-template-form').toggle(150);
     });
+
+    $('select#game_type').change(function () {
+     var optionSelected = $(this).find("option:selected");
+     var valueSelected  = optionSelected.val();
+     console.log(valueSelected);
+
+      if(valueSelected == 1) {
+        $('#line-cost-form-group').show(100);
+        $('#bingo-cost-form-group').show(100);
+      }
+
+      if(valueSelected == 0) {
+        $('#line-cost-form-group').hide(100);
+        $('#bingo-cost-form-group').hide(100);
+      }
+    });
+
 
   });
 </script>

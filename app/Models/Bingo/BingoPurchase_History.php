@@ -17,9 +17,8 @@ class BingoPurchase_History extends Model
 
 	protected $guarded = [];
         
-        public function BingoWins_History()
+    public function BingoWins_History()
 	{
-                return $this->hasMany(BingoWins_History::class, 'bingo_seq', 'bingo_seq');
+        return $this->hasMany(BingoWins_History::class, 'bingo_seq', 'bingo_seq');
 	}
-	
 }
