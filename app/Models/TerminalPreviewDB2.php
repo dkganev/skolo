@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Casino\Preview;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,5 +15,5 @@ class TerminalPreviewDB2 extends Authenticatable
 
 	public $primaryKey = 'id';
 
-	public $incrementing = false; 
+	public $incrementing = false;
 }

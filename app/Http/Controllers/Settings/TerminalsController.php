@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use DB;
 use App\Http\Requests;
 use App\Models\ServerPs;
 use App\Models\PsSettings;
@@ -12,7 +13,6 @@ use App\Models\PsCounters;
 use App\Models\BillingConfig;
 use App\Models\PsStatus;
 use App\Models\Casinos;
-use App\Models\ResetPs;
 use App\Models\Langs;
 use App\Models\ClientGameIds;
 use Excel;
@@ -127,12 +127,7 @@ class TerminalsController extends Controller
 
     public function reset_ps(Request $request)
     {
-        $reset_ps = new ResetPs();
-        $reset_ps->psid = $request['psid'];
-        $reset_ps->save();
-
-        $msg = 'Terminal Successfully Restarted';
-        return $request->session()->flash('alert-danger', $msg);
+        DB::table('reset_ps')->insert(['psid' => $request->psid]);
     }
 
     public function exportTerminals()
