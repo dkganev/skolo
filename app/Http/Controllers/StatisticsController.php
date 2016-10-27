@@ -14,13 +14,9 @@ use App\Models\Bingo\BingoPurchase_History;
 use App\Models\Bingo\BingoBall_History;
 use App\Models\Bingo\Tickets;
 use App\Models\Bingo\psTicketsArchive;
-<<<<<<< HEAD
-
-=======
-use App\Models\ServerPs;
+use App\Models\Accounting\ServerPs;
 use App\Models\Roulette\GameHistory;
 use Excel;
->>>>>>> c39b2cc6c3bd7038f9a3b3a49c52a8b3848a544e
 
 class StatisticsController extends Controller
 {
