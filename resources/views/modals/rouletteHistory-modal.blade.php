@@ -32,11 +32,11 @@
                 
               
                 <div style="display: table-cell;">
-                    <div class="rlt_board"  aria-hidden="false" style="background-image: url('img/roulette/roulette_table.png'); height: 534px; position: relative; width: 1440px;">
-                        <div class="lucky_chip ng-scope"  style="left: 385px; top: 445px; background-image: url('img/roulette/lcc_mg_chips_small.png'); height: 63px; position: absolute;width: 63px;">
+                    <div class="rlt_board"  aria-hidden="false" style="background-image: url('images/roulette/roulette_table.png'); height: 534px; position: relative; width: 1440px;">
+                        <div class="lucky_chip ng-scope"  style="left: 385px; top: 445px; background-image: url('imgages/roulette/lcc_mg_chips_small.png'); height: 63px; position: absolute;width: 63px;">
                             <div class="lucky_value ng-binding" style="color: #fff; font-weight: bold; padding-top: 22px; text-align: center">40.00</div>
                         </div>
-                        <div class="lucky_chip ng-scope" style="left: 790px; top: 445px; background-image: url('img/roulette/lcc_mg_chips_small.png'); height: 63px; position: absolute;width: 63px;">
+                        <div class="lucky_chip ng-scope" style="left: 790px; top: 445px; background-image: url('images/roulette/lcc_mg_chips_small.png'); height: 63px; position: absolute;width: 63px;">
                             <div class="lucky_value ng-binding" style="color: #fff; font-weight: bold; padding-top: 22px; text-align: center">70.00</div>
                         </div>
                     </div>
