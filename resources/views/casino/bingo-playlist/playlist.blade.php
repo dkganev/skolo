@@ -81,7 +81,7 @@
   <!-- Load Template Form -->
   <div class="row">
     <div class="col-lg-5">
-      <form id="load-template-form" class="form-inline" style="padding-top: 15px;">
+      <form id="load-template-form" action="/casino/playlist/load"  class="form-inline" style="padding-top: 15px;">
 
           <div class="form-group">
             <label for="load_template">Load Template: </label><br>

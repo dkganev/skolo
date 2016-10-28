@@ -36,11 +36,15 @@ class BingoPlaylistController extends Controller
     		$playlist->bingo_cost_bingo_fixed = true;
     	}
 
-
     	$playlist->save();
 
     	return back();
 
+    }
+
+    public function load_template(Request $request)
+    {
+    	// 
     }
 
     public function index_templates()
