@@ -49,8 +49,9 @@ class StatisticsController extends Controller
     public function historyRoulette_statistics()
     {
         $historys = GameHistory::orderBy('ts', 'desc')->get();
+        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
 
-        return view('statistics.historyRoulette', ['historys' => $historys]); 
+        return view('statistics.historyRoulette', ['historys' => $historys, 'server_ps' => $server_ps]); 
     }
     
     public function exportHistory_statistics()

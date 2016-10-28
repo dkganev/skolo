@@ -1,4 +1,4 @@
-
+@include('modals.rouletteHistory-modal')
 <div class="col-md-12 "> 
         <div class="page-header" style="padding-left:15px; margin-top: 0px; margin-right: -15px; background-color: none;">
             <!-- Secondary Navigation -->
@@ -60,11 +60,11 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rows" data-toggle="modal" data-target="#bingoHistory_modal" >
+                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rows" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
                                     <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td>{{ $history->rlt_seq }}</td>
-                                    <td>{{ $history->psid}}</td>
+                                    <td>{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}</td>
                                     <td>{{ $history->win_num }}</td>
                                     <td>{{ number_format($history->bet / 100, 2 ) }}</td>
                                     <td>{{ number_format($history->win_val / 100, 2 ) }}</td>
