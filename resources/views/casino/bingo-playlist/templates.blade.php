@@ -20,20 +20,34 @@
   <div class="well">
     <div class="row">
       <div class="col-lg-5">
-        <button id="toggle-create-template-form" class="btn btn-primary btn-sm">Create Template</button>
+        <button id="toggle-create-template-form" class="btn btn-primary btn-sm">
+            Create Template
+            <span style="margin-left: 6px;" class="caret"></span>
+        </button>
       </div><!-- End Col-->
     </div>
 
     <div class="row">
     <div class="col-lg-5">
-      <form id="create-template-form" class="form-inline" style="padding-top: 15px;">
+      <form id="create-template-form" action="/casino/templates/store" method="post" class="form-inline" style="padding-top: 15px;">
+        <div class="form-group">
+          <label for="name">Template Name: </label>
+          <input class="form-control" type="text" name="name" id="name">
 
-          <div class="form-group">
-            <label for="template">Template Name: </label>
-            <input class="form-control" type="text" name="template" id="template">
-            <input class="btn btn-info btn-sm form-control" type="submit" name="submit" value="Save">
-          </div>
+          <!-- <input class="btn btn-info btn-sm form-control" type="submit" name="submit" value="Save"> -->
 
+        <input type="hidden" name="_token" value="{{ Session::token() }}">
+        <button 
+                id="send-button"
+                type="Submit"
+                value="Submit" 
+                style="margin-top: 25px;" 
+                class="btn btn-info btn-sm form-control"
+        >
+                Add
+        </button>
+
+        </div>
         </form>
       </div>
     </div>
@@ -51,14 +65,16 @@
             </tr>
           </thead>
           <tbody>
+           @foreach($templates as $template)
             <tr>
-              <td>1</td>
-              <td>Fixed</td>
+              <td>{{ $template->name }}</td>
+              <td>0</td>
               <td>
                 <a class="btn btn-info btn-xs" href="#">Edit</a>
                 <a class="btn btn-warning btn-xs" href="#">Delete</a>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div><!-- End Col-->
