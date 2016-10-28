@@ -19,57 +19,77 @@
 <div class="container">
   <div class="well">
 
-    <div class="row">
-      <div class="col-lg-5">
-        <button id="toggle-game-type-form" class="btn btn-primary btn-sm">Add Next Game</button>
-        <button id="toggle-load-template-form" class="btn btn-primary btn-sm">Load Template</button>
-      </div><!-- End Col-->
-    </div>
+  <div class="row">
+    <div class="col-lg-5">
+      <button id="toggle-game-type-form" class="btn btn-primary btn-sm">
+          Add Next Game
+          <span style="margin-left: 6px;" class="caret"></span>
+      </button>
 
+      <button id="toggle-load-template-form" class="btn btn-primary btn-sm">
+          Load Template
+          <span style="margin-left: 6px;" class="caret"></span>
+      </button>
+    </div><!-- End Col-->
+  </div>
+
+  <!-- Add Game Next Game Form -->
   <div class="row">
     <div class="col-lg-10">
-      <form id="game-type-form" class="form-inline" style="padding-top: 15px;">
+      <form method="post" id="game-type-form" action="/casino/playlist/store" class="form-inline" style="padding-top: 15px;">
 
-          <div class="form-group">
-            <label for="game_type">Game Type: </label><br>
-            <select name="game_type" class="form-control selectpicker" id="game_type">
-              <option selected="true" disabled="disabled">Choose Game Type</option>
-                <option value="0">Standard</option>
-                <option value="1">Fixed</option>
-            </select>
-          </div>
+        <div style="width: 169px" class="form-group">
+          <label for="game_type">Game Type: </label><br>
+          <select  name="game_type" class="form-control selectpicker" id="game_type">
+            <option selected="true" disabled="disabled">Choose Game Type</option>
+              <option value="0">Standard</option>
+              <option value="1">Fixed</option>
+          </select>
+        </div>
 
-          <div class="form-group">
-            <label for="ticket_cost">Ticket Cost (cents):</label><br>
-            <input class="form-control" type="text" name="ticket_cost" id="ticket_cost">
+        <div class="form-group">
+          <label for="ticket_cost">Ticket Cost (cents):</label><br>
+          <input class="form-control" type="text" name="ticket_cost" id="ticket_cost">
 
-           
-          </div>
+        </div>
 
-          <div id="line-cost-form-group"  class="form-group" style="display: none;">
-            <label for="line_cost">Line Cost (cents):</label><br>
-            <input class="form-control" type="text" name="line_cost" id="lineline_cost">
-          </div>
+        <div id="line-cost-form-group"  class="form-group" style="display: none;">
+          <label for="line_cost">Line Cost (cents):</label><br>
+          <input class="form-control" type="text" name="line_cost" id="lineline_cost">
+        </div>
 
-          <div id="bingo-cost-form-group" class="form-group" style="display: none;">
-            <label for="bingo_cost">Bingo Cost (cents):</label><br>
-            <input class="form-control" type="text" name="bingo_cost" id="bingo_cost">
-          </div>
+        <div id="bingo-cost-form-group" class="form-group" style="display: none;">
+          <label for="bingo_cost">Bingo Cost (cents):</label><br>
+          <input class="form-control" type="text" name="bingo_cost" id="bingo_cost">
+        </div>
 
-           <input style="margin-top: 25px;"  class="btn btn-info btn-sm form-control" type="submit" name="submit" value="Load">
+        <input type="hidden" name="_token" value="{{ Session::token() }}">
+        <button 
+                id="send-button"
+                type="Submit"
+                value="Submit" 
+                style="margin-top: 25px;" 
+                class="btn btn-info btn-sm form-control"
+        >
+                Add
+        </button>
+
         </form>
     </div>
   </div>
 
+  <!-- Load Template Form -->
   <div class="row">
     <div class="col-lg-5">
-      <form id="load-template-form" class="form-inline" style="padding-top: 15px;">
+      <form id="load-template-form" action="/casino/playlist/load"  class="form-inline" style="padding-top: 15px;">
 
           <div class="form-group">
             <label for="load_template">Load Template: </label><br>
             <select name="load_template" class="form-control selectpicker" id="load_template">
               <option selected="true" disabled="disabled">Choose Template</option>
-                <option value=""></option>
+              @foreach($templates as $template)
+                <option value="{{ $template->template_id }}">{{ $template->name }}</option>
+              @endforeach
             </select>
           </div>
 
@@ -81,26 +101,35 @@
     </div>
   </div>
 
-    <hr>
+  <hr>
 
-    <div class="row">
-      <div class="col-lg-4">
-       <table class="table table-bordered">
-          <thead class="w3-blue-grey">
-            <tr>
-              <th>Ticket Cost</th>
-              <th>Game Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Fixed</td>
-            </tr>
-          </tbody>
-        </table>
-      </div><!-- End Col-->
-    </div><!-- End Row-->
+  <!-- Playlist Table -->
+  <div class="row">
+    <div class="col-lg-6">
+     <table class="table table-bordered">
+        <thead class="w3-blue-grey">
+          <tr>
+            <th>Ticket Cost(cents)</th>
+            <th>Game Type</th>
+            <th>Line Cost(cents)</th>
+            <th>Bingo Cost(cents)</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($playlists as $playlist)
+          <tr>
+            <td>{{ $playlist->bingo_ticket_cost }}</td>
+            <td>
+              {{ $playlist->bingo_cost_line1_fixed && $playlist->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}
+            </td>
+            <td>{{ $playlist->bingo_cost_line1 }}</td>
+            <td>{{ $playlist->bingo_cost_bingo }}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div><!-- End Col-->
+  </div><!-- End Row-->
 
   </div><!-- End Well-->
 </div><!-- End Container-->
@@ -123,7 +152,6 @@
     $('select#game_type').change(function () {
      var optionSelected = $(this).find("option:selected");
      var valueSelected  = optionSelected.val();
-     console.log(valueSelected);
 
       if(valueSelected == 1) {
         $('#line-cost-form-group').show(100);
@@ -135,6 +163,22 @@
         $('#bingo-cost-form-group').hide(100);
       }
     });
+
+  // $('#send-button').click(function() {
+
+  //   //var token = $('meta[name="csrf-token"]').attr('content');
+
+  //   $.ajax({
+  //       type: 'POST',
+  //       url: '/casino/playlist/store',
+  //       data: {
+  //           game_type: $('#game-type-form select[name="game_type"]').val(),
+  //           ticket_cost: $('#game-type-form input[name="ticket_cost"]').val(),
+  //         } 
+  //       });
+  //   });
+
+
 
 
   });

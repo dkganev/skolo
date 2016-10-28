@@ -10,6 +10,8 @@ class Playlist extends Model
 
 	protected $table = 'playlist';
 
+	protected $primaryKey = 'idx';
+
 	public $timestamps = false;
 
 	public $increments = false;

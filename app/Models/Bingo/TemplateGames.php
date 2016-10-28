@@ -15,6 +15,10 @@ class TemplateGames extends Model
 	public $increments = false;
 
 	protected $guarded = [];
-	
+
+	public function template()
+	{
+		return $this->belongsTo(Template::class, 'template_id', 'template_id');
+	}
 }
 
