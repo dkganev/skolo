@@ -16,6 +16,7 @@ use App\Models\Bingo\Tickets;
 use App\Models\Bingo\psTicketsArchive;
 use App\Models\Accounting\ServerPs;
 use App\Models\Roulette\GameHistory;
+use App\Models\Blackjack\BlackjackGameHistory;
 use Excel;
 
 class StatisticsController extends Controller
@@ -53,6 +54,15 @@ class StatisticsController extends Controller
 
         return view('statistics.historyRoulette', ['historys' => $historys, 'server_ps' => $server_ps]); 
     }
+    
+    public function historyBlackjack()
+    {
+        $historys = BlackjackGameHistory::orderBy('ts', 'desc')->get();
+        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
+
+        return view('statistics.historyBlackjack', ['historys' => $historys, 'server_ps' => $server_ps]); 
+    }
+    
     
     public function exportHistory_statistics()
     {

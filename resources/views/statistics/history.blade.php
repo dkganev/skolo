@@ -8,6 +8,7 @@
               <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
               <li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li>
               <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
               <li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>
               <li><a href="javascript:ajaxLoad('#')">Slots </a></li>
             </ul>

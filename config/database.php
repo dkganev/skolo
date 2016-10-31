@@ -119,6 +119,20 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
+        ], 
+        
+        'pgsql5' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST5', '10.0.0.199'),
+            'port' => env('DB_PORT5', '5432'),
+            'database' => env('DB_DATABASE5', 'forge'),
+            'username' => env('DB_USERNAME5', 'forge'),
+            'password' => env('DB_PASSWORD5', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
         ],        
 
 

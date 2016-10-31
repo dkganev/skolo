@@ -7,7 +7,7 @@
 
 //alert ("test");
 var $messages = $('#inpMassage');
-var socket = io('http://10.0.0.156:3000');
+var socket = io('http://10.0.0.199:3000');
 
   socket.on('news', function (data) {
     console.log ("test222");
@@ -38,7 +38,9 @@ var socket = io('http://10.0.0.156:3000');
       if (obj.query == "UPDATE")
       {
         //if  (obj.dataNew.bonline == obj.dataOld.bonline){
-        if (obj.dataNew.active_errors == null){
+        //console.log (obj.dataNew.active_errors);
+        if (obj.dataNew.active_errors == ""){
+            //console.log (obj.dataNew.active_errors);
             if (obj.dataNew.bonline == false)
             {
                 if  (obj.dataNew.bonline != obj.dataOld.bonline || obj.dataNew.active_errors != obj.dataOld.active_errors)
@@ -142,7 +144,7 @@ var socket = io('http://10.0.0.156:3000');
             };
         }else
         {
-            if  (obj.dataNew.active_errors != obj.dataOld.active_errors  && obj.dataOld.active_errors == null ){
+            if  (obj.dataNew.active_errors != obj.dataOld.active_errors  && obj.dataOld.active_errors == "" ){
                 valueBtnErrors = parseInt($("#BtnErrors").text()) + 1;
                 $("#BtnErrors").text(valueBtnErrors);
                 $("#box" + obj.dataNew.psid).css("background-color", "#d9534f");
