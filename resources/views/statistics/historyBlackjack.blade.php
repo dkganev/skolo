@@ -5,8 +5,8 @@
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
               <li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li>
-              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
-              <li><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
+              <li ><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
+              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
               <li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>
               <li><a href="javascript:ajaxLoad('#')">Slots </a></li>
             </ul>
@@ -19,7 +19,7 @@
     <div class="col-md-12" >
     <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export</a>
 
-        <h1 style="margin-top: 0px; color:white;" class="page-header">Roulette History Statistics</h1>
+        <h1 style="margin-top: 0px; color:white;" class="page-header">Blackjack History Statistics</h1>
 
     </div>
      <!-- end  page header -->
@@ -51,11 +51,9 @@
                             <th class="text-center" data-field="date" data-sortable="true">Time</th>
                             <th class="text-center" data-align="right" data-sortable="true">Game #</th>
                             <th class="text-center" data-align="right" data-sortable="true">PS ID</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Win Number</th>
+                            <th class="text-center" data-align="right" data-sortable="true">Terminals</th>
                             <th class="text-center" data-align="right" data-sortable="true">Total Bet</th>
                             <th class="text-center" data-align="right" data-sortable="true">Total Win</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Jackpot</th>
-                            <th class="text-center" data-align="right" data-sortable="true">No Spin Game</th>
                         </tr>
                     </thead>
 
@@ -64,13 +62,11 @@
                                 <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
                                     <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
-                                    <td>{{ $history->rlt_seq }}</td>
-                                    <td>{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}</td>
-                                    <td>{{ $history->win_num }}</td>
-                                    <td>{{ number_format($history->bet / 100, 2 ) }}</td>
-                                    <td>{{ number_format($history->win_val / 100, 2 ) }}</td>
-                                    <td>{{ number_format($history->jackpot / 100, 2 ) }}</td>
-                                    <td>{{ $history->ho_spin }}</td>
+                                    <td>{{ $history->game_seq }}</td>
+                                    <td>{{$server_ps->where('psid', $history->table_idx + 1)->count() ? $server_ps->where('psid', $history->table_idx + 1)->first()->seatid : "Missing saitid"}}</td>
+                                    <td>{{ $history->seat_id }}</td>
+                                    <td>{{ $history->win }}</td>
+                                    <td>{{ $history->bet }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

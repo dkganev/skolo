@@ -7,7 +7,7 @@
 
 //alert ("test");
 var $messages = $('#inpMassage');
-var socket = io('http://10.0.0.156:3000');
+var socket = io('http://10.0.0.199:3000');
 
   socket.on('news', function (data) {
     console.log ("test222");
@@ -38,13 +38,15 @@ var socket = io('http://10.0.0.156:3000');
       if (obj.query == "UPDATE")
       {
         //if  (obj.dataNew.bonline == obj.dataOld.bonline){
-        if (obj.dataNew.active_errors == null){
+        //console.log (obj.dataNew.active_errors);
+        if (obj.dataNew.active_errors == ""){
+            //console.log (obj.dataNew.active_errors);
             if (obj.dataNew.bonline == false)
             {
                 if  (obj.dataNew.bonline != obj.dataOld.bonline || obj.dataNew.active_errors != obj.dataOld.active_errors)
                 {
-                    valueBtnOffline = parseInt($("#BtnOffline").text()) + 1;
-                    $("#BtnOffline").text(valueBtnOffline);
+                    //valueBtnOffline = parseInt($("#BtnOffline").text()) + 1;
+                    //$("#BtnOffline").text(valueBtnOffline);
                     $("#box" + obj.dataNew.psid).css("background-color", "#9c9c9c");
                     valueboxStatus = $("#box" + obj.dataNew.psid).attr('data_boxStatus');
                     if(valueboxStatus == 'Free' ){
@@ -60,6 +62,10 @@ var socket = io('http://10.0.0.156:3000');
                         valueErrors = parseInt($("#BtnErrors").text()) - 1 ;
                         $("#BtnErrors").text(valueErrors); 
                     }
+                    if(valueboxStatus != 'Offline' ){
+                        valueBtnOffline = parseInt($("#BtnOffline").text()) + 1;
+                        $("#BtnOffline").text(valueBtnOffline);
+                    }
                     $("#box" + obj.dataNew.psid).attr('data_boxStatus','Offline');
                 }
             }else 
@@ -71,8 +77,8 @@ var socket = io('http://10.0.0.156:3000');
                         if  (obj.dataNew.bonline != obj.dataOld.bonline || obj.dataNew.active_errors != obj.dataOld.active_errors || obj.dataNew.attendant != obj.dataOld.attendant || (obj.dataNew.current_credit != obj.dataOld.current_credit && obj.dataNew.current_credit == 0))
                         {
                             $("#box" + obj.dataNew.psid).css("background-color", "#5bc0de");
-                            valueBtnFree = parseInt($("#BtnFree").text()) + 1;
-                            $("#BtnFree").text(valueBtnFree);
+                            //valueBtnFree = parseInt($("#BtnFree").text()) + 1;
+                            //$("#BtnFree").text(valueBtnFree);
                             valueboxStatus = $("#box" + obj.dataNew.psid).attr('data_boxStatus');
                             if(valueboxStatus == 'Offline' ){
                                 valueBtnOffline = parseInt($("#BtnOffline").text()) - 1;
@@ -87,6 +93,11 @@ var socket = io('http://10.0.0.156:3000');
                                 valueErrors = parseInt($("#BtnErrors").text()) - 1 ;
                                 $("#BtnErrors").text(valueErrors); 
                             }
+                            
+                            if(valueboxStatus != 'Free' ){
+                                valueBtnFree = parseInt($("#BtnFree").text()) + 1;
+                                $("#BtnFree").text(valueBtnFree);
+                            }
                       
                             $("#box" + obj.dataNew.psid).attr('data_boxStatus','Free');
                         
@@ -96,8 +107,8 @@ var socket = io('http://10.0.0.156:3000');
                         if  (obj.dataNew.bonline != obj.dataOld.bonline || obj.dataNew.active_errors != obj.dataOld.active_errors  || obj.dataNew.attendant != obj.dataOld.attendant || (obj.dataNew.current_credit != obj.dataOld.current_credit && obj.dataOld.current_credit == 0))
                         {
                             $("#box" + obj.dataNew.psid).css("background-color", "#5cb85c");
-                            valueBtnActive = parseInt($("#BtnActive").text()) + 1 ;
-                            $("#BtnActive").text(valueBtnActive); 
+                            //valueBtnActive = parseInt($("#BtnActive").text()) + 1 ;
+                            //$("#BtnActive").text(valueBtnActive); 
                             valueboxStatus = $("#box" + obj.dataNew.psid).attr('data_boxStatus');
                             if(valueboxStatus == 'Offline' ){
                                 valueBtnOffline = parseInt($("#BtnOffline").text()) - 1;
@@ -112,6 +123,11 @@ var socket = io('http://10.0.0.156:3000');
                                 valueErrors = parseInt($("#BtnErrors").text()) - 1 ;
                                 $("#BtnErrors").text(valueErrors); 
                             }
+                            
+                            if(valueboxStatus != 'Active' ){
+                                valueBtnActive = parseInt($("#BtnActive").text()) + 1 ;
+                                $("#BtnActive").text(valueBtnActive); 
+                            }
                             $("#box" + obj.dataNew.psid).attr('data_boxStatus','Active');
                         }
                     }
@@ -119,8 +135,8 @@ var socket = io('http://10.0.0.156:3000');
                 {
                     if  (obj.dataNew.bonline != obj.dataOld.bonline || obj.dataNew.active_errors != obj.dataOld.active_errors || obj.dataNew.attendant != obj.dataOld.attendant ){
                         $("#box" + obj.dataNew.psid).css("background-color", "#ccb2ff");
-                        valueBtnCallAttend = parseInt($("#BtnCallAttend").text()) + 1;
-                        $("#BtnCallAttend").text(valueBtnCallAttend);
+                        //valueBtnCallAttend = parseInt($("#BtnCallAttend").text()) + 1;
+                        //$("#BtnCallAttend").text(valueBtnCallAttend);
                         valueboxStatus = $("#box" + obj.dataNew.psid).attr('data_boxStatus');
                         if(valueboxStatus == 'Offline' ){
                             valueBtnOffline = parseInt($("#BtnOffline").text()) - 1;
@@ -135,6 +151,11 @@ var socket = io('http://10.0.0.156:3000');
                             valueErrors = parseInt($("#BtnErrors").text()) - 1 ;
                             $("#BtnErrors").text(valueErrors); 
                         }
+                        
+                        if(valueboxStatus != 'Call Attend' ){
+                            valueBtnCallAttend = parseInt($("#BtnCallAttend").text()) + 1;
+                            $("#BtnCallAttend").text(valueBtnCallAttend);
+                        }
                         $("#box" + obj.dataNew.psid).attr('data_boxStatus','Call Attend');
                     }        
                 }
@@ -142,9 +163,9 @@ var socket = io('http://10.0.0.156:3000');
             };
         }else
         {
-            if  (obj.dataNew.active_errors != obj.dataOld.active_errors  && obj.dataOld.active_errors == null ){
-                valueBtnErrors = parseInt($("#BtnErrors").text()) + 1;
-                $("#BtnErrors").text(valueBtnErrors);
+            if  (obj.dataNew.active_errors != obj.dataOld.active_errors  && obj.dataOld.active_errors == "" ){
+                //valueBtnErrors = parseInt($("#BtnErrors").text()) + 1;
+                //$("#BtnErrors").text(valueBtnErrors);
                 $("#box" + obj.dataNew.psid).css("background-color", "#d9534f");
                 valueboxStatus = $("#box" + obj.dataNew.psid).attr('data_boxStatus');
                 if(valueboxStatus == 'Free' ){
@@ -159,6 +180,11 @@ var socket = io('http://10.0.0.156:3000');
                 }else if(valueboxStatus == 'Offline' ){
                     valueOffline = parseInt($("#BtnOffline").text()) - 1 ;
                     $("#BtnOffline").text(valueOffline); 
+                } 
+                
+                if(valueboxStatus != 'Error' ){
+                    valueBtnErrors = parseInt($("#BtnErrors").text()) + 1;
+                    $("#BtnErrors").text(valueBtnErrors);
                 }
                 $("#box" + obj.dataNew.psid).attr('data_boxStatus','Error');
             } 

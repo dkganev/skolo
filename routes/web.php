@@ -117,6 +117,7 @@ Route::get('statistics/terminals', 'StatisticsController@terminals_statistics');
 Route::get('statistics/games', 'StatisticsController@games_statistics');
 Route::get('statistics/history', 'StatisticsController@history_statistics');
 Route::get('statistics/historyRoulette', 'StatisticsController@historyRoulette_statistics');
+Route::get('statistics/historyBlackjack', 'StatisticsController@historyBlackjack');
 
 Route::get('/exportHistory', 'StatisticsController@exportHistory_statistics')->name('export.history');
 //Route::get('statistics/{id}', 'StatisticsController@navbar');  

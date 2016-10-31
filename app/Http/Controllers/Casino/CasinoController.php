@@ -144,7 +144,7 @@ class CasinoController extends Controller
                 $PsStatus = PsStatus::where('psid', $value['psid'])->get();
                 if($PsStatus->count())
                 {
-                    if(empty($PsStatus->first()->active_errors))
+                    if($PsStatus->first()->active_errors == '{}')
                     {
                         if($PsStatus->first()->bonline == FALSE)
                         {

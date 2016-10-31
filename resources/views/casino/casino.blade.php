@@ -150,9 +150,3 @@
 </div>
 </div>
 
-<script src="/js/casinoProview.js"></script>
-<!-- Socket.io -->
-    <script src="/js/socket.io/socket.io.js"></script>
-    <script src="/js/socket.io/main.js"></script>
-<script>
-</script>
