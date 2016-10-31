@@ -10,6 +10,8 @@ class TemplateGames extends Model
 
 	protected $table = 'template_games';
 
+	protected $primaryKey = 'template_id';
+	
 	public $timestamps = false;
 
 	public $increments = false;

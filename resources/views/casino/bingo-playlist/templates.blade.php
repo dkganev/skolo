@@ -9,9 +9,9 @@
 
               <li><a href="javascript:ajaxLoad('{{url('/casino/playlist')}}')">Playlist</a></li>
 
-              <li><a class="active" href="javascript:ajaxLoad('{{url('/casino/templates')}}')">Templates</a></li>
+              <li class="active"><a href="javascript:ajaxLoad('{{url('/casino/templates')}}')">Templates</a></li>
 
-              </ul>
+            </ul>
           </div>
     </div>
   </div><!-- End Row -->
@@ -65,20 +65,25 @@
            @foreach($templates as $template)
             <tr>
               <td>{{ $template->name }}</td>
-              <td>0</td>
+              <td>{{ $template->template_games->count() }}</td>
               <td>
-                <a class="btn btn-warning btn-xs" href="#">Edit</a>
-
+                <a class="btn btn-primary btn-xs" href="#"
+                    role="button" data-toggle="modal"
+                    data-toggle="modal"
+                    data-target="#editTemplateModal--{{ $template->template_id }}"
+                >
+                  Edit
+                </a>
                 <a class="btn btn-danger btn-xs" href="#"
                     role="button" data-toggle="modal"
                     data-toggle="modal"
                     data-target="#deleteTemplateModal"
                     data-template-name="{{ $template->name }}"
-                    data-template-name="{{ $template->id }}"
-
+                    data-template-id="{{ $template->template_id }}"
                 >Delete</a>
               </td>
             </tr>
+            @include('casino.bingo-playlist.update-template-modal')
             @endforeach
           </tbody>
         </table>
@@ -116,6 +121,21 @@ $(document).ready(function() {
        console.log('Success');
     });
   });
+
+       //   success:function(data){
+       //    if (data.success == "success"){
+       //        $("#CasinoMenu").text( data.casinoname);
+       //        //$("#casinoEvents1").click();
+       //        //var href = $('#casinoEvents').attr('href');
+       //        var href = $('#CasinoCasino').attr('href');
+       //        window.location.href = href; 
+       //        //location.reload();casinoEvents
+       //        //window.location.href = "http://10.0.0.156:8000/casino/events";
+       //    }
+       // },
+       // error: function (error) {
+       //      alert ("Unexpected wrong.");
+       //  }
 
 });
 </script>

@@ -65,6 +65,7 @@
                 success: function (data) {
                     //$('.loading').delay(300).hide(0);
                     $("#" + content).css('display','none').html(data).hide().fadeIn(400);
+                    // window.history.pushState({}, null, filename);
                 },
                 error: function (xhr, status, error) {
                     console.log(error);
@@ -74,9 +75,10 @@
             });
         }
 
-        $('ul a').on('click', function () {
-              $('a').removeClass('active');
-              $(this).addClass('active');
+        $('li').on('click', function () {
+          // $('li').removeClass('active');
+          // $(this).addClass('active');
+          $(this).addClass('active').siblings().removeClass('active');
         });
 
     </script>

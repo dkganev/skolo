@@ -35,6 +35,8 @@ Route::post('/casino/playlist/load', 'Casino\BingoPlaylistController@load_templa
 Route::post('/casino/templates/store', 'Casino\BingoPlaylistController@template_store');
 Route::post('/casino/templates/destroy', 'Casino\BingoPlaylistController@template_destroy');
 
+Route::post('/casino/template/game/store', 'Casino\BingoPlaylistController@template_game_store');
+
 /**
  * SETTINGS / TERMINALS
  */

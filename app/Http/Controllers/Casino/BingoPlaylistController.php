@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\Bingo\Templates;
+use App\Models\Bingo\TemplateGames;
 use App\Models\Bingo\Playlist;
 
 class BingoPlaylistController extends Controller
@@ -36,6 +37,8 @@ class BingoPlaylistController extends Controller
     		$playlist->bingo_cost_bingo_fixed = true;
     	}
 
+        $playlist->idx = Playlist::count() + 1;
+
     	$playlist->save();
 
     	return back();
@@ -44,7 +47,26 @@ class BingoPlaylistController extends Controller
 
     public function load_template(Request $request)
     {
-    	// 
+        $template = Templates::where('template_id', $request->template_id)->first();
+
+
+        foreach($template->template_games as $games)
+        {
+            $data = [
+                'bingo_ticket_cost' => $games->bingo_ticket_cost,
+                'bingo_cost_bingo' => $games->bingo_cost_bingo,
+                'bingo_cost_line1' => $games->bingo_cost_line1,
+
+                'bingo_cost_line1_fixed' => $games->bingo_cost_line1_fixed,
+                'bingo_cost_bingo_fixed' => $games->bingo_cost_bingo_fixed,
+                'idx' => Playlist::count() + 1
+            ];
+
+            Playlist::create($data);
+            
+        }
+
+        return redirect()->back();
     }
 
     public function index_templates()
@@ -58,9 +80,13 @@ class BingoPlaylistController extends Controller
     {
     	$template = new Templates();
     	$template->name = $request->name;
-    	$template->save();
+    	$status = $template->save();
 
-    	//return redirect()->back();
+        if(!$status)
+        {
+            $msg = 'Something went wrong!';
+            return response()->json(['message' => $msg], 501);
+        }
     }
 
     public function template_destroy(Request $request)
@@ -69,6 +95,34 @@ class BingoPlaylistController extends Controller
     	$template->delete();
 
     	return redirect()->back();
+    }
+
+
+    public function template_game_store(Request $request)
+    {
+        $template = Templates::where('template_id', $request->template_id)->first();
+
+        $playlist = new TemplateGames();
+
+        $playlist->bingo_ticket_cost = $request->ticket_cost;
+
+        $playlist->bingo_cost_line1_fixed = false;
+        $playlist->bingo_cost_bingo_fixed = false;
+
+        if($request->game_type == 1)
+        {
+            $playlist->bingo_cost_line1 = $request->line_cost;
+            $playlist->bingo_cost_bingo = $request->bingo_cost;
+
+            $playlist->bingo_cost_line1_fixed = true;
+            $playlist->bingo_cost_bingo_fixed = true;
+        }
+
+        $template->template_games()->save($playlist);
+        $playlist->save();
+
+        return back();
+
     }
 
 }

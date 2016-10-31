@@ -53,8 +53,9 @@
                                     data-target="#updateGameClientModal"
                                     data-id="{{ $game_client->client_game_id }}"
                                     data-name="{{ $game_client->client_game_name }}"
+                                    class="btn btn-primary btn-xs"
                                 >
-                                    <span><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></span>
+                                Edit
                                 </a>
                             </td>
                         </tr>
@@ -114,8 +115,9 @@
                                     data-target="#updateCategoryModal"
                                     data-idx="{{ $category->idx }}"
                                     data-name="{{ $category->name }}"
+                                    class="btn btn-primary btn-xs"
                                 >
-                                    <span><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></span>
+                                Edit
                                 </a>
                             </td>
                         </tr>
@@ -197,8 +199,9 @@
                                     data-gametype="{{ $game->type->game_type }}"
                                     data-dbname="{{ $game->db_name }}"
                                     data-shortname="{{ $game->short_name }}"
+                                    class="btn btn-primary btn-xs"
                                 >
-                                    <span><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></span>
+                                Edit
                                 </a>
                             </td>
                         </tr>

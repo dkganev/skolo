@@ -84,17 +84,18 @@
                                         data-psid="{{ $ps->psid }}"
                                         data-dallasid="{{ $ps->dallasid }}"
                                         data-games="{{ $ps->ps_settings->subscribed }}"
+                                        class="btn btn-primary btn-xs"
                                     >
-
-                                        <span><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></span>
+                                    Edit
                                     </a>
                                     <a  href="" role="button" data-toggle="modal"
                                         data-toggle="modal"
                                         data-target="#resetPsModal"
                                         data-psid="{{ $ps->psid }}"
                                         data-dallasid="{{ $ps->dallasid }}"
-                                    >
-                                    <span><i class="fa fa-retweet fa-lg" aria-hidden="true"></i></span>
+                                        class="btn btn-warning btn-xs"
+                                    >  
+                                    Restart
                                     </a>
 
                                     <a  href="" role="button" data-toggle="modal"
@@ -148,33 +149,34 @@
 </div>
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
 
-// RESTART TERMINAL
- $('#deletePsModal').on('show.bs.modal', function(e) {
-    var psId = $(e.relatedTarget).data('psid');
-    var dallasid = $(e.relatedTarget).data('dallasid');
+    // POPULATE DELETE PS MODAL
+    $('#deletePsModal').on('show.bs.modal', function(e) {
+        var psId = $(e.relatedTarget).data('psid');
+        var dallasid = $(e.relatedTarget).data('dallasid');
 
-    $(e.currentTarget).find('span').html(dallasid);
-    $(e.currentTarget).find('input[name="psid"]').val(psId);
-});
+        $(e.currentTarget).find('span').html(dallasid);
+        $(e.currentTarget).find('input[name="psid"]').val(psId);
+    });
 
-$('#delete-ps').on('click', function() {
-     $.ajax({
-         method: 'POST',
-         url: '/terminal/destroy',
-         data: { 
-             psid: $('#deletePsModal input[name="psid"]').val(),
-             _token: token
-        } 
-     })
-     .done(function() {
-        $('#deletePsModal').modal('hide');
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
-        javascript:ajaxLoad('{{url('/settings/terminals')}}');
-     });
-});
+    // SUBMIT PS DELETE MODAL
+    $('#delete-ps').on('click', function() {
+        $.ajax({
+            method: 'POST',
+            url: '/terminal/destroy',
+            data: { 
+                psid: $('#deletePsModal input[name="psid"]').val(),
+                _token: token
+            }
+        })
+        .done(function() {
+            $('#deletePsModal').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            javascript:ajaxLoad('{{url('/settings/terminals')}}');
+        });
+    });
 
 }); // <== End Document Ready
 </script>

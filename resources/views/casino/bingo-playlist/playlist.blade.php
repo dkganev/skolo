@@ -6,7 +6,7 @@
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
 
-              <li><a class="active" href="javascript:ajaxLoad('{{url('/casino/playlist')}}')">Playlist</a></li>
+              <li class="active"><a href="javascript:ajaxLoad('{{url('/casino/playlist')}}')">Playlist</a></li>
 
               <li><a href="javascript:ajaxLoad('{{url('/casino/templates')}}')">Templates</a></li>
 
@@ -81,7 +81,7 @@
   <!-- Load Template Form -->
   <div class="row">
     <div class="col-lg-5">
-      <form id="load-template-form" action="/casino/playlist/load"  class="form-inline" style="padding-top: 15px;">
+      <form method="POST" id="load-template-form" action="/casino/playlist/load"  class="form-inline" style="padding-top: 15px;">
 
           <div class="form-group">
             <label for="load_template">Load Template: </label><br>
@@ -93,8 +93,12 @@
             </select>
           </div>
 
-          <div class="form-group" >
-            <input style="margin-top: 25px;" class="btn btn-info btn-sm" type="submit" name="submit" value="Load">
+          <div class="form-group">
+
+            <button  id="load-template-button" type="Submit" value="Submit"  style="margin-top: 25px;" class="btn btn-info btn-sm form-control">
+                Add
+            </button>
+            <!-- <input style="margin-top: 25px;" class="btn btn-info btn-sm" type="submit" name="submit" value="Load"> -->
           </div>
 
         </form>
@@ -111,8 +115,8 @@
           <tr>
             <th>Ticket Cost(cents)</th>
             <th>Game Type</th>
-            <th>Line Cost(cents)</th>
-            <th>Bingo Cost(cents)</th>
+            <th>Line Cost (cents)</th>
+            <th>Bingo Cost (cents)</th>
           </tr>
         </thead>
         <tbody>
@@ -136,6 +140,48 @@
 
 <script>
   $(document).ready(function() {
+
+
+    // ADD PLAYLIST
+    $('#load-template-button').on('click', function(event) {
+        event.preventDefault();
+        var token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            method: 'POST',
+            url: '/casino/playlist/load',
+            data: {
+              template_id: $('form#load-template-form select[name="load_template"]').val(),
+              _token: token,
+          }
+        })
+        .done(function() {
+          javascript:ajaxLoad('{{url('/casino/playlist')}}');
+          // console.log('Success');
+        });
+    });
+
+
+    // ADD PLAYLIST
+    $('#send-button').on('click', function(event) {
+        event.preventDefault();
+        var token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            method: 'POST',
+            url: '/casino/playlist/store',
+            data: {
+               game_type: $('form#game-type-form select[name="game_type"]').val(),
+               ticket_cost: $('form#game-type-form  input[name="ticket_cost"]').val(),
+               line_cost: $('form#game-type-form  input[name="line_cost"]').val(),
+               bingo_cost: $('form#game-type-form  input[name="bingo_cost"]').val(),
+               template_id: $('form#game-type-form  input[name="template_id"]').val(),
+               _token: token,
+          }
+        })
+        .done(function() {
+          javascript:ajaxLoad('{{url('/casino/playlist')}}');
+          // console.log('Success');
+        });
+    });
 
     $('#game-type-form').hide(); //Initially form wil be hidden.
     $('#toggle-game-type-form').click(function() {

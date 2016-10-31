@@ -95,17 +95,17 @@
            method: 'POST',
            url: 'settings/bingo/maxballs/destroy',
            data: { 
-               id: $('#deleteMaxBallModal input[name="id"]').val(),
-               _token: token
+              id: $('#deleteMaxBallModal input[name="id"]').val(),
+              _token: token
           } 
        })
-       .done(function() {
+      .done(function() {
           $('#deleteMaxBallModal').modal('hide');
           $('body').removeClass('modal-open');
           $('.modal-backdrop').remove();
-          
+            
           javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')
-       });
+      });
   });
 
 </script>
