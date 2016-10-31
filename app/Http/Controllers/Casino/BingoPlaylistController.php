@@ -60,7 +60,7 @@ class BingoPlaylistController extends Controller
     	$template->name = $request->name;
     	$template->save();
 
-    	return redirect()->back();
+    	//return redirect()->back();
     }
 
     public function template_destroy(Request $request)

@@ -130,6 +130,23 @@ class TerminalsController extends Controller
         DB::table('reset_ps')->insert(['psid' => $request->psid]);
     }
 
+    public function destroy_ps(Request $request)
+    {
+        $server_ps = ServerPs::where('psid', '=', $request['psid'])->first();
+
+        $server_ps->billing_config()->delete();
+        $server_ps->ps_settings()->delete();
+        $server_ps->ps_status()->delete();
+        $server_ps->ps_counters()->delete();
+        $server_ps->billing_config()->delete();
+        //$server_ps->ps_errors()->delete();
+
+        $server_ps->delete();
+
+        return back();
+    }
+
+
     public function exportTerminals()
     {
         $export = ServerPs::all();

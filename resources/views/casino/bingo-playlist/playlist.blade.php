@@ -134,7 +134,7 @@
   </div><!-- End Well-->
 </div><!-- End Container-->
 
-<script type="text/javascript">
+<script>
   $(document).ready(function() {
 
     $('#game-type-form').hide(); //Initially form wil be hidden.
@@ -163,23 +163,6 @@
         $('#bingo-cost-form-group').hide(100);
       }
     });
-
-  // $('#send-button').click(function() {
-
-  //   //var token = $('meta[name="csrf-token"]').attr('content');
-
-  //   $.ajax({
-  //       type: 'POST',
-  //       url: '/casino/playlist/store',
-  //       data: {
-  //           game_type: $('#game-type-form select[name="game_type"]').val(),
-  //           ticket_cost: $('#game-type-form input[name="ticket_cost"]').val(),
-  //         } 
-  //       });
-  //   });
-
-
-
 
   });
 </script>

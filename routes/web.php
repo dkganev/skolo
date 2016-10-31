@@ -45,6 +45,8 @@ Route::post('machine/update', 'Settings\TerminalsController@updateMachine');
 Route::get('/exportTerminals', 'Settings\TerminalsController@exportTerminals')->name('export.terminals');
 Route::get('/resetps', 'Settings\TerminalsController@reset_ps');
 
+Route::post('/terminal/destroy', 'Settings\TerminalsController@destroy_ps');
+
 /**
  * SETTINGS / GAME SERVERS
  */

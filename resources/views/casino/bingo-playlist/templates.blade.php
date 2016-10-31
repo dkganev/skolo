@@ -1,4 +1,4 @@
-@inlcude('casino.bingo-playlist.templates-modals')
+@include('casino.bingo-playlist.templates-modals')
 <div class="container">
   <div class="row">
       <div class="col-lg-5">
@@ -36,12 +36,9 @@
           <label for="name">Template Name: </label>
           <input class="form-control" type="text" name="name" id="name">
 
-          <input type="hidden" name="_token" value="{{ Session::token() }}">
-          <button 
-                  id="send-button"
+          <button id="add-template-button"
                   type="Submit"
-                  value="Submit" 
-                  style="margin-top: 25px;" 
+                  value="Submit"
                   class="btn btn-info btn-sm form-control"
           >
                   Add
@@ -76,6 +73,8 @@
                     role="button" data-toggle="modal"
                     data-toggle="modal"
                     data-target="#deleteTemplateModal"
+                    data-template-name="{{ $template->name }}"
+                    data-template-name="{{ $template->id }}"
 
                 >Delete</a>
               </td>
@@ -89,13 +88,34 @@
   </div><!-- End Well-->
 </div><!-- End Container-->
 
-<script type="text/javascript">
-  $(document).ready(function() {
+<script>
+$(document).ready(function() {
 
-    $('#create-template-form').hide(); //Initially form wil be hidden.
-    $('#toggle-create-template-form').click(function() {
-      $('#create-template-form').toggle(150);
-    });
-
+  // TOGGLE STORE TEMPLATE FORM
+  $('#create-template-form').hide(); //Initially form wil be hidden.
+  $('#toggle-create-template-form').click(function() {
+    $('#create-template-form').toggle(150);
   });
+
+  // STORE TEMPLATE FORM
+  $('#add-template-button').on('click', function(event) {
+    event.preventDefault();
+    var url = $('form#create-template-form').attr('action');
+    var token = $('meta[name="csrf-token"]').attr('content');
+
+    $.ajax({
+       method: 'POST',
+       url: url,
+       data: {
+           name: $('form#create-template-form input[name="name"]').val(),
+           _token: token,
+      }
+    })
+    .done(function() {
+       javascript:ajaxLoad('{{url('/casino/templates')}}');
+       console.log('Success');
+    });
+  });
+
+});
 </script>
