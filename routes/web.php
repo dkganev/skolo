@@ -113,9 +113,11 @@ Route::get('statistics/terminals', 'StatisticsController@terminals_statistics');
 Route::get('statistics/games', 'StatisticsController@games_statistics');
 Route::get('statistics/history', 'StatisticsController@history_statistics');
 Route::get('statistics/historyRoulette', 'StatisticsController@historyRoulette_statistics');
+
 Route::get('/exportHistory', 'StatisticsController@exportHistory_statistics')->name('export.history');
 //Route::get('statistics/{id}', 'StatisticsController@navbar');  
+
 Route::post('/ajax_statBingoHistory', 'StatisticsController@ajax_statBingoHistory');
 Route::post('/ajax_statBingoHistoryTickets', 'StatisticsController@ajax_statBingoHistoryTickets');
-
+Route::post('/ajax_statRouletteHistory', 'StatisticsController@ajax_statRouletteHistory');
 });

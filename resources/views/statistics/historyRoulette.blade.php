@@ -60,7 +60,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rows" data-toggle="modal" data-target="#rouletteHistory_modal" >
+                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
                                     <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td>{{ $history->rlt_seq }}</td>
@@ -89,44 +89,26 @@
 <script src="bootstrap-table/bootstrap-table.js"></script>
 
 <script >
-    
-function boxModalWindow(boxID) {
+var firstClick = 0;
+$(document).on("click","tr.rowsR td", function(e){
+    //alert(e.target.innerHTML);
+    //console.log( $(this).parent("tr").attr('data-id'));
+    rowID = parseInt($(this).parent("tr").attr('data-id'));
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
-        url:'ajax_statBingoHistory',
+        url:'ajax_statRouletteHistory',
         dataType: "json",
-        data:{'boxID': boxID , _token: token},
+        data:{'rowID': rowID , _token: token},
         success:function(data){
             if (data.success == "success"){
-                $('#bingoPurchase_History').html(data.html);
-               //alert(boxID); 
-            }
-        },
-        error: function (error) {
-            alert ("Unexpected wrong.");
-        }
-        
-    });
-    
-}
-    
-function boxModalWindow2(bingo_seq, psid) {
-    token = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        type:'POST',
-        url:'ajax_statBingoHistoryTickets',
-        dataType: "json",
-        data:{'bingo_seq': bingo_seq, "psid": psid, _token: token},
-        success:function(data){
-            if (data.success == "success"){
-                $('#ticketNumber').html(data.server_ps_seatid);
-                $('#gameNumber').html(bingo_seq);
-                $('#balsHistory').html(data.BingoBallsHTML);
-                $('#psTicketsArchive').html(data.psTicketsArchiveHTML);
+                $('#roulettePic').html(data.html); //seatid
+                $('#rouletteHead').html(data.seatid);
+                $('#winNumber').html(data.winNumber);
+                $('#totalBet').html(data.totalBet);
+                $('#totalWin').html(data.totalWin);
+                $('#jackpotWon').html(data.jackpotWon);
                 
-                $('#bingoTickets_History').html(data.html);
-               //alert(boxID); balsHistory
             }
         },
         error: function (error) {
@@ -134,10 +116,9 @@ function boxModalWindow2(bingo_seq, psid) {
         }
         
     });
-    
-}
-    
 
+    
+});    
 
 
 </script>

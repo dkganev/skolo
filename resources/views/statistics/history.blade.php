@@ -120,15 +120,11 @@
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
-<!--<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
 
 <script >
-    var firstClick = 0;
+var firstClick = 0;
 $(document).on("click","tr.rows td", function(e){
-    //alert(e.target.innerHTML);
-    
-    console.log( $(this).parent("tr").attr('data-id'));
-    
+    //console.log( $(this).parent("tr").attr('data-id'));
     boxID = parseInt($(this).parent("tr").attr('data-id'));
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
@@ -139,7 +135,6 @@ $(document).on("click","tr.rows td", function(e){
         success:function(data){
             if (data.success == "success"){
                 $('#bingoPurchase_History').html(data.html);
-               //alert(boxID); 
             }
         },
         error: function (error) {
