@@ -147,7 +147,7 @@ class StatisticsController extends Controller
         $positionsStr = unpack('S' . $num_max, stream_get_contents($blob, -1, 0));
         for ($i = 1; $i <= $num_max; $i++) {
             if($positionsStr[$i] > 0) {
-                $positions[$i - 1] = $positionsStr[$i];
+                $positions[$i  - 1] = $positionsStr[$i];
             }
         }
         $rlt_chip_positions = array();
@@ -347,11 +347,11 @@ class StatisticsController extends Controller
         $rlt_chip_positions[156]= array('left' => 1148, 'top' => 182);
         $rlt_chip_positions[157]= array('left' => 1250, 'top' => 182);
         
-        $rlt_chip_positions[158]= array('left' => 0, 'top' => 150);
-        $rlt_chip_positions[159]= array('left' => 0, 'top' => 200);
+        $rlt_chip_positions[158]= array('left' => 485, 'top' => 20);
+        $rlt_chip_positions[159]= array('left' => 893, 'top' => 20);
   
-        $rlt_chip_positions[160]= array('left' => 0, 'top' => 250);
-        $rlt_chip_positions[161]= array('left' => 0, 'top' => 300);
+        $rlt_chip_positions[160]= array('left' => 1355, 'top' => 182);
+        $rlt_chip_positions[161]= array('left' => 1355, 'top' => 290);
     
         return $rlt_chip_positions ;
     }
