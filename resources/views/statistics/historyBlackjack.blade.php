@@ -63,10 +63,55 @@
                        
                                     <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td>{{ $history->game_seq }}</td>
-                                    <td>{{$server_ps->where('psid', $history->table_idx + 1)->count() ? $server_ps->where('psid', $history->table_idx + 1)->first()->seatid : "Missing saitid"}}</td>
-                                    <td>{{ $history->seat_id }}</td>
-                                    <td>{{ $history->win }}</td>
-                                    <td>{{ $history->bet }}</td>
+                                    <td>{{$history->table_idx + 1}}</td>
+                                    <td><?php 
+                                            $totalBetStr = $history->seat_id; 
+                                            $totalBetStr = str_replace("{","",$totalBetStr);
+                                            $totalBetStr = str_replace("}","",$totalBetStr);
+                                            $totalBetArray = explode(',', $totalBetStr);
+                                            $n = 0;
+                                            foreach ($totalBetArray as $key => $val){
+                                                if ($val != 0){
+                                                    if ($n == 0){
+                                                        $n = 1;
+                                                    }else {
+                                                        print (", ");
+                                                    }
+                                                    print  ($val);
+                                                    
+                                                    
+                                                }
+                                                //$totalWin1 += parseInt($val);
+                                            }
+                                            //print ($totalBet);
+                                        ?>
+                                    </td>
+                                    <td><?php 
+                                            $totalBetStr = $history->bet; 
+                                            $totalBetStr = str_replace("{","",$totalBetStr);
+                                            $totalBetStr = str_replace("}","",$totalBetStr);
+                                            $totalBetArray = explode(',', $totalBetStr);
+                                            $totalBet = 0;
+                                            foreach ($totalBetArray as $val){
+                                                $totalBet += $val;
+                                                //$totalWin1 += parseInt($val);
+                                            }
+                                            print ($totalBet);
+                                        ?>
+                                    </td>
+                                    <td><?php 
+                                            $totalWinStr = $history->win; 
+                                            $totalWinStr = str_replace("{","",$totalWinStr);
+                                            $totalWinStr = str_replace("}","",$totalWinStr);
+                                            $totalWinArray = explode(',', $totalWinStr);
+                                            $totalWin = 0;
+                                            foreach ($totalWinArray as $val){
+                                                $totalWin += $val;
+                                                //$totalWin += parseInt($val);
+                                            }
+                                            print ($totalWin);
+                                        ?>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

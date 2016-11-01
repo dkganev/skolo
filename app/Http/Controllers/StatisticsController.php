@@ -58,9 +58,13 @@ class StatisticsController extends Controller
     
     public function historyBlackjack()
     {
-        $historys = BlackjackGameHistory::orderBy('ts', 'desc')->get();
+        $historyClas = new BlackjackGameHistory();
+        $historys = $historyClas->orderBy('ts', 'desc')->get();
         $server_ps = ServerPs::orderBy('psid', 'asc')->get();
-
+        
+        //$test = $historys->totalWin();
+        //var_dump($historyClas->totalWin());
+        
         return view('statistics.historyBlackjack', ['historys' => $historys, 'server_ps' => $server_ps]); 
     }
     
