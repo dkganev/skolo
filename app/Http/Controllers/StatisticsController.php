@@ -10,6 +10,7 @@ use App\Models\Accounting\PsCounters;
 use App\Models\Accounting\Casinos;
 use App\Models\Accounting\Games;
 use App\Models\Bingo\BingoHistory;
+use App\Models\Bingo\BingoWins_History;
 use App\Models\Bingo\BingoPurchase_History;
 use App\Models\Bingo\BingoBall_History;
 use App\Models\Bingo\Tickets;
@@ -112,6 +113,7 @@ class StatisticsController extends Controller
         
         $bingoCount = BingoPurchase_History::where('bingo_seq', $databingo_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first()->ticket_count - 1 ; 
         $bingoStr = BingoPurchase_History::where('bingo_seq', $databingo_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first()->tickets_id ; 
+        //var_dump(stream_get_contents($bingoStr,4, 0));
         $ticketIDfirst = unpack("L",stream_get_contents($bingoStr, 4, 0));
         $ticketIDLast = unpack("L",stream_get_contents($bingoStr, 4, $bingoCount * 4));
         $bingoTickets = Tickets::where('idx', '>=' , $ticketIDfirst)->where('idx', '<=' , $ticketIDLast)->get();
