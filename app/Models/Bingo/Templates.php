@@ -20,7 +20,6 @@ class Templates extends Model
 	
 	public function template_games()
 	{
-		return $this->hasMany(TemplateGames::class, 'template_id', 'template_id');
+		return $this->hasMany(TemplateGames::class, 'template_id', 'template_id')->orderBy('idx', 'asc');
 	}
 }
-

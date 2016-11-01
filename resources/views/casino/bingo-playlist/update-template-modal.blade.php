@@ -1,7 +1,7 @@
 <!-- Edit Template Modal -->
 <div class="row">
 <div class="modal fade" id="editTemplateModal--{{ $template->template_id }}" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" >
+  <div class="modal-dialog" style="width: 80%">
     <div class="modal-content">
       <div class="modal-header">
           <h2><strong>Update Template</strong></h2>
@@ -12,7 +12,7 @@
 
           <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-md-2">
 
               <form id="game-type-form--{{ $template->template_id }}" class="form-inline" style="padding-top: 15px;">
                 <div style="width: 169px" class="form-group">
@@ -56,7 +56,7 @@
                 </form>
               </div><!-- End Col--> 
 
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <h4><strong>Games</strong></h4>
                 <hr>
 
@@ -91,50 +91,46 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+$(document).ready(function() {
 
-    $('#send-button--{{ $template->template_id }}').on('click', function() {
-        // event.preventDefault();
-        var token = $('meta[name="csrf-token"]').attr('content');
-        $.ajax({
-            method: 'POST',
-            url: '/casino/template/game/store',
-            data: {
-               game_type: $('#editTemplateModal--{{ $template->template_id }} select[name="game_type"]').val(),
-               ticket_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="ticket_cost"]').val(),
-               line_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="line_cost"]').val(),
-               bingo_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="bingo_cost"]').val(),
-               template_id: $('#editTemplateModal--{{ $template->template_id }} input[name="template_id"]').val(),
-               _token: token,
-          }
-        })
-        .done(function() {
-          $('#editTemplateModal-{{ $template->template_id }}').modal('hide');
-          $('body').removeClass('modal-open');
-          $('.modal-backdrop').remove();
-          javascript:ajaxLoad('{{url('/casino/templates')}}');
-          // console.log('Success');
-        });
-    });
-
-
-
-    $('select[name="game_type"]').change(function () {
-     var optionSelected = $(this).find("option:selected");
-     var valueSelected  = optionSelected.val();
-
-      if(valueSelected == 1) {
-        $('#line-cost-form-group--{{ $template->template_id }}').show(100);
-        $('#bingo-cost-form-group--{{ $template->template_id }}').show(100);
+$('#send-button--{{ $template->template_id }}').on('click', function() {
+    var token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        method: 'POST',
+        url: '/casino/template/game/store',
+        data: {
+           game_type: $('#editTemplateModal--{{ $template->template_id }} select[name="game_type"]').val(),
+           ticket_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="ticket_cost"]').val(),
+           line_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="line_cost"]').val(),
+           bingo_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="bingo_cost"]').val(),
+           template_id: $('#editTemplateModal--{{ $template->template_id }} input[name="template_id"]').val(),
+           _token: token,
       }
-
-      if(valueSelected == 0) {
-        $('#line-cost-form-group--{{ $template->template_id }}').hide(100);
-        $('#bingo-cost-form-group--{{ $template->template_id }}').hide(100);
-      }
+    })
+    .done(function() {
+      $('#editTemplateModal-{{ $template->template_id }}').modal('hide');
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      javascript:ajaxLoad('{{url('/casino/templates')}}');
     });
+});
 
-  });
+$('select[name="game_type"]').change(function () {
+ var optionSelected = $(this).find("option:selected");
+ var valueSelected  = optionSelected.val();
+
+  if(valueSelected == 1) {
+    $('#line-cost-form-group--{{ $template->template_id }}').show(100);
+    $('#bingo-cost-form-group--{{ $template->template_id }}').show(100);
+  }
+
+  if(valueSelected == 0) {
+    $('#line-cost-form-group--{{ $template->template_id }}').hide(100);
+    $('#bingo-cost-form-group--{{ $template->template_id }}').hide(100);
+  }
+});
+
+}); // End Document Ready
 </script>
 
 <style>
