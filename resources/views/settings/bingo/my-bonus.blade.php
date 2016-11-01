@@ -1,5 +1,4 @@
 <div class="container">
-@include('settings.bingo.my-bonus-modals')
 <div class="row">
     <div class="col-lg-4">
         <h1 style="margin-top: 0px;" class="page-header">Bingo - My Bonus</h1>
@@ -30,7 +29,7 @@
 
             <div class="panel-body">
 
-
+                <form action="/settings/bingo/mybonus/edit" method="POST">
                  <table class="table table-bordered">
                     <thead class="w3-blue-grey">
                       <tr>
@@ -43,34 +42,29 @@
                     <tbody>
 
                     @foreach($my_bonus as $bonus)
-                        <tr>
-                                <td><span class="badge">{{ $bonus->id }}</span></td>
-
-                                <td>
-                                    <input disabled name="ticket_cnt" style="height:30px;" class="form-control" value="{{ $bonus->ticket_cnt }}" type="text" placeholder="Ticket Count">
-                                </td>
-                                <td>
-                                    <input disabled name="max_ball_idx" style="height:30px;" class="form-control" value="{{ $bonus->max_ball_idx }}" type="text" placeholder="Max Ball">
-                                </td>
-                                <td>
-                                    <a href="#" 
-                                        class="btn btn-danger btn-xs"
-                                        role="button" data-toggle="modal"
-                                        data-toggle="modal"
-                                        data-target="#updateMyBonus"
-                                        data-id="{{ $bonus->id }}"
-                                        data-ticket-cost="{{ $bonus->ticket_cnt }}"
-                                        data-max-ball="{{ $bonus->max_ball_idx }}"
-                                    >
-                                        Update
-                                    </a>
-                                </td>
-
-                        </tr>
+                    <tr id="{{ $bonus->id }}">
+                        <td><span class="badge">{{ $bonus->id }}</span></td>
+                        <td>
+                            <input name="ticket_cnt" style="height:30px;" class="form-control" value="{{ $bonus->ticket_cnt }}" type="text" placeholder="Ticket Count">
+                        </td>
+                        <td>
+                            <input name="max_ball_idx" style="height:30px;" class="form-control" value="{{ $bonus->max_ball_idx }}" type="text" placeholder="Max Ball">
+                        </td>
+                        <td>
+                            <input type="hidden" name="id" value="{{ $bonus->id }}">
+                            <button class="btn btn-primary btn-xs mybonus-button"
+                                    type="submit"
+                                    data-id="{{ $bonus->id }}"
+                            >
+                                Update
+                            </button>
+                        </td>
+                    </tr>
                     @endforeach
-
                     </tbody>
                   </table>
+
+                </form>
 
             </div> <!--End Panel Body -->
         </div> <!--End Panel -->
@@ -78,3 +72,25 @@
     </div><!--End Col -->
 </div><!--End Row -->
 </div><!--End Container -->
+
+<script>
+$('.mybonus-button').on('click', function(event) {
+    event.preventDefault();
+    var token = $('meta[name="csrf-token"]').attr('content');
+    var id = $(this).attr('data-id');
+
+    $.ajax({
+        method: 'POST',
+        url: 'settings/bingo/mybonus/edit',
+        data: {
+            id: $('tr#' + id + ' input[name="id"]').val(),
+            ticket_cnt: $('tr#' + id + ' input[name="ticket_cnt"]').val(),
+            max_ball_idx: $('tr#' + id + ' input[name="max_ball_idx"]').val() ,
+            _token: token 
+        } 
+    })
+    .done(function () {
+         javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}');
+    });
+});
+</script>

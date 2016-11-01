@@ -105,6 +105,12 @@ Route::post('/settings/bingo/maxballs/store', 'Settings\BingoController@max_ball
 Route::post('/settings/bingo/maxballs/destroy', 'Settings\BingoController@max_balls_destroy');
 
 /**
+ * SETTINGS / BINGO
+ */
+Route::get('/settings/blackjack/mainconfig', 'Settings\BlackjackController@main_config');
+// Route::get('/settings/blackjack/tables',)
+
+/**
  * LOCALIZATION
  */
 Route::post('/localize', 'LocalizationController@index');

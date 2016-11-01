@@ -8,10 +8,7 @@
     <title>Control Monitoring System</title>
 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css">
-    
-
-    
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css"> 
     <style>
         .wrapper {    
             margin-top: 80px;
@@ -70,32 +67,31 @@
 <body style="background: url('images/login-background.jpg');">
 
 <div class = "container">
-    <div class="wrapper">
-        <form action="{{ url('/') }}" method="post" name="Login_Form" class="form-signin">   
+  <div class="wrapper">
+    <form action="{{ url('/') }}" method="post" name="Login_Form" class="form-signin">
+      {{ csrf_field() }}
+      
+      <h3 class="form-signin-heading"><span id="cms">Control Monitoring System</span></h3>
+        <hr class="colorgraph"><br>
+        
+        <input type="text" class="form-control" name="name" placeholder="Username" required="" autofocus="" />
 
-            <h3 class="form-signin-heading"><span id="cms">Control Monitoring System</span></h3>
-              <hr class="colorgraph"><br>
-              
-              <input type="text" class="form-control" name="name" placeholder="Username" required="" autofocus="" />
+        @if ($errors->has('user'))
+          <span class="help-block">
+              <strong>{{ $errors->first('name') }}</strong>
+          </span>
+        @endif
 
-                @if ($errors->has('user'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('name') }}</strong>
-                    </span>
-                @endif
+        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+        @if ($errors->has('password'))
+          <span class="help-block">
+              <strong>{{ $errors->first('password') }}</strong>
+          </span>
+        @endif
 
-              <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
-
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-
-            {{ csrf_field() }}
-              <button class="btn btn-lg btn-danger btn-block"  name="Submit" value="Login" type="Submit">Login</button>            
-        </form>         
-    </div>
+        <button class="btn btn-lg btn-danger btn-block"  name="Submit" value="Login" type="Submit">Login</button>            
+    </form>         
+  </div>
 </div>
 <!-- JavaScripts -->
 <script src="jquery-3.1.1.js"></script>

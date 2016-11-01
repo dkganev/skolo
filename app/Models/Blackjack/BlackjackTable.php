@@ -4,16 +4,17 @@ namespace App\Models\Blackjack;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlackjackGameHistory extends Model
+class BlackjackTable extends Model
 {
 	protected $connection = 'pgsql5';
 
-	protected $table = 'game_history';
+	protected $table = 'tableconf';
+
+	protected $primaryKey = 'table_id';
 
 	public $timestamps = false;
 
 	public $increments = false;
 
 	protected $guarded = [];
-	
 }

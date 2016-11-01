@@ -49,7 +49,6 @@ class BingoPlaylistController extends Controller
     {
         $template = Templates::where('template_id', $request->template_id)->first();
 
-
         foreach($template->template_games as $games)
         {
             $data = [
@@ -122,7 +121,6 @@ class BingoPlaylistController extends Controller
         $playlist->save();
 
         return back();
-
     }
 
 }
