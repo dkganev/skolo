@@ -98,16 +98,21 @@ Route::post('/settings/addErrorList', 'Settings\ErrorsController@addErrorList');
  */
 Route::get('/settings/bingo/mainconfig', 'Settings\BingoController@main_config');
 Route::post('/settings/bingo/mainconfig/edit', 'Settings\BingoController@main_config_edit');
+
 Route::get('/settings/bingo/mybonus', 'Settings\BingoController@my_bonus');
 Route::post('/settings/bingo/mybonus/edit', 'Settings\BingoController@my_bonus_edit');
-Route::get('/settings/bingo/maxballs', 'Settings\BingoController@max_balls');
+
+Route::get('/settings/bingo/maxballs', 'Settings\BingoController@max_balls_index');
 Route::post('/settings/bingo/maxballs/store', 'Settings\BingoController@max_balls_store');
+Route::post('/settings/bingo/maxballs/edit', 'Settings\BingoController@max_balls_edit');
 Route::post('/settings/bingo/maxballs/destroy', 'Settings\BingoController@max_balls_destroy');
 
 /**
  * SETTINGS / Blackjack
  */
-Route::get('/settings/blackjack/mainconfig', 'Settings\BlackjackController@main_config');
+Route::get('/settings/blackjack/mainconfig', 'Settings\BlackjackController@main_config_index');
+Route::get('/settings/blackjack/tables', 'Settings\BlackjackController@tables_index');
+
 Route::post('/settings/blackjack/mainconfig/edit', 'Settings\BlackjackController@main_config_edit');
 Route::post('/settings/blackjack/table/edit', 'Settings\BlackjackController@table_edit');
 

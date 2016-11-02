@@ -6,7 +6,7 @@
 	            <!-- Secondary Navigation -->
 	            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
 
-	              <li><a class="active" href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
+	              <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
 
 	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
 
@@ -27,7 +27,7 @@
 <div class="well" style="background: #ffffff;">
 	<div class="row">
 
-	<form action="/settings/bingo/mainconfig/edit" method="POST" role="form">
+	<form action="/settings/bingo/mainconfig/edit" method="POST" role="form" id="bingo-main-config">
 		{{ csrf_field() }}
 		<!-- SETIINGS -->
 		<div class="col-lg-4">
@@ -156,7 +156,7 @@
 
 			</div><!-- End Col -->
 
-			<button name="Submit" value="Login" type="Submit" style="width:315px; margin-left: 17px;" type="submit" class="btn btn-danger">Update</button>
+			<button id="bingo-main-config-sbt" type="submit" style="width:315px; margin-left: 17px;" class="btn btn-danger">Update</button>
 			</form>
 
 
@@ -167,3 +167,18 @@
 </div><!-- End Col -->
 </div><!-- End Row -->
 </div><!-- End Container -->
+
+<script>
+	$('button#bingo-main-config-sbt').on('click', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+        method: 'POST',
+        url: '/settings/bingo/mainconfig/edit',
+        data: $('form#bingo-main-config').serialize(),
+    })
+    .done(function () {
+         javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}');
+    });
+});
+</script>

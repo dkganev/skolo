@@ -22,7 +22,6 @@
 <div class="row">
 <div class="col-lg-12">
 
-<form class="form-inline">
 <!--    Context Classes  -->
 <div class="panel panel-default">
    
@@ -30,13 +29,13 @@
         <a id="toggle-max-balls" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addMaxBallsModal">
             Add New
         </a>
-        
 
         <a href="{{ url('/settings/exportBillTypes') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export</a>
-
     </div>
 
     <div class="panel-body">
+
+      <form action="/settings/bingo/maxballs/edit" method="POST">
         <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
                 data-toggle="table"
                 data-locale="en-US"
@@ -66,14 +65,11 @@
           </thead>
             <tbody>
             @foreach($jackpot_steps as $steps)
-      <tr>
+      <tr id="{{ $steps->id }}">
           <td><span class="badge">{{ $steps->id }}</span></td>
 
-          <form action="{{ url('/settings/bingo/maxballs/edit') }}" method="POST">
-          
-          <input type="hidden" name="id" value="{{ $steps->id }}">
-
           <td style="width:20px;">
+            <input type="hidden" name="bingo_cost_fixed" value="false">
             <input name="bingo_cost_fixed" type="checkbox" {{ $steps->bingo_cost_fixed ? " checked" : "" }}>
           </td>
 
@@ -106,38 +102,51 @@
             <input style="width:110px; height: 30px;" name="bonus_bingo_ticket_cnt" value="{{ $steps->bonus_bingo_ticket_cnt }}" type="text" class="form-control">
           </td>
           <td>
-              <!-- <button type="submit" class="btn btn-warning btn-xs">Update</button> -->
-            <input value="Update" type="submit" name="submit" class="btn btn-warning btn-xs">
-            <!-- <input value="Delete" type="submit" name="submit" class="btn btn-warning btn-xs"> -->
-
-            <a href="#" 
+              {{ csrf_field() }}
+              <input type="hidden" name="id" value="{{ $steps->id }}">
+              <button type="submit" class="btn btn-warning btn-xs edit-max-balls-btn" data-id="{{ $steps->id }}">Update</button>
+          
+              <a href="#" 
                 class="btn btn-danger btn-xs"
-                role="button" data-toggle="modal"
+                role="button"
                 data-toggle="modal"
                 data-target="#deleteMaxBallModal"
                 data-id="{{ $steps->id }}"
-            >
+              >
                 Delete
-            </a>
+              </a>
           </td>
-
-          </form>
-      </tr>
+        </tr>
                         @endforeach
                     </tbody>
                 </table>
+              </form>
             </div> <!--End Panel Body -->
         </div> <!--End Panel -->
-
-</form>
 
 </div><!-- End Col -->
 </div><!-- End Row -->
 </div><!-- End Container Fluid -->
 
+<script>
+// SEND TABLE EDIT FORM
+$('.edit-max-balls-btn').on('click', function(event) {
+    event.preventDefault();
+    var id = $(this).attr('data-id');
 
-<link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
+    $.ajax({
+        method: 'POST',
+        url: '/settings/bingo/maxballs/edit',
+        data: $('tr#' + id + ' :input').serialize(),
+    })
+    .done(function () {
+        javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}');
+    });
+});
 
-<script src="bootstrap-table/bootstrap-table.js"></script>
-
-@include('settings.bingo.max-balls-modals')
+// CHANGE VALUE ON CHECKBOX ON CHANGE T/F
+$('input[type="checkbox"]').change(function(){
+     cb = $(this);
+     cb.val(cb.prop('checked'));
+ });
+</script>
