@@ -39,6 +39,7 @@ class BlackjackGameHistory extends Model
     {
         return self::accessPgArray($this->dbl);
     }
+<<<<<<< HEAD
     
     public function getArraySurrender()
     {
@@ -52,3 +53,7 @@ class BlackjackGameHistory extends Model
     
 }
 
+=======
+	
+}
+>>>>>>> 9fc3bc027e779d0c5c81fcf28fae020830e4f034

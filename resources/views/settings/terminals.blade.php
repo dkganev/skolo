@@ -54,64 +54,64 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($server_ps as $ps)
-                            <tr>
-                                <td>{{ $ps->dallasid }}</td>
-                                <td>{{ $ps->psid }}</td>
-                                <td>{{ $ps->seatid }}</td>
-                                <td>{{ $ps->ps_settings->psdescription }}</td>
-                                <td>
-                                    {{  $ps->ps_settings->ps_type === 0 ? "PlayStation" : (
-                                        $ps->ps_settings->ps_type === 1 ? "Statistics" : (
-                                        $ps->ps_settings->ps_type === 2 ? "Sphere" : (
-                                        $ps->ps_settings->ps_type === 3 ? "Balls" : (
-                                        $ps->ps_settings->ps_type === 4 ? "Wheel" : (
-                                        $ps->ps_settings->ps_type === 5 ? "Statistic RLT" : (
-                                        $ps->ps_settings->ps_type === 6 ? "Jackpot Statistic" : 0 ))))))
-                                    }}
-                                </td>
-                                <td>
-                                    <span style="color: {{ $ps->ps_status->bonline ? 'green' : 'red' }} ;">
-                                            {{ $ps->ps_status->bonline ? 'Online' : 'Offline'}}
-                                    </span>
-                                </td>
-                                <td>{{ $ps->ps_status->ip }}</td>
-                                <td>{{ $ps->casino->casinoname }}</td>
-                                <td>
-                                    <a  href="" role="button" data-toggle="modal"
-                                        data-toggle="modal"
-                                        data-target="#updateMachineModal-{{ $ps->psid }}"
-                                        data-psid="{{ $ps->psid }}"
-                                        data-dallasid="{{ $ps->dallasid }}"
-                                        data-games="{{ $ps->ps_settings->subscribed }}"
-                                        class="btn btn-primary btn-xs"
-                                    >
-                                    Edit
-                                    </a>
-                                    <a  href="" role="button" data-toggle="modal"
-                                        data-toggle="modal"
-                                        data-target="#resetPsModal"
-                                        data-psid="{{ $ps->psid }}"
-                                        data-dallasid="{{ $ps->dallasid }}"
-                                        class="btn btn-warning btn-xs"
-                                    >  
-                                    Restart
-                                    </a>
+                    @foreach($server_ps as $ps)
+                        <tr>
+                            <td>{{ $ps->dallasid }}</td>
+                            <td>{{ $ps->psid }}</td>
+                            <td>{{ $ps->seatid }}</td>
+                            <td>{{ $ps->ps_settings->psdescription }}</td>
+                            <td>
+                                {{  $ps->ps_settings->ps_type === 0 ? "PlayStation" : (
+                                    $ps->ps_settings->ps_type === 1 ? "Statistics" : (
+                                    $ps->ps_settings->ps_type === 2 ? "Sphere" : (
+                                    $ps->ps_settings->ps_type === 3 ? "Balls" : (
+                                    $ps->ps_settings->ps_type === 4 ? "Wheel" : (
+                                    $ps->ps_settings->ps_type === 5 ? "Statistic RLT" : (
+                                    $ps->ps_settings->ps_type === 6 ? "Jackpot Statistic" : 0 ))))))
+                                }}
+                            </td>
+                            <td>
+                                <span style="color: {{ $ps->ps_status->bonline ? 'green' : 'red' }} ;">
+                                        {{ $ps->ps_status->bonline ? 'Online' : 'Offline'}}
+                                </span>
+                            </td>
+                            <td>{{ $ps->ps_status->ip }}</td>
+                            <td>{{ $ps->casino->casinoname }}</td>
+                            <td>
+                                <a  href="" role="button" data-toggle="modal"
+                                    data-toggle="modal"
+                                    data-target="#updateMachineModal-{{ $ps->psid }}"
+                                    data-psid="{{ $ps->psid }}"
+                                    data-dallasid="{{ $ps->dallasid }}"
+                                    data-games="{{ $ps->ps_settings->subscribed }}"
+                                    class="btn btn-primary btn-xs"
+                                >
+                                Edit
+                                </a>
+                                <a  href="" role="button" data-toggle="modal"
+                                    data-toggle="modal"
+                                    data-target="#resetPsModal"
+                                    data-psid="{{ $ps->psid }}"
+                                    data-dallasid="{{ $ps->dallasid }}"
+                                    class="btn btn-warning btn-xs"
+                                >  
+                                Restart
+                                </a>
 
-                                    <a  href="" role="button" data-toggle="modal"
-                                        data-toggle="modal"
-                                        data-target="#deletePsModal"
-                                        data-psid="{{ $ps->psid }}"
-                                        data-dallasid="{{ $ps->dallasid }}"
-                                        class="btn btn-danger btn-xs"
-                                    >
-                                    Delete
-                                    </a>
+                                <a  href="" role="button" data-toggle="modal"
+                                    data-toggle="modal"
+                                    data-target="#deletePsModal"
+                                    data-psid="{{ $ps->psid }}"
+                                    data-dallasid="{{ $ps->dallasid }}"
+                                    class="btn btn-danger btn-xs"
+                                >
+                                Delete
+                                </a>
 
-                                </td>
-                            </tr>
-                        @include('modals.terminal-update-modal')
-                        @endforeach
+                            </td>
+                        </tr>
+                    @include('modals.terminal-update-modal')
+                    @endforeach
                     </tbody>
                 </table>
             </div><!--End Panel Body -->
@@ -119,10 +119,9 @@
     </div>
 </div> <!--End Row -->
 </div> <!--End Container -->
+
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
-
 <script src="bootstrap-table/bootstrap-table.js"></script>
-
 
 <!-- Add Game Client Modal -->
 <div class="row">
@@ -130,7 +129,7 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong>Restart Terminal</strong></h2>
+          <h2><strong>Delete Terminal</strong></h2>
       </div>
       
       <div class="modal-body">
@@ -165,7 +164,7 @@ $(document).ready(function() {
         $.ajax({
             method: 'POST',
             url: '/terminal/destroy',
-            data: { 
+            data: {
                 psid: $('#deletePsModal input[name="psid"]').val(),
                 _token: token
             }

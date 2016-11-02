@@ -50,7 +50,7 @@
           <thead class="w3-blue-grey">
             <tr>
               <th data-sortable="true">ID</th>
-              <th data-sortable="true">Fixed Cost</th>                         
+              <th data-sortable="true">Fixed</th>                         
               <th data-sortable="true">Ticket Cost</th>
               <th data-sortable="true">JB. Max Ball</th>
               <th data-sortable="true">JL. Max Ball</th>

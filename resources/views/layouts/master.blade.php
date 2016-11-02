@@ -47,41 +47,38 @@
 </head>
 <body style="background-image: url('images/background.jpg'); ">
 
-    @include('layouts.alerts')
-    @include('layouts.navbar')
+@include('layouts.alerts')
+@include('layouts.navbar')
 
-    <div style="display:none;" id="content"></div>
-    <!-- <div class="loading"></div> -->
-    @yield('content')
+<div style="display:none;" id="content"></div>
+@yield('content')
 
-    <script>
+<script>
 
-        function ajaxLoad(filename, content) {
-            content = typeof content !== 'undefined' ? content : 'content';
-            //$('.loading').show(0);
-            $.ajax({
-                type: "GET",
-                url: filename,
-                success: function (data) {
-                    //$('.loading').delay(300).hide(0);
-                    $("#" + content).css('display','none').html(data).hide().fadeIn(400);
-                    // window.history.pushState({}, null, filename);
-                },
-                error: function (xhr, status, error) {
-                    console.log(error);
-                }
-            }).done(function() {
-                $('select').selectpicker('refresh');
-            });
+function ajaxLoad(filename, content) {
+    content = typeof content !== 'undefined' ? content : 'content';
+    $.ajax({
+        type: "GET",
+        url: filename,
+        success: function (data) {
+            $("#" + content).css('display','none').html(data).hide().fadeIn(400);
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
         }
+    }).done(function() {
+        $('select').selectpicker('refresh');
+    });
+}
 
-        $('li').on('click', function () {
-          // $('li').removeClass('active');
-          // $(this).addClass('active');
-          $(this).addClass('active').siblings().removeClass('active');
-        });
+$('li').on('click', function () {
+  // $('li').removeClass('active');
+  // $(this).addClass('active');
+  $(this).addClass('active').siblings().removeClass('active');
+});
 
-    </script>
-    <script src="/js/main.js"></script>
+</script>
+
+<script src="/js/main.js"></script>
 </body>
 </html>
