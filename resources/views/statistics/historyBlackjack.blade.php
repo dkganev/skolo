@@ -1,4 +1,4 @@
-@include('modals.rouletteHistory-modal')
+@include('modals.BJHistory-modal')
 <div class="col-md-12 "> 
         <div class="page-header" style="padding-left:15px; margin-top: 0px; margin-right: -15px; background-color: none;">
             <!-- Secondary Navigation -->
@@ -59,7 +59,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
+                                <tr id='Row{{ $history->game_seq }}' data-id='{{ $history->game_seq }}' data-ts='{{ $history->ts }}'  class="disableTextSelect offline bootstrap-modal-form-open rowsBJ" data-toggle="modal" data-target="#BJHistory_modal" >
                        
                                     <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td>{{ $history->game_seq }}</td>
@@ -132,24 +132,23 @@
 
 <script >
 var firstClick = 0;
-$(document).on("click","tr.rowsR td", function(e){
+$(document).on("click","tr.rowsBJ td", function(e){
     //alert(e.target.innerHTML);
     //console.log( $(this).parent("tr").attr('data-id'));
     rowID = parseInt($(this).parent("tr").attr('data-id'));
+    rowTS = $(this).parent("tr").attr('data-ts');
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
-        url:'ajax_statRouletteHistory',
+        url:'ajax_statBJHistory',
         dataType: "json",
-        data:{'rowID': rowID , _token: token},
+        data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
         success:function(data){
             if (data.success == "success"){
-                $('#roulettePic').html(data.html); //seatid
-                $('#rouletteHead').html(data.seatid);
-                $('#winNumber').html(data.winNumber);
+                $('#BJcards').html(data.html); //seatid
+                $('#BJHead').html(data.seatid);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
-                $('#jackpotWon').html(data.jackpotWon);
                 
             }
         },
