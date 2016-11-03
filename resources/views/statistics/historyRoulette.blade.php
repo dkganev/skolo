@@ -90,37 +90,6 @@
 <script src="bootstrap-table/bootstrap-table.js"></script>
 
 <script >
-var firstClick = 0;
-$(document).on("click","tr.rowsR td", function(e){
-    //alert(e.target.innerHTML);
-    //console.log( $(this).parent("tr").attr('data-id'));
-    rowID = parseInt($(this).parent("tr").attr('data-id'));
-    rowTS = $(this).parent("tr").attr('data-ts');
-    token = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        type:'POST',
-        url:'ajax_statRouletteHistory',
-        dataType: "json",
-        data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
-        success:function(data){
-            if (data.success == "success"){
-                $('#roulettePic').html(data.html); //seatid
-                $('#rouletteHead').html(data.seatid);
-                $('#winNumber').html(data.winNumber);
-                $('#totalBet').html(data.totalBet);
-                $('#totalWin').html(data.totalWin);
-                $('#jackpotWon').html(data.jackpotWon);
-                
-            }
-        },
-        error: function (error) {
-            alert ("Unexpected wrong.");
-        }
-        
-    });
-
-    
-});    
 
 
 </script>

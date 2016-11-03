@@ -147,35 +147,6 @@
 <script src="bootstrap-table/bootstrap-table.js"></script>
 
 <script >
-var firstClick = 0;
-$(document).on("click","tr.rowsBJ td", function(e){
-    //alert(e.target.innerHTML);
-    //console.log( $(this).parent("tr").attr('data-id'));
-    rowID = parseInt($(this).parent("tr").attr('data-id'));
-    rowTS = $(this).parent("tr").attr('data-ts');
-    token = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        type:'POST',
-        url:'ajax_statBJHistory',
-        dataType: "json",
-        data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
-        success:function(data){
-            if (data.success == "success"){
-                $('#BJcards').html(data.html); //seatid
-                $('#BJHead').html(data.seatid);
-                $('#totalBet').html(data.totalBet);
-                $('#totalWin').html(data.totalWin);
-                
-            }
-        },
-        error: function (error) {
-            alert ("Unexpected wrong.");
-        }
-        
-    });
-
-    
-});    
 
 
 </script>
