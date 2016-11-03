@@ -32,6 +32,7 @@
             <thead class="w3-blue-grey">
               <tr>
                 <th>Table</th>
+                <th>Enabled</th>
                 <th>Min Bet</th>
                 <th>Max Bet</th>
                 <th>Chip 1</th>
@@ -46,6 +47,14 @@
                 @foreach($tables as $table)
                 <tr id="{{ $table->table_id }}">
                     <td><span class="badge">{{ $table->table_id + 1 }}</span></td>
+                    <td>
+                        <span class="button-checkbox">
+                            <input type="hidden" name="enabled" value="false">
+                            <button type="button" class="btn" data-color="danger"></button>
+                            <input type="checkbox" name="enabled" class="hidden"
+                             {{ $table->game_state->enabled ? " checked" : "" }} />
+                        </span>
+                    </td>
                     <td>
                         <input name="bet_min" style="height:30px;" class="form-control" value="{{ $table->bet_min }}" type="text">
                     </td>
@@ -92,26 +101,134 @@
 </div><!-- End Container -->
 
 <script>
+/* Edit Table Row */
 // SEND TABLE EDIT FORM
 $('.bj-table-button').on('click', function(event) {
     event.preventDefault();
     var id = $(this).attr('data-id');
-
+    var trForm = $('tr#' + id + ' :input[name="bet_max"]').val();
+    
     $.ajax({
         method: 'POST',
         url: '/settings/blackjack/table/edit',
         data: $('tr#' + id + ' :input').serialize(),
-        success: function(data){
-            $('.alert-success').delay(500).fadeIn(function() {
-              $(this).delay(2500).fadeOut();
+        success: function(data) {
+            // For Version
+            // for(key in data.response) {
+            //     $('tr#' + id + ' :input[name="' + key + '"]').val(data.response[key]);
+            // }
+
+            // Each Version
+            $.each(data.response, function(key, value) {
+                $('tr#' + id + ' :input[name="' + key + '"]').val(value);
+            });
+
+            $('tr#' + id).addClass('flashNow');
+            setTimeout(function() {
+                $('tr#' + id).removeClass('flashNow');
+            }, 500);
+
+            $('.alert-success').delay(50).fadeIn(function() {
+              $(this).delay(2000).fadeOut();
             });
         },
         error: function (error) {
             console.log("Error " + error);
         }
-    })
-    .done(function () {
-        javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}');
+    });
+});
+
+// CHANGE VALUE ON CHECKBOX ON CHANGE T/F
+$('input[type="checkbox"]').change(function(){
+     cb = $(this);
+     cb.val(cb.prop('checked'));
+});
+</script>
+
+<style>
+    .flashNow {
+        animation-name: flash;
+        animation-timing-function: ease-out;
+        animation-duration: 2s;
+        -webkit-animation-name: flash;
+        -webkit-animation-timing-function: ease-out;
+        -webkit-animation-duration: 2s;
+    }
+    @-webkit-keyframes flash {
+        from { background: #a5f783; }
+        to  background: none; }
+    }
+    @keyframes flash {
+        0% { background: green; }
+        100% { background: none; }
+    }
+</style>
+
+<!-- Plugin for Boostrap Checkbox -->
+<script>
+  $(function () {
+    $('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $button.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $button.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $button
+                    .removeClass('btn-default')
+                    .addClass('btn-' + color + ' active');
+            }
+            else {
+                $button
+                    .removeClass('btn-' + color + ' active')
+                    .addClass('btn-default');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($button.find('.state-icon').length == 0) {
+                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+            }
+        }
+        init();
     });
 });
 </script>

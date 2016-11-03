@@ -162,20 +162,26 @@
 			</div><!-- End Col -->
 
 			<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-10">
 				<div class="form-group">
-					<label>Shuffle On Each Game:</label>
-					<input type="hidden" name="shuffle_on_each_game" value="false">
-					<input name="shuffle_on_each_game" type="checkbox" {{ $config->shuffle_on_each_game ? " checked" : "" }} >
 
+					<span class="button-checkbox" style="padding: 0 0 0 15px ;">
+						<input type="hidden" name="shuffle_on_each_game" value="false">
+				        <button type="button" class="btn" data-color="danger">Shuffle On Each Game</button>
+				        <input type="checkbox" name="shuffle_on_each_game" class="hidden" {{ $config->shuffle_on_each_game ? " checked" : "" }}  />
+    				</span>
 
-					<label>Allow Split Aces:</label>
-					<input type="hidden" name="allow_split_aces" value="false">
-					<input name="allow_split_aces" type="checkbox" {{ $config->allow_split_aces ? " checked" : "" }} >
+					<span class="button-checkbox" style="padding: 0 0 0 178px ;">
+						<input type="hidden" name="allow_split_aces" value="false">
+				        <button type="button" class="btn" data-color="danger">Allow Split Aces</button>
+				        <input type="checkbox" name="allow_split_aces" class="hidden" {{ $config->allow_split_aces ? " checked" : "" }} />
+    				</span>
+
 				</div>
 			</div><!-- End Col -->
 			</div><!-- End Row -->
-			<hr>
+
+			<hr style="margin: 15px 0 15px 0">
 			<div class="pull-right" style="width: 400px;">
 				{{ csrf_field() }}
 				<button id="main-config-btn" type="submit" class="btn btn-warning btn-sm btn-block">Update</button>
@@ -210,4 +216,73 @@ $('input[type="checkbox"]').change(function(){
      cb = $(this);
      cb.val(cb.prop('checked'));
  });
+</script>
+
+<!-- Plugin for Boostrap Checkbox -->
+<script>
+  $(function () {
+    $('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $button.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $button.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $button
+                    .removeClass('btn-default')
+                    .addClass('btn-' + color + ' active');
+            }
+            else {
+                $button
+                    .removeClass('btn-' + color + ' active')
+                    .addClass('btn-default');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($button.find('.state-icon').length == 0) {
+                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+            }
+        }
+        init();
+    });
+});
 </script>

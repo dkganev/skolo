@@ -2,11 +2,9 @@
 @include('modals.terminal-modals')
 <div class="container-full">
 <div class="row">
-     <!--  page header -->
     <div class="col-lg-12" >
         <h1 style="margin-top: 0px;" class="page-header">Terminals</h1>
     </div>
-     <!-- end  page header -->
 </div>
 </div>
 

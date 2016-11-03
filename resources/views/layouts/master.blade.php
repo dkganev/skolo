@@ -15,6 +15,7 @@
     <link href="/css/flag-icon.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/font-awesome.css" />
 
+
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
@@ -55,29 +56,31 @@
 
 <script>
 
-function ajaxLoad(filename, content) {
-    content = typeof content !== 'undefined' ? content : 'content';
-    $.ajax({
-        type: "GET",
-        url: filename,
-        success: function (data) {
-            $("#" + content).css('display','none').html(data).hide().fadeIn(400);
-        },
-        error: function (xhr, status, error) {
-            console.log(error);
-        }
-    }).done(function() {
-        $('select').selectpicker('refresh');
-    });
-}
+    function ajaxLoad(filename, content) {
+        content = typeof content !== 'undefined' ? content : 'content';
 
-$('li').on('click', function () {
-  // $('li').removeClass('active');
-  // $(this).addClass('active');
-  $(this).addClass('active').siblings().removeClass('active');
-});
+        $.ajax({
+            type: "GET",
+            url: filename,
+            success: function (data) {
+                $("#" + content).css('display','none').html(data).hide().fadeIn(600);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        }).done(function() {
+            $('select').selectpicker('refresh');
+        });
+    }
+
+    $('li').on('click', function () {
+      // $('li').removeClass('active');
+      // $(this).addClass('active');
+      $(this).addClass('active').siblings().removeClass('active');
+    });
 
 </script>
+
 
 <script src="/js/main.js"></script>
 </body>

@@ -15,25 +15,35 @@ class BlackjackController extends Controller
     {
         $config = MainConfig::first();
 
-    	return view('settings.blackjack.main-config', ['config' => $config]);
+        return view('settings.blackjack.main-config', ['config' => $config]);
     }
 
     public function tables_index()
     {
         $tables = BlackjackTable::orderBy('table_id', 'asc')->get();
 
-    	return view('settings.blackjack.tables', ['tables' => $tables]);
+        return view('settings.blackjack.tables', ['tables' => $tables]);
     }
 
     public function table_edit(Request $request)
     {
-    	BlackjackTable::where('table_id', $request->table_id)->update($request->except('_token'));
+        $table = BlackjackTable::where('table_id', $request->table_id)->first();
 
-      return response()->json(['success' => 'Success'], 200);
+        $status = $table->update($request->except('_token', 'enabled'));
+        $table->game_state()->enabled = $request->enabled;
+        $table->save();
+
+        if(!$status)
+        {
+          $msg = 'Something Wrong Happend!';
+          return response()->json(['response' => $msg], 400);
+        }
+
+        return response()->json(['response' => $table], 200);
     }
 
-   	public function main_config_edit(Request $request)
-   	{
-   	  MainConfig::first()->update($request->except('_token'));
-   	}
+  	public function main_config_edit(Request $request)
+  	{
+        MainConfig::first()->update($request->except('_token'));
+  	}
 }

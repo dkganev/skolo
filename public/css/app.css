@@ -4,6 +4,18 @@ html {
 
 a { outline: 0; }
 
+.modal {
+ overflow-y: auto;
+}
+
+.modal-open {
+ overflow: auto;
+}
+
+.modal-open[style] {
+    padding-right: 0px !important;
+}
+
 .navbar-inverse {
   margin-bottom: 0px;
 }

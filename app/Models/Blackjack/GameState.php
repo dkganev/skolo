@@ -4,13 +4,13 @@ namespace App\Models\Blackjack;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlackjackTable extends Model
+class GameState extends Model
 {
 	protected $connection = 'pgsql5';
 
-	protected $table = 'tableconf';
+	protected $table = 'game_state';
 
-	protected $primaryKey = 'table_id';
+	protected $primaryKey = 'table_idx';
 
 	public $timestamps = false;
 
@@ -18,8 +18,8 @@ class BlackjackTable extends Model
 
 	protected $guarded = [];
 
-	public function game_state()
+	public function blackjack_table()
 	{
-		return $this->hasOne(GameState::class, 'table_idx', 'table_id');
+		return $this->belongsTo(BlackjackTable::class);
 	}
 }

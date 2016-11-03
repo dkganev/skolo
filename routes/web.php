@@ -108,13 +108,18 @@ Route::post('/settings/bingo/maxballs/edit', 'Settings\BingoController@max_balls
 Route::post('/settings/bingo/maxballs/destroy', 'Settings\BingoController@max_balls_destroy');
 
 /**
- * SETTINGS / Blackjack
+ * SETTINGS / BLACKJACK
  */
 Route::get('/settings/blackjack/mainconfig', 'Settings\BlackjackController@main_config_index');
 Route::get('/settings/blackjack/tables', 'Settings\BlackjackController@tables_index');
 
 Route::post('/settings/blackjack/mainconfig/edit', 'Settings\BlackjackController@main_config_edit');
 Route::post('/settings/blackjack/table/edit', 'Settings\BlackjackController@table_edit');
+
+/**
+ * SETTINGS / ROULETTE
+ */
+Route::get('/settings/roulette/wheelconfig', 'Settings\RouletteController@wheel_settings_index');
 
 /**
  * LOCALIZATION
