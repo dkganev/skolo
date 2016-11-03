@@ -7,7 +7,7 @@
                 <a href="#" class=" pull-right" style="font-size: 16px; right: 15px !important;  color: #ffffff;" onclick="$('.ModalClose').click();">
                     <i class="glyphicon glyphicon-remove"></i>
                 </a>
-                <span style="font-size: 16px; ">Bingo - Tickets bought on PS </span><span id='ticketNumber'>1</span><span> for Game # </span><span id='gameNumber'>11066</span>
+                <span style="font-size: 16px; ">Bingo - Tickets bought on PS </span><span id='ticketNumber'>1</span><span> for Game # </span><span id='gameNumber'></span>
             </div>
             <div class="modal-body" >
                 <span id='balsHistory' style="font-size: 14px; ">Balls:  </span>

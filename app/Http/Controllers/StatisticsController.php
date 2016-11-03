@@ -92,7 +92,8 @@ class StatisticsController extends Controller
     public function ajax_statBingoHistory(Request $request)
     {
         $databoxID = $request['boxID'];
-        $bingoPurchase_History = BingoPurchase_History::where('bingo_seq', $databoxID)->orderBy('ticket_count', 'desc')->get();
+        $dataRowUnique = $request['rowUnique']; 
+        $bingoPurchase_History = BingoPurchase_History::where('unique_game_seq', $dataRowUnique)->orderBy('ticket_count', 'desc')->get();
         $server_ps = ServerPs::orderBy('psid', 'asc')->get();
         //var_dump($bingoPurchase_History);
         $testPage = view('statistics.bingoPurchase_History', ['bingoPurchase_Historys' => $bingoPurchase_History, 'server_ps' => $server_ps])->render();
@@ -109,20 +110,21 @@ class StatisticsController extends Controller
     public function ajax_statBingoHistoryTickets(Request $request)
     {
         $databingo_seq = $request['bingo_seq'];
+        $dataUnique_game_seq = $request['unique_game_seq'];
         $datapsid = $request['psid'];
         //$bingoTickets = Tickets::orderBy('idx', 'ask')->get();
-        $bingoPurchase_History = BingoPurchase_History::where('bingo_seq', $databingo_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first();
+        $bingoPurchase_History = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first();
         $server_ps_seatid = ServerPs::where('psid', $datapsid)->count() ? ServerPs::where('psid', $datapsid)->orderBy('psid', 'asc')->first()->seatid : "Missing saitid (PSID is $datapsid )";
-        $wins_history = BingoWins_History::where('bingo_seq', $databingo_seq)->get();
-        $BingoBalls = BingoBall_History::where('unique_game_seq', $wins_history->first()->unique_game_seq)->first();
+        $wins_history = BingoWins_History::where('unique_game_seq', $dataUnique_game_seq)->get();
+        $BingoBalls = BingoBall_History::where('unique_game_seq', $dataUnique_game_seq)->first();
         
-        $bingoCount = BingoPurchase_History::where('bingo_seq', $databingo_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first()->ticket_count - 1 ; 
-        $bingoStr = BingoPurchase_History::where('bingo_seq', $databingo_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first()->tickets_id ; 
+        $bingoCount = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first()->ticket_count - 1 ; 
+        $bingoStr = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first()->tickets_id ; 
         //var_dump(stream_get_contents($bingoStr,4, 0));
         $ticketIDfirst = unpack("L",stream_get_contents($bingoStr, 4, 0));
         $ticketIDLast = unpack("L",stream_get_contents($bingoStr, 4, $bingoCount * 4));
         $bingoTickets = Tickets::where('idx', '>=' , $ticketIDfirst)->where('idx', '<=' , $ticketIDLast)->get();
-        $psTicketsArchive = psTicketsArchive::where('bingo_seq', $databingo_seq)->first();
+        $psTicketsArchive = psTicketsArchive::where('unique_game_seq', $dataUnique_game_seq)->first();
         $psTicketsArchiveHTML = "My Bonus Numbers: " . $psTicketsArchive->mybonus_b1 . ", " . $psTicketsArchive->mybonus_b2 . ", " . $psTicketsArchive->mybonus_b3;
         $BingoBallsHTML = "Balls: ";
         $BingoBallsArray = array();
@@ -147,8 +149,9 @@ class StatisticsController extends Controller
     public function ajax_statRouletteHistory(Request $request)
     {
         $dataRowID = $request['rowID'];
+        $dataRowTS = $request['rowTS'];
         //$bingoPurchase_History = BingoPurchase_History::where('bingo_seq', $dataRowID)->orderBy('ticket_count', 'desc')->get();
-        $historys = GameHistory::where('rlt_seq', $dataRowID)->orderBy('ts', 'desc')->first();
+        $historys = GameHistory::where('ts', $dataRowTS)->orderBy('ts', 'desc')->first();
         $server_ps = ServerPs::where('psid', $historys->psid )->first();
         if ($server_ps != null){
             $seatid = "PS: " . $server_ps->seatid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
@@ -403,13 +406,13 @@ class StatisticsController extends Controller
                     foreach ($valP as $key => $val)
                     {
                         if ($val != 0){
+                            if ($keyP == 1){
+                                $totalSplitArray[$keyP2] = $totalBetArray[$keyP2] ;    
+                            }else{
+                                //$totalSplitArray[$keyP2] = 0;
+                            }
+        
                             if ($val > 128){
-                                if ($keyP == 1){
-                                    $totalSplitArray[$keyP2] = $totalBetArray[$keyP2] ;    
-                                }else{
-                                    //$totalSplitArray[$keyP2] = 0;
-                                }
-                                
                                 $cartRank = $val - 128;
                                 if ($cartRank == 14) {
                                     $cartRank = "A";
@@ -424,28 +427,28 @@ class StatisticsController extends Controller
                                 $cards[$keyP2][$keyP][$key] = array('val' => $val, 'cardRank' => $cartRank, 'cardSuit' => "pika"  ); // pika Spades
                             }elseif ($val > 64){
                                 $cartRank = $val - 64;
-                                    if ($cartRank == 14) {
-                                        $cartRank = "A";
-                                    }elseif ($cartRank == 13){
-                                        $cartRank = "K";
-                                    }elseif ($cartRank == 12){
-                                        $cartRank = "Q";
-                                    }elseif ($cartRank == 11){
-                                        $cartRank = "J";
-                                    }
-                                    $cards[$keyP2][$keyP][$key] = array('val' => $val, 'cardRank' => $cartRank, 'cardSuit' => "kupa"  ); //kupa Hearts"
+                                if ($cartRank == 14) {
+                                    $cartRank = "A";
+                                }elseif ($cartRank == 13){
+                                    $cartRank = "K";
+                                }elseif ($cartRank == 12){
+                                    $cartRank = "Q";
+                                }elseif ($cartRank == 11){
+                                    $cartRank = "J";
+                                }
+                                $cards[$keyP2][$keyP][$key] = array('val' => $val, 'cardRank' => $cartRank, 'cardSuit' => "kupa"  ); //kupa Hearts"
                              }elseif ($val > 32){
                                 $cartRank = $val - 32;
-                                    if ($cartRank == 14) {
-                                        $cartRank = "A";
-                                    }elseif ($cartRank == 13){
-                                        $cartRank = "K";
-                                    }elseif ($cartRank == 12){
-                                        $cartRank = "Q";
-                                    }elseif ($cartRank == 11){
-                                        $cartRank = "J";
-                                    }
-                                    $cards[$keyP2][$keyP][$key] = array('val' => $val, 'cardRank' => $cartRank, 'cardSuit' => "karo"  ); //karo Diamonds
+                                if ($cartRank == 14) {
+                                    $cartRank = "A";
+                                }elseif ($cartRank == 13){
+                                    $cartRank = "K";
+                                }elseif ($cartRank == 12){
+                                    $cartRank = "Q";
+                                }elseif ($cartRank == 11){
+                                    $cartRank = "J";
+                                }
+                                $cards[$keyP2][$keyP][$key] = array('val' => $val, 'cardRank' => $cartRank, 'cardSuit' => "karo"  ); //karo Diamonds
                             }else {
                                 $cartRank = $val - 16;
                                 if ($cartRank == 14) {

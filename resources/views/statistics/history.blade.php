@@ -86,7 +86,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->bingo_seq }}' data-id='{{ $history->bingo_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rows" data-toggle="modal" data-target="#bingoHistory_modal" >
+                                <tr id='Row{{ $history->bingo_seq }}' data-id='{{ $history->bingo_seq }}' data-unique='{{ $history->unique_game_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rows" data-toggle="modal" data-target="#bingoHistory_modal" >
                        
                                     <td><?php echo date("Y-m-d H:i:s", strtotime($history->tstamp)); ?></td>
                                     <td>{{ $history->bingo_seq }}</td>
@@ -127,12 +127,13 @@ var firstClick = 0;
 $(document).on("click","tr.rows td", function(e){
     //console.log( $(this).parent("tr").attr('data-id'));
     boxID = parseInt($(this).parent("tr").attr('data-id'));
+    rowUnique = $(this).parent("tr").attr('data-unique');
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
         url:'ajax_statBingoHistory',
         dataType: "json",
-        data:{'boxID': boxID , _token: token},
+        data:{'boxID': boxID, 'rowUnique': rowUnique, _token: token},
         success:function(data){
             if (data.success == "success"){
                 $('#bingoPurchase_History').html(data.html);
@@ -193,13 +194,13 @@ $(document).on("click","tr.rows td", function(e){
     
 }
 */    
-function boxModalWindow2(bingo_seq, psid) {
+function boxModalWindow2(bingo_seq, unique_game_seq, psid) {
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
         url:'ajax_statBingoHistoryTickets',
         dataType: "json",
-        data:{'bingo_seq': bingo_seq, "psid": psid, _token: token},
+        data:{'bingo_seq': bingo_seq, 'unique_game_seq': unique_game_seq, "psid": psid, _token: token},
         success:function(data){
             if (data.success == "success"){
                 $('#ticketNumber').html(data.server_ps_seatid);

@@ -50,5 +50,9 @@ class BlackjackGameHistory extends Model
         return self::accessPgArray($this->insurance);
     }
     
+    public function getArraySeat_id()
+    {
+        return self::accessPgArray($this->seat_id);
+    }
 }
 

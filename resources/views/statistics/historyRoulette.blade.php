@@ -61,7 +61,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
+                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
                                     <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td>{{ $history->rlt_seq }}</td>
@@ -95,12 +95,13 @@ $(document).on("click","tr.rowsR td", function(e){
     //alert(e.target.innerHTML);
     //console.log( $(this).parent("tr").attr('data-id'));
     rowID = parseInt($(this).parent("tr").attr('data-id'));
+    rowTS = $(this).parent("tr").attr('data-ts');
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
         url:'ajax_statRouletteHistory',
         dataType: "json",
-        data:{'rowID': rowID , _token: token},
+        data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
         success:function(data){
             if (data.success == "success"){
                 $('#roulettePic').html(data.html); //seatid

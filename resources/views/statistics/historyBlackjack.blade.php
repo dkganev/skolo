@@ -50,8 +50,8 @@
                         <tr>
                             <th class="text-center" data-field="date" data-sortable="true">Time</th>
                             <th class="text-center" data-align="right" data-sortable="true">Game #</th>
+                            <th class="text-center" data-align="right" data-sortable="true">Table ID</th>
                             <th class="text-center" data-align="right" data-sortable="true">PS ID</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Terminals</th>
                             <th class="text-center" data-align="right" data-sortable="true">Total Bet</th>
                             <th class="text-center" data-align="right" data-sortable="true">Total Win</th>
                         </tr>
@@ -65,12 +65,9 @@
                                     <td>{{ $history->game_seq }}</td>
                                     <td>{{$history->table_idx + 1}}</td>
                                     <td><?php 
-                                            $totalBetStr = $history->seat_id; 
-                                            $totalBetStr = str_replace("{","",$totalBetStr);
-                                            $totalBetStr = str_replace("}","",$totalBetStr);
-                                            $totalBetArray = explode(',', $totalBetStr);
+                                            $totalSeat_idArray = $history->getArraySeat_id();
                                             $n = 0;
-                                            foreach ($totalBetArray as $key => $val){
+                                            foreach ($totalSeat_idArray as $key => $val){
                                                 if ($val != 0){
                                                     if ($n == 0){
                                                         $n = 1;
@@ -78,38 +75,57 @@
                                                         print (", ");
                                                     }
                                                     print  ($val);
-                                                    
-                                                    
                                                 }
-                                                //$totalWin1 += parseInt($val);
                                             }
-                                            //print ($totalBet);
+                                        ?>
+                                    </td>
+                                    <td><?php
+                                            $totalBetArray = $history->getArrayBet();
+                                            $dblArray = $history->getArrayDbl();
+                                            $totalDblArray = array();
+                                            foreach ($dblArray as $key => $val){
+                                                foreach ($val as $keySub => $valSub){
+                                                    if ($valSub == 1){
+                                                        if (empty($totalDblArray[$key])){
+                                                            $totalDblArray[$key] = $totalBetArray[$key];
+                                                        }else{
+                                                            $totalDblArray[$key] += $totalBetArray[$key];
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            $insuranceArray = $history->getArrayInsurance();
+                                            $totalInsuranceArray  = array();
+                                            foreach ($insuranceArray as $key => $val){
+                                                if ($val == 1){
+                                                    $totalInsuranceArray[$key] = $totalBetArray[$key] / 2;
+                                                }
+                                            }
+                                            $totalCards = $history->getArrayCards();
+                                            $totalSplitArray = array();
+                                            foreach ($totalCards as $keyP2 => $valP2){
+                                                foreach ($valP2 as $keyP => $valP){
+                                                    foreach ($valP as $key => $val){
+                                                        if ($val != 0){
+                                                            if ($keyP == 1){
+                                                                $totalSplitArray[$keyP2] = $totalBetArray[$keyP2] ;    
+                                                            }else{
+                                                                //$totalSplitArray[$keyP2] = 0;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }    
+       
+                                            
+                                            $totalBet = array_sum($totalBetArray) + array_sum($totalDblArray) + array_sum($totalInsuranceArray)  + array_sum($totalSplitArray);
+                                            print (number_format($totalBet / 100, 2));
                                         ?>
                                     </td>
                                     <td><?php 
-                                            $totalBetStr = $history->bet; 
-                                            $totalBetStr = str_replace("{","",$totalBetStr);
-                                            $totalBetStr = str_replace("}","",$totalBetStr);
-                                            $totalBetArray = explode(',', $totalBetStr);
-                                            $totalBet = 0;
-                                            foreach ($totalBetArray as $val){
-                                                $totalBet += $val;
-                                                //$totalWin1 += parseInt($val);
-                                            }
-                                            print ($totalBet);
-                                        ?>
-                                    </td>
-                                    <td><?php 
-                                            $totalWinStr = $history->win; 
-                                            $totalWinStr = str_replace("{","",$totalWinStr);
-                                            $totalWinStr = str_replace("}","",$totalWinStr);
-                                            $totalWinArray = explode(',', $totalWinStr);
-                                            $totalWin = 0;
-                                            foreach ($totalWinArray as $val){
-                                                $totalWin += $val;
-                                                //$totalWin += parseInt($val);
-                                            }
-                                            print ($totalWin);
+                                            $totalWinArray = $history->getArrayWin();
+                                            $totalWin = array_sum($totalWinArray);
+                                            print (number_format($totalWin / 100, 2));
                                         ?>
                                     </td>
                                 </tr>
