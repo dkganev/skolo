@@ -61,7 +61,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
+                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
                                     <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td>{{ $history->rlt_seq }}</td>
@@ -90,36 +90,6 @@
 <script src="bootstrap-table/bootstrap-table.js"></script>
 
 <script >
-var firstClick = 0;
-$(document).on("click","tr.rowsR td", function(e){
-    //alert(e.target.innerHTML);
-    //console.log( $(this).parent("tr").attr('data-id'));
-    rowID = parseInt($(this).parent("tr").attr('data-id'));
-    token = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        type:'POST',
-        url:'ajax_statRouletteHistory',
-        dataType: "json",
-        data:{'rowID': rowID , _token: token},
-        success:function(data){
-            if (data.success == "success"){
-                $('#roulettePic').html(data.html); //seatid
-                $('#rouletteHead').html(data.seatid);
-                $('#winNumber').html(data.winNumber);
-                $('#totalBet').html(data.totalBet);
-                $('#totalWin').html(data.totalWin);
-                $('#jackpotWon').html(data.jackpotWon);
-                
-            }
-        },
-        error: function (error) {
-            alert ("Unexpected wrong.");
-        }
-        
-    });
-
-    
-});    
 
 
 </script>

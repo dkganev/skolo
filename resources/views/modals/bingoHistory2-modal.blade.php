@@ -7,7 +7,7 @@
                 <a href="#" class=" pull-right" style="font-size: 16px; right: 15px !important;  color: #ffffff;" onclick="$('.ModalClose').click();">
                     <i class="glyphicon glyphicon-remove"></i>
                 </a>
-                <span style="font-size: 16px; ">Bingo - Tickets bought on PS </span><span id='ticketNumber'>1</span><span> for Game # </span><span id='gameNumber'>11066</span>
+                <span style="font-size: 16px; ">Bingo - Tickets bought on PS </span><span id='ticketNumber'>1</span><span> for Game # </span><span id='gameNumber'></span>
             </div>
             <div class="modal-body" >
                 <span id='balsHistory' style="font-size: 14px; ">Balls:  </span>
@@ -35,6 +35,9 @@
             </div>
         </div>
     </div>
+</div>
+<div class='faSpinnerBingo' style="display: none; left: 800px; top: 400px; position: absolute; z-index: 10000;">
+    <i class="fa fa-spinner fa-spin" style="font-size:24px; color: #ffffff;"></i>
 </div>
 <script>
     var token = '{{ Session::token() }}';
