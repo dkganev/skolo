@@ -23,6 +23,13 @@ $(document).on("click","tr.rows td", function(e){
     
 });
 function boxModalWindow2(bingo_seq, unique_game_seq, psid) {
+    $(".faSpinnerBingo").show(); //BJHistory_modal opacity: 0.5;
+    //$('#bingoHistory2_modal').hide();
+    //$('#bingoHistory_modal').hide();
+    $('#bingoTickets_History').hide();
+    $('#balsHistory').hide();
+    $('#psTicketsArchive').hide();
+    $('#bingoHistory2_modal').css('opacity', 0.3);
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
@@ -37,11 +44,19 @@ function boxModalWindow2(bingo_seq, unique_game_seq, psid) {
                 $('#psTicketsArchive').html(data.psTicketsArchiveHTML);
                 
                 $('#bingoTickets_History').html(data.html);
-               //alert(boxID); balsHistory
+                $(".faSpinnerBingo").hide();
+                $('#bingoTickets_History').show();
+                $('#balsHistory').show();
+                $('#psTicketsArchive').show();
+                $('#bingoHistory2_modal').css('opacity', 1);
+                //$('#bingoHistory2_modal').show();
+                //$('#bingoHistory_modal').show();
+                //alert(boxID); balsHistory
             }
         },
         error: function (error) {
             alert ("Unexpected wrong.");
+            $(".faSpinnerBingo").hide();
         }
         
     });
@@ -50,6 +65,12 @@ function boxModalWindow2(bingo_seq, unique_game_seq, psid) {
 $(document).on("click","tr.rowsR td", function(e){
     //alert(e.target.innerHTML);
     //console.log( $(this).parent("tr").attr('data-id'));
+    
+    wTop = $(window).height() / 2;
+    wLeft = $(window).width() / 2;
+    $(".faSpinner").css('top', wTop );
+    $(".faSpinner").css("left", wLeft);
+    $(".faSpinner").show();
     rowID = parseInt($(this).parent("tr").attr('data-id'));
     rowTS = $(this).parent("tr").attr('data-ts');
     token = $('meta[name="csrf-token"]').attr('content');
@@ -66,11 +87,14 @@ $(document).on("click","tr.rowsR td", function(e){
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
                 $('#jackpotWon').html(data.jackpotWon);
+                //$(".faSpinner").hide();
                 
             }
+            //$(".faSpinner").hide();
         },
         error: function (error) {
             alert ("Unexpected wrong.");
+             $(".faSpinner").hide();
         }
         
     });
@@ -79,8 +103,12 @@ $(document).on("click","tr.rowsR td", function(e){
 });    
 
 $(document).on("click","tr.rowsBJ td", function(e){
-    //alert(e.target.innerHTML);
-    //console.log( $(this).parent("tr").attr('data-id'));
+    //wTop = $(window).height() / 2;
+    //wLeft = $(window).width() / 2;
+    //$(".faSpinner").css('top', wTop );
+    //$(".faSpinner").css("left", wLeft);
+    $(".faSpinnerBJ").show();
+    $('#BJcards').hide();
     rowID = parseInt($(this).parent("tr").attr('data-id'));
     rowTS = $(this).parent("tr").attr('data-ts');
     token = $('meta[name="csrf-token"]').attr('content');
@@ -95,11 +123,15 @@ $(document).on("click","tr.rowsBJ td", function(e){
                 $('#BJHead').html(data.seatid);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
-                
+                $(".faSpinnerBJ").hide();
+                $('#BJcards').show()
             }
+            $(".faSpinnerBJ").hide();
         },
         error: function (error) {
             alert ("Unexpected wrong.");
+            $(".faSpinnerBJ").hide();
+            
         }
         
     });

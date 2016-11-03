@@ -118,8 +118,8 @@ class StatisticsController extends Controller
         $wins_history = BingoWins_History::where('unique_game_seq', $dataUnique_game_seq)->get();
         $BingoBalls = BingoBall_History::where('unique_game_seq', $dataUnique_game_seq)->first();
         
-        $bingoCount = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first()->ticket_count - 1 ; 
-        $bingoStr = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first()->tickets_id ; 
+        $bingoCount = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->first()->ticket_count - 1 ; 
+        $bingoStr = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->first()->tickets_id ; 
         //var_dump(stream_get_contents($bingoStr,4, 0));
         $ticketIDfirst = unpack("L",stream_get_contents($bingoStr, 4, 0));
         $ticketIDLast = unpack("L",stream_get_contents($bingoStr, 4, $bingoCount * 4));

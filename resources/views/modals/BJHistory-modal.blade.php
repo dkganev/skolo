@@ -41,6 +41,10 @@
         </div>
     </div>
 </div>
+<div class='faSpinnerBJ' style="display: none; left: 800px; top: 490px; position: absolute; z-index: 10000;">
+    <i class="fa fa-spinner fa-spin" style="font-size:24px; color: #ffffff;"></i>
+</div>
+
 <script>
     var token = '{{ Session::token() }}';
     var add_machine = '{{ route('add.machine') }}';
