@@ -1,4 +1,4 @@
-@if (array_key_exists(3,$cards))
+@if (array_key_exists(4,$cards))
     @foreach ($cards[4] as $keyP => $cardP)
         <?php 
             if ($keyP == 0){

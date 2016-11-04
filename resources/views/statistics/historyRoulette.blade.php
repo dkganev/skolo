@@ -61,7 +61,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
+                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' data-Ids='{{ $history->psid }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
                                     <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td>{{ $history->rlt_seq }}</td>
