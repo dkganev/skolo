@@ -106,11 +106,12 @@ $(document).on("click","tr.rowsBJ td", function(e){
     //wTop = $(window).height() / 2;
     //wLeft = $(window).width() / 2;
     //$(".faSpinner").css('top', wTop );
-    //$(".faSpinner").css("left", wLeft);
+    //$(".faSpinner").css("left", wLeft);data-table
     $(".faSpinnerBJ").show();
     $('#BJcards').hide();
     rowID = parseInt($(this).parent("tr").attr('data-id'));
     rowTS = $(this).parent("tr").attr('data-ts');
+    rowTable = $(this).parent("tr").attr('data-table');
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
@@ -124,7 +125,10 @@ $(document).on("click","tr.rowsBJ td", function(e){
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
                 $(".faSpinnerBJ").hide();
-                $('#BJcards').show()
+                $('#next-prev').attr("data-table", rowTable);
+                $('#next-prev').attr("data-ts", rowTS);
+                $('#BJcards').show();
+                
             }
             $(".faSpinnerBJ").hide();
         },
@@ -137,7 +141,45 @@ $(document).on("click","tr.rowsBJ td", function(e){
     });
 
     
-});    
+}); 
+function changeModalWindow(boxAttr) {
+    $(".faSpinnerBJ").show();
+    $('#BJcards').hide();
+    rowTS =  $('#next-prev').attr("data-ts");
+    rowTable = $('#next-prev').attr("data-table");
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type:'POST',
+        url:'ajax_nextPrevBJHistory',
+        dataType: "json",
+        data:{'rowTS': rowTS, 'rowTable': rowTable, 'boxAttr': boxAttr, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#BJcards').html(data.html); //seatid
+                $('#BJHead').html(data.seatid);
+                $('#totalBet').html(data.totalBet);
+                $('#totalWin').html(data.totalWin);
+                $(".faSpinnerBJ").hide();
+                //$('#next-prev').attr("data-table", rowTable);
+                $('#next-prev').attr("data-ts", data.dataRowTS);
+                $('#BJcards').show();
+                
+            }
+            $('#BJcards').show();
+            $(".faSpinnerBJ").hide();
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+            $(".faSpinnerBJ").hide();
+            
+        }
+        
+    });
+    
+    
+    
+    //alert($("#box" + bixID + " #boxCdredit").text()); data_boxStatus
+}
 
     
 
