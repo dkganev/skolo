@@ -62,6 +62,7 @@ function drop(ev) {
     //ev.target.appendChild(document.getElementById(data));DivBingoFeed
 }
 $( "#GridDrag" ).click(function() {
+    alert ("test");
     if($("#GridDrag").is(':checked')){
         $( ".box" ).attr('draggable', "folse"); //bootstrap-modal-form-open
         $( ".box" ).attr("data-target",'#casinoTerminalInfo');
