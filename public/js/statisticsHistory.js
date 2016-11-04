@@ -63,9 +63,6 @@ function boxModalWindow2(bingo_seq, unique_game_seq, psid) {
     
 }
 $(document).on("click","tr.rowsR td", function(e){
-    //alert(e.target.innerHTML);
-    //console.log( $(this).parent("tr").attr('data-id'));
-    
     wTop = $(window).height() / 2;
     wLeft = $(window).width() / 2;
     $(".faSpinner").css('top', wTop );
@@ -73,6 +70,7 @@ $(document).on("click","tr.rowsR td", function(e){
     $(".faSpinner").show();
     rowID = parseInt($(this).parent("tr").attr('data-id'));
     rowTS = $(this).parent("tr").attr('data-ts');
+    rowIds = $(this).parent("tr").attr('data-Ids');
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
@@ -87,10 +85,13 @@ $(document).on("click","tr.rowsR td", function(e){
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
                 $('#jackpotWon').html(data.jackpotWon);
-                //$(".faSpinner").hide();
+                $('#next-prevR').attr("data-Id", rowIds);
+                $('#next-prevR').attr("data-ts", rowTS);
+                
+                $(".faSpinner").hide();
                 
             }
-            //$(".faSpinner").hide();
+            $(".faSpinner").hide();
         },
         error: function (error) {
             alert ("Unexpected wrong.");
@@ -142,6 +143,7 @@ $(document).on("click","tr.rowsBJ td", function(e){
 
     
 }); 
+
 function changeModalWindow(boxAttr) {
     $(".faSpinnerBJ").show();
     $('#BJcards').hide();
@@ -163,7 +165,6 @@ function changeModalWindow(boxAttr) {
                 //$('#next-prev').attr("data-table", rowTable);
                 $('#next-prev').attr("data-ts", data.dataRowTS);
                 $('#BJcards').show();
-                
             }
             $('#BJcards').show();
             $(".faSpinnerBJ").hide();
@@ -171,15 +172,44 @@ function changeModalWindow(boxAttr) {
         error: function (error) {
             alert ("Unexpected wrong.");
             $(".faSpinnerBJ").hide();
-            
+        }
+    });
+}
+
+function changeModalWindowR(boxAttr) {
+    wTop = $(window).height() / 2;
+    wLeft = $(window).width() / 2;
+    $(".faSpinner").css('top', wTop );
+    $(".faSpinner").css("left", wLeft);
+    $(".faSpinner").show();
+    rowTS = $('#next-prevR').attr('data-ts');
+    rowId = $('#next-prevR').attr("data-Id");
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type:'POST',
+        url:'ajax_statRouletteHistory',
+        dataType: "json",
+        data:{'rowTS': rowTS, 'rowId': rowId, 'boxAttr': boxAttr, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#roulettePic').html(data.html); //seatid
+                $('#rouletteHead').html(data.seatid);
+                $('#winNumber').html(data.winNumber);
+                $('#totalBet').html(data.totalBet);
+                $('#totalWin').html(data.totalWin);
+                $('#jackpotWon').html(data.jackpotWon);
+                //$(".faSpinner").hide();
+                
+            }
+            //$(".faSpinner").hide();
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+             $(".faSpinner").hide();
         }
         
     });
-    
-    
-    
-    //alert($("#box" + bixID + " #boxCdredit").text()); data_boxStatus
-}
+}    
 
     
 
