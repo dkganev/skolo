@@ -150,3 +150,27 @@
 </div>
 </div>
 
+<script>
+$( "#GridDrag" ).click(function() {
+    //alert ("test");
+    if($("#GridDrag").is(':checked')){
+        $( ".box" ).attr('draggable', "folse"); //bootstrap-modal-form-open
+        $( ".box" ).attr("data-target",'#casinoTerminalInfo');
+    }else{
+        $( ".box" ).attr('draggable', "true");
+        $( ".box" ).attr("data-target",'');
+    }    
+});
+$( "#GridColor" ).click(function() {
+    if($("#GridColor").is(':checked'))
+        $( "#DivColor" ).show();
+    else
+        $( "#DivColor" ).hide();    
+});
+$( "#GridBingoFeed" ).click(function() {
+    if($("#GridBingoFeed").is(':checked'))
+        $( "#DivBingoFeed" ).show();
+    else
+        $( "#DivBingoFeed" ).hide();    
+});
+</script>
