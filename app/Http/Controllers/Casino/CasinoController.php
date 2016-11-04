@@ -176,8 +176,12 @@ class CasinoController extends Controller
                             $server_ps[$key]['current_game_color'] ="transperant";
                         } else {
                             $curentGames = Games::where('gameid',  $PsStatus->first()->current_game_i)->get();
-                            $server_ps[$key]['current_game'] = $curentGames->first()->short_name;
-                            $server_ps[$key]['current_game_color'] = $curentGames->first()->color;
+                            if ( $curentGames->count() ){
+                                $server_ps[$key]['current_game'] = $curentGames->first()->short_name;
+                                $server_ps[$key]['current_game_color'] = $curentGames->first()->color;
+                            }else{
+                                var_dump($PsStatus->first()->current_game_i);
+                            }
                         }
                     } else {
                         $PsSettingsError++; 

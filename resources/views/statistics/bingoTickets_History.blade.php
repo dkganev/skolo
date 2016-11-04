@@ -5,17 +5,14 @@ $bingoThicketsN = 0;
 $bingoInfo = 1; 
 $bingoBingo1 = 0;
 $bingoThickets1 = 0;
-//var_dump($bingoPurchase_Historys->ticket_count);
 if ($wins_history->where('psid', $datapsid)->where('win_type', 1)->count()) {
     $bingoLine = $wins_history->where('psid', $datapsid)->where('win_type', 1)->first()->ticket_count;
 }
 if ($wins_history->where('psid', $datapsid)->where('win_type', 2)->count()) {
     $bingoBingo1 = $wins_history->where('psid', $datapsid)->where('win_type', 2)->first()->ticket_count;
 }
-if ($bingoPurchase_Historys->count()) {
-    //$bingoBingo1 = $wins_history->where('psid', $datapsid)->where('win_type', 2)->first()->ticket_count;
-    $bingoThickets1 = $bingoPurchase_Historys->ticket_count;
-
+if ($psTicketsArchive->count()) {
+    $bingoThickets1 = $psTicketsArchive->num_tickets;
 }
 
 $allThickets = $bingoLine + $bingoBingo1 + $bingoThickets1;
@@ -35,7 +32,7 @@ $allRows = ceil($allThickets / 8);
                         $bingoLine = $bingoLine -1;
                         $bingoLineStr = $wins_history->where('psid', $datapsid)->where('win_type', 1)->first()->tickets_id ; 
                         $ticketID = unpack("L",stream_get_contents($bingoLineStr, 4, $bingoLine * 4)); 
-                        $bingoTicket = unpack("C15", stream_get_contents($bingoTickets->where('idx', $ticketID[1])->first()->content, 15, 0)); //$BingoBallsArray
+                        $bingoTicket = unpack("C15", stream_get_contents($psTicketsArchive->Tickets($ticketID[1]), 15, 0));
                     ?>
                     <div id="wonL{{$bingoLine}}" style="position: absolute; background-color: #fff;margin-left: 5px; margin-top: 30px; min-width: 100px; min-height: 20px; border-radius: 5px; border: 1px solid #333; display: none;">
                         Line: {{number_format($wins_history->where('psid', $datapsid)->where('win_type', 1)->first()->win_val / 100,2)}}<br/>
@@ -85,9 +82,8 @@ $allRows = ceil($allThickets / 8);
                     <?php 
                         $bingoBingo = $bingoBingo -1;
                         $bingoLineStr = $wins_history->where('psid', $datapsid)->where('win_type', 2)->first()->tickets_id ; 
-                        $ticketID = unpack("L",stream_get_contents($bingoLineStr, 4, $bingoBingo * 4)); 
-                        $bingoTicket = unpack("C15", stream_get_contents($bingoTickets->where('idx', $ticketID[1])->first()->content, 15, 0));
-                        //echo $ticketID[1];
+                        $ticketID = unpack("L",stream_get_contents($bingoLineStr, 4, $bingoBingo * 4));
+                        $bingoTicket = unpack("C15", stream_get_contents($psTicketsArchive->Tickets($ticketID[1]), 15, 0));
                      ?>
                     <div id="wonB{{$bingoBingo}}" style="position: absolute; background-color: #fff;margin-left: 5px; margin-top: 30px; min-width: 100px; min-height: 20px; border-radius: 5px; border: 1px solid #333; display: none;">
                         Bingo: {{number_format($wins_history->where('psid', $datapsid)->where('win_type', 2)->first()->win_val / 100,2)}}<br/>
@@ -135,10 +131,9 @@ $allRows = ceil($allThickets / 8);
                     <?php
                         $bingoThicketsM = $bingoThickets1 - $bingoThicketsN;
                         $bingoThicketsN = $bingoThicketsN -1;
-                        $bingoLineStr = $bingoPurchase_Historys->tickets_id ; 
-                        //$bingoThicketsM = $bingoThickets1 - $bingoThicketsN;
+                        $bingoLineStr = $psTicketsArchive->tickets_id ; 
                         $ticketID = unpack("L",stream_get_contents($bingoLineStr, 4, $bingoThicketsM * 4));
-                        $bingoTicket = unpack("C15", stream_get_contents($bingoTickets->where('idx', $ticketID[1])->first()->content, 15, 0));
+                        $bingoTicket = unpack("C15", stream_get_contents($psTicketsArchive->Tickets($ticketID[1]), 15, 0));
                      ?>
                         <table style='border: 1px solid #d9edf7; text-align: center; border-collapse: separate; border-spacing: 4px;'>
                              <tbody>

@@ -15,6 +15,7 @@ use App\Models\Bingo\BingoPurchase_History;
 use App\Models\Bingo\BingoBall_History;
 use App\Models\Bingo\Tickets;
 use App\Models\Bingo\psTicketsArchive;
+use App\Models\Bingo\psTickets;
 use App\Models\Accounting\ServerPs;
 use App\Models\Roulette\GameHistory;
 use App\Models\Blackjack\BlackjackGameHistory;
@@ -93,10 +94,9 @@ class StatisticsController extends Controller
     {
         $databoxID = $request['boxID'];
         $dataRowUnique = $request['rowUnique']; 
-        $bingoPurchase_History = BingoPurchase_History::where('unique_game_seq', $dataRowUnique)->orderBy('ticket_count', 'desc')->get();
+        $psTicketsArchives = psTicketsArchive::where('unique_game_seq', $dataRowUnique)->orderBy('num_tickets', 'desc')->get();
         $server_ps = ServerPs::orderBy('psid', 'asc')->get();
-        //var_dump($bingoPurchase_History);
-        $testPage = view('statistics.bingoPurchase_History', ['bingoPurchase_Historys' => $bingoPurchase_History, 'server_ps' => $server_ps])->render();
+        $testPage = view('statistics.bingoPurchase_History', ['psTicketsArchives' => $psTicketsArchives, 'server_ps' => $server_ps])->render();
         
         $dataArray1 = array(
             "success" => "success",
@@ -112,19 +112,13 @@ class StatisticsController extends Controller
         $databingo_seq = $request['bingo_seq'];
         $dataUnique_game_seq = $request['unique_game_seq'];
         $datapsid = $request['psid'];
-        //$bingoTickets = Tickets::orderBy('idx', 'ask')->get();
-        $bingoPurchase_History = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->orderBy('ticket_count', 'desc')->first();
-        $server_ps_seatid = ServerPs::where('psid', $datapsid)->count() ? ServerPs::where('psid', $datapsid)->orderBy('psid', 'asc')->first()->seatid : "Missing saitid (PSID is $datapsid )";
+       
+        $server_ps_seatid = ServerPs::where('psid', $datapsid)->count() ? ServerPs::where('psid', $datapsid)->first()->seatid : "Missing saitid (PSID is $datapsid )";
         $wins_history = BingoWins_History::where('unique_game_seq', $dataUnique_game_seq)->get();
         $BingoBalls = BingoBall_History::where('unique_game_seq', $dataUnique_game_seq)->first();
-        
-        $bingoCount = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->first()->ticket_count - 1 ; 
-        $bingoStr = BingoPurchase_History::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->first()->tickets_id ; 
-        //var_dump(stream_get_contents($bingoStr,4, 0));
-        $ticketIDfirst = unpack("L",stream_get_contents($bingoStr, 4, 0));
-        $ticketIDLast = unpack("L",stream_get_contents($bingoStr, 4, $bingoCount * 4));
-        $bingoTickets = Tickets::where('idx', '>=' , $ticketIDfirst)->where('idx', '<=' , $ticketIDLast)->get();
         $psTicketsArchive = psTicketsArchive::where('unique_game_seq', $dataUnique_game_seq)->first();
+        $bingoCount = $psTicketsArchive->ticket_count - 1 ; 
+        $bingoStr = $psTicketsArchive->tickets_id ; 
         $psTicketsArchiveHTML = "My Bonus Numbers: " . $psTicketsArchive->mybonus_b1 . ", " . $psTicketsArchive->mybonus_b2 . ", " . $psTicketsArchive->mybonus_b3;
         $BingoBallsHTML = "Balls: ";
         $BingoBallsArray = array();
@@ -134,7 +128,8 @@ class StatisticsController extends Controller
                $BingoBallsArray[$i] = $BingoBalls->$curBal;
                
            }
-        $testPage = view('statistics.bingoTickets_History', ['bingoPurchase_Historys' => $bingoPurchase_History, 'wins_history' => $wins_history, 'datapsid' => $datapsid, 'bingoTickets' => $bingoTickets, 'BingoBallsArray' => $BingoBallsArray])->render();
+        //$testPage = view('statistics.bingoTickets_History', ['bingoPurchase_Historys' => $bingoPurchase_History, 'wins_history' => $wins_history, 'datapsid' => $datapsid, 'bingoTickets' => $bingoTickets, 'BingoBallsArray' => $BingoBallsArray])->render();
+        $testPage = view('statistics.bingoTickets_History', ['psTicketsArchive' => $psTicketsArchive, 'wins_history' => $wins_history, 'datapsid' => $datapsid, 'BingoBallsArray' => $BingoBallsArray])->render();
         $dataArray1 = array(
             "success" => "success",
             "server_ps_seatid" => $server_ps_seatid,
@@ -150,7 +145,6 @@ class StatisticsController extends Controller
     {
         $dataRowID = $request['rowID'];
         $dataRowTS = $request['rowTS'];
-        //$bingoPurchase_History = BingoPurchase_History::where('bingo_seq', $dataRowID)->orderBy('ticket_count', 'desc')->get();
         $historys = GameHistory::where('ts', $dataRowTS)->orderBy('ts', 'desc')->first();
         $server_ps = ServerPs::where('psid', $historys->psid )->first();
         if ($server_ps != null){
@@ -158,8 +152,6 @@ class StatisticsController extends Controller
         }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
         }
-        //var_dump($bingoPurchase_History);
-        //$testPage = view('statistics.bingoPurchase_History', ['bingoPurchase_Historys' => $bingoPurchase_History, 'server_ps' => $server_ps])->render();
         $positions = array();
         $positionN =161;
         $num_max = $positionN + 1;
@@ -490,14 +482,8 @@ class StatisticsController extends Controller
         foreach ($surrenderArray as $key => $val){
             foreach ($val as $keySub => $valSub){
                 if ($valSub == 1){
-                    //if (empty($totalSurrenderArray[$key])){
                         $totalSurrenderArray[$key] = $totalBetArray[$key] / 2;
                         $totalWinArray[$key] = 0 ;
-                    //}else{
-                      //  $totalSurrenderArray[$key] = $totalBetArray[$key] / 2;
-                    //}
-                        
-                    
                 }
             }
             
