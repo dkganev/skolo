@@ -1,5 +1,5 @@
-@if (array_key_exists(0,$cards))
-    @foreach ($cards[0] as $keyP => $cardP)
+@if (array_key_exists(3,$cards))
+    @foreach ($cards[4] as $keyP => $cardP)
         <?php 
             if ($keyP == 0){
                 $cardLeft = 75;
@@ -33,8 +33,8 @@
         @endif 
     </div>
 @endif
-@if (array_key_exists(1,$cards))
-    @foreach ($cards[1] as $keyP => $cardP)
+@if (array_key_exists(3,$cards))
+    @foreach ($cards[3] as $keyP => $cardP)
         <?php 
             if ($keyP == 0){
                 $cardLeft = 315;
@@ -104,8 +104,8 @@
     </div>
 
 @endif
-@if (array_key_exists(3,$cards))
-    @foreach ($cards[3] as $keyP => $cardP)
+@if (array_key_exists(1,$cards))
+    @foreach ($cards[1] as $keyP => $cardP)
         <?php 
             if ($keyP == 0){
                 $cardLeft = 850;
@@ -138,8 +138,8 @@
         @endif 
     </div>
 @endif
-@if (array_key_exists(4,$cards))
-    @foreach ($cards[4] as $keyP => $cardP)
+@if (array_key_exists(0,$cards))
+    @foreach ($cards[0] as $keyP => $cardP)
         <?php 
             if ($keyP == 0){
                 $cardLeft = 1070;
