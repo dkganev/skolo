@@ -4,11 +4,13 @@ namespace App\Models\Roulette;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GameHistory extends Model
+class WheelSettings extends Model
 {
 	protected $connection = 'pgsql4';
 
-	protected $table = 'game_history';
+	protected $table = 'wheel_settings';
+
+	protected $primaryKey = 'interface';
 
 	public $timestamps = false;
 
@@ -16,4 +18,3 @@ class GameHistory extends Model
 
 	protected $guarded = [];
 }
-

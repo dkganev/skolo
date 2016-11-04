@@ -19,7 +19,9 @@
                     Add Machine
                 </button>
 
-                <a href="{{ route('export.terminals') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export</a>
+                <a href="{{ route('export.terminals') }}" class="btn btn-primary btn-sm pull-right"
+                ><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                </a>
             </div>
 
                 <div class="panel-body">

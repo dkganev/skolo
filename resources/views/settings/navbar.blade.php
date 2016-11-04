@@ -21,7 +21,7 @@
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/blackjack/mainconfig')}}')">Blackjack</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('/settings/roulette/wheelconfig')}}')">Roulette</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/roulette/wheelsettings')}}')">Roulette</a></li>
 
               </ul>
           </div>

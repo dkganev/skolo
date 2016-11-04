@@ -126,10 +126,10 @@ $('.bj-table-button').on('click', function(event) {
             $('tr#' + id).addClass('flashNow');
             setTimeout(function() {
                 $('tr#' + id).removeClass('flashNow');
-            }, 500);
+            }, 300);
 
             $('.alert-success').delay(50).fadeIn(function() {
-              $(this).delay(2000).fadeOut();
+              $(this).delay(1500).fadeOut();
             });
         },
         error: function (error) {

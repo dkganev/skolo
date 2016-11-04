@@ -41,7 +41,7 @@ class BlackjackController extends Controller
 
         return response()->json(['response' => $table], 200);
     }
-
+    
   	public function main_config_edit(Request $request)
   	{
         MainConfig::first()->update($request->except('_token'));

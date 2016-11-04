@@ -119,7 +119,11 @@ Route::post('/settings/blackjack/table/edit', 'Settings\BlackjackController@tabl
 /**
  * SETTINGS / ROULETTE
  */
-Route::get('/settings/roulette/wheelconfig', 'Settings\RouletteController@wheel_settings_index');
+Route::get('/settings/roulette/wheelsettings', 'Settings\RouletteController@wheel_settings_index');
+Route::post('/settings/roulette/wheelsettings/edit', 'Settings\RouletteController@wheel_settings_edit');
+
+Route::get('/settings/roulette/wheelconfig', 'Settings\RouletteController@wheel_config_index');
+Route::post('/settings/roulette/wheelconfig/edit', 'Settings\RouletteController@wheel_config_edit');
 
 /**
  * LOCALIZATION
