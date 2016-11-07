@@ -119,11 +119,22 @@ Route::post('/settings/blackjack/table/edit', 'Settings\BlackjackController@tabl
 /**
  * SETTINGS / ROULETTE
  */
-Route::get('/settings/roulette/wheelsettings', 'Settings\RouletteController@wheel_settings_index');
-Route::post('/settings/roulette/wheelsettings/edit', 'Settings\RouletteController@wheel_settings_edit');
+Route::get('/settings/roulette1/wheelsettings', 'Settings\RouletteController@wheel_settings_index');
+Route::post('/settings/roulette1/wheelsettings/edit', 'Settings\RouletteController@wheel_settings_edit');
+Route::get('/settings/roulette1/wheelconfig', 'Settings\RouletteController@wheel_config_index');
+Route::post('/settings/roulette1/wheelconfig/edit', 'Settings\RouletteController@wheel_config_edit');
 
-Route::get('/settings/roulette/wheelconfig', 'Settings\RouletteController@wheel_config_index');
-Route::post('/settings/roulette/wheelconfig/edit', 'Settings\RouletteController@wheel_config_edit');
+Route::get('/settings/roulette1/psconfig', 'Settings\RouletteController@ps_config_index');
+
+
+
+Route::get('/settings/roulette2/wheelsettings', 'Settings\RouletteTwoController@wheel_settings_index');
+Route::post('/settings/roulette2/wheelsettings/edit', 'Settings\RouletteTwoController@wheel_settings_edit');
+Route::get('/settings/roulette2/wheelconfig', 'Settings\RouletteTwoController@wheel_config_index');
+Route::post('/settings/roulette2/wheelconfig/edit', 'Settings\RouletteTwoController@wheel_config_edit');
+
+Route::get('/settings/roulette2/psconfig', 'Settings\RouletteTwoController@ps_config_index');
+
 
 /**
  * LOCALIZATION
