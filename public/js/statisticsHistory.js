@@ -164,6 +164,16 @@ function changeModalWindow(boxAttr) {
                 $(".faSpinnerBJ").hide();
                 //$('#next-prev').attr("data-table", rowTable);
                 $('#next-prev').attr("data-ts", data.dataRowTS);
+                if (data.nextArrow == 0){
+                    $('#nextArrow').hide();
+                } else {
+                    $('#nextArrow').show();
+                }
+                if (data.prevArrow == 0){
+                    $('#prevArrow').hide();
+                } else {
+                    $('#prevArrow').show();
+                }
                 $('#BJcards').show();
             }
             $('#BJcards').show();
@@ -176,7 +186,7 @@ function changeModalWindow(boxAttr) {
     });
 }
 
-function changeModalWindowR(boxAttr) {
+function changeModalWindowR(NextPrev) {
     wTop = $(window).height() / 2;
     wLeft = $(window).width() / 2;
     $(".faSpinner").css('top', wTop );
@@ -187,9 +197,9 @@ function changeModalWindowR(boxAttr) {
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
-        url:'ajax_statRouletteHistory',
+        url:'ajax_nextPrevRouletteHistory',
         dataType: "json",
-        data:{'rowTS': rowTS, 'rowId': rowId, 'boxAttr': boxAttr, _token: token},
+        data:{'rowTS': rowTS, 'rowId': rowId, 'NextPrev': NextPrev, _token: token},
         success:function(data){
             if (data.success == "success"){
                 $('#roulettePic').html(data.html); //seatid
@@ -198,7 +208,19 @@ function changeModalWindowR(boxAttr) {
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
                 $('#jackpotWon').html(data.jackpotWon);
-                //$(".faSpinner").hide();
+                $('#next-prevR').attr("data-ts", data.dataRowTS);
+                if (data.nextArrow == 0){
+                    $('#nextArrowR').hide();
+                } else {
+                    $('#nextArrowR').show();
+                }
+                if (data.prevArrow == 0){
+                    $('#prevArrowR').hide();
+                } else {
+                    $('#prevArrowR').show();
+                }
+                
+                $(".faSpinner").hide();
                 
             }
             //$(".faSpinner").hide();

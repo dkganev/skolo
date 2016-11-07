@@ -146,6 +146,7 @@ Route::get('/exportHistory', 'StatisticsController@exportHistory_statistics')->n
 Route::post('/ajax_statBingoHistory', 'StatisticsController@ajax_statBingoHistory');
 Route::post('/ajax_statBingoHistoryTickets', 'StatisticsController@ajax_statBingoHistoryTickets');
 Route::post('/ajax_statRouletteHistory', 'StatisticsController@ajax_statRouletteHistory');
+Route::post('/ajax_nextPrevRouletteHistory', 'StatisticsController@ajax_nextPrevRouletteHistory');
 Route::post('/ajax_statBJHistory', 'StatisticsController@ajax_statBJHistory');
 Route::post('/ajax_nextPrevBJHistory', 'StatisticsController@ajax_nextPrevBJHistory');
 

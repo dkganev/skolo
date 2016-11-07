@@ -36,8 +36,8 @@
                 <br />
                 <div style='text-align: center;'>
                     <input id='next-prev' type="hidden" data-table='' data-ts='' >
-                    <a><i class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindow("Prev");'></i></a>&nbsp;&nbsp;&nbsp;
-                    <a><i class="fa fa-angle-right" style="color: #333; font-size: 20px;" onclick='changeModalWindow("Next");'></i></a>
+                    <a><i id='prevArrow' class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindow("Prev");'></i></a>&nbsp;&nbsp;&nbsp;
+                    <a><i id='nextArrow' class="fa fa-angle-right" style="color: #333; font-size: 20px;" onclick='changeModalWindow("Next");'></i></a>
                 </div>
             </div> 
             

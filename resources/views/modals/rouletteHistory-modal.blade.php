@@ -44,8 +44,8 @@
                 <br />
                 <div style='text-align: center;'>
                     <input id='next-prevR' type="hidden" data-id='' data-ts='' >
-                    <a><i class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindowR("Prev");'></i></a>&nbsp;&nbsp;&nbsp;
-                    <a><i class="fa fa-angle-right" style="color: #333; font-size: 20px;" onclick='changeModalWindowR("Next");'></i></a>
+                    <a><i id='prevArrowR' class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindowR("Prev");'></i></a>&nbsp;&nbsp;&nbsp;
+                    <a><i id='nextArrowR' class="fa fa-angle-right" style="color: #333; font-size: 20px;" onclick='changeModalWindowR("Next");'></i></a>
                 </div>
             </div>    
             <div class="modal-footer">

@@ -181,6 +181,70 @@ class StatisticsController extends Controller
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
     
+    public function ajax_nextPrevRouletteHistory(Request $request)
+    {
+        $dataRowID = $request['rowId'];
+        $dataRowTS = $request['rowTS'];
+        $dataRowNextPrev = $request['NextPrev'];
+        $prevArrow = 1;
+        $nextArrow = 1;
+        if ($dataRowNextPrev == "Prev"){
+            //var_dump($dataRowNextPrev);
+            if (GameHistory::where('psid', $dataRowID)->where('ts', '>', $dataRowTS)->count()){
+                $dataRowTS = GameHistory::where('psid', $dataRowID)->where('ts', '>', $dataRowTS)->orderBy('ts', 'asc')->first()->ts;
+                if (!GameHistory::where('psid', $dataRowID)->where('ts', '>', $dataRowTS)->count()){
+                    $prevArrow = 0;
+                }
+            }
+        }else{
+            if (GameHistory::where('psid', $dataRowID)->where('ts', '<', $dataRowTS)->count()){
+                $dataRowTS = GameHistory::where('psid', $dataRowID)->where('ts', '<', $dataRowTS)->orderBy('ts', 'desc')->first()->ts;
+                if (!GameHistory::where('psid', $dataRowID)->where('ts', '<', $dataRowTS)->count()){
+                    $nextArrow = 0;
+                }
+            }    
+        }
+        
+        
+        
+        $historys = GameHistory::where('ts', $dataRowTS)->first();
+        $server_ps = ServerPs::where('psid', $historys->psid )->first();
+        if ($server_ps != null){
+            $seatid = "PS: " . $server_ps->seatid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
+            $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
+        }
+        $positions = array();
+        $positionN =161;
+        $num_max = $positionN + 1;
+        $blob = $historys->bets ;
+        $positionsStr = unpack('S' . $num_max, stream_get_contents($blob, -1, 0));
+        for ($i = 1; $i <= $num_max; $i++) {
+            if($positionsStr[$i] > 0) {
+                $positions[$i  - 1] = $positionsStr[$i];
+            }
+        }
+        $rlt_chip_positions = array();
+        $rlt_chip_positions = $this->chip_positions();
+       
+        $testPage = view('statistics.rouletteHistory', ['positions' => $positions, 'rlt_chip_positions' => $rlt_chip_positions])->render();
+       
+        $dataArray1 = array(
+            "success" => "success",
+            "dataRowTS" => $dataRowTS,
+            "prevArrow" => $prevArrow, 
+            "nextArrow" => $nextArrow,
+            "dataRowID" => $dataRowID,
+            "seatid" => $seatid,
+            "winNumber" => $historys->win_num,
+            "totalBet" =>  number_format($historys->bet / 100, 2),
+            "totalWin" =>  number_format($historys->win_val / 100, 2),
+            "jackpotWon" =>  number_format($historys->jackpot / 100, 2),
+            "html" => $testPage,
+        );
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
     
     public function chip_positions()
     {
@@ -517,14 +581,21 @@ class StatisticsController extends Controller
         $dataRowTable = $request['rowTable'];
         $dataRowNextPrev = $request['boxAttr'];
         $historyClas = new BlackjackGameHistory();
+        $prevArrow = 1;
+        $nextArrow = 1;
         if ($dataRowNextPrev == "Prev"){
             if ($historyClas->where('table_idx', $dataRowTable)->where('ts', '>', $dataRowTS)->count()){
                 $dataRowTS = $historyClas->where('table_idx', $dataRowTable)->where('ts', '>', $dataRowTS)->orderBy('ts', 'asc')->first()->ts;
+                if (!$historyClas->where('table_idx', $dataRowTable)->where('ts', '>', $dataRowTS)->count()){
+                    $prevArrow = 0;
+                }
             }
-            
         }else{
             if ($historyClas->where('table_idx', $dataRowTable)->where('ts', '<', $dataRowTS)->count()){
                 $dataRowTS = $historyClas->where('table_idx', $dataRowTable)->where('ts', '<', $dataRowTS)->orderBy('ts', 'desc')->first()->ts;
+                if (!$historyClas->where('table_idx', $dataRowTable)->where('ts', '<', $dataRowTS)->count()){
+                    $nextArrow = 0;
+                }
             }    
         }
         
@@ -641,6 +712,8 @@ class StatisticsController extends Controller
         
         $dataArray1 = array(
             "success" => "success",
+            "prevArrow" => $prevArrow, 
+            "nextArrow" => $nextArrow,
             "dataRowTS" => $dataRowTS,
             "seatid" => $tableid,
             "totalBet" =>  number_format($totalBet / 100, 2),
