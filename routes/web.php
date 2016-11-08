@@ -163,5 +163,6 @@ Route::post('/ajax_statRouletteHistory', 'StatisticsController@ajax_statRoulette
 Route::post('/ajax_nextPrevRouletteHistory', 'StatisticsController@ajax_nextPrevRouletteHistory');
 Route::post('/ajax_statBJHistory', 'StatisticsController@ajax_statBJHistory');
 Route::post('/ajax_nextPrevBJHistory', 'StatisticsController@ajax_nextPrevBJHistory');
+Route::post('/ajax_sortBJHistory', 'StatisticsController@ajax_sortBJHistory');
 
 });
