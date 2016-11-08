@@ -4,17 +4,17 @@ namespace App\Models\Roulette;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WheelSettings extends Model
+class PsConf extends Model
 {
 	protected $connection = 'pgsql4';
 
-	protected $table = 'wheel_settings';
+	protected $table = 'psconf';
 
-	protected $primaryKey = 'interface';
+	protected $primaryKey = 'ps_id';
 
 	public $timestamps = false;
 
 	public $increments = false;
 
-	protected $guarded = [];	
+	protected $guarded = [];
 }

@@ -6,15 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\Roulette\WheelSettings;
-use App\Models\Roulette\WheelConfig;
-use App\Models\Roulette\PsConf;
+use App\Models\Roulette\Roulette2\WheelSettings;
+use App\Models\Roulette\Roulette2\WheelConfig;
+use App\Models\Roulette\Roulette2\PsConf;
 
-class RouletteController extends Controller
+class RouletteTwoController extends Controller
 {
-    public function wheel_settings_index() {
+    public function wheel_settings_index()
+    {
     	$wheel_settings = WheelSettings::first();
-        return view('settings.roulette.roulette1.wheel-settings', ['wheel_settings' => $wheel_settings]);
+        return view('settings.roulette.roulette2.wheel-settings', ['wheel_settings' => $wheel_settings]);
     }
 
     public function wheel_settings_edit(Request $request)
@@ -47,7 +48,7 @@ class RouletteController extends Controller
     public function wheel_config_index()
     {
     	$wheel_config = WheelConfig::first();
-    	return view('settings.roulette.roulette1.wheel-config', compact('wheel_config'));
+    	return view('settings.roulette.roulette2.wheel-config', compact('wheel_config'));
     }
 
     public function wheel_config_edit(Request $request)
@@ -58,7 +59,6 @@ class RouletteController extends Controller
     public function ps_config_index()
     {
         $ps_conf = PsConf::orderBy('ps_id', 'asc')->get();
-        return view('settings.roulette.roulette1.ps-config', ['ps_conf' => $ps_conf]);
+        return view('settings.roulette.roulette2.ps-config', ['ps_conf' => $ps_conf]);
     }
-
 }

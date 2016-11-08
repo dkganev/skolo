@@ -133,7 +133,20 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],        
+        ],
+        'pgsql6' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST6', '10.0.0.199'),
+            'port' => env('DB_PORT6', '5432'),
+            'database' => env('DB_DATABASE6', 'forge'),
+            'username' => env('DB_USERNAME6', 'forge'),
+            'password' => env('DB_PASSWORD6', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],       
 
 
     ],

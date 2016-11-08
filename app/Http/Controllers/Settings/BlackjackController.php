@@ -33,17 +33,16 @@ class BlackjackController extends Controller
         $table->game_state()->enabled = $request->enabled;
         $table->save();
 
-        if(!$status)
-        {
-          $msg = 'Something Wrong Happend!';
-          return response()->json(['response' => $msg], 400);
+        if (!$status) {
+            $msg = 'Something Wrong Happend!';
+            return response()->json(['response' => $msg], 400);
         }
 
         return response()->json(['response' => $table], 200);
     }
     
-  	public function main_config_edit(Request $request)
-  	{
+    public function main_config_edit(Request $request)
+    {
         MainConfig::first()->update($request->except('_token'));
-  	}
+    }
 }
