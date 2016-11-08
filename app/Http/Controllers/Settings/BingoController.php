@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Models\Bingo\MainConfig;
 use App\Models\Bingo\MyBonus;
 use App\Models\Bingo\JackpotSteps;
+use App\Models\Bingo\SphereConfig;
 use DB;
 
 class BingoController extends Controller
@@ -83,5 +84,16 @@ class BingoController extends Controller
     public function max_balls_destroy(Request $request)
     {
         DB::connection('pgsql3')->table('jackpot_steps')->where('id', $request->id)->delete();
+    }
+
+    public function sphere_config_index()
+    {
+        $sphere_config = SphereConfig::first();
+        return view('settings.bingo.sphere-config', compact('sphere_config'));
+    }
+
+    public function sphere_config_edit(Request $request)
+    {
+        SphereConfig::first()->update($request->except('_token'));
     }
 }

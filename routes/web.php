@@ -107,6 +107,9 @@ Route::post('/settings/bingo/maxballs/store', 'Settings\BingoController@max_ball
 Route::post('/settings/bingo/maxballs/edit', 'Settings\BingoController@max_balls_edit');
 Route::post('/settings/bingo/maxballs/destroy', 'Settings\BingoController@max_balls_destroy');
 
+Route::get('/settings/bingo/sphereconfig', 'Settings\BingoController@sphere_config_index');
+Route::post('/settings/bingo/sphereconfig/edit', 'Settings\BingoController@sphere_config_edit');
+
 /**
  * SETTINGS / BLACKJACK
  */

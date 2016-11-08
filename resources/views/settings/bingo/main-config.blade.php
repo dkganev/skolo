@@ -12,6 +12,7 @@
 
 	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
 
+	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
 	            </ul>
 	        </div>
 		</div>
@@ -56,6 +57,11 @@
 						<span class="input-group-addon" id="sizing-addon2"><strong>%</strong></span>
 						<input name="bingo_line_pr" value="{{ $bingo->bingo_line_pr }}" type="text" class="form-control" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
+				</div>
+
+				<div class="form-group">
+			    	<label style="color: #474747">URL:</label><br>
+					<input name="url" value="{{ $bingo->url }}" type="text" class="form-control" placeholder="URL">
 				</div>
 
 		</div><!-- End Col -->

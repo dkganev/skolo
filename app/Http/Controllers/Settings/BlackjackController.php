@@ -30,8 +30,8 @@ class BlackjackController extends Controller
         $table = BlackjackTable::where('table_id', $request->table_id)->first();
 
         $status = $table->update($request->except('_token', 'enabled'));
-        $table->game_state()->enabled = $request->enabled;
-        $table->save();
+        $table->game_state->enabled = $request->enabled;
+        $table->push();
 
         if (!$status) {
             $msg = 'Something Wrong Happend!';
