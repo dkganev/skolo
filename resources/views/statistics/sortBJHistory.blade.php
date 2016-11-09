@@ -47,9 +47,9 @@
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center"  ><input type='number' style="color: #333" id='GameSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  ><input type='number' style="color: #333" id='TableSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  ><input type='number' style="color: #333" id='PSID' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
+                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='GameSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
+                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='TableSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
+                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='PSID' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
                             <th class="text-center"  >
                                 <div class="row">
                                     <div class='col-md-3'>
@@ -57,7 +57,7 @@
                                     </div>
                                     <div class='col-md-9'>
                                         <div class="">
-                                            <input type='number' style="color: #333" id='FromGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
                                         </div>
                                     </div>
                                 </div>
@@ -65,9 +65,9 @@
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-9' style="margin-top: 3px;">
                                         <div class="">
-                                            <input type='number' style="color: #333" id='ToGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
                                         </div>
                                     </div>
                                 </div>
@@ -77,16 +77,16 @@
                                     <div class='col-md-3'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
-                                        <input type='number' style="color: #333" id='FromGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-9' >
+                                        <input class="form-control" type='number' style="color: #333" id='FromGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9'>
-                                        <input type='number' style="color: #333" id='ToGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-9' style="margin-top: 3px;">
+                                        <input class="form-control" type='number' style="color: #333" id='ToGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
                                     </div>
                                 </div>
                             </th>

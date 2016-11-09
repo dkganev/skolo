@@ -785,5 +785,60 @@ class StatisticsController extends Controller
         
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
+   
+    public function ajax_sortRouletteHistory(Request $request)
+    {
+        $dataFromGameTs = $request['FromGameTs'];
+        $dataToGameTs = $request['ToGameTs'];
+        $dataGameSort = $request['GameSort'];
+        $dataSeat_ID = $request['PSID'];
+        $SortQuery = array(); 
+        if ($dataFromGameTs != ""){
+             array_push ($SortQuery,['ts', '>=', $dataFromGameTs]);
+        }
+        if ($dataToGameTs != ""){
+             array_push ($SortQuery,['ts', '<=', $dataToGameTs]);
+        }
+        if ($dataGameSort != ""){
+             array_push ($SortQuery,['rlt_seq', '=', $dataGameSort]);
+        }
+        if ($request['FromGameNum'] != ""){
+            array_push ($SortQuery,['win_num', '>=', $request['FromGameNum']]);
+        }
+        if ($request['ToGameNum'] != "" ){
+            array_push ($SortQuery,['win_num', '<=', $request['ToGameNum']]);
+        }
+        if ($request['FromGameBet'] != ""){
+            array_push ($SortQuery,['bet', '>=', $request['FromGameBet'] * 100]);
+        }
+        if ($request['ToGameBet'] != "" ){
+            array_push ($SortQuery,['bet', '<=', $request['ToGameBet'] * 100]);
+        }
+        if ($request['FromGameWin'] != ""){
+            array_push ($SortQuery,['win_val', '>=', $request['FromGameWin'] * 100]);
+        }
+        if ($request['ToGameWin'] != "" ){
+            array_push ($SortQuery,['win_val', '<=', $request['ToGameWin'] * 100]);
+        }
+        if ($request['FromGameJack'] != ""){
+            array_push ($SortQuery,['jackpot', '>=', $request['FromGameJack'] * 100]);
+        }
+        if ($request['ToGameJack'] != "" ){
+            array_push ($SortQuery,['jackpot', '<=', $request['ToGameJack'] * 100]);
+        }
+        
+        $historys = GameHistory::where($SortQuery)->get();
+        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
+
+        $testPage = view('statistics.sortRouletteHistory', ['historys' => $historys, 'server_ps' => $server_ps, 'dataSeat_ID' => $dataSeat_ID])->render();
+        
+        $dataArray1 = array(
+            "success" => "success",
+            "html" => $testPage,
+        );
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
+    
     
 }

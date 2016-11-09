@@ -237,7 +237,7 @@ function sortFunction(sValue, sColumn) {
     clearTimeout(sortTimer);
     sortTimer = setTimeout(function(){ 
         $(".faSpinnerBJ").show();
-        $('#BJcards').hide();datetimepicker6I
+        $('#BJcards').hide();
         FromGameTs = $('#datetimepicker6I').val();
         ToGameTs = $('#datetimepicker7I').val();
         GameSort = $('#GameSort').val();
@@ -330,6 +330,118 @@ function sortFunction(sValue, sColumn) {
         minuteStep: 10
     });
     $('#datetimepicker7').datetimepicker({
+        useCurrent: false, //Important! See issue #1075
+        //format: "dd MM yyyy - hh:ii",
+        //autoclose: true,
+        //todayBtn: true,
+        //startDate: "2013-02-14 10:00",
+        minuteStep: 10
+    });
+function sortFunctionR(sValue, sColumn) {
+    clearTimeout(sortTimer);
+    sortTimer = setTimeout(function(){ 
+        $(".faSpinnerBJ").show();
+        $('#BJcards').hide();
+        FromGameTs = $('#datetimepicker4I').val();
+        ToGameTs = $('#datetimepicker5I').val();
+        GameSort = $('#GameSortR').val();
+        //TableSort = $('#TableSortR').val();
+        PSID = $('#PSIDR').val();
+        FromGameNum = $('#FromGameNumR').val();
+        ToGameNum = $('#ToGameNumR').val();
+        FromGameBet = $('#FromGameBetR').val();
+        ToGameBet = $('#ToGameBetR').val();
+        FromGameWin = $('#FromGameWinR').val();
+        ToGameWin = $('#ToGameWinR').val();
+        FromGameJack = $('#FromGameJackR').val();
+        ToGameJack = $('#ToGameJackR').val();
+        token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            type:'POST',
+            url:'ajax_sortRouletteHistory',
+            dataType: "json",
+            data:{'FromGameTs': FromGameTs, 'ToGameTs': ToGameTs, 'GameSort':  GameSort, 'PSID':  PSID, 'FromGameNum': FromGameNum, 'ToGameNum': ToGameNum, 'FromGameBet': FromGameBet, 'ToGameBet': ToGameBet, 'FromGameWin': FromGameWin, 'ToGameWin': ToGameWin, 'FromGameJack': FromGameJack, 'ToGameJack': ToGameJack, _token: token},
+            success:function(data){
+                if (data.success == "success"){
+                    $('#tableRoulette').html(data.html);
+                    setTimeout(function(){
+                        $('#datetimepicker4I').val(FromGameTs);
+                        $('#datetimepicker5I').val(ToGameTs);
+                        //$('#datetimepicker6').datetimepicker('setStartDate', FromGameTs);
+                        $('#GameSortR').val(GameSort);
+                        //$('#TableSortR').val(TableSort);
+                        $('#PSIDR').val(PSID);
+                        $('#FromGameNumR').val(FromGameNum);
+                        $('#ToGameNumR').val(ToGameNum);
+                        $('#FromGameBetR').val(FromGameBet);
+                        $('#ToGameBetR').val(ToGameBet);
+                        $('#FromGameWinR').val(FromGameWin);
+                        $('#ToGameWinR').val(ToGameWin);
+                        $('#FromGameJackR').val(FromGameJack);
+                        $('#ToGameJackR').val(ToGameJack);
+                        var d = new Date();
+                        var month = d.getMonth()+1;
+                        var day = d.getDate();
+                        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+                        $('#datetimepicker4').datetimepicker('setEndDate', output );
+                        $('#datetimepicker5').datetimepicker('setEndDate', output );
+                        if (FromGameTs != ""){
+                            $('#datetimepicker5').datetimepicker('setStartDate', FromGameTs);
+                        }
+                        if (ToGameTs != ""){
+                            $('#datetimepicker4').datetimepicker('setEndDate', ToGameTs);
+                        }
+                    }, 300);
+                    
+                }
+                $(".faSpinnerBJ").hide();
+            },
+            error: function (error) {
+                alert ("Unexpected wrong.");
+                $(".faSpinnerBJ").hide();
+            
+            }
+        
+        });
+    }, 500);
+}
+    
+   function datetimepicker44() {
+        $('.switch').attr('colspan', 5);
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        $('#datetimepicker4').datetimepicker('setEndDate', output);
+        $('#datetimepicker4').datetimepicker('show');
+    }
+    function datetimepicker55() {
+        $('.switch').attr('colspan', 5);
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        $('#datetimepicker5').datetimepicker('setEndDate', output);
+        $('#datetimepicker5').datetimepicker('show');
+    }
+    function datetimepicker4Close() {
+        $('#datetimepicker4').datetimepicker('hide');
+        sortFunctionR(1, "datetimepicker4I");
+        //$('#datetimepicker7').datetimepicker('setStartDate', '2016-11-08');
+    }
+    function datetimepicker5Close() {
+        $('#datetimepicker5').datetimepicker('hide');
+        sortFunctionR(1, "datetimepicker5I");
+        //$('#datetimepicker').datetimepicker('setStartDate', '2012-01-01');
+    }
+    $("#datetimepicker4").datetimepicker({
+        //format: "dd MM yyyy - hh:ii",
+        //autoclose: true,
+        //todayBtn: true,
+        //startDate: "2013-02-14 10:00",
+        minuteStep: 10
+    });
+    $('#datetimepicker5').datetimepicker({
         useCurrent: false, //Important! See issue #1075
         //format: "dd MM yyyy - hh:ii",
         //autoclose: true,
