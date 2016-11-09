@@ -10,6 +10,7 @@
 
               <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">Tables</a></li>
 
+              <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">Accounting Config</a></li>
             </ul>
         </div>
   	</div>

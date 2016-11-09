@@ -25,6 +25,9 @@ class TerminalsController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * @return view
+     */
     public function settings()
     {
         return view('settings.index');
@@ -45,6 +48,10 @@ class TerminalsController extends Controller
         ]);
     }
 
+    /**
+     * Save the terminal
+     * @param Request $request
+     */
     public function addTerminal(Request $request)
     {
         $this->validate($request, [
@@ -95,6 +102,11 @@ class TerminalsController extends Controller
         return $request->session()->flash('alert-success', $msg);
     }
 
+    /**
+     * Update terminal 
+     * @param  Request $request
+     * @return view
+     */
     public function updateMachine(Request $request)
     {
         $this->validate($request, [

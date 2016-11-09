@@ -28,6 +28,8 @@
               <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/roulette2/wheelconfig')}}')">Wheel Config</a></li>
 
               <li><a href="javascript:ajaxLoad('{{url('/settings/roulette2/psconfig')}}')">Terminals Config</a></li>
+
+              <li><a href="javascript:ajaxLoad('{{url('/settings/roulette2/accconfig')}}')">Accounting Config</a></li>
             </ul>
         </div>
   	</div>

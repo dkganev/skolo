@@ -110,6 +110,8 @@ Route::post('/settings/bingo/maxballs/destroy', 'Settings\BingoController@max_ba
 Route::get('/settings/bingo/sphereconfig', 'Settings\BingoController@sphere_config_index');
 Route::post('/settings/bingo/sphereconfig/edit', 'Settings\BingoController@sphere_config_edit');
 
+Route::get('/settings/bingo/accconfig', 'Settings\BingoController@acc_config_index');
+Route::post('/settings/bingo/accconfig/edit', 'Settings\BingoController@acc_config_edit');
 /**
  * SETTINGS / BLACKJACK
  */
@@ -118,6 +120,9 @@ Route::get('/settings/blackjack/tables', 'Settings\BlackjackController@tables_in
 
 Route::post('/settings/blackjack/mainconfig/edit', 'Settings\BlackjackController@main_config_edit');
 Route::post('/settings/blackjack/table/edit', 'Settings\BlackjackController@table_edit');
+
+Route::get('/settings/blackjack/accconfig', 'Settings\BlackjackController@acc_config_index');
+Route::post('/settings/blackjack/accconfig/edit', 'Settings\BlackjackController@acc_config_edit');
 
 /**
  * SETTINGS / ROULETTE
@@ -128,8 +133,10 @@ Route::get('/settings/roulette1/wheelconfig', 'Settings\RouletteController@wheel
 Route::post('/settings/roulette1/wheelconfig/edit', 'Settings\RouletteController@wheel_config_edit');
 
 Route::get('/settings/roulette1/psconfig', 'Settings\RouletteController@ps_config_index');
+Route::post('/settings/roulette1/psconfig/edit', 'Settings\RouletteController@ps_config_edit');
 
-
+Route::get('/settings/roulette1/accconfig', 'Settings\RouletteController@acc_config_index');
+Route::post('/settings/roulette1/accconfig/edit', 'Settings\RouletteController@acc_config_edit');
 
 Route::get('/settings/roulette2/wheelsettings', 'Settings\RouletteTwoController@wheel_settings_index');
 Route::post('/settings/roulette2/wheelsettings/edit', 'Settings\RouletteTwoController@wheel_settings_edit');
@@ -137,7 +144,10 @@ Route::get('/settings/roulette2/wheelconfig', 'Settings\RouletteTwoController@wh
 Route::post('/settings/roulette2/wheelconfig/edit', 'Settings\RouletteTwoController@wheel_config_edit');
 
 Route::get('/settings/roulette2/psconfig', 'Settings\RouletteTwoController@ps_config_index');
+Route::post('/settings/roulette2/psconfig/edit', 'Settings\RouletteTwoController@ps_config_edit');
 
+Route::get('/settings/roulette2/accconfig', 'Settings\RouletteTwoController@acc_config_index');
+Route::post('/settings/roulette2/accconfig/edit', 'Settings\RouletteTwoController@acc_config_edit');
 
 /**
  * LOCALIZATION

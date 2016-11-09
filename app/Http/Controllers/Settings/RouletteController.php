@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Models\Roulette\WheelSettings;
 use App\Models\Roulette\WheelConfig;
 use App\Models\Roulette\PsConf;
+use App\Models\Roulette\AccConfig;
 
 class RouletteController extends Controller
 {
@@ -61,4 +62,19 @@ class RouletteController extends Controller
         return view('settings.roulette.roulette1.ps-config', ['ps_conf' => $ps_conf]);
     }
 
+    public function ps_config_edit(Request $request)
+    {
+        PsConf::where('ps_id', $request->ps_id)->first()->update($request->except('_token'));
+    }
+
+    public function acc_config_index()
+    {
+        $acc_config = AccConfig::first();
+        return view('settings.roulette.roulette1.acc-config', compact('acc_config'));
+    }
+
+    public function acc_config_edit(Request $request)
+    {
+        AccConfig::first()->update($request->except('_token'));
+    }
 }

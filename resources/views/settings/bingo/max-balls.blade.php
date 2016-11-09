@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-      <div class="col-lg-5">
+      <div class="col-lg-6">
         <h1 style="margin-top: 0px;" class="page-header">Bingo - Max Balls</h1>
         <div style="padding-top:2px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
@@ -13,6 +13,8 @@
               <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
 
               <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
+
+              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
             </ul>
         </div>
   	</div>

@@ -10,6 +10,7 @@ use App\Models\Bingo\MainConfig;
 use App\Models\Bingo\MyBonus;
 use App\Models\Bingo\JackpotSteps;
 use App\Models\Bingo\SphereConfig;
+use App\Models\Bingo\AccConfig;
 use DB;
 
 class BingoController extends Controller
@@ -95,5 +96,16 @@ class BingoController extends Controller
     public function sphere_config_edit(Request $request)
     {
         SphereConfig::first()->update($request->except('_token'));
+    }
+
+    public function acc_config_index()
+    {
+        $acc_config = AccConfig::first();
+        return view('settings.bingo.acc-config', compact('acc_config'));
+    }
+
+    public function acc_config_edit(Request $request)
+    {
+        AccConfig::first()->update($request->except('_token'));
     }
 }
