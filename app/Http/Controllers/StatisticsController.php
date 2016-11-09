@@ -791,6 +791,11 @@ class StatisticsController extends Controller
         $dataFromGameTs = $request['FromGameTs'];
         $dataToGameTs = $request['ToGameTs'];
         $dataGameSort = $request['GameSort'];
+        if ($request['PSID'] == "" ){
+            $dataSeat_ID = 0;
+        }else{
+            $dataSeat_ID = $request['PSID'];
+        }
         $dataSeat_ID = $request['PSID'];
         $SortQuery = array(); 
         if ($dataFromGameTs != ""){

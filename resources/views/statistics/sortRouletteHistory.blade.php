@@ -145,7 +145,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                @if ($server_ps->where('psid', $history->psid)->where('seatid', $dataSeat_ID)->count())
+                                @if ($server_ps->where('psid', $history->psid)->where('seatid', $dataSeat_ID)->count() || $dataSeat_ID == 0 )
                                     <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' data-Ids='{{ $history->psid }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
                                         <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
