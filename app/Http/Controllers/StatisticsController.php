@@ -726,131 +726,45 @@ class StatisticsController extends Controller
     
      public function ajax_sortBJHistory(Request $request)
     {
-        /*$dataRowID = $request['rowID'];
-        $dataRowTS = $request['rowTS'];
         $historyClas = new BlackjackGameHistory();
-        $historys = $historyClas->where('ts', $dataRowTS)->first();
-        $tableid = "Table: " . ($historys->table_idx + 1) . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
-        $totalWinArray = $historys->getArrayWin();
-        $totalBetArray = $historys->getArrayBet();
-        $insuranceArray = $historys->getArrayInsurance();
-        $dblArray = $historys->getArrayDbl();
-        $surrenderArray = $historys->getArraySurrender();
-        $totalCards = $historys->getArrayCards();
-        $cards = array();
-        $totalSplitArray = array();
-            foreach ($totalCards as $keyP2 => $valP2)
-            {
-                foreach ($valP2 as $keyP => $valP)
-                {
-                    foreach ($valP as $key => $val)
-                    {
-                        if ($val != 0){
-                            if ($keyP == 1){
-                                $totalSplitArray[$keyP2] = $totalBetArray[$keyP2] ;    
-                            }else{
-                                //$totalSplitArray[$keyP2] = 0;
-                            }
-        
-                            if ($val > 128){
-                                $cartRank = $val - 128;
-                                if ($cartRank == 14) {
-                                    $cartRank = "A";
-                                }elseif ($cartRank == 13){
-                                    $cartRank = "K";
-                                }elseif ($cartRank == 12){
-                                    $cartRank = "Q";
-                                }elseif ($cartRank == 11){
-                                    $cartRank = "J";
-                                }
-                                    
-                                $cards[$keyP2][$keyP][$key] = array('val' => $val, 'cardRank' => $cartRank, 'cardSuit' => "pika"  ); // pika Spades
-                            }elseif ($val > 64){
-                                $cartRank = $val - 64;
-                                if ($cartRank == 14) {
-                                    $cartRank = "A";
-                                }elseif ($cartRank == 13){
-                                    $cartRank = "K";
-                                }elseif ($cartRank == 12){
-                                    $cartRank = "Q";
-                                }elseif ($cartRank == 11){
-                                    $cartRank = "J";
-                                }
-                                $cards[$keyP2][$keyP][$key] = array('val' => $val, 'cardRank' => $cartRank, 'cardSuit' => "kupa"  ); //kupa Hearts"
-                             }elseif ($val > 32){
-                                $cartRank = $val - 32;
-                                if ($cartRank == 14) {
-                                    $cartRank = "A";
-                                }elseif ($cartRank == 13){
-                                    $cartRank = "K";
-                                }elseif ($cartRank == 12){
-                                    $cartRank = "Q";
-                                }elseif ($cartRank == 11){
-                                    $cartRank = "J";
-                                }
-                                $cards[$keyP2][$keyP][$key] = array('val' => $val, 'cardRank' => $cartRank, 'cardSuit' => "karo"  ); //karo Diamonds
-                            }else {
-                                $cartRank = $val - 16;
-                                if ($cartRank == 14) {
-                                    $cartRank = "A";
-                                }elseif ($cartRank == 13){
-                                    $cartRank = "K";
-                                }elseif ($cartRank == 12){
-                                    $cartRank = "Q";
-                                }elseif ($cartRank == 11){
-                                    $cartRank = "J";
-                                }
-                                $cards[$keyP2][$keyP][$key] = array('val' => $val, 'cardRank' => $cartRank, 'cardSuit' => "spatiq"  );  //spatiq Clubs
-                            }    
-                        }
-            
-            
-                    }
-                }
-            }    
-       
-        
-        //var_dump($insuranceArray);
-        $totalDblArray = array();
-        foreach ($dblArray as $key => $val){
-            foreach ($val as $keySub => $valSub){
-                if ($valSub == 1){
-                    if (empty($totalDblArray[$key])){
-                        $totalDblArray[$key] = $totalBetArray[$key];
-                    }else{
-                        $totalDblArray[$key] += $totalBetArray[$key];
-                    }
-                        
-                    
-                }
-            }
-            
-        } 
-        $totalSurrenderArray = array();
-        foreach ($surrenderArray as $key => $val){
-            foreach ($val as $keySub => $valSub){
-                if ($valSub == 1){
-                        $totalSurrenderArray[$key] = $totalBetArray[$key] / 2;
-                        $totalWinArray[$key] = 0 ;
-                }
-            }
-            
-        } //$surrenderArray
-        $totalInsuranceArray  = array();
-        foreach ($insuranceArray as $key => $val){
-            if ($val == 1){
-                $totalInsuranceArray[$key] = $totalBetArray[$key] / 2;
-            }
-        }
-        
-        $totalWin = array_sum($totalWinArray) + array_sum($totalSurrenderArray) ;
-        $totalBet = array_sum($totalBetArray) + array_sum($totalDblArray) + array_sum($totalInsuranceArray) + array_sum($totalSplitArray) ;
-        $testPage = view('statistics.BJ_History', ['cards' => $cards, 'totalBetArray' => $totalBetArray, 'totalWinArray' => $totalWinArray, 'totalDblArray' => $totalDblArray, 'totalInsuranceArray' => $totalInsuranceArray, 'totalSplitArray' => $totalSplitArray, 'totalSurrenderArray' => $totalSurrenderArray ])->render();
-        */
-        $historyClas = new BlackjackGameHistory();
+        $dataFromGameTs = $request['FromGameTs'];
+        $dataToGameTs = $request['ToGameTs'];
         $dataGameSort = $request['GameSort'];
         $dataTableSort = $request['TableSort'];
+        if ($request['PSID'] == ""){
+            $dataArray['PSID'] = 0;
+        }else {
+            $dataArray['PSID'] = $request['PSID'];
+        }
+        if ($request['FromGameBet'] == ""){
+            $dataArray['FromGameBet'] = 0;
+        }else {
+            $dataArray['FromGameBet'] = $request['FromGameBet'] * 100;
+        }
+        if ($request['ToGameBet'] == "" ){
+            $dataArray['ToGameBet'] = 0;
+        }else{
+            $dataArray['ToGameBet'] = $request['ToGameBet'] * 100;
+        }
+        
+        if ($request['FromGameWin'] == ""){
+            $dataArray['FromGameWin'] = 0;
+        }else {
+            $dataArray['FromGameWin'] = $request['FromGameWin'] * 100;
+        }
+        if ($request['ToGameWin'] == "" ){
+            $dataArray['ToGameWin'] = 0;
+        }else{
+            $dataArray['ToGameWin'] = $request['ToGameWin'] * 100;
+        }
+        
         $SortQuery = array(); 
+        if ($dataFromGameTs != ""){
+             array_push ($SortQuery,['ts', '>=', $dataFromGameTs]);
+        }
+        if ($dataToGameTs != ""){
+             array_push ($SortQuery,['ts', '<=', $dataToGameTs]);
+        }
         if ($dataGameSort != ""){
              array_push ($SortQuery,['game_seq', '=', $dataGameSort]);
         }
@@ -861,24 +775,75 @@ class StatisticsController extends Controller
         
        
         $historys = BlackjackGameHistory::where($SortQuery)->get();
-        //var_dump($historys);
         $server_ps = ServerPs::orderBy('psid', 'asc')->get();
-        $testPage = view('statistics.sortBJHistory', ['historys' => $historys])->render();
-        //$test = $historys->totalWin();
-        //var_dump($historyClas->totalWin());
-        
-        //return view('statistics.historyBlackjack', ['historys' => $historys, 'server_ps' => $server_ps]); 
+        $testPage = view('statistics.sortBJHistory', ['historys' => $historys, 'dataArray' => $dataArray])->render();
          
         $dataArray1 = array(
             "success" => "success",
-       //     "dataRowID" => $totalSplitArray,
-         //   "seatid" => $tableid,
-        //    "totalBet" =>  number_format($totalBet / 100, 2),
-        //    "totalWin" =>  number_format($totalWin / 100, 2),
-           "html" => $testPage
+            "html" => $testPage
         );
         
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
+   
+    public function ajax_sortRouletteHistory(Request $request)
+    {
+        $dataFromGameTs = $request['FromGameTs'];
+        $dataToGameTs = $request['ToGameTs'];
+        $dataGameSort = $request['GameSort'];
+        if ($request['PSID'] == "" ){
+            $dataSeat_ID = 0;
+        }else{
+            $dataSeat_ID = $request['PSID'];
+        }
+        $dataSeat_ID = $request['PSID'];
+        $SortQuery = array(); 
+        if ($dataFromGameTs != ""){
+             array_push ($SortQuery,['ts', '>=', $dataFromGameTs]);
+        }
+        if ($dataToGameTs != ""){
+             array_push ($SortQuery,['ts', '<=', $dataToGameTs]);
+        }
+        if ($dataGameSort != ""){
+             array_push ($SortQuery,['rlt_seq', '=', $dataGameSort]);
+        }
+        if ($request['FromGameNum'] != ""){
+            array_push ($SortQuery,['win_num', '>=', $request['FromGameNum']]);
+        }
+        if ($request['ToGameNum'] != "" ){
+            array_push ($SortQuery,['win_num', '<=', $request['ToGameNum']]);
+        }
+        if ($request['FromGameBet'] != ""){
+            array_push ($SortQuery,['bet', '>=', $request['FromGameBet'] * 100]);
+        }
+        if ($request['ToGameBet'] != "" ){
+            array_push ($SortQuery,['bet', '<=', $request['ToGameBet'] * 100]);
+        }
+        if ($request['FromGameWin'] != ""){
+            array_push ($SortQuery,['win_val', '>=', $request['FromGameWin'] * 100]);
+        }
+        if ($request['ToGameWin'] != "" ){
+            array_push ($SortQuery,['win_val', '<=', $request['ToGameWin'] * 100]);
+        }
+        if ($request['FromGameJack'] != ""){
+            array_push ($SortQuery,['jackpot', '>=', $request['FromGameJack'] * 100]);
+        }
+        if ($request['ToGameJack'] != "" ){
+            array_push ($SortQuery,['jackpot', '<=', $request['ToGameJack'] * 100]);
+        }
+        
+        $historys = GameHistory::where($SortQuery)->get();
+        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
+
+        $testPage = view('statistics.sortRouletteHistory', ['historys' => $historys, 'server_ps' => $server_ps, 'dataSeat_ID' => $dataSeat_ID])->render();
+        
+        $dataArray1 = array(
+            "success" => "success",
+            "html" => $testPage,
+        );
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
+    
     
 }

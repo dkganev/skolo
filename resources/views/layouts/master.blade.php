@@ -44,6 +44,10 @@
 
     <script src="bootstrap-table/bootstrap-table.js"></script>
     <script src="bootstrap-table/bootstrap-table-locale-all.js"></script>
+    
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.min.css" />
+                           
+    <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 
 </head>
 <body style="background-image: url('images/background.jpg'); ">
