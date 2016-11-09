@@ -21,7 +21,8 @@
                                         <div class="" onclick="datetimepicker66(); ">
                                             <div class='input-group date' id='datetimepicker6'>
                                                 
-                                                <input id='datetimepicker6I' class="form-control" size="16" type="text" value="" onchange='datetimepicker6Close();' readonly>
+                                                <input id='datetimepicker6I' class="form-control" size="16" type="text" value="" onchange='datetimepicker6Close();' >
+                                                <span class="add-on"><i class="icon-remove"></i></span>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
@@ -36,7 +37,8 @@
                                     <div class='col-md-9'>
                                         <div class="" onclick="datetimepicker77(); ">
                                             <div class='input-group date' id='datetimepicker7' style="margin-top: 3px;" >
-                                                <input id='datetimepicker7I' class="form-control"  type='text' size="16" value="" onchange='datetimepicker7Close();' readonly />
+                                                <input id='datetimepicker7I' class="form-control"  type='text' size="16" value="" onchange='datetimepicker7Close();' />
+                                                <span class="add-on"><i class="icon-remove"></i></span>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
@@ -178,5 +180,6 @@
                             @endforeach
                         </tbody>
                 </table>
-                
+                <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
+                <script src="bootstrap-table/bootstrap-table.js"></script>
                 

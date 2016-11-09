@@ -232,6 +232,112 @@ function changeModalWindowR(NextPrev) {
         
     });
 }    
+var sortTimer;
+function sortFunction(sValue, sColumn) {
+    clearTimeout(sortTimer);
+    sortTimer = setTimeout(function(){ 
+        $(".faSpinnerBJ").show();
+        $('#BJcards').hide();datetimepicker6I
+        FromGameTs = $('#datetimepicker6I').val();
+        ToGameTs = $('#datetimepicker7I').val();
+        GameSort = $('#GameSort').val();
+        TableSort = $('#TableSort').val();
+        PSID = $('#PSID').val();
+        FromGameBet = $('#FromGameBet').val();
+        ToGameBet = $('#ToGameBet').val();
+        FromGameWin = $('#FromGameWin').val();
+        ToGameWin = $('#ToGameWin').val();
+        token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            type:'POST',
+            url:'ajax_sortBJHistory',
+            dataType: "json",
+            data:{'FromGameTs': FromGameTs, 'ToGameTs': ToGameTs, 'GameSort':  GameSort, 'TableSort':  TableSort, 'PSID':  PSID, 'FromGameBet': FromGameBet, 'ToGameBet': ToGameBet, 'FromGameWin': FromGameWin, 'ToGameWin': ToGameWin, _token: token},
+            success:function(data){
+                if (data.success == "success"){
+                    $('#tableBJ').html(data.html);
+                    setTimeout(function(){
+                        $('#datetimepicker6I').val(FromGameTs);
+                        $('#datetimepicker7I').val(ToGameTs);
+                        //$('#datetimepicker6').datetimepicker('setStartDate', FromGameTs);
+                        $('#GameSort').val(GameSort);
+                        $('#TableSort').val(TableSort);
+                        $('#PSID').val(PSID);
+                        $('#FromGameBet').val(FromGameBet);
+                        $('#ToGameBet').val(ToGameBet);
+                        $('#FromGameWin').val(FromGameWin);
+                        $('#ToGameWin').val(ToGameWin);
+                        var d = new Date();
+                        var month = d.getMonth()+1;
+                        var day = d.getDate();
+                        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+                        $('#datetimepicker6').datetimepicker('setEndDate', output );
+                        $('#datetimepicker7').datetimepicker('setEndDate', output );
+                        if (FromGameTs != ""){
+                            $('#datetimepicker7').datetimepicker('setStartDate', FromGameTs);
+                        }
+                        if (ToGameTs != ""){
+                            $('#datetimepicker6').datetimepicker('setEndDate', ToGameTs);
+                        }
+                    }, 300);
+                    
+                }
+                $(".faSpinnerBJ").hide();
+            },
+            error: function (error) {
+                alert ("Unexpected wrong.");
+                $(".faSpinnerBJ").hide();
+            
+            }
+        
+        });
+    }, 500);
+}
+    
+   function datetimepicker66() {
+        $('.switch').attr('colspan', 5);
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        $('#datetimepicker6').datetimepicker('setEndDate', output);
+        $('#datetimepicker6').datetimepicker('show');
+    }
+    function datetimepicker77() {
+        $('.switch').attr('colspan', 5);
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        $('#datetimepicker7').datetimepicker('setEndDate', output);
+        $('#datetimepicker7').datetimepicker('show');
+    }
+    function datetimepicker6Close() {
+        $('#datetimepicker6').datetimepicker('hide');
+        sortFunction(1, "datetimepicker6I");
+        //$('#datetimepicker7').datetimepicker('setStartDate', '2016-11-08');
+    }
+    function datetimepicker7Close() {
+        $('#datetimepicker7').datetimepicker('hide');
+        sortFunction(1, "datetimepicker7I");
+        //$('#datetimepicker').datetimepicker('setStartDate', '2012-01-01');
+    }
+    $("#datetimepicker6").datetimepicker({
+        //format: "dd MM yyyy - hh:ii",
+        //autoclose: true,
+        //todayBtn: true,
+        //startDate: "2013-02-14 10:00",
+        minuteStep: 10
+    });
+    $('#datetimepicker7').datetimepicker({
+        useCurrent: false, //Important! See issue #1075
+        //format: "dd MM yyyy - hh:ii",
+        //autoclose: true,
+        //todayBtn: true,
+        //startDate: "2013-02-14 10:00",
+        minuteStep: 10
+    });
+           
 
     
 
