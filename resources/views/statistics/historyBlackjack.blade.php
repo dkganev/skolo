@@ -11,8 +11,7 @@
               <li><a href="javascript:ajaxLoad('#')">Slots </a></li>
             </ul>
         </div>
-        
-    </div>
+ </div>
 <div class="container-fluid">
 <div class="row">
      <!--  page header -->
@@ -30,36 +29,8 @@
 
         <div class="panel panel-default" >
             <div class="panel-heading">
-<div class="row">
-    <div class='col-md-3'>
-        From:
-    </div>
-    <div class='col-md-9'>
-        <div class="form-group">
-            <div class='input-group date' id='datetimepicker6'>
-                <input type='text' class="form-control" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>    
-<div class="row">
-    <div class='col-md-3'>
-        To:
-    </div>
-    <div class='col-md-9'>
-        <div class="form-group">
-            <div class='input-group date' id='datetimepicker7'>
-                <input type='text' class="form-control" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
+
+                             
                 <!--  -->
             </div>
 
@@ -78,15 +49,82 @@
                     <thead class="w3-dark-grey">
                         
                         <tr>
-                            <th class="text-center" data-field="date" >
-                            
-                            
+                            <th  >
+                               <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-9'>
+                                        <div class="" onclick="datetimepicker66(); ">
+                                            <div class='input-group date' id='datetimepicker6'>
+                                                
+                                                <input id='datetimepicker6I' class="form-control" size="16" type="text" value="" onchange='datetimepicker6Close();' readonly>
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-9'>
+                                        <div class="" onclick="datetimepicker77(); ">
+                                            <div class='input-group date' id='datetimepicker7' style="margin-top: 3px;" >
+                                                <input id='datetimepicker7I' class="form-control"  type='text' size="16" value="" onchange='datetimepicker7Close();' readonly />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </th>
-                            <th class="text-center"  ><input type='text' style="color: #333" id='GameSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  ><input type='text' style="color: #333" id='TableSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  ><input type='text' ></th>
-                            <th class="text-center"  ><input type='text' ></th>
-                            <th class="text-center"  ><input  type='submit' value="submit" style="color: #333" onclick='alert("test");'></th>
+                            <th class="text-center"  ><input type='number' style="color: #333" id='GameSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
+                            <th class="text-center"  ><input type='number' style="color: #333" id='TableSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
+                            <th class="text-center"  ><input type='number' style="color: #333" id='PSID' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
+                            <th class="text-center"  >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-9'>
+                                        <div class="">
+                                            <input type='number' style="color: #333" id='FromGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-9'>
+                                        <div class="">
+                                            <input type='number' style="color: #333" id='ToGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center"  >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-9'>
+                                        <input type='number' style="color: #333" id='FromGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-9'>
+                                        <input type='number' style="color: #333" id='ToGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                    </div>
+                                </div>
+                            </th>
                         </tr>
                         <tr>
                             <th class="text-center" data-field="date" data-sortable="true">Time</th>
@@ -184,31 +222,49 @@
 </div> <!--End Row -->
 </div>
 
+
+
+
+
+
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/datetimepicker/latest/DateTimePicker.min.css" />
-<script type="text/javascript" src="//cdn.jsdelivr.net/datetimepicker/latest/DateTimePicker.min.js"></script>
+
 <script >
 var sortTimer;
 function sortFunction(sValue, sColumn) {
     clearTimeout(sortTimer);
     sortTimer = setTimeout(function(){ 
         $(".faSpinnerBJ").show();
-        $('#BJcards').hide();
-        token = $('meta[name="csrf-token"]').attr('content');
+        $('#BJcards').hide();datetimepicker6I
+        FromGameTs = $('#datetimepicker6I').val();
+        ToGameTs = $('#datetimepicker7I').val();
         GameSort = $('#GameSort').val();
         TableSort = $('#TableSort').val();
+        PSID = $('#PSID').val();
+        FromGameBet = $('#FromGameBet').val();
+        ToGameBet = $('#ToGameBet').val();
+        FromGameWin = $('#FromGameWin').val();
+        ToGameWin = $('#ToGameWin').val();
+        token = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
             type:'POST',
             url:'ajax_sortBJHistory',
             dataType: "json",
-            data:{'GameSort':  GameSort, 'TableSort':  TableSort, _token: token},
+            data:{'FromGameTs': FromGameTs, 'ToGameTs': ToGameTs, 'GameSort':  GameSort, 'TableSort':  TableSort, 'PSID':  PSID, 'FromGameBet': FromGameBet, 'ToGameBet': ToGameBet, 'FromGameWin': FromGameWin, 'ToGameWin': ToGameWin, _token: token},
             success:function(data){
                 if (data.success == "success"){
                     $('#tableBJ').html(data.html);
+                    $('#datetimepicker6I').val(FromGameTs);
+                    $('#datetimepicker7I').val(ToGameTs);
+                    //$('#datetimepicker6').datetimepicker('setStartDate', FromGameTs);
                     $('#GameSort').val(GameSort);
                     $('#TableSort').val(TableSort);
-                   
+                    $('#PSID').val(PSID);
+                    $('#FromGameBet').val(FromGameBet);
+                    $('#ToGameBet').val(ToGameBet);
+                    $('#FromGameWin').val(FromGameWin);
+                    $('#ToGameWin').val(ToGameWin);
                     
                 }
                 $(".faSpinnerBJ").hide();
@@ -229,9 +285,10 @@ function sortFunction(sValue, sColumn) {
     
     
 }
-    $('#datetimepicker6').on("click", function(){alert("test")});
-    /*$('#datetimepicker').data("DateTimePicker").FUNCTION();
-    $(function () {
+    
+    //$('#datetimepicker6').on("click", function(){alert("test")});
+    //$('#datetimepicker').data("DateTimePicker").FUNCTION();
+    /*$(function () {
         $('#datetimepicker6').datetimepicker();
         $('#datetimepicker7').datetimepicker({
             useCurrent: false //Important! See issue #1075
@@ -243,6 +300,72 @@ function sortFunction(sValue, sColumn) {
             $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
         });
     });*/
+    //$(".form_datetime").datetimepicker({
+        
+    //datepicker: true
 
+    //});
+    //$(document).ready(function() {
+     //   $('.form_datetime').datetimepicker();
+    //});
+            //$('#datetimepicker6').datetimepicker();
+    
+    function datetimepicker66() {
+        $('.switch').attr('colspan', 5);
+        $('#datetimepicker6').datetimepicker('show');
+    }
+    function datetimepicker77() {
+        $('.switch').attr('colspan', 5);
+        $('#datetimepicker7').datetimepicker('show');
+    }
+    
+    function datetimepicker6Close() {
+        $('#datetimepicker6').datetimepicker('hide');
+        //$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        sortFunction(1, "datetimepicker6I");
+       //alert(e.date);
+        //$("#datetimepicker6").click();
+    }
+    
+    function datetimepicker7Close() {
+        $('#datetimepicker7').datetimepicker('hide');
+        //sortFunction(1, "datetimepicker7I");
+        //alert("test");
+        //$("#datetimepicker6").click();
+    }
+    
+    
+    
+/*$('#datetimepicker7I').on('change', function(ev){
+    alert ("test");
+//if (ev.date.valueOf() < date-start-display.valueOf()){
+    //    ....
+    //}
+});
+        $("#datetimepicker6").on("dp.change", function (e) {
+            //$('#datetimepicker6').hide();
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            //$('#datetimepicker7').datetimepicker('hide');
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+  */
+    $("#datetimepicker6").datetimepicker({
+        //format: "dd MM yyyy - hh:ii",
+        //autoclose: true,
+        //todayBtn: true,
+        //startDate: "2013-02-14 10:00",
+        minuteStep: 10
+    });
+    $('#datetimepicker7').datetimepicker({
+        useCurrent: false, //Important! See issue #1075
+        //format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        //startDate: "2013-02-14 10:00",
+        minuteStep: 10
+    });
+           
+</script>            
 
-</script>

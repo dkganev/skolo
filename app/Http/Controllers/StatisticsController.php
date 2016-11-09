@@ -850,6 +850,38 @@ class StatisticsController extends Controller
         $historyClas = new BlackjackGameHistory();
         $dataGameSort = $request['GameSort'];
         $dataTableSort = $request['TableSort'];
+        //$dataArray['FromGameBet'] = $request['FromGameBet'];
+        //$dataArray['ToGameBet'] = $request['FromToBet'];
+        if ($request['PSID'] == ""){
+            $dataArray['PSID'] = 0;
+        }else {
+            $dataArray['PSID'] = $request['PSID'];
+        }
+        if ($request['FromGameBet'] == ""){
+            $dataArray['FromGameBet'] = 0;
+        }else {
+            $dataArray['FromGameBet'] = $request['FromGameBet'] * 100;
+        }
+        if ($request['ToGameBet'] == "" ){
+            $dataArray['ToGameBet'] = 0;
+        }else{
+            $dataArray['ToGameBet'] = $request['ToGameBet'] * 100;
+        }
+        
+        if ($request['FromGameWin'] == ""){
+            $dataArray['FromGameWin'] = 0;
+        }else {
+            $dataArray['FromGameWin'] = $request['FromGameWin'] * 100;
+        }
+        if ($request['ToGameWin'] == "" ){
+            $dataArray['ToGameWin'] = 0;
+        }else{
+            $dataArray['ToGameWin'] = $request['ToGameWin'] * 100;
+        }
+        
+        //$dataArray['ToGameWin'] = $request['ToGameWin'] * 100;
+        //var_dump($dataArray);
+        //$dataArray['ToGameWin'] = 2000;
         $SortQuery = array(); 
         if ($dataGameSort != ""){
              array_push ($SortQuery,['game_seq', '=', $dataGameSort]);
@@ -863,7 +895,7 @@ class StatisticsController extends Controller
         $historys = BlackjackGameHistory::where($SortQuery)->get();
         //var_dump($historys);
         $server_ps = ServerPs::orderBy('psid', 'asc')->get();
-        $testPage = view('statistics.sortBJHistory', ['historys' => $historys])->render();
+        $testPage = view('statistics.sortBJHistory', ['historys' => $historys, 'dataArray' => $dataArray])->render();
         //$test = $historys->totalWin();
         //var_dump($historyClas->totalWin());
         
