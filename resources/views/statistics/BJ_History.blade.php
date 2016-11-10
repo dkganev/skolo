@@ -32,6 +32,9 @@
             Surrender: {{number_format($totalSurrenderArray[4] / 100, 2)}}<br />
         @endif 
     </div>
+    <div class="lucky_chip ng-scope"  style="left: 65px; top: 490px; background-color: transparent; color: #fff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
+       PS ID: {{ $totalSeatIDArray[4]}}
+    </div>
 @endif
 @if (array_key_exists(3,$cards))
     @foreach ($cards[3] as $keyP => $cardP)
@@ -66,6 +69,9 @@
          @if ( array_key_exists(3,$totalSurrenderArray))
             Surrender: {{number_format($totalSurrenderArray[3] / 100, 2)}}<br />
         @endif 
+    </div>
+    <div class="lucky_chip ng-scope"  style="left: 305px; top: 585px; background-color: transparent; color: #fff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
+       PS ID: {{ $totalSeatIDArray[3]}}
     </div>
 @endif
 @if (array_key_exists(2,$cards))
@@ -103,6 +109,9 @@
         
     </div>
 
+    <div class="lucky_chip ng-scope"  style="left: 560px; top: 610px; background-color: transparent; color: #fff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
+       PS ID: {{ $totalSeatIDArray[2]}}
+    </div>
 @endif
 @if (array_key_exists(1,$cards))
     @foreach ($cards[1] as $keyP => $cardP)
@@ -136,6 +145,9 @@
         @if ( array_key_exists(1,$totalSurrenderArray))
             Surrender: {{number_format($totalSurrenderArray[1] / 100, 2)}}<br />
         @endif 
+    </div>
+    <div class="lucky_chip ng-scope"  style="left: 830px; top: 585px; background-color: transparent; color: #fff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
+       PS ID: {{ $totalSeatIDArray[1]}}
     </div>
 @endif
 @if (array_key_exists(0,$cards))
@@ -171,6 +183,9 @@
         @if ( array_key_exists(0,$totalSurrenderArray))
             Surrender: {{number_format($totalSurrenderArray[0] / 100, 2)}}<br />
         @endif 
+    </div>
+    <div class="lucky_chip ng-scope"  style="left: 1060px; top: 490px; background-color: transparent; color: #fff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
+       PS ID: {{ $totalSeatIDArray[0]}}
     </div>
 @endif
 @if (array_key_exists(5,$cards))

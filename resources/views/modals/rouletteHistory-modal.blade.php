@@ -10,7 +10,7 @@
                 <span id='rouletteHead' style="font-size: 16px; ">PS: 2, Time: 2016-09-12 14:19:43</span>
             </div>
             <div class="modal-body" >
-                <div style="display: table-cell;vertical-align: top;padding-right: 20px;">
+                <div style="display: table-cell;vertical-align: top;padding-right: 20px; width: 200px">
                     <div>
                         Win Number
                         <b id='winNumber'>1</b>
@@ -44,13 +44,14 @@
                 <br />
                 <div style='text-align: center;'>
                     <input id='next-prevR' type="hidden" data-id='' data-ts='' >
-                    <a><i id='prevArrowR' class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindowR("Prev");'></i></a>&nbsp;&nbsp;&nbsp;
+                    <a><i id='prevArrowR' class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindowR("Prev");'></i></a>
+                    &nbsp;&nbsp;Game: <span id="gameIDArrowR">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;
                     <a><i id='nextArrowR' class="fa fa-angle-right" style="color: #333; font-size: 20px;" onclick='changeModalWindowR("Next");'></i></a>
                 </div>
             </div>    
             <div class="modal-footer">
+                <button type="button" class="btn btn-warning" onclick='ExportToPNGR();'>Export to PNG</button>
                 <button id="ModalClose" type="button" class="btn btn-default" data-dismiss="modal">Close <i class="glyphicon glyphicon-arrow-right"></i></button>
-        
             </div>
         </div>
     </div>

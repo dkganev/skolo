@@ -2,6 +2,7 @@
 <auxiliary-configuration xmlns="http://www.netbeans.org/ns/auxiliary-configuration/1">
     <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
         <word>endforeach</word>
+        <word>ExportToPNGBingoT</word>
         <word>mySetings</word>
     </spellchecker-wordlist>
 </auxiliary-configuration>

@@ -38,7 +38,7 @@
                                         <div class="" onclick="datetimepicker77(); ">
                                             <div class='input-group date' id='datetimepicker7' style="margin-top: 3px;" >
                                                 <input id='datetimepicker7I' class="form-control"  type='text' size="16" value="" onchange='datetimepicker7Close();' />
-                                                <span class="add-on"><i class="icon-remove"></i></span>
+                                                <span class=" add-on"><i class="icon-remove"></i></span>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>

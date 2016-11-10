@@ -30,6 +30,7 @@
                
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-warning" onclick='ExportToPNGBingoT();'>Export to PNG</button>
                 <button type="button" class="btn btn-default ModalClose" data-dismiss="modal">Close <i class="glyphicon glyphicon-arrow-right"></i></button>
         
             </div>

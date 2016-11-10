@@ -84,6 +84,7 @@ $(document).on("click","tr.rowsR td", function(e){
                 $('#winNumber').html(data.winNumber);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
+                $('#gameIDArrowR').html(data.gameIDArrow);
                 $('#jackpotWon').html(data.jackpotWon);
                 $('#next-prevR').attr("data-Id", rowIds);
                 $('#next-prevR').attr("data-ts", rowTS);
@@ -125,9 +126,10 @@ $(document).on("click","tr.rowsBJ td", function(e){
                 $('#BJHead').html(data.seatid);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
-                $(".faSpinnerBJ").hide();
+                $('#gameIDArrow').html(data.gameIDArrow);
                 $('#next-prev').attr("data-table", rowTable);
                 $('#next-prev').attr("data-ts", rowTS);
+                $(".faSpinnerBJ").hide();
                 $('#BJcards').show();
                 
             }
@@ -161,6 +163,7 @@ function changeModalWindow(boxAttr) {
                 $('#BJHead').html(data.seatid);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
+                $('#gameIDArrow').html(data.gameIDArrow);
                 $(".faSpinnerBJ").hide();
                 //$('#next-prev').attr("data-table", rowTable);
                 $('#next-prev').attr("data-ts", data.dataRowTS);
@@ -208,6 +211,7 @@ function changeModalWindowR(NextPrev) {
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
                 $('#jackpotWon').html(data.jackpotWon);
+                $('#gameIDArrowR').html(data.gameIDArrow);
                 $('#next-prevR').attr("data-ts", data.dataRowTS);
                 if (data.nextArrow == 0){
                     $('#nextArrowR').hide();
@@ -345,7 +349,6 @@ function sortFunctionR(sValue, sColumn) {
         FromGameTs = $('#datetimepicker4I').val();
         ToGameTs = $('#datetimepicker5I').val();
         GameSort = $('#GameSortR').val();
-        //TableSort = $('#TableSortR').val();
         PSID = $('#PSIDR').val();
         FromGameNum = $('#FromGameNumR').val();
         ToGameNum = $('#ToGameNumR').val();
@@ -367,9 +370,7 @@ function sortFunctionR(sValue, sColumn) {
                     setTimeout(function(){
                         $('#datetimepicker4I').val(FromGameTs);
                         $('#datetimepicker5I').val(ToGameTs);
-                        //$('#datetimepicker6').datetimepicker('setStartDate', FromGameTs);
                         $('#GameSortR').val(GameSort);
-                        //$('#TableSortR').val(TableSort);
                         $('#PSIDR').val(PSID);
                         $('#FromGameNumR').val(FromGameNum);
                         $('#ToGameNumR').val(ToGameNum);
@@ -450,9 +451,70 @@ function sortFunctionR(sValue, sColumn) {
         minuteStep: 10
     });
            
-
-    
-
+//ModalEx clickModalWindow
+//$("#ModalEx").click(function(){
+//    alert("The paragraph was clicked.");
+//});
+function ExportToPNGBJ() {
+    html2canvas($('#BJHistory_modal'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            document.body.appendChild(canvas);
+            $(".faSpinnerBJ").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            document.body.removeChild(canvas);
+            $(".faSpinnerBJ").hide();
+        }
+    });
+}
+function ExportToPNGR() {
+    html2canvas($('#rouletteHistory_modal'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
+function ExportToPNGBingoT() {
+    html2canvas($('#bingoHistory2_modal'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
+function ExportToPNGBingo() {
+    html2canvas($('#bingoHistory_modal'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 
 
 

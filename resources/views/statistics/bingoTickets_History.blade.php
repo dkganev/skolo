@@ -19,7 +19,29 @@ $allThickets = $bingoLine + $bingoBingo1 + $bingoThickets1;
 $allRows = ceil($allThickets / 8);
 
 ?>
-<table class="table table-striped">
+<table id="example" class="table table-striped table-bordered table-hover data-table-table" role="grid"
+                            data-toggle="table"
+                            data-locale="en-US"
+                            data-sortable="true"
+
+                            data-pagination="true"
+                            data-side-pagination="client"
+                            data-page-list="[3, 5, 10, 15, 50]"
+                            data-page-size="5"
+                            data-classes="table-condensed"
+>
+<thead class="w3-dark-grey">
+                        <tr>
+                            <th class="text-center" ></th>
+                            <th class="text-center" ></th>
+                            <th class="text-center" ></th>
+                            <th class="text-center" ></th>
+                            <th class="text-center" ></th>
+                            <th class="text-center" ></th>
+                            <th class="text-center" ></th>
+                            <th class="text-center" ></th>
+                        </tr>
+</thead>
 
 <tbody>
 
@@ -185,3 +207,5 @@ $allRows = ceil($allThickets / 8);
        
     </tbody>
 </table>
+<link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
+<script src="bootstrap-table/bootstrap-table.js"></script>

@@ -45,6 +45,10 @@
     <script src="bootstrap-table/bootstrap-table.js"></script>
     <script src="bootstrap-table/bootstrap-table-locale-all.js"></script>
     
+    <!-- Export to Img -->
+    <script type="text/javascript" src="js/html2canvas.js"></script>
+    <script type="text/javascript" src="js/canvas2image.js"></script>
+    
     <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.min.css" />
                            
     <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
