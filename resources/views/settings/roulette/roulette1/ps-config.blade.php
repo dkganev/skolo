@@ -39,10 +39,10 @@
 <div class="container-full">
 <div class="row">
 
-<div class="well" style="background: #ffffff; overflow: hidden; margin: 0; padding: 0;">
+<div class="well" style="background: #ffffff; margin: 0; padding: 0; height:730px">
 
     <div class="col-lg-3">
-      <table class="table table-bordered" style="width: 250px; margin-top: 50px;">
+      <table class="table" style="width: 250px; margin-top: 50px;">
         <thead class="w3-blue-grey">
           <tr >
             <th>PS ID</th>
@@ -59,7 +59,7 @@
             <button class="btn btn-primary btn-xs ps-config-toggle"
                     type="submit"
                     data-id="{{ $conf->ps_id }}"
-          >
+            >
               Edit
             </button>
           </td>
@@ -72,11 +72,17 @@
 
 <div id="psconfig">
   @foreach($ps_conf as $conf)
-  <form style="display:none;" action="/settings/roulette1/psconfig/edit" method="POST" role="form" id="ps-config-form-{{ $conf->ps_id }}">
+  <form style="display: none" action="/settings/roulette1/psconfig/edit" method="POST" role="form" id="ps-config-form-{{ $conf->ps_id }}">
 
     <div class="w3-blue-grey" id="heading" style="width: 100%;  height: 35px; margin-bottom: 15px;">
       <h3 style="margin:0; padding: 0; color: #fff; font-family: sans-serif;">
-        <strong><i style="margin:0 0 0 268px; position: relative; top: 5px">PS ID {{ $conf->ps_id }} - Config</i></strong>
+        <strong><i style="margin:0 0 0 268px; position: relative; top: 5px">
+            @if($conf->ps_id === 0)
+              DEFAULT PS - Config
+            @else
+              PS ID {{ $conf->ps_id }} - Config
+            @endif
+        </i></strong>
       </h3>
     </div>
 
@@ -288,6 +294,7 @@
         <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
           <label for="denom1">Denomination #1:</label><br>
           <select name="denom1" id="denom1" class="selectpicker" data-actions-box="true">
+            <option {{ $conf->denom1 == 0 ? 'selected="true"' : '' }} value="1">None</option>
             <option {{ $conf->denom1 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
             <option {{ $conf->denom1 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
             <option {{ $conf->denom1 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
@@ -320,6 +327,7 @@
         <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
           <label for="denom2">Denomination #2:</label><br>
           <select style="height: 40px; line-height:30px;" name="denom2" id="denom2" class="selectpicker" data-actions-box="true">
+            <option {{ $conf->denom2 == 0 ? 'selected="true"' : '' }} value="1">None</option>
             <option {{ $conf->denom2 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
             <option {{ $conf->denom2 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
             <option {{ $conf->denom2 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
@@ -351,6 +359,7 @@
         <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
           <label for="denom3">Denomination #3:</label><br>
           <select name="denom3" id="denom3" class="selectpicker" data-actions-box="true">
+            <option {{ $conf->denom3 == 0 ? 'selected="true"' : '' }} value="1">None</option>
             <option {{ $conf->denom3 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
             <option {{ $conf->denom3 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
             <option {{ $conf->denom3 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
@@ -383,6 +392,7 @@
         <div class="form-group form-group-sm" style="width:270px; display: inline-block; padding: 0;">
           <label for="denom4">Denomination #4:</label><br>
           <select name="denom4" id="denom4" class="selectpicker" data-actions-box="true">
+            <option {{ $conf->denom4 == 0 ? 'selected="true"' : '' }} value="1">None</option>
             <option {{ $conf->denom4 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
             <option {{ $conf->denom4 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
             <option {{ $conf->denom4 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
@@ -424,16 +434,44 @@
           Update
       </button>
       </form>
-      </div>
+      <script>
+          $('select').on('change', function() {
+          var select = $("#ps-config-form-{{ $conf->ps_id }}").find('select');
+          var option = $("#ps-config-form-{{ $conf->ps_id }}").find('option');
+          // console.log(select);
+          $(option).prop('disabled', false); //reset all the disabled options on every change event
+            $(select).each(function() { //loop through all the select elements
+              var val = this.value;
+              $(select).not(this).find(option).filter(function() { //filter option elements having value as selected option
+                  return this.value === val;
+              }).prop('disabled', true); //disable those option elements
+              // }).prop('disabled', true); //disable those option elements
+            });
+          }).change(); //trihgger change handler initially!
+
+          // $('select').change(function(){
+          // $('select[name*="box1"] option').attr('disabled',false);
+          //     $('select[name*="box1"]').each(function(){
+          //       var $this = $(this);
+          //       $('select[name*="box1"]').not($this).find('option').each(function(){
+          //          if($(this).attr('value') == $this.val())
+          //              $(this).attr('disabled',true);
+          //       });
+          //   });
+          // });
+
+
+      </script>
       @endforeach
 
 </div><!-- End PsConfig--> 
 
 </div><!-- End Well--> 
 </div><!-- End Row--> 
-</div><!-- End Container -->
+</div><!-- End Container--> 
 
 <script>
+
   $('.ps-config-submit').on('click', function(event) {
     event.preventDefault();
 
@@ -453,7 +491,23 @@
     $('#ps-config-form-' + id).fadeIn();
   });
 
-  // $(function(){
-  //   $('#ps-config-form-1').fadeIn();
-  // });
 </script>
+
+<style>
+tr {
+width: 100%;
+display: inline-table;
+table-layout: fixed;
+}
+
+table{
+ height:400px;    
+ display: -moz-groupbox;    
+}
+tbody{
+  overflow-y: scroll;      
+  height: 350px;            
+  width:250px;  
+  position: absolute;
+}
+</style>
