@@ -91,3 +91,19 @@ function boxModalWindow(bixID) {
     //alert($("#box" + bixID + " #boxCdredit").text()); data_boxStatus
 }
 
+function ExportToPNGPreview() {
+    html2canvas($('#casinoPreview'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            //$(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            //$(".faSpinner").hide();
+        }
+    });
+}
+

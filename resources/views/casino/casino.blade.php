@@ -1,18 +1,19 @@
 @include('modals.casinoTerminalInfo-modals')
 <link rel="stylesheet" href="/css/casinoProview.css">
 
-<div class="container-full">
+
 <div class="row">
      <!--  page header -->
     <div class="col-lg-12">
-        <h2 style="margin-top: 0px;" class="page-header">Casino</h2>
+        <button type="button" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG</button>
+        <h1 style="margin-top: 0px; color:white;" class="page-header">Casino</h1>
+        
     </div>
      <!-- end  page header -->
 </div>
-</div>
 
-<div class="container-full">
-<div class="row" style="user-select: none;">
+
+<div id="casinoPreview" class="row" style="user-select: none;">
     <div class="col-md-12 "> 
         <!-- Start Panel-->
         <div  class="panel panel-default">
@@ -148,7 +149,7 @@
         <p class="ng-binding">Bonus Line Max Ball: </p>
     </div>
 </div>
-</div>
+
 
 <script>
 $( "#GridDrag" ).click(function() {

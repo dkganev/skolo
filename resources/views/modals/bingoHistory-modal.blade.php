@@ -25,6 +25,7 @@
                
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-warning" onclick='ExportToPNGBingo();'>Export to PNG</button>
                 <button id="ModalClose" type="button" class="btn btn-default" data-dismiss="modal">Close <i class="glyphicon glyphicon-arrow-right"></i></button>
         
             </div>
