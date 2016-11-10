@@ -171,6 +171,7 @@ class StatisticsController extends Controller
             "success" => "success",
             "dataRowID" => $dataRowID,
             "seatid" => $seatid,
+            "gameIDArrow" => $historys->rlt_seq,
             "winNumber" => $historys->win_num,
             "totalBet" =>  number_format($historys->bet / 100, 2),
             "totalWin" =>  number_format($historys->win_val / 100, 2),
@@ -236,6 +237,7 @@ class StatisticsController extends Controller
             "nextArrow" => $nextArrow,
             "dataRowID" => $dataRowID,
             "seatid" => $seatid,
+            "gameIDArrow" => $historys->rlt_seq,
             "winNumber" => $historys->win_num,
             "totalBet" =>  number_format($historys->bet / 100, 2),
             "totalWin" =>  number_format($historys->win_val / 100, 2),
@@ -447,6 +449,7 @@ class StatisticsController extends Controller
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
         }*/
         $tableid = "Table: " . ($historys->table_idx + 1) . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $totalSeatIDArray = $historys->getArraySeat_id();
         $totalWinArray = $historys->getArrayWin();
         $totalBetArray = $historys->getArrayBet();
         $insuranceArray = $historys->getArrayInsurance();
@@ -561,12 +564,13 @@ class StatisticsController extends Controller
         
         $totalWin = array_sum($totalWinArray) + array_sum($totalSurrenderArray) ;
         $totalBet = array_sum($totalBetArray) + array_sum($totalDblArray) + array_sum($totalInsuranceArray) + array_sum($totalSplitArray) ;
-        $testPage = view('statistics.BJ_History', ['cards' => $cards, 'totalBetArray' => $totalBetArray, 'totalWinArray' => $totalWinArray, 'totalDblArray' => $totalDblArray, 'totalInsuranceArray' => $totalInsuranceArray, 'totalSplitArray' => $totalSplitArray, 'totalSurrenderArray' => $totalSurrenderArray ])->render();
+        $testPage = view('statistics.BJ_History', ['cards' => $cards, 'totalSeatIDArray' => $totalSeatIDArray, 'totalBetArray' => $totalBetArray, 'totalWinArray' => $totalWinArray, 'totalDblArray' => $totalDblArray, 'totalInsuranceArray' => $totalInsuranceArray, 'totalSplitArray' => $totalSplitArray, 'totalSurrenderArray' => $totalSurrenderArray ])->render();
         
         $dataArray1 = array(
             "success" => "success",
             "dataRowID" => $totalSplitArray,
             "seatid" => $tableid,
+            "gameIDArrow" => $historys->game_seq  ,
             "totalBet" =>  number_format($totalBet / 100, 2),
             "totalWin" =>  number_format($totalWin / 100, 2),
             "html" => $testPage
@@ -601,6 +605,7 @@ class StatisticsController extends Controller
         
         $historys = $historyClas->where('ts', $dataRowTS)->first();
         $tableid = "Table: " . ($historys->table_idx + 1) . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $totalSeatIDArray = $historys->getArraySeat_id();
         $totalWinArray = $historys->getArrayWin();
         $totalBetArray = $historys->getArrayBet();
         $insuranceArray = $historys->getArrayInsurance();
@@ -708,7 +713,7 @@ class StatisticsController extends Controller
         
         $totalWin = array_sum($totalWinArray) + array_sum($totalSurrenderArray) ;
         $totalBet = array_sum($totalBetArray) + array_sum($totalDblArray) + array_sum($totalInsuranceArray) + array_sum($totalSplitArray) ;
-        $testPage = view('statistics.BJ_History', ['cards' => $cards, 'totalBetArray' => $totalBetArray, 'totalWinArray' => $totalWinArray, 'totalDblArray' => $totalDblArray, 'totalInsuranceArray' => $totalInsuranceArray, 'totalSplitArray' => $totalSplitArray, 'totalSurrenderArray' => $totalSurrenderArray ])->render();
+        $testPage = view('statistics.BJ_History', ['cards' => $cards, 'totalSeatIDArray' => $totalSeatIDArray, 'totalBetArray' => $totalBetArray, 'totalWinArray' => $totalWinArray, 'totalDblArray' => $totalDblArray, 'totalInsuranceArray' => $totalInsuranceArray, 'totalSplitArray' => $totalSplitArray, 'totalSurrenderArray' => $totalSurrenderArray ])->render();
         
         $dataArray1 = array(
             "success" => "success",
@@ -716,6 +721,7 @@ class StatisticsController extends Controller
             "nextArrow" => $nextArrow,
             "dataRowTS" => $dataRowTS,
             "seatid" => $tableid,
+            "gameIDArrow" => $historys->game_seq,
             "totalBet" =>  number_format($totalBet / 100, 2),
             "totalWin" =>  number_format($totalWin / 100, 2),
             "html" => $testPage

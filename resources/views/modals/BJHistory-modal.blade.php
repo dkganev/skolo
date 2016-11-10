@@ -10,7 +10,7 @@
                 <span id='BJHead' style="font-size: 16px; ">PS: 2, Time: 2016-09-12 14:19:43</span>
             </div>
             <div class="modal-body" >
-                <div style="display: table-cell;vertical-align: top;padding-right: 20px;">
+                <div style="display: table-cell;vertical-align: top; padding-right: 20px; width: 200px">
                     <div>
                         Total Bet:
                         <b id='totalBet'></b>
@@ -36,12 +36,14 @@
                 <br />
                 <div style='text-align: center;'>
                     <input id='next-prev' type="hidden" data-table='' data-ts='' >
-                    <a><i id='prevArrow' class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindow("Prev");'></i></a>&nbsp;&nbsp;&nbsp;
+                    <a><i id='prevArrow' class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindow("Prev");'></i></a>
+                    &nbsp;&nbsp;Game: <span id="gameIDArrow">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;
                     <a><i id='nextArrow' class="fa fa-angle-right" style="color: #333; font-size: 20px;" onclick='changeModalWindow("Next");'></i></a>
                 </div>
             </div> 
             
             <div class="modal-footer">
+                <button type="button" class="btn btn-warning" onclick='ExportToPNGBJ();'>Export to PNG</button>
                 <button id="ModalClose" type="button" class="btn btn-default" data-dismiss="modal">Close <i class="glyphicon glyphicon-arrow-right"></i></button>
             </div>
         </div>
@@ -55,3 +57,4 @@
     var token = '{{ Session::token() }}';
     var add_machine = '{{ route('add.machine') }}';
 </script>
+    

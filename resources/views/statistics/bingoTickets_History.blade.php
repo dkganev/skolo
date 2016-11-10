@@ -27,7 +27,7 @@ $allRows = ceil($allThickets / 8);
                             data-pagination="true"
                             data-side-pagination="client"
                             data-page-list="[3, 5, 10, 15, 50]"
-
+                            data-page-size="5"
                             data-classes="table-condensed"
 >
 <thead class="w3-dark-grey">
