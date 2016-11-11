@@ -1,6 +1,6 @@
 @include('modals.reset-ps-modal')
 @include('modals.terminal-modals')
-<div class="container-full">
+<div class="container">
 <div class="row">
     <div class="col-lg-12" >
         <h1 style="margin-top: 0px;" class="page-header">Terminals</h1>
@@ -8,7 +8,7 @@
 </div>
 </div>
 
-<div class="container-full">
+<div class="container">
 <div class="row">
     <div class="col-lg-12">
 
@@ -133,9 +133,7 @@
       </div>
       
       <div class="modal-body">
-
           <h4>Delete Terminal <span id="dallasid"></span>  ?</h4>
-
       </div>
       <div class="modal-footer">
           <input  type="hidden" name="psid">
@@ -175,6 +173,31 @@ $(document).ready(function() {
             $('.modal-backdrop').remove();
             javascript:ajaxLoad('{{url('/settings/terminals')}}');
         });
+    });
+
+    // RESTART TERMINAL
+     $('#resetPsModal').on('show.bs.modal', function(e) {
+        var psId = $(e.relatedTarget).data('psid');
+        var dallasid = $(e.relatedTarget).data('dallasid');
+
+        $(e.currentTarget).find('span').html(dallasid);
+        $(e.currentTarget).find('input[name="psid"]').val(psId);
+    });
+
+    $('#reset-ps').on('click', function() {
+         $.ajax({
+             method: 'GET',
+             url: reset_ps,
+             data: {
+                 psid: $('#resetPsModal input[name="psid"]').val(),
+                 _token: token
+            }
+         })
+         .done(function() {
+             console.log('success');
+             $('#resetPsModal').modal('hide');
+             window.location.reload();
+         });
     });
 
 }); // <== End Document Ready

@@ -1,9 +1,9 @@
 @include('modals.gameservers-modals')
-<div class="container-full">
+<div class="container">
 <!-- Keep For Styling -->
 </div>
 
-<div class="container-full">
+<div class="container">
 <div class="row">
     <div class="col-lg-6">
          <!--    Context Classes  -->
@@ -130,7 +130,6 @@
     </div>
 </div>
 
-
 <!-- GameServers -->
 <div class="row">
      <!--  page header -->
@@ -213,6 +212,7 @@
     </div>
 </div>
 </div>
+
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 
 <script src="bootstrap-table/bootstrap-table.js"></script>

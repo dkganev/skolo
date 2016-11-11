@@ -1,7 +1,7 @@
 @include('modals.casinoTerminalInfo-modals')
 <link rel="stylesheet" href="/css/casinoProview.css">
 
-
+<div class="container">
 <div class="row">
      <!--  page header -->
     <div class="col-lg-12">
@@ -149,7 +149,7 @@
         <p class="ng-binding">Bonus Line Max Ball: </p>
     </div>
 </div>
-
+</div>
 
 <script>
 $( "#GridDrag" ).click(function() {

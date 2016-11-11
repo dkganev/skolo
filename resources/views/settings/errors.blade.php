@@ -1,31 +1,27 @@
 @include('modals.errors-modals')
 <div class="container">
-<!-- Games -->
+
 <div class="row">
-     <!--  page header -->
     <div class="col-lg-8">
         <h1 style="margin-top: 0px;" class="page-header">Error List</h1>
     </div>
-
     <div class="col-lg-4">
         <h1 style="margin-top: 0px;" class="page-header">Error Levels</h1>
     </div>
-     <!-- end  page header -->
 </div>
 
 <div class="row">
-    <div class="col-lg-8">
 
+    <div class="col-lg-8">
         <div class="panel panel-default">
-           
             <div class="panel-heading">
                 <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#addErrorListModal">
                     Add 
                 </button>
-
-                <a href="#" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export</a>
+                <a href="#" class="btn btn-primary btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                </a>
             </div>
-            
             <div class="panel-body">
                 <table class="table table-striped table-bordered table-hover data-table-table"
                     data-toggle="table"
@@ -84,11 +80,10 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-
-                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export</a>
-                
+                <a href="#" class="btn btn-primary btn-sm">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                </a>
             </div>
-
             <div class="panel-body">
                <table class="table table-striped table-bordered table-hover data-table-table" id="gameTable" role="grid"
                     data-toggle="table"
@@ -116,8 +111,10 @@
             </div>  <!--End Panel Body -->
         </div>  <!--End Panel -->
     </div> <!--End Col -->
-</div> <!--End Row -->
-</div>
+    
+</div><!--End Row -->
+
+</div><!--End Container -->
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 
 <script src="bootstrap-table/bootstrap-table.js"></script>

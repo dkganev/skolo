@@ -15,6 +15,7 @@ use App\Models\Accounting\PsStatus;
 use App\Models\Accounting\Casinos;
 use App\Models\Accounting\Langs;
 use App\Models\Accounting\ClientGameIds;
+use App\Models\Roulette\PsConf;
 use Excel;
 
 
@@ -69,6 +70,8 @@ class TerminalsController extends Controller
             'seatid'   => $request->seatid
         ]);
         
+
+
         // Ps Settings Model
         $ps_settings = new PsSettings();
         $ps_settings->psdescription = $request['psdescription'];

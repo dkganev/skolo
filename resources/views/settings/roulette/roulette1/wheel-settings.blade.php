@@ -40,7 +40,7 @@
 <!-- Wheel Settings -->
 <div class="container">
 <div class="row">
-<div class="col-lg-12">
+<div class="col-lg-8">
   <div class="panel panel-primary">
 
     <div class="panel-heading">
@@ -54,14 +54,14 @@
 
           <div class="form-group">
               <label style="color: #474747">Wheel Label:</label><br>
-              <input name="wheel_label" value="{{ $wheel_settings->wheel_label }}" type="text" class="form-control">
+              <input name="wheel_label" value="{{ $wheel_settings->wheel_label }}" type="text" class="form-control text-center">
           </div>
 
           <div class="form-group">
               <label style="color: #474747">Interface:</label><br>
             <div class="input-group">
               <span class="input-group-addon" id="sizing-addon2">#</span>
-              <input name="interface" value="{{ $wheel_settings->interface }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+              <input name="interface" value="{{ $wheel_settings->interface }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
             </div>
           </div>
 
@@ -69,7 +69,7 @@
               <label style="color: #474747">Current IP Address:</label><br>
             <div class="input-group">
               <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-              <input name="current_ip_address" value="{{ long2ip($wheel_settings->current_ip_address) }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+              <input name="current_ip_address" value="{{ long2ip($wheel_settings->current_ip_address) }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
             </div>
           </div>
 

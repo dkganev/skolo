@@ -19,7 +19,6 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
-      <h2 style="margin-top: 0px; margin-bottom: 5px;" class="page-header">Roulette 1 - Terminals Config</h2>
       <div style="padding-top:2px; margin-top: 0px; background-color: none;">
           <!-- Secondary Navigation -->
           <ul class="breadcrumb" style="background-color: #e5e6e8 !important; margin-bottom: 10px;">
@@ -36,15 +35,18 @@
   </div><!-- End Row -->
 </div><!-- End Container-->
 
-<div class="container-full">
+<div class="container">
 <div class="row">
+<div class="col-lg-12">
+  
+
 
 <div class="well" style="background: #ffffff; margin: 0; padding: 0; height:730px">
 
     <div class="col-lg-3">
       <table class="table" style="width: 250px; margin-top: 50px;">
         <thead class="w3-blue-grey">
-          <tr >
+          <tr>
             <th>PS ID</th>
             <th>SEAT ID</th>
             <th>Action</th>
@@ -294,7 +296,7 @@
         <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
           <label for="denom1">Denomination #1:</label><br>
           <select name="denom1" id="denom1" class="selectpicker" data-actions-box="true">
-            <option {{ $conf->denom1 == 0 ? 'selected="true"' : '' }} value="1">None</option>
+            <option {{ $conf->denom1 == 0 ? 'selected="true"' : '' }} value="0">None</option>
             <option {{ $conf->denom1 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
             <option {{ $conf->denom1 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
             <option {{ $conf->denom1 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
@@ -327,7 +329,7 @@
         <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
           <label for="denom2">Denomination #2:</label><br>
           <select style="height: 40px; line-height:30px;" name="denom2" id="denom2" class="selectpicker" data-actions-box="true">
-            <option {{ $conf->denom2 == 0 ? 'selected="true"' : '' }} value="1">None</option>
+            <option {{ $conf->denom2 == 0 ? 'selected="true"' : '' }} value="0">None</option>
             <option {{ $conf->denom2 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
             <option {{ $conf->denom2 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
             <option {{ $conf->denom2 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
@@ -359,7 +361,7 @@
         <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
           <label for="denom3">Denomination #3:</label><br>
           <select name="denom3" id="denom3" class="selectpicker" data-actions-box="true">
-            <option {{ $conf->denom3 == 0 ? 'selected="true"' : '' }} value="1">None</option>
+            <option {{ $conf->denom3 == 0 ? 'selected="true"' : '' }} value="0">None</option>
             <option {{ $conf->denom3 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
             <option {{ $conf->denom3 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
             <option {{ $conf->denom3 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
@@ -392,7 +394,7 @@
         <div class="form-group form-group-sm" style="width:270px; display: inline-block; padding: 0;">
           <label for="denom4">Denomination #4:</label><br>
           <select name="denom4" id="denom4" class="selectpicker" data-actions-box="true">
-            <option {{ $conf->denom4 == 0 ? 'selected="true"' : '' }} value="1">None</option>
+            <option {{ $conf->denom4 == 0 ? 'selected="true"' : '' }} value="0">None</option>
             <option {{ $conf->denom4 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
             <option {{ $conf->denom4 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
             <option {{ $conf->denom4 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
@@ -423,12 +425,11 @@
         </div>
 
       </div><!-- End Col -->
-
-      <hr style="width:100%;">
+      <hr>
       {{ csrf_field() }}
       <input type="hidden" value="{{ $conf->ps_id }}" name="ps_id">
       <button data-id="{{ $conf->ps_id }}" type="submit" 
-              style="width:315px; margin: 0 10px 10px 17px;" 
+              style="width:315px; margin: 203px 10px 10px 17px; position: relative; bottom: 35px; right: 5px" 
               class="btn btn-danger pull-right ps-config-submit"
       >
           Update
@@ -436,42 +437,31 @@
       </form>
       <script>
           $('select').on('change', function() {
-          var select = $("#ps-config-form-{{ $conf->ps_id }}").find('select');
-          var option = $("#ps-config-form-{{ $conf->ps_id }}").find('option');
-          // console.log(select);
-          $(option).prop('disabled', false); //reset all the disabled options on every change event
+            $('option[value="0"]').removeAttr('disabled');
+            var select = $("#ps-config-form-{{ $conf->ps_id }}").find('select');
+            var option = $("#ps-config-form-{{ $conf->ps_id }}").find('option');
+            $(option).prop('disabled', false); //reset all the disabled options on every change event
+
             $(select).each(function() { //loop through all the select elements
               var val = this.value;
               $(select).not(this).find(option).filter(function() { //filter option elements having value as selected option
-                  return this.value === val;
-              }).prop('disabled', true); //disable those option elements
-              // }).prop('disabled', true); //disable those option elements
+                  if(this.value === val) {
+                    $(this).attr('disabled', true); //disable those option elements
+                  }
+              });
             });
           }).change(); //trihgger change handler initially!
-
-          // $('select').change(function(){
-          // $('select[name*="box1"] option').attr('disabled',false);
-          //     $('select[name*="box1"]').each(function(){
-          //       var $this = $(this);
-          //       $('select[name*="box1"]').not($this).find('option').each(function(){
-          //          if($(this).attr('value') == $this.val())
-          //              $(this).attr('disabled',true);
-          //       });
-          //   });
-          // });
-
-
       </script>
       @endforeach
 
 </div><!-- End PsConfig--> 
 
 </div><!-- End Well--> 
+</div><!-- End Col--> 
 </div><!-- End Row--> 
 </div><!-- End Container--> 
 
 <script>
-
   $('.ps-config-submit').on('click', function(event) {
     event.preventDefault();
 
@@ -490,7 +480,6 @@
     $('form').css('display', 'none');
     $('#ps-config-form-' + id).fadeIn();
   });
-
 </script>
 
 <style>

@@ -1,34 +1,29 @@
-<div class="container-fluid">
+<div class="container">
 <div class="row">
-     <!--  page header -->
-    <div class="col-md-12" >
-    
-        <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export</a>
-
-        <h1 style="margin-top: 0px; color:white;" class="page-header">Machine Statistics</h1>
-
+    <div class="col-md-8" >
+        <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
+            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+        </a>
+        <h1 style="margin-top: 0px; color:white;" class="page-header">
+            Machine Statistics
+        </h1>
     </div>
-     <!-- end  page header -->
 </div>
 
 <div class="row" >
-    <div class="col-md-12">
-
+    <div class="col-md-8">
         <div class="panel panel-default" >
             <div class="panel-heading">
-                <!--  -->
+                {{--  --}}
             </div>
-
                 <div class="panel-body" >
                     <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
                             data-toggle="table"
                             data-locale="en-US"
                             data-sortable="true"
-
                             data-pagination="true"
                             data-side-pagination="client"
-                            data-page-list="[3, 5, 10, 15]"
-
+                            data-page-list="[10, 20, 50]"
                             data-classes="table-condensed"
                     >
                     <thead class="w3-dark-grey">
@@ -59,9 +54,9 @@
             </div><!--End Panel Body -->
         </div><!--End Panel -->
     </div>
-</div> <!--End Row -->
-</div>
+</div><!--End Row -->
+
+</div><!--End Container -->
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
-
 <script src="bootstrap-table/bootstrap-table.js"></script>
