@@ -21,7 +21,7 @@
 </div><!-- End Row -->
 
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-lg-4">
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -48,10 +48,10 @@
                     <tr id="{{ $bonus->id }}">
                         <td><span class="badge">{{ $bonus->id }}</span></td>
                         <td>
-                            <input name="ticket_cnt" style="height:30px;" class="form-control" value="{{ $bonus->ticket_cnt }}" type="text" placeholder="Ticket Count">
+                            <input class="form-control text-center" name="ticket_cnt" style="height:30px;" class="form-control" value="{{ $bonus->ticket_cnt }}" type="text" placeholder="Ticket Count">
                         </td>
                         <td>
-                            <input name="max_ball_idx" style="height:30px;" class="form-control" value="{{ $bonus->max_ball_idx }}" type="text" placeholder="Max Ball">
+                            <input class="form-control text-center"  name="max_ball_idx" style="height:30px;" class="form-control" value="{{ $bonus->max_ball_idx }}" type="text" placeholder="Max Ball">
                         </td>
                         <td>
                             <input type="hidden" name="id" value="{{ $bonus->id }}">

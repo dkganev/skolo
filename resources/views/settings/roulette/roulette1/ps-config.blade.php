@@ -97,7 +97,7 @@
             <label style="color: #474747">Game Min Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="game_min_bet" value="{{ $conf->game_min_bet }}" type="text" class="form-control" placeholder="Game Min Bet" aria-describedby="sizing-addon2">
+            <input name="game_min_bet" value="{{ $conf->game_min_bet }}" type="text" class="form-control text-center" placeholder="Game Min Bet" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -105,7 +105,7 @@
             <label style="color: #474747">Straight Min Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="straight_min" value="{{ $conf->straight_min }}" type="text" class="form-control" placeholder="Straight Min Bet" aria-describedby="sizing-addon2">
+            <input name="straight_min" value="{{ $conf->straight_min }}" type="text" class="form-control text-center" placeholder="Straight Min Bet" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -113,7 +113,7 @@
             <label style="color: #474747">Split Min Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="split_min" value="{{ $conf->split_min }}" type="text" class="form-control" placeholder="Split Min Bet" aria-describedby="sizing-addon2">
+            <input name="split_min" value="{{ $conf->split_min }}" type="text" class="form-control text-center" placeholder="Split Min Bet" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -121,7 +121,7 @@
             <label style="color: #474747">Basket & Street Min Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="basket_a_street_bet_min" value="{{ $conf->basket_a_street_bet_min }}" type="text" class="form-control" placeholder="Basket & Street Min Bet" aria-describedby="sizing-addon2">
+            <input name="basket_a_street_bet_min" value="{{ $conf->basket_a_street_bet_min }}" type="text" class="form-control text-center" placeholder="Basket & Street Min Bet" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -129,7 +129,7 @@
             <label style="color: #474747">Corner Min Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="corner_bet_min" value="{{ $conf->corner_bet_min }}" type="text" class="form-control" placeholder="Corner Bet Min" aria-describedby="sizing-addon2">
+            <input name="corner_bet_min" value="{{ $conf->corner_bet_min }}" type="text" class="form-control text-center" placeholder="Corner Bet Min" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -137,7 +137,7 @@
             <label style="color: #474747">Six Number Min Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="six_number_line_min" value="{{ $conf->six_number_line_min }}" type="text" class="form-control" placeholder="Six Number Line Min" aria-describedby="sizing-addon2">
+            <input name="six_number_line_min" value="{{ $conf->six_number_line_min }}" type="text" class="form-control text-center" placeholder="Six Number Line Min" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -145,7 +145,7 @@
             <label style="color: #474747">Dozen Min Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="dozen_bet_min" value="{{ $conf->dozen_bet_min }}" type="text" class="form-control" placeholder="Dozen Bet Min" aria-describedby="sizing-addon2">
+            <input name="dozen_bet_min" value="{{ $conf->dozen_bet_min }}" type="text" class="form-control text-center" placeholder="Dozen Bet Min" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -153,7 +153,7 @@
             <label style="color: #474747">Even Min Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="even_bet_min" value="{{ $conf->even_bet_min }}" type="text" class="form-control" placeholder="Even Bet Min" aria-describedby="sizing-addon2">
+            <input name="even_bet_min" value="{{ $conf->even_bet_min }}" type="text" class="form-control text-center" placeholder="Even Bet Min" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -168,7 +168,7 @@
             <label style="color: #474747">Game Max Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="game_max_bet" value="{{ $conf->game_max_bet }}" type="text" class="form-control" placeholder="Game Max Bet" aria-describedby="sizing-addon2">
+            <input name="game_max_bet" value="{{ $conf->game_max_bet }}" type="text" class="form-control text-center" placeholder="Game Max Bet" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -176,7 +176,7 @@
             <label style="color: #474747">Straight Max Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="straight_max" value="{{ $conf->straight_max }}" type="text" class="form-control" placeholder="Straight Max Bet" aria-describedby="sizing-addon2">
+            <input name="straight_max" value="{{ $conf->straight_max }}" type="text" class="form-control text-center" placeholder="Straight Max Bet" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -184,7 +184,7 @@
             <label style="color: #474747">Split Max Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="split_max" value="{{ $conf->split_max }}" type="text" class="form-control" placeholder="Split Max Bet" aria-describedby="sizing-addon2">
+            <input name="split_max" value="{{ $conf->split_max }}" type="text" class="form-control text-center" placeholder="Split Max Bet" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -192,7 +192,7 @@
             <label style="color: #474747">Basket & Street Max Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="basket_a_street_bet_max" value="{{ $conf->basket_a_street_bet_max }}" type="text" class="form-control" placeholder="Basket & Street Max Bet" aria-describedby="sizing-addon2">
+            <input name="basket_a_street_bet_max" value="{{ $conf->basket_a_street_bet_max }}" type="text" class="form-control text-center" placeholder="Basket & Street Max Bet" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -200,7 +200,7 @@
             <label style="color: #474747">Corner Max Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="corner_bet_max" value="{{ $conf->corner_bet_max }}" type="text" class="form-control" placeholder="Corner Bet Max" aria-describedby="sizing-addon2">
+            <input name="corner_bet_max" value="{{ $conf->corner_bet_max }}" type="text" class="form-control text-center" placeholder="Corner Bet Max" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -208,7 +208,7 @@
             <label style="color: #474747">Six Number Max Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="six_number_line_max" value="{{ $conf->six_number_line_max }}" type="text" class="form-control" placeholder="Six Number Line Max" aria-describedby="sizing-addon2">
+            <input name="six_number_line_max" value="{{ $conf->six_number_line_max }}" type="text" class="form-control text-center" placeholder="Six Number Line Max" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -216,7 +216,7 @@
             <label style="color: #474747">Dozen Max Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="dozen_bet_max" value="{{ $conf->dozen_bet_max }}" type="text" class="form-control" placeholder="Dozen Max Bet" aria-describedby="sizing-addon2">
+            <input name="dozen_bet_max" value="{{ $conf->dozen_bet_max }}" type="text" class="form-control text-center" placeholder="Dozen Max Bet" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -224,7 +224,7 @@
             <label style="color: #474747">Even Max Bet:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-            <input name="even_bet_max" value="{{ $conf->even_bet_max }}" type="text" class="form-control" placeholder="Even Bet Max" aria-describedby="sizing-addon2">
+            <input name="even_bet_max" value="{{ $conf->even_bet_max }}" type="text" class="form-control text-center" placeholder="Even Bet Max" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -241,7 +241,7 @@
           <label style="color: #474747">Multiplier #1:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-            <input name="mult1" value="{{ $conf->mult1 }}" type="text" class="form-control" placeholder="Multiplier #1" aria-describedby="sizing-addon2">
+            <input name="mult1" value="{{ $conf->mult1 }}" type="text" class="form-control text-center" placeholder="Multiplier #1" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -249,7 +249,7 @@
             <label style="color: #474747">Multiplier #2:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-            <input name="mult2" value="{{ $conf->mult2 }}" type="text" class="form-control" placeholder="Multiplier #2" aria-describedby="sizing-addon2">
+            <input name="mult2" value="{{ $conf->mult2 }}" type="text" class="form-control text-center" placeholder="Multiplier #2" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -257,7 +257,7 @@
             <label style="color: #474747">Multiplier #3:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-            <input name="mult3" value="{{ $conf->mult3 }}" type="text" class="form-control" placeholder="Multiplier #3" aria-describedby="sizing-addon2">
+            <input name="mult3" value="{{ $conf->mult3 }}" type="text" class="form-control text-center" placeholder="Multiplier #3" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -265,7 +265,7 @@
           <label style="color: #474747">Multiplier #4:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-            <input name="mult4" value="{{ $conf->mult4 }}" type="text" class="form-control" placeholder="Multiplier #4" aria-describedby="sizing-addon2">
+            <input name="mult4" value="{{ $conf->mult4 }}" type="text" class="form-control text-center" placeholder="Multiplier #4" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -273,7 +273,7 @@
             <label style="color: #474747">Multiplier #5:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-            <input name="mult5" value="{{ $conf->mult5 }}" type="text" class="form-control" placeholder="Multiplier #5" aria-describedby="sizing-addon2">
+            <input name="mult5" value="{{ $conf->mult5 }}" type="text" class="form-control text-center" placeholder="Multiplier #5" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -281,7 +281,7 @@
             <label style="color: #474747">Multiplier #6:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-            <input name="mult6" value="{{ $conf->mult6 }}" type="text" class="form-control" placeholder="Multiplier #6" aria-describedby="sizing-addon2">
+            <input name="mult6" value="{{ $conf->mult6 }}" type="text" class="form-control text-center" placeholder="Multiplier #6" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -479,6 +479,10 @@
     var id = $(this).attr('data-id');
     $('form').css('display', 'none');
     $('#ps-config-form-' + id).fadeIn();
+  });
+
+  $(function(){
+    $('#ps-config-form-0').fadeIn();
   });
 </script>
 

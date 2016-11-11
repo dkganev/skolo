@@ -21,9 +21,9 @@
   </div><!-- End Row -->
 </div><!-- End Container-->
 
-<div class="container-full">
+<div class="container">
 <div class="row">
-<div class="col-lg-12">
+<div class="col-lg-10">
 
 <!--    Context Classes  -->
 <div class="panel panel-default">
@@ -77,39 +77,39 @@
           </td>
 
           <td>
-            <input style="width:110px; height: 30px;" name="bingo_ticket_cost" value="{{ $steps->bingo_ticket_cost }}" type="text" class="form-control">
+            <input name="bingo_ticket_cost" value="{{ $steps->bingo_ticket_cost }}" type="text" class="form-control">
           </td>
 
           <td>
-            <input style="width:110px; height: 30px;" name="jackpot_bingo_max_ball" value="{{ $steps->jackpot_bingo_max_ball }}" type="text" class="form-control">
+            <input  name="jackpot_bingo_max_ball" value="{{ $steps->jackpot_bingo_max_ball }}" type="text" class="form-control">
           </td>
           <td>
-            <input style="width:110px; height: 30px;" name="jackpot_line_max_ball" value="{{ $steps->jackpot_line_max_ball }}" type="text" class="form-control">
+            <input  name="jackpot_line_max_ball" value="{{ $steps->jackpot_line_max_ball }}" type="text" class="form-control">
           </td>
           <td>
-            <input style="width:110px; height: 30px;" name="bonus_line_max_ball" value="{{ $steps->bonus_line_max_ball }}" type="text" class="form-control">
+            <input  name="bonus_line_max_ball" value="{{ $steps->bonus_line_max_ball }}" type="text" class="form-control">
           </td>
           <td>
-            <input style="width:110px; height: 30px;" name="bonus_bingo_max_ball" value="{{ $steps->bonus_bingo_max_ball }}" type="text" class="form-control">
+            <input  name="bonus_bingo_max_ball" value="{{ $steps->bonus_bingo_max_ball }}" type="text" class="form-control">
           </td>
           <td>
-            <input style="width:110px; height: 30px;" name="jackpo_line_ticket_cnt" value="{{ $steps->jackpo_line_ticket_cnt }}" type="text" class="form-control">
+            <input  name="jackpo_line_ticket_cnt" value="{{ $steps->jackpo_line_ticket_cnt }}" type="text" class="form-control">
           </td>
           <td>
-            <input style="width:110px; height: 30px;" name="jackpo_bingo_ticket_cnt" value="{{ $steps->jackpo_bingo_ticket_cnt }}" type="text" class="form-control">
+            <input  name="jackpo_bingo_ticket_cnt" value="{{ $steps->jackpo_bingo_ticket_cnt }}" type="text" class="form-control">
           </td>
           <td>
-            <input style="width:110px; height: 30px;" name="bonus_line_ticket_cnt" value="{{ $steps->bonus_line_ticket_cnt }}" type="text" class="form-control">
+            <input  name="bonus_line_ticket_cnt" value="{{ $steps->bonus_line_ticket_cnt }}" type="text" class="form-control">
           </td>
           <td>
-            <input style="width:110px; height: 30px;" name="bonus_bingo_ticket_cnt" value="{{ $steps->bonus_bingo_ticket_cnt }}" type="text" class="form-control">
+            <input  name="bonus_bingo_ticket_cnt" value="{{ $steps->bonus_bingo_ticket_cnt }}" type="text" class="form-control">
           </td>
           <td>
               {{ csrf_field() }}
               <input type="hidden" name="id" value="{{ $steps->id }}">
-              <button type="submit" class="btn btn-warning btn-xs edit-max-balls-btn" data-id="{{ $steps->id }}">Update</button>
-          
-              <a href="#" 
+              <button style="display:inline;"  type="submit" class="btn btn-warning btn-xs edit-max-balls-btn" data-id="{{ $steps->id }}">Update</button>
+              <a href="#"
+                style="display:inline;" 
                 class="btn btn-danger btn-xs"
                 role="button"
                 data-toggle="modal"

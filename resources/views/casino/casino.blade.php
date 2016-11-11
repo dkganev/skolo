@@ -2,14 +2,12 @@
 <link rel="stylesheet" href="/css/casinoProview.css">
 
 <div class="container">
+
 <div class="row">
-     <!--  page header -->
     <div class="col-lg-12">
         <button type="button" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG</button>
         <h1 style="margin-top: 0px; color:white;" class="page-header">Casino</h1>
-        
     </div>
-     <!-- end  page header -->
 </div>
 
 
@@ -149,6 +147,7 @@
         <p class="ng-binding">Bonus Line Max Ball: </p>
     </div>
 </div>
+
 </div>
 
 <script>

@@ -77,7 +77,7 @@
               <label style="color: #474747">New IP Address:</label><br>
             <div class="input-group">
               <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-              <input name="new_ip_addres" value="{{ long2ip($wheel_settings->new_ip_addres) }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+              <input name="new_ip_addres" value="{{ long2ip($wheel_settings->new_ip_addres) }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
             </div>
           </div>
 
@@ -85,7 +85,7 @@
               <label style="color: #474747">Subnet Mask:</label><br>
             <div class="input-group">
               <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-              <input name="subnet_mask" value="{{ long2ip($wheel_settings->subnet_mask) }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+              <input name="subnet_mask" value="{{ long2ip($wheel_settings->subnet_mask) }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
             </div>
           </div>
 
@@ -93,7 +93,7 @@
             <label style="color: #474747">Default Gateway:</label><br>
             <div class="input-group">
               <span class="input-group-addon" id="sizing-addon2">#</span>
-              <input name="default_gateway" value="{{ long2ip($wheel_settings->default_gateway) }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+              <input name="default_gateway" value="{{ long2ip($wheel_settings->default_gateway) }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
             </div>
           </div>
 
@@ -105,20 +105,20 @@
             <label style="color: #474747">Volume Center:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="volume_center" value="{{ $wheel_settings->volume_center }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="volume_center" value="{{ $wheel_settings->volume_center }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
 
         <div class="form-group">
             <label style="color: #474747">Stream URL:</label><br>
-            <input name="stream_url" value="{{ $wheel_settings->stream_url }}" type="text" class="form-control">
+            <input name="stream_url" value="{{ $wheel_settings->stream_url }}" type="text" class="form-control text-center">
         </div>
 
         <div class="form-group">
             <label style="color: #474747">Heartbeat:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="heartbeat" value="{{ $wheel_settings->heartbeat }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="heartbeat" value="{{ $wheel_settings->heartbeat }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -126,7 +126,7 @@
             <label style="color: #474747">Bet Time (seconds):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="bet_time" value="{{ $wheel_settings->bet_time }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="bet_time" value="{{ $wheel_settings->bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -134,7 +134,7 @@
           <label style="color: #474747">Idle Launch:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="idle_launch" value="{{ $wheel_settings->idle_launch }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="idle_launch" value="{{ $wheel_settings->idle_launch }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -142,7 +142,7 @@
             <label style="color: #474747">Games:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="games" value="{{ $wheel_settings->games }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="games" value="{{ $wheel_settings->games }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -155,7 +155,7 @@
             <label style="color: #474747">Statistics Orientation:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="statistics_orientation" value="{{ $wheel_settings->statistics_orientation }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="statistics_orientation" value="{{ $wheel_settings->statistics_orientation }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -163,7 +163,7 @@
             <label style="color: #474747">Blow Speed:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="blow_speed" value="{{ $wheel_settings->blow_speed }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="blow_speed" value="{{ $wheel_settings->blow_speed }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -171,7 +171,7 @@
             <label style="color: #474747">Rotor Speed:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="rotor_speed" value="{{ $wheel_settings->rotor_speed }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="rotor_speed" value="{{ $wheel_settings->rotor_speed }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -192,7 +192,7 @@
             <label style="color: #474747">Auto Max Video:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="auto_max_video" value="{{ $wheel_settings->auto_max_video }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="auto_max_video" value="{{ $wheel_settings->auto_max_video }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
 
@@ -200,7 +200,7 @@
             <label style="color: #474747">Video on Statistic:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">#</span>
-            <input name="video_on_statistic" value="{{ $wheel_settings->video_on_statistic }}" type="text" class="form-control" aria-describedby="sizing-addon2">
+            <input name="video_on_statistic" value="{{ $wheel_settings->video_on_statistic }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
           </div>
         </div>
        
