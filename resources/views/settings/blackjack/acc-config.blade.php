@@ -34,22 +34,22 @@
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>ID:</label><br>
-          <input disabled class="form-control" type="text" name="id" value="{{ $acc_config->id }}">
+          <input disabled class="form-control text-center" type="text" name="id" value="{{ $acc_config->id }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Acc IP:</label><br>
-          <input class="form-control" type="text" name="acc_ip" value="{{ $acc_config->acc_ip }}">
+          <input class="form-control text-center" type="text" name="acc_ip" value="{{ $acc_config->acc_ip }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Acc Port:</label><br>
-          <input class="form-control" type="text" name="acc_port" value="{{ $acc_config->acc_port }}">
+          <input class="form-control text-center" type="text" name="acc_port" value="{{ $acc_config->acc_port }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Game Port:</label><br>
-          <input class="form-control" type="text" name="game_port" value="{{ $acc_config->game_port }}">
+          <input class="form-control text-center" type="text" name="game_port" value="{{ $acc_config->game_port }}">
         </div>
 
       </div><!-- End Col -->

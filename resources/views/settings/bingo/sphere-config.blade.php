@@ -38,17 +38,17 @@
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label for="wheeltype">ID:</label><br>
-          <input disabled class="form-control" type="text" name="id" value="{{ $sphere_config->id }}">
+          <input disabled class="form-control text-center" type="text" name="id" value="{{ $sphere_config->id }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Sphere IP:</label><br>
-          <input class="form-control" type="text" name="sphere_ip" value="{{ $sphere_config->sphere_ip }}">
+          <input class="form-control text-center" type="text" name="sphere_ip" value="{{ $sphere_config->sphere_ip }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Sphere Port:</label><br>
-          <input class="form-control" type="text" name="sphere_port" value="{{ $sphere_config->sphere_port }}">
+          <input class="form-control text-center" type="text" name="sphere_port" value="{{ $sphere_config->sphere_port }}">
         </div>
 
       </div><!-- End Col -->
