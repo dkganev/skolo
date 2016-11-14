@@ -1,23 +1,20 @@
 @include('modals.errors-modals')
 <div class="container">
 
-<div class="row">
-    <div class="col-lg-8">
-        <h1 style="margin-top: 0px;" class="page-header">Error List</h1>
-    </div>
-    <div class="col-lg-4">
-        <h1 style="margin-top: 0px;" class="page-header">Error Levels</h1>
-    </div>
-</div>
+
 
 <div class="row">
-
     <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#addErrorListModal">
                     Add 
                 </button>
+
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                    Error List
+                </h2>
+
                 <a href="#" class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                 </a>
@@ -83,15 +80,15 @@
                 <a href="#" class="btn btn-primary btn-sm">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                 </a>
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 7%;">
+                    Error Levels
+                </h2>
             </div>
             <div class="panel-body">
                <table class="table table-striped table-bordered table-hover data-table-table" id="gameTable" role="grid"
                     data-toggle="table"
                     data-locale="en-US"
                     data-sortable="true"
-                    data-show-columns="true"
-                    data-search="true"
-                    data-show-toggle="true"  
                >
                     <thead class="w3-blue-grey">
                         <tr>

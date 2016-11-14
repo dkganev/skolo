@@ -1,25 +1,25 @@
 <div class="container">
-<div class="row">
-    <div class="col-lg-6">
-        <h1 style="margin-top: 0px;" class="page-header">Bingo - Accounting Config</h1>
-        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
-            <!-- Secondary Navigation -->
-            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
+  <div class="row">
+      <div class="col-lg-6">
+          {{-- <h1 style="margin-top: 0px;" class="page-header"></h1> --}}
+          <div style="padding-top:2px; margin-top: 0px; background-color: none;">
+              <!-- Secondary Navigation -->
+              <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
 
-              <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
-
-            </ul>
-        </div>
-	</div><!--End Col -->
-</div><!-- End Row -->
+                <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
+              </ul>
+          </div>
+    </div>
+  </div><!-- End Row -->
+</div><!-- End Container -->
 
 <!-- Wheel Config -->
 <div class="container">

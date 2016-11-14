@@ -17,7 +17,7 @@ use App\Models\Accounting\Langs;
 use App\Models\Accounting\ClientGameIds;
 use App\Models\Roulette\PsConf;
 use Excel;
-
+use App\Events\TerminalCreated;
 
 class TerminalsController extends Controller
 {
@@ -101,6 +101,8 @@ class TerminalsController extends Controller
         // Ps Status Model
         $ps_status = $server_ps->ps_status()->create([]);
 
+        event(new TerminalCreated($request->psid, $request->seatid));
+
     	$msg = 'Machine added sucessfully!';
         return $request->session()->flash('alert-success', $msg);
     }
@@ -158,6 +160,8 @@ class TerminalsController extends Controller
 
         $server_ps->delete();
 
+        $roulette_ps = PsConf::where('ps_id', $request->psid)->first();
+        $roulette_ps->delete();
         return back();
     }
 

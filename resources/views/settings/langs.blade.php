@@ -1,13 +1,6 @@
 @include('modals.languages-modals')
+
 <div class="container">
-<!-- Games -->
-<div class="row">
-     <!--  page header -->
-    <div class="col-lg-4">
-        <h1 style="margin-top: 0px;" class="page-header">Languages</h1>
-    </div>
-     <!-- end  page header -->
-</div>
 <div class="row">
     <div class="col-lg-6">
         <div class="panel panel-default">
@@ -15,6 +8,9 @@
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addLanguageModal">
                     Add Language
                 </button>
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
+                    Languages
+                </h2>
                 <a href="{{ url('/settings/exportLanguages') }}" class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export
                 </a>

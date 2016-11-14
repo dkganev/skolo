@@ -1,11 +1,4 @@
 <div class="container">
-
-<div class="row">
-    <div class="col-lg-9">
-        <h2 class="page-header" style="margin-top: 0px;">Events</h2>
-    </div>
-</div>
-
 <div class="row">
     <div class="col-lg-9">
         <div class="panel panel-default">
@@ -14,6 +7,9 @@
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true">
                     </i>  Export
                 </a>
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                    Events
+                </h2>
             </div>
             <div class="panel-body" style="border: 1px solid #d1d1e0; border-radius:5px">
                 <table  class="table table-striped table-bordered table-hover data-table-table" id="terminals-table" role="grid"

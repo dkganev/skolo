@@ -52,7 +52,17 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.min.css" />
                            
     <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
-
+{{--     <style>
+    li.active {
+        border-bottom: 2px #337ab7 solid;
+        content: "";
+        display: block;
+        width: 5%;
+        margin: 1em auto 0;
+    /*border-bottom: solid;*/
+    }
+    </style> --}}
+    
 </head>
 <body style="background-image: url('images/background.jpg'); ">
 

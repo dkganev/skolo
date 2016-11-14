@@ -6,15 +6,15 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-6">
-         <!--    Context Classes  -->
-        <h1 style="margin-top: 0px;" class="page-header">Client Game IDs</h1>
-
         <div class="panel panel-default">
-           
             <div class="panel-heading">
                 <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addGameClientModal">
                     Add Game Client 
                 </button>
+
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 10%;">
+                    Client Game IDs
+                </h2>
 
                 <a href="{{ route('export.clients') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export</a>
 
@@ -67,21 +67,20 @@
         <!--  end  Context Classes  -->
     </div>
 
-
     <div class="col-lg-6">
-         <!--    Context Classes  -->
-        <h1 style="margin-top: 0px;" class="page-header">Game Categories</h1>
         <div class="panel panel-default">
-           
             <div class="panel-heading">
                 <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addCategoryModal">
                     Add Game Category 
                 </button>
 
-                <a href="#" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export</a>
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 7%;">
+                    Game Categories
+                </h2>
 
+                <a href="#" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export
+                </a>
             </div>
-            
             <div class="panel-body">
                 <table class="table table-striped table-bordered table-hover data-table-table game-servers" id="gameTable" role="grid"
                     data-toggle="table"
@@ -132,24 +131,17 @@
 
 <!-- GameServers -->
 <div class="row">
-     <!--  page header -->
     <div class="col-lg-12">
-        <h1 class="page-header">Game Servers</h1>
-    </div>
-     <!-- end  page header -->
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <!-- Advanced Tables -->
         <div class="panel panel-default">
             <div class="panel-heading">
-
                 <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addGameModal">
                     Add Game 
                 </button>
-
-                <a href="{{ route('export.games') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export</a>
-                
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                    Game Servers
+                </h2>
+                <a href="{{ route('export.games') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg"      aria-hidden="true"></i> Export
+                </a>
             </div>
 
             <div class="panel-body">

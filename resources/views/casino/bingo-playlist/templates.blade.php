@@ -2,7 +2,6 @@
 <div class="container">
   <div class="row">
       <div class="col-lg-5">
-          <h2 style="margin-top: 0px;" class="page-header">Templates</h2>
           <div style="padding-top:2px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">

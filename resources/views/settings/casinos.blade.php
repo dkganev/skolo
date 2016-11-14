@@ -1,14 +1,6 @@
 @include('modals.casino-modals')
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-4">
-            <h1 style="margin-top: 0px;" class="page-header">Casinos</h1>
-        </div>
-    </div>
-</div>
-
-<div class="container">
 <div class="row">
     <div class="col-lg-7">
         <div class="panel panel-default">
@@ -16,6 +8,9 @@
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addCasinoModal">
                     Add Casino 
                 </button>
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 27%;">
+                    Casinos
+                </h2>
                 <a href="{{ route('export.casinos') }}" class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export
                 </a>

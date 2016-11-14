@@ -1,12 +1,6 @@
 @include('modals.reset-ps-modal')
 @include('modals.terminal-modals')
-<div class="container">
-<div class="row">
-    <div class="col-lg-12" >
-        <h1 style="margin-top: 0px;" class="page-header">Terminals</h1>
-    </div>
-</div>
-</div>
+
 
 <div class="container">
 <div class="row">
@@ -18,6 +12,10 @@
                 <button class="btn btn-danger btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal">
                     Add Machine
                 </button>
+                
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                    Terminals
+                </h2>
 
                 <a href="{{ route('export.terminals') }}" class="btn btn-primary btn-sm pull-right"
                 ><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export

@@ -1,19 +1,15 @@
 <div class="container">
 
-<div class="row">
-    <div class="col-md-8" >
-        <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
-            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
-        </a>
-        <h1 style="margin-top: 0px; color:white;" class="page-header">Game Statistics</h1>
-    </div>
-</div>
-
 <div class="row" >
     <div class="col-md-8">
         <div class="panel panel-default" >
             <div class="panel-heading">
-                {{--  --}}
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                    Game Statistics
+                </h2>
+                <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                </a>
             </div>
                 <div class="panel-body" >
                     <table class="table table-striped table-bordered table-hover data-table-table" role="grid"

@@ -1,11 +1,4 @@
 @include('modals.billtype-modals')
-<div class="container">
-<div class="row">
-    <div class="col-lg-4">
-        <h1 style="margin-top: 0px;" class="page-header">Billing Types</h1>
-    </div>
-</div>
-</div>
 
 <div class="container">
 <div class="row">
@@ -15,6 +8,9 @@
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addBillModal">
                     Add Billing Type 
                 </button>
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 6%;">
+                    Billing Types
+                </h2>
                 <a href="{{ url('/settings/exportBillTypes') }}" class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export
                 </a>
