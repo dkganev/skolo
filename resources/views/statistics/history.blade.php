@@ -32,6 +32,57 @@
 
         <div class="panel panel-default" >
             <div class="panel-heading">
+                <button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button>
+                <div class="keep-open btn-group open pull-right" title="Columns">
+                    
+                    
+                    
+                    <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="ShowHide();">
+                       <i class="glyphicon glyphicon-th icon-th"></i>
+                       <span class="caret"></span>
+                    </button>
+                    <ul id="ShowHideUl" class="dropdown-menu" role="menu" style="display: none;"  onclick="ShowHideBingo();">
+                        <li>
+                            <label>
+                                <input id="checkbox1" value="0" checked="checked" type="checkbox">
+                                    Time
+                                <br>
+                            </label>
+                        </li>
+                         <li>
+                            <label>
+                                <input id="checkbox2" value="0" checked="checked" type="checkbox">
+                                    Game
+                                <br>
+                            </label>
+                        </li>
+                         <li>
+                            <label>
+                                <input id="checkbox3" value="0" checked="checked" type="checkbox">
+                                    Ticket Cost
+                                <br>
+                            </label>
+                        </li> <li>
+                            <label>
+                                <input id="checkbox4" value="0" checked="checked" type="checkbox">
+                                    Players
+                                <br>
+                            </label>
+                        </li> <li>
+                            <label>
+                                <input id="checkbox5" value="0" checked="checked" type="checkbox">
+                                    Tickets
+                                <br>
+                            </label>
+                        </li> <li>
+                            <label>
+                                <input id="checkbox6" value="0" checked="checked" type="checkbox">
+                                    Time
+                                <br>
+                            </label>
+                        </li>
+                    </ul>
+                </div>    
                 <!--  -->
             </div>
 
@@ -40,7 +91,7 @@
                             data-toggle="table"
                             data-locale="en-US"
                             data-sortable="true"
-
+                            
                             data-pagination="true"
                             data-side-pagination="client"
                             data-page-list="[3, 5, 10, 15, 50]"
@@ -49,38 +100,474 @@
                     >
                     <thead class="w3-dark-grey">
                         <tr>
-                            <th colspan="5" class="text-center" style='text-align: center !Important; '>Game Info</th>
-                            <th colspan="2" class="text-center">Line</th>
-                            <th colspan="2" class="text-center">Bingo</th>
-                            <th colspan="2" class="text-center">My Bonus</th>
-                            <th colspan="2" class="text-center">Bonus Line</th>
-                            <th colspan="2" class="text-center">Bonus Bingo</th>
-                            <th colspan="2" class="text-center">Jackpot Line</th>
-                            <th colspan="2" class="text-center">Jackpot Bingo</th>
-                            <th rowspan="2" class="text-center" data-field="sort20" data-sortable="true" >Game<br/>Cancelled</th>
+                            <th colspan="5" class="text-center GameInfo" style='text-align: center !Important; '>Game Info</th>
+                            <th colspan="2" class="text-center Line">Line</th>
+                            <th colspan="2" class="text-center Bingo">Bingo</th>
+                            <th colspan="2" class="text-center MyBonus">My Bonus</th>
+                            <th colspan="2" class="text-center BonusLine">Bonus Line</th>
+                            <th colspan="2" class="text-center BonusBingo">Bonus Bingo</th>
+                            <th colspan="2" class="text-center JackpotLine">Jackpot Line</th>
+                            <th colspan="2" class="text-center JackpotBingo">Jackpot Bingo</th>
+                            <th rowspan="1" class="text-center" ></th>
                         </tr>
                         <tr>
-                            <th class="text-center" data-field="date" data-sortable="true">Time</th>
-                            <th class="text-center" data-align="right" data-field="id" data-sortable="true" tabindex="0"  data-sort-order="asc">Game #</th>
-                            <th class="text-center" data-align="right" data-field="id1" data-sortable="true" >Ticket<br/>Cost</th>
-                            <th class="text-center" data-align="right" data-field="id2" data-sortable="true">Players</th>
-                            <th class="text-center" data-align="right" data-field="id3" data-sortable="true">Tickets</th>
-                            <th class="text-center" data-align="right" data-field="id4" data-sortable="true">at<br/>ball</th>
-                            <th class="text-center" data-align="right" data-field="sort7" data-sortable="true">$</th>
-                            <th class="text-center" data-align="right" data-field="sort8" data-sortable="true">at<br/>ball</th>
-                            <th class="text-center" data-align="right" data-field="sort9" data-sortable="true">$</th>
-                            <th class="text-center" data-align="right" data-field="sort10" data-sortable="true">at<br/>ball</th>
-                            <th class="text-center" data-align="right" data-field="sort11" data-sortable="true">$</th>
-                            <th class="text-center" data-align="right" data-field="sort12" data-sortable="true">at<br/>ball</th>
-                            <th class="text-center" data-align="right" data-field="sort13" data-sortable="true">$</th>
-                            <th class="text-center" data-align="right" data-field="sort14" data-sortable="true">at<br/>ball</th>
-                            <th class="text-center" data-align="right" data-field="sort15" data-sortable="true">$</th>
-                            <th class="text-center" data-align="right" data-field="sort16" data-sortable="true">at<br/>ball</th>
-                            <th class="text-center" data-align="right" data-field="sort17" data-sortable="true">$</th>
-                            <th class="text-center" data-align="right" data-field="sort18" data-sortable="true">at<br/>ball</th> 
-                            <th class="text-center" data-align="right" data-field="sort19" data-sortable="true">$</th>
-                            
-                            
+                            <th colspan="1"  class="text-center tbleGame"  data-field="test">
+                                <div class="row tbleGame">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="" onclick="datetimepicker66(); ">
+                                            <div class='input-group date' id='datetimepicker6'>
+                                                
+                                                <input id='datetimepicker6I' class="form-control" size="10" type="text" value="" onchange='datetimepicker6Close();' readonly>
+                                                <span class="add-on"><i class="icon-remove"></i></span>
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="" onclick="datetimepicker77(); ">
+                                            <div class='input-group date' id='datetimepicker7' style="margin-top: 3px;" >
+                                                <input id='datetimepicker7I' class="form-control"  type='text' size="16" value="" onchange='datetimepicker7Close();' readonly />
+                                                <span class="add-on"><i class="icon-remove"></i></span>
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th colspan="1" class="text-center tableTh2" data-field="id22"><input class="form-control" type='number' style="color: #333" id='GameSort' ></th>
+                            <th colspan="1" class="text-center tableTh3" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center tableTh4">
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center tableTh5" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-centert tableTh6" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="text-center" >
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        From:
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        To:
+                                    </div>
+                                    <br/>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <th rowspan="1" class="text-center">
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        
+                                    </div>
+                                    <div class='col-md-12'>
+                                        <div class="">
+                                            <a class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-3'>
+                                        
+                                    </div>
+                                    <br/>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <div class="">
+                                             <a class="btn btn-default"><i class="fa fa-close" aria-hidden="true"></i></a> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="text-center"   data-field="id1" data-sortable="true">Time<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id2" data-sortable="true"   data-sort-order="asc">Game #<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id3" data-sortable="true" >Ticket<br/>Cost</th>
+                            <th class="text-center" data-align="right" data-field="id4" data-sortable="true">Players<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id5" data-sortable="true">Tickets<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id6" data-sortable="true">at<br/>ball</th>
+                            <th class="text-center" data-align="right" data-field="id7" data-sortable="true">$<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id8" data-sortable="true">at<br/>ball</th>
+                            <th class="text-center" data-align="right" data-field="id9" data-sortable="true">$<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id10" data-sortable="true">at<br/>ball</th>
+                            <th class="text-center" data-align="right" data-field="id11" data-sortable="true">$<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id12" data-sortable="true">at<br/>ball</th>
+                            <th class="text-center" data-align="right" data-field="id13" data-sortable="true">$<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id14" data-sortable="true">at<br/>ball</th>
+                            <th class="text-center" data-align="right" data-field="id15" data-sortable="true">$<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id16" data-sortable="true">at<br/>ball</th>
+                            <th class="text-center" data-align="right" data-field="id17" data-sortable="true">$<br/>&nbsp;&nbsp;</th>
+                            <th class="text-center" data-align="right" data-field="id18" data-sortable="true">at<br/>ball</th> 
+                            <th class="text-center" data-align="right" data-field="id19" data-sortable="true">$<br/>&nbsp;&nbsp;</th>
+                            <th rowspan="1" class="text-center" data-field="id20" data-sortable="true" >Game<br/>Cancelled</th>
                         </tr>
                     </thead>
 
@@ -123,5 +610,88 @@
 <script src="bootstrap-table/bootstrap-table.js"></script>
 
 <script >
+    
+/*var ShowHideI = 0;
+$('#show-column, #hide-column').click(function () {
+    if (ShowHideI == 0) {
+        $('#ShowHideUl').show();
+        ShowHideI = 1;
+        $('#example').bootstrapTable("hideColumn", 'id');
+        $('.GameInfo').attr("colspan", 4);
+        $('.tbleGame').hide();
+        if ($('#checkbox1').is(':checked')){
+            alert('test');
+        }
+        
+    }else{
+        $('#ShowHideUl').hide();
+        $('#example').bootstrapTable("showColumn", 'id');
+        $('.GameInfo').attr("colspan", 5);
+        $('.tbleGame').show();
+        ShowHideI = 0;
+    }*/
+    /*$('#example').bootstrapTable('mergeCells', {
+                    tabindex: 0,
+                    field: 'id2',
+                    colspan: 4
+                })
+        alert('test12');
+        
+         //document.getElementById(".id2").colSpan = "4";
+         $('.id2').attr("colspan", 7);
+        alert('test3');
+        
+            //$('#tbleGame').hide();
+    }else{
+        $('#ShowHideUl').hide();
+        $('#example').bootstrapTable("showColumn", 'id');
+       // $('#tbleLine').attr("colspan", 5);
+        //$('#tbleGame').show();
+        ShowHideI = 0;
+    }
+    $("#example tr th").each(function(){
+        if ($(this).attr('data-field') == "id2"){
+            alert($(this).attr('data-field'));
+            $(this).attr("colspan", 4);
+        }
+    //alert($(this).data('method'));
+   // $('#example').bootstrapTable("hideColumn", 'id');
+});*/
 
+//function ShowHide() {
+ /*   //alert(ShowHideI);
+    if (ShowHideI == 0) {
+        $('#ShowHideUl').show();
+        //$('#ShowHideUl').show();
+        ShowHideI = 1;
+    }else{
+        $('#ShowHideUl').hide();
+        ShowHideI = 0;
+    }
+    /*$('#table-methods').next().click(function () {
+            $(this).hide();
+            var id = 0,
+                getRows = function () {
+                    var rows = [];
+
+                    for (var i = 0; i < 10; i++) {
+                        rows.push({
+                            id: id,
+                            name: 'test' + id,
+                            price: '$' + id
+                        });
+                        id++;
+                    }
+                    return rows;
+                },
+                // init tab
+    $table = $('#example').bootstrapTable({
+                    data: getRows()
+                });
+    $('#show-column, #hide-column').click(function () {            
+    $table.bootstrapTable($(this).data('method'), 'id');
+    });
+    });
+    $('#example').bootstrapTable($(this).data('method'), 'id');*/
+//}
 </script>

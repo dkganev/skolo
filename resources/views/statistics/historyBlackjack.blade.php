@@ -6,12 +6,12 @@
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
               <li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li>
               <li ><a id="historyRoulette" href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
-              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
+              <li class="active"><a id="historyBlackjack" href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
               <li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>
               <li><a href="javascript:ajaxLoad('#')">Slots </a></li>
             </ul>
         </div>
- </div>
+</div>
 <div class="container-fluid">
 <div class="row">
      <!--  page header -->
@@ -25,11 +25,100 @@
 </div>
 
 <div class="row" >
-    <div class="col-md-12">
+    <div class="col-md-12" style="width: 800px">
 
         <div class="panel panel-default" >
             <div class="panel-heading">
-
+                <div class="pull-left pagination-detail">
+                     <!-- <span class="pagination-info">Showing 1 page</span> -->
+                    <span class="page-list">
+                        <span class="btn-group dropup">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="page-size">{{$page['rowsPerPage']}}</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="active">
+                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?rowsPerPage=20')">20</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?rowsPerPage=50')">50</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?rowsPerPage=100')">100</a>
+                                </li>
+                            </ul>
+                        </span>
+                        rows per page
+                    </span>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="pagination" style="margin: 0px; ">
+                    <ul class="pagination" style="margin: 0px;">
+                        @if ( $historys->hasMorePages() )
+                            @if ( $historys->currentPage() > 1 )
+                                <li class="page-pre">
+                                    <a href="javascript:void(0)">‹</a>
+                                </li>
+                                <li class="page-number active">
+                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=1&rowsPerPage={{$page['rowsPerPage']}}')">1</a>
+                                </li>
+                            @else
+                            
+                            @endif
+                            @if ( $historys->currentPage() > 3 && $historys->lastPage() > 6 )
+                                <li class="page-last-separator disabled">
+                                    <a href="javascript:void(0)">...</a>
+                                </li>
+                            @endif
+                            @for ($i = $historys->currentPage(); $i < $historys->currentPage() + 5; $i++)
+                                 <li class="page-number">
+                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page={{$i}}&rowsPerPage={{$page['rowsPerPage']}}')">{{ $i }}</a>
+                                </li>
+                            @endfor
+                            @if ( $historys->currentPage() < $historys->lastPage())
+                             <li class="page-last">
+                                <a href="javascript:void(0)">25</a>
+                            </li>
+                            <li class="page-next">
+                                <a href="javascript:void(0)">›</a>
+                            </li>
+                            @endif
+                            
+                        <!--<li class="page-pre">
+                            <a href="javascript:void(0)">‹</a>
+                        </li>
+                        <li class="page-number active">
+                            <a href="javascript:void(0)">{{$historys->currentPage()}}</a>
+                        </li>
+                        <li class="page-number">
+                            <a href="javascript:void(0)">{{var_dump($historys->firstItem())}}</a>
+                        </li>
+                        <li class="page-last-separator disabled">
+                            <a href="javascript:void(0)">...</a>
+                        </li>
+                        <li class="page-last">
+                            <a href="javascript:void(0)">25</a>
+                        </li>
+                        <li class="page-next">
+                            <a href="javascript:void(0)">›</a>
+                        </li> -->
+                        @else
+                            <li class="page-number active">
+                                <a href="javascript:void(0)">{{$historys->currentPage()}}</a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+                <button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button>
+                <div class="keep-open btn-group open pull-right" title="Columns">
+                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=2&rowsPerPage=50')" class="btn btn-success RouletteSort" >test</a>
+                    <a class="btn btn-success RouletteSort" style="display: none;" onclick="sortFunction()"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunction()"><i class="fa fa-close" aria-hidden="true"></i></a> 
+                    <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuR();">
+                       Sort Menu
+                       <span class="caret"></span>
+                    </button>
+                </div>
                              
                 <!--  -->
             </div>
@@ -42,19 +131,19 @@
 
                             data-pagination="true"
                             data-side-pagination="client"
-                            data-page-list="[3, 5, 10, 15, 50]"
-
+                            data-page-list="[20, 50, 100]"
+                            data-page-size="20"
                             data-classes="table-condensed"
                     >
                     <thead class="w3-dark-grey">
                         
                         <tr>
-                            <th  >
+                            <th  class='text-center RouletteSort col-md-2' style="display: none;">
                                <div class="row">
                                     <div class='col-md-3'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker66(); ">
                                             <div class='input-group date' id='datetimepicker6'>
                                                 
@@ -71,7 +160,7 @@
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker77(); ">
                                             <div class='input-group date' id='datetimepicker7' style="margin-top: 3px;" >
                                                 <input id='datetimepicker7I' class="form-control"  type='text' size="16" value="" onchange='datetimepicker7Close();' readonly />
@@ -84,17 +173,17 @@
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='GameSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='TableSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='PSID' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  >
+                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='GameSort' ></th>
+                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='TableSort' ></th>
+                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='PSID' ></th>
+                            <th class="text-center RouletteSort" style="display: none;" >
                                 <div class="row">
                                     <div class='col-md-3'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="">
-                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' '>
                                         </div>
                                     </div>
                                 </div>
@@ -102,39 +191,39 @@
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9' style="margin-top: 3px;">
+                                    <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
-                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet'>
                                         </div>
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center"  >
+                            <th class="text-center RouletteSort" style="display: none;" >
                                 <div class="row">
                                     <div class='col-md-3'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
-                                        <input class="form-control" type='number' style="color: #333" id='FromGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-12'>
+                                        <input class="form-control" type='number' style="color: #333" id='FromGameWin' >
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9' style="margin-top: 3px;">
-                                        <input class="form-control" type='number' style="color: #333" id='ToGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <input class="form-control" type='number' style="color: #333" id='ToGameWin' >
                                     </div>
                                 </div>
                             </th>
                         </tr>
                         <tr>
-                            <th class="text-center" data-field="date" data-sortable="true">Time</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Game #</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Table ID</th>
-                            <th class="text-center" data-align="right" data-sortable="true">PS ID</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Total Bet</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Total Win</th>
+                            <th class="text-center col-md-2" data-field="id101" data-sortable="true">Time</th>
+                            <th class="text-center" data-align="right" data-field="id102" data-sortable="true">Game # {{$historys->total()}} -- {{$historys->nextPageUrl()}}</th>
+                            <th class="text-center" data-align="right" data-field="id103" data-sortable="true">Table ID</th>
+                            <th class="text-center" data-align="right" data-field="id104" data-sortable="true">PS ID</th>
+                            <th class="text-center" data-align="right" data-field="id105" data-sortable="true">Total Bet</th>
+                            <th class="text-center" data-align="right" data-field="id106" data-sortable="true">Total Win</th>
                         </tr>
                     </thead>
 
@@ -230,8 +319,11 @@
 
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
-<script src="bootstrap-table/bootstrap-table.js"></script>
+<!--<script src="bootstrap-table/bootstrap-table.js"></script> -->
+<script >
+sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
 
+</script>
 
         
 

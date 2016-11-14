@@ -5,19 +5,19 @@
 
                             data-pagination="true"
                             data-side-pagination="client"
-                            data-page-list="[3, 5, 10, 15, 50]"
-
+                            data-page-list="[20, 50, 100]"
+                            data-page-size="20"
                             data-classes="table-condensed"
                     >
                     <thead class="w3-dark-grey">
                         
                         <tr>
-                            <th class="text-center" data-field="date" >
+                            <th class="text-center RouletteSort" data-field="date" >
                                <div class="row">
-                                    <div class='col-md-3'>
+                                    <div class='col-md-1'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker66(); ">
                                             <div class='input-group date' id='datetimepicker6'>
                                                 
@@ -31,10 +31,10 @@
                                     </div>
                                 </div>    
                                 <div class="row">
-                                    <div class='col-md-3'>
+                                    <div class='col-md-1'>
                                         To:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker77(); ">
                                             <div class='input-group date' id='datetimepicker7' style="margin-top: 3px;" >
                                                 <input id='datetimepicker7I' class="form-control"  type='text' size="16" value="" onchange='datetimepicker7Close();' />
@@ -47,57 +47,57 @@
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='GameSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='TableSort' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='PSID' oninput='sortFunction($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  >
+                            <th class="text-center RouletteSort"  ><input class="form-control" type='number' style="color: #333" id='GameSort' ></th>
+                            <th class="text-center RouletteSort"  ><input class="form-control" type='number' style="color: #333" id='TableSort'></th>
+                            <th class="text-center RouletteSort"  ><input class="form-control" type='number' style="color: #333" id='PSID'></th>
+                            <th class="text-center RouletteSort"  >
                                 <div class="row">
-                                    <div class='col-md-3'>
+                                    <div class='col-md-1'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="">
-                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' >
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class='col-md-3'>
+                                    <div class='col-md-1'>
                                         To:
                                     </div>
-                                    <div class='col-md-9' style="margin-top: 3px;">
+                                    <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
-                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet' >
                                         </div>
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center"  >
+                            <th class="text-center RouletteSort"  >
                                 <div class="row">
-                                    <div class='col-md-3'>
+                                    <div class='col-md-1'>
                                         From:
                                     </div>
-                                    <div class='col-md-9' >
-                                        <input class="form-control" type='number' style="color: #333" id='FromGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-12' >
+                                        <input class="form-control" type='number' style="color: #333" id='FromGameWin' >
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class='col-md-3'>
+                                    <div class='col-md-1'>
                                         To:
                                     </div>
-                                    <div class='col-md-9' style="margin-top: 3px;">
-                                        <input class="form-control" type='number' style="color: #333" id='ToGameWin' oninput='sortFunction($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <input class="form-control" type='number' style="color: #333" id='ToGameWin' >
                                     </div>
                                 </div>
                             </th>
                         </tr>
                         <tr>
-                            <th class="text-center" data-field="date" data-sortable="true">Time</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Game #</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Table ID</th>
-                            <th class="text-center" data-align="right" data-sortable="true">PS ID</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Total Bet</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Total Win</th>
+                            <th class="text-center" data-field="id101" data-sortable="true">Time</th>
+                            <th class="text-center" data-field="id102" data-align="right" data-sortable="true">Game #</th>
+                            <th class="text-center" data-field="id102" data-align="right" data-sortable="true">Table ID</th>
+                            <th class="text-center" data-field="id103" data-align="right" data-sortable="true">PS ID</th>
+                            <th class="text-center" data-field="id104" data-align="right" data-sortable="true">Total Bet</th>
+                            <th class="text-center" data-field="id105" data-align="right" data-sortable="true">Total Win</th>
                         </tr>
                     </thead>
 
