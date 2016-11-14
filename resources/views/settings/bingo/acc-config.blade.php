@@ -1,25 +1,25 @@
 <div class="container">
-<div class="row">
-    <div class="col-lg-6">
-        <h1 style="margin-top: 0px;" class="page-header">Bingo - Accounting Config</h1>
-        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
-            <!-- Secondary Navigation -->
-            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
+  <div class="row">
+      <div class="col-lg-6">
+          {{-- <h1 style="margin-top: 0px;" class="page-header"></h1> --}}
+          <div style="padding-top:2px; margin-top: 0px; background-color: none;">
+              <!-- Secondary Navigation -->
+              <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
 
-              <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
-
-            </ul>
-        </div>
-	</div><!--End Col -->
-</div><!-- End Row -->
+                <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
+              </ul>
+          </div>
+    </div>
+  </div><!-- End Row -->
+</div><!-- End Container -->
 
 <!-- Wheel Config -->
 <div class="container">
@@ -38,22 +38,22 @@
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>ID:</label><br>
-          <input disabled class="form-control" type="text" name="id" value="{{ $acc_config->id }}">
+          <input disabled class="form-control text-center" type="text" name="id" value="{{ $acc_config->id }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Acc IP:</label><br>
-          <input class="form-control" type="text" name="acc_ip" value="{{ $acc_config->acc_ip }}">
+          <input class="form-control text-center" type="text" name="acc_ip" value="{{ $acc_config->acc_ip }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Acc Port:</label><br>
-          <input class="form-control" type="text" name="acc_port" value="{{ $acc_config->acc_port }}">
+          <input class="form-control text-center" type="text" name="acc_port" value="{{ $acc_config->acc_port }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Game Port:</label><br>
-          <input class="form-control" type="text" name="game_port" value="{{ $acc_config->game_port }}">
+          <input class="form-control text-center" type="text" name="game_port" value="{{ $acc_config->game_port }}">
         </div>
 
       </div><!-- End Col -->

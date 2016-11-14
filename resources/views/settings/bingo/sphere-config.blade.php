@@ -1,7 +1,7 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-6">
-        <h1 style="margin-top: 0px;" class="page-header">Bingo - Sphere Config</h1>
+        {{-- <h1 style="margin-top: 0px;" class="page-header">Bingo - Sphere Config</h1> --}}
         <div style="padding-top:2px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
@@ -38,17 +38,17 @@
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label for="wheeltype">ID:</label><br>
-          <input disabled class="form-control" type="text" name="id" value="{{ $sphere_config->id }}">
+          <input disabled class="form-control text-center" type="text" name="id" value="{{ $sphere_config->id }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Sphere IP:</label><br>
-          <input class="form-control" type="text" name="sphere_ip" value="{{ $sphere_config->sphere_ip }}">
+          <input class="form-control text-center" type="text" name="sphere_ip" value="{{ $sphere_config->sphere_ip }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>Sphere Port:</label><br>
-          <input class="form-control" type="text" name="sphere_port" value="{{ $sphere_config->sphere_port }}">
+          <input class="form-control text-center" type="text" name="sphere_port" value="{{ $sphere_config->sphere_port }}">
         </div>
 
       </div><!-- End Col -->

@@ -27,4 +27,6 @@
           </div>
       </div>
   </div>
+  <hr style="padding-bottom: 15px; margin: 0;">
 </div>
+

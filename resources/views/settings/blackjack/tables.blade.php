@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
       <div class="col-lg-6">
-        <h1 style="margin-top: 0px;" class="page-header">Blackjack - Tables</h1>
+        {{-- h1 style="margin-top: 0px;" class="page-header">Blackjack - Tables</h1> --}}
         <div style="padding-top:2px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
@@ -19,7 +19,7 @@
 
 <div class="container">
 <div class="row">
-<div class="col-lg-12">
+<div class="col-lg-9">
 
   <div class="panel panel-primary">
 
@@ -127,7 +127,7 @@ $('.bj-table-button').on('click', function(event) {
             $('tr#' + id).addClass('flashNow');
             setTimeout(function() {
                 $('tr#' + id).removeClass('flashNow');
-            }, 300);
+            }, 500);
 
             $('.alert-success').delay(50).fadeIn(function() {
               $(this).delay(1500).fadeOut();
@@ -149,6 +149,7 @@ $('input[type="checkbox"]').change(function(){
 <style>
     .flashNow {
         animation-name: flash;
+        animation-timing-function: ease-in;
         animation-timing-function: ease-out;
         animation-duration: 2s;
         -webkit-animation-name: flash;
