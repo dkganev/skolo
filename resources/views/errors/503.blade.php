@@ -41,7 +41,7 @@
     </head>
     <body>
         <div class="container">
-            <h1 style="color: black; font-size: 60px;"> #503 Error</h3>
+            <h1 style="color: black; font-size: 60px;"> #503 Error</h1>
             <div class="content">
                 <div class="title">Maintance Going on...Be right back</div>
             </div>

@@ -33,15 +33,15 @@
                         </tr>
                         <tbody>
                             @foreach($games as $game)
-                                <tr>
-                                    <td>{{ $game->gameid }}</td>
-                                    <td>{{ $game->description }}</td>
-                                    <td>{{ $game->counters_bet }}</td>
-                                    <td>{{ $game->counters_win }}</td>
-                                    <td>{{ $game->counters_jp }}</td>
-                                    <td>{{ $game->counters_games }}</td>
-                                    <td>{{ $game->counter_jp_hits }}</td>
-                                </tr>
+                            <tr>
+                                <td>{{ $game->gameid }}</td>
+                                <td>{{ $game->description }}</td>
+                                <td>{{ $game->counters_bet }}</td>
+                                <td>{{ $game->counters_win }}</td>
+                                <td>{{ $game->counters_jp }}</td>
+                                <td>{{ $game->counters_games }}</td>
+                                <td>{{ $game->counter_jp_hits }}</td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </thead>

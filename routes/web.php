@@ -71,6 +71,12 @@ Route::post('settings/updatecasino', 'Settings\CasinosController@updateCasino')-
 Route::get('/settings/exportCasinos', 'Settings\CasinosController@exportCasinos')->name('export.casinos');
 
 /**
+ * SETTINGS / USERS
+ */
+
+Route::get('/settings/users', 'Settings\UserController@index');
+
+/**
  * SETTINGS / BILL TYPES
  */
 Route::get('/settings/billtypes', 'Settings\BillTypesController@getBillTypes')->name('billtypes');

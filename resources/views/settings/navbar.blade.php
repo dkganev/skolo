@@ -8,7 +8,9 @@
                 <li><a href="javascript:ajaxLoad('{{url('settings/terminals')}}')">Terminals</a></li>
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/gameservers')}}')">Game Servers</a></li>
-
+        
+                <li><a href="javascript:ajaxLoad('{{url('settings/users')}}')">Users</a></li>
+              
                 <li><a href="javascript:ajaxLoad('{{url('settings/casinos')}}')">Casinos</a></li>
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/billtypes')}}')">Billing Types</a></li>

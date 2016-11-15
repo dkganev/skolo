@@ -7,7 +7,6 @@
         <h2><strong>+ Add Billing Type</strong></h2>
       </div>
       <div class="modal-body">
-
         <form class="form-inline" role="form" method="POST" name="server-modal">
             {{ csrf_field() }}
 
