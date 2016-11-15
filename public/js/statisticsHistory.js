@@ -237,9 +237,31 @@ function changeModalWindowR(NextPrev) {
     });
 }    
 var sortTimer;
-function sortFunction(sValue, sColumn) {
-    clearTimeout(sortTimer);
-    sortTimer = setTimeout(function(){ 
+function cleanSortFunction() {
+    $('#datetimepicker6I').val("");
+    $('#datetimepicker7I').val("");
+    //$('#datetimepicker6').datetimepicker('update');
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+    $('#datetimepicker6').datetimepicker('setEndDate', output );
+    $('#datetimepicker7').datetimepicker('setEndDate', output );
+    $('#datetimepicker6').datetimepicker('setStartDate', "");
+    //$('#datetimepicker7').datetimepicker('update');
+   $('#GameSort').val("");
+    $('#TableSort').val("");
+    $('#PSID').val("");
+    $('#FromGameBet').val("");
+    $('#ToGameBet').val("");
+    $('#FromGameWin').val("");
+    $('#ToGameWin').val("");
+    sortFunction();
+    
+}
+function sortFunction() {
+    //clearTimeout(sortTimer);
+    //sortTimer = setTimeout(function(){ 
         $(".faSpinnerBJ").show();
         $('#BJcards').hide();
         FromGameTs = $('#datetimepicker6I').val();
@@ -295,35 +317,51 @@ function sortFunction(sValue, sColumn) {
             }
         
         });
-    }, 500);
+    //}, 500);
 }
     
    function datetimepicker66() {
         $('.switch').attr('colspan', 5);
+        FromGameTs = $('#datetimepicker6I').val();
+        ToGameTs = $('#datetimepicker7I').val();
         var d = new Date();
         var month = d.getMonth()+1;
         var day = d.getDate();
         var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
         $('#datetimepicker6').datetimepicker('setEndDate', output);
         $('#datetimepicker6').datetimepicker('show');
+        if (FromGameTs != ""){
+            $('#datetimepicker7').datetimepicker('setStartDate', FromGameTs);
+                        }
+        if (ToGameTs != ""){
+            $('#datetimepicker6').datetimepicker('setEndDate', ToGameTs);
+        }
     }
     function datetimepicker77() {
         $('.switch').attr('colspan', 5);
+        FromGameTs = $('#datetimepicker6I').val();
+        ToGameTs = $('#datetimepicker7I').val();
         var d = new Date();
         var month = d.getMonth()+1;
         var day = d.getDate();
         var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
         $('#datetimepicker7').datetimepicker('setEndDate', output);
         $('#datetimepicker7').datetimepicker('show');
+        if (FromGameTs != ""){
+            $('#datetimepicker7').datetimepicker('setStartDate', FromGameTs);
+                        }
+        if (ToGameTs != ""){
+            $('#datetimepicker6').datetimepicker('setEndDate', ToGameTs);
+        }
     }
     function datetimepicker6Close() {
         $('#datetimepicker6').datetimepicker('hide');
-        sortFunction(1, "datetimepicker6I");
+        //sortFunction(1, "datetimepicker6I");
         //$('#datetimepicker7').datetimepicker('setStartDate', '2016-11-08');
     }
     function datetimepicker7Close() {
         $('#datetimepicker7').datetimepicker('hide');
-        sortFunction(1, "datetimepicker7I");
+        //sortFunction(1, "datetimepicker7I");
         //$('#datetimepicker').datetimepicker('setStartDate', '2012-01-01');
     }
     $("#datetimepicker6").datetimepicker({
@@ -341,9 +379,44 @@ function sortFunction(sValue, sColumn) {
         //startDate: "2013-02-14 10:00",
         minuteStep: 10
     });
-function sortFunctionR(sValue, sColumn) {
-    clearTimeout(sortTimer);
-    sortTimer = setTimeout(function(){ 
+var sortMenuRV = 0;
+function sortMenuR() {
+    if (sortMenuRV == 0) {
+        $('.RouletteSort').show();
+        sortMenuRV = 1;
+    }else{
+        $('.RouletteSort').hide();
+        sortMenuRV = 0;
+    }
+    
+}
+
+function cleanSortFunctionR() {
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+    $('#datetimepicker4').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setStartDate', "");
+    $('#datetimepicker4I').val("");
+    $('#datetimepicker5I').val("");
+    $('#GameSortR').val("");
+    $('#PSIDR').val("");
+    $('#FromGameNumR').val("");
+    $('#ToGameNumR').val("");
+    $('#FromGameBetR').val("");
+    $('#ToGameBetR').val("");
+    $('#FromGameWinR').val("");
+    $('#ToGameWinR').val("");
+    $('#FromGameJackR').val("");
+    $('#ToGameJackR').val("");
+    sortFunctionR();
+    
+}
+function sortFunctionR() {
+    //clearTimeout(sortTimer);
+    //sortTimer = setTimeout(function(){ 
         $(".faSpinnerBJ").show();
         $('#BJcards').hide();
         FromGameTs = $('#datetimepicker4I').val();
@@ -404,35 +477,51 @@ function sortFunctionR(sValue, sColumn) {
             }
         
         });
-    }, 500);
+    //}, 500);
 }
     
    function datetimepicker44() {
         $('.switch').attr('colspan', 5);
+        FromGameTs = $('#datetimepicker4I').val();
+        ToGameTs = $('#datetimepicker5I').val();
         var d = new Date();
         var month = d.getMonth()+1;
         var day = d.getDate();
         var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
         $('#datetimepicker4').datetimepicker('setEndDate', output);
         $('#datetimepicker4').datetimepicker('show');
+        if (FromGameTs != ""){
+            $('#datetimepicker5').datetimepicker('setStartDate', FromGameTs);
+                        }
+        if (ToGameTs != ""){
+            $('#datetimepicker4').datetimepicker('setEndDate', ToGameTs);
+        }
     }
     function datetimepicker55() {
         $('.switch').attr('colspan', 5);
+        FromGameTs = $('#datetimepicker4I').val();
+        ToGameTs = $('#datetimepicker5I').val();
         var d = new Date();
         var month = d.getMonth()+1;
         var day = d.getDate();
         var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
         $('#datetimepicker5').datetimepicker('setEndDate', output);
         $('#datetimepicker5').datetimepicker('show');
+        if (FromGameTs != ""){
+            $('#datetimepicker5').datetimepicker('setStartDate', FromGameTs);
+                        }
+        if (ToGameTs != ""){
+            $('#datetimepicker4').datetimepicker('setEndDate', ToGameTs);
+        }
     }
     function datetimepicker4Close() {
         $('#datetimepicker4').datetimepicker('hide');
-        sortFunctionR(1, "datetimepicker4I");
+        //sortFunctionR(1, "datetimepicker4I");
         //$('#datetimepicker7').datetimepicker('setStartDate', '2016-11-08');
     }
     function datetimepicker5Close() {
         $('#datetimepicker5').datetimepicker('hide');
-        sortFunctionR(1, "datetimepicker5I");
+        //sortFunctionR(1, "datetimepicker5I");
         //$('#datetimepicker').datetimepicker('setStartDate', '2012-01-01');
     }
     $("#datetimepicker4").datetimepicker({
@@ -515,6 +604,72 @@ function ExportToPNGBingo() {
         }
     });
 }
+//$("#ShowHide").click(function(){
+//    alert("The paragraph was clicked.");
+//});
 
+var ShowHideI = 0;
+var GameInfo = 0;
+function ShowHide() {
+    if (ShowHideI == 0) {
+        $('#ShowHideUl').show();
+        ShowHideI = 1;
+        //$('#example').bootstrapTable("hideColumn", 'id');
+        //$('.GameInfo').attr("colspan", 4);
+        //$('.tbleGame').hide();
+        //ShowHideBingo()
+        //if ($('#checkbox1').is(':checked')){
+            //alert('test');
+        //}
+        
+    }else{
+        $('#ShowHideUl').hide();
+        ShowHideI = 0;
+        //$('#example').bootstrapTable("showColumn", 'id');
+        //$('.GameInfo').attr("colspan", 5);
+        //$('.tbleGame').show();
+        //ShowHideBingo()
+        
+    }
+};
+
+function ShowHideBingo() {
+    GameInfo = 0;
+    if ($('#checkbox1').is(':checked')){
+        $('#example').bootstrapTable("showColumn", 'id1');
+        $('#example').bootstrapTable("showColumn", 'id1');
+        $('.tbleGame').show();
+        GameInfo += 1;
+    }else{
+        $('#example').bootstrapTable("hideColumn", 'id1');
+        $('#example').bootstrapTable("hideColumn", 'id22');
+        
+        $('.tableTh2').hide();
+        $('.tableTh2').attr("colspan", 0);
+    };
+    if ($('#checkbox2').is(':checked')){ $('#example').bootstrapTable("showColumn", 'id2'); $('.tableTh2').show(); GameInfo += 1; } else { $('.tableTh2').hide();  $('#example').bootstrapTable("hideColumn", 'id2'); $('.tableTh2').hide(); };
+    if ($('#checkbox3').is(':checked')){ $('#example').bootstrapTable("showColumn", 'id3'); $('.tableTh3').show(); GameInfo += 1; } else { $('#example').bootstrapTable("hideColumn", 'id3'); $('.tableTh3').hide(); };
+    if ($('#checkbox4').is(':checked')){ $('#example').bootstrapTable("showColumn", 'id4'); $('.tableTh4').show(); GameInfo += 1; } else { $('#example').bootstrapTable("hideColumn", 'id4'); $('.tableTh4').hide(); };
+    if ($('#checkbox5').is(':checked')){ $('#example').bootstrapTable("showColumn", 'id5'); $('.tableTh5').show(); GameInfo += 1; } else { $('#example').bootstrapTable("hideColumn", 'id5'); $('.tableTh5').hide(); };
+    if (GameInfo == 0){
+        $('.GameInfo').hide();
+    }else{
+        $('.GameInfo').show();
+        $('.GameInfo').attr("colspan", GameInfo);
+    }
+    
+    
+    
+    //Line  Bingo  MyBonus  BonusLine  BonusBingo  JackpotLine JackpotBingo
+    //GameInfo += $('#checkbox1').is(':checked') ? 1 : 0;
+    //alert(GameInfo);
+}
+
+function rowPerPageF(rowPerPageV, pageHref) {
+    //pageHref = $('#historyBlackjack').attr('href');
+    //pageHref = pageHref + "\?rowPerPage=" + rowPerPageV;
+    //alert(pageHref);
+    window.location.href = pageHref; 
+}
 
 

@@ -58,16 +58,23 @@ class StatisticsController extends Controller
         return view('statistics.historyRoulette', ['historys' => $historys, 'server_ps' => $server_ps]); 
     }
     
-    public function historyBlackjack()
-    {
-        $historyClas = new BlackjackGameHistory();
-        $historys = $historyClas->orderBy('ts', 'desc')->get();
-        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
+    public function historyBlackjack(Request $request)
+    {   
+        if ($request['rowsPerPage']) {
+            $page['rowsPerPage'] = $request['rowsPerPage'];
         
+        } else {
+            $page['rowsPerPage'] = 20;
+        
+        }
+        $historyClas = new BlackjackGameHistory();
+        $historys = $historyClas->orderBy('ts', 'desc')->paginate($page['rowsPerPage']);
+        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
+        //var_dump($historys[currentPage]);
         //$test = $historys->totalWin();
         //var_dump($historyClas->totalWin());
         
-        return view('statistics.historyBlackjack', ['historys' => $historys, 'server_ps' => $server_ps]); 
+        return view('statistics.historyBlackjack', ['historys' => $historys, 'server_ps' => $server_ps, 'page' => $page ]); 
     }
     
     

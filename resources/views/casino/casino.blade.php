@@ -1,20 +1,21 @@
 @include('modals.casinoTerminalInfo-modals')
 <link rel="stylesheet" href="/css/casinoProview.css">
 
-<div class="container">
 
+<div class="container-fluid">
 <div class="row">
-    <div class="col-lg-12">
+     <!--  page header -->
+    <div class="col-md-12">
         <button type="button" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG</button>
         <h1 style="margin-top: 0px; color:white;" class="page-header">Casino</h1>
     </div>
 </div>
 
-
+<div class="well">
 <div id="casinoPreview" class="row" style="user-select: none;">
-    <div class="col-md-12 "> 
+    <div class="col-md-12"> 
         <!-- Start Panel-->
-        <div  class="panel panel-default">
+        <div  class="panel panel-default" style="margin-right: 30px">
             <div id="test123" class="panel-heading">
                 <div class="row" >
                     <div class="col-md-1 "></div>
@@ -111,6 +112,8 @@
         </div>
         <!-- End Panel-->
     </div> 
+</div>
+</div>
 </div>
 <div id="DivColor" style="display: none; width: 250px; border: 1px solid #000000; text-align: center; position: absolute; top: 400px; left: 1200px; z-index: 1000; color: black; background-color: #ffffff;">
     <h4 style="text-align: center; line-height: 3;">Casino colors.</h4>

@@ -1,5 +1,5 @@
 @include('modals.rouletteHistory-modal')
-<div class="col-md-12 "> 
+    <div class="col-md-12 "> 
         <div class="page-header" style="padding-left:15px; margin-top: 0px; margin-right: -15px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
@@ -26,10 +26,19 @@
 </div>
 
 <div class="row" >
-    <div class="col-md-12">
+    <div class="col-md-12" style="width: 1000px">
 
         <div class="panel panel-default" >
             <div class="panel-heading">
+                <button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button>
+                <div class="keep-open btn-group open pull-right" title="Columns">
+                    <a class="btn btn-success RouletteSort" style="display: none;" onclick="sortFunctionR()"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunctionR()"><i class="fa fa-close" aria-hidden="true"></i></a> 
+                    <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuR();">
+                       Sort Menu
+                       <span class="caret"></span>
+                    </button>
+                </div>
                 <!--  -->
             </div>
 
@@ -41,19 +50,19 @@
 
                             data-pagination="true"
                             data-side-pagination="client"
-                            data-page-list="[3, 5, 10, 15, 50]"
-
+                            data-page-list="[20, 50, 100]"
+                            data-page-size="20"
                             data-classes="table-condensed"
                     >
                     <thead class="w3-dark-grey">
                         
-                        <tr>
-                            <th  >
+                        <tr >
+                            <th  class="RouletteSort col-md-2"  style="display: none; visibility: hidden;">
                                <div class="row">
                                     <div class='col-md-3'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker44(); ">
                                             <div class='input-group date' id='datetimepicker4'>
                                                 
@@ -70,7 +79,7 @@
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker55(); ">
                                             <div class='input-group date' id='datetimepicker5' style="margin-top: 3px;" >
                                                 <input id='datetimepicker5I' class="form-control"  type='text' size="16" value="" onchange='datetimepicker5Close();' >
@@ -83,16 +92,16 @@
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='GameSortR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  ><input class="form-control" type='number' style="color: #333" id='PSIDR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'></th>
-                            <th class="text-center"  >
+                            <th class="text-center RouletteSort" style="display: none;" data-field="id202" ><input class="form-control" type='number' style="color: #333" id='GameSortR' ></th>
+                            <th class="text-center RouletteSort" style="display: none;" data-field="id203" ><input class="form-control" type='number' style="color: #333" id='PSIDR' ></th>
+                            <th class="text-center RouletteSort" style="display: none;" data-field="id204" >
                                 <div class="row">
                                     <div class='col-md-3'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="">
-                                            <input class="form-control" type='number' size="6" style="color: #333" id='FromGameNumR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number' size="6" style="color: #333" id='FromGameNumR' >
                                         </div>
                                     </div>
                                 </div>
@@ -100,21 +109,21 @@
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="" style="margin-top: 3px;">
-                                            <input class="form-control" type='number'  size="6" style="color: #333" id='ToGameNumR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number'  size="6" style="color: #333" id='ToGameNumR' >
                                         </div>
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center"  >
+                            <th class="text-center RouletteSort" style="display: none;" >
                                 <div class="row">
                                     <div class='col-md-3'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="">
-                                            <input class="form-control" type='number' size="6" style="color: #333" id='FromGameBetR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number' size="6" style="color: #333" id='FromGameBetR' >
                                         </div>
                                     </div>
                                 </div>
@@ -122,60 +131,60 @@
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9'>
+                                    <div class='col-md-12'>
                                         <div class="" style="margin-top: 3px;">
-                                            <input class="form-control" type='number'  size="6" style="color: #333" id='ToGameBetR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'>
+                                            <input class="form-control" type='number'  size="6" style="color: #333" id='ToGameBetR' >
                                         </div>
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center"  >
+                            <th class="text-center RouletteSort" style="display: none;" >
                                 <div class="row">
                                     <div class='col-md-3'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
-                                        <input class="form-control" type='number' style="color: #333" id='FromGameWinR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-12'>
+                                        <input class="form-control" type='number' style="color: #333" id='FromGameWinR' >
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9' style="margin-top: 3px;">
-                                        <input class="form-control" type='number' style="color: #333" id='ToGameWinR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <input class="form-control" type='number' style="color: #333" id='ToGameWinR' >
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center"  >
+                            <th class="text-center  RouletteSort" style="display: none;" >
                                 <div class="row">
                                     <div class='col-md-3'>
                                         From:
                                     </div>
-                                    <div class='col-md-9'>
-                                        <input class="form-control" type='number' style="color: #333" id='FromGameJackR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-12'>
+                                        <input class="form-control" type='number' style="color: #333" id='FromGameJackR' >
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
                                         To:
                                     </div>
-                                    <div class='col-md-9' style="margin-top: 3px;">
-                                        <input class="form-control" type='number' style="color: #333" id='ToGameJackR' oninput='sortFunctionR($(this).val(), $(this).attr("id") );'>
+                                    <div class='col-md-12' style="margin-top: 3px;">
+                                        <input class="form-control" type='number' style="color: #333" id='ToGameJackR' >
                                     </div>
                                 </div>
                             </th>
-                            <th></th>
+                            <th class="RouletteSort" style="display: none;"></th>
                         </tr>
                         <tr>
-                            <th class="text-center" data-field="date" data-sortable="true">Time</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Game #</th>
-                            <th class="text-center" data-align="right" data-sortable="true">PS ID</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Win Number</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Total Bet</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Total Win</th>
-                            <th class="text-center" data-align="right" data-sortable="true">Jackpot</th>
-                            <th class="text-center" data-align="right" data-sortable="true">No Spin Game</th>
+                            <th class="text-center" data-field="date" data-field="id101" data-sortable="true">Time</th>
+                            <th class="text-center" data-align="right" data-field="id102" data-sortable="true">Game #</th>
+                            <th class="text-center" data-align="right" data-field="id103" data-sortable="true">PS ID</th>
+                            <th class="text-center" data-align="right" data-field="id104" data-sortable="true">Win<br />Number</th>
+                            <th class="text-center" data-align="right" data-field="id105" data-sortable="true">Total Bet</th>
+                            <th class="text-center" data-align="right" data-field="id106" data-sortable="true">Total Win</th>
+                            <th class="text-center" data-align="right" data-field="id107" data-sortable="true">Jackpot</th>
+                            <th class="text-center" data-align="right" data-field="id108" data-sortable="true">No Spin Game</th>
                         </tr>
                     </thead>
 
@@ -210,6 +219,6 @@
 <script src="bootstrap-table/bootstrap-table.js"></script>
 
 <script >
-
+sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
 
 </script>
