@@ -56,13 +56,14 @@
                 </form>
               </div><!-- End Col--> 
 
-              <div class="col-md-10">
+              <div class="col-sm-5">
                 <h4><strong>Games</strong></h4>
                 <hr>
 
                 <div class="divTable">
                   <div class="divTableBody">
                     <div class="divTableRow">
+                      <div class="divTableCell"><strong>Idx</strong></div>
                       <div class="divTableCell"><strong>Ticket Cost (cents)</strong></div>
                       <div class="divTableCell"><strong>Game Type</strong></div>
                       <div class="divTableCell"><strong>Line Cost (cents)</strong></div>
@@ -71,8 +72,11 @@
 
                     @foreach($template->template_games as $game)
                     <div class="divTableRow">
+                      <div class="divTableCell">{{ $game->idx }}</div>
                       <div class="divTableCell">{{ $game->bingo_ticket_cost }}</div>
-                      <div class="divTableCell">{{ $game->bingo_cost_line1_fixed && $game->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}</div>
+                      <div class="divTableCell">
+                        {{ $game->bingo_cost_line1_fixed && $game->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}
+                      </div>
                       <div class="divTableCell">{{ $game->bingo_cost_line1 }}</div>
                       <div class="divTableCell">{{ $game->bingo_cost_bingo }}</div>
                     </div>
@@ -80,9 +84,7 @@
                   </div>
                 </div>
               </div><!-- End Col--> 
-
           </div><!-- End Row-->
-
       </div><!-- End Modal Body-->
 
     </div>

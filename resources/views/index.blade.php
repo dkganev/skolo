@@ -76,7 +76,7 @@
         
         <input type="text" class="form-control" name="name" placeholder="Username" required="" autofocus="" />
 
-        @if ($errors->has('user'))
+        @if($errors->has('user'))
           <span class="help-block">
               <strong>{{ $errors->first('name') }}</strong>
           </span>
