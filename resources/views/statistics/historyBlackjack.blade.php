@@ -4,11 +4,11 @@
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
-              <li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li>
+              <!--<li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li> -->
               <li ><a id="historyRoulette" href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
               <li class="active"><a id="historyBlackjack" href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
-              <li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>
-              <li><a href="javascript:ajaxLoad('#')">Slots </a></li>
+              <!--<li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>-->
+              <!--<li><a href="javascript:ajaxLoad('#')">Slots </a></li>-->
             </ul>
         </div>
 </div>
@@ -19,13 +19,13 @@
     <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export</a>
 
         <h1 style="margin-top: 0px; color:white;" class="page-header">Blackjack History Statistics</h1>
-
+        {{$page['win']}}
     </div>
      <!-- end  page header -->
 </div>
 
 <div class="row" >
-    <div class="col-md-12" style="width: 800px">
+    <div class="col-md-12" style="width: 900px">
 
         <div class="panel panel-default" >
             <div class="panel-heading">
@@ -38,14 +38,14 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li class="active">
-                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?rowsPerPage=20')">20</a>
+                                <li class="{{$page['rowsPerPage'] == 20 ? 'active' : '' }}">
+                                    <a onclick="changeRowsPerPageF(20)">20</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?rowsPerPage=50')">50</a>
+                                <li class="{{$page['rowsPerPage'] == 50 ? 'active' : '' }}">
+                                    <a onclick="changeRowsPerPageF(50)">50</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?rowsPerPage=100')">100</a>
+                                <li class="{{$page['rowsPerPage'] == 100 ? 'active' : '' }}">
+                                    <a onclick="changeRowsPerPageF(100)">100</a>
                                 </li>
                             </ul>
                         </span>
@@ -53,67 +53,105 @@
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; ">
+                    <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
                     <ul class="pagination" style="margin: 0px;">
-                        @if ( $historys->hasMorePages() )
-                            @if ( $historys->currentPage() > 1 )
-                                <li class="page-pre">
-                                    <a href="javascript:void(0)">‹</a>
-                                </li>
-                                <li class="page-number active">
-                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=1&rowsPerPage={{$page['rowsPerPage']}}')">1</a>
-                                </li>
-                            @else
+                        @if ( $historys->lastPage() != 1  )
+                            @if ($historys->lastPage() < 6) 
+                                @for ($i = 1; $i < $historys->lastPage(); $i++)
+                                    <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                        <a onclick="changePageNum({{ $i }})">{{ $i }}</a>
+                                    </li>
+                                @endfor
+                            @else 
                             
-                            @endif
-                            @if ( $historys->currentPage() > 3 && $historys->lastPage() > 6 )
-                                <li class="page-last-separator disabled">
-                                    <a href="javascript:void(0)">...</a>
-                                </li>
-                            @endif
-                            @for ($i = $historys->currentPage(); $i < $historys->currentPage() + 5; $i++)
-                                 <li class="page-number">
-                                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page={{$i}}&rowsPerPage={{$page['rowsPerPage']}}')">{{ $i }}</a>
-                                </li>
-                            @endfor
-                            @if ( $historys->currentPage() < $historys->lastPage())
-                             <li class="page-last">
-                                <a href="javascript:void(0)">25</a>
-                            </li>
-                            <li class="page-next">
-                                <a href="javascript:void(0)">›</a>
-                            </li>
-                            @endif
                             
-                        <!--<li class="page-pre">
-                            <a href="javascript:void(0)">‹</a>
-                        </li>
-                        <li class="page-number active">
-                            <a href="javascript:void(0)">{{$historys->currentPage()}}</a>
-                        </li>
-                        <li class="page-number">
-                            <a href="javascript:void(0)">{{var_dump($historys->firstItem())}}</a>
-                        </li>
-                        <li class="page-last-separator disabled">
-                            <a href="javascript:void(0)">...</a>
-                        </li>
-                        <li class="page-last">
-                            <a href="javascript:void(0)">25</a>
-                        </li>
-                        <li class="page-next">
-                            <a href="javascript:void(0)">›</a>
-                        </li> -->
-                        @else
+                                @if ( $historys->currentPage() > 1  )
+                                    <li class="page-pre">
+                                        <a onclick="changePageNum({{ $historys->currentPage()-1}})" >‹</a>
+                                    </li>
+                                @endif
+                                @if ( $historys->currentPage() >= 4)
+                                     <li class="page-number">
+                                        <a onclick="changePageNum(1)">1</a>
+                                    </li>
+                                     <li class="page-last-separator disabled">
+                                        <a href="javascript:void(0)">...</a>
+                                    </li>
+                                @endif
+                                    
+                            
+                            
+                            
+                                @if ( $historys->currentPage() == 1 )
+                                    @for ($i = 1; $i < 6; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                            <a onclick="changePageNum({{ $i }})">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                @endif
+                                
+                                @if ( $historys->currentPage() == 2 || $historys->currentPage() == 3)
+                                    @for ($i = 1; $i < 6; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                            <a onclick="changePageNum({{ $i }})">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                @endif 
+                                
+                                @if ( $historys->currentPage() > 3 && $historys->currentPage() < $historys->lastPage() - 2  )
+                                    @for ($i = $historys->currentPage() - 2 ; $i < $historys->currentPage() + 3; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}" >
+                                            <a onclick="changePageNum({{ $i }})">{{ $i}}</a>
+                                        </li>
+                                    @endfor
+                                @endif
+                                
+                                @if ( $historys->currentPage() == $historys->lastPage() - 1 || $historys->currentPage() == $historys->lastPage() - 2)
+                                    @for ($i = $historys->lastPage() - 5 ; $i < $historys->lastPage() + 1; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }} " >
+                                            <a onclick="changePageNum({{ $i }})">{{ $i}}</a>
+                                        </li>
+                                    @endfor
+                                @endif
+                                
+                                
+                                
+                                @if ( $historys->currentPage() == $historys->lastPage())
+                                    @for ($i = $historys->lastPage() - 4 ; $i < $historys->lastPage()+1; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                            <a onclick="changePageNum({{ $i }})">{{ $i}}</a>
+                                        </li>
+                                    @endfor
+                                @endif
+                                
+                                @if ( $historys->currentPage() < $historys->lastPage() - 2 )
+                                     <li class="page-last-separator disabled">
+                                        <a href="javascript:void(0)">...</a>
+                                    </li>
+                                    <li class="page-number">
+                                        <a onclick="changePageNum({{ $historys->lastPage() }})" >{{ $historys->lastPage()}}</a>
+                                    </li>
+                                    
+                                @endif
+                                @if ( $historys->currentPage() < $historys->lastPage())
+                                    <li class="page-next">
+                                        <a onclick="changePageNum({{ $historys->lastPage() + 1 }})" >›</a>
+                                    </li>
+                                @endif
+                                
+                            @endif
+                       @else
                             <li class="page-number active">
-                                <a href="javascript:void(0)">{{$historys->currentPage()}}</a>
+                                <a onclick="changePageNum({{ $historys->currentPage() }})" >{{$historys->currentPage()}}</a>
                             </li>
                         @endif
                     </ul>
                 </div>
-                <button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button>
+                <!--<button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button> -->
                 <div class="keep-open btn-group open pull-right" title="Columns">
-                    <a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=2&rowsPerPage=50')" class="btn btn-success RouletteSort" >test</a>
-                    <a class="btn btn-success RouletteSort" style="display: none;" onclick="sortFunction()"><i class="fa fa-search" aria-hidden="true"></i></a>
-                    <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunction()"><i class="fa fa-close" aria-hidden="true"></i></a> 
+                    <!--<a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=2&rowsPerPage=50')" class="btn btn-success RouletteSort" >test</a> -->
+                    <a class="btn btn-success RouletteSort" style="display: none;" onclick="changePageSortMenu();"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunction();"><i class="fa fa-close" aria-hidden="true"></i></a> 
                     <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuR();">
                        Sort Menu
                        <span class="caret"></span>
@@ -147,7 +185,7 @@
                                         <div class="" onclick="datetimepicker66(); ">
                                             <div class='input-group date' id='datetimepicker6'>
                                                 
-                                                <input id='datetimepicker6I' class="form-control" size="16" type="text" value="" onchange='datetimepicker6Close();' readonly>
+                                                <input id='datetimepicker6I' class="form-control" size="16" type="text" value="{{$page['FromGameTs'] == "" ? "" : $page['FromGameTs']}}"  onchange='datetimepicker6Close();' readonly>
                                                 <span class="add-on"><i class="icon-remove"></i></span>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
@@ -163,7 +201,7 @@
                                     <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker77(); ">
                                             <div class='input-group date' id='datetimepicker7' style="margin-top: 3px;" >
-                                                <input id='datetimepicker7I' class="form-control"  type='text' size="16" value="" onchange='datetimepicker7Close();' readonly />
+                                                <input id='datetimepicker7I' class="form-control"  type='text' size="16" value="{{$page['ToGameTs'] == "" ? "" : $page['ToGameTs']}}"  onchange='datetimepicker7Close();' readonly />
                                                 <span class="add-on"><i class="icon-remove"></i></span>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
@@ -173,8 +211,8 @@
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='GameSort' ></th>
-                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='TableSort' ></th>
+                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='GameSort' value="{{$page['GameSort'] == "" ? "" : $page['GameSort']}}" ></th>
+                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='TableSort' value="{{$page['TableSort'] == "" ? "" : $page['TableSort']}}" ></th>
                             <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='PSID' ></th>
                             <th class="text-center RouletteSort" style="display: none;" >
                                 <div class="row">
@@ -218,12 +256,12 @@
                             </th>
                         </tr>
                         <tr>
-                            <th class="text-center col-md-2" data-field="id101" data-sortable="true">Time</th>
-                            <th class="text-center" data-align="right" data-field="id102" data-sortable="true">Game # {{$historys->total()}} -- {{$historys->nextPageUrl()}}</th>
-                            <th class="text-center" data-align="right" data-field="id103" data-sortable="true">Table ID</th>
+                            <th class="text-center col-md-2" data-field="id101" data-sortable="true" onclick="changePageSort('ts', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Time<i class="fa {{ $page['OrderQuery'] == 'ts' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th> 
+                            <th class="text-center " data-align="right" data-field="id102" data-sortable="true" onclick="changePageSort('game_seq', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}' );">Game # <i class="fa {{ $page['OrderQuery'] == 'game_seq' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id103" data-sortable="true" onclick="changePageSort('table_idx', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Table ID <i class="fa {{ $page['OrderQuery'] == 'table_idx' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id104" data-sortable="true">PS ID</th>
-                            <th class="text-center" data-align="right" data-field="id105" data-sortable="true">Total Bet</th>
-                            <th class="text-center" data-align="right" data-field="id106" data-sortable="true">Total Win</th>
+                            <th class="text-center" data-align="right" data-field="id105" data-sortable="true" >Total Bet</th>
+                            <th class="text-center" data-align="right" data-field="id106" data-sortable="true" >Total Win</th>
                         </tr>
                     </thead>
 
@@ -321,7 +359,15 @@
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <!--<script src="bootstrap-table/bootstrap-table.js"></script> -->
 <script >
-sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
+    //{{$page['sortMenuOpen'] == 1 ? '' : 'none'}}
+    //data-sortMenuOpen
+pageSortMenuOpen =  $('#pageReload').attr('data-sortMenuOpen');    
+if (pageSortMenuOpen == 1){
+    sortTimer123 = setTimeout(function(){ $('.RouletteSort').show(); }, 200);
+}else{
+    sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
+}    
+
 
 </script>
 

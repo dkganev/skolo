@@ -67,8 +67,53 @@ class StatisticsController extends Controller
             $page['rowsPerPage'] = 20;
         
         }
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'ts';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'desc';
+        }
+        if ($request['sortMenuOpen'] == 1 ) {
+            $page['sortMenuOpen'] = 1;
+        } else {
+            $page['sortMenuOpen'] = 0;
+        }
+        
+        $SortQuery = array(); 
+        if ($request['FromGameTs']){
+            array_push($SortQuery,['ts', '>=', $request['FromGameTs']]);
+            $page['FromGameTs'] = $request['FromGameTs'];
+        }else{
+            $page['FromGameTs'] = "";
+        }
+        if ($request['ToGameTs']){
+             array_push($SortQuery,['ts', '<=', $request['ToGameTs']]);
+            $page['ToGameTs'] = $request['ToGameTs'];
+        }else{
+            $page['ToGameTs'] = "";
+        }
+        if ($request['GameSort']){
+             array_push($SortQuery,['game_seq', '=', $request['GameSort']]);
+            $page['GameSort'] = $request['GameSort'];
+        }else{
+            $page['GameSort'] = "";
+        }
+        if ($request['TableSort']){
+             array_push($SortQuery,['table_idx','=', $request['TableSort'] - 1 ]);
+            $page['TableSort'] = $request['TableSort'];
+        }else{
+            $page['TableSort'] = "";
+        }
+        
+        
         $historyClas = new BlackjackGameHistory();
-        $historys = $historyClas->orderBy('ts', 'desc')->paginate($page['rowsPerPage']);
+        $tesatHistorys = $historyClas->select('win as Twin')->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->first();
+        $page['win'] = $tesatHistorys;
+        $historys = $historyClas->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
         $server_ps = ServerPs::orderBy('psid', 'asc')->get();
         //var_dump($historys[currentPage]);
         //$test = $historys->totalWin();
