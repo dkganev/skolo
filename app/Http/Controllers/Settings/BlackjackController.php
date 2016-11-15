@@ -30,7 +30,25 @@ class BlackjackController extends Controller
     {
         $table = BlackjackTable::where('table_id', $request->table_id)->first();
 
-        $status = $table->update($request->except('_token', 'enabled'));
+        // $status = $table->update($request->except('_token', 'enabled'));
+
+        $bet_min = 0;
+        if($request->bet_min < $request->chip1) {
+            $bet_min = $request->chip1;
+        } else {
+            $bet_min = $request->bet_min;
+        }
+
+        $status = $table->update([
+            'bet_min' => $bet_min,
+            'bet_max' => $request->bet_max,
+            'chip1' => $request->chip1,
+            'chip2' => $request->chip2,
+            'chip3' => $request->chip3,
+            'chip4' => $request->chip4,
+            'chip5' => $request->chip5
+        ]);
+
         $table->game_state->enabled = $request->enabled;
         $table->push();
 
