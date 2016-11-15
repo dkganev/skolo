@@ -256,7 +256,8 @@ function cleanSortFunction() {
     $('#ToGameBet').val("");
     $('#FromGameWin').val("");
     $('#ToGameWin').val("");
-    sortFunction();
+    changePageSortMenu()
+    //sortFunction();
     
 }
 function sortFunction() {
@@ -387,6 +388,8 @@ function sortMenuR() {
     }else{
         $('.RouletteSort').hide();
         sortMenuRV = 0;
+        cleanSortFunction()
+        
     }
     
 }
@@ -664,11 +667,139 @@ function ShowHideBingo() {
     //GameInfo += $('#checkbox1').is(':checked') ? 1 : 0;
     //alert(GameInfo);
 }
+function changeRowsPerPageF(rowsPerPage) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = rowsPerPage; // $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker6I').val();
+    ToGameTs = $('#datetimepicker7I').val();
+    GameSort = $('#GameSort').val();
+    TableSort = $('#TableSort').val();
+        PSID = $('#PSID').val();
+        FromGameBet = $('#FromGameBet').val();
+        ToGameBet = $('#ToGameBet').val();
+        FromGameWin = $('#FromGameWin').val();
+        ToGameWin = $('#ToGameWin').val();
+    
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&TableSort=" + TableSort + 
+            "')" 
+    window.location.href = pageHref; 
+}
 
-function rowPerPageF(rowPerPageV, pageHref) {
-    //pageHref = $('#historyBlackjack').attr('href');
-    //pageHref = pageHref + "\?rowPerPage=" + rowPerPageV;
-    //alert(pageHref);
+function changePageNum(PageNum1) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = PageNum1 //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker6I').val();
+    ToGameTs = $('#datetimepicker7I').val();
+    GameSort = $('#GameSort').val();
+    TableSort = $('#TableSort').val();
+        PSID = $('#PSID').val();
+        FromGameBet = $('#FromGameBet').val();
+        ToGameBet = $('#ToGameBet').val();
+        FromGameWin = $('#FromGameWin').val();
+        ToGameWin = $('#ToGameWin').val();
+    
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&TableSort=" + TableSort + 
+            "')" 
+    window.location.href = pageHref; 
+}
+
+function changePageSort(pageOrderV, pageDescV) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = pageOrderV; //  $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  pageDescV; // $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker6I').val();
+    ToGameTs = $('#datetimepicker7I').val();
+    GameSort = $('#GameSort').val();
+    TableSort = $('#TableSort').val();
+        PSID = $('#PSID').val();
+        FromGameBet = $('#FromGameBet').val();
+        ToGameBet = $('#ToGameBet').val();
+        FromGameWin = $('#FromGameWin').val();
+        ToGameWin = $('#ToGameWin').val();
+    
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&TableSort=" + TableSort + 
+            "')" 
+    window.location.href = pageHref; 
+}
+
+function changePageSortMenu() {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker6I').val();
+    ToGameTs = $('#datetimepicker7I').val();
+    GameSort = $('#GameSort').val();
+    TableSort = $('#TableSort').val();
+        PSID = $('#PSID').val();
+        FromGameBet = $('#FromGameBet').val();
+        ToGameBet = $('#ToGameBet').val();
+        FromGameWin = $('#FromGameWin').val();
+        ToGameWin = $('#ToGameWin').val();
+    
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&TableSort=" + TableSort + 
+            "')" 
     window.location.href = pageHref; 
 }
 
