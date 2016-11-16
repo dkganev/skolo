@@ -29,6 +29,7 @@
 
         <div class="panel panel-default" >
             <div class="panel-heading">
+                
                 <div class="pull-left pagination-detail">
                      <!-- <span class="pagination-info">Showing 1 page</span> -->
                     <span class="page-list">
@@ -55,6 +56,11 @@
                 <div class="pagination" style="margin: 0px; ">
                     <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
                     <ul class="pagination" style="margin: 0px;">
+                        @if ( !$historys->lastPage()  )
+                            <li class="page-number active" >
+                                <a onclick="changePageNum(1)">1</a>
+                            </li>
+                        @endif
                         @if ( $historys->lastPage() != 1  )
                             @if ($historys->lastPage() < 6) 
                                 @for ($i = 1; $i < $historys->lastPage(); $i++)
@@ -135,7 +141,7 @@
                                 @endif
                                 @if ( $historys->currentPage() < $historys->lastPage())
                                     <li class="page-next">
-                                        <a onclick="changePageNum({{ $historys->lastPage() + 1 }})" >›</a>
+                                        <a onclick="changePageNum({{ $historys->currentPage() + 1 }})" >›</a>
                                     </li>
                                 @endif
                                 
@@ -152,7 +158,7 @@
                     <!--<a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=2&rowsPerPage=50')" class="btn btn-success RouletteSort" >test</a> -->
                     <a class="btn btn-success RouletteSort" style="display: none;" onclick="changePageSortMenu();"><i class="fa fa-search" aria-hidden="true"></i></a>
                     <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunction();"><i class="fa fa-close" aria-hidden="true"></i></a> 
-                    <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuR();">
+                    <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuBJ();">
                        Sort Menu
                        <span class="caret"></span>
                     </button>
