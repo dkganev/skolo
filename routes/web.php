@@ -7,11 +7,12 @@ Route::get('/', 'AuthController@index');
 Route::post('/', 'AuthController@postLogin')->middleware('guest');
 
 Route::get('/logout', 'AuthController@logout')->middleware('auth');
-
+// This will be the route that checks expiration!
+Route::post('session/ajaxCheck','AuthController@ajaxCheck');
 /**
  * AUTH MIDDLEWARE
  */
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => ['web', 'resetLastActive']], function () {
 
 /**
  * CASINO / PREVIEW

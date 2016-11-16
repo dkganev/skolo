@@ -97,9 +97,31 @@
       $(this).addClass('active').siblings().removeClass('active');
     });
 
+    function checkSession() {
+        $.post('session/ajaxCheck', { '_token' : '{{ csrf_token() }}' }, function(data) {
+            console.log(data);
+            if (data == 'loggedOut') {
+                // User was logged out. Redirect to login page
+                document.location.href = '/';
+            }
+            else if (data != '') {
+                swal({
+                  title: "You will be logged out!",
+                  text: "Session will expire in 60 seconds.",
+                  timer: 60000,
+                  showConfirmButton: false,
+                });
+            }
+        });
+    }
+    setInterval(checkSession, 60000);
 </script>
 
 
 <script src="/js/main.js"></script>
+
+<script src="js-lib/sweet-alert/sweetalert-dev.js"></script>
+<link rel="stylesheet" type="text/css" href="js-lib/sweet-alert/sweetalert.css">
+
 </body>
 </html>

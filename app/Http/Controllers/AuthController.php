@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Session;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -48,5 +49,35 @@ class AuthController extends Controller
         Auth::logout();
         
         return redirect('/');
+    }
+
+    public function ajaxCheck()
+    {
+        // Configuration
+        $maxIdleBeforeLogout = 900 * 1;
+        $maxIdleBeforeWarning = 60 * 1;
+        $warningTime = $maxIdleBeforeLogout - $maxIdleBeforeWarning;
+
+        // Calculate the number of seconds since the use's last activity
+        $idleTime = date('U') - Session::get('lastActive');
+        // Warn user they will be logged out if idle for too long
+        if ($idleTime > $maxIdleBeforeWarning && empty(Session::get('idleWarningDisplayed'))) {
+
+            Session::set('idleWarningDisplayed', true);
+
+            return 'You have ' . $warningTime . ' seconds left before you are logged out';
+        }
+
+        // Log out user if idle for too long
+        if ($idleTime > $maxIdleBeforeLogout && empty(Session::get('logoutWarningDisplayed'))) {
+
+            // *** Do stuff to log out user here
+            auth()->logout();
+            Session::set('logoutWarningDisplayed', true);
+
+            return 'loggedOut';
+        }
+
+        return '';
     }
 }

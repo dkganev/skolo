@@ -47,7 +47,6 @@
     <div class="panel-body">
     <form action="/settings/roulette2/wheelconfig/edit" method="POST" role="form" id="weel-settings-form">
       <!-- FIRST COLUMN -->
-      <!-- FIRST COLUMN -->
       <div class="col-lg-4">
 
           <div class="form-group">
