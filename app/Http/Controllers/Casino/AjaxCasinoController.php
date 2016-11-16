@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\Accounting\Casinos;
-use App\Models\TerminalPreviewDB2;
+use App\Models\Cms\TerminalPreviewDB2;
 use App\Models\Accounting\Games;
 
 class AjaxCasinoController extends Controller

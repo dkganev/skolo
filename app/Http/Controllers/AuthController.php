@@ -54,7 +54,7 @@ class AuthController extends Controller
     public function ajaxCheck()
     {
         // Configuration
-        $maxIdleBeforeLogout = 900 * 1;
+        $maxIdleBeforeLogout = 600 * 1;
         $maxIdleBeforeWarning = 60 * 1;
         $warningTime = $maxIdleBeforeLogout - $maxIdleBeforeWarning;
 

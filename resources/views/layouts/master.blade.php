@@ -109,11 +109,17 @@
                   title: "You will be logged out!",
                   text: "Session will expire in 60 seconds.",
                   timer: 60000,
-                  showConfirmButton: false,
+                  showConfirmButton: true,
+                  confirmButtonText: 'Cancel'
+                },function(isConfirm) {
+                    if(isConfirm){
+                       document.location.reload();
+                    }
                 });
             }
         });
     }
+    // Check Session Every 60 Seconds
     setInterval(checkSession, 60000);
 </script>
 
