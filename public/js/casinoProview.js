@@ -5,8 +5,6 @@ var elPointerY = 0;
 $(document).mousemove(function(event) {
     currentMousePos.x = event.pageX;
     currentMousePos.y = event.pageY;
-    //console.log($( "#test123").height());
-    //console.log(event.pageY);
 });
 
 function allowDrop(ev) {

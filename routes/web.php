@@ -11,7 +11,7 @@ Route::get('/logout', 'AuthController@logout')->middleware('auth');
 /**
  * AUTH MIDDLEWARE
  */
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'web'], function () {
 
 /**
  * CASINO / PREVIEW

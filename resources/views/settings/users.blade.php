@@ -34,6 +34,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($users as $user)
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->fullName() }}</td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button class="btn btn-primary btn-xs">Edit</button>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div> <!--End Panel Body -->

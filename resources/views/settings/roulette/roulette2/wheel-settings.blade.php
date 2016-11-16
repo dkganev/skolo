@@ -205,8 +205,8 @@
       </div><!-- End Col -->
 
       <div class="col-lg-12">
-         <hr style="margin: 15px 0 15px 0">
-
+        <hr style="margin: 15px 0 15px 0">
+        <strong>DB: roulette_sas1</strong>
         <div class="pull-right" style="width: 400px;">
           {{ csrf_field() }}
           <button id="main-config-rlt" type="submit" class="btn btn-success btn-sm btn-block">Update</button>

@@ -16,4 +16,3 @@ class GameHistory extends Model
 
 	protected $guarded = [];
 }
-

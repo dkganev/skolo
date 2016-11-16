@@ -15,5 +15,4 @@ class MainConfig extends Model
 	public $timestamps = false;
 
 	public $increments = false;
-
 }
