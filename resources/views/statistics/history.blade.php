@@ -6,11 +6,11 @@
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
               <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
-              <li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li>
+              <!--<li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li>-->
               <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
               <li><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
-              <li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>
-              <li><a href="javascript:ajaxLoad('#')">Slots </a></li>
+              <!--<li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>-->
+              <!--<li><a href="javascript:ajaxLoad('#')">Slots </a></li>-->
             </ul>
         </div>
         
@@ -32,11 +32,141 @@
 
         <div class="panel panel-default" >
             <div class="panel-heading">
-                <button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button>
+                  
+                <div class="pull-left pagination-detail">
+                     <!-- <span class="pagination-info">Showing 1 page</span> -->
+                    <span class="page-list">
+                        <span class="btn-group dropup">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="page-size">{{$page['rowsPerPage']}}</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="{{$page['rowsPerPage'] == 20 ? 'active' : '' }}">
+                                    <a onclick="changeRowsPerPageFBingo(20)">20</a>
+                                </li>
+                                <li class="{{$page['rowsPerPage'] == 50 ? 'active' : '' }}">
+                                    <a onclick="changeRowsPerPageFBingo(50)">50</a>
+                                </li>
+                                <li class="{{$page['rowsPerPage'] == 100 ? 'active' : '' }}">
+                                    <a onclick="changeRowsPerPageFBingo(100)">100</a>
+                                </li>
+                            </ul>
+                        </span>
+                        rows per page
+                    </span>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="pagination" style="margin: 0px; ">
+                    <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/history')}}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
+                    <ul class="pagination" style="margin: 0px;">
+                        @if ( !$historys->lastPage()  )
+                            <li class="page-number active" >
+                                <a onclick="changePageNum(1)">1</a>
+                            </li>
+                        @endif
+                        @if ( $historys->lastPage() != 1  )
+                            @if ($historys->lastPage() < 6) 
+                                @for ($i = 1; $i < $historys->lastPage(); $i++)
+                                    <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                        <a onclick="changePageNum({{ $i }})">{{ $i }}</a>
+                                    </li>
+                                @endfor
+                            @else 
+                            
+                            
+                                @if ( $historys->currentPage() > 1  )
+                                    <li class="page-pre">
+                                        <a onclick="changePageNum({{ $historys->currentPage()-1}})" >‹</a>
+                                    </li>
+                                @endif
+                                @if ( $historys->currentPage() >= 4)
+                                     <li class="page-number">
+                                        <a onclick="changePageNum(1)">1</a>
+                                    </li>
+                                     <li class="page-last-separator disabled">
+                                        <a href="javascript:void(0)">...</a>
+                                    </li>
+                                @endif
+                                    
+                            
+                            
+                            
+                                @if ( $historys->currentPage() == 1 )
+                                    @for ($i = 1; $i < 6; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                            <a onclick="changePageNum({{ $i }})">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                @endif
+                                
+                                @if ( $historys->currentPage() == 2 || $historys->currentPage() == 3)
+                                    @for ($i = 1; $i < 6; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                            <a onclick="changePageNum({{ $i }})">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                                @endif 
+                                
+                                @if ( $historys->currentPage() > 3 && $historys->currentPage() < $historys->lastPage() - 2  )
+                                    @for ($i = $historys->currentPage() - 2 ; $i < $historys->currentPage() + 3; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}" >
+                                            <a onclick="changePageNum({{ $i }})">{{ $i}}</a>
+                                        </li>
+                                    @endfor
+                                @endif
+                                
+                                @if ( $historys->currentPage() == $historys->lastPage() - 1 || $historys->currentPage() == $historys->lastPage() - 2)
+                                    @for ($i = $historys->lastPage() - 5 ; $i < $historys->lastPage() + 1; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }} " >
+                                            <a onclick="changePageNum({{ $i }})">{{ $i}}</a>
+                                        </li>
+                                    @endfor
+                                @endif
+                                
+                                
+                                
+                                @if ( $historys->currentPage() == $historys->lastPage())
+                                    @for ($i = $historys->lastPage() - 4 ; $i < $historys->lastPage()+1; $i++)
+                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                            <a onclick="changePageNum({{ $i }})">{{ $i}}</a>
+                                        </li>
+                                    @endfor
+                                @endif
+                                
+                                @if ( $historys->currentPage() < $historys->lastPage() - 2 )
+                                     <li class="page-last-separator disabled">
+                                        <a href="javascript:void(0)">...</a>
+                                    </li>
+                                    <li class="page-number">
+                                        <a onclick="changePageNum({{ $historys->lastPage() }})" >{{ $historys->lastPage()}}</a>
+                                    </li>
+                                    
+                                @endif
+                                @if ( $historys->currentPage() < $historys->lastPage())
+                                    <li class="page-next">
+                                        <a onclick="changePageNum({{ $historys->currentPage() + 1 }})" >›</a>
+                                    </li>
+                                @endif
+                                
+                            @endif
+                       @else
+                            <li class="page-number active">
+                                <a onclick="changePageNum({{ $historys->currentPage() }})" >{{$historys->currentPage()}}</a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+                <!--<button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button> -->
                 <div class="keep-open btn-group open pull-right" title="Columns">
-                    
-                    
-                    
+                    <!--<a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=2&rowsPerPage=50')" class="btn btn-success RouletteSort" >test</a> -->
+                    <a class="btn btn-success RouletteSort" style="display: none;" onclick="changePageSortMenu();"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunction();"><i class="fa fa-close" aria-hidden="true"></i></a> 
+                    <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuBJ();">
+                       Sort Menu
+                       <span class="caret"></span>
+                    </button>
+                </div>
+                <div class="keep-open btn-group open pull-right" title="Columns">
                     <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="ShowHide();">
                        <i class="glyphicon glyphicon-th icon-th"></i>
                        <span class="caret"></span>
