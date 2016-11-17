@@ -1,3 +1,4 @@
+@include('settings.bingo.max-balls-modals')
 <div class="container">
   <div class="row">
       <div class="col-lg-6">

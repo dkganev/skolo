@@ -17,10 +17,6 @@
          <li>
             <a href="{{ url('statistics') }}"><i style="font-size: 21px;" class="fa fa-bar-chart"></i><strong> @lang('messages.statistics')</strong></a>
         </li>
-        
-        <li>
-            <a href="#"><i style="font-size: 21px;" class="fa fa-btn fa-user"></i><strong> @lang('messages.players')</strong></a>
-        </li>
 
         <li>
             <a href="{{ url('settings') }}"><i style="font-size: 21px;" class="fa fa-btn fa-wrench"></i><strong>  @lang('messages.settings')</strong></a>
@@ -87,11 +83,11 @@
             </a>
 
             <ul class="dropdown-menu" role="menu">
-                <li>
-                  @foreach($casinos as $casino)
-                    <a href="">{{ $casino->casinoname }}</a>
-                  @endforeach
-                </li>
+              <li>
+                @foreach($casinos as $casino)
+                  <a href="">{{ $casino->casinoname }}</a>
+                @endforeach
+              </li>
            </ul>
         </li>  
       </ul>  

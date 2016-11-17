@@ -1,9 +1,10 @@
+@include('modals.settings.users.add-user-modal')
 <div class="container">
 <div class="row">
     <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addBillModal">
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addUserModal">
                     Add User
                 </button>
                 <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 33%;">
@@ -28,7 +29,7 @@
                         <tr>
                             <th data-sortable="true">Username</th>
                             <th data-sortable="true">Full Name</th>
-                            <th data-sortable="true">Permisions</th>
+                            <th data-sortable="true">Role</th>
                             <th data-sortable="true">Phone</th>
                             <th>Action</th>
                         </tr>
@@ -41,7 +42,13 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <button class="btn btn-primary btn-xs">Edit</button>
+                                <a  href="" role="button" data-toggle="modal"
+                                    data-toggle="modal"
+                                    data-target="#addUserModal"
+                                    class="btn btn-success btn-xs"
+                                >
+                                    Edit
+                                </a>
                             </td>
                         </tr>
                         @endforeach

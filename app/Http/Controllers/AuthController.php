@@ -55,7 +55,7 @@ class AuthController extends Controller
     {
         // Configuration
         $maxIdleBeforeLogout = 600 * 1;
-        $maxIdleBeforeWarning = 60 * 1;
+        $maxIdleBeforeWarning = 540 * 1;
         $warningTime = $maxIdleBeforeLogout - $maxIdleBeforeWarning;
 
         // Calculate the number of seconds since the use's last activity

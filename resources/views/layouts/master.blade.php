@@ -64,7 +64,7 @@
     </style> --}}
     
 </head>
-<body style="background-image: url('images/background.jpg'); ">
+<body style="background-image: url('images/red.jpg'); ">
 
 @include('layouts.alerts')
 @include('layouts.navbar')
@@ -81,6 +81,7 @@
             type: "GET",
             url: filename,
             success: function (data) {
+                // window.location.hash = filename;
                 $("#" + content).css('display','none').html(data).hide().fadeIn(600);
             },
             error: function (xhr, status, error) {
