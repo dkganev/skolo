@@ -51,8 +51,7 @@
     text-align: right;
     top: 0;
 }
-                     
-                     
+      
 .switch {
   position: relative;
   display: inline-block;

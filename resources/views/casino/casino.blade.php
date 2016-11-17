@@ -1,4 +1,4 @@
-@include('modals.casinoTerminalInfo-modals')
+{{-- @include('modals.casinoTerminalInfo-modals') --}}
 <link rel="stylesheet" href="/css/casinoProview.css">
 
 <div class="container-full">
@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG</button>
-        <h1 style="margin-top: 0px; color:white;" class="page-header">Casino</h1>
+        <h1 style="margin-top: 0px; color:black;" class="page-header">Casino</h1>
     </div>
 </div>
 
