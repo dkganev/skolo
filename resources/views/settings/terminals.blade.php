@@ -31,10 +31,10 @@
                             data-search="true"
                             data-show-toggle="true"
 
-                            data-show-pagination-switch="true"
+{{--                             data-show-pagination-switch="true"
                             data-pagination="true"
                             data-side-pagination="client"
-                            data-page-list="[3, 5, 10, 15]"
+                            data-page-list="[3, 5, 10, 15]" --}}
 
                             data-classes="table-condensed"
                     >

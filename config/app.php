@@ -179,6 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 

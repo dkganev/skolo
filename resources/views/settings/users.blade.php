@@ -40,7 +40,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->fullName() }}</td>
                             <td></td>
-                            <td></td>
+                            <td>{{ $user->phone }}</td>
                             <td>
                                 <a  href="" role="button" data-toggle="modal"
                                     data-toggle="modal"
@@ -60,3 +60,7 @@
     </div><!--End Col -->
 </div><!--End Row -->
 </div><!--End Container-->
+
+<link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
+
+<script src="bootstrap-table/bootstrap-table.js"></script>

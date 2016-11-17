@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Accounting\Casinos;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 class AuthController extends Controller
 {
     public function index()

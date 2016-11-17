@@ -15,4 +15,18 @@ class UserController extends Controller
     	$users = User::all();
 		return view('settings.users', compact('users'));
 	}
+
+	public function store(Request $request)
+    {
+    	$user = new User;
+    	$user->name = $request->username;
+    	$user->firstname = $request->firstname;
+    	$user->lastname = $request->lastname;
+    	$user->phone = $request->phone;
+    	$user->password = bcrypt($request->password);
+    	$user->save();
+
+    	$response = 'User Created';
+    	return response()->json($response, 200);
+	}
 }

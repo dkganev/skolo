@@ -74,8 +74,10 @@ Route::get('/settings/exportCasinos', 'Settings\CasinosController@exportCasinos'
 /**
  * SETTINGS / USERS
  */
-
 Route::get('/settings/users', 'Settings\UserController@index');
+Route::post('/settings/users/store', 'Settings\UserController@store');
+Route::post('/settings/users/edit', 'Settings\UserController@edit');
+
 
 /**
  * SETTINGS / BILL TYPES
@@ -119,6 +121,7 @@ Route::post('/settings/bingo/sphereconfig/edit', 'Settings\BingoController@spher
 
 Route::get('/settings/bingo/accconfig', 'Settings\BingoController@acc_config_index');
 Route::post('/settings/bingo/accconfig/edit', 'Settings\BingoController@acc_config_edit');
+
 /**
  * SETTINGS / BLACKJACK
  */
