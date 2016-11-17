@@ -64,7 +64,7 @@
     </style> --}}
     
 </head>
-<body style="background-image: url('images/red.jpg'); ">
+<body style="background-image: url('images/login-background.jpg'); ">
 
 @include('layouts.alerts')
 @include('layouts.navbar')

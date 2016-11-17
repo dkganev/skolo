@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-static-top " style="height: 50px">
+<nav class="navbar navbar-inverse bg-primary" style="height:40px; ">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -112,3 +112,29 @@
     @include('casino.navbar')
   </div>
 @endif
+
+<style>
+/* unvisited link */
+ul.breadcrumb a:link {
+    color: black;
+}
+
+/* visited link */
+ul.breadcrumb a:visited {
+    color: black;
+}
+
+/* mouse over link */
+ul.breadcrumb a:hover {
+    color: black;
+}
+
+/* selected link */
+ul.breadcrumb a:active {
+    color: black;
+}
+
+ul.nav a {
+  color:white !important;
+}
+</style>
