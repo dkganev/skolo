@@ -18,6 +18,10 @@ class BingoHistory extends Model
         
     public function BingoWins_History()
 	{
-		return $this->hasMany(BingoWins_History::class, 'bingo_seq', 'bingo_seq');
+		return $this->hasMany(BingoWins_History::class, 'unique_game_seq', 'unique_game_seq');
+	}
+    public function BingoWins_HistorySum()
+	{
+		return $this->hasMany(BingoWins_History::class, 'unique_game_seq', 'unique_game_seq')->sum('win_val');
 	}
 }
