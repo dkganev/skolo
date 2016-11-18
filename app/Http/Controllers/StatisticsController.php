@@ -599,7 +599,11 @@ class StatisticsController extends Controller
         $historyClas = new BlackjackGameHistory();
         $tesatHistorys = $historyClas->select('win as Twin')->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->first();
         $page['win'] = $tesatHistorys;
-        $historys = $historyClas->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        $historys = $historyClas->select( '*', DB::raw('(win[1] + win[2] + win[3] + win[4]  + win[5]) as win_1'))->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        
+        
+        
+        //$historys = $historyClas->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
         $server_ps = ServerPs::orderBy('psid', 'asc')->get();
         //var_dump($historys[currentPage]);
         //$test = $historys->totalWin();

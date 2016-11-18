@@ -332,7 +332,8 @@
                                             
                                             $totalBet = array_sum($totalBetArray) + array_sum($totalDblArray) + array_sum($totalInsuranceArray)  + array_sum($totalSplitArray);
                                             print (number_format($totalBet / 100, 2));
-                                        ?>
+                                        ?> ---
+                                        {{$history->win_1}}
                                     </td>
                                     <td class="text-right"><?php 
                                             $totalWinArray = $history->getArrayWin();
