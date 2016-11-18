@@ -1,6 +1,7 @@
 @include('modals.rouletteHistory-modal')
-    <div class="col-md-12 "> 
-        <div class="page-header" style="padding-left:15px; margin-top: 0px; margin-right: -15px; background-color: none;">
+<div class="container">
+    <div class=""> 
+        <div class="" style="">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
@@ -13,24 +14,21 @@
         </div>
         
     </div>
-<div class="container-fluid">
-<div class="row">
-     <!--  page header -->
-    <div class="col-md-12" >
-    <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export</a>
 
-        <h1 style="margin-top: 0px; color:white;" class="page-header">Roulette History Statistics</h1>
-
-    </div>
-     <!-- end  page header -->
-</div>
 
 <div class="row" >
     <div class="col-md-12" style="width: 1000px">
 
         <div class="panel panel-default" >
             <div class="panel-heading">
-                
+                <div>
+                    <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
+                        Roulette History Statistics
+                    </h2>
+                    <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
+                        <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                    </a>
+                </div> <br />
                 <div class="pull-left pagination-detail">
                      <!-- <span class="pagination-info">Showing 1 page</span> -->
                     <span class="page-list">
@@ -316,14 +314,14 @@
                             @foreach($historys as $history)
                                 <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' data-Ids='{{ $history->psid }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
-                                    <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
-                                    <td>{{ $history->rlt_seq }}</td>
-                                    <td>{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}</td>
-                                    <td>{{ $history->win_num }}</td>
-                                    <td>{{ number_format($history->bet / 100, 2 ) }}</td>
-                                    <td>{{ number_format($history->win_val / 100, 2 ) }}</td>
-                                    <td>{{ number_format($history->jackpot / 100, 2 ) }}</td>
-                                    <td>{{ $history->ho_spin }}</td>
+                                    <td class="text-center"><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
+                                    <td class="text-right">{{ $history->rlt_seq }}</td>
+                                    <td class="text-right">{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}</td>
+                                    <td class="text-right">{{ $history->win_num }}</td>
+                                    <td class="text-right">{{ number_format($history->bet / 100, 2 ) }}</td>
+                                    <td class="text-right">{{ number_format($history->win_val / 100, 2 ) }}</td>
+                                    <td class="text-right">{{ number_format($history->jackpot / 100, 2 ) }}</td>
+                                    <td class="text-right">{{ $history->ho_spin }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

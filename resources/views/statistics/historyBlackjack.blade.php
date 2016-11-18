@@ -1,6 +1,7 @@
 @include('modals.BJHistory-modal')
-<div class="col-md-12 "> 
-        <div class="page-header" style="padding-left:15px; margin-top: 0px; margin-right: -15px; background-color: none;">
+<div class="container">
+<div class=""> 
+        <div class="" style="">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
@@ -12,24 +13,21 @@
             </ul>
         </div>
 </div>
-<div class="container-fluid">
-<div class="row">
-     <!--  page header -->
-    <div class="col-md-12" >
-    <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export</a>
 
-        <h1 style="margin-top: 0px; color:white;" class="page-header">Blackjack History Statistics</h1>
-        {{$page['win']}}
-    </div>
-     <!-- end  page header -->
-</div>
 
 <div class="row" >
     <div class="col-md-12" style="width: 900px">
 
         <div class="panel panel-default" >
             <div class="panel-heading">
-                
+                <div>
+                    <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
+                        Blackjack History Statistics
+                    </h2>
+                    <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
+                        <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                    </a>
+                </div> <br />
                 <div class="pull-left pagination-detail">
                      <!-- <span class="pagination-info">Showing 1 page</span> -->
                     <span class="page-list">
@@ -182,7 +180,7 @@
                     <thead class="w3-dark-grey">
                         
                         <tr>
-                            <th  class='text-center RouletteSort col-md-2' style="display: none;">
+                            <th  class='text-center RouletteSort col-md-3' style="display: none;">
                                <div class="row">
                                     <div class='col-md-3'>
                                         From:
@@ -262,8 +260,8 @@
                             </th>
                         </tr>
                         <tr>
-                            <th class="text-center col-md-2" data-field="id101" data-sortable="true" onclick="changePageSort('ts', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Time<i class="fa {{ $page['OrderQuery'] == 'ts' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th> 
-                            <th class="text-center " data-align="right" data-field="id102" data-sortable="true" onclick="changePageSort('game_seq', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}' );">Game # <i class="fa {{ $page['OrderQuery'] == 'game_seq' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-field="id101" data-sortable="true" onclick="changePageSort('ts', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Time<i class="fa {{ $page['OrderQuery'] == 'ts' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th> 
+                            <th class="text-center" data-align="right" data-field="id102" data-sortable="true" onclick="changePageSort('game_seq', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}' );">Game # <i class="fa {{ $page['OrderQuery'] == 'game_seq' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id103" data-sortable="true" onclick="changePageSort('table_idx', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Table ID <i class="fa {{ $page['OrderQuery'] == 'table_idx' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id104" data-sortable="true">PS ID</th>
                             <th class="text-center" data-align="right" data-field="id105" data-sortable="true" >Total Bet</th>
@@ -275,10 +273,10 @@
                             @foreach($historys as $history)
                                 <tr id='Row{{ $history->game_seq }}' data-id='{{ $history->game_seq }}' data-ts='{{ $history->ts }}' data-table='{{$history->table_idx }}' class="disableTextSelect offline bootstrap-modal-form-open rowsBJ" data-toggle="modal" data-target="#BJHistory_modal" >
                        
-                                    <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
-                                    <td>{{ $history->game_seq }}</td>
-                                    <td>{{$history->table_idx + 1}}</td>
-                                    <td><?php 
+                                    <td class="text-center" ><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
+                                    <td class="text-right">{{ $history->game_seq }}</td>
+                                    <td class="text-right">{{$history->table_idx + 1}}</td>
+                                    <td class="text-right"><?php 
                                             $totalSeat_idArray = $history->getArraySeat_id();
                                             $n = 0;
                                             foreach ($totalSeat_idArray as $key => $val){
@@ -293,7 +291,7 @@
                                             }
                                         ?>
                                     </td>
-                                    <td><?php
+                                    <td class="text-right"><?php
                                             $totalBetArray = $history->getArrayBet();
                                             $dblArray = $history->getArrayDbl();
                                             $totalDblArray = array();
@@ -334,9 +332,10 @@
                                             
                                             $totalBet = array_sum($totalBetArray) + array_sum($totalDblArray) + array_sum($totalInsuranceArray)  + array_sum($totalSplitArray);
                                             print (number_format($totalBet / 100, 2));
-                                        ?>
+                                        ?> ---
+                                        {{$history->win_1}}
                                     </td>
-                                    <td><?php 
+                                    <td class="text-right"><?php 
                                             $totalWinArray = $history->getArrayWin();
                                             $totalWin = array_sum($totalWinArray);
                                             print (number_format($totalWin / 100, 2));

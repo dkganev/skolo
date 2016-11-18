@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests;
 
@@ -67,36 +68,347 @@ class StatisticsController extends Controller
         } else {
             $page['sortMenuOpen'] = 0;
         }
-        
-        $SortQuery = array(); 
+        if ($request['tableTh1'] == NULL) { $page['tableTh1'] = 1; } else { $page['tableTh1'] = $request['tableTh1']; }
+        if ($request['tableTh2'] == NULL) { $page['tableTh2'] = 1; } else { $page['tableTh2'] = $request['tableTh2']; }
+        if ($request['tableTh3'] == NULL) { $page['tableTh3'] = 1; } else { $page['tableTh3'] = $request['tableTh3']; }
+        if ($request['tableTh4'] == NULL) { $page['tableTh4'] = 1; } else { $page['tableTh4'] = $request['tableTh4']; }
+        if ($request['tableTh5'] == NULL) { $page['tableTh5'] = 1; } else { $page['tableTh5'] = $request['tableTh5']; }
+        if ($request['tableLine'] == NULL) { $page['tableLine'] = 1; } else { $page['tableLine'] = $request['tableLine']; }
+        if ($request['tableBingo'] == NULL) { $page['tableBingo'] = 1; } else { $page['tableBingo'] = $request['tableBingo']; }
+        if ($request['tableMyBonus'] == NULL) { $page['tableMyBonus'] = 1; } else { $page['tableMyBonus'] = $request['tableMyBonus']; }
+        if ($request['tableBonusLine'] == NULL) { $page['tableBonusLine'] = 1; } else { $page['tableBonusLine'] = $request['tableBonusLine']; }
+        if ($request['tableBonusBingo'] == NULL) { $page['tableBonusBingo'] = 1; } else { $page['tableBonusBingo'] = $request['tableBonusBingo']; }
+        if ($request['tableJackpotLine'] == NULL) { $page['tableJackpotLine'] = 1; } else { $page['tableJackpotLine'] = $request['tableJackpotLine']; }
+        if ($request['tableJackpotBingo'] == NULL) { $page['tableJackpotBingo'] = 1; } else { $page['tableJackpotBingo'] = $request['tableJackpotBingo']; }
+    
+ 
+        //$SortQuery = array();
+        $wherQuery = "";
         if ($request['FromGameTs']){
-            array_push($SortQuery,['tstamp', '>=', $request['FromGameTs']]);
+            //array_push($SortQuery,['tstamp', '>=', $request['FromGameTs']]);
+            $wherQuery .= " and tstamp >= '" . $request['FromGameTs'] . "' ";
             $page['FromGameTs'] = $request['FromGameTs'];
         }else{
             $page['FromGameTs'] = "";
         }
         if ($request['ToGameTs']){
-             array_push($SortQuery,['tstamp', '<=', $request['ToGameTs']]);
+            //array_push($SortQuery,['tstamp', '<=', $request['ToGameTs']]);
+            $wherQuery .= " and tstamp <= '" . $request['ToGameTs'] . "' ";
             $page['ToGameTs'] = $request['ToGameTs'];
         }else{
             $page['ToGameTs'] = "";
         }
-        if ($request['GameSort']){
-             array_push($SortQuery,['game_seq', '=', $request['GameSort']]);
+        if ($request['GameSort']){  //'like', '%'.$term.'%'  //'=', $request['GameSort'] 
+            //array_push($SortQuery,['bingo_seq', '=', $request['GameSort']]);
+            $wherQuery .= " and bingo_seq = '" . $request['GameSort'] . "' ";
             $page['GameSort'] = $request['GameSort'];
         }else{
             $page['GameSort'] = "";
         }
-        if ($request['TableSort']){
-             array_push($SortQuery,['table_idx','=', $request['TableSort'] - 1 ]);
-            $page['TableSort'] = $request['TableSort'];
+        if ($request['FromTicketCost']){
+            //array_push($SortQuery,['ticket_cost','>=', $request['FromTicketCost'] * 100 ]);
+            $wherQuery .= " and ticket_cost >= '" . $request['FromTicketCost'] . "' ";
+            $page['FromTicketCost'] = $request['FromTicketCost'];
         }else{
-            $page['TableSort'] = "";
+            $page['FromTicketCost'] = "";
+        }
+        if ($request['ToTicketCost']){
+            //array_push($SortQuery,['ticket_cost','<=', $request['ToTicketCost'] * 100 ]);
+            $wherQuery .= " and ticket_cost <= '" . $request['ToTicketCost'] . "' ";
+            $page['ToTicketCost'] = $request['ToTicketCost'];
+        }else{
+            $page['ToTicketCost'] = "";
+        } 
+        if ($request['FromPlayers']){ 
+            //array_push($SortQuery,['players','>=', $request['FromPlayers'] ]);
+            $wherQuery .= " and players >= '" . $request['FromPlayers'] . "' ";
+            $page['FromPlayers'] = $request['FromPlayers'];
+        }else{
+            $page['FromPlayers'] = "";
+        }
+        if ($request['ToPlayers']){ 
+            //array_push($SortQuery,['players','<=', $request['ToPlayers'] ]);
+            $wherQuery .= " and players <= '" . $request['ToPlayers'] . "' ";
+            $page['ToPlayers'] = $request['ToPlayers'];
+        }else{
+            $page['ToPlayers'] = "";
+        }
+        if ($request['FromTickets']){ 
+            //array_push($SortQuery,['tickets','>=', $request['FromTickets'] ]);
+            $wherQuery .= " and tickets >= '" . $request['FromTickets'] . "' ";
+            $page['FromTickets'] = $request['FromTickets'];
+        }else{
+            $page['FromTickets'] = "";
+        }
+        if ($request['ToTickets']){ 
+            //array_push($SortQuery,['tickets','<=', $request['ToTickets'] ]);
+            $wherQuery .= " and tickets <= '" . $request['ToTickets'] . "' ";
+            $page['ToTickets'] = $request['ToTickets'];
+        }else{
+            $page['ToTickets'] = "";
+        }// bonus_line  jackpot_line
+        if ($request['FromLine']){ 
+            //array_push($SortQuery,['line','>=', $request['FromLine'] ]);
+            $wherQuery .= " and line >= '" . $request['FromLine'] . "' ";
+            $page['FromLine'] = $request['FromLine'];
+        }else{
+            $page['FromLine'] = "";
+        }
+        if ($request['ToLine']){ 
+            //array_push($SortQuery,['line','<=', $request['ToLine'] ]);
+            $wherQuery .= " and line <= '" . $request['ToLine'] . "' ";
+            $page['ToLine'] = $request['ToLine'];
+        }else{
+            $page['ToLine'] = "";
+        }
+        if ($request['FromBingo']){ 
+            //array_push($SortQuery,['bingo','>=', $request['FromBingo'] ]);
+            $wherQuery .= " and bingo >= '" . $request['FromBingo'] . "' ";
+            $page['FromBingo'] = $request['FromBingo'];
+        }else{
+            $page['FromBingo'] = "";
+        }
+        if ($request['ToBingo']){ 
+            //array_push($SortQuery,['bingo','<=', $request['ToBingo'] ]);
+            $wherQuery .= " and bingo <= '" . $request['ToBingo'] . "' ";
+            $page['ToBingo'] = $request['ToBingo'];
+        }else{
+            $page['ToBingo'] = "";
+        }
+        if ($request['FromMybonus']){ 
+            //array_push($SortQuery,['mybonus','>=', $request['FromMybonus'] ]);
+            $wherQuery .= " and mybonus >= '" . $request['FromMybonus'] . "' ";
+            $page['FromMybonus'] = $request['FromMybonus'];
+        }else{
+            $page['FromMybonus'] = "";
+        }
+        if ($request['ToMybonus']){ 
+            //array_push($SortQuery,['mybonus','<=', $request['ToMybonus'] ]);
+            $wherQuery .= " and mybonus <= '" . $request['ToMybonus'] . "' ";
+            $page['ToMybonus'] = $request['ToMybonus'];
+        }else{
+            $page['ToMybonus'] = "";
+        }// bonus_line  jackpot_line
+        if ($request['FromBonusLine']){ 
+            //array_push($SortQuery,['bonus_line','>=', $request['FromBonusLine'] ]);
+            $wherQuery .= " and bonus_line >= '" . $request['FromBonusLine'] . "' ";
+            $page['FromBonusLine'] = $request['FromBonusLine'];
+        }else{
+            $page['FromBonusLine'] = "";
+        }
+        if ($request['ToBonusLine']){ 
+            //array_push($SortQuery,['bonus_line','<=', $request['ToBonusLine'] ]);
+            $wherQuery .= " and bonus_line <= '" . $request['ToBonusLine'] . "' ";
+            $page['ToBonusLine'] = $request['ToBonusLine'];
+        }else{
+            $page['ToBonusLine'] = "";
+        }
+        if ($request['FromBonusBingo']){ 
+            //array_push($SortQuery,['bonus_bingo','>=', $request['FromBonusBingo'] ]);
+            $wherQuery .= " and bonus_bingo >= '" . $request['FromBonusBingo'] . "' ";
+            $page['FromBonusBingo'] = $request['FromBonusBingo'];
+        }else{
+            $page['FromBonusBingo'] = "";
+        }
+        if ($request['ToBonusBingo']){ 
+            //array_push($SortQuery,['bonus_bingo','<=', $request['ToBonusBingo'] ]);
+            $wherQuery .= " and bonus_bingo <= '" . $request['ToBonusBingo'] . "' ";
+            $page['ToBonusBingo'] = $request['ToBonusBingo'];
+        }else{
+            $page['ToBonusBingo'] = "";
+        }
+        if ($request['FromJackpotLine']){ 
+            //array_push($SortQuery,['jackpot_line','>=', $request['FromJackpotLine'] ]);
+            $wherQuery .= " and jackpot_line >= '" . $request['FromJackpotLine'] . "' ";
+            $page['FromJackpotLine'] = $request['FromJackpotLine'];
+        }else{
+            $page['FromJackpotLine'] = "";
+        }
+        if ($request['ToJackpotLine']){ 
+            //array_push($SortQuery,['jackpot_line','<=', $request['ToJackpotLine'] ]);
+            $wherQuery .= " and jackpot_line <= '" . $request['ToJackpotLine'] . "' ";
+            $page['ToJackpotLine'] = $request['ToJackpotLine'];
+        }else{
+            $page['ToJackpotLine'] = "";
+        }
+        if ($request['FromJackpotBingo']){ 
+            //array_push($SortQuery,['jackpot_bingo','>=', $request['FromJackpotBingo'] ]);
+            $wherQuery .= " and jackpot_bingo >= '" . $request['FromJackpotBingo'] . "' ";
+            $page['FromJackpotBingo'] = $request['FromJackpotBingo'];
+        }else{
+            $page['FromJackpotBingo'] = "";
+        }
+        if ($request['ToJackpotBingo']){ 
+            //array_push($SortQuery,['jackpot_bingo','<=', $request['ToJackpotBingo'] ]);
+            $wherQuery .= " and jackpot_bingo <= '" . $request['ToJackpotBingo'] . "' ";
+            $page['ToJackpotBingo'] = $request['ToJackpotBingo'];
+        }else{
+            $page['ToJackpotBingo'] = "";
+        }
+        if ($request['FromLineVal']){ 
+            //array_push($SortQuery,['line_val','>=', $request['FromLine'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 1 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 1 GROUP BY w2.unique_game_seq) ELSE 0 END ) >= '" . $request['FromLineVal'] . "' ";
+            $page['FromLineVal'] = $request['FromLineVal'];
+        }else{
+            $page['FromLineVal'] = "";
+        }
+        if ($request['ToLineVal']){ 
+            //array_push($SortQuery,['line_val','<=', $request['ToLine'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 1 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 1 GROUP BY w2.unique_game_seq) ELSE 0 END ) <= '" . $request['ToLineVal'] . "' ";
+            $page['ToLineVal'] = $request['ToLineVal'];
+        }else{
+            $page['ToLineVal'] = "";
+        }
+        if ($request['FromBingoVal']){ 
+            //array_push($SortQuery,['bingo_val','>=', $request['FromBingo'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 2 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 2 GROUP BY w2.unique_game_seq) ELSE 0 END ) >= '" . $request['FromBingoVal'] . "' ";
+            $page['FromBingoVal'] = $request['FromBingoVal'];
+        }else{
+            $page['FromBingoVal'] = "";
+        }
+        if ($request['ToBingoVal']){ 
+            //array_push($SortQuery,['bingo_val','<=', $request['ToBingo'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 2 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 2 GROUP BY w2.unique_game_seq) ELSE 0 END ) <= '" . $request['ToBingoVal'] . "' ";
+            $page['ToBingoVal'] = $request['ToBingoVal'];
+        }else{
+            $page['ToBingoVal'] = "";
+        }
+        if ($request['FromMybonusVal']){ 
+            //array_push($SortQuery,['mybonus_val','>=', $request['FromMybonus'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 7 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 7 GROUP BY w2.unique_game_seq) ELSE 0 END ) >= '" . $request['FromMybonusVal'] . "' ";
+            $page['FromMybonusVal'] = $request['FromMybonusVal'];
+        }else{
+            $page['FromMybonusVal'] = "";
+        }
+        if ($request['ToMybonusVal']){ 
+            //array_push($SortQuery,['mybonus_val','<=', $request['ToMybonus'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 7 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 7 GROUP BY w2.unique_game_seq) ELSE 0 END ) <= '" . $request['ToMybonusVal'] . "' ";
+            $page['ToMybonusVal'] = $request['ToMybonusVal'];
+        }else{
+            $page['ToMybonusVal'] = "";
+        }// bonus_line  jackpot_line
+        if ($request['FromBonusLineVal']){ 
+            //array_push($SortQuery,['bonus_line_val','>=', $request['FromBonusLine'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 3 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 3 GROUP BY w2.unique_game_seq) ELSE 0 END ) >= '" . $request['FromBonusLineVal'] . "' ";
+            $page['FromBonusLineVal'] = $request['FromBonusLineVal'];
+        }else{
+            $page['FromBonusLineVal'] = "";
+        }
+        if ($request['ToBonusLineVal']){ 
+            //array_push($SortQuery,['bonus_line_val','<=', $request['ToBonusLine'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 3 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 3 GROUP BY w2.unique_game_seq) ELSE 0 END ) <= '" . $request['ToBonusLineVal'] . "' ";
+            $page['ToBonusLineVal'] = $request['ToBonusLineVal'];
+        }else{
+            $page['ToBonusLineVal'] = "";
+        }
+        if ($request['FromBonusBingoVal']){ 
+            //array_push($SortQuery,['bonus_bingo_val','>=', $request['FromBonusBingo'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 4 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 4 GROUP BY w2.unique_game_seq) ELSE 0 END ) >= '" . $request['FromBonusBingoVal'] . "' ";
+            $page['FromBonusBingoVal'] = $request['FromBonusBingoVal'];
+        }else{
+            $page['FromBonusBingoVal'] = "";
+        }
+        if ($request['ToBonusBingoVal']){ 
+            //array_push($SortQuery,['bonus_bingo_val','<=', $request['ToBonusBingo'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 4 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 4 GROUP BY w2.unique_game_seq) ELSE 0 END ) <= '" . $request['ToBonusBingoVal'] . "' ";
+            $page['ToBonusBingoVal'] = $request['ToBonusBingoVal'];
+        }else{
+            $page['ToBonusBingoVal'] = "";
+        }
+        if ($request['FromJackpotLineVal']){ 
+            //array_push($SortQuery,['jackpot_line_val','>=', $request['FromJackpotLine'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 5 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 5 GROUP BY w2.unique_game_seq) ELSE 0 END ) >= '" . $request['FromJackpotLineVal'] . "' ";
+            $page['FromJackpotLineVal'] = $request['FromJackpotLineVal'];
+        }else{
+            $page['FromJackpotLineVal'] = "";
+        }
+        if ($request['ToJackpotLineVal']){ 
+            //array_push($SortQuery,['jackpot_line_val','<=', $request['ToJackpotLine'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 5 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 5 GROUP BY w2.unique_game_seq) ELSE 0 END ) <= '" . $request['ToJackpotLineVal'] . "' ";
+            $page['ToJackpotLineVal'] = $request['ToJackpotLineVal'];
+        }else{
+            $page['ToJackpotLineVal'] = "";
+        }
+        if ($request['FromJackpotBingoVal']){ 
+            //array_push($SortQuery,['jackpot_bingo_val','>=', $request['FromJackpotBingo'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 6 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 6 GROUP BY w2.unique_game_seq) ELSE 0 END ) >= '" . $request['FromJackpotBingoVal'] . "' ";
+            $page['FromJackpotBingoVal'] = $request['FromJackpotBingoVal'];
+        }else{
+            $page['FromJackpotBingoVal'] = "";
+        }
+        if ($request['ToJackpotBingoVal']){ 
+            //array_push($SortQuery,['jackpot_bingo_val','<=', $request['ToJackpotBingo'] ]);
+            $wherQuery .= " and (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 6 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 6 GROUP BY w2.unique_game_seq) ELSE 0 END ) <= '" . $request['ToJackpotBingoVal'] . "' ";
+            $page['ToJackpotBingoVal'] = $request['ToJackpotBingoVal'];
+        }else{
+            $page['ToJackpotBingoVal'] = "";
         }
         
+        $historyCount = DB::connection('pgsql3')->select('SELECT count(s.tstamp) FROM history as s WHERE 1 = 1'. $wherQuery . ' ');
+        foreach ($historyCount as $countVal){
+            $countVal1 = $countVal->count ;
+        }
+        if ($historyCount){
+            if ($request['page']) {
+                $page['current'] = $request['page'];
+        
+            } else {
+                $page['current'] = 1;
+        
+            }
+                $lastPage = $countVal1 / $page['rowsPerPage'] + 1 ;
+                //var_dump($countVal1);
+                //$lastPage = 1 ;
+                $page['last'] = ceil($lastPage);
+                $page['StartAt'] = $page['rowsPerPage'] * ($page['current'] - 1);
+        }else{
+             $page['current'] = 1;
+             $page['last'] = 1;
+             $page['StartAt'] = 0;
+        }
         
         $historyClas = new  BingoHistory();
-        $historys = $historyClas->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        //$testHis = $historyClas->where('unique_game_seq', '1476367263723 36364')->first();
+        //$testHis = BingoWins_History::where('bingo_seq', 25298)->sum('win_val') ;
+        //var_dump($testHis);
+        //$historys = $historyClas->join('wins_history', 'history.unique_game_seq', '=','wins_history.unique_game_seq')->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        //$historys = $historyClas->select('history.*', "BingoWins_History::where('bingo_seq', 25298)->sum('win_val') as testHis"  )->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        //DB::raw("SELECT * FROM some_table WHERE some_col = '$someVariable'")
+        //$historys = $historyClas->select( DB::raw("history.ps as testVal, history.*") )->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        $historys = DB::connection('pgsql3')->select(' 
+                SELECT
+                    s.unique_game_seq, 
+                    s.tstamp, 
+                    s.bingo_seq, 
+                    s.ticket_cost, 
+                    s.players, 
+                    s.tickets,                        
+                    s.line, 
+                    s.bingo, 
+                    s.mybonus, 
+                    s.bonus_line, 
+                    s.bonus_bingo, 
+                    s.jackpot_line, 
+                    s.jackpot_bingo, 
+                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 1 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 1 GROUP BY w2.unique_game_seq) ELSE 0 END ) as line_val,
+                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 2 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 2 GROUP BY w2.unique_game_seq) ELSE 0 END ) as bingo_val,
+                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 7 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 7 GROUP BY w2.unique_game_seq) ELSE 0 END ) as mybonus_val,
+                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 3 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 3 GROUP BY w2.unique_game_seq) ELSE 0 END ) as bonus_line_val,
+                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 4 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 4 GROUP BY w2.unique_game_seq) ELSE 0 END ) as bonus_bingo_val,
+                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 5 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 5 GROUP BY w2.unique_game_seq) ELSE 0 END ) as jackpot_line_val,
+                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 6 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 6 GROUP BY w2.unique_game_seq) ELSE 0 END ) as jackpot_bingo_val,
+                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 8 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 8 GROUP BY w2.unique_game_seq) ELSE 0 END ) as cancel_val
+                        
+                FROM history as s
+                WHERE 1 = 1'. $wherQuery . '
+                ORDER BY '. $page['OrderQuery'].' '.$page['OrderDesc'].' 
+                LIMIT '.$page['rowsPerPage'].' OFFSET '. $page['StartAt'] . '    
+                ');
+                //$historys->currentPage() = 1;
+                //$historys->lastPage() = 1;
+        
+        //var_dump($historys);
+        //$historys = $historyClas->select('history.*')->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
         
         //$historys = BingoHistory::orderBy('tstamp', 'desc')->get();
 
@@ -287,7 +599,11 @@ class StatisticsController extends Controller
         $historyClas = new BlackjackGameHistory();
         $tesatHistorys = $historyClas->select('win as Twin')->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->first();
         $page['win'] = $tesatHistorys;
-        $historys = $historyClas->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        $historys = $historyClas->select( '*', DB::raw('(win[1] + win[2] + win[3] + win[4]  + win[5]) as win_1'))->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        
+        
+        
+        //$historys = $historyClas->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
         $server_ps = ServerPs::orderBy('psid', 'asc')->get();
         //var_dump($historys[currentPage]);
         //$test = $historys->totalWin();

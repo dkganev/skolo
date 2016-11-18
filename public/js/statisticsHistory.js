@@ -22,46 +22,6 @@ $(document).on("click","tr.rows td", function(e){
 
     
 });
-function boxModalWindow2(bingo_seq, unique_game_seq, psid) {
-    $(".faSpinnerBingo").show(); //BJHistory_modal opacity: 0.5;
-    //$('#bingoHistory2_modal').hide();
-    //$('#bingoHistory_modal').hide();
-    $('#bingoTickets_History').hide();
-    $('#balsHistory').hide();
-    $('#psTicketsArchive').hide();
-    $('#bingoHistory2_modal').css('opacity', 0.3);
-    token = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        type:'POST',
-        url:'ajax_statBingoHistoryTickets',
-        dataType: "json",
-        data:{'bingo_seq': bingo_seq, 'unique_game_seq': unique_game_seq, "psid": psid, _token: token},
-        success:function(data){
-            if (data.success == "success"){
-                $('#ticketNumber').html(data.server_ps_seatid);
-                $('#gameNumber').html(bingo_seq);
-                $('#balsHistory').html(data.BingoBallsHTML);
-                $('#psTicketsArchive').html(data.psTicketsArchiveHTML);
-                
-                $('#bingoTickets_History').html(data.html);
-                $(".faSpinnerBingo").hide();
-                $('#bingoTickets_History').show();
-                $('#balsHistory').show();
-                $('#psTicketsArchive').show();
-                $('#bingoHistory2_modal').css('opacity', 1);
-                //$('#bingoHistory2_modal').show();
-                //$('#bingoHistory_modal').show();
-                //alert(boxID); balsHistory
-            }
-        },
-        error: function (error) {
-            alert ("Unexpected wrong.");
-            $(".faSpinnerBingo").hide();
-        }
-        
-    });
-    
-}
 $(document).on("click","tr.rowsR td", function(e){
     wTop = $(window).height() / 2;
     wLeft = $(window).width() / 2;
@@ -148,14 +108,651 @@ $(document).on("click","tr.rowsBJ td", function(e){
 
 
 var sortTimer;
+var ShowHideI = 0;
+var GameInfo = 0;
+var sortMenuRV = 0;
 
-           
-//ModalEx clickModalWindow
-//$("#ModalEx").click(function(){
-//    alert("The paragraph was clicked.");
-//});
-
-
+ //start Bingo scripts
+function changeRowsPerPageFBingo(rowsPerPage) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = rowsPerPage; // $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    
+    if ($('#checkbox1').is(':checked')){ tableTh1 = 1; } else { tableTh1 = 0; };
+    if ($('#checkbox2').is(':checked')){ tableTh2 = 1; } else { tableTh2 = 0; };
+    if ($('#checkbox3').is(':checked')){ tableTh3 = 1; } else { tableTh3 = 0; };
+    if ($('#checkbox4').is(':checked')){ tableTh4 = 1; } else { tableTh4 = 0; };
+    if ($('#checkbox5').is(':checked')){ tableTh5 = 1; } else { tableTh5 = 0; };
+    if ($('#checkboxLine').is(':checked')){ tableLine = 1; } else { tableLine = 0; };
+    if ($('#checkboxBingo').is(':checked')){ tableBingo = 1; } else { tableBingo = 0; };
+    if ($('#checkboxMyBonus').is(':checked')){ tableMyBonus = 1; } else { tableMyBonus = 0; };
+    if ($('#checkboxBonusLine').is(':checked')){ tableBonusLine = 1; } else { tableBonusLine = 0; };
+    if ($('#checkboxBonusBingo').is(':checked')){ tableBonusBingo = 1; } else { tableBonusBingo = 0; };
+    if ($('#checkboxJackpotLine').is(':checked')){ tableJackpotLine = 1; } else { tableJackpotLine = 0; };
+    if ($('#checkboxJackpotBingo').is(':checked')){ tableJackpotBingo = 1; } else { tableJackpotBingo = 0; };
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker2I').val();
+    ToGameTs = $('#datetimepicker3I').val();
+    GameSort = $('#GameSort').val();
+    FromTicketCost = $('#FromTicketCost').val();
+    ToTicketCost = $('#ToTicketCost').val();
+    FromPlayers = $('#FromPlayers').val();
+    ToPlayers = $('#ToPlayers').val();
+    FromTickets = $('#FromTickets').val();
+    ToTickets = $('#ToTickets').val();
+    FromLine = $('#FromLine').val();
+    ToLine = $('#ToLine').val();
+    FromBingo = $('#FromBingo').val();
+    ToBingo = $('#ToBingo').val();
+    FromMybonus = $('#FromMybonus').val();
+    ToMybonus = $('#ToMybonus').val();
+    FromBonusLine = $('#FromBonusLine').val();
+    ToBonusLine = $('#ToBonusLine').val();
+    FromBonusBingo = $('#FromBonusBingo').val();
+    ToBonusBingo = $('#ToBonusBingo').val();
+    FromJackpotLine = $('#FromJackpotLine').val();
+    ToJackpotLine = $('#ToJackpotLine').val();
+    FromJackpotBingo = $('#FromJackpotBingo').val();
+    ToJackpotBingo = $('#ToJackpotBingo').val();
+    FromLineVal = $('#FromLineVal').val();
+    ToLineVal = $('#ToLineVal').val();
+    FromBingoVal = $('#FromBingoVal').val();
+    ToBingoVal = $('#ToBingoVal').val();
+    FromMybonusVal = $('#FromMybonusVal').val();
+    ToMybonusVal = $('#ToMybonusVal').val();
+    FromBonusLineVal = $('#FromBonusLineVal').val();
+    ToBonusLineVal = $('#ToBonusLineVal').val();
+    FromBonusBingoVal = $('#FromBonusBingoVal').val();
+    ToBonusBingoVal = $('#ToBonusBingoVal').val();
+    FromJackpotLineVal = $('#FromJackpotLineVal').val();
+    ToJackpotLineVal = $('#ToJackpotLineVal').val();
+    FromJackpotBingoVal = $('#FromJackpotBingoVal').val();
+    ToJackpotBingoVal = $('#ToJackpotBingoVal').val();
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&tableTh1=" + tableTh1 + 
+            "&tableTh2=" + tableTh2 + 
+            "&tableTh3=" + tableTh3 + 
+            "&tableTh4=" + tableTh4 + 
+            "&tableTh5=" + tableTh5 + 
+            "&tableLine=" + tableLine + 
+            "&tableBingo=" + tableBingo + 
+            "&tableMyBonus=" + tableMyBonus + 
+            "&tableBonusLine=" + tableBonusLine + 
+            "&tableBonusBingo=" + tableBonusBingo + 
+            "&tableJackpotLine=" + tableJackpotLine + 
+            "&tableJackpotBingo=" + tableJackpotBingo + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&FromTicketCost=" + FromTicketCost + 
+            "&ToTicketCost=" + ToTicketCost + 
+            "&FromPlayers=" + FromPlayers + 
+            "&ToPlayers=" + ToPlayers + 
+            "&FromTickets=" + FromTickets + 
+            "&ToTickets=" + ToTickets + 
+            "&FromLine=" + FromLine + 
+            "&ToLine=" + ToLine + 
+            "&FromBingo=" + FromBingo + 
+            "&ToBingo=" + ToBingo + 
+            "&FromMybonus=" + FromMybonus + 
+            "&ToMybonus=" + ToMybonus + 
+            "&FromBonusLine=" + FromBonusLine + 
+            "&ToBonusLine=" + ToBonusLine + 
+            "&FromBonusBingo=" + FromBonusBingo + 
+            "&ToBonusBingo=" + ToBonusBingo + 
+            "&FromJackpotLine=" + FromJackpotLine + 
+            "&ToJackpotLine=" + ToJackpotLine + 
+            "&FromJackpotBingo=" + FromJackpotBingo + 
+            "&ToJackpotBingo=" + ToJackpotBingo + 
+            "&FromLineVal=" + FromLineVal + 
+            "&ToLineVal=" + ToLineVal + 
+            "&FromBingoVal=" + FromBingoVal + 
+            "&ToBingoVal=" + ToBingoVal + 
+            "&FromMybonusVal=" + FromMybonusVal + 
+            "&ToMybonusVal=" + ToMybonusVal + 
+            "&FromBonusLineVal=" + FromBonusLineVal + 
+            "&ToBonusLineVal=" + ToBonusLineVal + 
+            "&FromBonusBingoVal=" + FromBonusBingoVal + 
+            "&ToBonusBingoVal=" + ToBonusBingoVal + 
+            "&FromJackpotLineVal=" + FromJackpotLineVal + 
+            "&ToJackpotLineVal=" + ToJackpotLineVal + 
+            "&FromJackpotBingoVal=" + FromJackpotBingoVal + 
+            "&ToJackpotBingoVal=" + ToJackpotBingoVal + 
+            //        "&TableSort=" + TableSort + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageNumBingo(PageNum1) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = PageNum1 //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    
+    if ($('#checkbox1').is(':checked')){ tableTh1 = 1; } else { tableTh1 = 0; };
+    if ($('#checkbox2').is(':checked')){ tableTh2 = 1; } else { tableTh2 = 0; };
+    if ($('#checkbox3').is(':checked')){ tableTh3 = 1; } else { tableTh3 = 0; };
+    if ($('#checkbox4').is(':checked')){ tableTh4 = 1; } else { tableTh4 = 0; };
+    if ($('#checkbox5').is(':checked')){ tableTh5 = 1; } else { tableTh5 = 0; };
+    if ($('#checkboxLine').is(':checked')){ tableLine = 1; } else { tableLine = 0; };
+    if ($('#checkboxBingo').is(':checked')){ tableBingo = 1; } else { tableBingo = 0; };
+    if ($('#checkboxMyBonus').is(':checked')){ tableMyBonus = 1; } else { tableMyBonus = 0; };
+    if ($('#checkboxBonusLine').is(':checked')){ tableBonusLine = 1; } else { tableBonusLine = 0; };
+    if ($('#checkboxBonusBingo').is(':checked')){ tableBonusBingo = 1; } else { tableBonusBingo = 0; };
+    if ($('#checkboxJackpotLine').is(':checked')){ tableJackpotLine = 1; } else { tableJackpotLine = 0; };
+    if ($('#checkboxJackpotBingo').is(':checked')){ tableJackpotBingo = 1; } else { tableJackpotBingo = 0; };
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker2I').val();
+    ToGameTs = $('#datetimepicker3I').val();
+    GameSort = $('#GameSort').val();
+    FromTicketCost = $('#FromTicketCost').val();
+    ToTicketCost = $('#ToTicketCost').val();
+    FromPlayers = $('#FromPlayers').val();
+    ToPlayers = $('#ToPlayers').val();
+    FromTickets = $('#FromTickets').val();
+    ToTickets = $('#ToTickets').val();
+    FromLine = $('#FromLine').val();
+    ToLine = $('#ToLine').val();
+    FromBingo = $('#FromBingo').val();
+    ToBingo = $('#ToBingo').val();
+    FromMybonus = $('#FromMybonus').val();
+    ToMybonus = $('#ToMybonus').val();
+    FromBonusLine = $('#FromBonusLine').val();
+    ToBonusLine = $('#ToBonusLine').val();
+    FromBonusBingo = $('#FromBonusBingo').val();
+    ToBonusBingo = $('#ToBonusBingo').val();
+    FromJackpotLine = $('#FromJackpotLine').val();
+    ToJackpotLine = $('#ToJackpotLine').val();
+    FromJackpotBingo = $('#FromJackpotBingo').val();
+    ToJackpotBingo = $('#ToJackpotBingo').val();
+    FromLineVal = $('#FromLineVal').val();
+    ToLineVal = $('#ToLineVal').val();
+    FromBingoVal = $('#FromBingoVal').val();
+    ToBingoVal = $('#ToBingoVal').val();
+    FromMybonusVal = $('#FromMybonusVal').val();
+    ToMybonusVal = $('#ToMybonusVal').val();
+    FromBonusLineVal = $('#FromBonusLineVal').val();
+    ToBonusLineVal = $('#ToBonusLineVal').val();
+    FromBonusBingoVal = $('#FromBonusBingoVal').val();
+    ToBonusBingoVal = $('#ToBonusBingoVal').val();
+    FromJackpotLineVal = $('#FromJackpotLineVal').val();
+    ToJackpotLineVal = $('#ToJackpotLineVal').val();
+    FromJackpotBingoVal = $('#FromJackpotBingoVal').val();
+    ToJackpotBingoVal = $('#ToJackpotBingoVal').val();
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&tableTh1=" + tableTh1 + 
+            "&tableTh2=" + tableTh2 + 
+            "&tableTh3=" + tableTh3 + 
+            "&tableTh4=" + tableTh4 + 
+            "&tableTh5=" + tableTh5 + 
+            "&tableLine=" + tableLine + 
+            "&tableBingo=" + tableBingo + 
+            "&tableMyBonus=" + tableMyBonus + 
+            "&tableBonusLine=" + tableBonusLine + 
+            "&tableBonusBingo=" + tableBonusBingo + 
+            "&tableJackpotLine=" + tableJackpotLine + 
+            "&tableJackpotBingo=" + tableJackpotBingo + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&FromTicketCost=" + FromTicketCost + 
+            "&ToTicketCost=" + ToTicketCost + 
+            "&FromPlayers=" + FromPlayers + 
+            "&ToPlayers=" + ToPlayers + 
+            "&FromTickets=" + FromTickets + 
+            "&ToTickets=" + ToTickets + 
+            "&FromLine=" + FromLine + 
+            "&ToLine=" + ToLine + 
+            "&FromBingo=" + FromBingo + 
+            "&ToBingo=" + ToBingo + 
+            "&FromMybonus=" + FromMybonus + 
+            "&ToMybonus=" + ToMybonus + 
+            "&FromBonusLine=" + FromBonusLine + 
+            "&ToBonusLine=" + ToBonusLine + 
+            "&FromBonusBingo=" + FromBonusBingo + 
+            "&ToBonusBingo=" + ToBonusBingo + 
+            "&FromJackpotLine=" + FromJackpotLine + 
+            "&ToJackpotLine=" + ToJackpotLine + 
+            "&FromJackpotBingo=" + FromJackpotBingo + 
+            "&ToJackpotBingo=" + ToJackpotBingo + 
+            "&FromLineVal=" + FromLineVal + 
+            "&ToLineVal=" + ToLineVal + 
+            "&FromBingoVal=" + FromBingoVal + 
+            "&ToBingoVal=" + ToBingoVal + 
+            "&FromMybonusVal=" + FromMybonusVal + 
+            "&ToMybonusVal=" + ToMybonusVal + 
+            "&FromBonusLineVal=" + FromBonusLineVal + 
+            "&ToBonusLineVal=" + ToBonusLineVal + 
+            "&FromBonusBingoVal=" + FromBonusBingoVal + 
+            "&ToBonusBingoVal=" + ToBonusBingoVal + 
+            "&FromJackpotLineVal=" + FromJackpotLineVal + 
+            "&ToJackpotLineVal=" + ToJackpotLineVal + 
+            "&FromJackpotBingoVal=" + FromJackpotBingoVal + 
+            "&ToJackpotBingoVal=" + ToJackpotBingoVal + 
+            //        "&TableSort=" + TableSort + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageSortBingo(pageOrderV, pageDescV) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = pageOrderV; //  $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  pageDescV; // $('#pageReload').attr('data-desc');
+    
+    if ($('#checkbox1').is(':checked')){ tableTh1 = 1; } else { tableTh1 = 0; };
+    if ($('#checkbox2').is(':checked')){ tableTh2 = 1; } else { tableTh2 = 0; };
+    if ($('#checkbox3').is(':checked')){ tableTh3 = 1; } else { tableTh3 = 0; };
+    if ($('#checkbox4').is(':checked')){ tableTh4 = 1; } else { tableTh4 = 0; };
+    if ($('#checkbox5').is(':checked')){ tableTh5 = 1; } else { tableTh5 = 0; };
+    if ($('#checkboxLine').is(':checked')){ tableLine = 1; } else { tableLine = 0; };
+    if ($('#checkboxBingo').is(':checked')){ tableBingo = 1; } else { tableBingo = 0; };
+    if ($('#checkboxMyBonus').is(':checked')){ tableMyBonus = 1; } else { tableMyBonus = 0; };
+    if ($('#checkboxBonusLine').is(':checked')){ tableBonusLine = 1; } else { tableBonusLine = 0; };
+    if ($('#checkboxBonusBingo').is(':checked')){ tableBonusBingo = 1; } else { tableBonusBingo = 0; };
+    if ($('#checkboxJackpotLine').is(':checked')){ tableJackpotLine = 1; } else { tableJackpotLine = 0; };
+    if ($('#checkboxJackpotBingo').is(':checked')){ tableJackpotBingo = 1; } else { tableJackpotBingo = 0; };
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker2I').val();
+    ToGameTs = $('#datetimepicker3I').val();
+    GameSort = $('#GameSort').val();
+    FromTicketCost = $('#FromTicketCost').val();
+    ToTicketCost = $('#ToTicketCost').val();
+    FromPlayers = $('#FromPlayers').val();
+    ToPlayers = $('#ToPlayers').val();
+    FromTickets = $('#FromTickets').val();
+    ToTickets = $('#ToTickets').val();
+    FromLine = $('#FromLine').val();
+    ToLine = $('#ToLine').val();
+    FromBingo = $('#FromBingo').val();
+    ToBingo = $('#ToBingo').val();
+    FromMybonus = $('#FromMybonus').val();
+    ToMybonus = $('#ToMybonus').val();
+    FromBonusLine = $('#FromBonusLine').val();
+    ToBonusLine = $('#ToBonusLine').val();
+    FromBonusBingo = $('#FromBonusBingo').val();
+    ToBonusBingo = $('#ToBonusBingo').val();
+    FromJackpotLine = $('#FromJackpotLine').val();
+    ToJackpotLine = $('#ToJackpotLine').val();
+    FromJackpotBingo = $('#FromJackpotBingo').val();
+    ToJackpotBingo = $('#ToJackpotBingo').val();
+    FromLineVal = $('#FromLineVal').val();
+    ToLineVal = $('#ToLineVal').val();
+    FromBingoVal = $('#FromBingoVal').val();
+    ToBingoVal = $('#ToBingoVal').val();
+    FromMybonusVal = $('#FromMybonusVal').val();
+    ToMybonusVal = $('#ToMybonusVal').val();
+    FromBonusLineVal = $('#FromBonusLineVal').val();
+    ToBonusLineVal = $('#ToBonusLineVal').val();
+    FromBonusBingoVal = $('#FromBonusBingoVal').val();
+    ToBonusBingoVal = $('#ToBonusBingoVal').val();
+    FromJackpotLineVal = $('#FromJackpotLineVal').val();
+    ToJackpotLineVal = $('#ToJackpotLineVal').val();
+    FromJackpotBingoVal = $('#FromJackpotBingoVal').val();
+    ToJackpotBingoVal = $('#ToJackpotBingoVal').val();
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&tableTh1=" + tableTh1 + 
+            "&tableTh2=" + tableTh2 + 
+            "&tableTh3=" + tableTh3 + 
+            "&tableTh4=" + tableTh4 + 
+            "&tableTh5=" + tableTh5 + 
+            "&tableLine=" + tableLine + 
+            "&tableBingo=" + tableBingo + 
+            "&tableMyBonus=" + tableMyBonus + 
+            "&tableBonusLine=" + tableBonusLine + 
+            "&tableBonusBingo=" + tableBonusBingo + 
+            "&tableJackpotLine=" + tableJackpotLine + 
+            "&tableJackpotBingo=" + tableJackpotBingo + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&FromTicketCost=" + FromTicketCost + 
+            "&ToTicketCost=" + ToTicketCost + 
+            "&FromPlayers=" + FromPlayers + 
+            "&ToPlayers=" + ToPlayers + 
+            "&FromTickets=" + FromTickets + 
+            "&ToTickets=" + ToTickets + 
+            "&FromLine=" + FromLine + 
+            "&ToLine=" + ToLine + 
+            "&FromBingo=" + FromBingo + 
+            "&ToBingo=" + ToBingo + 
+            "&FromMybonus=" + FromMybonus + 
+            "&ToMybonus=" + ToMybonus + 
+            "&FromBonusLine=" + FromBonusLine + 
+            "&ToBonusLine=" + ToBonusLine + 
+            "&FromBonusBingo=" + FromBonusBingo + 
+            "&ToBonusBingo=" + ToBonusBingo + 
+            "&FromJackpotLine=" + FromJackpotLine + 
+            "&ToJackpotLine=" + ToJackpotLine + 
+            "&FromJackpotBingo=" + FromJackpotBingo + 
+            "&ToJackpotBingo=" + ToJackpotBingo + 
+            "&FromLineVal=" + FromLineVal + 
+            "&ToLineVal=" + ToLineVal + 
+            "&FromBingoVal=" + FromBingoVal + 
+            "&ToBingoVal=" + ToBingoVal + 
+            "&FromMybonusVal=" + FromMybonusVal + 
+            "&ToMybonusVal=" + ToMybonusVal + 
+            "&FromBonusLineVal=" + FromBonusLineVal + 
+            "&ToBonusLineVal=" + ToBonusLineVal + 
+            "&FromBonusBingoVal=" + FromBonusBingoVal + 
+            "&ToBonusBingoVal=" + ToBonusBingoVal + 
+            "&FromJackpotLineVal=" + FromJackpotLineVal + 
+            "&ToJackpotLineVal=" + ToJackpotLineVal + 
+            "&FromJackpotBingoVal=" + FromJackpotBingoVal + 
+            "&ToJackpotBingoVal=" + ToJackpotBingoVal + 
+            //        "&TableSort=" + TableSort + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageSortMenuBingo() {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    if ($('#checkbox1').is(':checked')){ tableTh1 = 1; } else { tableTh1 = 0; };
+    if ($('#checkbox2').is(':checked')){ tableTh2 = 1; } else { tableTh2 = 0; };
+    if ($('#checkbox3').is(':checked')){ tableTh3 = 1; } else { tableTh3 = 0; };
+    if ($('#checkbox4').is(':checked')){ tableTh4 = 1; } else { tableTh4 = 0; };
+    if ($('#checkbox5').is(':checked')){ tableTh5 = 1; } else { tableTh5 = 0; };
+    if ($('#checkboxLine').is(':checked')){ tableLine = 1; } else { tableLine = 0; };
+    if ($('#checkboxBingo').is(':checked')){ tableBingo = 1; } else { tableBingo = 0; };
+    if ($('#checkboxMyBonus').is(':checked')){ tableMyBonus = 1; } else { tableMyBonus = 0; };
+    if ($('#checkboxBonusLine').is(':checked')){ tableBonusLine = 1; } else { tableBonusLine = 0; };
+    if ($('#checkboxBonusBingo').is(':checked')){ tableBonusBingo = 1; } else { tableBonusBingo = 0; };
+    if ($('#checkboxJackpotLine').is(':checked')){ tableJackpotLine = 1; } else { tableJackpotLine = 0; };
+    if ($('#checkboxJackpotBingo').is(':checked')){ tableJackpotBingo = 1; } else { tableJackpotBingo = 0; };
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker2I').val();
+    ToGameTs = $('#datetimepicker3I').val();
+    GameSort = $('#GameSort').val();
+    FromTicketCost = $('#FromTicketCost').val();
+    ToTicketCost = $('#ToTicketCost').val();
+    FromPlayers = $('#FromPlayers').val();
+    ToPlayers = $('#ToPlayers').val();
+    FromTickets = $('#FromTickets').val();
+    ToTickets = $('#ToTickets').val();
+    FromLine = $('#FromLine').val();
+    ToLine = $('#ToLine').val();
+    FromBingo = $('#FromBingo').val();
+    ToBingo = $('#ToBingo').val();
+    FromMybonus = $('#FromMybonus').val();
+    ToMybonus = $('#ToMybonus').val();
+    FromBonusLine = $('#FromBonusLine').val();
+    ToBonusLine = $('#ToBonusLine').val();
+    FromBonusBingo = $('#FromBonusBingo').val();
+    ToBonusBingo = $('#ToBonusBingo').val();
+    FromJackpotLine = $('#FromJackpotLine').val();
+    ToJackpotLine = $('#ToJackpotLine').val();
+    FromJackpotBingo = $('#FromJackpotBingo').val();
+    ToJackpotBingo = $('#ToJackpotBingo').val();
+    FromLineVal = $('#FromLineVal').val();
+    ToLineVal = $('#ToLineVal').val();
+    FromBingoVal = $('#FromBingoVal').val();
+    ToBingoVal = $('#ToBingoVal').val();
+    FromMybonusVal = $('#FromMybonusVal').val();
+    ToMybonusVal = $('#ToMybonusVal').val();
+    FromBonusLineVal = $('#FromBonusLineVal').val();
+    ToBonusLineVal = $('#ToBonusLineVal').val();
+    FromBonusBingoVal = $('#FromBonusBingoVal').val();
+    ToBonusBingoVal = $('#ToBonusBingoVal').val();
+    FromJackpotLineVal = $('#FromJackpotLineVal').val();
+    ToJackpotLineVal = $('#ToJackpotLineVal').val();
+    FromJackpotBingoVal = $('#FromJackpotBingoVal').val();
+    ToJackpotBingoVal = $('#ToJackpotBingoVal').val();
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&tableTh1=" + tableTh1 + 
+            "&tableTh2=" + tableTh2 + 
+            "&tableTh3=" + tableTh3 + 
+            "&tableTh4=" + tableTh4 + 
+            "&tableTh5=" + tableTh5 + 
+            "&tableLine=" + tableLine + 
+            "&tableBingo=" + tableBingo + 
+            "&tableMyBonus=" + tableMyBonus + 
+            "&tableBonusLine=" + tableBonusLine + 
+            "&tableBonusBingo=" + tableBonusBingo + 
+            "&tableJackpotLine=" + tableJackpotLine + 
+            "&tableJackpotBingo=" + tableJackpotBingo + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&FromTicketCost=" + FromTicketCost + 
+            "&ToTicketCost=" + ToTicketCost + 
+            "&FromPlayers=" + FromPlayers + 
+            "&ToPlayers=" + ToPlayers + 
+            "&FromTickets=" + FromTickets + 
+            "&ToTickets=" + ToTickets + 
+            "&FromLine=" + FromLine + 
+            "&ToLine=" + ToLine + 
+            "&FromBingo=" + FromBingo + 
+            "&ToBingo=" + ToBingo + 
+            "&FromMybonus=" + FromMybonus + 
+            "&ToMybonus=" + ToMybonus + 
+            "&FromBonusLine=" + FromBonusLine + 
+            "&ToBonusLine=" + ToBonusLine + 
+            "&FromBonusBingo=" + FromBonusBingo + 
+            "&ToBonusBingo=" + ToBonusBingo + 
+            "&FromJackpotLine=" + FromJackpotLine + 
+            "&ToJackpotLine=" + ToJackpotLine + 
+            "&FromJackpotBingo=" + FromJackpotBingo + 
+            "&ToJackpotBingo=" + ToJackpotBingo + 
+            "&FromLineVal=" + FromLineVal + 
+            "&ToLineVal=" + ToLineVal + 
+            "&FromBingoVal=" + FromBingoVal + 
+            "&ToBingoVal=" + ToBingoVal + 
+            "&FromMybonusVal=" + FromMybonusVal + 
+            "&ToMybonusVal=" + ToMybonusVal + 
+            "&FromBonusLineVal=" + FromBonusLineVal + 
+            "&ToBonusLineVal=" + ToBonusLineVal + 
+            "&FromBonusBingoVal=" + FromBonusBingoVal + 
+            "&ToBonusBingoVal=" + ToBonusBingoVal + 
+            "&FromJackpotLineVal=" + FromJackpotLineVal + 
+            "&ToJackpotLineVal=" + ToJackpotLineVal + 
+            "&FromJackpotBingoVal=" + FromJackpotBingoVal + 
+            "&ToJackpotBingoVal=" + ToJackpotBingoVal + 
+            //        "&TableSort=" + TableSort + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function cleanSortFunctionBingo() {
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+    $('#datetimepicker2I').val("");
+    $('#datetimepicker3I').val("");
+    $('#datetimepicker2').datetimepicker('setEndDate', output );
+    $('#datetimepicker3').datetimepicker('setEndDate', output );
+    $('#datetimepicker2').datetimepicker('setStartDate', "");
+    $('#GameSort').val("");
+    $('#FromTicketCost').val("");
+    $('#ToTicketCost').val("");
+    $('#FromPlayers').val("");
+    $('#ToPlayers').val("");
+    $('#FromTickets').val("");
+    $('#ToTickets').val("");
+    $('#FromLine').val("");
+    $('#ToLine').val("");
+    $('#FromBingo').val("");
+    $('#ToBingo').val("");
+    $('#FromMybonus').val("");
+    $('#ToMybonus').val("");
+    $('#FromBonusLine').val("");
+    $('#ToBonusLine').val("");
+    $('#FromBonusBingo').val("");
+    $('#ToBonusBingo').val("");
+    $('#FromJackpotLine').val("");
+    $('#ToJackpotLine').val("");
+    $('#FromJackpotBingo').val("");
+    $('#ToJackpotBingo').val("");
+    $('#FromLineVal').val("");
+    $('#ToLineVal').val("");
+    $('#FromBingoVal').val("");
+    $('#ToBingoVal').val("");
+    $('#FromMybonusVal').val("");
+    $('#ToMybonusVal').val("");
+    $('#FromBonusLineVal').val("");
+    $('#ToBonusLineVal').val("");
+    $('#FromBonusBingoVal').val("");
+    $('#ToBonusBingoVal').val("");
+    $('#FromJackpotLineVal').val("");
+    $('#ToJackpotLineVal').val("");
+    $('#FromJackpotBingoVal').val("");
+    $('#ToJackpotBingoVal').val("");
+    
+    changePageSortMenuBingo()
+    //sortFunction();
+    
+}
+function datetimepicker22() {
+        $('.switch').attr('colspan', 5);
+        FromGameTs = $('#datetimepicker2I').val();
+        ToGameTs = $('#datetimepicker3I').val();
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        $('#datetimepicker2').datetimepicker('setEndDate', output);
+        $('#datetimepicker2').datetimepicker('show');
+        if (FromGameTs != ""){
+            $('#datetimepicker3').datetimepicker('setStartDate', FromGameTs);
+                        }
+        if (ToGameTs != ""){
+            $('#datetimepicker2').datetimepicker('setEndDate', ToGameTs);
+        }
+}
+function datetimepicker33() {
+        $('.switch').attr('colspan', 5);
+        FromGameTs = $('#datetimepicker2I').val();
+        ToGameTs = $('#datetimepicker3I').val();
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        $('#datetimepicker3').datetimepicker('setEndDate', output);
+        $('#datetimepicker3').datetimepicker('show');
+        if (FromGameTs != ""){
+            $('#datetimepicker3').datetimepicker('setStartDate', FromGameTs);
+                        }
+        if (ToGameTs != ""){
+            $('#datetimepicker2').datetimepicker('setEndDate', ToGameTs);
+        }
+}
+function datetimepicker2Close() {
+        $('#datetimepicker2').datetimepicker('hide');
+        //sortFunction(1, "datetimepicker6I");
+        //$('#datetimepicker7').datetimepicker('setStartDate', '2016-11-08');
+}
+function datetimepicker3Close() {
+        $('#datetimepicker3').datetimepicker('hide');
+        //sortFunction(1, "datetimepicker7I");
+        //$('#datetimepicker').datetimepicker('setStartDate', '2012-01-01');
+}
+$("#datetimepicker2").datetimepicker({
+        //format: "dd MM yyyy - hh:ii",
+        //autoclose: true,
+        //todayBtn: true,
+        //startDate: "2013-02-14 10:00",
+        minuteStep: 10
+});
+$('#datetimepicker3').datetimepicker({
+        useCurrent: false, //Important! See issue #1075
+        //format: "dd MM yyyy - hh:ii",
+        //autoclose: true,
+        //todayBtn: true,
+        //startDate: "2013-02-14 10:00",
+        minuteStep: 10
+});
+function sortMenuBingo() {
+    if (sortMenuRV == 0) {
+        $('.RouletteSort').show();
+        sortMenuRV = 1;
+    }else{
+        $('.RouletteSort').hide();
+        sortMenuRV = 0;
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        $('#datetimepicker2I').val("");
+        $('#datetimepicker3I').val("");
+        $('#datetimepicker2').datetimepicker('setEndDate', output );
+        $('#datetimepicker3').datetimepicker('setEndDate', output );
+        $('#datetimepicker2').datetimepicker('setStartDate', "");
+        $('#GameSort').val("");
+        $('#FromTicketCost').val("");
+        $('#ToTicketCost').val("");
+        $('#FromPlayers').val("");
+        $('#ToPlayers').val("");
+        $('#FromTickets').val("");
+        $('#ToTickets').val("");
+        $('#FromLine').val("");
+        $('#ToLine').val("");
+        $('#FromBingo').val("");
+        $('#ToBingo').val("");
+        $('#FromMybonus').val("");
+        $('#ToMybonus').val("");
+        $('#FromBonusLine').val("");
+        $('#ToBonusLine').val("");
+        $('#FromBonusBingo').val("");
+        $('#ToBonusBingo').val("");
+        $('#FromJackpotLine').val("");
+        $('#ToJackpotLine').val("");
+        $('#FromJackpotBingo').val("");
+        $('#ToJackpotBingo').val("");
+        $('#FromLineVal').val("");
+        $('#ToLineVal').val("");
+        $('#FromBingoVal').val("");
+        $('#ToBingoVal').val("");
+        $('#FromMybonusVal').val("");
+        $('#ToMybonusVal').val("");
+        $('#FromBonusLineVal').val("");
+        $('#ToBonusLineVal').val("");
+        $('#FromBonusBingoVal').val("");
+        $('#ToBonusBingoVal').val("");
+        $('#FromJackpotLineVal').val("");
+        $('#ToJackpotLineVal').val("");
+        $('#FromJackpotBingoVal').val("");
+        $('#ToJackpotBingoVal').val("");
+    
+    }
+    
+}
 function ExportToPNGBingoT() {
     html2canvas($('#bingoHistory2_modal'), {
         onrendered: function(canvas) {
@@ -186,13 +783,78 @@ function ExportToPNGBingo() {
         }
     });
 }
-//$("#ShowHide").click(function(){
-//    alert("The paragraph was clicked.");
-//});
 
-var ShowHideI = 0;
-var GameInfo = 0;
-var sortMenuRV = 0;
+function boxModalWindow2(bingo_seq, unique_game_seq, psid) {
+    $(".faSpinnerBingo").show(); //BJHistory_modal opacity: 0.5;
+    //$('#bingoHistory2_modal').hide();
+    //$('#bingoHistory_modal').hide();
+    $('#bingoTickets_History').hide();
+    $('#balsHistory').hide();
+    $('#psTicketsArchive').hide();
+    $('#bingoHistory2_modal').css('opacity', 0.3);
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type:'POST',
+        url:'ajax_statBingoHistoryTickets',
+        dataType: "json",
+        data:{'bingo_seq': bingo_seq, 'unique_game_seq': unique_game_seq, "psid": psid, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#ticketNumber').html(data.server_ps_seatid);
+                $('#gameNumber').html(bingo_seq);
+                $('#balsHistory').html(data.BingoBallsHTML);
+                $('#psTicketsArchive').html(data.psTicketsArchiveHTML);
+                
+                $('#bingoTickets_History').html(data.html);
+                $(".faSpinnerBingo").hide();
+                $('#bingoTickets_History').show();
+                $('#balsHistory').show();
+                $('#psTicketsArchive').show();
+                $('#bingoHistory2_modal').css('opacity', 1);
+                //$('#bingoHistory2_modal').show();
+                //$('#bingoHistory_modal').show();
+                //alert(boxID); balsHistory
+            }
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+            $(".faSpinnerBingo").hide();
+        }
+        
+    });
+    
+}
+function ShowHideBingo() {
+    GameInfo = 0;
+    if ($('#checkbox1').is(':checked')){
+        //$('#example').bootstrapTable("showColumn", 'id1');
+        $('.tableTh1').show();
+        GameInfo += 1;
+    }else{
+        //$('#example').bootstrapTable("hideColumn", 'id1');
+        $('.tableTh1').hide();
+    };
+    if ($('#checkbox2').is(':checked')){ $('.tableTh2').show(); GameInfo += 1; } else { $('.tableTh2').hide(); };
+    if ($('#checkbox3').is(':checked')){ $('.tableTh3').show(); GameInfo += 1; } else { $('.tableTh3').hide(); };
+    if ($('#checkbox4').is(':checked')){ $('.tableTh4').show(); GameInfo += 1; } else { $('.tableTh4').hide(); };
+    if ($('#checkbox5').is(':checked')){ $('.tableTh5').show(); GameInfo += 1; } else { $('.tableTh5').hide(); };
+    if (GameInfo == 0){
+        $('.GameInfo').hide();
+    }else{
+        $('.GameInfo').show();
+        $('.GameInfo').attr("colspan", GameInfo);
+    }
+    if ($('#checkboxLine').is(':checked')){ $('.Line').show(); GameInfo += 1; } else { $('.Line').hide(); };
+    if ($('#checkboxBingo').is(':checked')){ $('.Bingo').show(); GameInfo += 1; } else { $('.Bingo').hide(); };
+    if ($('#checkboxMyBonus').is(':checked')){ $('.MyBonus').show(); GameInfo += 1; } else { $('.MyBonus').hide(); };
+    if ($('#checkboxBonusLine').is(':checked')){ $('.BonusLine').show(); GameInfo += 1; } else { $('.BonusLine').hide(); };
+    if ($('#checkboxBonusBingo').is(':checked')){ $('.BonusBingo').show(); GameInfo += 1; } else { $('.BonusBingo').hide(); };
+    if ($('#checkboxJackpotLine').is(':checked')){ $('.JackpotLine').show(); GameInfo += 1; } else { $('.JackpotLine').hide(); };
+    if ($('#checkboxJackpotBingo').is(':checked')){ $('.JackpotBingo').show(); GameInfo += 1; } else { $('.JackpotBingo').hide(); };
+    //Line  Bingo  MyBonus  BonusLine  BonusBingo  JackpotLine JackpotBingo
+    //GameInfo += $('#checkbox1').is(':checked') ? 1 : 0;
+    //alert(GameInfo);
+}
 function ShowHide() {
     if (ShowHideI == 0) {
         $('#ShowHideUl').show();
@@ -215,42 +877,6 @@ function ShowHide() {
         
     }
 };
-
-function ShowHideBingo() {
-    GameInfo = 0;
-    if ($('#checkbox1').is(':checked')){
-        $('#example').bootstrapTable("showColumn", 'id1');
-        $('#example').bootstrapTable("showColumn", 'id1');
-        $('.tbleGame').show();
-        GameInfo += 1;
-    }else{
-        $('#example').bootstrapTable("hideColumn", 'id1');
-        $('#example').bootstrapTable("hideColumn", 'id22');
-        
-        $('.tableTh2').hide();
-        $('.tableTh2').attr("colspan", 0);
-    };
-    if ($('#checkbox2').is(':checked')){ $('#example').bootstrapTable("showColumn", 'id2'); $('.tableTh2').show(); GameInfo += 1; } else { $('.tableTh2').hide();  $('#example').bootstrapTable("hideColumn", 'id2'); $('.tableTh2').hide(); };
-    if ($('#checkbox3').is(':checked')){ $('#example').bootstrapTable("showColumn", 'id3'); $('.tableTh3').show(); GameInfo += 1; } else { $('#example').bootstrapTable("hideColumn", 'id3'); $('.tableTh3').hide(); };
-    if ($('#checkbox4').is(':checked')){ $('#example').bootstrapTable("showColumn", 'id4'); $('.tableTh4').show(); GameInfo += 1; } else { $('#example').bootstrapTable("hideColumn", 'id4'); $('.tableTh4').hide(); };
-    if ($('#checkbox5').is(':checked')){ $('#example').bootstrapTable("showColumn", 'id5'); $('.tableTh5').show(); GameInfo += 1; } else { $('#example').bootstrapTable("hideColumn", 'id5'); $('.tableTh5').hide(); };
-    if (GameInfo == 0){
-        $('.GameInfo').hide();
-    }else{
-        $('.GameInfo').show();
-        $('.GameInfo').attr("colspan", GameInfo);
-    }
-    
-    
-    
-    //Line  Bingo  MyBonus  BonusLine  BonusBingo  JackpotLine JackpotBingo
-    //GameInfo += $('#checkbox1').is(':checked') ? 1 : 0;
-    //alert(GameInfo);
-}
- //start Bingo scripts
-
-
-
  //end Bingo scripts  
  //start BlackJack scripts
 function changeRowsPerPageF(rowsPerPage) {
