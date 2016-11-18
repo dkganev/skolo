@@ -1,7 +1,7 @@
 @include('modals.bingoHistory-modal')
 @include('modals.bingoHistory2-modal')
-
-<div class="col-md-12 "> 
+<div class="container">
+    <div class=" "> 
         <div class="" style="">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
@@ -15,6 +15,7 @@
         </div>
         
     </div>
+</div>
 <div class="container-fluid">
 
 <div class="row" >

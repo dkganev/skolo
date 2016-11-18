@@ -69,7 +69,7 @@
                                 }}
                             </td>
                             <td>
-                                <span style="color: {{ $ps->ps_status->bonline ? 'green' : 'red' }} ;">
+                                <span id='Status{{ $ps->psid }}' style="color: {{ $ps->ps_status->bonline ? 'green' : 'red' }} ;">
                                         {{ $ps->ps_status->bonline ? 'Online' : 'Offline'}}
                                 </span>
                             </td>
@@ -143,6 +143,9 @@
 </div>
 </div>
 
+
+<script src="/js/socket.io/socket.io.js"></script>
+<script src="/js/socket.io/setingsTerminals.js"></script>
 <script>
 $(document).ready(function() {
 

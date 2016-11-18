@@ -1,5 +1,6 @@
 @include('modals.rouletteHistory-modal')
-    <div class="col-md-12 "> 
+<div class="container">
+    <div class=""> 
         <div class="" style="">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
@@ -13,7 +14,7 @@
         </div>
         
     </div>
-<div class="container-fluid">
+
 
 <div class="row" >
     <div class="col-md-12" style="width: 1000px">
@@ -313,14 +314,14 @@
                             @foreach($historys as $history)
                                 <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' data-Ids='{{ $history->psid }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
-                                    <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
-                                    <td>{{ $history->rlt_seq }}</td>
-                                    <td>{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}</td>
-                                    <td>{{ $history->win_num }}</td>
-                                    <td>{{ number_format($history->bet / 100, 2 ) }}</td>
-                                    <td>{{ number_format($history->win_val / 100, 2 ) }}</td>
-                                    <td>{{ number_format($history->jackpot / 100, 2 ) }}</td>
-                                    <td>{{ $history->ho_spin }}</td>
+                                    <td class="text-center"><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
+                                    <td class="text-right">{{ $history->rlt_seq }}</td>
+                                    <td class="text-right">{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}</td>
+                                    <td class="text-right">{{ $history->win_num }}</td>
+                                    <td class="text-right">{{ number_format($history->bet / 100, 2 ) }}</td>
+                                    <td class="text-right">{{ number_format($history->win_val / 100, 2 ) }}</td>
+                                    <td class="text-right">{{ number_format($history->jackpot / 100, 2 ) }}</td>
+                                    <td class="text-right">{{ $history->ho_spin }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
