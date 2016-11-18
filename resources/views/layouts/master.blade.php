@@ -108,7 +108,7 @@
             else if (data != '') {
                 swal({
                   title: "You will be logged out!",
-                  text: "Session will expire in 60 seconds.",
+                  text: "Session will expire soon.",
                   timer: 60000,
                   showConfirmButton: true,
                   confirmButtonText: 'Cancel'

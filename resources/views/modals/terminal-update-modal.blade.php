@@ -1,5 +1,3 @@
-
-
 <div class="row">
 <div class="modal fade" id="updateMachineModal-{{ $ps->psid }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" >

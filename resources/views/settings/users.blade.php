@@ -10,7 +10,6 @@
                 <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 33%;">
                     Users
                 </h2>
-
             </div>
             <div class="panel-body">
                 <table class="table table-striped table-hover data-table-table"
@@ -36,15 +35,20 @@
                     </thead>
                     <tbody>
                         @foreach($users as $user)
+                        @include('modals.settings.users.edit-user-modal')
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->fullName() }}</td>
-                            <td></td>
+                            <td>
+                                @foreach($roles as $role)
+                                    {{ $user->hasRole($role->name) ? $role->name : '' }} 
+                                @endforeach
+                            </td>
                             <td>{{ $user->phone }}</td>
                             <td>
                                 <a  href="" role="button" data-toggle="modal"
                                     data-toggle="modal"
-                                    data-target="#addUserModal"
+                                    data-target="#editUserModal-{{ $user->id }}"
                                     class="btn btn-success btn-xs"
                                 >
                                     Edit

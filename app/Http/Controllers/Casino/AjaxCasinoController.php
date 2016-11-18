@@ -54,16 +54,13 @@ class AjaxCasinoController extends Controller
         $gameid = $request['idGame'];
        
         $curentGames = Games::where('gameid',  $gameid)->get();
-            //$server_ps[$key]['current_game'] = $curentGames->first()->short_name;
-            //$server_ps[$key]['current_game_color'] = $curentGames->first()->color;
                       
         $dataArray1 = array(
             "success" => "success",
             "short_name" => $curentGames->first()->short_name,
             "color" => $curentGames->first()->color
         );
-        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT); 
-        
-        
+
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
 }

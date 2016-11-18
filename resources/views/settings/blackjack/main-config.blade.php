@@ -49,14 +49,6 @@
 					</div>
 
 					<div class="form-group">
-				    	<label style="color: #474747">Keep Alive Time:</label><br>
-						<div class="input-group">
-							<span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-							<input name="keepalive_time" value="{{ $config->keepalive_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-						</div>
-					</div>
-
-					<div class="form-group">
 				    	<label style="color: #474747">Common Bet Time:</label><br>
 						<div class="input-group">
 							<span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
@@ -133,14 +125,6 @@
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="win_pause" value="{{ $config->win_pause }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
-				</div>
-
-				<div class="form-group">
-			    	<label style="color: #474747">Keep Alive Acc:</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="keepalive_acc" value="{{ $config->keepalive_acc }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
