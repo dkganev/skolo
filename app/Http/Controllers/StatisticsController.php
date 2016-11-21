@@ -453,14 +453,16 @@ class StatisticsController extends Controller
             $page['ToGameTs'] = "";
         }
         if ($request['GameSort']){
-             array_push($SortQuery,['rlt_seq', '=', $request['GameSort']]);
+            array_push($SortQuery,['rlt_seq', '=', $request['GameSort']]);
             $page['GameSort'] = $request['GameSort'];
         }else{
             $page['GameSort'] = "";
         }
         $PSIDexist = 0;
         if ($request['PSID']){
-            $PSIDs = ServerPs::where('seatid', $request['PSID'])->get();
+            array_push($SortQuery,['psid', '=', $request['PSID']]);
+            $page['PSID'] = $request['PSID'];
+            /*$PSIDs = ServerPs::where('seatid', $request['PSID'])->get();
             if ($PSIDs->count()){
                 $PSIDexist = 1;
                 $page['PSID'] = $request['PSID'];
@@ -471,7 +473,7 @@ class StatisticsController extends Controller
             }else{
                 array_push($SortQuery,['psid','=', 0 ]);
                 $page['PSID'] = $request['PSID'];
-            };
+            };*/
             //array_push($SortQuery,['psid','=', $request['PSID'] ]);
             //$page['PSID'] = $request['PSID'];
         }else{
@@ -530,7 +532,7 @@ class StatisticsController extends Controller
         //$tesatHistorys = $historyClas->select('win as Twin')->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->first();
         //$page['win'] = $tesatHistorys;
         if ($PSIDexist == 1){
-            $historys = $historyClas->where($SortQuery)->whereIn('psid', $PSIDarray)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+            //$historys = $historyClas->where($SortQuery)->whereIn('psid', $PSIDarray)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
         
         }else{
             $historys = $historyClas->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
@@ -654,8 +656,7 @@ class StatisticsController extends Controller
         $databingo_seq = $request['bingo_seq'];
         $dataUnique_game_seq = $request['unique_game_seq'];
         $datapsid = $request['psid'];
-       
-        $server_ps_seatid = ServerPs::where('psid', $datapsid)->count() ? ServerPs::where('psid', $datapsid)->first()->seatid : "Missing saitid (PSID is $datapsid )";
+        $server_ps_seatid =$datapsid; // $server_ps_seatid = ServerPs::where('psid', $datapsid)->count() ? ServerPs::where('psid', $datapsid)->first()->seatid : "Missing saitid (PSID is $datapsid )";
         $wins_history = BingoWins_History::where('unique_game_seq', $dataUnique_game_seq)->get();
         $BingoBalls = BingoBall_History::where('unique_game_seq', $dataUnique_game_seq)->first();
         $psTicketsArchive = psTicketsArchive::where('unique_game_seq', $dataUnique_game_seq)->first();
@@ -688,12 +689,13 @@ class StatisticsController extends Controller
         $dataRowID = $request['rowID'];
         $dataRowTS = $request['rowTS'];
         $historys = GameHistory::where('ts', $dataRowTS)->orderBy('ts', 'desc')->first();
-        $server_ps = ServerPs::where('psid', $historys->psid )->first();
+        /*$server_ps = ServerPs::where('psid', $historys->psid )->first();
         if ($server_ps != null){
             $seatid = "PS: " . $server_ps->seatid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
         }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
-        }
+        }*/
+        $seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
         $positions = array();
         $positionN =161;
         $num_max = $positionN + 1;
@@ -751,12 +753,13 @@ class StatisticsController extends Controller
         
         
         $historys = GameHistory::where('ts', $dataRowTS)->first();
-        $server_ps = ServerPs::where('psid', $historys->psid )->first();
+        /*$server_ps = ServerPs::where('psid', $historys->psid )->first();
         if ($server_ps != null){
             $seatid = "PS: " . $server_ps->seatid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
         }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
-        }
+        }*/
+        $seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
         $positions = array();
         $positionN =161;
         $num_max = $positionN + 1;

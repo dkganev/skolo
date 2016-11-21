@@ -316,7 +316,7 @@
                        
                                     <td class="text-center"><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td class="text-right">{{ $history->rlt_seq }}</td>
-                                    <td class="text-right">{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}</td>
+                                    <td class="text-right">{{ $history->psid }} <!--{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}--></td>
                                     <td class="text-right">{{ $history->win_num }}</td>
                                     <td class="text-right">{{ number_format($history->bet / 100, 2 ) }}</td>
                                     <td class="text-right">{{ number_format($history->win_val / 100, 2 ) }}</td>
