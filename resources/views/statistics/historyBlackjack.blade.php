@@ -16,7 +16,7 @@
 
 
 <div class="row" >
-    <div class="col-md-12" style="width: 900px">
+    <div class="col-md-12" style="width: 1000px">
 
         <div class="panel panel-default" >
             <div class="panel-heading">
@@ -51,30 +51,30 @@
                         rows per page
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="pagination" style="margin: 0px; ">
-                    <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
+                <div class="pagination" style="margin: 0px; "> <!--$page['current']  $historys->currentPage() $page['last'] $historys->lastPage()-->
+                    <input id="pageReload" type="hidden" val="" data-page="{{$page['current']}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
                     <ul class="pagination" style="margin: 0px;">
-                        @if ( !$historys->lastPage()  )
+                        @if ( !$page['last']  )
                             <li class="page-number active" >
                                 <a onclick="changePageNum(1)">1</a>
                             </li>
                         @endif
-                        @if ( $historys->lastPage() != 1  )
-                            @if ($historys->lastPage() < 6) 
-                                @for ($i = 1; $i < $historys->lastPage(); $i++)
-                                    <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                        @if ( $page['last'] != 1  )
+                            @if ($page['last'] < 6) 
+                                @for ($i = 1; $i < $page['last']; $i++)
+                                    <li class="page-number {{$page['current'] == $i ? "active" : "" }}">
                                         <a onclick="changePageNum({{ $i }})">{{ $i }}</a>
                                     </li>
                                 @endfor
                             @else 
                             
                             
-                                @if ( $historys->currentPage() > 1  )
+                                @if ( $page['current'] > 1  )
                                     <li class="page-pre">
-                                        <a onclick="changePageNum({{ $historys->currentPage()-1}})" >‹</a>
+                                        <a onclick="changePageNum({{ $page['current']-1}})" >‹</a>
                                     </li>
                                 @endif
-                                @if ( $historys->currentPage() >= 4)
+                                @if ( $page['current'] >= 4)
                                      <li class="page-number">
                                         <a onclick="changePageNum(1)">1</a>
                                     </li>
@@ -86,33 +86,33 @@
                             
                             
                             
-                                @if ( $historys->currentPage() == 1 )
+                                @if ( $page['current'] == 1 )
                                     @for ($i = 1; $i < 6; $i++)
-                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                        <li class="page-number {{$page['current'] == $i ? "active" : "" }}">
                                             <a onclick="changePageNum({{ $i }})">{{ $i }}</a>
                                         </li>
                                     @endfor
                                 @endif
                                 
-                                @if ( $historys->currentPage() == 2 || $historys->currentPage() == 3)
+                                @if ( $page['current'] == 2 || $page['current'] == 3)
                                     @for ($i = 1; $i < 6; $i++)
-                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                        <li class="page-number {{$page['current'] == $i ? "active" : "" }}">
                                             <a onclick="changePageNum({{ $i }})">{{ $i }}</a>
                                         </li>
                                     @endfor
                                 @endif 
                                 
-                                @if ( $historys->currentPage() > 3 && $historys->currentPage() < $historys->lastPage() - 2  )
-                                    @for ($i = $historys->currentPage() - 2 ; $i < $historys->currentPage() + 3; $i++)
-                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}" >
+                                @if ( $page['current'] > 3 && $page['current'] < $page['last'] - 2  )
+                                    @for ($i = $page['current'] - 2 ; $i < $page['current'] + 3; $i++)
+                                        <li class="page-number {{$page['current'] == $i ? "active" : "" }}" >
                                             <a onclick="changePageNum({{ $i }})">{{ $i}}</a>
                                         </li>
                                     @endfor
                                 @endif
                                 
-                                @if ( $historys->currentPage() == $historys->lastPage() - 1 || $historys->currentPage() == $historys->lastPage() - 2)
-                                    @for ($i = $historys->lastPage() - 5 ; $i < $historys->lastPage() + 1; $i++)
-                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }} " >
+                                @if ( $page['current'] == $page['last'] - 1 || $page['current'] == $page['last'] - 2)
+                                    @for ($i = $page['last'] - 5 ; $i < $page['last'] + 1; $i++)
+                                        <li class="page-number {{$page['current'] == $i ? "active" : "" }} " >
                                             <a onclick="changePageNum({{ $i }})">{{ $i}}</a>
                                         </li>
                                     @endfor
@@ -120,33 +120,33 @@
                                 
                                 
                                 
-                                @if ( $historys->currentPage() == $historys->lastPage())
-                                    @for ($i = $historys->lastPage() - 4 ; $i < $historys->lastPage()+1; $i++)
-                                        <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
+                                @if ( $page['current'] == $page['last'])
+                                    @for ($i = $page['last'] - 4 ; $i < $page['last']+1; $i++)
+                                        <li class="page-number {{$page['current'] == $i ? "active" : "" }}">
                                             <a onclick="changePageNum({{ $i }})">{{ $i}}</a>
                                         </li>
                                     @endfor
                                 @endif
                                 
-                                @if ( $historys->currentPage() < $historys->lastPage() - 2 )
+                                @if ( $page['current'] < $page['last'] - 2 )
                                      <li class="page-last-separator disabled">
                                         <a href="javascript:void(0)">...</a>
                                     </li>
                                     <li class="page-number">
-                                        <a onclick="changePageNum({{ $historys->lastPage() }})" >{{ $historys->lastPage()}}</a>
+                                        <a onclick="changePageNum({{ $page['last'] }})" >{{ $page['last']}}</a>
                                     </li>
                                     
                                 @endif
-                                @if ( $historys->currentPage() < $historys->lastPage())
+                                @if ( $page['current'] < $page['last'])
                                     <li class="page-next">
-                                        <a onclick="changePageNum({{ $historys->currentPage() + 1 }})" >›</a>
+                                        <a onclick="changePageNum({{ $page['current'] + 1 }})" >›</a>
                                     </li>
                                 @endif
                                 
                             @endif
                        @else
                             <li class="page-number active">
-                                <a onclick="changePageNum({{ $historys->currentPage() }})" >{{$historys->currentPage()}}</a>
+                                <a onclick="changePageNum({{ $page['current'] }})" >{{$page['current']}}</a>
                             </li>
                         @endif
                     </ul>
@@ -217,7 +217,8 @@
                             </th>
                             <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='GameSort' value="{{$page['GameSort'] == "" ? "" : $page['GameSort']}}" ></th>
                             <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='TableSort' value="{{$page['TableSort'] == "" ? "" : $page['TableSort']}}" ></th>
-                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" id='PSID' ></th>
+                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" value="{{$page['PSID'] == "" ? "" : $page['PSID']}}" id='PSID' ></th>
+                            <th class="text-center RouletteSort" style="display: none;" ><input class="form-control" type='number' style="color: #333" value="{{$page['SeatID'] == "" ? "" : $page['SeatID']}}" id='SeatID' ></th>
                             <th class="text-center RouletteSort" style="display: none;" >
                                 <div class="row">
                                     <div class='col-md-3'>
@@ -225,7 +226,7 @@
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
-                                            <input class="form-control" type='number' style="color: #333" id='FromGameBet' '>
+                                            <input class="form-control" type='number' style="color: #333" value="{{$page['FromGameBet'] == "" ? "" : $page['FromGameBet']}}" id='FromGameBet' '>
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +236,7 @@
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
-                                            <input class="form-control" type='number' style="color: #333" id='ToGameBet'>
+                                            <input class="form-control" type='number' style="color: #333" value="{{$page['ToGameBet'] == "" ? "" : $page['ToGameBet']}}" id='ToGameBet'>
                                         </div>
                                     </div>
                                 </div>
@@ -246,7 +247,7 @@
                                         From:
                                     </div>
                                     <div class='col-md-12'>
-                                        <input class="form-control" type='number' style="color: #333" id='FromGameWin' >
+                                        <input class="form-control" type='number' style="color: #333" value="{{$page['FromGameWin'] == "" ? "" : $page['FromGameWin']}}" id='FromGameWin' >
                                     </div>
                                 </div>
                                 <div class="row">
@@ -254,7 +255,7 @@
                                         To:
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
-                                        <input class="form-control" type='number' style="color: #333" id='ToGameWin' >
+                                        <input class="form-control" type='number' style="color: #333" value="{{$page['ToGameWin'] == "" ? "" : $page['ToGameWin']}}" id='ToGameWin' >
                                     </div>
                                 </div>
                             </th>
@@ -264,8 +265,9 @@
                             <th class="text-center" data-align="right" data-field="id102" data-sortable="true" onclick="changePageSort('game_seq', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}' );">Game # <i class="fa {{ $page['OrderQuery'] == 'game_seq' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id103" data-sortable="true" onclick="changePageSort('table_idx', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Table ID <i class="fa {{ $page['OrderQuery'] == 'table_idx' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id104" data-sortable="true">PS ID</th>
-                            <th class="text-center" data-align="right" data-field="id105" data-sortable="true" >Total Bet</th>
-                            <th class="text-center" data-align="right" data-field="id106" data-sortable="true" >Total Win</th>
+                            <th class="text-center" data-align="right" data-field="id104" data-sortable="true">Seat ID</th>
+                            <th class="text-center" data-align="right" data-field="id105" data-sortable="true" onclick="changePageSort('total_bet', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Total Bet <i class="fa {{ $page['OrderQuery'] == 'total_bet' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id106" data-sortable="true" onclick="changePageSort('total_win', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Total Win <i class="fa {{ $page['OrderQuery'] == 'total_win' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                         </tr>
                     </thead>
 
@@ -276,8 +278,14 @@
                                     <td class="text-center" ><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td class="text-right">{{ $history->game_seq }}</td>
                                     <td class="text-right">{{$history->table_idx + 1}}</td>
-                                    <td class="text-right"><?php 
-                                            $totalSeat_idArray = $history->getArraySeat_id();
+                                    <td class="text-right">
+                                        {{$history->ps_id1}}, 
+                                        {{$history->ps_id2}}, 
+                                        {{$history->ps_id3}}, 
+                                        {{$history->ps_id4}},  
+                                        {{$history->ps_id5}} 
+                                        <?php 
+                                            /*$totalSeat_idArray = $history->getArraySeat_id();
                                             $n = 0;
                                             foreach ($totalSeat_idArray as $key => $val){
                                                 if ($val != 0){
@@ -288,11 +296,18 @@
                                                     }
                                                     print  ($val);
                                                 }
-                                            }
+                                            }*/
                                         ?>
                                     </td>
+                                    <td class="text-right">
+                                        {{$history->seat_id1}},
+                                        {{$history->seat_id2}}, 
+                                        {{$history->seat_id3}}, 
+                                        {{$history->seat_id4}}, 
+                                        {{$history->seat_id5}} 
+                                     </td>    
                                     <td class="text-right"><?php
-                                            $totalBetArray = $history->getArrayBet();
+                                            /*$totalBetArray = $history->getArrayBet();
                                             $dblArray = $history->getArrayDbl();
                                             $totalDblArray = array();
                                             foreach ($dblArray as $key => $val){
@@ -331,14 +346,16 @@
        
                                             
                                             $totalBet = array_sum($totalBetArray) + array_sum($totalDblArray) + array_sum($totalInsuranceArray)  + array_sum($totalSplitArray);
-                                            print (number_format($totalBet / 100, 2));
-                                        ?> ---
-                                        {{$history->win_1}}
+                                            print (number_format($totalBet / 100, 2));*/
+                                        ?> 
+                                        {{number_format($history->total_bet / 100, 2) }}
                                     </td>
-                                    <td class="text-right"><?php 
-                                            $totalWinArray = $history->getArrayWin();
+                                    <td class="text-right">
+                                        {{number_format($history->total_win / 100, 2)}} 
+                                        <?php 
+                                            /*$totalWinArray = $history->getArrayWin();
                                             $totalWin = array_sum($totalWinArray);
-                                            print (number_format($totalWin / 100, 2));
+                                            print (number_format($totalWin / 100, 2));*/
                                         ?>
                                     </td>
                                 </tr>
