@@ -35,14 +35,14 @@
 
                     <div class="col-xs-6">
                         <div class="form-group ">
-                            <label for="password">Password </label><br>
-                            <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+                            <label>Password </label><br>
+                            <input class="form-control" type="password" name="password" placeholder="Password">
                         </div>
-
+{{-- 
                         <div class="form-group">
                             <label for="password_confirmation">Confirm Password:</label><br>
                             <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password">
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label for="role">User Role: </label><br>

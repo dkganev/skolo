@@ -32,4 +32,11 @@ class User extends Authenticatable
     {
         return $this->firstname . ' ' . $this->lastname;
     }
+
+    public function userRole()
+    {
+        $rep = ['["',  '"]'];
+
+        return str_replace($rep,'' ,$this->roles()->pluck('name'));
+    }
 }

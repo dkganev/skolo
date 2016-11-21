@@ -36,28 +36,22 @@
             <strong>@lang('messages.settings')</strong>
           </a>
         </li>
+
       </ul>
       
+      
       <ul class="nav navbar-nav navbar-right">  
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle2" data-toggle="dropdown" role="button" aria-expanded="false">
-            <strong>@lang('messages.user'): </strong><strong> {{ Auth::user()->firstname }} {{ Auth::user()->lastname }} </strong>
-                <span class="caret"></span>
-            </a>
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a href="#" data-lang="bg">
-                    @lang('messages.mySetings')
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ url('logout') }}" data-lang="en">
-                    @lang('messages.logout')<i class="fa fa-btn fa-sign-out  fa-2x" style="font-size: 18px;"></i>
-                  </a>
-                </li>
-             </ul>
-        </li>  
+
+        <li><a><strong>User: {{ Auth::user()->fullName() }}</strong> ({{ Auth::user()->userRole() }})</a></li>
+        
+  
+        <li><a href="{{ url('logout') }}" style="padding: 0;">
+            <button style="width: 150px;" type="button" class="btn btn-danger navbar-btn btn-block">
+              <i class="fa fa-sign-out fa-2x" style="font-size: 18px; padding-right: 15px;"></i><strong>Logout</strong>
+            </button></a>
+        </li>
       </ul> 
+
 
       <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">

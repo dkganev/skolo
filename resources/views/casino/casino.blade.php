@@ -1,12 +1,10 @@
 {{-- @include('modals.casinoTerminalInfo-modals') --}}
-<link rel="stylesheet" href="/css/casinoProview.css">
-
 <div class="container-full">
 
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG</button>
-        <h1 style="margin-top: 0px; color:black;" class="page-header">Casino</h1>
+        <h1 style="margin-top: 0px; color:white;" class="page-header">Casino</h1>
     </div>
 </div>
 
@@ -44,7 +42,7 @@
                     <div class="col-md-12 ">
                         <button class="btn btn-info">
                             Free
-                            <span id="BtnFree" class="badge" style="background-color: #303030;color: #fff;">{{$PsSettingsFree}}</span>
+                            <span id="BtnFree" class="badge" style="background-color: #303030;color: #fff;"> {{$PsSettingsFree}}</span>
                         </button>
                         <button class="btn-success btn-sm">
                             Active
@@ -72,10 +70,12 @@
             </div>
 
             <div class="panel-body" id="casino-panel-body">
+
                 <div id="casinoPreview" ondrop="drop(event)" ondragover="allowDrop(event)" style="height: 650px;">  
                     @foreach($server_ps as $ps)
-                        <div id="box{{ $ps->psid }}" ondragstart="drag(event)" class="box disableTextSelect offline bootstrap-modal-form-open" onclick="boxModalWindow({{ $ps->psid }})" data-id="{{ $ps->psid }}" 
-                        style="height: 66px; width: 66px; -moz-user-select: text; left: {{ $ps->leftP }}px; top: {{ $ps->topP }}px;background-color: {{$ps->boxColor}}"
+                        <div id="box{{ $ps->psid }}" ndragstart="drag(event)"  class="box disableTextSelect offline"
+                            data-id="{{ $ps->psid }}" 
+                            style="height: 66px; width: 66px; -moz-user-select: text; left: {{ $ps->leftP }}px; top: {{ $ps->topP }}px;background-color: {{$ps->boxColor}}"
                         >
                             <div class="ps_title shortNameColor" style="background-color: {{$ps->current_game_color !== null ? $ps->current_game_color : 'inherit'}}">
                                 <span class="shortName">{{ $ps->current_game }}</span>
@@ -184,7 +184,7 @@ $( "#GridDrag" ).click(function() {
     }else{
         $( ".box" ).attr('draggable', "true");
         $( ".box" ).attr("data-target",'');
-    }    
+    }
 });
 
 $( "#GridColor" ).click(function() {

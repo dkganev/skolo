@@ -9,23 +9,19 @@ socket.on('new message', function (data) {
     var obj = $.parseJSON(jsonObj);
     console.log (obj);
     //console.log (obj.dataNew.psid);
-    if (obj.query == "UPDATE")
-    {
-        if (obj.dataNew.bonline == false){
+    if (obj.query == "UPDATE") {
+        if (obj.dataNew.bonline == false) {
             $("#Status" + obj.dataNew.psid).css("color", "red");
             $("#Status" + obj.dataNew.psid).html('Offline');
         }
-        else{
+        else {
             $("#Status" + obj.dataNew.psid).css("color", "green");
             $("#Status" + obj.dataNew.psid).html('Online');
         }
-        
-        
-        
-    }else if (obj.query == "DELETE"){
-          
-    }else if (obj.query == "INSERT"){
-          
+    } else if (obj.query == "DELETE") {
+        //
+    } else if (obj.query == "INSERT") {
+        //
     }  
     
  });    

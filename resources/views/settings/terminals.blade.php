@@ -1,7 +1,6 @@
 @include('modals.reset-ps-modal')
 @include('modals.terminal-modals')
 
-
 <div class="container">
 <div class="row">
     <div class="col-lg-12">
@@ -30,12 +29,6 @@
                             data-show-columns="true"
                             data-search="true"
                             data-show-toggle="true"
-
-{{--                             data-show-pagination-switch="true"
-                            data-pagination="true"
-                            data-side-pagination="client"
-                            data-page-list="[3, 5, 10, 15]" --}}
-
                             data-classes="table-condensed"
                     >
                     <thead class="w3-blue-grey">

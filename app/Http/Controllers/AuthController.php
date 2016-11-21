@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         if(!Auth::attempt(['name' => $request['name'], 'password' => $request['password']]))
         {
-            return redirect()->route('index');
+            return redirect('/');
         }
         
         // Get first(default) Casino and store it in the session)
@@ -44,7 +44,7 @@ class AuthController extends Controller
         $locale = \App::setLocale(Auth::user()->lang);
         session(['locale' => $locale]);
 
-        return redirect()->route('settings');
+        return redirect('/');
     }
 
     public function logout()

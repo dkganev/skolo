@@ -36,15 +36,14 @@ class UserController extends Controller
 
     public function edit(Request $request)
     {
-        dd($request->all());
-        $user = User::find($request->id);
-        $user->name = $request->username;
+        $user = User::find($request->id);   
+        $user->name = $request->name;
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
         $user->phone = $request->phone;
         $user->password = bcrypt($request->password);
-        $user->save();
-        $user->assignRole($request->role);
+        $user->syncRoles($request->role);
+        $user->update();
 
         $response = 'User Created';
         return response()->json($response, 200);
