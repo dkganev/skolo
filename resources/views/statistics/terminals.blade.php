@@ -1,7 +1,7 @@
 <div class="container">
-<div class="row" >
+<div class="row">
     <div class="col-md-8">
-        <div class="panel panel-default" >
+        <div class="panel panel-default">
             <div class="panel-heading">
                 <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
                     Machine Statistics
@@ -16,9 +16,6 @@
                             data-toggle="table"
                             data-locale="en-US"
                             data-sortable="true"
-                            data-pagination="true"
-                            data-side-pagination="client"
-                            data-page-list="[10, 20, 50]"
                             data-classes="table-condensed"
                     >
                     <thead class="w3-dark-grey">
@@ -44,13 +41,20 @@
                                 <td>{{ $c->totalCredit() }}</td>
                             </tr>
                         @endforeach
+                        <tr class="danger">
+                            <td class="text-center" colspan="2"><strong>TOTAL</strong></td>
+                            <td>{{ $totals['totalIn'] }}</td>
+                            <td>{{ $totals['totalOut'] }}</td>
+                            <td>{{ $totals['totalBet'] }}</td>
+                            <td>{{ $totals['totalWin'] }}</td>
+                            <td>{{ $totals['totalCredit'] }}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div><!--End Panel Body -->
         </div><!--End Panel -->
     </div>
 </div><!--End Row -->
-
 </div><!--End Container -->
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
