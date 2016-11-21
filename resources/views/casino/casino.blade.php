@@ -44,7 +44,7 @@
                     <div class="col-md-12 ">
                         <button class="btn btn-info">
                             Free
-                            <span id="BtnFree" class="badge" style="background-color: #303030;color: #fff;"> {{$PsSettingsFree}}</span>
+                            <span id="BtnFree" class="badge" style="background-color: #303030;color: #fff;">{{$PsSettingsFree}}</span>
                         </button>
                         <button class="btn-success btn-sm">
                             Active

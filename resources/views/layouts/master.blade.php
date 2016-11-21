@@ -52,17 +52,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.min.css" />
                            
     <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
-{{--     <style>
-    li.active {
-        border-bottom: 2px #337ab7 solid;
-        content: "";
-        display: block;
-        width: 5%;
-        margin: 1em auto 0;
-    /*border-bottom: solid;*/
-    }
-    </style> --}}
-    
+       
 </head>
 <body style="background-image: url('images/login-background.jpg'); ">
 
@@ -73,7 +63,6 @@
 @yield('content')
 
 <script>
-
     function ajaxLoad(filename, content) {
         content = typeof content !== 'undefined' ? content : 'content';
 
@@ -92,7 +81,7 @@
         });
     }
 
-    $('li').on('click', function () {
+    $('.breadcrumb li').on('click', function () {
       // $('li').removeClass('active');
       // $(this).addClass('active');
       $(this).addClass('active').siblings().removeClass('active');
@@ -113,7 +102,7 @@
                   showConfirmButton: true,
                   confirmButtonText: 'Cancel'
                 },function(isConfirm) {
-                    if(isConfirm){
+                    if(isConfirm) {
                        document.location.reload();
                     }
                 });
