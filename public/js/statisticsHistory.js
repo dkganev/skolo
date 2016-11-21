@@ -990,12 +990,13 @@ function changePageSortMenu() {
     ToGameTs = $('#datetimepicker7I').val();
     GameSort = $('#GameSort').val();
     TableSort = $('#TableSort').val();
-        PSID = $('#PSID').val();
-        FromGameBet = $('#FromGameBet').val();
-        ToGameBet = $('#ToGameBet').val();
-        FromGameWin = $('#FromGameWin').val();
-        ToGameWin = $('#ToGameWin').val();
-    
+    SeatID = $('#SeatID').val();
+    PSID = $('#PSID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+       
     
     
     pageHref = pageHref + 
@@ -1008,6 +1009,12 @@ function changePageSortMenu() {
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
             "&TableSort=" + TableSort + 
+            "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
+            "&FromGameBet=" + FromGameBet + 
+            "&ToGameBet=" + ToGameBet + 
+            "&FromGameWin=" + FromGameWin + 
+            "&ToGameWin=" + ToGameWin + 
             "')" 
     window.location.href = pageHref; 
 }
@@ -1023,7 +1030,7 @@ function cleanSortFunction() {
     $('#datetimepicker7').datetimepicker('setEndDate', output );
     $('#datetimepicker6').datetimepicker('setStartDate', "");
     //$('#datetimepicker7').datetimepicker('update');
-   $('#GameSort').val("");
+    $('#GameSort').val("");
     $('#TableSort').val("");
     $('#PSID').val("");
     $('#FromGameBet').val("");
@@ -1160,25 +1167,24 @@ function sortMenuBJ() {
     }else{
         $('.RouletteSort').hide();
         sortMenuRV = 0;
-        var d = new Date();
-        var month = d.getMonth()+1;
-        var day = d.getDate();
-        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
-        $('#datetimepicker4').datetimepicker('setEndDate', output );
-        $('#datetimepicker5').datetimepicker('setEndDate', output );
-        $('#datetimepicker5').datetimepicker('setStartDate', "");
-        $('#datetimepicker4I').val("");
-        $('#datetimepicker5I').val("");
-        $('#GameSortR').val("");
-        $('#PSIDR').val("");
-        $('#FromGameNumR').val("");
-        $('#ToGameNumR').val("");
-        $('#FromGameBetR').val("");
-        $('#ToGameBetR').val("");
-        $('#FromGameWinR').val("");
-        $('#ToGameWinR').val("");
-        $('#FromGameJackR').val("");
-        $('#ToGameJackR').val("");
+        $('#datetimepicker6I').val("");
+    $('#datetimepicker7I').val("");
+    //$('#datetimepicker6').datetimepicker('update');
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+    $('#datetimepicker6').datetimepicker('setEndDate', output );
+    $('#datetimepicker7').datetimepicker('setEndDate', output );
+    $('#datetimepicker6').datetimepicker('setStartDate', "");
+    //$('#datetimepicker7').datetimepicker('update');
+    $('#GameSort').val("");
+    $('#TableSort').val("");
+    $('#PSID').val("");
+    $('#FromGameBet').val("");
+    $('#ToGameBet').val("");
+    $('#FromGameWin').val("");
+    $('#ToGameWin').val("");
         
     }
     
