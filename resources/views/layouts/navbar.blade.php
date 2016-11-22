@@ -28,6 +28,7 @@
           </a>
         </li>
 
+        @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
         <li>
           <a  style="{{ Request::is('settings*') ? "color: white;" : ''}}"
               href="{{ url('settings') }}"
@@ -36,15 +37,14 @@
             <strong>@lang('messages.settings')</strong>
           </a>
         </li>
+        @endhasanyrole
 
       </ul>
-      
-      
+
       <ul class="nav navbar-nav navbar-right">  
 
         <li><a><strong>User: {{ Auth::user()->fullName() }}</strong> ({{ Auth::user()->userRole() }})</a></li>
-        
-  
+
         <li><a href="{{ url('logout') }}" style="padding: 0;">
             <button style="width: 150px;" type="button" class="btn btn-danger navbar-btn btn-block">
               <i class="fa fa-sign-out fa-2x" style="font-size: 18px; padding-right: 15px;"></i><strong>Logout</strong>

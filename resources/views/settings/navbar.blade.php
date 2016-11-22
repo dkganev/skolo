@@ -4,13 +4,13 @@
           <div style="padding-top:6px; margin-top: 0px; background-color: none;">
               <!-- Secondary Navigation -->
               <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
-
+                @hasanyrole(['Owner', 'Super User'])
                 <li><a href="javascript:ajaxLoad('{{url('settings/terminals')}}')">Terminals</a></li>
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/gameservers')}}')">Game Servers</a></li>
         
                 <li><a href="javascript:ajaxLoad('{{url('settings/users')}}')">Users</a></li>
-              
+               @endhasanyrole
                 <li><a href="javascript:ajaxLoad('{{url('settings/casinos')}}')">Casinos</a></li>
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/billtypes')}}')">Billing Types</a></li>

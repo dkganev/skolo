@@ -34,7 +34,30 @@ class StatisticsController extends Controller
     {
         $counters = PsCounters::orderBy('psid', 'asc')->get();
 
-        return view('statistics.terminals', ['counters' => $counters]);
+        $totalIn  = 0;
+        $totalOut = 0;
+        $totalBet = 0;
+        $totalWin = 0;
+        $totalCredit = 0;
+
+        foreach($counters as $counter)
+        {
+            $totalIn += $counter->totalIn();
+            $totalOut += $counter->totalOut();
+            $totalBet += $counter->totalBet();
+            $totalWin += $counter->totalWin();
+            $totalCredit += $counter->totalCredit();
+        }
+
+        $totals = [
+            'totalIn' => $totalIn,
+            'totalOut' => $totalOut, 
+            'totalBet' => $totalBet, 
+            'totalWin' => $totalWin, 
+            'totalCredit' => $totalCredit
+        ];
+
+        return view('statistics.terminals', ['counters' => $counters , 'totals' => $totals]);
     }
 
     public function games_statistics()

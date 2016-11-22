@@ -1,12 +1,6 @@
-{{-- @include('modals.casinoTerminalInfo-modals') --}}
-<div class="container-full">
+<link rel="stylesheet" href="/css/casinoProview.css">
 
-<div class="row">
-    <div class="col-md-12">
-        <button type="button" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG</button>
-        <h1 style="margin-top: 0px; color:white;" class="page-header">Casino</h1>
-    </div>
-</div>
+<div class="container-full">
 
 <div id="casinoPreview" class="row" style="user-select: none;">
     <div class="col-md-12">
@@ -35,22 +29,24 @@
                             <div class="slider round"></div>
                         </label>
                         <span style="vertical-align: top; line-height: 2.00;">Bingo Feed</span>
-                    </div>    
+                    </div>  
+
+                     <button type="button" style="margin-right: 15px;" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG</button>  
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 ">
                         <button class="btn btn-info">
                             Free
-                            <span id="BtnFree" class="badge" style="background-color: #303030;color: #fff;"> {{$PsSettingsFree}}</span>
+                            <span id="BtnFree" class="badge" style="background-color: #303030;color: #fff;"> {{$statuses['free']}}</span>
                         </button>
                         <button class="btn-success btn-sm">
                             Active
-                            <span id="BtnActive" class="badge" style="background-color: #303030;color: #fff;">{{$PsSettingsActive}}</span>
+                            <span id="BtnActive" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['active']}}</span>
                         </button>
                         <button class="btn btn-sm" style="background-color: #ccb2ff;">
                             Call Attend
-                            <span id="BtnCallAttend" class="badge" style="background-color: #303030;color: #fff;">{{$PsSettingsAttendant}}</span>
+                            <span id="BtnCallAttend" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['attendant']}}</span>
                         </button>
                         <button class="btn btn-warning btn-sm">
                             Cash Out
@@ -58,12 +54,12 @@
                         </button>
                         <button class="btn btn-sm" style="background-color: #9c9c9c;">
                             Offline
-                            <span id="BtnOffline" class="badge" style="background-color: #303030;color: #fff;">{{$PsSettingsOffline}}</span>
+                            <span id="BtnOffline" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['offline']}}</span>
                         </button>
                         <button class="btn btn-danger btn-sm">
                             <i class="glyphicon glyphicon-remove"></i>
                             Errors
-                            <span id="BtnErrors" class="badge" style="background-color: #303030;color: #fff;">{{$PsSettingsError}}</span>
+                            <span id="BtnErrors" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['error']}}</span>
                         </button>
                     </div><!-- End Col -->
                 </div><!-- End Row -->
@@ -73,8 +69,7 @@
 
                 <div id="casinoPreview" ondrop="drop(event)" ondragover="allowDrop(event)" style="height: 650px;">  
                     @foreach($server_ps as $ps)
-                        <div id="box{{ $ps->psid }}" ndragstart="drag(event)"  class="box disableTextSelect offline"
-                            data-id="{{ $ps->psid }}" 
+                        <div id="box{{ $ps->psid }}" data_boxStatus="{{ $ps->boxStatus }}" draggable="folse" ondragstart="drag(event)"  class="box disableTextSelect offline bootstrap-modal-form-open" data-toggle="modal" data-target="#casinoTerminalInfo"  onclick="boxModalWindow({{ $ps->psid }})" data-id="{{ $ps->psid }}" 
                             style="height: 66px; width: 66px; -moz-user-select: text; left: {{ $ps->leftP }}px; top: {{ $ps->topP }}px;background-color: {{$ps->boxColor}}"
                         >
                             <div class="ps_title shortNameColor" style="background-color: {{$ps->current_game_color !== null ? $ps->current_game_color : 'inherit'}}">
