@@ -24,7 +24,7 @@
                     <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
                         Blackjack History Statistics
                     </h2>
-                    <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
+                    <a class="btn btn-warning  pull-right" onclick="export2excelBJ();">
                         <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                     </a>
                 </div> <br />
@@ -52,7 +52,7 @@
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; "> <!--$page['current']  $historys->currentPage() $page['last'] $historys->lastPage()-->
-                    <input id="pageReload" type="hidden" val="" data-page="{{$page['current']}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
+                    <input id="pageReload" type="hidden" val="" data-page="{{$page['current']}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}" data-excel-url="{{ route('export2excelBJ') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
                     <ul class="pagination" style="margin: 0px;">
                         @if ( !$page['last']  )
                             <li class="page-number active" >

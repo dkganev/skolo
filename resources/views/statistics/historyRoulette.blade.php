@@ -25,7 +25,7 @@
                     <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
                         Roulette History Statistics
                     </h2>
-                    <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
+                    <a class="btn btn-warning  pull-right" onclick="export2excelR();">
                         <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                     </a>
                 </div> <br />
@@ -53,7 +53,7 @@
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; ">
-                    <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
+                    <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}" data-excel-url="{{ route('export2excelR') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
                     <ul class="pagination" style="margin: 0px;">
                         @if ( !$historys->lastPage()  )
                             <li class="page-number active" >
@@ -216,6 +216,7 @@
                             </th>
                             <th class="text-center RouletteSort" style="display: none;" data-field="id202" ><input class="form-control" type='number' style="color: #333" value="{{$page['GameSort'] == "" ? "" : $page['GameSort']}}" id='GameSortR' ></th>
                             <th class="text-center RouletteSort" style="display: none;" data-field="id203" ><input class="form-control" type='number' style="color: #333" value="{{$page['PSID'] == "" ? "" : $page['PSID']}}" id='PSIDR' ></th>
+                            <th class="text-center RouletteSort" style="display: none;" data-field="id203" ><input class="form-control" type='number' style="color: #333" value="{{$page['SeatID'] == "" ? "" : $page['SeatID']}}" id='SeatIDR' ></th>
                             <th class="text-center RouletteSort" style="display: none;" data-field="id204" >
                                 <div class="row">
                                     <div class='col-md-3'>
@@ -302,6 +303,7 @@
                             <th class="text-center" data-field="date" data-field="id101" data-sortable="true" onclick="changePageSortR('ts', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Time<i class="fa {{ $page['OrderQuery'] == 'ts' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id102" data-sortable="true" onclick="changePageSortR('rlt_seq', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Game #<i class="fa {{ $page['OrderQuery'] == 'rlt_seq' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id103" data-sortable="true" onclick="changePageSortR('psid', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">PS ID<i class="fa {{ $page['OrderQuery'] == 'psid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id103" data-sortable="true" onclick="changePageSortR('seatid', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Seat ID<i class="fa {{ $page['OrderQuery'] == 'seatid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id104" data-sortable="true" onclick="changePageSortR('win_num', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Win<br />Number<i class="fa {{ $page['OrderQuery'] == 'win_num' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id105" data-sortable="true" onclick="changePageSortR('bet', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Total Bet<i class="fa {{ $page['OrderQuery'] == 'bet' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-align="right" data-field="id106" data-sortable="true" onclick="changePageSortR('win_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Total Win<i class="fa {{ $page['OrderQuery'] == 'win_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
@@ -317,6 +319,7 @@
                                     <td class="text-center"><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td class="text-right">{{ $history->rlt_seq }}</td>
                                     <td class="text-right">{{ $history->psid }} <!--{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}--></td>
+                                    <td class="text-right">{{ $history->seatid }}</td>
                                     <td class="text-right">{{ $history->win_num }}</td>
                                     <td class="text-right">{{ number_format($history->bet / 100, 2 ) }}</td>
                                     <td class="text-right">{{ number_format($history->win_val / 100, 2 ) }}</td>

@@ -176,16 +176,19 @@ Route::get('statistics/games', 'StatisticsController@games_statistics');
 Route::get('statistics/history', 'StatisticsController@history_statistics');
 Route::post('/ajax_statBingoHistory', 'StatisticsController@ajax_statBingoHistory');
 Route::post('/ajax_statBingoHistoryTickets', 'StatisticsController@ajax_statBingoHistoryTickets');
-Route::get('/exportHistory', 'StatisticsController@exportHistory_statistics')->name('export.history');
+Route::get('/export2excelBingo', 'StatisticsController@export2excelBingo')->name('export2excelBingo');
 
 Route::get('statistics/historyRoulette', 'StatisticsController@historyRoulette_statistics');
 Route::post('/ajax_statRouletteHistory', 'StatisticsController@ajax_statRouletteHistory');
 Route::post('/ajax_nextPrevRouletteHistory', 'StatisticsController@ajax_nextPrevRouletteHistory');
 Route::post('/ajax_sortRouletteHistory', 'StatisticsController@ajax_sortRouletteHistory');
+Route::get('/export2excelR', 'StatisticsController@export2excelR')->name('export2excelR');
+
 
 Route::get('statistics/historyBlackjack', 'StatisticsController@historyBlackjack');
 Route::post('/ajax_statBJHistory', 'StatisticsController@ajax_statBJHistory');
 Route::post('/ajax_nextPrevBJHistory', 'StatisticsController@ajax_nextPrevBJHistory');
 Route::post('/ajax_sortBJHistory', 'StatisticsController@ajax_sortBJHistory');
+Route::get('/export2excelBJ', 'StatisticsController@export2excelBJ')->name('export2excelBJ');
 
 });

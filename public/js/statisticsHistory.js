@@ -877,6 +877,7 @@ function ShowHide() {
         
     }
 };
+
  //end Bingo scripts  
  //start BlackJack scripts
 function changeRowsPerPageF(rowsPerPage) {
@@ -891,12 +892,13 @@ function changeRowsPerPageF(rowsPerPage) {
     ToGameTs = $('#datetimepicker7I').val();
     GameSort = $('#GameSort').val();
     TableSort = $('#TableSort').val();
-        PSID = $('#PSID').val();
-        FromGameBet = $('#FromGameBet').val();
-        ToGameBet = $('#ToGameBet').val();
-        FromGameWin = $('#FromGameWin').val();
-        ToGameWin = $('#ToGameWin').val();
-    
+    PSID = $('#PSID').val();
+    SeatID = $('#SeatID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+       
     
     
     pageHref = pageHref + 
@@ -909,6 +911,12 @@ function changeRowsPerPageF(rowsPerPage) {
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
             "&TableSort=" + TableSort + 
+            "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
+            "&FromGameBet=" + FromGameBet + 
+            "&ToGameBet=" + ToGameBet + 
+            "&FromGameWin=" + FromGameWin + 
+            "&ToGameWin=" + ToGameWin + 
             "')" 
     window.location.href = pageHref; 
 }
@@ -924,12 +932,13 @@ function changePageNum(PageNum1) {
     ToGameTs = $('#datetimepicker7I').val();
     GameSort = $('#GameSort').val();
     TableSort = $('#TableSort').val();
-        PSID = $('#PSID').val();
-        FromGameBet = $('#FromGameBet').val();
-        ToGameBet = $('#ToGameBet').val();
-        FromGameWin = $('#FromGameWin').val();
-        ToGameWin = $('#ToGameWin').val();
-    
+    PSID = $('#PSID').val();
+    SeatID = $('#SeatID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+       
     
     
     pageHref = pageHref + 
@@ -942,6 +951,12 @@ function changePageNum(PageNum1) {
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
             "&TableSort=" + TableSort + 
+            "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
+            "&FromGameBet=" + FromGameBet + 
+            "&ToGameBet=" + ToGameBet + 
+            "&FromGameWin=" + FromGameWin + 
+            "&ToGameWin=" + ToGameWin + 
             "')" 
     window.location.href = pageHref; 
 }
@@ -957,12 +972,13 @@ function changePageSort(pageOrderV, pageDescV) {
     ToGameTs = $('#datetimepicker7I').val();
     GameSort = $('#GameSort').val();
     TableSort = $('#TableSort').val();
-        PSID = $('#PSID').val();
-        FromGameBet = $('#FromGameBet').val();
-        ToGameBet = $('#ToGameBet').val();
-        FromGameWin = $('#FromGameWin').val();
-        ToGameWin = $('#ToGameWin').val();
-    
+    PSID = $('#PSID').val();
+    SeatID = $('#SeatID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+       
     
     
     pageHref = pageHref + 
@@ -975,6 +991,12 @@ function changePageSort(pageOrderV, pageDescV) {
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
             "&TableSort=" + TableSort + 
+            "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
+            "&FromGameBet=" + FromGameBet + 
+            "&ToGameBet=" + ToGameBet + 
+            "&FromGameWin=" + FromGameWin + 
+            "&ToGameWin=" + ToGameWin + 
             "')" 
     window.location.href = pageHref; 
 }
@@ -990,8 +1012,8 @@ function changePageSortMenu() {
     ToGameTs = $('#datetimepicker7I').val();
     GameSort = $('#GameSort').val();
     TableSort = $('#TableSort').val();
-    SeatID = $('#SeatID').val();
     PSID = $('#PSID').val();
+    SeatID = $('#SeatID').val();
     FromGameBet = $('#FromGameBet').val();
     ToGameBet = $('#ToGameBet').val();
     FromGameWin = $('#FromGameWin').val();
@@ -1033,6 +1055,7 @@ function cleanSortFunction() {
     $('#GameSort').val("");
     $('#TableSort').val("");
     $('#PSID').val("");
+    $('#SeatID').val("");
     $('#FromGameBet').val("");
     $('#ToGameBet').val("");
     $('#FromGameWin').val("");
@@ -1181,6 +1204,7 @@ function sortMenuBJ() {
     $('#GameSort').val("");
     $('#TableSort').val("");
     $('#PSID').val("");
+    $('#SeatID').val("");
     $('#FromGameBet').val("");
     $('#ToGameBet').val("");
     $('#FromGameWin').val("");
@@ -1246,6 +1270,48 @@ function changeModalWindow(boxAttr) {
         }
     });
 }
+function export2excelBJ() {
+    pageHref = $('#pageReload').attr('data-excel-url');
+    
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = $('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker6I').val();
+    ToGameTs = $('#datetimepicker7I').val();
+    GameSort = $('#GameSort').val();
+    TableSort = $('#TableSort').val();
+    PSID = $('#PSID').val();
+    SeatID = $('#SeatID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+       
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&TableSort=" + TableSort + 
+            "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
+            "&FromGameBet=" + FromGameBet + 
+            "&ToGameBet=" + ToGameBet + 
+            "&FromGameWin=" + FromGameWin + 
+            "&ToGameWin=" + ToGameWin + 
+            "')" 
+    window.location.href = pageHref; 
+}
+
  //end BlackJack scripts
  //start Roulete scripts
 function changeRowsPerPageFR(rowsPerPage) {
@@ -1260,6 +1326,7 @@ function changeRowsPerPageFR(rowsPerPage) {
     ToGameTs = $('#datetimepicker5I').val();
     GameSort = $('#GameSortR').val();
     PSID = $('#PSIDR').val();
+    SeatID = $('#SeatIDR').val();
     FromGameNum = $('#FromGameNumR').val();
     ToGameNum = $('#ToGameNumR').val();
     FromGameBet = $('#FromGameBetR').val();
@@ -1279,6 +1346,7 @@ function changeRowsPerPageFR(rowsPerPage) {
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
             "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
             "&FromGameNum=" + FromGameNum + 
             "&ToGameNum=" + ToGameNum + 
             "&FromGameBet=" + FromGameBet + 
@@ -1302,6 +1370,7 @@ function changePageNumR(PageNum1) {
     ToGameTs = $('#datetimepicker5I').val();
     GameSort = $('#GameSortR').val();
     PSID = $('#PSIDR').val();
+    SeatID = $('#SeatIDR').val();
     FromGameNum = $('#FromGameNumR').val();
     ToGameNum = $('#ToGameNumR').val();
     FromGameBet = $('#FromGameBetR').val();
@@ -1321,6 +1390,7 @@ function changePageNumR(PageNum1) {
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
             "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
             "&FromGameNum=" + FromGameNum + 
             "&ToGameNum=" + ToGameNum + 
             "&FromGameBet=" + FromGameBet + 
@@ -1344,6 +1414,7 @@ function changePageSortR(pageOrderV, pageDescV) {
     ToGameTs = $('#datetimepicker5I').val();
     GameSort = $('#GameSortR').val();
     PSID = $('#PSIDR').val();
+    SeatID = $('#SeatIDR').val();
     FromGameNum = $('#FromGameNumR').val();
     ToGameNum = $('#ToGameNumR').val();
     FromGameBet = $('#FromGameBetR').val();
@@ -1363,6 +1434,7 @@ function changePageSortR(pageOrderV, pageDescV) {
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
             "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
             "&FromGameNum=" + FromGameNum + 
             "&ToGameNum=" + ToGameNum + 
             "&FromGameBet=" + FromGameBet + 
@@ -1386,6 +1458,7 @@ function changePageSortMenuR() {
     ToGameTs = $('#datetimepicker5I').val();
     GameSort = $('#GameSortR').val();
     PSID = $('#PSIDR').val();
+    SeatID = $('#SeatIDR').val();
     FromGameNum = $('#FromGameNumR').val();
     ToGameNum = $('#ToGameNumR').val();
     FromGameBet = $('#FromGameBetR').val();
@@ -1405,6 +1478,7 @@ function changePageSortMenuR() {
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
             "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
             "&FromGameNum=" + FromGameNum + 
             "&ToGameNum=" + ToGameNum + 
             "&FromGameBet=" + FromGameBet + 
@@ -1428,6 +1502,7 @@ function cleanSortFunctionR() {
     $('#datetimepicker5I').val("");
     $('#GameSortR').val("");
     $('#PSIDR').val("");
+    $('#SeatIDR').val("");
     $('#FromGameNumR').val("");
     $('#ToGameNumR').val("");
     $('#FromGameBetR').val("");
@@ -1581,6 +1656,7 @@ function sortMenuR() {
         $('#datetimepicker5I').val("");
         $('#GameSortR').val("");
         $('#PSIDR').val("");
+        $('#SeatIDR').val("");
         $('#FromGameNumR').val("");
         $('#ToGameNumR').val("");
         $('#FromGameBetR').val("");
@@ -1656,6 +1732,50 @@ function changeModalWindowR(NextPrev) {
         
     });
 }    
+function export2excelR() {
+    pageHref = $('#pageReload').attr('data-excel-url');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = $('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    GameSort = $('#GameSortR').val();
+    PSID = $('#PSIDR').val();
+    SeatID = $('#SeatIDR').val();
+    FromGameNum = $('#FromGameNumR').val();
+    ToGameNum = $('#ToGameNumR').val();
+    FromGameBet = $('#FromGameBetR').val();
+    ToGameBet = $('#ToGameBetR').val();
+    FromGameWin = $('#FromGameWinR').val();
+    ToGameWin = $('#ToGameWinR').val();
+    FromGameJack = $('#FromGameJackR').val();
+    ToGameJack = $('#ToGameJackR').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&PSID=" + PSID + 
+            "&SeatID=" + SeatID + 
+            "&FromGameNum=" + FromGameNum + 
+            "&ToGameNum=" + ToGameNum + 
+            "&FromGameBet=" + FromGameBet + 
+            "&ToGameBet=" + ToGameBet + 
+            "&FromGameWin=" + FromGameWin + 
+            "&ToGameWin=" + ToGameWin + 
+            "&FromGameJack=" + FromGameJack + 
+            "&ToGameJack=" + ToGameJack + 
+            "')" 
+    window.location.href = pageHref; 
+}
 //end Roulete scripts
 
 
