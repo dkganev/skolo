@@ -30,7 +30,6 @@
                 <input placeholder="Mobile Number" class="form-control" type="text" name="casinogsm" id="casinogsm">
             </div>
 
-
           </form>
       </div>
       <div class="modal-footer">

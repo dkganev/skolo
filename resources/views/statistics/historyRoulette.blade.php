@@ -83,10 +83,7 @@
                                         <a href="javascript:void(0)">...</a>
                                     </li>
                                 @endif
-                                    
-                            
-                            
-                            
+
                                 @if ( $historys->currentPage() == 1 )
                                     @for ($i = 1; $i < 6; $i++)
                                         <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">

@@ -32,22 +32,22 @@
                     <tbody>
                     	@foreach($counters as $c)
                             <tr>
-                                <td>{{ $c->server_ps->psid }}</td>
-                                <td>{{ $c->server_ps->dallasid }}</td>
-                                <td>{{ $c->totalIn() }}</td>
-                                <td>{{ $c->totalOut() }}</td>
-                                <td>{{ $c->totalBet() }}</td>
-                                <td>{{ $c->totalWin() }}</td>
-                                <td>{{ $c->totalCredit() }}</td>
+                                <td class="text-center">{{ $c->server_ps->psid }}</td>
+                                <td class="text-center">{{ $c->server_ps->dallasid }}</td>
+                                <td class="text-center">{{ $c->totalIn() }}</td>
+                                <td class="text-center">{{ $c->totalOut() }}</td>
+                                <td class="text-center">{{ $c->totalBet() }}</td>
+                                <td class="text-center">{{ $c->totalWin() }}</td>
+                                <td class="text-center">{{ $c->totalCredit() }}</td>
                             </tr>
                         @endforeach
                         <tr class="danger">
                             <td class="text-center" colspan="2"><strong>TOTAL</strong></td>
-                            <td>{{ $totals['totalIn'] }}</td>
-                            <td>{{ $totals['totalOut'] }}</td>
-                            <td>{{ $totals['totalBet'] }}</td>
-                            <td>{{ $totals['totalWin'] }}</td>
-                            <td>{{ $totals['totalCredit'] }}</td>
+                            <td class="text-center">{{ $totals['totalIn'] }}</td>
+                            <td class="text-center">{{ $totals['totalOut'] }}</td>
+                            <td class="text-center">{{ $totals['totalBet'] }}</td>
+                            <td class="text-center">{{ $totals['totalWin'] }}</td>
+                            <td class="text-center">{{ $totals['totalCredit'] }}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -28,6 +28,13 @@ class CasinoController extends Controller
         return view('casino.events', ['errors' => $errors]);
     }
 
+    public function events_index()
+    {
+        $errors = PsErrors::orderBy('time', 'asc')->paginate(10);
+        return $errors;
+    }
+
+
     public function getCasino()
     {
         // get current casino and display its terminals
