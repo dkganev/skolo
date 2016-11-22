@@ -27,7 +27,7 @@
                     data-pagination="true"
                     data-side-pagination="client"
                     data-page-list="[3, 6, 9]"
-                  >
+                >
                     <thead class="w3-blue-grey">
                         <tr>
                             <th data-sortable="true">ID Type</th>
