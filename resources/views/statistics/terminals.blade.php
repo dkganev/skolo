@@ -2,13 +2,17 @@
 <div class="row">
     <div class="col-md-8">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+            <div class="panel-heading" id="socketConect">
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 25%;">
                     Machine Statistics
                 </h2>
 
                 <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                </a>
+                <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+                <a  class="btn btn-warning  pull-right" onclick="socketConect();">
+                    Online
                 </a>
             </div>
                 <div class="panel-body" >
@@ -59,3 +63,5 @@
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
+<script src="/js/socket.io/socket.io.js"></script>
+<script src="/js/socket.io/statisticTerminals.js"></script>

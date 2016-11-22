@@ -38,13 +38,13 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li class="{{$page['rowsPerPage'] == 20 ? 'active' : '' }}">
-                                    <a onclick="changeRowsPerPageF(20)">20</a>
+                                    <a onclick="changeRowsPerPageF(20);">20</a>
                                 </li>
                                 <li class="{{$page['rowsPerPage'] == 50 ? 'active' : '' }}">
-                                    <a onclick="changeRowsPerPageF(50)">50</a>
+                                    <a onclick="changeRowsPerPageF(50);">50</a>
                                 </li>
                                 <li class="{{$page['rowsPerPage'] == 100 ? 'active' : '' }}">
-                                    <a onclick="changeRowsPerPageF(100)">100</a>
+                                    <a onclick="changeRowsPerPageF(100);">100</a>
                                 </li>
                             </ul>
                         </span>
