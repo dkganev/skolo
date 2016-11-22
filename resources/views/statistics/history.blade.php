@@ -764,7 +764,9 @@ if (pageSortMenuOpen == 1){
 }else{
     sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
 }       
-    
+
+socket.disconnect();
+sockStatus = 0;
 /*var ShowHideI = 0;
 $('#show-column, #hide-column').click(function () {
     if (ShowHideI == 0) {

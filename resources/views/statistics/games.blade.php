@@ -55,3 +55,8 @@
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
+
+<script>
+    socket.disconnect();
+    sockStatus = 0;
+</script>

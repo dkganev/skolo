@@ -1,4 +1,4 @@
-@include('modals.billtype-modals')
+@include('modals.settings.billtype-modals')
 
 <div class="container">
 <div class="row">
