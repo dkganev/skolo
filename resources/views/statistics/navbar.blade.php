@@ -5,7 +5,7 @@
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
               <li><a href="javascript:ajaxLoad('{{url('statistics/terminals')}}')">Machine Statistics</a></li>
 
-              @hasanyrole('Casino Admin', 'Owner', 'Super User')
+              @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
               <li><a href="javascript:ajaxLoad('{{url('statistics/games')}}')">Game Statistics</a></li>
 
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Game History</a></li>

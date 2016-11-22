@@ -50,7 +50,7 @@ class TerminalsController extends Controller
     {
         $this->validate($request, [
             'psid' => 'required|unique:server_ps',
-            'dallasid' => 'required|unique:server_ps',
+            'dallasid' => 'required|unique:server_ps'
         ]);
         
         // Initialize current casino

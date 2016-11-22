@@ -35,13 +35,19 @@
             <hr>
 
             <div class="form-group" style="width:270px; display: inline-block;">
-                <label for="psid">PS ID:</label><br>
+                <label class="control-label" for="psid">PS ID:</label><br>
                 <input class="form-control" type="text" name="psid" id="psid" placeholder="Unique ID">
+                <span class="help-block">
+                    <strong id="psid"></strong>
+                </span>
             </div>
 
             <div class="form-group" style="width:270px; display: inline-block;">
                 <label for="dallasid">Machine ID:</label><br>
                 <input class="form-control" type="text" name="dallasid" id="dallasid" placeholder="Dallas ID">
+                <span class="help-block">
+                    <strong id="dallasid"></strong>
+                </span>
             </div>
             
             <hr>
@@ -108,7 +114,6 @@
     $.ajax({
         method: 'POST',
         url: add_machine,
-        async: true,
         data: { 
             casinoid: $('#addMachineModal select[name="casinoid"]').val() ,
             dallasid: $('#addMachineModal input[name="dallasid"]').val() ,
@@ -120,7 +125,17 @@
             games: $('#addMachineModal select[name="games[]"]').val() ,
             default_game: $('#addMachineModal select[name="default_game"]').val() ,
             _token: token 
-        } 
+        },
+        success: function(response) {
+          //
+        },
+        error: function(error) {
+            console.log(error.responseJSON)
+            $.each(error.responseJSON, function(key, value) {
+                $('strong#' + key).html(value);
+                $('strong#' + key).closest('.form-group').addClass('has-error');
+            });
+        }
     }).done(function () {
           $('#addMachineModal').modal('hide');
           $('body').removeClass('modal-open');

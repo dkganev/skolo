@@ -15,7 +15,7 @@ class CasinosController extends Controller
 	public function getCasinos()
 	{
 		$casinos = Casinos::all();
-		return view('settings.casinos', ['casinos' => $casinos]);
+		return view('settings.casinos', compact('casinos'));
 	}
 
 	public function addCasino(Request $request)
@@ -38,18 +38,23 @@ class CasinosController extends Controller
 		$casino->casinoname = $request['casinoname'];
 		$casino->casinoaddr = $request['casinoaddr'];
 		$casino->casinogsm = $request['casinogsm'];
-		$casino->update();
+		$status = $casino->update();
 
-		$msg = 'Casino updated successfully';
-		return $request->session()->flash('alert-success', $msg);
+		if(!$status) {
+			$reponse = [ $msg => 'Query Failed!' ];
+			return response()->json($reponse, 403);
+		}
+
+		$reponse = [ $msg => 'Casino updated successfully' ];
+		return reponse()->json($reponse, 200);
 	}
 
 	public function exportCasinos()
 	{
 		$export = Casinos::all();
 
-		Excel::create('Casinos Data', function($excel) use($export){
-			$excel->sheet('Casinos', function($sheet) use($export){
+		Excel::create('Casinos Data', function($excel) use($export) {
+			$excel->sheet('Casinos', function($sheet) use($export) {
                 
                 $sheet->fromArray($export);
                 $sheet->freezeFirstRow();

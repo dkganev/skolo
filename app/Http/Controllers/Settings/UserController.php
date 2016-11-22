@@ -36,12 +36,21 @@ class UserController extends Controller
 
     public function edit(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|min:5|max:15',
+            'phone' => 'required|min:8|max:15'
+        ]);
+
         $user = User::find($request->id);   
         $user->name = $request->name;
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
         $user->phone = $request->phone;
-        $user->password = bcrypt($request->password);
+
+        if(!empty($request->password)) {
+            $user->password = bcrypt($request->password);
+        }
+
         $user->syncRoles($request->role);
         $user->update();
 

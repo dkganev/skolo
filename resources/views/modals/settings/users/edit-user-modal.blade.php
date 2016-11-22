@@ -15,6 +15,9 @@
                         <div class="form-group">
                             <label>Username:</label><br>
                             <input id="name-{{ $user->id }}" value="{{ $user->name }}" class="form-control" type="text" id="username" name="username" placeholder="Username">
+                            <span class="help-block">
+                                <strong id="name{{ $user->id }}"></strong>
+                            </span>
                         </div>
 
                         <div class="form-group ">
@@ -30,6 +33,10 @@
                         <div class="form-group">
                             <label>Phone Number: </label><br>
                             <input id="phone-{{ $user->id }}" value="{{ $user->phone }}" class="form-control" type="text" name="phone" placeholder="Phone Number">
+
+                            <span class="help-block">
+                                <strong id="phone{{ $user->id }}"></strong>
+                            </span>
                         </div>
                     </div>
 
@@ -81,7 +88,7 @@ $('#edit-user-{{ $user->id }}').on('click', function(event) {
           firstname: $('#firstname-{{ $user->id }}').val(),
           lastname: $('#lastname-{{ $user->id }}').val(),
           phone: $('#phone-{{ $user->id }}').val(),
-          passowrd: $('#password-{{ $user->id }}').val(),
+          password: $('#password-{{ $user->id }}').val(),
           role: $('#role-{{ $user->id }}').val(),
           _token: "{{ Session::token() }}",
         },
@@ -89,7 +96,10 @@ $('#edit-user-{{ $user->id }}').on('click', function(event) {
           //
         },
         error: function(error) {
-          //
+            $.each(error.responseJSON, function(key, value) {
+                $('strong#' + key + {{ $user->id }}).html(value);
+                $('strong#' + key + {{ $user->id }}).closest('.form-group').addClass('has-error');
+            });
         }
     }).done(function() {
         $('#editUserModal-{{ $user->id }}').modal('hide');

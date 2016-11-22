@@ -80,7 +80,7 @@ $('button#add-user').on('click', function(event) {
             //
         },
         error: function(response) {
-            //
+            console.log(response)
         }
     }).done(function () {
         $('#addUserModal').modal('hide');
