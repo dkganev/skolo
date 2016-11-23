@@ -1,5 +1,8 @@
 var $messages = $('#inpMassage');
-var socket = io.connect('http://10.0.0.199:3000/counters');
+var pageHrefSocket = $('#MachineStatistics').attr('data-url') + ":3000/counters";
+//console.log (pageHrefSocket);
+var socket = io.connect(pageHrefSocket);
+//var socket = io.connect('http://10.0.0.199:3000/counters');
 //var socket = io('/my-namespace');
 socket.disconnect();
 var sockStatus = 0;

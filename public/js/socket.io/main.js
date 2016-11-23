@@ -1,13 +1,9 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-//alert ("test");
 var $messages = $('#inpMassage');
-var socket = io('http://10.0.0.199:3000');
+var pageHrefSocket = $('#CasinoCasino').attr('data-url') + ":3000";
+//console.log (pageHrefSocket);
+var socket = io(pageHrefSocket);
+
+//var socket = io('http://10.0.0.199:3000');
 
   socket.on('news', function (data) {
     console.log ("test222");

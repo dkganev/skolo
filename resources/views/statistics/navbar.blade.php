@@ -3,7 +3,7 @@
         <div style="padding-top:6px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
-              <li><a id="MachineStatistics" href="javascript:ajaxLoad('{{url('statistics/terminals')}}')">Machine Statistics</a></li>
+              <li><a id="MachineStatistics" href="javascript:ajaxLoad('{{url('statistics/terminals')}}')" data-url="{{substr(url(''),0,-5)}}">Machine Statistics</a></li>
 
               @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
               <li><a href="javascript:ajaxLoad('{{url('statistics/games')}}')">Game Statistics</a></li>

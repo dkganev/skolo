@@ -5,7 +5,7 @@
               <!-- Secondary Navigation -->
               <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
                 @hasanyrole(['Owner', 'Super User'])
-                <li><a href="javascript:ajaxLoad('{{url('settings/terminals')}}')">Terminals</a></li>
+                <li><a id="TerminalsSettings" href="javascript:ajaxLoad('{{url('settings/terminals')}}')" data-url="{{substr(url(''),0,-5)}}">Terminals</a></li>
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/gameservers')}}')">Game Servers</a></li>
         
