@@ -35,23 +35,23 @@
                     </thead>
                     <tbody>
                     	@foreach($counters as $c)
-                            <tr>
+                            <tr id="tr{{$c->psid}}">
                                 <td>{{ $c->server_ps->psid }}</td>
                                 <td>{{ $c->server_ps->dallasid }}</td>
-                                <td>{{ $c->totalIn() }}</td>
-                                <td>{{ $c->totalOut() }}</td>
-                                <td>{{ $c->totalBet() }}</td>
-                                <td>{{ $c->totalWin() }}</td>
-                                <td>{{ $c->totalCredit() }}</td>
+                                <td id="TotalIn{{$c->psid}}">{{ $c->totalIn() }}</td>
+                                <td id="TotalOut{{$c->psid}}">{{ $c->totalOut() }}</td>
+                                <td id="TotalBet{{$c->psid}}">{{ $c->totalBet() }}</td>
+                                <td id="TotalWin{{$c->psid}}">{{ $c->totalWin() }}</td>
+                                <td id="TotalCredit{{$c->psid}}">{{ $c->totalCredit() }}</td>
                             </tr>
                         @endforeach
-                        <tr class="danger">
+                        <tr class="danger" >
                             <td class="text-center" colspan="2"><strong>TOTAL</strong></td>
-                            <td>{{ $totals['totalIn'] }}</td>
-                            <td>{{ $totals['totalOut'] }}</td>
-                            <td>{{ $totals['totalBet'] }}</td>
-                            <td>{{ $totals['totalWin'] }}</td>
-                            <td>{{ $totals['totalCredit'] }}</td>
+                            <td id="TotalIn">{{ $totals['totalIn'] }}</td>
+                            <td id="TotalOut">{{ $totals['totalOut'] }}</td>
+                            <td id="TotalBet">{{ $totals['totalBet'] }}</td>
+                            <td id="TotalWin">{{ $totals['totalWin'] }}</td>
+                            <td id="TotalCredit">{{ $totals['totalCredit'] }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -63,5 +63,16 @@
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
-<script src="/js/socket.io/socket.io.js"></script>
-<script src="/js/socket.io/statisticTerminals.js"></script>
+<script>
+    if (sockStatus == 1) {
+        socket.connect();
+        //sockStatus = 1;
+        console.log ("Conect"); //socketConect  background-color: #f5f5f5;
+        $("#socketConect").css({'background-image': 'linear-gradient(to bottom,#5cb85c 0%,#419641 100%)'});
+    }else{
+        socket.disconnect();
+        //sockStatus = 0;
+        console.log ("Disconect");
+        $("#socketConect").css({'background-image': 'linear-gradient(to bottom,#f5f5f5 0%,#e8e8e8 100%)'});
+    }
+</script>
