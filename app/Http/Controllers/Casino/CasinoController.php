@@ -34,6 +34,17 @@ class CasinoController extends Controller
         return $errors;
     }
 
+    public function getList()
+    {
+        Session::put('product_search', Input::has('ok') ? Input::get('search') : (Session::has('product_search') ? Session::get('product_search') : ''));
+        Session::put('product_field', Input::has('field') ? Input::get('field') : (Session::has('product_field') ? Session::get('product_field') : 'name'));
+        Session::put('product_sort', Input::has('sort') ? Input::get('sort') : (Session::has('product_sort') ? Session::get('product_sort') : 'asc'));
+
+        $products = Product::where('name', 'like', '%' . Session::get('product_search') . '%')
+            ->orderBy(Session::get('product_field'), Session::get('product_sort'))->paginate(8);
+            
+        return view('product.list', ['products' => $products]);
+    }
 
     public function getCasino()
     {

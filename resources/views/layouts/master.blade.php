@@ -69,6 +69,7 @@
         $.ajax({
             type: "GET",
             url: filename,
+            contentType: false,
             success: function (data) {
                 // window.location.hash = filename;
                 $("#" + content).css('display','none').html(data).hide().fadeIn(600);
