@@ -23,6 +23,7 @@ Route::post('/ajax_casinoBox', 'Casino\AjaxCasinoController@casinoBox');
 Route::post('/ajax_NewGame', 'Casino\AjaxCasinoController@NewGame');
 Route::get('/casino/casino', 'Casino\CasinoController@getCasino');
 Route::get('/casino/events', 'Casino\CasinoController@getEvents'); // CASINO EVENTS
+Route::get('/api/casino/events', 'Casino\CasinoController@events_index');
 
 /**
  * CASINO / BINGO PLAYLIST

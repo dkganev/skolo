@@ -31,10 +31,6 @@
   </div>
 </div>
 </div>
-<script>
-    var token = '{{ Session::token() }}';
-    var add_billtype = '{{ url('/settings/addBill') }}';
-</script>
 <!-- End Add Bill Type Modal -->
 
 <!-- Update Bill Type Modal -->
@@ -61,6 +57,7 @@
             </div>
             <hr>
         </form>
+
       </div>
 
       <div class="modal-footer">
@@ -71,8 +68,56 @@
   </div>
 </div>
 </div>
-<script>
-    var token = '{{ Session::token() }}';
-    var update_billtype = '{{ url('/settings/updateBill') }}';
-</script>
 <!-- End Update Bill Type Modal -->
+<script>
+$(function() {
+    $('#add-bill').on('click', function() {
+        var token = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            method: 'POST',
+            url: '/settings/addBill',
+            data: { 
+                idtype: $('#addBillModal input[name="idtype"]').val() ,
+                billname: $('#addBillModal input[name="billname"]').val() ,
+                _token: token
+            }
+        })
+        .done(function (msg) {
+            console.log(msg['message']);
+            $('#addBillModal').modal('hide');
+            window.location.reload();
+        });
+    });
+
+    $('#updateBillModal').on('show.bs.modal', function(event) {
+        //get data-* attributes of the clicked element
+        var idType = $(event.relatedTarget).data('idtype');
+        var billName = $(event.relatedTarget).data('billname');
+
+        //populate the textbox
+        $(event.currentTarget).find('input[name="idtype"]').val(idType);
+        $(event.currentTarget).find('input[name="billname"]').val(billName);
+    });
+
+    $('#update-bill').on('click', function() {
+        var token = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            method: 'POST',
+            url: '/settings/updateBill',
+            data: { 
+                idtype: $('#updateBillModal input[name="idtype"]').val() ,
+                billname: $('#updateBillModal input[name="billname"]').val() ,
+                _token: token
+            } 
+        })
+        .done(function (msg) {
+            console.log(msg['message']);
+            $('#updateBillModal').modal('hide');
+            window.location.reload();
+        });
+    });
+
+}); // <== End Document Ready
+</script>

@@ -158,7 +158,7 @@ $('input[type="checkbox"]').change(function(){
     }
     @-webkit-keyframes flash {
         from { background: #a5f783; }
-        to  background: none; }
+        to  { background: none; }
     }
     @keyframes flash {
         0% { background: green; }

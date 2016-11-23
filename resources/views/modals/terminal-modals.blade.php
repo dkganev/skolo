@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-group" style="width:270px; display: inline-block;">
-                <label for="dallasid">Machine ID:</label><br>
+                <label class="control-label" for="dallasid">Machine ID:</label><br>
                 <input class="form-control" type="text" name="dallasid" id="dallasid" placeholder="Dallas ID">
                 <span class="help-block">
                     <strong id="dallasid"></strong>

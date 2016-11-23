@@ -35,6 +35,7 @@
                     </thead>
                     <tbody>
                     	@foreach($counters as $c)
+
                             <tr id="tr{{$c->psid}}">
                                 <td>{{ $c->server_ps->psid }}</td>
                                 <td>{{ $c->server_ps->dallasid }}</td>
@@ -43,6 +44,7 @@
                                 <td id="TotalBet{{$c->psid}}">{{ $c->totalBet() }}</td>
                                 <td id="TotalWin{{$c->psid}}">{{ $c->totalWin() }}</td>
                                 <td id="TotalCredit{{$c->psid}}">{{ $c->totalCredit() }}</td>
+
                             </tr>
                         @endforeach
                         <tr class="danger" >

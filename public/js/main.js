@@ -27,7 +27,7 @@ $(".CasinoName").click(function() {
        type:'POST',
        url:'ajax_casino',
        dataType: "json",
-       data:{'newCasino': newCasino , _token: token},
+       data: { 'newCasino': newCasino , _token: token},
        success:function(data){
           if (data.success == "success"){
               $("#CasinoMenu").text( data.casinoname);

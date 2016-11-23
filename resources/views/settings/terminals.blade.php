@@ -77,7 +77,7 @@
                                     data-games="{{ $ps->ps_settings->subscribed }}"
                                     class="btn btn-primary btn-xs"
                                 >
-                                Edit
+                                    Edit
                                 </a>
                                 <a  href="" role="button" data-toggle="modal"
                                     data-toggle="modal"
