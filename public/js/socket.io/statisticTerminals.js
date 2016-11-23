@@ -6,7 +6,8 @@ var sockStatus = 0;
 
 function socketConect() {
     if (sockStatus == 0) {
-        pageHref ='javascript:ajaxLoad("http://10.0.0.156:8020/statistics/terminals")';
+        //pageHref ='javascript:ajaxLoad("http://10.0.0.156:8020/statistics/terminals")';
+        pageHref = $('#MachineStatistics').attr('href');
         //socket.connect();
         sockStatus = 1;
         //console.log ("Conect"); //socketConect  background-color: #f5f5f5;
