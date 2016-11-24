@@ -24,7 +24,7 @@
 <!-- Bingo Main Conf Panel -->
 <div class="container">
 <div class="row">
-<div class="col-md-11">
+<div class="col-md-10">
 
 <!-- SETTINGS -->
 {{-- <div class="well" style="background: #ffffff;"> --}}
@@ -169,14 +169,14 @@
 			</div><!-- End Col -->
 
 		<!-- Max Balls Default -->
-		<h3 class="text-center" 
-			style="margin: 0; position: relative; left: 12px; color: #474747; font-family: sans-serif; font-size: 21px;"
+		<h3  
+			style="margin: 0; padding:0 ;color: #474747; font-family: sans-serif; font-size: 21px;"
 		>
 			Max Ball Defaults
 		</h3>
-		<hr style="margin-top: 7px; width: 310px; position: relative; left: 180px;">
+		<hr style="margin-top: 7px; width: 310px;padding: 0;">
 
-		<div class="col-lg-2 pull-right">
+		<div class="col-lg-2">
 		    <div class="form-group">
 		    	<label style="color: #474747">Max Ball Num:</label><br>
 				<div class="input-group">
@@ -204,7 +204,7 @@
 		</div><!-- End Col -->
 
 		<!-- VISIBLE -->
-		<div class="col-lg-2 pull-right">
+		<div class="col-lg-2">
 			<div class="form-group">
 				<label style="color: #474747">Bonus Line M.B.:</label><br>
 				<div class="input-group">

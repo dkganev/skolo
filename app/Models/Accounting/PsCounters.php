@@ -31,29 +31,26 @@ class PsCounters extends Model
     public function getCounters()
     {
         $counters = $this->counter;
-
         // Checks for prefix in postgres arrays 
         $type = strpos($counters, '[0:256]');
-
         // If there is prefix, remove it
         if($type !== false)
         {
             $arr = explode('=', $counters);
             $counters = $arr[1];
         }
-
         //Parse psql to php array
         return self::accessPgArray($counters);
     }
 
-    // Total In
+    // Total In  - (0x000b + 0x0017 + 0x0015)
+    //                11   +  23    + 21
     public function totalIn()
     {
         $counters = $this->getCounters();
         $sum = 0;
-
-        // Counters Indexes // Keys are -1 indexed
-        $keys = [199, 20, 12];
+        // Counters Indexes 
+        $keys = [11, 23, 21];
         foreach ($keys as $key)
         {
           $sum += $counters[$key];
@@ -61,15 +58,15 @@ class PsCounters extends Model
 
         return $sum;
     }
-
-    // Total Out
+    
+    // Total Out - (0x0002 + 0x0003 + 0x0016 + 0x0018) 
+    //              2      +   3    +  22    +  24
     public function totalOut()
     {
         $counters = $this->getCounters();
         $sum = 0;
-
-        // Counters Indexes
-        $keys = [202, 21, 23];
+        // Counters Indexes 
+        $keys = [2, 3, 22, 24];
         foreach ($keys as $key)
         {
           $sum += $counters[$key];
@@ -84,14 +81,14 @@ class PsCounters extends Model
         return $this->getCounters()[0];
     }
 
-    // Total Win
+    // Total Win - 0x0022
+    // Total Win - 34
     public function totalWin()
     {
         $counters = $this->getCounters();
         $sum = 0;
-
         // Counters Indexes
-        $keys = [27, 28, 29];
+        $keys = [34];
         foreach ($keys as $key)
         {
           $sum += $counters[$key];
@@ -100,12 +97,19 @@ class PsCounters extends Model
         return $sum;
     }
 
-    // Total Credit
+    // Total Credit - index 12
     public function totalCredit()
     {
-        $totalCredit = $this->totalIn() + $this->totalWin() - $this->totalOut() - $this->totalBet();
+        $counters = $this->getCounters();
+        $sum = 0;
+        // Counters Indexes
+        $keys = [12];
+        foreach ($keys as $key)
+        {
+          $sum += $counters[$key];
+        }
 
-        return abs($totalCredit);
+        return $sum;
     }
 
 }
