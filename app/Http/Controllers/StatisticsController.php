@@ -60,11 +60,112 @@ class StatisticsController extends Controller
         return view('statistics.terminals', ['counters' => $counters , 'totals' => $totals]);
     }
 
+    public function export2excelTerminalsStatistics()
+    {
+        $counters = PsCounters::orderBy('psid', 'asc')->get();
+
+        $totalIn  = 0;
+        $totalOut = 0;
+        $totalBet = 0;
+        $totalWin = 0;
+        $totalCredit = 0;
+
+        foreach($counters as $counter)
+        {
+            $totalIn += $counter->totalIn();
+            $totalOut += $counter->totalOut();
+            $totalBet += $counter->totalBet();
+            $totalWin += $counter->totalWin();
+            $totalCredit += $counter->totalCredit();
+        }
+
+        $totals = [
+            'totalIn' => $totalIn,
+            'totalOut' => $totalOut, 
+            'totalBet' => $totalBet, 
+            'totalWin' => $totalWin, 
+            'totalCredit' => $totalCredit
+        ];
+        $export = array();
+        foreach ($counters as $key => $counter) {
+            $export[$key] = array(
+                'PS ID' => $counter->psid, 
+                'Dallas ID' => $counter->server_ps->dallasid,
+                'Total In' =>  $counter->totalIn(), 
+                'Total Out' => $counter->totalOut(),
+                'Total Bet' => $counter->totalBet(),
+                'Total Win' => $counter->totalWin(),
+                'Total Credit' => $counter->totalCredit()
+            );
+            
+        }
+            $export[$key + 1] = array(
+                'PS ID' => "", 
+                'Dallas ID' => "Total",
+                'Total In' =>  $totals['totalIn'], 
+                'Total Out' => $totals['totalOut'],
+                'Total Bet' => $totals['totalBet'],
+                'Total Win' => $totals['totalWin'],
+                'Total Credit' => $totals['totalCredit']
+            );
+        //$export = $historys = BingoHistory::orderBy('tstamp', 'desc')->get();
+
+        Excel::create('Terminals Data', function($excel) use($export){
+            $excel->sheet('Terminals', function($sheet) use($export){
+                $sheet->fromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
+
+        //return view('statistics.terminals', ['counters' => $counters , 'totals' => $totals]);
+    }
+
     public function games_statistics()
     {
         $games = Games::orderBy('gameid', 'asc')->get();
 
         return view('statistics.games', [ 'games' => $games]);
+    }
+
+    public function export2excelGamesStatistics()
+    {
+        $games = Games::orderBy('gameid', 'asc')->get();
+        $export = array();
+        foreach ($games as $key => $game) {
+            $export[$key] = array(
+                'ID' => $game->gameid, 
+                'Description' => $game->description,
+                'BET' =>  $game->counters_bet, 
+                'WIN' => $game->counters_win,
+                'JP' => $game->counters_jp,
+                'GAMES' => $game->counters_games,
+                'JP HITS' => $game->counter_jp_hits
+            );
+            
+        }
+        
+        Excel::create('Games Data', function($excel) use($export){
+            $excel->sheet('Games', function($sheet) use($export){
+                $sheet->fromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
+
+        //return view('statistics.games', [ 'games' => $games]);
     }
 
     // start bingo
@@ -872,8 +973,8 @@ class StatisticsController extends Controller
 
         //$export = $historys = BingoHistory::orderBy('tstamp', 'desc')->get();
 
-        Excel::create('Terminals Data', function($excel) use($export){
-            $excel->sheet('Terminals', function($sheet) use($export){
+        Excel::create('Bingo Data', function($excel) use($export){
+            $excel->sheet('Bingo', function($sheet) use($export){
                 $sheet->fromArray($export);
                 $sheet->freezeFirstRow();
                 $sheet->setFontFamily('Liberation Sans');
@@ -1505,8 +1606,8 @@ class StatisticsController extends Controller
         }
         //$export = $historys = BingoHistory::orderBy('tstamp', 'desc')->get();
 
-        Excel::create('Terminals Data', function($excel) use($export){
-            $excel->sheet('Terminals', function($sheet) use($export){
+        Excel::create('Ruolette Data', function($excel) use($export){
+            $excel->sheet('Ruolette', function($sheet) use($export){
                 $sheet->fromArray($export);
                 $sheet->freezeFirstRow();
                 $sheet->setFontFamily('Liberation Sans');
@@ -2285,8 +2386,8 @@ class StatisticsController extends Controller
             
         }
 
-        Excel::create('Terminals Data', function($excel) use($export){
-            $excel->sheet('Terminals', function($sheet) use($export){
+        Excel::create('BJ Data', function($excel) use($export){
+            $excel->sheet('BJ', function($sheet) use($export){
                 $sheet->fromArray($export);
                 $sheet->freezeFirstRow();
                 $sheet->setFontFamily('Liberation Sans');

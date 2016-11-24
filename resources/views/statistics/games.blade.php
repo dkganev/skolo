@@ -2,15 +2,19 @@
 
 <div class="row" >
     <div class="col-md-8">
-        <div class="panel panel-default" >
+        <div class="panel panel-default" id="panelGameContend">
             <div class="panel-heading">
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 25%;">
                     Game Statistics
                 </h2>
-                <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
+                <a href="{{ route('export2excelGamesStatistics') }}" class="btn btn-warning  pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                 </a>
-            </div>
+                <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+                    <a  class="btn btn-warning  pull-right" onclick="ExportToPNGGameTable();">
+                        Export to PNG
+                    </a>
+                </div>
                 <div class="panel-body" >
                     <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
                             data-toggle="table"

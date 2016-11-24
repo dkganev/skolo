@@ -169,8 +169,12 @@ Route::post('/localize', 'LocalizationController@index');
  * STATISTICS
  */
 Route::get('statistics', 'StatisticsController@index');
+
 Route::get('statistics/terminals', 'StatisticsController@terminals_statistics');
+Route::get('export2excelTerminalsStatistics', 'StatisticsController@export2excelTerminalsStatistics')->name('export2excelTerminalsStatistics');
+
 Route::get('statistics/games', 'StatisticsController@games_statistics');
+Route::get('export2excelGamesStatistics', 'StatisticsController@export2excelGamesStatistics')->name('export2excelGamesStatistics');
 
 //Route::get('statistics/{id}', 'StatisticsController@navbar');  
 

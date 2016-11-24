@@ -1,14 +1,18 @@
 <div class="container">
 <div class="row">
     <div class="col-md-8">
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="panelTerminatsContend">
             <div class="panel-heading" id="socketConect">
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 25%;">
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 15%;">
                     Machine Statistics
                 </h2>
 
-                <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
+                <a href="{{ route('export2excelTerminalsStatistics') }}" class="btn btn-warning  pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                </a>
+                <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+                <a  class="btn btn-warning  pull-right" onclick="ExportToPNGTerminatsTable();">
+                    Export to PNG
                 </a>
                 <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                 <a  class="btn btn-warning  pull-right" onclick="socketConect();">
