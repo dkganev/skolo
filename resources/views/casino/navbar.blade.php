@@ -2,7 +2,7 @@
     <div class="col-md-12 "> 
         <ul class="breadcrumb">
             <li>
-                <a id="CasinoCasino" href="javascript:ajaxLoad('{{url('casino/casino')}}')">
+                <a id="CasinoCasino" href="javascript:ajaxLoad('{{url('casino/casino')}}')" data-url="{{substr(url(''),0,-5)}}">
                     Preview
                 </a>
             </li>
