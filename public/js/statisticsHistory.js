@@ -877,6 +877,137 @@ function ShowHide() {
         
     }
 };
+function export2excelBingo() {
+    pageHref = $('#pageReload').attr('data-excel-url');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = $('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    if ($('#checkbox1').is(':checked')){ tableTh1 = 1; } else { tableTh1 = 0; };
+    if ($('#checkbox2').is(':checked')){ tableTh2 = 1; } else { tableTh2 = 0; };
+    if ($('#checkbox3').is(':checked')){ tableTh3 = 1; } else { tableTh3 = 0; };
+    if ($('#checkbox4').is(':checked')){ tableTh4 = 1; } else { tableTh4 = 0; };
+    if ($('#checkbox5').is(':checked')){ tableTh5 = 1; } else { tableTh5 = 0; };
+    if ($('#checkboxLine').is(':checked')){ tableLine = 1; } else { tableLine = 0; };
+    if ($('#checkboxBingo').is(':checked')){ tableBingo = 1; } else { tableBingo = 0; };
+    if ($('#checkboxMyBonus').is(':checked')){ tableMyBonus = 1; } else { tableMyBonus = 0; };
+    if ($('#checkboxBonusLine').is(':checked')){ tableBonusLine = 1; } else { tableBonusLine = 0; };
+    if ($('#checkboxBonusBingo').is(':checked')){ tableBonusBingo = 1; } else { tableBonusBingo = 0; };
+    if ($('#checkboxJackpotLine').is(':checked')){ tableJackpotLine = 1; } else { tableJackpotLine = 0; };
+    if ($('#checkboxJackpotBingo').is(':checked')){ tableJackpotBingo = 1; } else { tableJackpotBingo = 0; };
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker2I').val();
+    ToGameTs = $('#datetimepicker3I').val();
+    GameSort = $('#GameSort').val();
+    FromTicketCost = $('#FromTicketCost').val();
+    ToTicketCost = $('#ToTicketCost').val();
+    FromPlayers = $('#FromPlayers').val();
+    ToPlayers = $('#ToPlayers').val();
+    FromTickets = $('#FromTickets').val();
+    ToTickets = $('#ToTickets').val();
+    FromLine = $('#FromLine').val();
+    ToLine = $('#ToLine').val();
+    FromBingo = $('#FromBingo').val();
+    ToBingo = $('#ToBingo').val();
+    FromMybonus = $('#FromMybonus').val();
+    ToMybonus = $('#ToMybonus').val();
+    FromBonusLine = $('#FromBonusLine').val();
+    ToBonusLine = $('#ToBonusLine').val();
+    FromBonusBingo = $('#FromBonusBingo').val();
+    ToBonusBingo = $('#ToBonusBingo').val();
+    FromJackpotLine = $('#FromJackpotLine').val();
+    ToJackpotLine = $('#ToJackpotLine').val();
+    FromJackpotBingo = $('#FromJackpotBingo').val();
+    ToJackpotBingo = $('#ToJackpotBingo').val();
+    FromLineVal = $('#FromLineVal').val();
+    ToLineVal = $('#ToLineVal').val();
+    FromBingoVal = $('#FromBingoVal').val();
+    ToBingoVal = $('#ToBingoVal').val();
+    FromMybonusVal = $('#FromMybonusVal').val();
+    ToMybonusVal = $('#ToMybonusVal').val();
+    FromBonusLineVal = $('#FromBonusLineVal').val();
+    ToBonusLineVal = $('#ToBonusLineVal').val();
+    FromBonusBingoVal = $('#FromBonusBingoVal').val();
+    ToBonusBingoVal = $('#ToBonusBingoVal').val();
+    FromJackpotLineVal = $('#FromJackpotLineVal').val();
+    ToJackpotLineVal = $('#ToJackpotLineVal').val();
+    FromJackpotBingoVal = $('#FromJackpotBingoVal').val();
+    ToJackpotBingoVal = $('#ToJackpotBingoVal').val();
+    
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&tableTh1=" + tableTh1 + 
+            "&tableTh2=" + tableTh2 + 
+            "&tableTh3=" + tableTh3 + 
+            "&tableTh4=" + tableTh4 + 
+            "&tableTh5=" + tableTh5 + 
+            "&tableLine=" + tableLine + 
+            "&tableBingo=" + tableBingo + 
+            "&tableMyBonus=" + tableMyBonus + 
+            "&tableBonusLine=" + tableBonusLine + 
+            "&tableBonusBingo=" + tableBonusBingo + 
+            "&tableJackpotLine=" + tableJackpotLine + 
+            "&tableJackpotBingo=" + tableJackpotBingo + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&GameSort=" + GameSort + 
+            "&FromTicketCost=" + FromTicketCost + 
+            "&ToTicketCost=" + ToTicketCost + 
+            "&FromPlayers=" + FromPlayers + 
+            "&ToPlayers=" + ToPlayers + 
+            "&FromTickets=" + FromTickets + 
+            "&ToTickets=" + ToTickets + 
+            "&FromLine=" + FromLine + 
+            "&ToLine=" + ToLine + 
+            "&FromBingo=" + FromBingo + 
+            "&ToBingo=" + ToBingo + 
+            "&FromMybonus=" + FromMybonus + 
+            "&ToMybonus=" + ToMybonus + 
+            "&FromBonusLine=" + FromBonusLine + 
+            "&ToBonusLine=" + ToBonusLine + 
+            "&FromBonusBingo=" + FromBonusBingo + 
+            "&ToBonusBingo=" + ToBonusBingo + 
+            "&FromJackpotLine=" + FromJackpotLine + 
+            "&ToJackpotLine=" + ToJackpotLine + 
+            "&FromJackpotBingo=" + FromJackpotBingo + 
+            "&ToJackpotBingo=" + ToJackpotBingo + 
+            "&FromLineVal=" + FromLineVal + 
+            "&ToLineVal=" + ToLineVal + 
+            "&FromBingoVal=" + FromBingoVal + 
+            "&ToBingoVal=" + ToBingoVal + 
+            "&FromMybonusVal=" + FromMybonusVal + 
+            "&ToMybonusVal=" + ToMybonusVal + 
+            "&FromBonusLineVal=" + FromBonusLineVal + 
+            "&ToBonusLineVal=" + ToBonusLineVal + 
+            "&FromBonusBingoVal=" + FromBonusBingoVal + 
+            "&ToBonusBingoVal=" + ToBonusBingoVal + 
+            "&FromJackpotLineVal=" + FromJackpotLineVal + 
+            "&ToJackpotLineVal=" + ToJackpotLineVal + 
+            "&FromJackpotBingoVal=" + FromJackpotBingoVal ;
+    window.location.href = pageHref; 
+}
+function ExportToPNGBingoTable() {
+    html2canvas($('#panelBingoContend'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 
  //end Bingo scripts  
  //start BlackJack scripts
@@ -1307,9 +1438,24 @@ function export2excelBJ() {
             "&FromGameBet=" + FromGameBet + 
             "&ToGameBet=" + ToGameBet + 
             "&FromGameWin=" + FromGameWin + 
-            "&ToGameWin=" + ToGameWin + 
-            "')" 
+            "&ToGameWin=" + ToGameWin ;
+    //console.log(pageHref);
     window.location.href = pageHref; 
+}
+function ExportToPNGBJTable() {
+    html2canvas($('#panelBJContend'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
 }
 
  //end BlackJack scripts
@@ -1772,10 +1918,25 @@ function export2excelR() {
             "&FromGameWin=" + FromGameWin + 
             "&ToGameWin=" + ToGameWin + 
             "&FromGameJack=" + FromGameJack + 
-            "&ToGameJack=" + ToGameJack + 
-            "')" 
+            "&ToGameJack=" + ToGameJack ;
     window.location.href = pageHref; 
 }
+function ExportToPNGRTable() {
+    html2canvas($('#panelRContend'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
+
 //end Roulete scripts
 
 
