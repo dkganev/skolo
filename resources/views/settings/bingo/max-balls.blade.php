@@ -24,11 +24,10 @@
 
 <div class="container">
 <div class="row">
-<div class="col-lg-10">
+<div class="col-lg-11">
 
 <!--    Context Classes  -->
 <div class="panel panel-default">
-   
     <div class="panel-heading">
         <a id="toggle-max-balls" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addMaxBallsModal">
             Add New
@@ -38,7 +37,6 @@
     </div>
 
     <div class="panel-body">
-
       <form action="/settings/bingo/maxballs/edit" method="POST">
         <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
                 data-toggle="table"
@@ -64,7 +62,7 @@
               <th data-sortable="true">BL. Ticket Count</th>
               <th data-sortable="true">BB. Ticket Count</th>
 
-              <th>Action</th>
+              <th class="text-center">Action</th>
             </tr>
           </thead>
             <tbody>
@@ -105,13 +103,12 @@
           <td>
             <input  name="bonus_bingo_ticket_cnt" value="{{ $steps->bonus_bingo_ticket_cnt }}" type="text" class="form-control">
           </td>
-          <td>
+          <td style="width: 140px;">
               {{ csrf_field() }}
               <input type="hidden" name="id" value="{{ $steps->id }}">
-              <button style="display:inline;"  type="submit" class="btn btn-warning btn-xs edit-max-balls-btn" data-id="{{ $steps->id }}">Update</button>
+              <button  type="submit" class="btn btn-warning btn-sm edit-max-balls-btn" data-id="{{ $steps->id }}">Update</button>
               <a href="#"
-                style="display:inline;" 
-                class="btn btn-danger btn-xs"
+                class="btn btn-danger btn-sm"
                 role="button"
                 data-toggle="modal"
                 data-target="#deleteMaxBallModal"

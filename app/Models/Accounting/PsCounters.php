@@ -27,7 +27,7 @@ class PsCounters extends Model
         $this->counter = self::mutateToPgArray($counters);
     }
 
-    // all counters
+    // Get All  Counters
     public function getCounters()
     {
         $counters = $this->counter;
@@ -58,7 +58,7 @@ class PsCounters extends Model
 
         return $sum;
     }
-    
+
     // Total Out - (0x0002 + 0x0003 + 0x0016 + 0x0018) 
     //              2      +   3    +  22    +  24
     public function totalOut()

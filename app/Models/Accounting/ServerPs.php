@@ -45,4 +45,35 @@ class ServerPs extends Model
 	{
 		return $this->hasOne(PsErrors::class);
 	}
+
+	public function isOffline()
+	{
+		return ! $this->ps_status->bonline;
+	}
+
+	public function waitsForAttendant()
+	{
+		return $this->ps_status->attendant;
+	}
+
+	public function hasErrors()
+	{
+		return $this->ps_status->active_errors === '{}' ? false : true;
+	}
+
+	public function isFree()
+	{
+		if(!$this->isOffline() && !$this->waitsForAttendant() && !$this->hasErrors() && $this->ps_status->current_credit === 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public function isActive()
+	{
+		if(!$this->isOffline() && !$this->waitsForAttendant() && !$this->hasErrors() && $this->ps_status->current_credit > 0) {
+			return true;
+		}
+		return false;
+	}
 }

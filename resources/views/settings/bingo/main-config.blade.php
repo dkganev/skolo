@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-	    <div class="col-lg-8">
+	    <div class="col-md-8">
 	        {{-- <h1 style="margin-top: 0px;" class="page-header"></h1> --}}
 	        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
 	            <!-- Secondary Navigation -->
@@ -26,11 +26,9 @@
 <div class="row">
 <div class="col-md-10">
 
-<!-- SETTINGS -->
-{{-- <div class="well" style="background: #ffffff;"> --}}
 <div class="panel panel-default">
   	<div class="panel-heading text-center"
-		style="background-image: none; background-color: #607D8B; color: white;" 
+		 style="background-image: none; background-color: #607D8B; color: white;" 
   	>
   		<strong>Bingo Main Config</strong>
   	</div>
@@ -40,7 +38,7 @@
 		{{ csrf_field() }}
 		<!-- SETIINGS -->
 
-		<div class="col-lg-2">
+		<div class="col-md-2">
 			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Settings</h3>
 			<hr style="margin-top: 7px;">
 
@@ -75,7 +73,7 @@
 		</div><!-- End Col -->
 
 		<!-- VISIBLE -->
-		<div class="col-lg-2">
+		<div class="col-md-2">
 			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Vissible</h3>
 			<hr style="margin-top: 7px;">
 
@@ -122,7 +120,7 @@
 
 
 		<!-- HIDDEN -->
-		<div class="col-lg-2">
+		<div class="col-md-2">
 			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Hidden</h3>
 			<hr style="margin-top: 7px;">
 
@@ -165,18 +163,15 @@
 						<input name="jackpot_bingo_pr_hidden" value="{{ $bingo->jackpot_bingo_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
-
 			</div><!-- End Col -->
 
-		<!-- Max Balls Default -->
-		<h3  
-			style="margin: 0; padding:0 ;color: #474747; font-family: sans-serif; font-size: 21px;"
-		>
+		<!-- Max Ball Defaults -->
+		<h3 style="margin: 0; position: relative; left: 124px; ;color: #474747; font-family: sans-serif; font-size: 21px;">
 			Max Ball Defaults
 		</h3>
-		<hr style="margin-top: 7px; width: 310px;padding: 0;">
+		<hr style="margin-top: 7px; width: 420px;padding: 0;">
 
-		<div class="col-lg-2">
+		<div class="col-md-3">
 		    <div class="form-group">
 		    	<label style="color: #474747">Max Ball Num:</label><br>
 				<div class="input-group">
@@ -200,11 +195,9 @@
 					<input name="jackpot_line_max_ball" value="{{ $bingo->jackpot_line_max_ball }}" type="text" class="form-control text-center" placeholder="Jackport Line MB" aria-describedby="sizing-addon2">
 				</div>
 			</div>
-
 		</div><!-- End Col -->
 
-		<!-- VISIBLE -->
-		<div class="col-lg-2">
+		<div class="col-md-3">
 			<div class="form-group">
 				<label style="color: #474747">Bonus Line M.B.:</label><br>
 				<div class="input-group">
@@ -236,10 +229,7 @@
 					<input name="mybonus_max_ball" value="{{ $bingo->mybonus_max_ball }}" type="text" class="form-control text-center" placeholder="My Bonus MB" aria-describedby="sizing-addon2">
 				</div>
 			</div>
-
 		</div><!-- End Col -->
-
-	<!-- HIDDEN -->
 
 		</div><!-- End Panel Body-->
 		<div class="panel-footer">
@@ -248,10 +238,8 @@
 			</button>
 		</div><!-- End Panel Footer-->
 	</form>
-
-</div><!-- End Panel-->
+	</div>
 </div><!-- End Col-->
-
 </div><!-- End Row -->
 </div><!-- End Container -->
 
