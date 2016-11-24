@@ -32,10 +32,6 @@
   </div>
 </div>
 </div>
-<script>
-    var token = '{{ Session::token() }}';
-    var add_language = '{{ url('/settings/addLang') }}';
-</script>
 <!-- End Add Language Modal -->
 
 <!-- Update Language Modal -->
@@ -72,8 +68,50 @@
   </div>
 </div>
 </div>
-<script>
-    var token = '{{ Session::token() }}';
-    var update_language = '{{ url('/settings/updateLang') }}';
-</script>
 <!-- End Add Language Modal -->
+
+<script>
+$(function() {
+
+    $('#add-language').on('click', function() {
+        var token = $('meta[name="csrf-token"]').attr('content')
+        $.ajax({
+            method: 'POST',
+            url: '/settings/addLang',
+            data: {
+                langid: $('#addLanguageModal input[name="langid"]').val(),
+                langname: $('#addLanguageModal input[name="langname"]').val(),
+                _token: token
+            } 
+        }).done(function() {
+            $('#addLanguageModal').modal('hide');
+            javascript:ajaxLoad('{{url('settings/langs')}}')
+        })
+    })
+
+    $('#updateLanguageModal').on('show.bs.modal', function(e) {
+        var langId = $(e.relatedTarget).data('langid');
+        var langName = $(e.relatedTarget).data('langname');
+
+        $(e.currentTarget).find('input[name="langid"]').val(langId);
+        $(e.currentTarget).find('input[name="langname"]').val(langName);
+    })
+
+    $('#update-language').on('click', function() {
+        var token = $('meta[name="csrf-token"]').attr('content')
+        $.ajax({
+            method: 'POST',
+            url: '/settings/updateLang',
+            data: {
+                langid: $('#updateLanguageModal input[name="langid"]').val(),
+                langname: $('#updateLanguageModal input[name="langname"]').val(),
+                _token: token 
+            }
+        }).done(function() {
+            $('#updateLanguageModal').modal('hide');
+            javascript:ajaxLoad('{{url('settings/langs')}}')
+        })
+    })
+
+}); // <== End Document Ready
+</script>

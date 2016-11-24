@@ -34,11 +34,7 @@ class CasinosController extends Controller
 	public function updateCasino(Request $request)
 	{
 		$casino = Casinos::where('casinoid', $request['casinoid'])->first();
-
-		$casino->casinoname = $request['casinoname'];
-		$casino->casinoaddr = $request['casinoaddr'];
-		$casino->casinogsm = $request['casinogsm'];
-		$status = $casino->update();
+		$status = $casino->update($request->except('_token'));
 
 		if(!$status) {
 			$response = [ 'msg' => 'Query Failed!' ];
