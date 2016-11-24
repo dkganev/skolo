@@ -109,6 +109,12 @@ $(function() {
         games: $('#updateMachineModal-{{ $ps->psid }} select[name="games[]"]').val() ,
         default_game: $('#updateMachineModal-{{ $ps->psid }} select[name="default_game"]').val() ,
         _token: '{{ Session::token() }}'
+      },
+      success: function(response) {
+        //
+      },
+      error: function(error) {
+        //
       }
     }).done(function () {
       $('#updateMachineModal-{{ $ps->psid }}').modal('hide');

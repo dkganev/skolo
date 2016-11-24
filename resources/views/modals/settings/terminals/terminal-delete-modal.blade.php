@@ -41,9 +41,14 @@ $(function() {
             data: {
                 psid: $('#deletePsModal input[name="psid"]').val(),
                 _token: token
+            },
+            success: function(response) {
+              //
+            },
+            error: function(error) {
+              //
             }
-        })
-        .done(function() {
+        }).done(function() {
             $('#deletePsModal').modal('hide');
             javascript:ajaxLoad('{{url('/settings/terminals')}}');
         });

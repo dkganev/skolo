@@ -41,12 +41,15 @@ class CasinosController extends Controller
 		$status = $casino->update();
 
 		if(!$status) {
-			$reponse = [ $msg => 'Query Failed!' ];
-			return response()->json($reponse, 403);
+			$response = [ 'msg' => 'Query Failed!' ];
+			return response()->json($response, 403);
 		}
 
-		$reponse = [ $msg => 'Casino updated successfully' ];
-		return reponse()->json($reponse, 200);
+		$response = [
+			'casino' => $casino,
+			'msg' => 'Casino updated successfully'
+		];
+		return response()->json($response, 200);
 	}
 
 	public function exportCasinos()

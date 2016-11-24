@@ -22,8 +22,7 @@
 
 <script>
 $(function() {
-  
-     $('#resetPsModal').on('show.bs.modal', function(e) {
+    $('#resetPsModal').on('show.bs.modal', function(e) {
         var psId = $(e.relatedTarget).data('psid');
         var dallasid = $(e.relatedTarget).data('dallasid');
 
@@ -39,13 +38,17 @@ $(function() {
          data: {
              psid: $('#resetPsModal input[name="psid"]').val(),
              _token: token
+        },
+        success: function(response) {
+          //
+        },
+        error: function(error) {
+          //
         }
-      })
-      .done(function() {
+      }).done(function() {
         $('#resetPsModal').modal('hide');
         javascript:ajaxLoad('{{url('settings/terminals')}}');
       });
     });
-
 }); // <== End Document Ready
 </script>

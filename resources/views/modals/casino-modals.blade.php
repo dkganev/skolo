@@ -6,10 +6,8 @@
       <div class="modal-header">
           <h2><strong>Add Casino</strong></h2>
       </div>
-      
       <div class="modal-body">
-          <form class="form-inline"> 
-
+          <form class="form-inline">
             <div class="form-group">
                 <label for="casinoid">Casino ID:</label><br>
                 <input  class="form-control" type="text" name="casinoid" id="casinoid" >
@@ -29,7 +27,6 @@
                 <label for="casinogsm">Casino GSM:</label><br>
                 <input placeholder="Mobile Number" class="form-control" type="text" name="casinogsm" id="casinogsm">
             </div>
-
           </form>
       </div>
       <div class="modal-footer">
@@ -40,10 +37,6 @@
   </div>
 </div>
 </div>
-<script>
-    var token = '{{ Session::token() }}';
-    var add_casino = '{{ route('add.casino') }}';
-</script>
 <!-- End Add Casino  Modal -->
 
 <!-- Update Casino  Modal -->
@@ -57,7 +50,6 @@
       
       <div class="modal-body">
           <form class="form-inline"> 
-
             <div class="form-group">
                 <label for="casinoid">Casino ID:</label><br>
                 <input  class="form-control" type="text" name="casinoid" id="casinoid" >
@@ -77,8 +69,6 @@
                 <label for="casinogsm">Casino GSM:</label><br>
                 <input placeholder="Mobile Number" class="form-control" type="text" name="casinogsm" id="casinogsm">
             </div>
-
-
           </form>
       </div>
       <div class="modal-footer">
@@ -89,8 +79,60 @@
   </div>
 </div>
 </div>
-<script>
-    var token = '{{ Session::token() }}';
-    var update_casino = '{{ route('update.casino') }}';
-</script>
 <!-- End Update Casino  Modal -->
+<script>
+$(function() {
+  $('#add-casino').on('click', function() {
+      var token = $('meta[name="csrf-token"]').attr('content');
+      $.ajax({
+          method: 'POST',
+          url: '/settings/casino/store',
+          data: { 
+              casinoid: $('#addCasinoModal input[name="casinoid"]').val(),
+              casinoname: $('#addCasinoModal input[name="casinoname"]').val(),
+              casinoaddr: $('#addCasinoModal input[name="casinoaddr"]').val(),
+              casinogsm: $('#addCasinoModal input[name="casinogsm"]').val(),
+              _token: token
+          }
+      }).done(function() {
+          $('#addCasinoModal').modal('hide')
+          $('body').removeClass('modal-open')
+          $('.modal-backdrop').remove()
+          javascript:ajaxLoad('{{url('settings/casinos')}}')
+      })
+  })
+
+  $('#updateCasinoModal').on('show.bs.modal', function(e) {
+      var casinoId = $(e.relatedTarget).data('casinoid')
+      var casinoName = $(e.relatedTarget).data('casinoname')
+      var casinoAddr = $(e.relatedTarget).data('casinoaddr')
+      var casinoGsm = $(e.relatedTarget).data('casinogsm')
+
+      $(e.currentTarget).find('input[name="casinoid"]').val(casinoId)
+      $(e.currentTarget).find('input[name="casinoname"]').val(casinoName)
+      $(e.currentTarget).find('input[name="casinoaddr"]').val(casinoAddr)
+      $(e.currentTarget).find('input[name="casinogsm"]').val(casinoGsm)
+  })
+
+  $('#update-casino').on('click', function() {
+      var token = $('meta[name="csrf-token"]').attr('content')
+      $.ajax({
+          method: 'POST',
+          url: '/settings/casino/update',
+          data: {
+              casinoid: $('#updateCasinoModal input[name="casinoid"]').val(),
+              casinoname: $('#updateCasinoModal input[name="casinoname"]').val(),
+              casinoaddr: $('#updateCasinoModal input[name="casinoaddr"]').val(),
+              casinogsm: $('#updateCasinoModal input[name="casinogsm"]').val(),
+              _token: token 
+          }
+      }).done(function() {
+          $('#updateCasinoModal').modal('hide')
+          $('body').removeClass('modal-open')
+          $('.modal-backdrop').remove()
+          javascript:ajaxLoad('{{url('settings/casinos')}}')
+      })
+  })
+
+}) // <== End Document Ready
+</script>

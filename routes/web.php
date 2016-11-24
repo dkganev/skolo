@@ -68,8 +68,8 @@ Route::post('/settings/updateCategory', 'Settings\GameServersController@updateCa
  * SETTINGS / CASINO
  */
 Route::get('/settings/casinos', 'Settings\CasinosController@getCasinos')->name('casinos');
-Route::post('settings/addcasino', 'Settings\CasinosController@addCasino')->name('add.casino');
-Route::post('settings/updatecasino', 'Settings\CasinosController@updateCasino')->name('update.casino');
+Route::post('/settings/casino/store', 'Settings\CasinosController@addCasino');
+Route::post('/settings/casino/update', 'Settings\CasinosController@updateCasino');
 Route::get('/settings/exportCasinos', 'Settings\CasinosController@exportCasinos')->name('export.casinos');
 
 /**

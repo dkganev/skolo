@@ -256,12 +256,11 @@
                 <input class="form-control" type="text" name="idx" id="idx" placeholder="Cannot be edited">
             </div>
 
-           
             <div class="form-group">
                 <label for="name">Category Name:</label><br>
                 <input  class="form-control" type="text" name="name" id="name" placeholder="Category Name">
             </div>
-             <hr>
+            <hr>
           </form>
       </div>
       <div class="modal-footer">
