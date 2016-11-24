@@ -1,13 +1,12 @@
-@include('modals.reset-ps-modal')
-@include('modals.terminal-modals')
+@include('modals.terminal-restart-modal')
+@include('modals.terminal-store-modal')
+@include('modals.terminal-delete-modal')
 
 <div class="container">
 <div class="row">
     <div class="col-lg-12">
-
         <div class="panel panel-default">
             <div class="panel-heading">
-   
                 <button class="btn btn-danger btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal">
                     Add Machine
                 </button>
@@ -86,7 +85,7 @@
                                     data-dallasid="{{ $ps->dallasid }}"
                                     class="btn btn-warning btn-xs"
                                 >  
-                                Restart
+                                    Restart
                                 </a>
 
                                 <a  href="" role="button" data-toggle="modal"
@@ -96,7 +95,7 @@
                                     data-dallasid="{{ $ps->dallasid }}"
                                     class="btn btn-danger btn-xs"
                                 >
-                                Delete
+                                    Delete
                                 </a>
 
                             </td>
@@ -108,91 +107,11 @@
             </div><!--End Panel Body -->
         </div><!--End Panel -->
     </div>
-</div> <!--End Row -->
-</div> <!--End Container -->
+</div><!--End Row -->
+</div><!--End Container -->
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
 
-<!-- Add Game Client Modal -->
-<div class="row">
-<div class="modal fade" id="deletePsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" >
-    <div class="modal-content">
-      <div class="modal-header">
-          <h2><strong>Delete Terminal</strong></h2>
-      </div>
-      
-      <div class="modal-body">
-          <h4>Delete Terminal <span id="dallasid"></span>  ?</h4>
-      </div>
-      <div class="modal-footer">
-          <input  type="hidden" name="psid">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="delete-ps" type="submit" class="btn btn-warning">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-
 <script src="/js/socket.io/socket.io.js"></script>
 <script src="/js/socket.io/setingsTerminals.js"></script>
-<script>
-$(document).ready(function() {
-
-    // POPULATE DELETE PS MODAL
-    $('#deletePsModal').on('show.bs.modal', function(e) {
-        var psId = $(e.relatedTarget).data('psid');
-        var dallasid = $(e.relatedTarget).data('dallasid');
-
-        $(e.currentTarget).find('span').html(dallasid);
-        $(e.currentTarget).find('input[name="psid"]').val(psId);
-    });
-
-    // SUBMIT PS DELETE MODAL
-    $('#delete-ps').on('click', function() {
-        $.ajax({
-            method: 'POST',
-            url: '/terminal/destroy',
-            data: {
-                psid: $('#deletePsModal input[name="psid"]').val(),
-                _token: token
-            }
-        })
-        .done(function() {
-            $('#deletePsModal').modal('hide');
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
-            javascript:ajaxLoad('{{url('/settings/terminals')}}');
-        });
-    });
-
-    // RESTART TERMINAL
-     $('#resetPsModal').on('show.bs.modal', function(e) {
-        var psId = $(e.relatedTarget).data('psid');
-        var dallasid = $(e.relatedTarget).data('dallasid');
-
-        $(e.currentTarget).find('span').html(dallasid);
-        $(e.currentTarget).find('input[name="psid"]').val(psId);
-    });
-
-    $('#reset-ps').on('click', function() {
-         $.ajax({
-             method: 'GET',
-             url: reset_ps,
-             data: {
-                 psid: $('#resetPsModal input[name="psid"]').val(),
-                 _token: token
-            }
-         })
-         .done(function() {
-             console.log('success');
-             $('#resetPsModal').modal('hide');
-             window.location.reload();
-         });
-    });
-
-}); // <== End Document Ready
-</script>

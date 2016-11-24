@@ -8,7 +8,7 @@ Route::post('/', 'AuthController@postLogin')->middleware('guest');
 
 Route::get('/logout', 'AuthController@logout')->middleware('auth');
 // This will be the route that checks expiration!
-Route::post('session/ajaxCheck','AuthController@ajaxCheck');
+Route::post('session/ajaxCheck','AuthController@ajaxCheck')->middleware('auth');
 /**
  * AUTH MIDDLEWARE
  */
@@ -44,7 +44,7 @@ Route::post('/casino/template/game/store', 'Casino\BingoPlaylistController@templ
  */
 Route::get('/settings', 'Settings\TerminalsController@settings')->name('settings');
 Route::get('/settings/terminals', 'Settings\TerminalsController@terminals');
-Route::post('/machine/add', 'Settings\TerminalsController@addTerminal')->name('add.machine');
+Route::post('/terminal/store', 'Settings\TerminalsController@addTerminal');
 Route::post('machine/update', 'Settings\TerminalsController@updateMachine');
 Route::get('/exportTerminals', 'Settings\TerminalsController@exportTerminals')->name('export.terminals');
 Route::get('/resetps', 'Settings\TerminalsController@reset_ps');

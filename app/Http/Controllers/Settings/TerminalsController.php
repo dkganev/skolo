@@ -94,8 +94,10 @@ class TerminalsController extends Controller
 
         event(new TerminalCreated($request->psid, $request->seatid));
 
-    	$msg = 'Machine added sucessfully!';
-        return $request->session()->flash('alert-success', $msg);
+        $response = [
+            'msg' => 'Machine added Successfully'
+        ];
+        return response()->json($response, 200);
     }
 
     public function updateMachine(Request $request)
@@ -124,8 +126,11 @@ class TerminalsController extends Controller
         $ps_settings->setSubscribedGames($request['games']);
         $ps_settings->update();
 
-        $msg = 'Machine Updated Successfully';
-        return $request->session()->flash('alert-success', $msg);
+        $response = [
+            'server_ps' => $server_ps,
+            'msg'       => 'Machine Updated Successfully'
+        ];
+        return response()->json($response, 200);
     }
 
     public function reset_ps(Request $request)
