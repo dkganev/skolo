@@ -18,7 +18,7 @@
 <div class="row" >
     <div class="col-md-12" style="width: 1000px">
 
-        <div class="panel panel-default" >
+        <div class="panel panel-default"id="panelBJContend">
             <div class="panel-heading">
                 <div>
                     <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
@@ -26,6 +26,10 @@
                     </h2>
                     <a class="btn btn-warning  pull-right" onclick="export2excelBJ();">
                         <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                    </a>
+                    <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+                    <a  class="btn btn-warning  pull-right" onclick="ExportToPNGBJTable();">
+                        Export to PNG
                     </a>
                 </div> <br />
                 <div class="pull-left pagination-detail">

@@ -21,18 +21,23 @@
 <div class="row" >
     <div class="col-md-12">
 
-        <div class="panel panel-default" >
+        <div class="panel panel-default" id="panelBingoContend">
             <div class="panel-heading">
                 <div>
                     <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
                         Bingo History Statistics
                     </h2>
-                    <a href="{{ route('export.terminals') }}" class="btn btn-warning  pull-right">
+                    
+                    <a class="btn btn-warning  pull-right" onclick="export2excelBingo();"> 
                         <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                    </a>
+                    <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+                    <a  class="btn btn-warning  pull-right" onclick="ExportToPNGBingoTable();">
+                        Export to PNG
                     </a>
                 </div> <br />
                 
-                <div class="pull-left pagination-detail">
+                <div class="pull-left pagination-detail" > 
                      <!-- <span class="pagination-info">Showing 1 page</span> -->
                     <span class="page-list">
                         <span class="btn-group dropup">
@@ -56,7 +61,7 @@
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; ">           <!--$historys->currentPage()  $historys->lastPage()-->
-                    <input id="pageReload" type="hidden" val="" data-page="{{$page['current']}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/history')}}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
+                    <input id="pageReload" type="hidden" val="" data-page="{{$page['current']}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/history')}}" data-excel-url="{{ route('export2excelBingo') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
                     <ul class="pagination" style="margin: 0px;">
                         @if ( !$page['last']  )
                             <li class="page-number active" >

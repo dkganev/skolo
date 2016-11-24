@@ -19,7 +19,7 @@
 <div class="row" >
     <div class="col-md-12" style="width: 1000px">
 
-        <div class="panel panel-default" >
+        <div class="panel panel-default" id="panelRContend">
             <div class="panel-heading">
                 <div>
                     <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
@@ -27,6 +27,10 @@
                     </h2>
                     <a class="btn btn-warning  pull-right" onclick="export2excelR();">
                         <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                    </a>
+                    <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+                    <a  class="btn btn-warning  pull-right" onclick="ExportToPNGRTable();">
+                        Export to PNG
                     </a>
                 </div> <br />
                 <div class="pull-left pagination-detail">
@@ -321,7 +325,7 @@
                                     <td class="text-right">{{ number_format($history->bet / 100, 2 ) }}</td>
                                     <td class="text-right">{{ number_format($history->win_val / 100, 2 ) }}</td>
                                     <td class="text-right">{{ number_format($history->jackpot / 100, 2 ) }}</td>
-                                    <td class="text-right">{{ $history->ho_spin }}</td>
+                                    <td class="text-right">{{ $history->no_spin }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
