@@ -1,6 +1,6 @@
-@include('modals.terminal-restart-modal')
-@include('modals.terminal-store-modal')
-@include('modals.terminal-delete-modal')
+@include('modals.settings.terminals.terminal-restart-modal')
+@include('modals.settings.terminals.terminal-store-modal')
+@include('modals.settings.terminals.terminal-delete-modal')
 
 <div class="container">
 <div class="row">
@@ -100,7 +100,7 @@
 
                             </td>
                         </tr>
-                    @include('modals.terminal-update-modal')
+                    @include('modals.settings.terminals.terminal-update-modal')
                     @endforeach
                     </tbody>
                 </table>
