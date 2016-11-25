@@ -1,3 +1,4 @@
+<!-- Update Terminal Modal --> 
 <div class="row">
 <div class="modal fade" id="updateMachineModal-{{ $ps->psid }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" >
@@ -7,7 +8,6 @@
       </div>
       
       <div class="modal-body">
-
           <form class="form-horizontal update-machine bootstrap-modal-form" id="{{ $ps->psid }}"> 
 
             <div class="form-group" style="width:270px; display: inline-block;">
@@ -51,10 +51,10 @@
               
               @foreach($clientgameids as $clientgameid)
                 <option value="{{ $clientgameid->client_game_id }}"
-
-                  {{ (in_array($clientgameid->client_game_id, $ps->ps_settings->getGames() )) ? ' selected="true"' : '' }}
-                              
-                >{{ $clientgameid->client_game_name }}</option>
+                {{ (in_array($clientgameid->client_game_id, $ps->ps_settings->getGames() )) ? ' selected="true"' : '' }}      
+                >
+                  {{ $clientgameid->client_game_name }}
+                </option>
               @endforeach
               </select>
             </div>
@@ -80,9 +80,12 @@
         </form>
       </div>
       <div class="modal-footer">
-
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="machine-update-{{ $ps->psid }}" type="submit" class="btn btn-primary machine-update" form="modal-form">Update</button>
+          <button id="machine-update-{{ $ps->psid }}" type="submit" 
+                  class="btn btn-primary machine-update" form="modal-form"
+          >
+              Update
+        </button>
       </div>
     </div>
   </div>
@@ -90,28 +93,35 @@
 </div>
 <script>
 $(function() {
+  
   $('#machine-update-{{ $ps->psid }}').on('click', function() {
-     $.ajax({
-       method: 'POST',
-       url: '{{ url('machine/update') }}',
-       data: { 
-         psdescription: $('#updateMachineModal-{{ $ps->psid }} input[name="psdescription"]').val() ,
-         dallasid: $('#updateMachineModal-{{ $ps->psid }} input[name="dallasid"]').val() ,
-         seatid: $('#updateMachineModal-{{ $ps->psid }} input[name="seatid"]').val() ,
-         ps_type: $('#updateMachineModal-{{ $ps->psid }} select[name="ps_type"]').val() ,
-         psid: $('#updateMachineModal-{{ $ps->psid }} input[name="psid"]').val() ,
-         games: $('#updateMachineModal-{{ $ps->psid }} select[name="games[]"]').val() ,
-         default_game: $('#updateMachineModal-{{ $ps->psid }} select[name="default_game"]').val() ,
-         _token: '{{ Session::token() }}'
-       }
-     }).done(function () {
-        $('#updateMachineModal-{{ $ps->psid }}').modal('hide');
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
+    var token = $('meta[name="csrf-token"]').attr('content');
 
-        javascript:ajaxLoad('{{url('settings/terminals')}}');
-     });
+    $.ajax({
+     method: 'POST',
+     url: '{{ url('machine/update') }}',
+     data: {
+        psdescription: $('#updateMachineModal-{{ $ps->psid }} input[name="psdescription"]').val() ,
+        dallasid: $('#updateMachineModal-{{ $ps->psid }} input[name="dallasid"]').val() ,
+        seatid: $('#updateMachineModal-{{ $ps->psid }} input[name="seatid"]').val() ,
+        ps_type: $('#updateMachineModal-{{ $ps->psid }} select[name="ps_type"]').val() ,
+        psid: $('#updateMachineModal-{{ $ps->psid }} input[name="psid"]').val() ,
+        games: $('#updateMachineModal-{{ $ps->psid }} select[name="games[]"]').val() ,
+        default_game: $('#updateMachineModal-{{ $ps->psid }} select[name="default_game"]').val() ,
+        _token: '{{ Session::token() }}'
+      },
+      success: function(response) {
+        //
+      },
+      error: function(error) {
+        //
+      }
+    }).done(function () {
+      $('#updateMachineModal-{{ $ps->psid }}').modal('hide');
+      javascript:ajaxLoad('{{url('settings/terminals')}}');
+    });
   });
+
 }); // => End Ready Function
 </script>
 

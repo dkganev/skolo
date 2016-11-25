@@ -27,17 +27,15 @@
 <div class="col-md-10">
 
 <div class="panel panel-default">
-  	<div class="panel-heading text-center"
-		 style="background-image: none; background-color: #607D8B; color: white;" 
-  	>
-  		<strong>Bingo Main Config</strong>
+  	<div class="panel-heading text-center" style="background-image: none; background-color: #607D8B; color: white;" >
+  		<h2 class="panel-title" style="color:white;"><strong>Bingo Main Config</strong></h2>
   	</div>
   <div class="panel-body">
 	
 	<form action="/settings/bingo/mainconfig/edit" method="POST" role="form" id="bingo-main-config">
 		{{ csrf_field() }}
-		<!-- SETIINGS -->
 
+		<!-- SETIINGS -->
 		<div class="col-md-2">
 			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Settings</h3>
 			<hr style="margin-top: 7px;">
@@ -246,7 +244,7 @@
 <script>
 	$('button#bingo-main-config-sbt').on('click', function(event) {
     event.preventDefault();
-
+    
     $.ajax({
         method: 'POST',
         url: '/settings/bingo/mainconfig/edit',

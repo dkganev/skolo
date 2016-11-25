@@ -5,7 +5,6 @@
         <div style="padding-top:2px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
-
                 <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
 
                 <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
@@ -22,16 +21,12 @@
 
 <div class="row">
 	<div class="col-lg-4">
-
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <a href="{{ url('/settings/exportBillTypes') }}" class="btn btn-danger btn-sm">
-                	<i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export
-                </a>
+            <div class="panel-heading text-center" style="background-image: none; background-color: #607D8B; color: white;">
+                <h2 class="panel-title" style="color:white;"><strong>My Bonus</strong></h2>
             </div>
 
             <div class="panel-body">
-
                 <form action="/settings/bingo/mybonus/edit" method="POST">
                  <table class="table table-bordered">
                     <thead class="w3-blue-grey">
@@ -43,7 +38,6 @@
                       </tr>
                     </thead>
                     <tbody>
-
                     @foreach($my_bonus as $bonus)
                     <tr id="{{ $bonus->id }}">
                         <td><span class="badge">{{ $bonus->id }}</span></td>
@@ -66,14 +60,11 @@
                     @endforeach
                     </tbody>
                   </table>
-
                 </form>
-
             </div> <!--End Panel Body -->
         </div> <!--End Panel -->
-
     </div><!--End Col -->
-</div><!--End Row -->
+    </div><!--End Row -->
 </div><!--End Container -->
 
 <script>
@@ -89,10 +80,9 @@ $('.mybonus-button').on('click', function(event) {
             id: $('tr#' + id + ' input[name="id"]').val(),
             ticket_cnt: $('tr#' + id + ' input[name="ticket_cnt"]').val(),
             max_ball_idx: $('tr#' + id + ' input[name="max_ball_idx"]').val() ,
-            _token: token 
-        } 
-    })
-    .done(function () {
+            _token: token
+        }
+    }).done(function () {
          javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}');
     });
 });

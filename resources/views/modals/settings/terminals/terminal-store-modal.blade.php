@@ -1,4 +1,4 @@
-<!-- Add Machine Modal --> 
+<!-- Store Terminal Modal --> 
 <div class="row">
 <div class="modal fade" id="addMachineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
@@ -108,12 +108,14 @@
 </div>
 </div>
 
-<script src="/js/modals/terminals.js"></script>
 <script>
+$(function() {
+
   $('#add-machine').on('click', function() {
+    var token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         method: 'POST',
-        url: add_machine,
+        url: '/terminal/store',
         data: { 
             casinoid: $('#addMachineModal select[name="casinoid"]').val() ,
             dallasid: $('#addMachineModal input[name="dallasid"]').val() ,
@@ -130,7 +132,6 @@
           //
         },
         error: function(error) {
-            console.log(error.responseJSON)
             $.each(error.responseJSON, function(key, value) {
                 $('strong#' + key).html(value);
                 $('strong#' + key).closest('.form-group').addClass('has-error');
@@ -138,14 +139,9 @@
         }
     }).done(function () {
           $('#addMachineModal').modal('hide');
-          $('body').removeClass('modal-open');
-          $('.modal-backdrop').remove();
-          //window.location.reload();
           javascript:ajaxLoad('{{url('settings/terminals')}}');
         });
     });
-</script>
-<script>
-    var token = '{{ Session::token() }}';
-    var add_machine = '{{ route('add.machine') }}';
+
+}); // => End Ready Function
 </script>

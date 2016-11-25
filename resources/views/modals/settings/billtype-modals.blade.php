@@ -42,7 +42,6 @@
         <h2><strong> Update Billing Type</strong></h2>
       </div>
       <div class="modal-body">
-
         <form class="form-inline" role="form" method="POST" name="server-modal">
             {{ csrf_field() }}
 
@@ -57,7 +56,6 @@
             </div>
             <hr>
         </form>
-
       </div>
 
       <div class="modal-footer">
@@ -77,21 +75,20 @@ $(function() {
         $.ajax({
             method: 'POST',
             url: '/settings/addBill',
-            data: { 
+            data: {
                 idtype: $('#addBillModal input[name="idtype"]').val() ,
                 billname: $('#addBillModal input[name="billname"]').val() ,
                 _token: token
             }
-        })
-        .done(function (msg) {
-            console.log(msg['message']);
+        }).done(function() {
             $('#addBillModal').modal('hide');
-            window.location.reload();
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            javascript:ajaxLoad('{{url('settings/billtypes')}}')
         });
     });
 
     $('#updateBillModal').on('show.bs.modal', function(event) {
-        //get data-* attributes of the clicked element
         var idType = $(event.relatedTarget).data('idtype');
         var billName = $(event.relatedTarget).data('billname');
 
@@ -102,20 +99,20 @@ $(function() {
 
     $('#update-bill').on('click', function() {
         var token = $('meta[name="csrf-token"]').attr('content');
-
+        
         $.ajax({
             method: 'POST',
             url: '/settings/updateBill',
-            data: { 
+            data: {
                 idtype: $('#updateBillModal input[name="idtype"]').val() ,
                 billname: $('#updateBillModal input[name="billname"]').val() ,
                 _token: token
-            } 
-        })
-        .done(function (msg) {
-            console.log(msg['message']);
+            }
+        }).done(function() {
             $('#updateBillModal').modal('hide');
-            window.location.reload();
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            javascript:ajaxLoad('{{url('settings/billtypes')}}')
         });
     });
 

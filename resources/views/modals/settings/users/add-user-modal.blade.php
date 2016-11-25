@@ -77,7 +77,7 @@ $('button#add-user').on('click', function(event) {
         url: '/settings/users/store',
         data: $('form#add-user-form').serialize(),
         success: function(response) {
-            //
+            console.log(response)
         },
         error: function(response) {
             console.log(response)

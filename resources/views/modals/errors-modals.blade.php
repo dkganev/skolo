@@ -1,4 +1,4 @@
-<!-- Add Language Modal -->
+<!-- Add Error Level Modal -->
 <div class="row">
 <div class="modal fade" id="addErrorLevelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
@@ -7,10 +7,7 @@
         <h2><strong>+ Error Level</strong></h2>
       </div>
       <div class="modal-body">
-
         <form class="form-inline" role="form" method="POST" name="server-modal">
-           
-
             <div class="form-group">
                 <label for="err_level">Error ID:</label><br>
                 <input class="form-control" type="text" name="err_level" id="err_level" placeholder="Level Int">
@@ -32,13 +29,8 @@
   </div>
 </div>
 </div>
-<script>
-    var token = '{{ Session::token() }}';
-    var add_error_lvl = '{{ url('/settings/addErrorLvl') }}';
-</script>
-<!-- End Add Language Modal -->
 
-<!-- Add Language Modal -->
+<!-- Add Error List Modal -->
 <div class="row">
 <div class="modal fade" id="addErrorListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
@@ -47,9 +39,7 @@
         <h2><strong>+ Error List</strong></h2>
       </div>
       <div class="modal-body">
-
         <form class="form-inline" role="form" method="POST" name="server-modal">
-            
             <div class="form-group">
               <label for="err_level">Error Level: </label><br>
               <select name="err_level" class="form-control selectpicker" title="Error Level.." id="err_level">
@@ -80,23 +70,15 @@
               </select>
             </div>
 
-            <!--             <div class="form-group">
-                <label for="err_group">Error Group:</label><br>
-                <input class="form-control" type="text" name="err_group" id="err_group" placeholder="Error Group">
-            </div> -->
-
             <div class="form-group">
                 <label for="err_code">Error Code:</label><br>
                 <input class="form-control" type="text" name="err_code" id="err_code" placeholder="Error Code">
             </div>
             <hr>
-
-                       
             <div class="form-group ">
                 <label for="err_text">Error Text: </label><br>
                 <input class="form-control" type="text" name="err_text" id="err_text" placeholder="Level Text">
             </div>
-
         </form>
       </div>
 
@@ -109,8 +91,37 @@
 </div>
 </div>
 <script>
-    var token = '{{ Session::token() }}';
-    var add_error_list = '{{ url('/settings/addErrorList') }}';
-</script>
-<!-- End Add Language Modal -->
+$('#add-error-lvl').on('click', function() {
+    var token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        method: 'POST',
+        url: '/settings/addErrorLvl',
+        data: { 
+          err_level: $('#addErrorLevelModal input[name="err_level"]').val() ,
+          level_str: $('#addErrorLevelModal input[name="level_str"]').val() ,
+          _token: token 
+        } 
+    }).done(function() {
+        $('#addErrorLevelModal').modal('hide')
+        javascript:ajaxLoad('{{url('settings/errors')}}')
+    });
+});
 
+$('#add-error-list').on('click', function() {
+    var token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        method: 'POST',
+        url: '/settings/addErrorList',
+        data: { 
+          err_level: $('#addErrorListModal select[name="err_level"]').val() ,
+          err_code: $('#addErrorListModal input[name="err_code"]').val() ,
+          err_group: $('#addErrorListModal select[name="err_group"]').val() ,
+          err_text: $('#addErrorListModal input[name="err_text"]').val() ,
+          _token: token 
+        } 
+    }).done(function() {
+        $('#addErrorListModal').modal('hide');
+        javascript:ajaxLoad('{{url('settings/errors')}}')
+    });
+});
+</script>

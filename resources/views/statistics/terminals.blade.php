@@ -39,7 +39,6 @@
                     </thead>
                     <tbody>
                     	@foreach($counters as $c)
-
                             <tr id="tr{{$c->psid}}">
                                 <td>{{ $c->server_ps->psid }}</td>
                                 <td>{{ $c->server_ps->dallasid }}</td>
