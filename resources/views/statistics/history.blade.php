@@ -160,7 +160,6 @@
                         @endif
                     </ul>
                 </div>
-                <!--<button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button> -->
                 <div class="keep-open btn-group open pull-right" title="Columns">
                     <!--<a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=2&rowsPerPage=50')" class="btn btn-success RouletteSort" >test</a> -->
                     <a class="btn btn-success RouletteSort" style="display: none;" onclick="changePageSortMenuBingo();"><i class="fa fa-search" aria-hidden="true"></i></a>

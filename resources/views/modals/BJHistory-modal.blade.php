@@ -55,6 +55,6 @@
 
 <script>
     var token = '{{ Session::token() }}';
-    var add_machine = '{{ route('add.machine') }}';
+    
 </script>
     
