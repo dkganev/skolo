@@ -21,13 +21,159 @@ class CasinoController extends Controller
         return view('casino.index');
     }
 
-    public function getEvents()
+    public function getEvents(Request $request)
     {
-        $errors = PsErrors::orderBy('time', 'asc')->paginate(300);
+        if ($request['rowsPerPage']) {
+            $page['rowsPerPage'] = $request['rowsPerPage'];
+        
+        } else {
+            $page['rowsPerPage'] = 20;
+        
+        }
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'time';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'desc';
+        }
+        if ($request['sortMenuOpen'] == 1 ) {
+            $page['sortMenuOpen'] = 1;
+        } else {
+            $page['sortMenuOpen'] = 0;
+        }
+        $SortQuery = array();
+        if ($request['FromGameTs']){
+            array_push($SortQuery,['time', '>=', $request['FromGameTs']]);
+            $page['FromGameTs'] = $request['FromGameTs'];
+        }else{
+            $page['FromGameTs'] = "";
+        }
+        if ($request['ToGameTs']){
+             array_push($SortQuery,['time', '<=', $request['ToGameTs']]);
+            $page['ToGameTs'] = $request['ToGameTs'];
+        }else{
+            $page['ToGameTs'] = "";
+        }
+        if ($request['PSID']){
+            array_push($SortQuery,['psid', '=', $request['PSID']]);
+            $page['PSID'] = $request['PSID'];
+        }else{
+            $page['PSID'] = "";
+        }
+        if ($request['ErrorCode']){
+            array_push($SortQuery,['err_code', '=',$request['ErrorCode']]);
+            $page['ErrorCode'] = $request['ErrorCode'];
+        }else{
+            $page['ErrorCode'] = "";
+        }
+        if ($request['ErrorText']){
+            array_push($SortQuery,['error','like', '%' .  $request['ErrorText'] . '%' ]);
+            $page['ErrorText'] = $request['ErrorText'];
+        }else{
+            $page['ErrorText'] = "";
+        }
+        
+        
+        
+        
+        $historys = PsErrors::where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage'] );
 
-        return view('casino.events', ['errors' => $errors]);
+        return view('casino.events', ['historys' => $historys, 'page' => $page]);
     }
+    
+    public function export2excelEvents(Request $request)
+    {
+        if ($request['rowsPerPage']) {
+            $page['rowsPerPage'] = $request['rowsPerPage'];
+        
+        } else {
+            $page['rowsPerPage'] = 20;
+        
+        }
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'time';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'desc';
+        }
+        if ($request['sortMenuOpen'] == 1 ) {
+            $page['sortMenuOpen'] = 1;
+        } else {
+            $page['sortMenuOpen'] = 0;
+        }
+        $SortQuery = array();
+        if ($request['FromGameTs']){
+            array_push($SortQuery,['time', '>=', $request['FromGameTs']]);
+            $page['FromGameTs'] = $request['FromGameTs'];
+        }else{
+            $page['FromGameTs'] = "";
+        }
+        if ($request['ToGameTs']){
+             array_push($SortQuery,['time', '<=', $request['ToGameTs']]);
+            $page['ToGameTs'] = $request['ToGameTs'];
+        }else{
+            $page['ToGameTs'] = "";
+        }
+        if ($request['PSID']){
+            array_push($SortQuery,['psid', '=', $request['PSID']]);
+            $page['PSID'] = $request['PSID'];
+        }else{
+            $page['PSID'] = "";
+        }
+        if ($request['ErrorCode']){
+            array_push($SortQuery,['err_code', '=',$request['ErrorCode']]);
+            $page['ErrorCode'] = $request['ErrorCode'];
+        }else{
+            $page['ErrorCode'] = "";
+        }
+        if ($request['ErrorText']){
+            array_push($SortQuery,['error','like', '%' .  $request['ErrorText'] . '%' ]);
+            $page['ErrorText'] = $request['ErrorText'];
+        }else{
+            $page['ErrorText'] = "";
+        }
+        
+        
+        
+        
+        $historys = PsErrors::where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage'] );
 
+        //return view('casino.events', ['historys' => $historys, 'page' => $page]);
+        $export = array();
+        foreach ($historys as $key => $history) {
+            $export[$key] = array(
+                'PS ID' => $history->psid, 
+                'Error Code' => $history->err_code,
+                'Error Text' =>  $history->error, 
+                'Time' => $history->time
+            );
+            
+        }
+        //$export = $historys = BingoHistory::orderBy('tstamp', 'desc')->get();
+
+        Excel::create('Events Data', function($excel) use($export){
+            $excel->sheet('Events', function($sheet) use($export){
+                $sheet->fromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
+    }
+    
     public function events_index()
     {
         $errors = PsErrors::orderBy('time', 'asc')->paginate(10);
