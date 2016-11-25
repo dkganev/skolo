@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Accounting\PsErrorLevels;
 use App\Models\Accounting\PsErrorsList;
+use Excel;
 
 class ErrorsController extends Controller
 {
@@ -47,4 +48,41 @@ class ErrorsController extends Controller
         $msg = 'Error List Added Successfully!';
         return $request->session()->flash('alert-success', $msg);
     }
+
+    public function export_errors_level()
+    {
+        $export = PsErrorLevels::orderBy('err_level', 'asc')->get();
+        Excel::create('Errors Level Data', function($excel) use($export){
+            $excel->sheet('Errors Level', function($sheet) use($export){
+                $sheet->fromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
+    }
+
+    public function export_errors_list()
+    {
+        $export = PsErrorsList::orderBy('err_code', 'asc')->get();
+        Excel::create('Errors List Data', function($excel) use($export){
+            $excel->sheet('Errors List', function($sheet) use($export){
+                $sheet->fromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
+    }
+
 }

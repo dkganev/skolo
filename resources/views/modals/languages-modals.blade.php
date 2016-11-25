@@ -9,8 +9,6 @@
       <div class="modal-body">
 
         <form class="form-inline" role="form" method="POST" name="server-modal">
-           
-
             <div class="form-group">
                 <label for="langid">Language ID:</label><br>
                 <input class="form-control" type="text" name="langid" id="langid" placeholder="ID">

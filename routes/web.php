@@ -100,6 +100,9 @@ Route::get('/settings/exportLanguages', 'Settings\LangsController@exportLangs')-
  * SETTINGS ERRORS
  */
 Route::get('/settings/errors', 'Settings\ErrorsController@getErrors')->name('errors');
+Route::get('/settings/errors-list-export', 'Settings\ErrorsController@export_errors_list');
+Route::get('/settings/error-levels-export', 'Settings\ErrorsController@export_errors_level');
+Route::get('/settings/errors', 'Settings\ErrorsController@getErrors')->name('errors');
 Route::post('/settings/addErrorLvl', 'Settings\ErrorsController@addErrorLevel');
 Route::post('/settings/addErrorList', 'Settings\ErrorsController@addErrorList');
 

@@ -12,7 +12,7 @@
                     Error List
                 </h2>
 
-                <a href="#" class="btn btn-primary btn-sm pull-right">
+                <a href="/settings/errors-list-export" class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                 </a>
             </div>
@@ -74,7 +74,7 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a href="#" class="btn btn-primary btn-sm">
+                <a href="/settings/error-levels-export" class="btn btn-primary btn-sm">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                 </a>
                 <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 7%;">
