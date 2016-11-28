@@ -1,3 +1,10 @@
+<style>
+    @media screen and (max-width: 1500px) {
+    #BJHistory_modal {
+        overflow: scroll;
+    }
+}
+</style>
 @include('modals.BJHistory-modal')
 <div class="container">
 <div class=""> 

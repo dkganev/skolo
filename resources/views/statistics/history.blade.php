@@ -1,3 +1,13 @@
+<style>
+    @media screen and (max-width: 1400px) {
+    #bingoHistory_modal {
+        overflow: scroll;
+    }
+    #bingoHistory2_modal {
+        overflow: scroll;
+    }
+}
+</style>
 @include('modals.bingoHistory-modal')
 @include('modals.bingoHistory2-modal')
 <div class="container">
