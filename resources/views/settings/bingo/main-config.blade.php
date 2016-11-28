@@ -5,7 +5,6 @@
 	        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
 	            <!-- Secondary Navigation -->
 	            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
-
 	              <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
 
 	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
@@ -26,9 +25,20 @@
 <div class="row">
 <div class="col-md-10">
 
-<div class="panel panel-default">
-  	<div class="panel-heading text-center" style="background-image: none; background-color: #607D8B; color: white;" >
-  		<h2 class="panel-title" style="color:white;"><strong>Bingo Main Config</strong></h2>
+<div class="panel panel-default" id="bingo-main-config-panel">
+  	<div class="panel-heading clearfix">
+        <a class="btn btn-warning pull-left" href="/settings/bingo/main-config-export">
+            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+        </a>
+
+        <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 30%;">
+             Main Config
+        </h2>
+
+	    <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+	    <a class="btn btn-success  pull-right" onclick="ExportToPNGMainConfig();">
+	        Export to PNG
+	    </a>
   	</div>
   <div class="panel-body">
 	
@@ -66,7 +76,7 @@
 
 			<div class="form-group">
 		    	<label style="color: #474747">URL:</label><br>
-				<input name="url" value="{{ $bingo->url }}" type="text" class="form-control text-center" placeholder="URL">
+				<input style="width: 130px;" name="url" value="{{ $bingo->url }}" type="text" class="form-control text-center" placeholder="URL">
 			</div>
 		</div><!-- End Col -->
 
@@ -195,7 +205,7 @@
 			</div>
 		</div><!-- End Col -->
 
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<div class="form-group">
 				<label style="color: #474747">Bonus Line M.B.:</label><br>
 				<div class="input-group">
@@ -254,4 +264,21 @@
          javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}');
     });
 });
+</script>
+<script>
+	function ExportToPNGMainConfig() {
+    html2canvas($('#bingo-main-config-panel'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>

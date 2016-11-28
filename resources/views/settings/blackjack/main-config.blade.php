@@ -21,11 +21,23 @@
 <div class="container">
 <div class="row">
 <div class="col-lg-8">
-	<div class="panel panel-primary">
+	<div class="panel panel-primary" id="blackjack-main-config-panel">
 
-	  <div class="panel-heading">
-	    <h2 class="panel-title text-center" style="color:white;"><strong>Main Config</strong></h2>
-	  </div>
+	<div class="panel-heading">
+        <a class="btn btn-danger  btn-sm pull-left" href="/settings/blackjack/mainconfig/export">
+            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+        </a>
+
+        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 30%;">
+             Main Config
+        </h2>
+
+
+        <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+        <a class="btn btn-success btn-sm pull-right" onclick="ExportToPNGBJMainConfig();">
+            Export to PNG
+        </a>
+    </div>
 
 	  <div class="panel-body">
 		<form action="/settings/blackjack/mainconfig/edit" method="POST" role="form" id="main-config-form">
@@ -270,4 +282,21 @@ $('input[type="checkbox"]').change(function(){
         init();
     });
 });
+</script>
+<script>
+    function ExportToPNGBJMainConfig() {
+    html2canvas($('#blackjack-main-config-panel'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>

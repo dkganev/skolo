@@ -112,14 +112,19 @@ Route::post('/settings/addErrorList', 'Settings\ErrorsController@addErrorList');
  */
 Route::get('/settings/bingo/mainconfig', 'Settings\BingoController@main_config');
 Route::post('/settings/bingo/mainconfig/edit', 'Settings\BingoController@main_config_edit');
+Route::get('/settings/bingo/main-config-export', 'Settings\BingoController@export_main_config');
 
 Route::get('/settings/bingo/mybonus', 'Settings\BingoController@my_bonus');
 Route::post('/settings/bingo/mybonus/edit', 'Settings\BingoController@my_bonus_edit');
+Route::get('/settings/bingo/mybonus-export', 'Settings\BingoController@my_bonus_export');
 
 Route::get('/settings/bingo/maxballs', 'Settings\BingoController@max_balls_index');
 Route::post('/settings/bingo/maxballs/store', 'Settings\BingoController@max_balls_store');
 Route::post('/settings/bingo/maxballs/edit', 'Settings\BingoController@max_balls_edit');
 Route::post('/settings/bingo/maxballs/destroy', 'Settings\BingoController@max_balls_destroy');
+Route::get('/settings/bingo/maxballs/export', 'Settings\BingoController@max_balls_export');
+
+
 
 Route::get('/settings/bingo/sphereconfig', 'Settings\BingoController@sphere_config_index');
 Route::post('/settings/bingo/sphereconfig/edit', 'Settings\BingoController@sphere_config_edit');
@@ -132,9 +137,11 @@ Route::post('/settings/bingo/accconfig/edit', 'Settings\BingoController@acc_conf
  */
 Route::get('/settings/blackjack/mainconfig', 'Settings\BlackjackController@main_config_index');
 Route::get('/settings/blackjack/tables', 'Settings\BlackjackController@tables_index');
-
+Route::get('/settings/blackjack/mainconfig/export', 'Settings\BlackjackController@main_config_export');
+ 
 Route::post('/settings/blackjack/mainconfig/edit', 'Settings\BlackjackController@main_config_edit');
 Route::post('/settings/blackjack/table/edit', 'Settings\BlackjackController@table_edit');
+Route::get('/settings/blackjack/table/export', 'Settings\BlackjackController@tables_export');
 
 Route::get('/settings/blackjack/accconfig', 'Settings\BlackjackController@acc_config_index');
 Route::post('/settings/blackjack/accconfig/edit', 'Settings\BlackjackController@acc_config_edit');
