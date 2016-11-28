@@ -44,10 +44,10 @@ socket.on('new message', function (data) {
         TotalBet = parseInt($('#TotalBet').text());
         TotalWin = parseInt($('#TotalWin').text());
         TotalCredit = parseInt($('#TotalCredit').text());
-        TotalInOld  = parseInt($('#TotalIn' + obj.dataNew.psid).text());
-        TotalOutOld = parseInt($('#TotalOut' + obj.dataNew.psid).text());
-        TotalBetOld = parseInt($('#TotalBet' + obj.dataNew.psid).text());
-        TotalWinOld = parseInt($('#TotalWin' + obj.dataNew.psid).text());
+        TotalInOld  = obj.dataOld.counter[199] + obj.dataOld.counter[20] + obj.dataOld.counter[12]; //parseInt($('#TotalIn' + obj.dataNew.psid).text());
+        TotalOutOld = obj.dataOld.counter[202] + obj.dataOld.counter[21] + obj.dataOld.counter[23]; //parseInt($('#TotalOut' + obj.dataNew.psid).text());
+        TotalBetOld = obj.dataOld.counter[0]; //parseInt($('#TotalBet' + obj.dataNew.psid).text());
+        TotalWinOld = obj.dataOld.counter[27] + obj.dataOld.counter[28] + obj.dataOld.counter[29]; //parseInt($('#TotalWin' + obj.dataNew.psid).text());
         TotalCreditOld = parseInt($('#TotalCredit' + obj.dataNew.psid).text());
         TotalInNew = obj.dataNew.counter[199] + obj.dataNew.counter[20] + obj.dataNew.counter[12];
         TotalOutNew = obj.dataNew.counter[202] + obj.dataNew.counter[21] + obj.dataNew.counter[23];
