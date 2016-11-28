@@ -21,6 +21,7 @@ function socketConect() {
         sockStatus = 0;
         console.log ("Disconect");
         $("#socketConect").css({'background-image': 'linear-gradient(to bottom,#f5f5f5 0%,#e8e8e8 100%)'});
+        $("#socketConectRealtime").text('Start Real Time');
     }
 }
 

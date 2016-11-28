@@ -3,7 +3,7 @@
     <div class="col-md-8">
         <div class="panel panel-default" id="panelTerminatsContend">
             <div class="panel-heading" id="socketConect">
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 15%;">
+                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 5%;">
                     Machine Statistics
                 </h2>
 
@@ -15,8 +15,8 @@
                     Export to PNG
                 </a>
                 <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
-                <a  class="btn btn-warning  pull-right" onclick="socketConect();">
-                    Online
+                <a id="socketConectRealtime" class="btn btn-warning  pull-right" onclick="socketConect();">
+                    Start Real Time
                 </a>
             </div>
                 <div class="panel-body" >
@@ -74,10 +74,12 @@
         //sockStatus = 1;
         console.log ("Conect"); //socketConect  background-color: #f5f5f5;
         $("#socketConect").css({'background-image': 'linear-gradient(to bottom,#5cb85c 0%,#419641 100%)'});
+        $("#socketConectRealtime").text('Stop Real Time');
     }else{
         socket.disconnect();
         //sockStatus = 0;
         console.log ("Disconect");
         $("#socketConect").css({'background-image': 'linear-gradient(to bottom,#f5f5f5 0%,#e8e8e8 100%)'});
+        $("#socketConectRealtime").text('Start Real Time');
     }
 </script>

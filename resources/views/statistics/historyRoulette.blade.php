@@ -1,4 +1,12 @@
+<style>
+    @media screen and (max-width: 1700px) {
+    #rouletteHistory_modal {
+        overflow: scroll;
+    }
+}
+</style>
 @include('modals.rouletteHistory-modal')
+
 <div class="container">
     <div class=""> 
         <div class="" style="">
@@ -352,5 +360,5 @@ if (pageSortMenuOpen == 1){
 }else{
     sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
 }    
-
+//$("#rouletteHistory_modal").css({'overflow': 'scroll'});
 </script>
