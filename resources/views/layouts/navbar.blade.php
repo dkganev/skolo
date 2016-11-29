@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse bg-primary" style="height:45px; ">
+<nav class="navbar navbar-inverse bg-primary" style="height:45px;">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -10,16 +10,17 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
+        <li class="nav-option">
           <a  style="{{ Request::is('casino*') ? "color: white;" : ''}}" 
               href="{{ url('casino') }}"
           >
-            <i style="font-size: 21px;" class="fa fa-dashboard"></i>
+            {{-- <i style="font-size: 21px;" class="fa fa-dashboard"></i> --}}
+            <img src="/images/casino.png" alt="" style="margin-bottom: -7px;">
             <strong>@lang('messages.casino')</strong>
           </a>
         </li>
 
-        <li>
+        <li class="nav-option">
           <a  style="{{ Request::is('statistics*') ? "color: white;" : ''}}"
               href="{{ url('statistics') }}"
           >
@@ -29,7 +30,7 @@
         </li>
 
         @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
-        <li>
+        <li class="nav-option">
           <a  style="{{ Request::is('settings*') ? "color: white;" : ''}}"
               href="{{ url('settings') }}"
           >
@@ -45,10 +46,12 @@
 
         <li><a><strong>User: {{ Auth::user()->fullName() }}</strong> ({{ Auth::user()->userRole() }})</a></li>
 
-        <li><a href="{{ url('logout') }}" style="padding: 0;">
-            <button style="width: 150px;" type="button" class="btn btn-danger navbar-btn btn-block">
-              <i class="fa fa-sign-out fa-2x" style="font-size: 18px; padding-right: 15px;"></i><strong>Logout</strong>
-            </button></a>
+        <li>
+            <a href="{{ url('logout') }}" style="padding: 0;">
+              <button type="button" class="btn btn-danger navbar-btn btn-block">
+                <strong>X</strong>
+              </button>
+            </a>
         </li>
       </ul> 
 
@@ -101,10 +104,12 @@
            </ul>
         </li>  
       </ul>  
-
+  
     </div><!--/.nav-collapse -->
   </div><!--/ .container -->
 </nav>
+<img src="images/bgr_fx.png" alt="" style="width: 60%;background-color: red; position: absolute; top: 49px;left: -60px;top: 49px;">
+<img id="image-flipped" src="images/bgr_fx.png" alt="" style="width: 60%;background-color: red; position: absolute;top: 49px;right: -251px;">
 
 @if(Request::is('settings*'))
     @include('settings.navbar')
@@ -152,4 +157,35 @@ ul.breadcrumb a:active {
 /*ul.nav a {
   color:white !important;
 }*/
+
+.navbar {
+background: rgba(94,94,94,1);
+background: -moz-linear-gradient(top, rgba(94,94,94,1) 0%, rgba(38,35,38,0.98) 4%, rgba(110,110,110,0.95) 12%, rgba(89,89,89,0.92) 19%, rgba(128,128,128,0.9) 25%, rgba(186,186,186,0.84) 38%, rgba(0,0,0,0.66) 84%, rgba(0,0,0,0.61) 96%, rgba(26,26,26,0.59) 99%, rgba(26,26,26,0.59) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(94,94,94,1)), color-stop(4%, rgba(38,35,38,0.98)), color-stop(12%, rgba(110,110,110,0.95)), color-stop(19%, rgba(89,89,89,0.92)), color-stop(25%, rgba(128,128,128,0.9)), color-stop(38%, rgba(186,186,186,0.84)), color-stop(84%, rgba(0,0,0,0.66)), color-stop(96%, rgba(0,0,0,0.61)), color-stop(99%, rgba(26,26,26,0.59)), color-stop(100%, rgba(26,26,26,0.59)));
+background: -webkit-linear-gradient(top, rgba(94,94,94,1) 0%, rgba(38,35,38,0.98) 4%, rgba(110,110,110,0.95) 12%, rgba(89,89,89,0.92) 19%, rgba(128,128,128,0.9) 25%, rgba(186,186,186,0.84) 38%, rgba(0,0,0,0.66) 84%, rgba(0,0,0,0.61) 96%, rgba(26,26,26,0.59) 99%, rgba(26,26,26,0.59) 100%);
+background: -o-linear-gradient(top, rgba(94,94,94,1) 0%, rgba(38,35,38,0.98) 4%, rgba(110,110,110,0.95) 12%, rgba(89,89,89,0.92) 19%, rgba(128,128,128,0.9) 25%, rgba(186,186,186,0.84) 38%, rgba(0,0,0,0.66) 84%, rgba(0,0,0,0.61) 96%, rgba(26,26,26,0.59) 99%, rgba(26,26,26,0.59) 100%);
+background: -ms-linear-gradient(top, rgba(94,94,94,1) 0%, rgba(38,35,38,0.98) 4%, rgba(110,110,110,0.95) 12%, rgba(89,89,89,0.92) 19%, rgba(128,128,128,0.9) 25%, rgba(186,186,186,0.84) 38%, rgba(0,0,0,0.66) 84%, rgba(0,0,0,0.61) 96%, rgba(26,26,26,0.59) 99%, rgba(26,26,26,0.59) 100%);
+background: linear-gradient(to bottom, rgba(94,94,94,1) 0%, rgba(38,35,38,0.98) 4%, rgba(110,110,110,0.95) 12%, rgba(89,89,89,0.92) 19%, rgba(128,128,128,0.9) 25%, rgba(186,186,186,0.84) 38%, rgba(0,0,0,0.66) 84%, rgba(0,0,0,0.61) 96%, rgba(26,26,26,0.59) 99%, rgba(26,26,26,0.59) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e5e5e', endColorstr='#1a1a1a', GradientType=0 );
+
+}
+
+#image-flipped {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+}
+
+.nav-option {
+  font-family: arial; font-size: 15pt; color: #fff;"
+}
+
+.nav-option > a > img {
+  position: relative;
+    bottom: 6px;
+
+}
 </style>
