@@ -174,6 +174,16 @@ Route::get('/settings/roulette2/accconfig', 'Settings\RouletteTwoController@acc_
 Route::post('/settings/roulette2/accconfig/edit', 'Settings\RouletteTwoController@acc_config_edit');
 
 /**
+ * SETTINGS / PBS
+ */
+Route::get('/settings/PBS/BonusPoints2Money', 'Settings\PBS@BonusPoints2Money');
+Route::get('/settings/PBS/Bet2BonusPoints', 'Settings\PBS@Bet2BonusPoints');
+Route::get('/settings/PBS/CardTypeBonusPeriod', 'Settings\PBS@CardTypeBonusPeriod');
+
+
+
+
+/**
  * LOCALIZATION
  */
 Route::post('/localize', 'LocalizationController@index');

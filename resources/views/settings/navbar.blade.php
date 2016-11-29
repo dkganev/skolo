@@ -24,6 +24,8 @@
                 <li><a href="javascript:ajaxLoad('{{url('settings/blackjack/mainconfig')}}')">Blackjack</a></li>
 
                 <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">Roulette</a></li>
+                
+                <li><a href="javascript:ajaxLoad('{{url('/settings/PBS/BonusPoints2Money')}}')">PBS</a></li>
 
               </ul>
           </div>

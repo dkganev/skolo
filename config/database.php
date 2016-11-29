@@ -147,6 +147,19 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],       
+        'pgsql7' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST7', '10.0.0.199'),
+            'port' => env('DB_PORT7', '5432'),
+            'database' => env('DB_DATABASE7', 'forge'),
+            'username' => env('DB_USERNAME7', 'forge'),
+            'password' => env('DB_PASSWORD7', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],       
 
 
     ],
