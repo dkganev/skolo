@@ -21,10 +21,21 @@
 <div class="row">
 <div class="col-lg-9">
 
-  <div class="panel panel-primary">
+  <div class="panel panel-primary" id="blackjack-tables-panel">
 
     <div class="panel-heading">
-       <h2 class="panel-title text-center" style="color:white;"><strong>Tables</strong></h2>
+        <a class="btn btn-danger  btn-sm pull-left" href="/settings/blackjack/table/export">
+            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+        </a>
+
+        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 35%;">
+            Tables
+        </h2>
+
+        <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+        <a class="btn btn-success btn-sm pull-right" onclick="ExportToPNGBJTables();">
+            Export to PNG
+        </a>
     </div>
 
     <div class="panel-body">
@@ -233,4 +244,21 @@ $('input[type="checkbox"]').change(function(){
         init();
     });
 });
+</script>
+<script>
+    function ExportToPNGBJTables() {
+    html2canvas($('#blackjack-tables-panel'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>

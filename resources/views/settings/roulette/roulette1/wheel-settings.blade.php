@@ -39,10 +39,21 @@
 <div class="container">
 <div class="row">
 <div class="col-lg-8">
-  <div class="panel panel-primary">
+  <div class="panel panel-primary" id="wheel-settings-panel">
 
     <div class="panel-heading">
-      <h2 class="panel-title text-center" style="color:white;"><strong>Wheel Settings</strong></h2>
+        <a class="btn btn-danger  btn-sm pull-left" href="/settings/blackjack/table/export">
+            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+        </a>
+
+        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 25%;">
+           Wheel Settings
+        </h2>
+
+        <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+        <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGBJWheelSettings();">
+            Export to PNG
+        </a>
     </div>
 
     <div class="panel-body">
@@ -236,4 +247,21 @@ $('button#main-config-rlt').on('click', function(event) {
          javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings/')}}');
     });
 });
+</script>
+<script>
+    function ExportToPNGBJWheelSettings() {
+    html2canvas($('#wheel-settings-panel'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>

@@ -12,6 +12,7 @@ use App\Models\Bingo\JackpotSteps;
 use App\Models\Bingo\SphereConfig;
 use App\Models\Bingo\AccConfig;
 use DB;
+use Excel;
 
 class BingoController extends Controller
 {
@@ -20,6 +21,24 @@ class BingoController extends Controller
     	$bingo = MainConfig::first();
 
     	return view('settings.bingo.main-config', ['bingo' => $bingo]);
+    }
+
+    public function export_main_config()
+    {
+        $export = MainConfig::first();
+        Excel::create('Main-Config Data', function($excel) use($export){
+            $excel->sheet('Bingo', function($sheet) use($export){
+                $sheet->FromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xlsx');
     }
 
     public function main_config_edit(Request $request)
@@ -39,6 +58,25 @@ class BingoController extends Controller
     	return view('settings.bingo.my-bonus', ['my_bonus' => $my_bonus]);
     }
 
+
+    public function my_bonus_export()
+    {
+        $export = MyBonus::orderBy('id', 'asc')->get();
+        Excel::create('Main-Config Data', function($excel) use($export){
+            $excel->sheet('Bingo', function($sheet) use($export){
+                $sheet->FromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
+    }
+
     public function my_bonus_edit(Request $request)
     {
         DB::connection('pgsql3')->table('my_bonus')->where('id', $request->id)->update([
@@ -55,6 +93,24 @@ class BingoController extends Controller
         $jackpot_steps = JackpotSteps::orderBy('id', 'asc')->get();
 
     	return view('settings.bingo.max-balls', ['jackpot_steps' => $jackpot_steps]);
+    }
+
+    public function max_balls_export()
+    {
+        $export = JackpotSteps::orderBy('id', 'asc')->get();
+        Excel::create('Max Balls Data', function($excel) use($export){
+            $excel->sheet('Max Balls', function($sheet) use($export){
+                $sheet->FromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
     }
 
     public function max_balls_store(Request $request)

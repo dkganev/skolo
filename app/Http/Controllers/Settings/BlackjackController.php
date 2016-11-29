@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Excel;
 use App\Http\Requests;
 use App\Models\Blackjack\BlackjackTable;
 use App\Models\Blackjack\MainConfig;
 use App\Models\Blackjack\AccConfig;
+
 
 class BlackjackController extends Controller
 {
@@ -17,6 +19,24 @@ class BlackjackController extends Controller
         $config = MainConfig::first();
 
         return view('settings.blackjack.main-config', ['config' => $config]);
+    }
+
+    public function main_config_export()
+    {
+        $export = MainConfig::first();
+        Excel::create('Blackjack Main Confg Data', function($excel) use($export){
+            $excel->sheet('Main Config', function($sheet) use($export){
+                $sheet->FromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
     }
 
     public function tables_index()
@@ -58,6 +78,24 @@ class BlackjackController extends Controller
         }
 
         return response()->json(['response' => $table], 200);
+    }
+
+    public function tables_export()
+    {
+        $export = BlackjackTable::orderBy('table_id', 'asc')->get();
+        Excel::create('Blackjack Tables Data', function($excel) use($export){
+            $excel->sheet('Tables', function($sheet) use($export){
+                $sheet->FromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
     }
     
     public function main_config_edit(Request $request)

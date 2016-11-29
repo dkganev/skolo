@@ -20,10 +20,22 @@
 </div><!-- End Row -->
 
 <div class="row">
-	<div class="col-lg-4">
-        <div class="panel panel-default">
-            <div class="panel-heading text-center" style="background-image: none; background-color: #607D8B; color: white;">
-                <h2 class="panel-title" style="color:white;"><strong>My Bonus</strong></h2>
+	<div class="col-lg-5">
+
+        <div class="panel panel-default" id="my-bonus-panel">
+            <div class="panel-heading">
+                <a class="btn btn-warning btn-sm pull-left" href="/settings/bingo/mybonus-export">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+                </a>
+
+                <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 15%;">
+                     My Bonus
+                </h2>
+
+                <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+                <a class="btn btn-success btn-sm pull-right" onclick="ExportToPNGMyBonus();">
+                    Export to PNG
+                </a>
             </div>
 
             <div class="panel-body">
@@ -86,4 +98,21 @@ $('.mybonus-button').on('click', function(event) {
          javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}');
     });
 });
+</script>
+<script>
+    function ExportToPNGMyBonus() {
+    html2canvas($('#my-bonus-panel'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>

@@ -27,10 +27,23 @@
 <div class="col-lg-11">
 
 <!--    Context Classes  -->
-<div class="panel panel-default">
+<div class="panel panel-default" id="max-balls-panel">
     <div class="panel-heading">
         <a id="toggle-max-balls" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addMaxBallsModal">
             Add New
+        </a>
+
+        <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 30%;">
+             Max Balls
+        </h2>
+
+        <a class="btn btn-warning  btn-sm pull-right" href="/settings/bingo/maxballs/export">
+            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+        </a>
+
+        <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+        <a class="btn btn-success btn-sm pull-right" onclick="ExportToPNGMaxBalls();">
+            Export to PNG
         </a>
     </div>
 
@@ -104,7 +117,7 @@
           <td style="width: 140px;">
               {{ csrf_field() }}
               <input type="hidden" name="id" value="{{ $steps->id }}">
-              <button  type="submit" class="btn btn-warning btn-sm edit-max-balls-btn" data-id="{{ $steps->id }}">Update</button>
+              <button  type="submit" class="btn btn-primary btn-sm edit-max-balls-btn" data-id="{{ $steps->id }}">Edit</button>
               <a href="#"
                 class="btn btn-danger btn-sm"
                 role="button"
@@ -148,4 +161,21 @@ $('input[type="checkbox"]').change(function(){
      cb = $(this);
      cb.val(cb.prop('checked'));
  });
+</script>
+<script>
+    function ExportToPNGMaxBalls() {
+    html2canvas($('#max-balls-panel'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>

@@ -54,7 +54,7 @@
     <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
        
 </head>
-<body style="background-image: url('images/login-background.jpg'); ">
+<body style="background-image: url('images/bgr1.png'); ">
 
 @include('layouts.alerts')
 @include('layouts.navbar')

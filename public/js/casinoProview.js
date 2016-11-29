@@ -337,6 +337,7 @@ function export2excelEvents() {
             "&ToGameTs=" + ToGameTs ; 
     window.location.href = pageHref; 
 }
+
 function ExportToPNGEventsTable() {
     html2canvas($('#panelEventsContend'), {
         onrendered: function(canvas) {
