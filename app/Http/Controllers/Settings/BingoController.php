@@ -116,7 +116,6 @@ class BingoController extends Controller
     public function max_balls_store(Request $request)
     {
         DB::connection('pgsql3')->table('jackpot_steps')->insert([
-
             'bingo_ticket_cost' => $request->bingo_ticket_cost,
             'jackpot_bingo_max_ball' => $request->jackpot_bingo_max_ball,
             'jackpot_line_max_ball' => $request->jackpot_line_max_ball,
@@ -167,8 +166,9 @@ class BingoController extends Controller
 
     public function cancel_game()
     {
-        DB::connection('pgsql3')->table('cancel_game')->insert([
-            'do_cancel' => 1
-        ]);
+        // DB::connection('pgsql3')->table('cancel_game')->where('do_cancel', '=', 0)->first()->update([
+        //     'do_cancel' => 1
+        // ]);
+        DB::connection('pgsql3')->table('cancel_game')->increment('do_cancel');
     }
 }

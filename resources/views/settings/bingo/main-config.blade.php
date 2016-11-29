@@ -279,14 +279,14 @@
 	        data: { _token: token },
 		    success: function() {
 	            $('.cancel-game').delay(50).fadeIn(function() {
-	              $(this).delay(1500).fadeOut();
-	            });
+	              $(this).delay(1500).fadeOut()
+	            })
 	        },
 	        error: function (error) {
 	            console.log("Error " + error);
 	        }
-	    });
-	});
+	    })
+	})
 </script>
 <script>
 	function ExportToPNGMainConfig() {
