@@ -24,7 +24,7 @@
   <div class="panel panel-primary">
 
     <div class="panel-heading">
-        <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 20%;">
+        <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 10%;">
             Accounting Config
         </h3>
     </div>

@@ -41,7 +41,9 @@
   <div class="panel panel-primary">
 
     <div class="panel-heading">
-      <h2 class="panel-title text-center" style="color:white;"><strong>Accouting Config</strong></h2>
+      <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 10%;">
+        Accounting Config
+      </h3>
     </div>
 
     <div class="panel-body">

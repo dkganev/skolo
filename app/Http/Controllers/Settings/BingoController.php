@@ -164,4 +164,11 @@ class BingoController extends Controller
     {
         AccConfig::first()->update($request->except('_token'));
     }
+
+    public function cancel_game()
+    {
+        DB::connection('pgsql3')->table('cancel_game')->insert([
+            'do_cancel' => 1
+        ]);
+    }
 }
