@@ -175,8 +175,17 @@ Route::post('/settings/roulette2/accconfig/edit', 'Settings\RouletteTwoControlle
  * SETTINGS / PBS
  */
 Route::get('/settings/PBS/BonusPoints2Money', 'Settings\PBS@BonusPoints2Money');
+Route::post('/ajax_BonusPoints2Money', 'Settings\PBS@ajax_BonusPoints2Money');
+Route::get('/export2excelBonusPoints2Money', 'Settings\PBS@export2excelBonusPoints2Money')->name('export2excelBonusPoints2Money');
+
 Route::get('/settings/PBS/Bet2BonusPoints', 'Settings\PBS@Bet2BonusPoints');
+Route::post('/ajax_EditBet2BonusPoints', 'Settings\PBS@EditBet2BonusPoints');
+Route::post('/ajax_RemoveBet2BonusPoints', 'Settings\PBS@RemoveBet2BonusPoints');
+Route::post('/ajax_SaveAddBet2BonusPoints', 'Settings\PBS@SaveAddBet2BonusPoints');
+Route::get('/export2excelBet2BonusPoints', 'Settings\PBS@export2excelBet2BonusPoints')->name('export2excelBet2BonusPoints');
+
 Route::get('/settings/PBS/CardTypeBonusPeriod', 'Settings\PBS@CardTypeBonusPeriod');
+Route::post('/ajax_CardTypeBonusPeriod', 'Settings\PBS@ajax_CardTypeBonusPeriod');
 
 
 
