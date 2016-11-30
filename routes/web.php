@@ -113,6 +113,8 @@ Route::post('/settings/addErrorList', 'Settings\ErrorsController@addErrorList');
 Route::get('/settings/bingo/mainconfig', 'Settings\BingoController@main_config');
 Route::post('/settings/bingo/mainconfig/edit', 'Settings\BingoController@main_config_edit');
 Route::get('/settings/bingo/main-config-export', 'Settings\BingoController@export_main_config');
+Route::post('/settings/bingo/mainconfig/cancel-game', 'Settings\BingoController@cancel_game');
+
 
 Route::get('/settings/bingo/mybonus', 'Settings\BingoController@my_bonus');
 Route::post('/settings/bingo/mybonus/edit', 'Settings\BingoController@my_bonus_edit');

@@ -241,9 +241,15 @@
 
 		</div><!-- End Panel Body-->
 		<div class="panel-footer">
-			<button id="bingo-main-config-sbt" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-primary ">
+			<button id="cancel-game" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-danger">
+				Cancel Bingo Game
+			</button>
+
+			<button id="bingo-main-config-sbt" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-primary pull-right">
 				Update
 			</button>
+
+
 		</div><!-- End Panel Footer-->
 	</form>
 	</div>
@@ -253,17 +259,34 @@
 
 <script>
 	$('button#bingo-main-config-sbt').on('click', function(event) {
-    event.preventDefault();
-    
-    $.ajax({
-        method: 'POST',
-        url: '/settings/bingo/mainconfig/edit',
-        data: $('form#bingo-main-config').serialize(),
-    })
-    .done(function () {
-         javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}');
-    });
-});
+	    event.preventDefault();
+	    
+	    $.ajax({
+	        method: 'POST',
+	        url: '/settings/bingo/mainconfig/edit',
+	        data: $('form#bingo-main-config').serialize(),
+	    }).done(function () {
+         	javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')
+	    })
+	})
+
+   	$('button#cancel-game').on('click', function(event) {
+	    event.preventDefault();
+	    var token = $('meta[name="csrf-token"]').attr('content');
+	    $.ajax({
+	        method: 'POST',
+	        url: '/settings/bingo/mainconfig/cancel-game',
+	        data: { _token: token },
+		    success: function() {
+	            $('.cancel-game').delay(50).fadeIn(function() {
+	              $(this).delay(1500).fadeOut()
+	            })
+	        },
+	        error: function (error) {
+	            console.log("Error " + error);
+	        }
+	    })
+	})
 </script>
 <script>
 	function ExportToPNGMainConfig() {

@@ -42,7 +42,9 @@
   <div class="panel panel-primary">
 
     <div class="panel-heading">
-      <h2 class="panel-title text-center" style="color:white;"><strong>Wheel Config</strong></h2>
+      <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 40%;">
+        Wheel Config
+      </h3>
     </div>
 
     <div class="panel-body">
