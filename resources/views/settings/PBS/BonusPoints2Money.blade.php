@@ -24,7 +24,7 @@
                         <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
                             Bonus Points to Money
                         </h2>
-                        <a class="btn btn-warning  pull-right" onclick="export2excelBonusPoints2Money();">
+                        <a href="{{ route('export2excelBonusPoints2Money') }}" class="btn btn-warning  pull-right" >
                             <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                         </a>
                         <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
@@ -33,9 +33,22 @@
                         </a>
                     </div>
                 </div>
+                <div class="panel-body" id="" >
+                    
+                    <div>
+                        <label >One Bonus Points To Money (cents):</label>
+                        <input id="BonusPoints2Money" class="form-control input-sm" value="{{$settings->points_to_money}}" name="bonus_silver_money" maxlength="7" required="" numbers-only="" placeholder="cents" style="width: 140px;margin-bottom: 10px;display:inline-block;" tabindex="0" aria-required="false" aria-invalid="false" type="number" >
+                        <button class="btn btn btn-primary btn-sm" type="submit"  onclick="BonusPoints2Money()"  tabindex="0">
+                            <div class="icons pull-left">
+                                <span id="refresh" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
+                                <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                                <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                            </div>
+                            <div class="text pull-right">Save</div>
+                        </button>
+                    </div>
             
-            
-            
+                </div>
             </div>
         </div>
     </div>    

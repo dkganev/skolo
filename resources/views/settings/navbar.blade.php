@@ -33,4 +33,5 @@
   </div>
   <hr style="padding-bottom: 15px; margin: 0;">
 </div>
+<script src="js/settings.js"></script>
 
