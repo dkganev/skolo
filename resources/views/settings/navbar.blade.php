@@ -3,7 +3,7 @@
       <div class="col-md-12 "> 
           <div style="padding-top:6px; margin-top: 0px; background-color: none;">
               <!-- Secondary Navigation -->
-              <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
+              <ul class="breadcrumb" style="">
                 @hasanyrole(['Owner', 'Super User'])
                 <li><a id="TerminalsSettings" href="javascript:ajaxLoad('{{url('settings/terminals')}}')" data-url="{{substr(url(''),0,-5)}}">Terminals</a></li>
 
