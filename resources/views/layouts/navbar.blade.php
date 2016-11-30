@@ -11,7 +11,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="nav-option">
-          <a  style="{{ Request::is('casino*') ? "color: white;" : ''}}" 
+          <a  style="{{ Request::is('casino*') ? "color: #ffe630;" : ''}}" 
               href="{{ url('casino') }}"
           >
             {{-- <i style="font-size: 21px;" class="fa fa-dashboard"></i> --}}
@@ -21,20 +21,20 @@
         </li>
 
         <li class="nav-option">
-          <a  style="{{ Request::is('statistics*') ? "color: white;" : ''}}"
+          <a  style="{{ Request::is('statistics*') ? "color:  #ffe630;" : ''}}"
               href="{{ url('statistics') }}"
           >
-            <i style="font-size: 21px;" class="fa fa-bar-chart"></i>
+            <img src="/images/statistics.png" alt="" style="margin-bottom: -7px;">
             <strong>@lang('messages.statistics')</strong>
           </a>
         </li>
 
         @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
         <li class="nav-option">
-          <a  style="{{ Request::is('settings*') ? "color: white;" : ''}}"
+          <a  style="{{ Request::is('settings*') ? "color: #ffe630;" : ''}}"
               href="{{ url('settings') }}"
           >
-            <i style="font-size: 21px;" class="fa fa-btn fa-wrench"></i>
+            <img src="/images/settings_real.png" alt="" style="margin-bottom: -7px;">
             <strong>@lang('messages.settings')</strong>
           </a>
         </li>
@@ -44,7 +44,7 @@
 
       <ul class="nav navbar-nav navbar-right">  
 
-        <li><a><strong>User: {{ Auth::user()->fullName() }}</strong> ({{ Auth::user()->userRole() }})</a></li>
+        <li class="nav-secondary"><a ><strong class="nav-secondary">User: {{ Auth::user()->fullName() }}</strong></a></li>
 
         <li>
             <a href="{{ url('logout') }}" style="padding: 0;">
@@ -60,11 +60,10 @@
         <li class="dropdown">
 
           <a href="" data-toggle="dropdown">
-            <strong>@lang('messages.language'): </strong>
 
-            <strong>{{ \App::isLocale('en') ? 'EN' : 'BG '}}</strong>
+            <strong class="nav-secondary">{{ \App::isLocale('en') ? 'EN' : 'BG '}}</strong>
 
-            <span class="flag-icon flag-icon-{{ \App::isLocale('en') ? 'gb' : 'bg' }} flag-icon-squared"></span>
+            <span class="flag-icon flag-icon-{{ \App::isLocale('en') ? 'gb' : 'bg' }} flag-icon-squared nav-secondary"></span>
 
             <span class="caret"></span> 
           </a>
@@ -88,8 +87,8 @@
       <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong>@lang('messages.casino'): </strong>
-                <strong>
+                <strong class="nav-secondary">@lang('messages.casino'): </strong>
+                <strong class="nav-secondary">
                   {{ Session::get('casino')->casinoname }}
                 </strong>
                 <span class="caret"></span>
@@ -159,8 +158,8 @@ ul.breadcrumb a:active {
 }*/
 
 .navbar {
-background: rgba(94,94,94,1);
-background: -moz-linear-gradient(top, rgba(94,94,94,1) 0%, rgba(38,35,38,0.98) 4%, rgba(110,110,110,0.95) 12%, rgba(89,89,89,0.92) 19%, rgba(128,128,128,0.9) 25%, rgba(186,186,186,0.84) 38%, rgba(0,0,0,0.66) 84%, rgba(0,0,0,0.61) 96%, rgba(26,26,26,0.59) 99%, rgba(26,26,26,0.59) 100%);
+  background: rgba(94,94,94,1);
+  background: -moz-linear-gradient(top, rgba(94,94,94,1) 0%, rgba(38,35,38,0.98) 4%, rgba(110,110,110,0.95) 12%, rgba(89,89,89,0.92) 19%, rgba(128,128,128,0.9) 25%, rgba(186,186,186,0.84) 38%, rgba(0,0,0,0.66) 84%, rgba(0,0,0,0.61) 96%, rgba(26,26,26,0.59) 99%, rgba(26,26,26,0.59) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(94,94,94,1)), color-stop(4%, rgba(38,35,38,0.98)), color-stop(12%, rgba(110,110,110,0.95)), color-stop(19%, rgba(89,89,89,0.92)), color-stop(25%, rgba(128,128,128,0.9)), color-stop(38%, rgba(186,186,186,0.84)), color-stop(84%, rgba(0,0,0,0.66)), color-stop(96%, rgba(0,0,0,0.61)), color-stop(99%, rgba(26,26,26,0.59)), color-stop(100%, rgba(26,26,26,0.59)));
 background: -webkit-linear-gradient(top, rgba(94,94,94,1) 0%, rgba(38,35,38,0.98) 4%, rgba(110,110,110,0.95) 12%, rgba(89,89,89,0.92) 19%, rgba(128,128,128,0.9) 25%, rgba(186,186,186,0.84) 38%, rgba(0,0,0,0.66) 84%, rgba(0,0,0,0.61) 96%, rgba(26,26,26,0.59) 99%, rgba(26,26,26,0.59) 100%);
 background: -o-linear-gradient(top, rgba(94,94,94,1) 0%, rgba(38,35,38,0.98) 4%, rgba(110,110,110,0.95) 12%, rgba(89,89,89,0.92) 19%, rgba(128,128,128,0.9) 25%, rgba(186,186,186,0.84) 38%, rgba(0,0,0,0.66) 84%, rgba(0,0,0,0.61) 96%, rgba(26,26,26,0.59) 99%, rgba(26,26,26,0.59) 100%);
@@ -171,21 +170,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e5e5e', end
 }
 
 #image-flipped {
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH";
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
 }
 
 .nav-option {
   font-family: arial; font-size: 15pt; color: #fff;"
 }
+.nav-secondary {
+  font-family: arial; font-size: 12pt; color: #fff;"
+}
 
 .nav-option > a > img {
   position: relative;
-    bottom: 6px;
+  bottom: 6px;
 
 }
 </style>
