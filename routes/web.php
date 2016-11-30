@@ -229,3 +229,14 @@ Route::post('/ajax_sortBJHistory', 'StatisticsController@ajax_sortBJHistory');
 Route::get('/export2excelBJ', 'StatisticsController@export2excelBJ')->name('export2excelBJ');
 
 });
+
+/**
+ * Players
+ */
+
+Route::get('players', 'Players\PlayersController@index')->name('players') ;
+Route::get('players/cards', 'Players\PlayersController@cards');
+ 
+ 
+ 
+ 

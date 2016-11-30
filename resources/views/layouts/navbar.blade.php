@@ -28,7 +28,15 @@
             <strong>@lang('messages.statistics')</strong>
           </a>
         </li>
-
+        <li class="nav-option">
+          <a  style="{{ Request::is('players*') ? "color: white;" : ''}}"
+              href="{{ url('players') }}"
+          >
+            <i class="glyphicon glyphicon-user hidden-sm"></i>
+            <strong>@lang('messages.players')</strong>
+          </a>
+        </li>
+ 
         @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
         <li class="nav-option">
           <a  style="{{ Request::is('settings*') ? "color: white;" : ''}}"
@@ -121,6 +129,11 @@
   </div>
 @endif
 
+@if(Request::is('players*'))
+  <div class="container">
+    @include('players.navbar')
+  </div>
+@endif
 
 @if(Request::is('casino*'))
   <div class="container">
@@ -180,7 +193,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e5e5e', end
 }
 
 .nav-option {
-  font-family: arial; font-size: 15pt; color: #fff;"
+  font-family: arial; font-size: 15pt; color: #fff;
 }
 
 .nav-option > a > img {
