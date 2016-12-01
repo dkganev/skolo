@@ -24,23 +24,24 @@ $(".CasinoName").click(function() {
     token = $('meta[name="csrf-token"]').attr('content');
     newCasino = $(this).attr("data-casino");
     $.ajax({
-       type:'POST',
-       url:'ajax_casino',
+       type:'get',
+       url:'ajax_casino1',
        dataType: "json",
-       data: { 'newCasino': newCasino , _token: token},
+       data: { },
        success:function(data){
-          if (data.success == "success"){
-              $("#CasinoMenu").text( data.casinoname);
+          //if (data.success == "success"){
+           //   $("#CasinoMenu").text( data.casinoname);
               //$("#casinoEvents1").click();
               //var href = $('#casinoEvents').attr('href');
-              var href = $('#CasinoCasino').attr('href');
-              window.location.href = href; 
-              //location.reload();casinoEvents
+              //var href = $('#CasinoCasino').attr('href');
+           //window.location.href = href; 
+           //location.reload();casinoEvents
               //window.location.href = "http://10.0.0.156:8000/casino/events";
-          }
+          //}
        },
-       error: function (error) {
-            alert ("Unexpected wrong.");
+       error: function () {
+            
+            
         }
     });
 });
