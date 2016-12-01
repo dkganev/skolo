@@ -5,14 +5,7 @@
 <div class="container">
 <div class="row">
     <div class="col-lg-12">
-        <div class="panel panel-default" style="background: rgba(77,76,77,1);
-background: -moz-linear-gradient(top, rgba(77,76,77,1) 0%, rgba(143,143,143,0.97) 10%, rgba(173,173,173,0.94) 23%, rgba(212,212,212,0.8) 73%, rgba(148,148,148,0.75) 88%, rgba(84,82,84,0.72) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(77,76,77,1)), color-stop(10%, rgba(143,143,143,0.97)), color-stop(23%, rgba(173,173,173,0.94)), color-stop(73%, rgba(212,212,212,0.8)), color-stop(88%, rgba(148,148,148,0.75)), color-stop(100%, rgba(84,82,84,0.72)));
-background: -webkit-linear-gradient(top, rgba(77,76,77,1) 0%, rgba(143,143,143,0.97) 10%, rgba(173,173,173,0.94) 23%, rgba(212,212,212,0.8) 73%, rgba(148,148,148,0.75) 88%, rgba(84,82,84,0.72) 100%);
-background: -o-linear-gradient(top, rgba(77,76,77,1) 0%, rgba(143,143,143,0.97) 10%, rgba(173,173,173,0.94) 23%, rgba(212,212,212,0.8) 73%, rgba(148,148,148,0.75) 88%, rgba(84,82,84,0.72) 100%);
-background: -ms-linear-gradient(top, rgba(77,76,77,1) 0%, rgba(143,143,143,0.97) 10%, rgba(173,173,173,0.94) 23%, rgba(212,212,212,0.8) 73%, rgba(148,148,148,0.75) 88%, rgba(84,82,84,0.72) 100%);
-background: linear-gradient(to bottom, rgba(77,76,77,1) 0%, rgba(143,143,143,0.97) 10%, rgba(173,173,173,0.94) 23%, rgba(212,212,212,0.8) 73%, rgba(148,148,148,0.75) 88%, rgba(84,82,84,0.72) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d4c4d', endColorstr='#545254', GradientType=0 );">
+        <div class="panel panel-default">
             <div id="panel-head" class="panel-heading" >
                 <button class="btn btn-danger btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal">
                     Add Machine
@@ -38,14 +31,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d4c4d', end
                             data-classes="table-condensed"
                             data-cell-style
                     >
-                    <thead style="color:white;   background: rgba(76,76,76,1);
-background: -moz-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 27%, rgba(71,71,71,1) 36%, rgba(0,0,0,1) 46%, rgba(102,102,102,1) 53%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(12%, rgba(89,89,89,1)), color-stop(27%, rgba(44,44,44,1)), color-stop(36%, rgba(71,71,71,1)), color-stop(46%, rgba(0,0,0,1)), color-stop(53%, rgba(102,102,102,1)), color-stop(65%, rgba(17,17,17,1)), color-stop(76%, rgba(43,43,43,1)), color-stop(91%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
-background: -webkit-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 27%, rgba(71,71,71,1) 36%, rgba(0,0,0,1) 46%, rgba(102,102,102,1) 53%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-background: -o-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 27%, rgba(71,71,71,1) 36%, rgba(0,0,0,1) 46%, rgba(102,102,102,1) 53%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-background: -ms-linear-gradient(-45deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 27%, rgba(71,71,71,1) 36%, rgba(0,0,0,1) 46%, rgba(102,102,102,1) 53%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-background: linear-gradient(135deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 27%, rgba(71,71,71,1) 36%, rgba(0,0,0,1) 46%, rgba(102,102,102,1) 53%, rgba(17,17,17,1) 65%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );">
+                    <thead>
                         <tr>
                             <th data-sortable="true">Machine ID</th>
                             <th data-sortable="true">Unique ID</th>
@@ -124,25 +110,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', end
     </div>
 </div><!--End Row -->
 </div><!--End Container -->
+
+<!-- TABLE -->
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
+<script src="bootstrap-table/bootstrap-table-locale-all.js"></script>
+<!-- END TABLE LINKS -->
 
 <script src="/js/socket.io/socket.io.js"></script>
 <script src="/js/socket.io/setingsTerminals.js"></script>
-<script>
-    function cellStyle(value, row, index, field) {
-  return {
-    css: {"color": "blue", "font-size": "50px"}
-  };
-}
-</script>
-<style>
-    .table-data-style {
-        color:#141516;
-    }
 
-    #panel-head {
-         background: rgba(76,76,76,1);
+<style>
+td {
+    color:#141516;
+}
+
+#panel-head {
+    background: rgba(76,76,76,1);
 background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 46%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(12%, rgba(89,89,89,1)), color-stop(25%, rgba(102,102,102,1)), color-stop(39%, rgba(71,71,71,1)), color-stop(46%, rgba(44,44,44,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(55%, rgba(44,44,44,1)), color-stop(60%, rgba(17,17,17,1)), color-stop(76%, rgba(43,43,43,1)), color-stop(91%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
 background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 46%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
@@ -150,5 +134,7 @@ background: -o-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, r
 background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 46%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
 background: linear-gradient(to bottom, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 46%, rgba(0,0,0,1) 51%, rgba(44,44,44,1) 55%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=0 );
-    }
+}
+
+
 </style>

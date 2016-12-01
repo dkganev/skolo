@@ -3,9 +3,15 @@
       <div class="col-md-12 "> 
           <div style="padding-top:6px; margin-top: 0px; background-color: none;">
               <!-- Secondary Navigation -->
-              <ul class="breadcrumb" style="">
+              <ul class="breadcrumb">
                 @hasanyrole(['Owner', 'Super User'])
-                <li><a id="TerminalsSettings" href="javascript:ajaxLoad('{{url('settings/terminals')}}')" data-url="{{substr(url(''),0,-5)}}">Terminals</a></li>
+                <li><a  id="TerminalsSettings" 
+                        href="javascript:ajaxLoad('{{url('settings/terminals')}}')" 
+                        data-url="{{substr(url(''),0,-5)}}"
+                      >
+                      Terminals
+                    </a>
+                </li>
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/gameservers')}}')">Game Servers</a></li>
         
@@ -15,7 +21,7 @@
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/billtypes')}}')">Billing Types</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('settings/langs')}}')"">Languages</a></li>
+                <li ><a class="active-secondary-nav" style="color:white;" href="javascript:ajaxLoad('{{url('settings/langs')}}')"">Languages</a></li>
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/errors')}}')">Errors</a></li>
 
@@ -34,4 +40,3 @@
   <hr style="padding-bottom: 15px; margin: 0;">
 </div>
 <script src="js/settings.js"></script>
-

@@ -10,40 +10,35 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+
         <li class="nav-option">
-          <a  style="{{ Request::is('casino*') ? "color: #ffe630;" : ''}}" 
-              href="{{ url('casino') }}"
-          >
-            {{-- <i style="font-size: 21px;" class="fa fa-dashboard"></i> --}}
+          <a href="{{ url('casino') }}">
             <img src="/images/casino.png" alt="" style="margin-bottom: -7px;">
-            <strong>@lang('messages.casino')</strong>
+            <strong style="{{ Request::is('casino*') ? "color: #ffe630;" : ''}}">@lang('messages.casino')</strong>
           </a>
         </li>
 
         <li class="nav-option">
-          <a  style="{{ Request::is('statistics*') ? "color:  #ffe630;" : ''}}"
-              href="{{ url('statistics') }}"
-          >
+          <a href="{{ url('statistics') }}">
             <img src="/images/statistics.png" alt="" style="margin-bottom: -7px;">
-            <strong>@lang('messages.statistics')</strong>
+            <strong style="{{ Request::is('statistics*') ? "color:  #ffe630;" : ''}}">@lang('messages.statistics')</strong>
           </a>
         </li>
+
         <li class="nav-option">
-          <a  style="{{ Request::is('players*') ? "color: white;" : ''}}"
-              href="{{ url('players') }}"
-          >
-            <i class="glyphicon glyphicon-user hidden-sm"></i>
-            <strong>@lang('messages.players')</strong>
+          <a href="{{ url('players') }}">
+            <img src="/images/players.png" alt="" style="margin-bottom: -7px;">
+            <strong style="{{ Request::is('players*') ? "color: #ffe630;" : ''}}">@lang('messages.players')</strong>
           </a>
         </li>
  
         @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
         <li class="nav-option">
-          <a  style="{{ Request::is('settings*') ? "color: #ffe630;" : ''}}"
+          <a
               href="{{ url('settings') }}"
           >
             <img src="/images/settings_real.png" alt="" style="margin-bottom: -7px;">
-            <strong>@lang('messages.settings')</strong>
+            <strong style="{{ Request::is('settings*') ? "color: #ffe630;" : ''}}">@lang('messages.settings')</strong>
           </a>
         </li>
         @endhasanyrole
@@ -54,11 +49,10 @@
 
         <li class="nav-secondary"><a ><strong class="nav-secondary">User: {{ Auth::user()->fullName() }}</strong></a></li>
 
-        <li>
-            <a href="{{ url('logout') }}" style="padding: 0;">
-              <button type="button" class="btn btn-danger navbar-btn btn-block">
-                <strong>X</strong>
-              </button>
+        <li class="nav-option">
+
+            <a href="{{ url('logout') }}">
+              <img src="/images/exit.png" alt="" style="margin-bottom: -7px;">
             </a>
         </li>
       </ul> 
@@ -203,4 +197,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e5e5e', end
   bottom: 6px;
 
 }
+
+strong {
+  color:white;
+}
+
+
 </style>

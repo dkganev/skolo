@@ -28,7 +28,7 @@
         <div class="panel panel-default"id="panelBJContend">
             <div class="panel-heading">
                 <div>
-                    <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
+                    <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 20%;">
                         Blackjack History Statistics
                     </h2>
                     <a class="btn btn-warning  pull-right" onclick="export2excelBJ();">

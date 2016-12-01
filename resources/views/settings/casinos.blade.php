@@ -8,7 +8,7 @@
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addCasinoModal">
                     Add Casino 
                 </button>
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 27%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 27%;">
                     Casinos
                 </h2>
                 <a href="{{ route('export.casinos') }}" class="btn btn-primary btn-sm pull-right">
@@ -52,8 +52,9 @@
                                     data-casinoname="{{ $casino->casinoname }}"
                                     data-casinoaddr="{{ $casino->casinoaddr }}"
                                     data-casinogsm="{{ $casino->casinogsm }}"
+                                    class="btn btn-primary btn-xs"
                                 >
-                                    <span><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></span>
+                                    Edit
                                 </a>
                             </td>
                         </tr>

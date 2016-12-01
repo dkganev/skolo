@@ -34,7 +34,7 @@
         <div class="panel panel-default" id="panelBingoContend">
             <div class="panel-heading">
                 <div>
-                    <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                    <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
                         Bingo History Statistics
                     </h2>
                     

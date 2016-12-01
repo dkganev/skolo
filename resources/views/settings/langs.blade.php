@@ -8,7 +8,7 @@
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addLanguageModal">
                     Add Language
                 </button>
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 20%;">
                     Languages
                 </h2>
                 <a href="{{ url('/settings/exportLanguages') }}" class="btn btn-primary btn-sm pull-right">
@@ -48,8 +48,9 @@
                                         data-target="#updateLanguageModal"
                                         data-langid="{{ $language->langid }}"
                                         data-langname="{{ $language->langname }}"
+                                        class="btn btn-primary btn-xs"
                                     >
-                                        <span><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></span>
+                                       Edit
                                     </a>
                                 </td>
                             </tr>

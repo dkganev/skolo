@@ -7,7 +7,7 @@
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addUserModal">
                     Add User
                 </button>
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 33%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 33%;">
                     Users
                 </h2>
             </div>

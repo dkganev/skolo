@@ -3,7 +3,7 @@
     <div class="col-md-8">
         <div class="panel panel-default" id="panelTerminatsContend">
             <div class="panel-heading" id="socketConect">
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 5%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 5%;">
                     Machine Statistics
                 </h2>
 

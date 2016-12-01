@@ -33,7 +33,7 @@
             Add New
         </a>
 
-        <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 30%;">
+        <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 30%;">
              Max Balls
         </h2>
 

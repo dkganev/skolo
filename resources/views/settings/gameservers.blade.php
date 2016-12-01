@@ -12,7 +12,7 @@
                     Add Game Client 
                 </button>
 
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 10%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 10%;">
                     Client Game IDs
                 </h2>
 
@@ -75,7 +75,7 @@
                     Add Game Category 
                 </button>
 
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 7%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 7%;">
                     Game Categories
                 </h2>
 
@@ -138,7 +138,7 @@
                 <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addGameModal">
                     Add Game 
                 </button>
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
                     Game Servers
                 </h2>
                 <a href="{{ route('export.games') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg"      aria-hidden="true"></i> Export

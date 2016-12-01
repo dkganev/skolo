@@ -4,7 +4,7 @@
     <div class="col-md-8">
         <div class="panel panel-default" id="panelGameContend">
             <div class="panel-heading">
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 25%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 25%;">
                     Game Statistics
                 </h2>
                 <a href="{{ route('export2excelGamesStatistics') }}" class="btn btn-warning  pull-right">
