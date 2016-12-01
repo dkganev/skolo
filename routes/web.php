@@ -18,7 +18,8 @@ Route::group(['middleware' => ['web', 'resetLastActive']], function () {
  * CASINO / PREVIEW
 **/
 Route::get('/casino', 'Casino\CasinoController@index');
-Route::post('/ajax_casino', 'Casino\AjaxCasinoController@index'); 
+Route::post('/ajax_casino1', 'Casino\AjaxCasinoController@index2'); 
+Route::get('/ajax_casino1', 'Casino\AjaxCasinoController@index2'); 
 Route::post('/ajax_casinoBox', 'Casino\AjaxCasinoController@casinoBox'); 
 Route::post('/ajax_NewGame', 'Casino\AjaxCasinoController@NewGame');
 Route::get('/casino/casino', 'Casino\CasinoController@getCasino');

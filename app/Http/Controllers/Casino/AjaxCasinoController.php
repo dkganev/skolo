@@ -11,21 +11,27 @@ use App\Models\Accounting\Games;
 
 class AjaxCasinoController extends Controller
 {
-   public function index(Request $request)
+    public function __construct()
     {
-        $dataNewCasino = $request['newCasino'];
-        $casino = Casinos::select(['casinoid', 'casinoname'])->where('casinoid', $dataNewCasino)->get();
-        $firstCasinos = array('casinoid' => $casino->first()->casinoid,'casinoname' => $casino->first()->casinoname );
-        session(['Casino' => $firstCasinos ]);        
-        $casinoid = session()->get('Casino.casinoid');
-        $casinoname = session()->get('Casino.casinoname');
+        $this->middleware('auth');
+    }
+    
+    public function index2()
+    {
+        //$dataNewCasino = $request['newCasino'];
+        //$casino = Casinos::select(['casinoid', 'casinoname'])->where('casinoid', $dataNewCasino)->get();
+        //$firstCasinos = array('casinoid' => $casino->first()->casinoid,'casinoname' => $casino->first()->casinoname );
+        //session(['Casino' => $firstCasinos ]);        
+        //$casinoid = session()->get('Casino.casinoid');
+        //$casinoname = session()->get('Casino.casinoname');
         $dataArray1 = array(
-            "success" => "success",
-            "set" => $casino->first(),
-            "casinoid" => $casinoid,
-            "casinoname" => $casinoname
+            "success" => "success"
+        //    "success123" => session()->all(),
+        //    "set" => $casino->first(),
+        //    "casinoid" => $casinoid,
+        //    "casinoname" => $casinoname
         );
-        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+        return ;
     }
     
     public function casinoBox(Request $request)

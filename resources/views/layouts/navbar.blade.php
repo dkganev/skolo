@@ -96,7 +96,7 @@
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <strong class="nav-secondary">@lang('messages.casino'): </strong>
-                <strong class="nav-secondary">
+                <strong id="currenCasino" class="nav-secondary" data-casino="{{ Session::get('casino')->casinoid }}">
                   {{ Session::get('casino')->casinoname }}
                 </strong>
                 <span class="caret"></span>
@@ -105,7 +105,7 @@
             <ul class="dropdown-menu" role="menu">
               <li>
                 @foreach($casinos as $casino)
-                  <a href="">{{ $casino->casinoname }}</a>
+                  <a href="" class="CasinoName" data-casino="{{ $casino->casinoid }}" >{{ $casino->casinoname }}</a>
                 @endforeach
               </li>
            </ul>
@@ -195,7 +195,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5e5e5e', end
   font-family: arial; font-size: 15pt; color: #fff;
 }
 .nav-secondary {
-  font-family: arial; font-size: 12pt; color: #fff;"
+  font-family: arial; font-size: 12pt; color: #fff;
 }
 
 .nav-option > a > img {

@@ -26,3 +26,4 @@
     </div>
 </div>
 
+<script src="js/players.js"></script>
