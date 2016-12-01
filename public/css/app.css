@@ -168,10 +168,6 @@ background: linear-gradient(135deg, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, r
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );
 }
 
-#app {
-  background-image: url('images/bgr1.png');
-}
-
 body {
 background: rgba(0,0,0,1) !important;
 background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(102,102,102,0.72) 82%, rgba(0,0,0,0.66) 99%, rgba(0,0,0,0.66) 100%)!important;

@@ -16,13 +16,13 @@
                     Client Game IDs
                 </h2>
 
-                <a href="{{ route('export.clients') }}" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export
+                <a href="{{ route('export.clients') }}" class="btn btn-danger btn-sm pull-right">
+                    Export
                 </a>
             </div>
             
             <div class="panel-body">
-                <table class="table table-striped table-bordered table-hover data-table-table game-servers" role="grid"
+                <table class="table table-striped table-bordered game-servers" role="grid"
                     data-toggle="table"
                     data-sortable="true"
                     data-show-columns="true"
@@ -45,7 +45,7 @@
                     </thead>
                     <tbody>
                     @foreach($game_clients as $game_client)
-                        <tr>
+                        <tr class="test-class">
                             <td>{{ $game_client->client_game_id }}</td>
                             <td>{{ $game_client->client_game_name }}</td>
                             <td>
@@ -79,11 +79,12 @@
                     Game Categories
                 </h2>
 
-                <a href="#" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export
+                <a href="#" class="btn btn-danger btn-sm pull-right">
+                    Export
                 </a>
             </div>
             <div class="panel-body">
-                <table class="table table-striped table-bordered table-hover data-table-table game-servers" id="gameTable" role="grid"
+                <table class="table table-striped table-bordered game-servers" id="gameTable" role="grid"
                     data-toggle="table"
                     data-sortable="true"
                     data-show-columns="true"
@@ -106,7 +107,7 @@
                     </thead>
                     <tbody>
                         @foreach($categories as $category)
-                        <tr>
+                        <tr class="test-class">
                             <td>{{ $category->idx }}</td>
                             <td>{{ $category->name }}</td>
                             <td>
@@ -138,15 +139,18 @@
                 <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addGameModal">
                     Add Game 
                 </button>
+
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
                     Game Servers
                 </h2>
-                <a href="{{ route('export.games') }}" class="btn btn-primary btn-sm pull-right"><i class="fa fa-btn fa-file-excel-o fa-lg"      aria-hidden="true"></i> Export
+                
+                <a href="{{ route('export.games') }}" class="btn btn-danger btn-sm pull-right">
+                   Export
                 </a>
             </div>
 
             <div class="panel-body">
-                <table class="table table-striped table-bordered table-hover data-table-table game-servers" id="gameTable" role="grid"
+                <table class="table table-striped table-bordered game-servers" id="gameTable" role="grid"
                     data-toggle="table"
                     data-sortable="true"
                     data-show-columns="true"
@@ -159,7 +163,7 @@
                     data-page-list="[3, 6, 9]"
                     data-classes="table-condensed"
                 >
-                    <thead class="w3-blue-grey">
+                    <thead>
                         <tr>
                             <th data-sortable="true">Client Game ID</th>
                             <th data-sortable="true">Game ID</th>
@@ -173,7 +177,7 @@
                     </thead>
                     <tbody>
                         @foreach($games as $game)
-                        <tr>
+                        <tr class="test-class">
                             <td>{{ $game->client_game_id }}</td>
                             <td>{{ $game->gameid }}</td>
                             <td>{{ $game->description }}</td>
@@ -208,6 +212,12 @@
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
+
+<style>
+.test-class {
+    background-color: #e3e3e3;
+}
+</style>
 
 <script>
 // GAME SERVERS JQUERY AJAX

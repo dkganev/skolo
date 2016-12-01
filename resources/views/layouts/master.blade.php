@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="app">
+<html lang="en" id="app" style="background-image: url('images/bgr1.png')!important;">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +44,7 @@
     <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
        
 </head>
-<body style="height: 1200px; background-image: url('images/bgr1.png')!important">
+<body style="height: 1200px;">
 
 @include('layouts.alerts')
 @include('layouts.navbar')
