@@ -1,9 +1,8 @@
 <div class="container">
   <div class="row">
       <div class="col-lg-8">
-        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
-            <!-- Secondary Navigation -->
-            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; margin-bottom: 10px;">
+        <div style="padding-top:2px; margin-top: 0px;">
+            <ul class="breadcrumb" style="margin-bottom: 10px;">
 
               <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">Roulette 1</a></li>
 
@@ -18,9 +17,8 @@
 <div class="container">
   <div class="row">
       <div class="col-lg-7">
-        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
-            <!-- Secondary Navigation -->
-            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; margin-bottom: 10px;">
+        <div style="padding-top:2px; margin-top: 0px;">
+            <ul class="breadcrumb secondary-breadcrumb" style="margin-bottom: 10px;">
               <li><a href="javascript:ajaxLoad('{{url('/settings/roulette2/wheelsettings')}}')">Wheel Settings</a></li>
 
               <li><a href="javascript:ajaxLoad('{{url('/settings/roulette2/wheelconfig')}}')">Wheel Config</a></li>

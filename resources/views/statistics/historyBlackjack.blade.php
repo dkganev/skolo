@@ -8,9 +8,9 @@
 @include('modals.BJHistory-modal')
 <div class="container">
 <div class=""> 
-        <div class="" style="">
+        <div>
             <!-- Secondary Navigation -->
-            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
+            <ul class="breadcrumb">
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li> -->
               <li ><a id="historyRoulette" href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>

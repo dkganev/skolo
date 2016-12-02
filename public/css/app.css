@@ -202,7 +202,8 @@ background: linear-gradient(to bottom, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=0 );
 }
 
-div.panel {
+div.panel,
+div.well {
 background: rgba(222,140,159,0.73);
 background: -moz-linear-gradient(top, rgba(222,140,159,0.73) 0%, rgba(196,114,133,0.65) 12%, rgba(245,106,138,0.47) 38%, rgba(240,0,56,0.26) 69%, rgba(214,28,71,0.05) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(222,140,159,0.73)), color-stop(12%, rgba(196,114,133,0.65)), color-stop(38%, rgba(245,106,138,0.47)), color-stop(69%, rgba(240,0,56,0.26)), color-stop(100%, rgba(214,28,71,0.05)));

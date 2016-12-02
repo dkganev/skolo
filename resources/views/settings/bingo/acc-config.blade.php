@@ -1,26 +1,23 @@
 <div class="container">
   <div class="row">
       <div class="col-lg-7">
-          {{-- <h1 style="margin-top: 0px;" class="page-header"></h1> --}}
-          <div style="padding-top:2px; margin-top: 0px;">
-              <!-- Secondary Navigation -->
-              <ul class="breadcrumb">
-                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
+        <div style="padding-top:2px; margin-top: 0px;">
+            <ul class="breadcrumb">
+              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
 
-                <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
-              </ul>
-          </div>
+              <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
+            </ul>
+        </div>
     </div>
   </div><!-- End Row -->
 </div><!-- End Container -->
 
-<!-- Wheel Config -->
 <div class="container">
 <div class="row">
 <div class="col-lg-3">
@@ -36,7 +33,6 @@
     <form action="/settings/bingo/sphereconfig/edit" method="POST" role="form" id="acc-config-form">
       <!-- FIRST COLUMN -->
       <div class="col-lg-3">
-
         <div class="form-group" style="width:190px; display: inline-block;">
           <label>ID:</label><br>
           <input disabled class="form-control text-center" type="text" name="id" value="{{ $acc_config->id }}">

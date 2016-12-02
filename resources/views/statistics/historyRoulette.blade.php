@@ -11,7 +11,7 @@
     <div class=""> 
         <div class="" style="">
             <!-- Secondary Navigation -->
-            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
+            <ul class="breadcrumb">
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li> -->
               <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
