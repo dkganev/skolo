@@ -44,7 +44,7 @@
     <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
        
 </head>
-<body style="height: 1200px;">
+<body style="height: 1200px; width: 100%;">
 
 @include('layouts.alerts')
 @include('layouts.navbar')
