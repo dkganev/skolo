@@ -99,7 +99,7 @@
             <ul class="dropdown-menu" role="menu">
               <li>
                 @foreach($casinos as $casino)
-                  <a href="" class="CasinoName" data-casino="{{ $casino->casinoid }}" >{{ $casino->casinoname }}</a>
+                  <a class="CasinoName" data-casino="{{ $casino->casinoid }}" >{{ $casino->casinoname }}</a>
                 @endforeach
               </li>
            </ul>

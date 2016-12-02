@@ -34,6 +34,7 @@
                                 <th class="text-center" data-sortable="true">Card #</th>
                                 <th class="text-center" data-sortable="true">Name</th>
                                 <th class="text-center" data-sortable="true">Type</th>
+                                <th class="text-center" data-sortable="true">Cash in</th>
                                 <th class="text-center" data-sortable="true">Card Balance</th>
                                 <th class="text-center" data-sortable="true">Bonus Points</th>
                                 <th class="text-center col-md-3">
@@ -56,12 +57,18 @@
                             <tr id="rowAdd" class="rowInputAdd" style="display: none;">
                                         <th class="text-center rowInputAdd">
                                             <span id="errorAdd" style="color: #d9534f; display: none;"> Read the card, please.</span> 
-                                            <input id="CartIDAdd" class="form-control input-sm rowInputAdd" value="123" name="CartIDAdd" maxlength="5" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" readonly>
-                                            <button class="form-control btn btn-primary btn-xs rowInputAdd" type="button" onclick="SaveAddBet2BonusPoints()" style="display: show;" tabindex="0">
+                                            <span id="errorAddT" style="color: #d9534f; display: none;"> This Card ID: <span id="CartIDExist">111</span> exist in the database.</span> 
+                                            <span id="errorAddI" style="color: #d9534f; display: none;"> Insert the card, please.</span> 
+                                            <input id="CartIDAdd" class="form-control input-sm rowInputAdd" value="" name="CartIDAdd" maxlength="5" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" readonly>
+                                            <button class="form-control btn btn-primary btn-xs rowInputAdd" type="button" onclick="ReadNewCard()" style="display: show;" tabindex="0">
+                                                <span id="refreshRNC" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
+                                                <span id="OKRNC" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                                                <span id="removeRNC" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
                                                 Read New Card
                                             </button>
                                         </th>
-                                        <th class="text-right rowInputAdd">
+                                        <th class="text-center rowInputAdd">
+                                            <span id="errorAddUser" style="color: #d9534f; display: none;"> Enter username, please.</span> 
                                             <input id="userName" class="form-control input-sm rowInputAdd" value="" name="userName" maxlength="5" placeholder="Player Name" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
                                             <input id="userAddress" class="form-control input-sm rowInputAdd" value="" name="userAddress" maxlength="5" placeholder="Player Address" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
                                             <input id="userPhone" class="form-control input-sm rowInputAdd" value="" name="userPhone" maxlength="5" placeholder="Player Phone" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
@@ -74,7 +81,9 @@
                                             </select>
                                         </th>
                                         <th class="text-right rowInputAdd" style="vertical-align: middle;">
-                                            <input id="platinum_money_for_bonus_pointAdd" class="form-control input-sm rowInputAdd" value="" name="bonus_silver_money" maxlength="5" placeholder="CashIn Amount" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="number" >
+                                            <input id="cashIn" class="form-control input-sm rowInputAdd" value="" name="cashIn" maxlength="5" placeholder="CashIn Amount" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="number" >
+                                        </th>
+                                        <th class="text-right rowInputAdd" style="vertical-align: middle;">
                                         </th>
                                         <th class="text-right rowInputAdd" style="vertical-align: middle;">
                                        </th>
@@ -87,6 +96,15 @@
                                     </tr>
                         </thead>
                         </tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                            </tr>    
                             
                             @if ($games = false)
                                 @foreach($games as $game)

@@ -19,17 +19,17 @@ $(".langSupport").click(function() {
         }
     });
 });
-
 $(".CasinoName").click(function() {
     token = $('meta[name="csrf-token"]').attr('content');
     newCasino = $(this).attr("data-casino");
     $.ajax({
-       type:'get',
-       url:'ajax_casino1',
+       type:'POST',
+       url:'ajax_casino',
        dataType: "json",
-       data: { },
+       data:{"newCasino": newCasino, _token: token},
        success:function(data){
-          //if (data.success == "success"){
+          if (data.success == "success"){
+              location.reload();
            //   $("#CasinoMenu").text( data.casinoname);
               //$("#casinoEvents1").click();
               //var href = $('#casinoEvents').attr('href');
@@ -37,11 +37,11 @@ $(".CasinoName").click(function() {
            //window.location.href = href; 
            //location.reload();casinoEvents
               //window.location.href = "http://10.0.0.156:8000/casino/events";
-          //}
+          }
        },
-       error: function () {
-            
-            
+       error: function (error) {
+            //console.log(error);
+            alert ("Unexpected wrong.");
         }
     });
 });

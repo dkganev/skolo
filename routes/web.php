@@ -15,11 +15,17 @@ Route::post('session/ajaxCheck','AuthController@ajaxCheck')->middleware('auth');
 Route::group(['middleware' => ['web', 'resetLastActive']], function () {
 
 /**
+ * LOCALIZATION
+ */
+Route::post('/localize', 'LocalizationController@index');
+Route::post('ajax_casino', 'Casino\AjaxCasinoController@ajax_casino');
+//Route::post('/test123', 'Settings\PBS@test1235'); 
+//Route::get('/test123', 'Settings\PBS@test123'); 
+
+/**
  * CASINO / PREVIEW
 **/
 Route::get('/casino', 'Casino\CasinoController@index');
-Route::post('/ajax_casino1', 'Casino\AjaxCasinoController@index2'); 
-Route::get('/ajax_casino1', 'Casino\AjaxCasinoController@index2'); 
 Route::post('/ajax_casinoBox', 'Casino\AjaxCasinoController@casinoBox'); 
 Route::post('/ajax_NewGame', 'Casino\AjaxCasinoController@NewGame');
 Route::get('/casino/casino', 'Casino\CasinoController@getCasino');
@@ -193,10 +199,7 @@ Route::post('/ajax_CardTypeBonusPeriod', 'Settings\PBS@ajax_CardTypeBonusPeriod'
 
 
 
-/**
- * LOCALIZATION
- */
-Route::post('/localize', 'LocalizationController@index');
+
 
 /**
  * STATISTICS
@@ -237,6 +240,8 @@ Route::get('/export2excelBJ', 'StatisticsController@export2excelBJ')->name('expo
 
 Route::get('players', 'Players\PlayersController@index')->name('players') ;
 Route::get('players/cards', 'Players\PlayersController@cards');
+Route::post('/ajax_ReadNewCard', 'Players\PlayersController@ajax_ReadNewCard');
+Route::post('/ajax_SaveAddCard', 'Players\PlayersController@ajax_SaveAddCard');
  
  
  

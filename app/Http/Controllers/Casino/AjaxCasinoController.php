@@ -16,22 +16,23 @@ class AjaxCasinoController extends Controller
         $this->middleware('auth');
     }
     
-    public function index2()
+    public function ajax_casino(Request $request)
     {
-        //$dataNewCasino = $request['newCasino'];
-        //$casino = Casinos::select(['casinoid', 'casinoname'])->where('casinoid', $dataNewCasino)->get();
+        $dataNewCasino = $request['newCasino'];
+        $casino = Casinos::where('casinoid', $dataNewCasino)->first();
         //$firstCasinos = array('casinoid' => $casino->first()->casinoid,'casinoname' => $casino->first()->casinoname );
-        //session(['Casino' => $firstCasinos ]);        
-        //$casinoid = session()->get('Casino.casinoid');
-        //$casinoname = session()->get('Casino.casinoname');
+        session(['casino' => $casino]);
+        //session(['casino' => $firstCasinos ]);        
+        $casinoid = session()->get('casino.casinoid');
+        $casinoname = session()->get('casino.casinoname');
         $dataArray1 = array(
-            "success" => "success"
-        //    "success123" => session()->all(),
+            "success" => "success",
+        //    "success123" => session()->get("casino"),
         //    "set" => $casino->first(),
-        //    "casinoid" => $casinoid,
-        //    "casinoname" => $casinoname
+           "casinoid" => $casinoid,
+           "casinoname" => $casinoname 
         );
-        return ;
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
     
     public function casinoBox(Request $request)
