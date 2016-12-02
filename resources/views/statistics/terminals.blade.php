@@ -39,7 +39,7 @@
                     </thead>
                     <tbody>
                     	@foreach($counters as $c)
-                            <tr id="tr{{$c->psid}}">
+                            <tr class="tr-class" id="tr{{$c->psid}}">
                                 <td>{{ $c->server_ps->psid }}</td>
                                 <td>{{ $c->server_ps->dallasid }}</td>
                                 <td id="TotalIn{{$c->psid}}">{{ $c->totalIn() }}</td>
@@ -51,7 +51,7 @@
                             </tr>
                         @endforeach
                         <tr class="danger" >
-                            <td class="text-center" colspan="2"><strong>TOTAL</strong></td>
+                            <td class="text-center" colspan="2"><strong style="color:black;">TOTAL</strong></td>
                             <td id="TotalIn">{{ $totals['totalIn'] }}</td>
                             <td id="TotalOut">{{ $totals['totalOut'] }}</td>
                             <td id="TotalBet">{{ $totals['totalBet'] }}</td>

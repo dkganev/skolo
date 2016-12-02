@@ -204,7 +204,7 @@
                     </thead>
                     <tbody>
                         @foreach($historys as $history)
-                            <tr>
+                            <tr class="tr-class">
                                 <td class="text-right">{{ $history->psid }}</td>
                                 <td class="text-right">{{ $history->err_code }}</td>
                                 <td>{{ $history->error }}</td>

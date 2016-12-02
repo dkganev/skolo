@@ -11,6 +11,7 @@
     <title>Control Monitoring System</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/css/flag-icon.css">
     <link href="/css/app.css" rel="stylesheet">
 
@@ -44,7 +45,7 @@
     <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
        
 </head>
-<body style="height: 1200px;">
+<body style="height: 1200px; width: 100%;">
 
 @include('layouts.alerts')
 @include('layouts.navbar')

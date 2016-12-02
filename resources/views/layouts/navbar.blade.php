@@ -109,8 +109,8 @@
     </div><!--/.nav-collapse -->
   </div><!--/ .container -->
 </nav>
-<img src="images/bgr_fx.png" alt="" style="width: 60%;background-color: red; position: absolute; top: 49px;left: -60px;top: 49px;">
-<img id="image-flipped" src="images/bgr_fx.png" alt="" style="width: 60%;background-color: red; position: absolute;top: 49px;right: -251px;">
+<img src="images/bgr_fx.png" alt="" style="width: 50%; background-color: red; position: absolute; top: 49px;">
+<img id="image-flipped" src="images/bgr_fx.png" alt="" style="width: 50%;background-color: red;position: absolute;top: 49px; left: 952px;">
 
 @if(Request::is('settings*'))
     @include('settings.navbar')

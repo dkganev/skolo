@@ -39,7 +39,7 @@
                         </thead>
                         <tbody>
                             @foreach($languages as $language)
-                            <tr>
+                            <tr class="tr-class">
                                 <td>{{ $language->langid }}</td>
                                 <td>{{ $language->langname }}</td>
                                 <td>

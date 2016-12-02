@@ -12,7 +12,7 @@
                 </h2>
             </div>
             <div class="panel-body">
-                <table class="table table-striped table-hover data-table-table"
+                <table class="table table-striped table-hover"
                     data-toggle="table"
                     data-sortable="true"
                     data-show-columns="true"
@@ -36,7 +36,7 @@
                     <tbody>
                         @foreach($users as $user)
                         @include('modals.settings.users.edit-user-modal')
-                        <tr>
+                        <tr class="tr-class">
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->fullName() }}</td>
                             <td>

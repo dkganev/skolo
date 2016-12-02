@@ -93,7 +93,7 @@
                             
                             @if ($games)
                                 @foreach($games as $game)
-                                    <tr id="row{{$game->id}}">
+                                    <tr class="tr-class" id="row{{$game->id}}">
                                         <td class="text-center">
                                             <span id="td1{{$game->id}}" >{{$game->name}} </span>
                                             <input id="name{{$game->id}}" class="form-control input-sm " value="{{$game->name}}" name="bonus_silver_money" maxlength="7" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">

@@ -159,7 +159,7 @@
 			</div><!-- End Col -->
 
 			<div class="row">
-			<div class="col-md-10">
+			<div class="col-md-12">
 				<div class="form-group">
 
 					<span class="button-checkbox" style="padding: 0 0 0 15px ;">
@@ -168,10 +168,22 @@
 				        <input type="checkbox" name="shuffle_on_each_game" class="hidden" {{ $config->shuffle_on_each_game ? " checked" : "" }}  />
     				</span>
 
-					<span class="button-checkbox" style="padding: 0 0 0 178px ;">
+					<span class="button-checkbox" style="padding: 0 0 0 15px ;">
 						<input type="hidden" name="allow_split_aces" value="false">
 				        <button type="button" class="btn" data-color="danger">Allow Split Aces</button>
 				        <input type="checkbox" name="allow_split_aces" class="hidden" {{ $config->allow_split_aces ? " checked" : "" }} />
+    				</span>
+
+    				<span class="button-checkbox" style="padding: 0 0 0 15px;">
+						<input type="hidden" name="double_after_split" value="false">
+				        <button type="button" class="btn" data-color="danger">Double After Split</button>
+				        <input type="checkbox" name="double_after_split" class="hidden" {{ $config->double_after_split ? " checked" : "" }}  />
+    				</span>
+
+					<span class="button-checkbox" style="padding: 0 0 0 15x;">
+						<input type="hidden" name="surrender" value="false">
+				        <button type="button" class="btn" data-color="danger">Surrender</button>
+				        <input type="checkbox" name="surrender" class="hidden" {{ $config->surrender ? " checked" : "" }} />
     				</span>
 
 				</div>

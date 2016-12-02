@@ -17,7 +17,7 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-7">
         <div style="padding-top:2px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb" style="background-color: #e5e6e8 !important; margin-bottom: 10px;">
@@ -38,7 +38,7 @@
 <div class="container">
 <div class="row">
 <div class="col-lg-6">
-  <div class="panel panel-primary">
+  <div class="panel panel-default">
 
     <div class="panel-heading">
       <h2 class="panel-title text-center" style="color:white;"><strong>Wheel Config</strong></h2>

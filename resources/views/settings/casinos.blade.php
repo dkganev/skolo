@@ -39,7 +39,7 @@
                     </thead>
                     <tbody>
                         @foreach($casinos as $casino)
-                        <tr>
+                        <tr class="tr-class">
                             <td>{{ $casino->casinoid }}</td>
                             <td>{{ $casino->casinoname }}</td>
                             <td>{{ $casino->casinoaddr }}</td>

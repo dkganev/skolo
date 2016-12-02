@@ -31,7 +31,7 @@
                     data-classes="table-condensed"
                 >
                     <thead class="w3-blue-grey">
-                        <tr>
+                        <tr class="tr-class">
                             <th data-sortable="true">Error Code</th>
                             <th data-sortable="true">Error Level</th>
                             <th data-sortable="true">Error Group</th>
@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         @foreach($error_list as $err_list)
-                        <tr>
+                        <tr class="tr-class">
                             <td>{{ $err_list->err_code }}</td>
                             <td>{{ $err_list->err_lvl->level_str }}</td>
                             <td>                      
@@ -95,7 +95,7 @@
                     </thead>
                     <tbody>
                         @foreach($error_lvls as $error_lvl)
-                        <tr>
+                        <tr class="tr-class">
                             <td>{{ $error_lvl->err_level }}</td>
                             <td>{{ $error_lvl->level_str }}</td>
                         </tr>
