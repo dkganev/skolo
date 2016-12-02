@@ -40,14 +40,7 @@
 	        Export to PNG
 	    </a>
   	</div>
-  <div class="panel-body" style="background: rgba(235,155,175,0.77);
-background: -moz-linear-gradient(top, rgba(235,155,175,0.77) 0%, rgba(235,155,175,0.77) 4%, rgba(89,1,22,0.77) 25%, rgba(209,175,184,0.76) 50%, rgba(97,2,27,0.75) 84%, rgba(89,1,22,0.75) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(235,155,175,0.77)), color-stop(4%, rgba(235,155,175,0.77)), color-stop(25%, rgba(89,1,22,0.77)), color-stop(50%, rgba(209,175,184,0.76)), color-stop(84%, rgba(97,2,27,0.75)), color-stop(100%, rgba(89,1,22,0.75)));
-background: -webkit-linear-gradient(top, rgba(235,155,175,0.77) 0%, rgba(235,155,175,0.77) 4%, rgba(89,1,22,0.77) 25%, rgba(209,175,184,0.76) 50%, rgba(97,2,27,0.75) 84%, rgba(89,1,22,0.75) 100%);
-background: -o-linear-gradient(top, rgba(235,155,175,0.77) 0%, rgba(235,155,175,0.77) 4%, rgba(89,1,22,0.77) 25%, rgba(209,175,184,0.76) 50%, rgba(97,2,27,0.75) 84%, rgba(89,1,22,0.75) 100%);
-background: -ms-linear-gradient(top, rgba(235,155,175,0.77) 0%, rgba(235,155,175,0.77) 4%, rgba(89,1,22,0.77) 25%, rgba(209,175,184,0.76) 50%, rgba(97,2,27,0.75) 84%, rgba(89,1,22,0.75) 100%);
-background: linear-gradient(to bottom, rgba(235,155,175,0.77) 0%, rgba(235,155,175,0.77) 4%, rgba(89,1,22,0.77) 25%, rgba(209,175,184,0.76) 50%, rgba(97,2,27,0.75) 84%, rgba(89,1,22,0.75) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb9baf', endColorstr='#590116', GradientType=0 );">
+  <div class="panel-body">
 	
 	<form action="/settings/bingo/mainconfig/edit" method="POST" role="form" id="bingo-main-config">
 		{{ csrf_field() }}

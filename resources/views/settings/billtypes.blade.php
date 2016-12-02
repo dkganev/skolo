@@ -37,7 +37,7 @@
                     </thead>
                     <tbody>
                         @foreach($billtypes as $billtype)
-                        <tr>
+                        <tr class="tr-class">
                             <td>{{ $billtype->idtype }}</td>
                             <td>{{ $billtype->billname }}</td>
                             <td>

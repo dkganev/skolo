@@ -45,7 +45,7 @@
                     </thead>
                     <tbody>
                     @foreach($game_clients as $game_client)
-                        <tr class="test-class">
+                        <tr class="tr-class">
                             <td>{{ $game_client->client_game_id }}</td>
                             <td>{{ $game_client->client_game_name }}</td>
                             <td>
@@ -107,7 +107,7 @@
                     </thead>
                     <tbody>
                         @foreach($categories as $category)
-                        <tr class="test-class">
+                        <tr class="tr-class">
                             <td>{{ $category->idx }}</td>
                             <td>{{ $category->name }}</td>
                             <td>
@@ -177,7 +177,7 @@
                     </thead>
                     <tbody>
                         @foreach($games as $game)
-                        <tr class="test-class">
+                        <tr class="tr-class">
                             <td>{{ $game->client_game_id }}</td>
                             <td>{{ $game->gameid }}</td>
                             <td>{{ $game->description }}</td>
@@ -212,12 +212,6 @@
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
-
-<style>
-.test-class {
-    background-color: #e3e3e3;
-}
-</style>
 
 <script>
 // GAME SERVERS JQUERY AJAX

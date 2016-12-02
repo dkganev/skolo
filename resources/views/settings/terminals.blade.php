@@ -45,7 +45,7 @@
                     </thead>
                     <tbody>
                     @foreach($server_ps as $ps)
-                        <tr class="test-class">
+                        <tr class="tr-class">
                             <td class="text-center">{{ $ps->dallasid }}</td>
                             <td class="text-center">{{ $ps->psid }}</td>
                             <td class="text-center">{{ $ps->seatid }}</td>
@@ -124,9 +124,5 @@
 <style>
 td {
     color:#141516;
-}
-
-.test-class {
-    background-color: #e3e3e3;
 }
 </style>
