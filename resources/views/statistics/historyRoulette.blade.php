@@ -74,7 +74,7 @@
                         @endif
                         @if ( $historys->lastPage() != 1  )
                             @if ($historys->lastPage() < 6) 
-                                @for ($i = 1; $i < $historys->lastPage(); $i++)
+                                @for ($i = 1; $i <= $historys->lastPage() ; $i++)
                                     <li class="page-number {{$historys->currentPage() == $i ? "active" : "" }}">
                                         <a onclick="changePageNumR({{ $i }})">{{ $i }}</a>
                                     </li>

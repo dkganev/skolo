@@ -216,7 +216,7 @@ var socket = io(pageHrefSocket);
                         }
                     },
                     error: function (error) {
-                        alert ("Unexpected wrong.");
+                        //alert ("Unexpected wrong.");
                     }
         
                 });

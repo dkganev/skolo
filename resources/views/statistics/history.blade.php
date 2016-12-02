@@ -80,7 +80,7 @@
                         @endif
                         @if ( $page['last'] != 1  )
                             @if ($page['last'] < 6) 
-                                @for ($i = 1; $i < $page['last']; $i++)
+                                @for ($i = 1; $i <= $page['last']; $i++)
                                     <li class="page-number {{$page['current'] == $i ? "active" : "" }}">
                                         <a onclick="changePageNumBingo({{ $i }})">{{ $i }}</a>
                                     </li>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\IMS\CardReader;
 use App\Models\IMS\UserInfo;
+use App\Models\IMS\UserInfoView;
 use App\Http\Requests;
 
 use Excel;
@@ -23,9 +24,38 @@ class PlayersController extends Controller
         return view('players.index');
     }
     
-    public function cards()
+    public function cards(Request $request)
     {
-        return view('players.cards');
+        if ($request['rowsPerPage']) {
+            $page['rowsPerPage'] = $request['rowsPerPage'];
+        
+        } else {
+            $page['rowsPerPage'] = 20;
+        
+        }
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'id';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        if ($request['sortMenuOpen'] == 1 ) {
+            $page['sortMenuOpen'] = 1;
+        } else {
+            $page['sortMenuOpen'] = 0;
+        }
+        
+        
+        
+        
+        
+        
+        $UserInfoViews = UserInfoView::orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        return view('players.cards', ['UserInfoViews' => $UserInfoViews, 'page' => $page]);
     }
     public function ajax_ReadNewCard(Request $request)
     {   

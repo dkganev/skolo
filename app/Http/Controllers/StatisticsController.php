@@ -481,7 +481,7 @@ class StatisticsController extends Controller
                 $page['current'] = 1;
         
             }
-                $lastPage = $countVal1 / $page['rowsPerPage'] + 1 ;
+                $lastPage = $countVal1 / $page['rowsPerPage'] ;
                 //var_dump($countVal1);
                 //$lastPage = 1 ;
                 $page['last'] = ceil($lastPage);
@@ -1764,7 +1764,7 @@ class StatisticsController extends Controller
                 $page['current'] = 1;
         
             }
-                $lastPage = $countVal1 / $page['rowsPerPage'] + 1 ;
+                $lastPage = $countVal1 / $page['rowsPerPage'] ;
                 //var_dump($countVal1);
                 //$lastPage = 1 ;
                 $page['last'] = ceil($lastPage);
