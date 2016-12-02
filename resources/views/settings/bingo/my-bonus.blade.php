@@ -28,7 +28,7 @@
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
                 </a>
 
-                <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 15%;">
+                <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 15%;">
                      My Bonus
                 </h2>
 

@@ -8,7 +8,7 @@
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addBillModal">
                     Add Billing Type 
                 </button>
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 6%;">
+                <h2 style="display: inline; color: #fff; font-family: 'italic';  padding-left: 6%;">
                     Billing Types
                 </h2>
                 <a href="{{ url('/settings/exportBillTypes') }}" class="btn btn-primary btn-sm pull-right">
@@ -46,8 +46,9 @@
                                     data-target="#updateBillModal"
                                     data-idtype='{{ $billtype->idtype }}'
                                     data-billname='{{ $billtype->billname }}'
+                                    class="btn btn-primary btn-xs"
                                 >
-                                    <span><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></span>
+                                    Edit
                                 </a>
                             </td>
                         </tr>

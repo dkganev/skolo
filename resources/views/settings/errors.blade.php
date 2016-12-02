@@ -8,7 +8,7 @@
                     Add 
                 </button>
 
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
                     Error List
                 </h2>
 
@@ -77,7 +77,7 @@
                 <a href="/settings/error-levels-export" class="btn btn-primary btn-sm">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                 </a>
-                <h2 style="display: inline; color: #444649; font-family: 'italic';  padding-left: 7%;">
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 7%;">
                     Error Levels
                 </h2>
             </div>

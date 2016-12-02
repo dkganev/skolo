@@ -22,7 +22,7 @@
             <div class="panel panel-default" id="panelBonusPoints2Money">
                 <div class="panel-heading">
                     <div>
-                        <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 20%;">
+                        <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 20%;">
                             Bet to Bonus Points
                         </h2>
                         <a href="{{ route('export2excelBet2BonusPoints') }}" class="btn btn-warning  pull-right" >

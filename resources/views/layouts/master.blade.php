@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="app" style="background-image: url('images/bgr1.png')!important;">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +11,7 @@
     <title>Control Monitoring System</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/w3.css">
-    <link href="/css/flag-icon.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/font-awesome.css" />
-
-
+    <link rel="stylesheet" href="/css/flag-icon.css">
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
@@ -38,12 +34,6 @@
     <!-- SELECT -->
     <link rel="stylesheet" type="text/css" href="boostrap-select/bootstrap-select.css">
     <script src="boostrap-select/bootstrap-select.js"></script>
-
-    <!-- TABLE -->
-    <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
-
-    <script src="bootstrap-table/bootstrap-table.js"></script>
-    <script src="bootstrap-table/bootstrap-table-locale-all.js"></script>
     
     <!-- Export to Img -->
     <script type="text/javascript" src="js/html2canvas.js"></script>
@@ -54,7 +44,7 @@
     <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
        
 </head>
-<body style="height: 1500px;">
+<body style="height: 1200px;">
 
 @include('layouts.alerts')
 @include('layouts.navbar')
@@ -83,8 +73,6 @@
     }
 
     $('.breadcrumb li').on('click', function () {
-      // $('li').removeClass('active');
-      // $(this).addClass('active');
       $(this).addClass('active').siblings().removeClass('active');
     });
 
@@ -114,7 +102,6 @@
     setInterval(checkSession, 60000);
 </script>
 
-
 <script src="/js/main.js"></script>
 
 <script src="js-lib/sweet-alert/sweetalert-dev.js"></script>
@@ -122,20 +109,3 @@
 
 </body>
 </html>
-
-<style>
-    html {
-        background-image: url('images/bgr1.png');
-    }
-
-    body {
-background: rgba(0,0,0,1);
-background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(102,102,102,0.72) 82%, rgba(0,0,0,0.66) 99%, rgba(0,0,0,0.66) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,1)), color-stop(16%, rgba(89,89,89,0.95)), color-stop(82%, rgba(102,102,102,0.72)), color-stop(99%, rgba(0,0,0,0.66)), color-stop(100%, rgba(0,0,0,0.66)));
-background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(102,102,102,0.72) 82%, rgba(0,0,0,0.66) 99%, rgba(0,0,0,0.66) 100%);
-background: -o-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(102,102,102,0.72) 82%, rgba(0,0,0,0.66) 99%, rgba(0,0,0,0.66) 100%);
-background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(102,102,102,0.72) 82%, rgba(0,0,0,0.66) 99%, rgba(0,0,0,0.66) 100%);
-background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(102,102,102,0.72) 82%, rgba(0,0,0,0.66) 99%, rgba(0,0,0,0.66) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
-    }
-</style>

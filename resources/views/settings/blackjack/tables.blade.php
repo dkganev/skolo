@@ -21,7 +21,7 @@
 <div class="row">
 <div class="col-lg-9">
 
-  <div class="panel panel-primary" id="blackjack-tables-panel">
+  <div class="panel panel-default" id="blackjack-tables-panel">
 
     <div class="panel-heading">
         <a class="btn btn-danger  btn-sm pull-left" href="/settings/blackjack/table/export">
