@@ -1,7 +1,7 @@
 @include('settings.bingo.max-balls-modals')
 <div class="container">
   <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-7">
         {{-- <h1 style="margin-top: 0px;" class="page-header">Bingo - Max Balls</h1> --}}
         <div style="padding-top:2px; margin-top: 0px; background-color: none;">
             <!-- Secondary Navigation -->
@@ -78,7 +78,7 @@
           </thead>
             <tbody>
             @foreach($jackpot_steps as $steps)
-      <tr id="{{ $steps->id }}">
+      <tr class="tr-class" id="{{ $steps->id }}">
           <td><span class="badge">{{ $steps->id }}</span></td>
 
           <td style="width:20px;">

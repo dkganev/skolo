@@ -17,7 +17,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-7">
       <div style="padding-top:2px; margin-top: 0px; background-color: none;">
           <!-- Secondary Navigation -->
           <ul class="breadcrumb" style="background-color: #e5e6e8 !important; margin-bottom: 10px;">
@@ -41,7 +41,6 @@
 
 
 <div class="well" style="background: #ffffff; margin: 0; padding: 0; height:730px">
-
     <div class="col-lg-3">
       <table class="table" style="width: 250px; margin-top: 50px;">
         <thead class="w3-blue-grey">
@@ -73,8 +72,9 @@
 
 <div id="psconfig">
   @foreach($ps_conf as $conf)
-  <form style="display: none" action="/settings/roulette1/psconfig/edit" method="POST" role="form" id="ps-config-form-{{ $conf->ps_id }}">
-
+  <form style="display: none" action="/settings/roulette1/psconfig/edit" 
+        method="POST" role="form" id="ps-config-form-{{ $conf->ps_id }}"
+  >
     <div class="w3-blue-grey" id="heading" style="width: 100%;  height: 35px; margin-bottom: 15px;">
       <h3 style="margin:0; padding: 0; color: #fff; font-family: sans-serif;">
         <strong><i style="margin:0 0 0 268px; position: relative; top: 5px">

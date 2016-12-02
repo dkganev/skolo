@@ -4,7 +4,7 @@
 	        {{-- <h1 style="margin-top: 0px;" class="page-header"></h1> --}}
 	        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
 	            <!-- Secondary Navigation -->
-	            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
+	            <ul class="breadcrumb secondary-breadcrumb">
 	              <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
 
 	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>

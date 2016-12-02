@@ -146,10 +146,11 @@ input:checked + .slider:before {
 
 /*  New Design CSS*/
 
-.breadcrumb {
+.breadcrumb,
+.secondary-breadcrumb {
 background: rgba(76,76,76,1) !important;
 background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,0.89) 12%, rgba(102,102,102,0.78) 25%, rgba(19,19,19,0.1) 100%)!important;
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(12%, rgba(89,89,89,0.89)), color-stop(25%, rgba(102,102,102,0.78)), color-stop(100%, rgba(19,19,19,0.1)))!important;
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(12%, rgba(89,89,89,0.89)), color-stop(25%, rgba(102,102,102,0.78)), color-stop(100%, rgba(19,19,19,0.1)));
 background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,0.89) 12%, rgba(102,102,102,0.78) 25%, rgba(19,19,19,0.1) 100%)!important;
 background: -o-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,0.89) 12%, rgba(102,102,102,0.78) 25%, rgba(19,19,19,0.1) 100%)!important;
 background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,0.89) 12%, rgba(102,102,102,0.78) 25%, rgba(19,19,19,0.1) 100%)!important;

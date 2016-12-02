@@ -37,7 +37,7 @@
                         </tr>
                         <tbody>
                             @foreach($games as $game)
-                            <tr>
+                            <tr class="tr-class">
                                 <td>{{ $game->gameid }}</td>
                                 <td>{{ $game->description }}</td>
                                 <td>{{ $game->counters_bet }}</td>
