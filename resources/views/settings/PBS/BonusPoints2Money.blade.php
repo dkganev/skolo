@@ -2,7 +2,7 @@
     <div class=" "> 
         <div class="" style="">
             <!-- Secondary Navigation -->
-            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
+            <ul class="breadcrumb">
               <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/PBS/BonusPoints2Money')}}')">Bonus Points to Money</a></li>
               <li><a href="javascript:ajaxLoad('{{url('/settings/PBS/Bet2BonusPoints')}}')">Bet to Bonus Points</a></li>
               <li><a href="javascript:ajaxLoad('{{url('/settings/PBS/CardTypeBonusPeriod')}}')">Card Type Bonus Period</a></li>

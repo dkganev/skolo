@@ -1,11 +1,8 @@
 <div class="container">
   <div class="row">
       <div class="col-lg-6">
-        {{-- <h1 style="margin-top: 0px;" class="page-header">Blackjack - Accounting Config</h1> --}}
-        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
-            <!-- Secondary Navigation -->
-            <ul class="breadcrumb" style="background-color: #e5e6e8 !important; ">
-
+        <div style="padding-top:2px; margin-top: 0px;">
+            <ul class="breadcrumb">
               <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}')">Main Config</a></li>
 
               <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">Tables</a></li>
@@ -17,7 +14,6 @@
   </div><!-- End Row -->
 </div><!-- End Container-->
 
-<!-- Wheel Config -->
 <div class="container">
 <div class="row">
 <div class="col-lg-3">
