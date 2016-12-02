@@ -11,6 +11,7 @@
     <title>Control Monitoring System</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/css/flag-icon.css">
     <link href="/css/app.css" rel="stylesheet">
 
