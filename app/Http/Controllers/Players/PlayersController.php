@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Players;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\IMS\CardReader;
+use App\Models\IMS\UserInfo;
 use App\Http\Requests;
 
 use Excel;
@@ -21,11 +22,92 @@ class PlayersController extends Controller
     {
         return view('players.index');
     }
+    
     public function cards()
     {
         return view('players.cards');
     }
-    
+    public function ajax_ReadNewCard(Request $request)
+    {   
+        if ( $request['CasinoID']) {
+            $CartInfo = CardReader::where("casino_id", $request['CasinoID'])->first();
+            if (count($CartInfo)){
+                if (count(UserInfo::where('card_id', $CartInfo->card_id)->first())){
+                    $dataArray1 = array(
+                        "success" => "error",
+                        "CartInfo" => $CartInfo,
+                        "error" => 1
+                    );
+                }else{
+                    $dataArray1 = array(
+                        "success" => "success",
+                        "CartInfo" => $CartInfo
+                    );
+                }
+            } else {
+                $dataArray1 = array(
+                    "success" => "error",
+                    "error" => "CasinoID missing."
+                );
+            }
+        } else {
+            $dataArray1 = array(
+                "success" => "error",
+                "error" => "CasinoID missing."
+            );
+        }    
+        
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
+    public function ajax_SaveAddCard(Request $request)
+    {   
+        if ( $request['CartID'] && $request['userName']) {
+            $CartID=$request['CartID'];
+            //$userName=$request['userName'];
+            if (!count(UserInfo::where('card_id', $CartID)->first())){
+                $user_info = new UserInfo();
+                $user_info->card_id = $request['CartID'];
+                $user_info->name = $request['userName'];
+                $user_info->address = $request['userAddress'] != "" ? $request['userAddress'] : "" ;
+                $user_info->phone = $request['userPhone'] != "" ? $request['userPhone'] : "";
+                $user_info->bank_credit = 0;
+                $user_info->deposit = $request['deposit'] != "" ? ($request['deposit'] * 100) : 0;
+                $user_info->bonus_points = 0;
+                
+                $test = $user_info->save();
+                //$test = $games::where('id',$request['RowID'])->update($SortQuery);
+                if ($test){
+                    $testPage = view('players.SaveAddCard', ['user_info' => $user_info])->render();
+                    $dataArray1 = array(
+                        "success" => "success",
+                        "CartInfo" => $user_info,
+                        "html" => $testPage,
+                        "error" => $test
+                    );
+                    
+                }else{
+                    $dataArray1 = array(
+                        "success" => "error",
+                        "error" => "The request is not saved."
+                    );
+                }
+            }else{
+                $dataArray1 = array(
+                    "success" => "error",
+                    "error" => "CartID Exist in Database."
+                );
+            }
+        } else {
+            $dataArray1 = array(
+                "success" => "error",
+                "error" => "CartID and userName missing."
+            );
+        }    
+        
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
     
 
 }
