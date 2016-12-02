@@ -48,13 +48,43 @@ class PlayersController extends Controller
         } else {
             $page['sortMenuOpen'] = 0;
         }
+        $SortQuery = array(); 
+        if ($request['CardID']){
+            array_push($SortQuery,['card_id', 'like', '%' . $request['CardID'] .'%']);
+            $page['CardID'] = $request['CardID'];
+        }else{
+            $page['CardID'] = "";
+        }
+        if ($request['Name']){
+            array_push($SortQuery,['name', 'like', '%' . $request['Name'] .'%']);
+            $page['Name'] = $request['Name'];
+        }else{
+            $page['Name'] = "";
+        }
+        if ($request['Level']){
+            array_push($SortQuery,['level', '=', $request['Level'] ]);
+            $page['Level'] = $request['Level'];
+        }else{
+            $page['Level'] = "";
+        }
+        
+        if ($request['FromDeposit']){
+            array_push($SortQuery,['deposit', '>=', $request['FromDeposit']]);
+            $page['FromDeposit'] = $request['FromDeposit'];
+        }else{
+            $page['FromDeposit'] = "";
+        }
+        if ($request['ToDeposit']){
+            array_push($SortQuery,['deposit', '<=', $request['ToDeposit']]);
+            $page['ToDeposit'] = $request['ToDeposit'];
+        }else{
+            $page['ToDeposit'] = "";
+        }
         
         
         
         
-        
-        
-        $UserInfoViews = UserInfoView::orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        $UserInfoViews = UserInfoView::where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
         return view('players.cards', ['UserInfoViews' => $UserInfoViews, 'page' => $page]);
     }
     public function ajax_ReadNewCard(Request $request)

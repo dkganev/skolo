@@ -94,7 +94,7 @@ function changePageNumCards(PageNum1) {
             "')" 
     window.location.href = pageHref; 
 }
-function changePageSortR(pageOrderV, pageDescV) {
+function changePageSortCards(pageOrderV, pageDescV) {
     pageHref = $('#pageReload').attr('data-URL');
     pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
     pageNum = 1; //$('#pageReload').attr('data-page');
@@ -121,6 +121,58 @@ function changePageSortR(pageOrderV, pageDescV) {
             //"&ToGameNum=" + ToGameNum + 
             "')" 
     window.location.href = pageHref; 
+}
+function changePageSortMenuCards() {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    CardID = $('#CardID').val();
+    Name = $('#Name').val();
+    Level = $('#Level').val();
+    FromDeposit = $('#FromDeposit').val();
+    ToDeposit = $('#ToDeposit').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&CardID=" + CardID + 
+            "&Name=" + Name + 
+            "&Level=" + Level + 
+            "&FromDeposit=" +FromDeposit + 
+            "&ToDeposit=" + ToDeposit + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function cleanSortFunctionR() {
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+    $('#datetimepicker4').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setStartDate', "");
+    $('#datetimepicker4I').val("");
+    $('#datetimepicker5I').val("");
+    $('#GameSortR').val("");
+    $('#PSIDR').val("");
+    $('#SeatIDR').val("");
+    $('#FromGameNumR').val("");
+    $('#ToGameNumR').val("");
+    $('#FromGameBetR').val("");
+    $('#ToGameBetR').val("");
+    $('#FromGameWinR').val("");
+    $('#ToGameWinR').val("");
+    $('#FromGameJackR').val("");
+    $('#ToGameJackR').val("");
+    changePageSortMenuR();
+    
 }
  
 function sortMenuCards() {

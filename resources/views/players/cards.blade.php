@@ -137,8 +137,8 @@
                         </ul>
                     </div>
                     <div class="keep-open btn-group open pull-right" title="Columns">
-                        <a class="btn btn-success CardsSort" style="display: none;" onclick="changePageSortMenuR()"><i class="fa fa-search" aria-hidden="true"></i></a>
-                        <a class="btn btn-default CardsSort" style="display: none;" onclick="cleanSortFunctionR()"><i class="fa fa-close" aria-hidden="true"></i></a> 
+                        <a class="btn btn-success CardsSort" style="display: none;" onclick="changePageSortMenuCards()"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        <a class="btn btn-default CardsSort" style="display: none;" onclick="cleanSortFunctionCards()"><i class="fa fa-close" aria-hidden="true"></i></a> 
                         <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuCards();">
                            Sort Menu
                            <span class="caret"></span>
@@ -159,12 +159,95 @@
                     >
                         <thead class="w3-dark-grey">
                             <tr>
-                                <th class="text-center" onclick="changePageSortR('card_id', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Card #<i class="fa {{ $page['OrderQuery'] == 'card_id' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" style="color: #fff" ></i></th>
-                                <th class="text-center" onclick="changePageSortR('name', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Name<i class="fa {{ $page['OrderQuery'] == 'name' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
-                                <th class="text-center" onclick="changePageSortR('level', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Type<i class="fa {{ $page['OrderQuery'] == 'level' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
-                                <th class="text-center" onclick="changePageSortR('deposit', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Cash in<i class="fa {{ $page['OrderQuery'] == 'deposit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
-                                <th class="text-center" onclick="changePageSortR('bank_credit', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Card Balance<i class="fa {{ $page['OrderQuery'] == 'bank_credit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
-                                <th class="text-center" onclick="changePageSortR('bonus_points', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Bonus Points<i class="fa {{ $page['OrderQuery'] == 'bonus_points' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
+                                <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id203" ><input class="form-control" type='text' style="color: #333" value="{{$page['CardID'] == "" ? "" : $page['CardID']}}" id='CardID' ></th>
+                                <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id203" ><input class="form-control" type='text' style="color: #333" value="{{$page['Name'] == "" ? "" : $page['Name']}}" id='Name' ></th>
+                                <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id203" >
+                                    <select id='Level' class="form-control input-sm rowInputAdd"  style=" display: show;">
+                                        <option value="" >Select</option>
+                                        <option value="bronze" {{$page['Level'] == "bronze" ? "selected" : ""}}>Bronze</option>
+                                        <option value="gold" {{$page['Level'] == "gold" ? "selected" : ""}}>Gold</option>
+                                        <option value="platinum" {{$page['Level'] == "platinum" ? "selected" : ""}}>Platinum</option>
+                                    </select>
+                                </th>
+                                <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id204" >
+                                    <div class="row">
+                                        <div class='col-md-3'>
+                                            From:
+                                        </div>
+                                        <div class='col-md-12'>
+                                            <div class="">
+                                                <input class="form-control" type='number' size="6" style="color: #333" value="{{$page['FromDeposit'] == "" ? "" : $page['FromDeposit']}}" id='FromDeposit' >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class='col-md-3'>
+                                            To:
+                                        </div>
+                                        <div class='col-md-12'>
+                                            <div class="" style="margin-top: 3px;">
+                                                <input class="form-control" type='number'  size="6" style="color: #333" value="{{$page['ToDeposit'] == "" ? "" : $page['ToDeposit']}}" id='ToDeposit' >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id204" >
+                                    <div class="row">
+                                        <div class='col-md-3'>
+                                            From:
+                                        </div>
+                                        <div class='col-md-12'>
+                                            <div class="">
+                                                <input class="form-control" type='number' size="6" style="color: #333" value="{{$page['FromDeposit'] == "" ? "" : $page['FromDeposit']}}" id='FromDeposit' >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class='col-md-3'>
+                                            To:
+                                        </div>
+                                        <div class='col-md-12'>
+                                            <div class="" style="margin-top: 3px;">
+                                                <input class="form-control" type='number'  size="6" style="color: #333" value="{{$page['ToDeposit'] == "" ? "" : $page['ToDeposit']}}" id='ToDeposit' >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id204" >
+                                    <div class="row">
+                                        <div class='col-md-3'>
+                                            From:
+                                        </div>
+                                        <div class='col-md-12'>
+                                            <div class="">
+                                                <input class="form-control" type='number' size="6" style="color: #333" value="{{$page['FromDeposit'] == "" ? "" : $page['FromDeposit']}}" id='FromDeposit' >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class='col-md-3'>
+                                            To:
+                                        </div>
+                                        <div class='col-md-12'>
+                                            <div class="" style="margin-top: 3px;">
+                                                <input class="form-control" type='number'  size="6" style="color: #333" value="{{$page['ToDeposit'] == "" ? "" : $page['ToDeposit']}}" id='ToDeposit' >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th class="text-center CardsSort" style="display: none; vertical-align: middle;">
+                                    
+                                </th>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <th class="text-center" onclick="changePageSortCards('card_id', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Card #<i class="fa {{ $page['OrderQuery'] == 'card_id' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" style="color: #fff" ></i></th>
+                                <th class="text-center" onclick="changePageSortCards('name', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Name<i class="fa {{ $page['OrderQuery'] == 'name' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
+                                <th class="text-center" onclick="changePageSortCards('level', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Type<i class="fa {{ $page['OrderQuery'] == 'level' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
+                                <th class="text-center" onclick="changePageSortCards('deposit', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Cash in<i class="fa {{ $page['OrderQuery'] == 'deposit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
+                                <th class="text-center" onclick="changePageSortCards('bank_credit', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Card Balance<i class="fa {{ $page['OrderQuery'] == 'bank_credit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
+                                <th class="text-center" onclick="changePageSortCards('bonus_points', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Bonus Points<i class="fa {{ $page['OrderQuery'] == 'bonus_points' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
                                 <th class="text-center col-md-3">
                                     <button class="btn btn-danger btn-xs" type="button"  tabindex="0" onclick="AddNewCart()">
                                         <span id="refresh" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
