@@ -47,6 +47,8 @@ $(function() {
         }
       }).done(function() {
         $('#resetPsModal').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
         javascript:ajaxLoad('{{url('settings/terminals')}}');
       });
     });

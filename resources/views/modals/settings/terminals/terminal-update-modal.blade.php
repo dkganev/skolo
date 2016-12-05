@@ -118,6 +118,8 @@ $(function() {
       }
     }).done(function () {
       $('#updateMachineModal-{{ $ps->psid }}').modal('hide');
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
       javascript:ajaxLoad('{{url('settings/terminals')}}');
     });
   });

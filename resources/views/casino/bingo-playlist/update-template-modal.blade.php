@@ -6,8 +6,6 @@
       <div class="modal-header">
           <h2><strong>Update Template</strong></h2>
       </div>
-      
-
       <div class="modal-body">
 
           <div class="row">

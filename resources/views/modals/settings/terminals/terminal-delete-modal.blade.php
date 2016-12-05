@@ -50,6 +50,8 @@ $(function() {
             }
         }).done(function() {
             $('#deletePsModal').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
             javascript:ajaxLoad('{{url('/settings/terminals')}}');
         });
     });
