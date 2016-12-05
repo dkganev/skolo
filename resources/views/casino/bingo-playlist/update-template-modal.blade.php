@@ -45,7 +45,7 @@
 
                 <input type="hidden" name="template_id" value="{{ $template->template_id }}">
 
-                    <button id="send-button--{{ $template->template_id }}"
+                  <button id="send-button--{{ $template->template_id }}"
                         type="Submit"
                         style="margin-top: 25px;" 
                         class="btn btn-primary btn-sm form-control"
@@ -108,12 +108,11 @@ $('#send-button--{{ $template->template_id }}').on('click', function() {
            template_id: $('#editTemplateModal--{{ $template->template_id }} input[name="template_id"]').val(),
            _token: token,
       }
-    })
-    .done(function() {
-      $('#editTemplateModal-{{ $template->template_id }}').modal('hide');
-      $('body').removeClass('modal-open');
-      $('.modal-backdrop').remove();
-      javascript:ajaxLoad('{{url('/casino/templates')}}');
+    }).done(function() {
+        $('#editTemplateModal-{{ $template->template_id }}').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        javascript:ajaxLoad('{{url('/casino/templates')}}');
     });
 });
 
