@@ -732,7 +732,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->bingo_seq }}' data-id='{{ $history->bingo_seq }}' data-unique='{{ $history->unique_game_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rows" data-toggle="modal" data-target="#bingoHistory_modal" >
+                                <tr id='Row{{ $history->bingo_seq }}' data-id='{{ $history->bingo_seq }}' data-unique='{{ $history->unique_game_seq }}'  class="disableTextSelect offline bootstrap-modal-form-open rows tr-class" data-toggle="modal" data-target="#bingoHistory_modal" >
                        
                                     <td class="text-center text-ri tableTh1"><?php echo date("Y-m-d H:i:s", strtotime($history->tstamp)); ?></td>
                                     <td class="text-right tableTh2">{{ $history->bingo_seq }}</td>

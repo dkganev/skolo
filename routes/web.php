@@ -242,6 +242,8 @@ Route::get('players', 'Players\PlayersController@index')->name('players') ;
 Route::get('players/cards', 'Players\PlayersController@cards');
 Route::post('/ajax_ReadNewCard', 'Players\PlayersController@ajax_ReadNewCard');
 Route::post('/ajax_SaveAddCard', 'Players\PlayersController@ajax_SaveAddCard');
+Route::get('/export2excelCards', 'Players\PlayersController@export2excelCards')->name('export2excelCards');
+Route::post('/ajax_SaveEditCart', 'Players\PlayersController@ajax_SaveEditCart');
  
  
  
