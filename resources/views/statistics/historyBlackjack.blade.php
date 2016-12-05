@@ -284,7 +284,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->game_seq }}' data-id='{{ $history->game_seq }}' data-ts='{{ $history->ts }}' data-table='{{$history->table_idx }}' class="disableTextSelect offline bootstrap-modal-form-open rowsBJ" data-toggle="modal" data-target="#BJHistory_modal" >
+                                <tr id='Row{{ $history->game_seq }}' data-id='{{ $history->game_seq }}' data-ts='{{ $history->ts }}' data-table='{{$history->table_idx }}' class="disableTextSelect offline bootstrap-modal-form-open rowsBJ tr-class" data-toggle="modal" data-target="#BJHistory_modal" >
                        
                                     <td class="text-center" ><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td class="text-right">{{ $history->game_seq }}</td>
