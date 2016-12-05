@@ -4,7 +4,7 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong>Delete template</strong></h2>
+          <h2><strong id="strong">Delete template</strong></h2>
       </div>
       
       <div class="modal-body">
@@ -56,3 +56,9 @@ $('#delete-template-button').on('click', function() {
 
 }); // <== End Document Ready
 </script>
+
+<style>
+  #strong {
+    color: black;
+  }
+</style>

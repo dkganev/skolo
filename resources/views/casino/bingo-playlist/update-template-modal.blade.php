@@ -1,7 +1,7 @@
 <!-- Edit Template Modal -->
 <div class="row">
 <div class="modal fade" id="editTemplateModal--{{ $template->template_id }}" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" style="width: 80%">
+  <div class="modal-dialog" style="width: 50%">
     <div class="modal-content">
       <div class="modal-header">
           <h2><strong>Update Template</strong></h2>
@@ -12,10 +12,10 @@
 
           <div class="row">
 
-            <div class="col-md-2">
+            <div class="col-md-3">
 
               <form id="game-type-form--{{ $template->template_id }}" class="form-inline" style="padding-top: 15px;">
-                <div style="width: 169px" class="form-group">
+                <div style="width: 202px" class="form-group">
                   <label>Game Type: </label><br>
                   <select name="game_type" class="form-control selectpicker">
                     <option selected="true" disabled="disabled">Choose Game Type</option>
@@ -56,7 +56,7 @@
                 </form>
               </div><!-- End Col--> 
 
-              <div class="col-sm-5">
+              <div class="col-sm-9">
                 <h4><strong>Games</strong></h4>
                 <hr>
 

@@ -319,8 +319,7 @@ $('#game-update').on('click', function() {
             db_name: $('#updateGameModal input[name="db_name"]').val() ,
             _token: token 
         } 
-    })
-    .done(function (msg) {
+    }).done(function (msg) {
         console.log(msg['message']);
         $('#updateGameModal').modal('hide');
         window.location.reload();

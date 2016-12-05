@@ -43,7 +43,12 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.min.css" />
                            
     <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
-       
+
+    <style>
+      .modal strong {
+        color: black !important;
+      }
+    </style>
 </head>
 <body style="height: 1200px; width: 100%;">
 
