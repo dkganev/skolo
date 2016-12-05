@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\IMS\CardReader;
 use App\Models\IMS\UserInfo;
+use App\Models\IMS\UserInfoView;
 use App\Http\Requests;
 
 use Excel;
@@ -23,9 +24,68 @@ class PlayersController extends Controller
         return view('players.index');
     }
     
-    public function cards()
+    public function cards(Request $request)
     {
-        return view('players.cards');
+        if ($request['rowsPerPage']) {
+            $page['rowsPerPage'] = $request['rowsPerPage'];
+        
+        } else {
+            $page['rowsPerPage'] = 20;
+        
+        }
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'id';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        if ($request['sortMenuOpen'] == 1 ) {
+            $page['sortMenuOpen'] = 1;
+        } else {
+            $page['sortMenuOpen'] = 0;
+        }
+        $SortQuery = array(); 
+        if ($request['CardID']){
+            array_push($SortQuery,['card_id', 'like', '%' . $request['CardID'] .'%']);
+            $page['CardID'] = $request['CardID'];
+        }else{
+            $page['CardID'] = "";
+        }
+        if ($request['Name']){
+            array_push($SortQuery,['name', 'like', '%' . $request['Name'] .'%']);
+            $page['Name'] = $request['Name'];
+        }else{
+            $page['Name'] = "";
+        }
+        if ($request['Level']){
+            array_push($SortQuery,['level', '=', $request['Level'] ]);
+            $page['Level'] = $request['Level'];
+        }else{
+            $page['Level'] = "";
+        }
+        
+        if ($request['FromDeposit']){
+            array_push($SortQuery,['deposit', '>=', $request['FromDeposit']]);
+            $page['FromDeposit'] = $request['FromDeposit'];
+        }else{
+            $page['FromDeposit'] = "";
+        }
+        if ($request['ToDeposit']){
+            array_push($SortQuery,['deposit', '<=', $request['ToDeposit']]);
+            $page['ToDeposit'] = $request['ToDeposit'];
+        }else{
+            $page['ToDeposit'] = "";
+        }
+        
+        
+        
+        
+        $UserInfoViews = UserInfoView::where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        return view('players.cards', ['UserInfoViews' => $UserInfoViews, 'page' => $page]);
     }
     public function ajax_ReadNewCard(Request $request)
     {   

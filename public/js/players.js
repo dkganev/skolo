@@ -1,5 +1,201 @@
- var addMenu = 0;
- var TimeOut = [1];
+var addMenu = 0;
+var TimeOut = [1];
+var sortTimer;
+var ShowHideI = 0;
+var GameInfo = 0;
+var sortMenuRV = 0;
+ 
+ //start cards scripts
+function changeRowsPerPageCards(rowsPerPage) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = rowsPerPage; // $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    //FromGameTs = $('#datetimepicker4I').val();
+    //ToGameTs = $('#datetimepicker5I').val();
+    //GameSort = $('#GameSortR').val();
+    //PSID = $('#PSIDR').val();
+    //SeatID = $('#SeatIDR').val();
+    //FromGameNum = $('#FromGameNumR').val();
+    //ToGameNum = $('#ToGameNumR').val();
+    //FromGameBet = $('#FromGameBetR').val();
+    //ToGameBet = $('#ToGameBetR').val();
+    //FromGameWin = $('#FromGameWinR').val();
+    //ToGameWin = $('#ToGameWinR').val();
+    //FromGameJack = $('#FromGameJackR').val();
+    //ToGameJack = $('#ToGameJackR').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            //"&FromGameTs=" + FromGameTs + 
+            //"&ToGameTs=" + ToGameTs + 
+            //"&GameSort=" + GameSort + 
+            //"&PSID=" + PSID + 
+            //"&SeatID=" + SeatID + 
+            //"&FromGameNum=" + FromGameNum + 
+            //"&ToGameNum=" + ToGameNum + 
+            //"&FromGameBet=" + FromGameBet + 
+            //"&ToGameBet=" + ToGameBet + 
+            //"&FromGameWin=" + FromGameWin + 
+            //"&ToGameWin=" + ToGameWin + 
+            //"&FromGameJack=" + FromGameJack + 
+            //"&ToGameJack=" + ToGameJack + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageNumCards(PageNum1) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = PageNum1 //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    //FromGameTs = $('#datetimepicker4I').val();
+    //ToGameTs = $('#datetimepicker5I').val();
+    //GameSort = $('#GameSortR').val();
+    //PSID = $('#PSIDR').val();
+    //SeatID = $('#SeatIDR').val();
+    //FromGameNum = $('#FromGameNumR').val();
+    //ToGameNum = $('#ToGameNumR').val();
+    //FromGameBet = $('#FromGameBetR').val();
+    //ToGameBet = $('#ToGameBetR').val();
+    //FromGameWin = $('#FromGameWinR').val();
+    //ToGameWin = $('#ToGameWinR').val();
+    //FromGameJack = $('#FromGameJackR').val();
+    //ToGameJack = $('#ToGameJackR').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            //"&FromGameTs=" + FromGameTs + 
+            //"&ToGameTs=" + ToGameTs + 
+            //"&GameSort=" + GameSort + 
+            //"&PSID=" + PSID + 
+            //"&SeatID=" + SeatID + 
+            //"&FromGameNum=" + FromGameNum + 
+            //"&ToGameNum=" + ToGameNum + 
+            //"&FromGameBet=" + FromGameBet + 
+            //"&ToGameBet=" + ToGameBet + 
+            //"&FromGameWin=" + FromGameWin + 
+            //"&ToGameWin=" + ToGameWin + 
+            //"&FromGameJack=" + FromGameJack + 
+            //"&ToGameJack=" + ToGameJack + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageSortCards(pageOrderV, pageDescV) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = pageOrderV; //  $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  pageDescV; // $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    //FromGameTs = $('#datetimepicker4I').val();
+    //ToGameTs = $('#datetimepicker5I').val();
+    //GameSort = $('#GameSortR').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            //"&FromGameTs=" + FromGameTs + 
+            //"&ToGameTs=" + ToGameTs + 
+            //"&GameSort=" + GameSort + 
+            //"&PSID=" + PSID + 
+            //"&SeatID=" + SeatID + 
+            //"&FromGameNum=" + FromGameNum + 
+            //"&ToGameNum=" + ToGameNum + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageSortMenuCards() {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    CardID = $('#CardID').val();
+    Name = $('#Name').val();
+    Level = $('#Level').val();
+    FromDeposit = $('#FromDeposit').val();
+    ToDeposit = $('#ToDeposit').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&CardID=" + CardID + 
+            "&Name=" + Name + 
+            "&Level=" + Level + 
+            "&FromDeposit=" +FromDeposit + 
+            "&ToDeposit=" + ToDeposit + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function cleanSortFunctionR() {
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+    $('#datetimepicker4').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setStartDate', "");
+    $('#datetimepicker4I').val("");
+    $('#datetimepicker5I').val("");
+    $('#GameSortR').val("");
+    $('#PSIDR').val("");
+    $('#SeatIDR').val("");
+    $('#FromGameNumR').val("");
+    $('#ToGameNumR').val("");
+    $('#FromGameBetR').val("");
+    $('#ToGameBetR').val("");
+    $('#FromGameWinR').val("");
+    $('#ToGameWinR').val("");
+    $('#FromGameJackR').val("");
+    $('#ToGameJackR').val("");
+    changePageSortMenuR();
+    
+}
+ 
+function sortMenuCards() {
+    if (sortMenuRV == 0) {
+        $('.CardsSort').show();
+        sortMenuRV = 1;
+    }else{
+        $('.CardsSort').hide();
+        sortMenuRV = 0;
+        //var d = new Date();
+        //var month = d.getMonth()+1;
+        //var day = d.getDate();
+        //var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        //$('#datetimepicker4').datetimepicker('setEndDate', output );
+        //$('#datetimepicker5').datetimepicker('setEndDate', output );
+        //$('#datetimepicker5').datetimepicker('setStartDate', "");
+        //$('#datetimepicker4I').val("");
+        //changePageSortMenuR();
+        
+    }
+    
+}
+ 
  
 function AddNewCart() {
     if (addMenu == 0){
