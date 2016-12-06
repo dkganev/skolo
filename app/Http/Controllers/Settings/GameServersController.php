@@ -160,10 +160,14 @@ class GameServersController extends Controller
         $game->short_name = $request['short_name'];
         $game->description = $request['description'];
         $game->db_name = $request['db_name'];
+        $game->color = $request['color'];
         $game->update();
 
-        $msg = 'Game Updated Successfully!';
-        return $request->session()->flash('alert-info', $msg);
+        $response = [
+            'msg'  => 'Game Updated Successfully!',
+        ];
+
+        return response()->json($response, 200);
     }
 
     public function exportGames()

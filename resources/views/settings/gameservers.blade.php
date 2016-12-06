@@ -195,6 +195,7 @@
                                     data-gametype="{{ $game->type->game_type }}"
                                     data-dbname="{{ $game->db_name }}"
                                     data-shortname="{{ $game->short_name }}"
+                                    data-color="{{ $game->color }}"
                                     class="btn btn-primary btn-xs"
                                 >
                                 Edit
@@ -297,32 +298,42 @@ $('#updateGameModal').on('show.bs.modal', function(e) {
     var gameType = $(e.relatedTarget).data('gametype');
     var dbName = $(e.relatedTarget).data('dbname');
     var shortName = $(e.relatedTarget).data('shortname');
+    var color = $(e.relatedTarget).data('color');
     //populate the textbox
     $(e.currentTarget).find('select[name="client_game_id"]').val(clientGameId);
     $(e.currentTarget).find('input[name="gameid"]').val(gameId);
     $(e.currentTarget).find('input[name="description"]').val(description);
-    $(e.currentTarget).find('select[name="game_type"]').val(gameType);
+    $(e.currentTarget).find('select[name="game_type"]').val();
     $(e.currentTarget).find('input[name="db_name"]').val(dbName);
     $(e.currentTarget).find('input[name="short_name"]').val(shortName);
+    $(e.currentTarget).find('input[name="color"]').val(color);
+    $(e.currentTarget).find('strong#color-label').text(color);
 });
 
 $('#game-update').on('click', function() {
     $.ajax({
         method: 'POST',
         url: update_game,
-        data: { 
-            client_game_id: $('#updateGameModal select[name="client_game_id"]').val() ,
-            gameid: $('#updateGameModal input[name="gameid"]').val() ,
-            game_type: $('#updateGameModal select[name="game_type"]').val() ,
-            short_name: $('#updateGameModal input[name="short_name"]').val() ,
-            description: $('#updateGameModal input[name="description"]').val() ,
-            db_name: $('#updateGameModal input[name="db_name"]').val() ,
+        data: {
+            client_game_id: $('#updateGameModal select[name="client_game_id"]').val(),
+            gameid: $('#updateGameModal input[name="gameid"]').val(),
+            game_type: $('#updateGameModal select[name="game_type"]').val(),
+            short_name: $('#updateGameModal input[name="short_name"]').val(),
+            description: $('#updateGameModal input[name="description"]').val(),
+            db_name: $('#updateGameModal input[name="db_name"]').val(),
+            color: $('#updateGameModal input[name="color"]').val(),
             _token: token 
-        } 
+        },
+        success: function () {
+
+        },
+        error: function () {
+
+        }
     }).done(function (msg) {
         console.log(msg['message']);
         $('#updateGameModal').modal('hide');
-        window.location.reload();
+        javascript:ajaxLoad('/settings/gameservers');
     });
 });
 
