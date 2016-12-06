@@ -52,7 +52,7 @@
         <li class="nav-option">
 
             <a href="{{ url('logout') }}">
-              <img src="/images/exit.png" alt="" style="margin-bottom: -7px;">
+              <img src="/images/logout.png" alt="" style="margin-bottom: -7px;">
             </a>
         </li>
       </ul> 
@@ -109,8 +109,8 @@
     </div><!--/.nav-collapse -->
   </div><!--/ .container -->
 </nav>
-<img src="images/bgr_fx.png" alt="" style="width: 50%; background-color: red; position: absolute; top: 49px;">
-<img id="image-flipped" src="images/bgr_fx.png" alt="" style="width: 50%;background-color: red;position: absolute;top: 49px; left: 952px;">
+<img src="images/bgr_fx.png" alt="" style="width: 50%; background-color: red; position: absolute;top: 48px; left: 10px;">
+<img id="image-flipped" src="images/bgr_fx.png" alt="" style="width: 50%;background-color: red;position: absolute; top: 48px; left: 1020px;">
 
 @if(Request::is('settings*'))
     @include('settings.navbar')

@@ -20,7 +20,7 @@ class TemplateGames extends Model
 
 	public function template()
 	{
-		return $this->belongsTo(Template::class, 'template_id', 'template_id');
+		return $this->belongsTo(Templates::class, 'template_id', 'template_id');
 	}
 }
 
