@@ -5,7 +5,7 @@
     }
 }
 </style>
-@include('modals.BJHistory-modal')
+@include('statistics.modals.BJHistory-modal')
 <div class="container">
 <div class=""> 
         <div>

@@ -31,7 +31,9 @@
 
                 <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">Roulette</a></li>
                 
-                <li><a href="javascript:ajaxLoad('{{url('/settings/PBS/BonusPoints2Money')}}')">PBS</a></li>
+                <!--<li><a href="javascript:ajaxLoad('{{url('/settings/PBS/BonusPoints2Money')}}')">PBS</a></li> -->
+                
+                <li><a href="javascript:ajaxLoad('{{url('/settings/System')}}')">System</a></li>
 
               </ul>
           </div>
