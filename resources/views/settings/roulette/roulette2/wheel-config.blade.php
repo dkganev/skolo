@@ -170,11 +170,11 @@ $('button#wheel-config-btn').on('click', function(event) {
 
     $.ajax({
         method: 'POST',
-        url: '/settings/roulette1/wheelconfig/edit',
+        url: '/settings/roulette2/wheelconfig/edit',
         data: $('form#weel-config-form').serialize(),
     })
     .done(function () {
-         javascript:ajaxLoad('{{url('/settings/roulette1/wheelconfig')}}');
+         javascript:ajaxLoad('{{url('/settings/roulette2/wheelconfig')}}');
     });
 });
 </script>

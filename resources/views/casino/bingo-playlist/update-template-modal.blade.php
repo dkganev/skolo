@@ -6,8 +6,6 @@
       <div class="modal-header">
           <h2><strong>Update Template</strong></h2>
       </div>
-      
-
       <div class="modal-body">
 
           <div class="row">
@@ -27,7 +25,6 @@
                 <div class="form-group">
                   <label for="ticket_cost">Ticket Cost (cents):</label><br>
                   <input class="form-control" type="text" name="ticket_cost" id="ticket_cost--{{ $template->template_id }}">
-
                 </div>
 
                 <div id="line-cost-form-group--{{ $template->template_id }}"  class="form-group" style="display: none;">
@@ -51,6 +48,14 @@
                         class="btn btn-primary btn-sm form-control"
                 >
                   Add
+                </button>
+
+                <button type="button"
+                        data-dismiss="modal"
+                        style="margin-top: 25px;"
+                        class="btn btn-default btn-sm form-control"
+                        >
+                          Close
                 </button>
 
                 </form>
@@ -107,12 +112,18 @@ $('#send-button--{{ $template->template_id }}').on('click', function() {
            bingo_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="bingo_cost"]').val(),
            template_id: $('#editTemplateModal--{{ $template->template_id }} input[name="template_id"]').val(),
            _token: token,
+      },
+      success: function () {
+        //
+      }, 
+      error: function () {
+        //
       }
     }).done(function() {
         $('#editTemplateModal-{{ $template->template_id }}').modal('hide');
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
-        javascript:ajaxLoad('{{url('/casino/templates')}}');
+        // javascript:ajaxLoad('{{url('/casino/templates')}}');
     });
 });
 

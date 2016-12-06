@@ -139,6 +139,8 @@ $(function() {
         }
     }).done(function () {
           $('#addMachineModal').modal('hide');
+          $('body').removeClass('modal-open');
+          $('.modal-backdrop').remove();
           javascript:ajaxLoad('{{url('settings/terminals')}}');
         });
     });

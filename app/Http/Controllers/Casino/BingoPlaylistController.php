@@ -120,7 +120,7 @@ class BingoPlaylistController extends Controller
         $template->template_games()->save($playlist);
         $playlist->save();
 
-        return back();
+        return response()->json($playlist->load('template'), 200);
     }
 
 }

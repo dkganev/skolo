@@ -222,6 +222,11 @@
                 <input class="form-control" type="text" name="db_name" id="db_name">
             </div>
 
+            <div class="form-group">
+                <label for="game_color">Game Color ( <strong id="color-label"></strong> ) :</label><br>
+                <input style="width: 165px;" type="color" name="color" class="form-control text-center">
+            </div>
+
           </form>
       </div>
       <div class="modal-footer">
@@ -250,12 +255,10 @@
       
       <div class="modal-body">
           <form class="form-inline"> 
-
             <div class="form-group">
                 <label for="idx">Category ID:</label><br>
                 <input class="form-control" type="text" name="idx" id="idx" placeholder="Cannot be edited">
             </div>
-
             <div class="form-group">
                 <label for="name">Category Name:</label><br>
                 <input  class="form-control" type="text" name="name" id="name" placeholder="Category Name">
@@ -277,7 +280,6 @@
 </script>
 <!-- End Add Game  Modal -->
 
-
 <!-- Update Category Modal -->
 <div class="row">
 <div class="modal fade" id="updateCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -288,20 +290,18 @@
       </div>
       
       <div class="modal-body">
-          <form class="form-inline"> 
+        <form class="form-inline"> 
+          <div class="form-group">
+              <label for="idx">Category ID:</label><br>
+              <input class="form-control" type="text" name="idx" id="idx" placeholder="Cannot be edited" disabled>
+          </div>
 
-            <div class="form-group">
-                <label for="idx">Category ID:</label><br>
-                <input class="form-control" type="text" name="idx" id="idx" placeholder="Cannot be edited" disabled>
-            </div>
-
-           
-            <div class="form-group">
-                <label for="name">Category Name:</label><br>
-                <input  class="form-control" type="text" name="name" id="name" placeholder="Category Name">
-            </div>
-             <hr>
-          </form>
+          <div class="form-group">
+              <label for="name">Category Name:</label><br>
+              <input  class="form-control" type="text" name="name" id="name" placeholder="Category Name">
+          </div>
+           <hr>
+        </form>
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
