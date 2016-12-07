@@ -115,20 +115,34 @@
     <h4 style="text-align: center; line-height: 3;">Bingo Live Feed</h4>
     <span style="line-height: 3;">Bingo Live Feed</span>
     <div style="line-height: 0.5;">
-        <p>Ticket Value: {{$MainConfig->bingo_ticket_cost}}</p>
-        <p>Tickets Sold: {{count($psTickets) ? $psTickets->sum('num_tickets') : 0 }}</p>
-        <p>Active Players: {{count($psTickets) ? count($psTickets) : 0 }}</p>
-        <p>Bingo Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bingo_cost_bingo : 0 }}</p>
-        <p>Bingo Line: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bingo_cost_line1 : 0 }}</p>
-        <p>Jackpot Bingo: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->jackpot_bingo_max_ball : 0 }}</p>
-        <p>Jackpot Bingo Max Ball Value: {{$MainConfig->bingo_cost_line1}}</p>
-        <p>Jackpot Line Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->jackpot_line_pr_visible : 0 }}</p>
-        <p>Jackpot Line Max Ball: {{$MainConfig->jackpot_line_max_ball}}</p>
-        <p>My Bonus Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->mybonus_pr_visible : 0 }}</p>
-        <p>Bonus Bingo Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bonus_bingo_pr_visible : 0 }}</p>
-        <p>Bonus Bingo Max Ball: {{$MainConfig->bonus_bingo_max_ball}}</p>
-        <p>Bonus Line Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bonus_line_pr_visible : 0 }}</p>
-        <p>Bonus Line Max Ball: {{$MainConfig->bonus_line_max_ball}}</p>
+        <input id="BingoMainConfig" type="hidden"
+            data-bingo_ticket_cost="{{$MainConfig->bingo_ticket_cost}}"
+            data-bingo_win_pr="{{$MainConfig->bingo_win_pr}}"
+            data-bingo_line_pr="{{$MainConfig->bingo_line_pr}}"
+            data-jackpot_bingo_pr_visible="{{$MainConfig->jackpot_bingo_pr_visible}}"
+            data-jackpot_bingo_max_ball="{{$MainConfig->jackpot_bingo_max_ball}}"
+            data-jackpot_line_pr_visible="{{$MainConfig->jackpot_line_pr_visible}}"
+            data-jackpot_line_max_ball="{{$MainConfig->jackpot_line_max_ball}}"
+            data-mybonus_pr_visible="{{$MainConfig->mybonus_pr_visible}}"
+            data-bonus_bingo_pr_visible="{{$MainConfig->bonus_bingo_pr_visible}}"
+            data-bonus_bingo_max_ball="{{$MainConfig->bonus_bingo_max_ball}}"
+            data-bonus_line_pr_visible="{{$MainConfig->bonus_line_pr_visible}}"
+            data-bonus_line_max_ball="{{$MainConfig->bonus_line_max_ball}}"
+        >
+        <p>Ticket Value: <span id="bingo_ticket_cost">{{$MainConfig->bingo_ticket_cost}}</span></p>
+        <p>Tickets Sold: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') : 0 }}</span></p>
+        <p>Active Players: <span>{{count($psTickets) ? count($psTickets) : 0 }}</span></p>
+        <p>Bingo Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bingo_win_pr : 0 }}</span></p>
+        <p>Bingo Line: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bingo_line_pr : 0 }}</span></p>
+        <p>Jackpot Bingo: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->jackpot_bingo_pr_visible : 0 }}</span></p>
+        <p>Jackpot Bingo Max Ball Value: <span>{{$MainConfig->jackpot_bingo_max_ball}}</span></p>
+        <p>Jackpot Line Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->jackpot_line_pr_visible : 0 }}</span></p>
+        <p>Jackpot Line Max Ball: <span>{{$MainConfig->jackpot_line_max_ball}}</span></p>
+        <p>My Bonus Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->mybonus_pr_visible : 0 }}</span></p>
+        <p>Bonus Bingo Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bonus_bingo_pr_visible : 0 }}</span></p>
+        <p>Bonus Bingo Max Ball: <span>{{$MainConfig->bonus_bingo_max_ball}}</span></p>
+        <p>Bonus Line Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bonus_line_pr_visible : 0 }}</span></p>
+        <p>Bonus Line Max Ball: <span>{{$MainConfig->bonus_line_max_ball}}</span></p>
     </div>
 </div>
 

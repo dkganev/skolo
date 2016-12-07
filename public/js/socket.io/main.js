@@ -3,27 +3,74 @@ var pageHrefSocket = $('#CasinoCasino').attr('data-url') + ":3000";
 //console.log (pageHrefSocket);
 var socket = io(pageHrefSocket);
 
+var pageHrefBingoMeinconfSocket = $('#CasinoCasino').attr('data-url') + ":3000/bingoMainconf";
+//console.log (pageHrefSocket);
+var socketBingoMeinconf = io.connect(pageHrefBingoMeinconfSocket);
+
+var pageHrefbingoPsTicketsSocket = $('#CasinoCasino').attr('data-url') + ":3000/bingoPsTickets";
+//console.log (pageHrefSocket);
+var socketbingoPsTickets = io.connect(pageHrefbingoPsTicketsSocket);
 //var socket = io('http://10.0.0.199:3000');
 
-  socket.on('news', function (data) {
+socket.on('news', function (data) {
     console.log ("test222");
     console.log(data);
     socket.emit('my other event', { my: 'data' });
-  });
-   // Whenever the server emits 'user joined', log it in the chat body
-  socket.on('user joined', function (data) {
-        console.log ("test1");
-        data.usermane = "CMS"
-        log(data.username + ' joined');
-        addParticipantsMessage(data);
-  });
-  // Whenever the server emits 'typing', show the typing message
-  socket.on('typing', function (data) {
+});
+// Whenever the server emits 'user joined', log it in the chat body
+socket.on('user joined', function (data) {
+    console.log ("test1");
+    data.usermane = "CMS"
+    log(data.username + ' joined');
+    addParticipantsMessage(data);
+});
+// Whenever the server emits 'typing', show the typing message
+socket.on('typing', function (data) {
     console.log ("test2");
-      addChatTyping(data);
-  });
-  // Whenever the server emits 'new message', update the chat body
-  socket.on('new message', function (data) {
+    addChatTyping(data);
+});
+socketbingoPsTickets.on('new message', function (data) {
+    var jsonObj = data.message;
+    var obj = $.parseJSON(jsonObj);
+    console.log (obj);
+    if (obj.query == "UPDATE")
+    {
+                
+    }else if (obj.query == "DELETE"){
+          
+    }else if (obj.query == "INSERT"){
+          
+    }
+});
+socketBingoMeinconf.on('new message', function (data) {
+    var jsonObj = data.message;
+    var obj = $.parseJSON(jsonObj);
+    console.log (obj);
+    if (obj.query == "UPDATE")
+    {
+        $("#bingo_ticket_cost").text(obj.dataNew.bingo_ticket_cost);
+        $("#BingoMainConfig").attr("data-bingo_ticket_cost",obj.dataNew.bingo_ticket_cost);
+        $("#BingoMainConfig").attr("data-bingo_win_pr",obj.dataNew.bingo_win_pr);
+        $("#BingoMainConfig").attr("data-bingo_line_pr",obj.dataNew.bingo_line_pr);
+        $("#BingoMainConfig").attr("data-jackpot_bingo_pr_visible",obj.dataNew.jackpot_bingo_pr_visible);
+        $("#BingoMainConfig").attr("data-jackpot_bingo_max_ball",obj.dataNew.jackpot_bingo_max_ball);
+        $("#BingoMainConfig").attr("data-jackpot_line_pr_visible",obj.dataNew.jackpot_line_pr_visible);
+        $("#BingoMainConfig").attr("data-jackpot_line_max_ball",obj.dataNew.jackpot_line_max_ball);
+        $("#BingoMainConfig").attr("data-mybonus_pr_visible",obj.dataNew.mybonus_pr_visible);
+        $("#BingoMainConfig").attr("data-bonus_bingo_pr_visible",obj.dataNew.bonus_bingo_pr_visible);
+        $("#BingoMainConfig").attr("data-bonus_bingo_max_ball",obj.dataNew.bonus_bingo_max_ball);
+        $("#BingoMainConfig").attr("data-bonus_line_pr_visible",obj.dataNew.bonus_line_pr_visible);
+        $("#BingoMainConfig").attr("data-bonus_line_max_ball",obj.dataNew.bonus_line_max_ball);
+        
+        
+    }else if (obj.query == "DELETE"){
+          
+    }else if (obj.query == "INSERT"){
+          
+    }
+});
+// Whenever the server emits 'new message', update the chat body
+socket.on('new message', function (data) {
       //console.log ("test3");
       //$el = data.username + "--" + data.message;
       //console.log (data.message);
@@ -102,7 +149,7 @@ var socket = io(pageHrefSocket);
                     {
                         if  (obj.dataNew.bonline != obj.dataOld.bonline || obj.dataNew.active_errors != obj.dataOld.active_errors  || obj.dataNew.attendant != obj.dataOld.attendant || (obj.dataNew.current_credit != obj.dataOld.current_credit && obj.dataOld.current_credit == 0))
                         {
-                            $("#box" + obj.dataNew.psid).css("background-color", "#5cb85c");
+                            $("#box" + obj.dataNew.psid).css("BingoMeinconfbackground-color", "#5cb85c");
                             //valueBtnActive = parseInt($("#BtnActive").text()) + 1 ;
                             //$("#BtnActive").text(valueBtnActive); 
                             valueboxStatus = $("#box" + obj.dataNew.psid).attr('data_boxStatus');
