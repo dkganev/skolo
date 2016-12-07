@@ -195,7 +195,8 @@ var socket = io(pageHrefSocket);
             //$("#box" + obj.dataNew.psid + " #boxCdredit").text(100);
         }
         if  (obj.dataNew.current_bet != obj.dataOld.current_bet){
-            $("#box" + obj.dataNew.psid + " .boxBet").text(( parseInt(obj.dataNew.current_bet)/100).toFixed(2));
+            //$("#box" + obj.dataNew.psid + " .boxBet").text(( parseInt(obj.dataNew.current_bet)/100).toFixed(2));
+            $("#box" + obj.dataNew.psid + " .boxBet").text((parseInt(obj.dataNew.current_bet)/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
         }
         if  (obj.dataNew.current_game_i != obj.dataOld.current_game_i){
             idGame = obj.dataNew.current_game_i;

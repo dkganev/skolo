@@ -221,7 +221,7 @@ function cleanSortFunctionEvents() {
     $('#datetimepicker5').datetimepicker('setStartDate', "");
     $('#datetimepicker4I').val("");
     $('#datetimepicker5I').val("");
-    $('#PSIDR').val("");
+    $('#PSID').val("");
     $('#ErrorText').val("");
     $('#ErrorCode').val("");
     changePageSortMenuEvents();
@@ -302,7 +302,7 @@ function sortMenuEvents() {
         $('#datetimepicker5').datetimepicker('setStartDate', "");
         $('#datetimepicker4I').val("");
         $('#datetimepicker5I').val("");
-        $('#PSIDR').val("");
+        $('#PSID').val("");
         $('#ErrorText').val("");
         $('#ErrorCode').val("");
         //changePageSortMenuR();
