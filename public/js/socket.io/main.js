@@ -187,7 +187,10 @@ var socket = io(pageHrefSocket);
         };
         
         if  (obj.dataNew.current_credit != obj.dataOld.current_credit){
-            $("#box" + obj.dataNew.psid + " .boxCdredit").text(( parseInt(obj.dataNew.current_credit)/100).toFixed(2));
+            //boxCdreditNum = parseInt(obj.dataNew.current_credit)/100;
+            //console.log(boxCdreditNum);
+            //console.log((parseInt(obj.dataNew.current_credit)/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $("#box" + obj.dataNew.psid + " .boxCdredit").text((parseInt(obj.dataNew.current_credit)/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
            
             //$("#box" + obj.dataNew.psid + " #boxCdredit").text(100);
         }

@@ -85,12 +85,12 @@
                                     {{ number_format($ps->ps_status->current_credit / 100, 2 ) }}
                                 </div>
 
-                                <div class="ps_text pull-left" style="line-height: 16px;">
+                                <!--<div class="ps_text pull-left" style="line-height: 16px;">
                                     Bet:
                                     <span class="bold boxBet">
                                         {{ number_format($ps->ps_status->current_bet / 100, 2 ) }}
                                     </span>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     @endforeach   
@@ -115,20 +115,20 @@
     <h4 style="text-align: center; line-height: 3;">Bingo Live Feed</h4>
     <span style="line-height: 3;">Bingo Live Feed</span>
     <div style="line-height: 0.5;">
-        <p>Ticket Value: 0.03</p>
-        <p>Tickets Sold: 0</p>
-        <p>Active Players: 0</p>
-        <p>Bingo Prize: 0.00</p>
-        <p>Bingo Line: 0.00</p>
-        <p>Jackpot Bingo: 23.30</p>
-        <p>Jackpot Bingo Max Ball Value: </p>
-        <p>Jackpot Line Prize: 13.29</p>
-        <p>Jackpot Line Max Ball: </p>
-        <p>My Bonus Prize: 0.85</p>
-        <p>Bonus Bingo Prize: 1.93</p>
-        <p>Bonus Bingo Max Ball: </p>
-        <p>Bonus Line Prize: 1.32</p>
-        <p>Bonus Line Max Ball: </p>
+        <p>Ticket Value: {{$MainConfig->bingo_ticket_cost}}</p>
+        <p>Tickets Sold: {{count($psTickets) ? $psTickets->sum('num_tickets') : 0 }}</p>
+        <p>Active Players: {{count($psTickets) ? count($psTickets) : 0 }}</p>
+        <p>Bingo Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bingo_cost_bingo : 0 }}</p>
+        <p>Bingo Line: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bingo_cost_line1 : 0 }}</p>
+        <p>Jackpot Bingo: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->jackpot_bingo_max_ball : 0 }}</p>
+        <p>Jackpot Bingo Max Ball Value: {{$MainConfig->bingo_cost_line1}}</p>
+        <p>Jackpot Line Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->jackpot_line_pr_visible : 0 }}</p>
+        <p>Jackpot Line Max Ball: {{$MainConfig->jackpot_line_max_ball}}</p>
+        <p>My Bonus Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->mybonus_pr_visible : 0 }}</p>
+        <p>Bonus Bingo Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bonus_bingo_pr_visible : 0 }}</p>
+        <p>Bonus Bingo Max Ball: {{$MainConfig->bonus_bingo_max_ball}}</p>
+        <p>Bonus Line Prize: {{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bonus_line_pr_visible : 0 }}</p>
+        <p>Bonus Line Max Ball: {{$MainConfig->bonus_line_max_ball}}</p>
     </div>
 </div>
 
@@ -195,4 +195,7 @@ $( "#GridBingoFeed" ).click(function() {
     else
         $( "#DivBingoFeed" ).hide();    
 });
+
+//var number = 1234567.89;
+//console.log(number.toLocaleString('en'));
 </script>
