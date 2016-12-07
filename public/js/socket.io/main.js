@@ -187,12 +187,16 @@ var socket = io(pageHrefSocket);
         };
         
         if  (obj.dataNew.current_credit != obj.dataOld.current_credit){
-            $("#box" + obj.dataNew.psid + " .boxCdredit").text(( parseInt(obj.dataNew.current_credit)/100).toFixed(2));
+            //boxCdreditNum = parseInt(obj.dataNew.current_credit)/100;
+            //console.log(boxCdreditNum);
+            //console.log((parseInt(obj.dataNew.current_credit)/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $("#box" + obj.dataNew.psid + " .boxCdredit").text((parseInt(obj.dataNew.current_credit)/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
            
             //$("#box" + obj.dataNew.psid + " #boxCdredit").text(100);
         }
         if  (obj.dataNew.current_bet != obj.dataOld.current_bet){
-            $("#box" + obj.dataNew.psid + " .boxBet").text(( parseInt(obj.dataNew.current_bet)/100).toFixed(2));
+            //$("#box" + obj.dataNew.psid + " .boxBet").text(( parseInt(obj.dataNew.current_bet)/100).toFixed(2));
+            $("#box" + obj.dataNew.psid + " .boxBet").text((parseInt(obj.dataNew.current_bet)/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
         }
         if  (obj.dataNew.current_game_i != obj.dataOld.current_game_i){
             idGame = obj.dataNew.current_game_i;

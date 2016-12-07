@@ -12,6 +12,8 @@ use App\Models\Accounting\PsStatus;
 use App\Models\Accounting\Casinos;
 use App\Models\Cms\TerminalPreviewDB2;
 use App\Models\Accounting\Games;
+use App\Models\Bingo\MainConfig;
+use App\Models\Bingo\psTickets;
 use Excel;
 
 class CasinoController extends Controller
@@ -197,7 +199,10 @@ class CasinoController extends Controller
         // get current casino and display its terminals
         $casino = session()->get('casino');
         $games = Games::orderBy('gameid', 'asc')->get();
+        $MainConfig = MainConfig::first();
+        $psTickets = psTickets::get();
 
+        
         // Fetch Terminals For current Casino
         $server_ps = ServerPs::where('casinoid', $casino->casinoid)->orderBy('psid', 'asc')->get();
 
@@ -286,7 +291,9 @@ class CasinoController extends Controller
                 'terminals' => $terminals,
                 'server_ps' => $server_ps,
                 'statuses' => $statuses,
-                'games' => $games
+                'games' => $games,
+                'MainConfig' => $MainConfig,
+                'psTickets' => $psTickets
             ]);
         }
 }
