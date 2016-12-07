@@ -5,7 +5,7 @@
     }
 }
 </style>
-@include('modals.rouletteHistory-modal')
+@include('statistics.modals.rouletteHistory-modal')
 
 <div class="container">
     <div class=""> 

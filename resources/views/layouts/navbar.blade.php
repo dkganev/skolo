@@ -25,12 +25,12 @@
           </a>
         </li>
 
-        <li class="nav-option">
+        <!--<li class="nav-option">
           <a href="{{ url('players') }}">
             <img src="/images/players.png" alt="" style="margin-bottom: -7px;">
             <strong style="{{ Request::is('players*') ? "color: #ffe630;" : ''}}">@lang('messages.players')</strong>
           </a>
-        </li>
+        </li>-->
  
         @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
         <li class="nav-option">

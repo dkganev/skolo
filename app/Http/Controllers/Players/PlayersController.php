@@ -231,16 +231,19 @@ class PlayersController extends Controller
         if ( $request['CasinoID']) {
             $CartInfo = CardReader::where("casino_id", $request['CasinoID'])->first();
             if (count($CartInfo)){
-                if (count(UserInfo::where('card_id', $CartInfo->card_id)->first())){
+                $userInfo = UserInfo::where('card_id', $CartInfo->card_id)->first();
+                if (count($userInfo)){
                     $dataArray1 = array(
                         "success" => "error",
                         "CartInfo" => $CartInfo,
+                        "userInfo" => $userInfo,
                         "error" => 1
                     );
                 }else{
                     $dataArray1 = array(
                         "success" => "success",
-                        "CartInfo" => $CartInfo
+                        "CartInfo" => $CartInfo,
+                        "userInfo" => $userInfo   
                     );
                 }
             } else {
@@ -372,8 +375,56 @@ class PlayersController extends Controller
         
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
+    public function ajax_AddBankCreditCard(Request $request)
+    {   
+        if ($request['CartID'] and $request['AddWithdraw']) {
+            //$ID=$request['ID'];
+            $CartID=$request['CartID'];
+            $user_info = UserInfo::where('card_id', $CartID)->first();
+            
+            if (count($user_info)){
+                //$user_info->name = $request['userName'];
+                //$user_info->address = $request['userAddress'] != "" ? $request['userAddress'] : "" ;
+                //$user_info->phone = $request['userPhone'] != "" ? $request['userPhone'] : "";
+                //$BankCreditWithdraw = $request['BankCreditWithdraw'] != "" ? (round($request['BankCreditWithdraw'])) : 0;
+                if ($request['AddWithdraw'] == 1){
+                    $user_info->bank_credit += $request['BankCreditWithdraw'] != "" ? (round($request['BankCreditWithdraw'])) : 0;
+                }else{
+                    $user_info->bank_credit -= $request['BankCreditWithdraw'] != "" ? (round($request['BankCreditWithdraw'])) : 0;
+                }
+                
+                $test = $user_info->update();
+                if ($test){
+                    $dataArray1 = array(
+                        "success" => "success",
+                        "CartInfo" => $user_info,
+                        "error" => $test
+                    );
+                    
+                }else{
+                    $dataArray1 = array(
+                        "success" => "error",
+                        "error" => "The request is not saved."
+                    );
+                }
+            }else{
+                $dataArray1 = array(
+                    "success" => "error",
+                    "error" => "CartID missing in Database."
+                );
+            }
+        } else {
+            $dataArray1 = array(
+                "success" => "error",
+                "error" => "CartID missing."
+            );
+        }    
+        
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
+   
     
-    
-    //stop Cards functions
+    //stop Cards functions 
 
 }

@@ -196,7 +196,10 @@ Route::get('/export2excelBet2BonusPoints', 'Settings\PBS@export2excelBet2BonusPo
 Route::get('/settings/PBS/CardTypeBonusPeriod', 'Settings\PBS@CardTypeBonusPeriod');
 Route::post('/ajax_CardTypeBonusPeriod', 'Settings\PBS@ajax_CardTypeBonusPeriod');
 
-
+/**
+ * SETTINGS / System
+ */
+Route::get('/settings/System', 'Settings\System@system');
 
 
 
@@ -235,7 +238,7 @@ Route::get('/export2excelBJ', 'StatisticsController@export2excelBJ')->name('expo
 });
 
 /**
- * Players
+ * Players  
  */
 
 Route::get('players', 'Players\PlayersController@index')->name('players') ;
@@ -244,6 +247,7 @@ Route::post('/ajax_ReadNewCard', 'Players\PlayersController@ajax_ReadNewCard');
 Route::post('/ajax_SaveAddCard', 'Players\PlayersController@ajax_SaveAddCard');
 Route::get('/export2excelCards', 'Players\PlayersController@export2excelCards')->name('export2excelCards');
 Route::post('/ajax_SaveEditCart', 'Players\PlayersController@ajax_SaveEditCart');
+Route::post('/ajax_AddBankCreditCard', 'Players\PlayersController@ajax_AddBankCreditCard');
  
  
  

@@ -8,8 +8,8 @@
     }
 }
 </style>
-@include('modals.bingoHistory-modal')
-@include('modals.bingoHistory2-modal')
+@include('statistics.modals.bingoHistory-modal')
+@include('statistics.modals.bingoHistory2-modal')
 <div class="container">
     <div class=" "> 
         <div class="" style="">

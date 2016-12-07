@@ -249,19 +249,18 @@
                                 <th class="text-center" onclick="changePageSortCards('bank_credit', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Card Balance<i class="fa {{ $page['OrderQuery'] == 'bank_credit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
                                 <th class="text-center" onclick="changePageSortCards('bonus_points', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Bonus Points<i class="fa {{ $page['OrderQuery'] == 'bonus_points' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
                                 <th class="text-center col-md-3">
-                                    <button class="btn btn-danger btn-xs" type="button"  tabindex="0" onclick="AddNewCart()">
+                                    <button class="btn btn-danger btn-xs" type="button"  tabindex="0" onclick="AddNewCart()"  style="width: 31%;">
                                         <span id="refresh" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
                                         <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
                                         <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
                                         <i class="glyphicon glyphicon-plus-sign"></i>
                                         <span id="addCard">Add Card</span>
                                     </button>
-                                    <button class="btn btn-default btn-xs" type="button"  tabindex="0" onclick="AddBet2BonusPoints()">
-                                        <span id="refresh" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
-                                        <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
-                                        <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                    <button class="btn btn-default btn-xs" type="button"  tabindex="0" onclick="AddWithdrawCart()"  style="width: 67%;">
+                                        <span id="OKWithdraw" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                                        <span id="OKAddWithdraw" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
                                         <i class="glyphicon glyphicon-transfer"></i>
-                                        Add/Withdraw Credit 
+                                        <span id="addWithdrawCard">Add/Withdraw Credit</span> 
                                     </button>
                                 </th>
                             </tr>
@@ -270,7 +269,7 @@
                                             <span id="errorAdd" style="color: #d9534f; display: none;"> Read the card, please.</span> 
                                             <span id="errorAddT" style="color: #d9534f; display: none;"> This Card ID: <span id="CartIDExist">111</span> exist in the database.</span> 
                                             <span id="errorAddI" style="color: #d9534f; display: none;"> Insert the card, please.</span> 
-                                            <input id="CartIDAdd" class="form-control input-sm rowInputAdd" value="" name="CartIDAdd" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" readonly>
+                                            <input id="CartIDAdd" class="form-control input-sm rowInputAdd" value="" name="CartIDAdd" placeholder="Card ID" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" readonly>
                                             <button class="form-control btn btn-primary btn-xs rowInputAdd" type="button" onclick="ReadNewCard()" style="display: show;" tabindex="0">
                                                 <span id="refreshRNC" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
                                                 <span id="OKRNC" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
@@ -305,17 +304,61 @@
                                            
                                         </th>
                                     </tr>
+                                    <tr id="rowAddWithdraw" class="rowInputAddWithdraw" style="display: none;">
+                                        <th class="text-center rowInputAddWithdraw">
+                                            <span id="errorAddWithdraw" style="color: #d9534f; display: none;"> Read the card, please.</span> 
+                                            <span id="errorAddWithdrawT" style="color: #d9534f; display: none;"> This Card ID: <span id="CartID2Exist">111</span> exist in the database.</span> 
+                                            <span id="errorAddWithdrawI" style="color: #d9534f; display: none;"> Insert the card, please.</span> 
+                                            <input id="CartIDAddWithdraw" class="form-control input-sm rowInputAddWithdraw" value="" name="CartIDAddWithdraw" placeholder="Card ID" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" readonly>
+                                            <button class="form-control btn btn-primary btn-xs rowInputAddWithdraw" type="button" onclick="ReadWithdrawCard()" style="display: show;" tabindex="0">
+                                                <span id="refreshRNC" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
+                                                <span id="OKRNC" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                                                <span id="removeRNC" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                                Read New Card
+                                            </button>
+                                        </th>
+                                        <th class="text-center rowInputAddWithdraw" style="vertical-align: middle;">
+                                            <span id="userWithdrawName" > </span> 
+                                        </th>
+                                        <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
+                                            <span id="levelWithdraw" > </span>
+                                        </th>
+                                        <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
+                                            <span id="cashInWithdraw" > </span>
+                                        </th>
+                                        <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
+                                            <span id="errorBankCredit" style="color: #d9534f; display: none;">The withdrawal amount is bigger than existing Card Balance.<br /></span> 
+                                            <span id="BankCreditText" > </span> 
+                                            <input id="BankCreditWithdraw" class="form-control input-sm rowInputAddWithdraw" value="" name="BankCredit" placeholder="CashIn Amount" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="number" >
+                                        </th>
+                                        <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
+                                            <span id="BonusPointsText" ></span> 
+                                        </th>
+                                        <th class="text-center rowInputAddWithdraw" style="vertical-align: middle;">
+                                            <button class="form-control btn btn-warning btn-xs rowInputAddWithdraw" type="button" onclick="SaveAddWithdrawCard()" style="display: show; width: 31%;" tabindex="0">
+                                                <span id="refreshAddWithdraw" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
+                                                <span id="removeAddWithdraw" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                                Add
+                                            </button>
+                                            <button class="form-control btn btn-warning btn-xs rowInputAddWithdraw" type="button" onclick="SaveWithdrawCard()" style="display: show; width: 67%;" tabindex="0">
+                                                <span id="refreshWithdraw" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
+                                                <span id="removeWithdraw" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                                Withdraw
+                                            </button>
+                                           
+                                        </th>
+                                    </tr>
                         </thead>
                         </tbody>
                            @if ($UserInfoViews)
                                 @foreach($UserInfoViews as $key => $val)
-                                    <tr class="tr-class" id="row{{$val->id}}">
+                                    <tr class="tr-class bootstrap-modal-form-open rows" id="row{{$val->id}}" data-toggle="modal" data-target="#bingoHistory_modal">
                                         <td class="text-center" style="vertical-align: bottom;">
                                             <span id="CartIDText{{$val->id}}" class="row{{$val->id}}">{{$val->card_id}} </span>
                                             <span id="errorAdd{{$val->id}}" style="color: #d9534f; display: none;"> Read the card, please.</span> 
                                             <span id="errorAddT{{$val->id}}" style="color: #d9534f; display: none;"> This Card ID: <span id="CartIDExist">111</span> exist in the database.</span> 
                                             <span id="errorAddI{{$val->id}}" style="color: #d9534f; display: none;"> Insert the card, please.</span> 
-                                            <input id="CartID{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->card_id}}" name="bonus_silver_money" readonly="" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
+                                            <input id="CartID{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->card_id}}" placeholder="Cart ID" name="CartID" readonly="" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
                                             <button class="form-control btn btn-primary btn-xs rowInput{{$val->id}}" type="button" onclick="ReadNewCard2({{$val->id}})" style="display: none;" tabindex="0">
                                                 <span id="refreshRNC{{$val->id}}" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
                                                 <span id="OKRNC{{$val->id}}" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
@@ -327,7 +370,7 @@
                                         <td class="text-center">
                                             <span id="nameText{{$val->id}}" class="row{{$val->id}}">{{$val->name}} </span>
                                             <span id="errorAddUser{{$val->id}}" style="color: #d9534f; display: none;"> Enter username, please.</span> 
-                                            <input id="name{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->name}}" name="name" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
+                                            <input id="name{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->name}}" placeholder="Player Name" name="name" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
                                             <input id="userAddress{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->address}}" name="userAddress" placeholder="Player Address" required="" numbers-only="" style="display:none; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
                                             <input id="userPhone{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->phone}}" name="userPhone" placeholder="Player Phone" required="" numbers-only="" style="display:none;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
                                         </td>
@@ -344,24 +387,27 @@
                                             <input id="cashIn{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->deposit}}" name="cashIn" required="" numbers-only="" style="display:none;" tabindex="0" aria-required="false" aria-invalid="false" type="number" >
                                         </td>
                                         <td class="text-right">
-                                            <span id="td5{{$val->id}}" class="row{{$val->id}}">{{$val->bank_credit}}</span>
+                                            <span id="BankCredit{{$val->id}}" class="row{{$val->id}}">{{$val->bank_credit}}</span>
                                         </td>
                                         <td class="text-right">
                                             <span id="td6{{$val->id}}" class="row{{$val->id}}">{{$val->bonus_points}}</span>
                                         </td>
                                         <td class="text-center" style="vertical-align: inherit;">
-                                            <button class="btn btn-primary btn-xs row{{$val->id}}" type="button" onclick="EditCart({{$val->id}})" tabindex="0">
+                                            <button class="btn btn-primary btn-xs row{{$val->id}}" type="button" onclick="EditCart({{$val->id}})" tabindex="0" style="width: 31%;">
                                                 <span id="refreshEdit{{$val->id}}" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
                                                 <span id="OKEdit{{$val->id}}" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
                                                 <span id="remove1Edit{{$val->id}}" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
                                                 <i class="glyphicon glyphicon-edit"></i>
                                                 Edit
                                             </button>
-                                            <button class="btn btn-primary btn-xs rowInput{{$val->id}}" type="button" onclick="SaveEditCart({{$val->id}})" style="display: none;" tabindex="0">
+                                            <button class="btn btn-default btn-xs row{{$val->id}}" type="button" onclick="TransactionsCart({{$val->id}})" tabindex="0"  style="width: 67%;">
+                                                Transactions
+                                            </button>
+                                            <button class="btn btn-primary btn-xs rowInput{{$val->id}} form-control" type="button" onclick="SaveEditCart({{$val->id}})" style="display: none;" tabindex="0">
                                                 <span id="removeEdit{{$val->id}}" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
                                                 Save
                                             </button>
-                                            <button class="btn btn-primary btn-xs rowInput{{$val->id}}" type="button" onclick="RemoveBet2BonusPoints({{$val->id}})" style="display: none; margin-top: 0px" tabindex="0">
+                                            <button class="btn btn-primary btn-xs row2Input{{$val->id}}" type="button" onclick="RemoveBet2BonusPoints({{$val->id}})" style="display: none; margin-top: 0px" tabindex="0">
                                                 Remove
                                             </button>
                                         </td>
