@@ -25,7 +25,7 @@
 
         .form-signin-heading {
           text-align:center;
-          margin-bottom: 30px;
+          margin: 0 0 50px 0
         }
 
         .form-control {
@@ -47,16 +47,6 @@
           border-top-right-radius: 0;
         }
 
-        .colorgraph {
-          height: 7px;
-          border-top: 0;
-          background: #c4e17f;
-          border-radius: 5px;
-          background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-          background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-          background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-          background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-        }
         #cms {
             color: #474747;
             font-weight: bold;
@@ -71,7 +61,34 @@
           background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(102,102,102,0.72) 82%, rgba(0,0,0,0.66) 99%, rgba(0,0,0,0.66) 100%)!important;
           background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(102,102,102,0.72) 82%, rgba(0,0,0,0.66) 99%, rgba(0,0,0,0.66) 100%)!important;
           filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
-          }
+        }
+
+        form#form {
+          background: rgba(222,140,159,0.73);
+          background: -moz-linear-gradient(top, rgba(222,140,159,0.73) 0%, rgba(196,114,133,0.65) 12%, rgba(245,106,138,0.47) 38%, rgba(240,0,56,0.26) 69%, rgba(214,28,71,0.05) 100%);
+          background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(222,140,159,0.73)), color-stop(12%, rgba(196,114,133,0.65)), color-stop(38%, rgba(245,106,138,0.47)), color-stop(69%, rgba(240,0,56,0.26)), color-stop(100%, rgba(214,28,71,0.05)));
+          background: -webkit-linear-gradient(top, rgba(222,140,159,0.73) 0%, rgba(196,114,133,0.65) 12%, rgba(245,106,138,0.47) 38%, rgba(240,0,56,0.26) 69%, rgba(214,28,71,0.05) 100%);
+          background: -o-linear-gradient(top, rgba(222,140,159,0.73) 0%, rgba(196,114,133,0.65) 12%, rgba(245,106,138,0.47) 38%, rgba(240,0,56,0.26) 69%, rgba(214,28,71,0.05) 100%);
+          background: -ms-linear-gradient(top, rgba(222,140,159,0.73) 0%, rgba(196,114,133,0.65) 12%, rgba(245,106,138,0.47) 38%, rgba(240,0,56,0.26) 69%, rgba(214,28,71,0.05) 100%);
+          background: linear-gradient(to bottom, rgba(222,140,159,0.73) 0%, rgba(196,114,133,0.65) 12%, rgba(245,106,138,0.47) 38%, rgba(240,0,56,0.26) 69%, rgba(214,28,71,0.05) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8c9f', endColorstr='#d61c47', GradientType=0 );
+        }
+
+        button#login-button {
+          color: #fff;
+          border: none;
+          font-weight: bold;
+
+          background: rgba(184,7,48,0.7);
+          background: -moz-linear-gradient(top, rgba(184,7,48,0.7) 0%, rgba(143,2,34,0.67) 18%, rgba(158,0,37,0.64) 30%, rgba(143,2,34,0.62) 44%, rgba(143,2,34,0.59) 57%, rgba(112,4,30,0.56) 75%, rgba(150,0,35,0.51) 100%);
+          background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(184,7,48,0.7)), color-stop(18%, rgba(143,2,34,0.67)), color-stop(30%, rgba(158,0,37,0.64)), color-stop(44%, rgba(143,2,34,0.62)), color-stop(57%, rgba(143,2,34,0.59)), color-stop(75%, rgba(112,4,30,0.56)), color-stop(100%, rgba(150,0,35,0.51)));
+          background: -webkit-linear-gradient(top, rgba(184,7,48,0.7) 0%, rgba(143,2,34,0.67) 18%, rgba(158,0,37,0.64) 30%, rgba(143,2,34,0.62) 44%, rgba(143,2,34,0.59) 57%, rgba(112,4,30,0.56) 75%, rgba(150,0,35,0.51) 100%);
+          background: -o-linear-gradient(top, rgba(184,7,48,0.7) 0%, rgba(143,2,34,0.67) 18%, rgba(158,0,37,0.64) 30%, rgba(143,2,34,0.62) 44%, rgba(143,2,34,0.59) 57%, rgba(112,4,30,0.56) 75%, rgba(150,0,35,0.51) 100%);
+          background: -ms-linear-gradient(top, rgba(184,7,48,0.7) 0%, rgba(143,2,34,0.67) 18%, rgba(158,0,37,0.64) 30%, rgba(143,2,34,0.62) 44%, rgba(143,2,34,0.59) 57%, rgba(112,4,30,0.56) 75%, rgba(150,0,35,0.51) 100%);
+          background: linear-gradient(to bottom, rgba(184,7,48,0.7) 0%, rgba(143,2,34,0.67) 18%, rgba(158,0,37,0.64) 30%, rgba(143,2,34,0.62) 44%, rgba(143,2,34,0.59) 57%, rgba(112,4,30,0.56) 75%, rgba(150,0,35,0.51) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b80730', endColorstr='#960023', GradientType=0 );
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#960023', GradientType=0 );
+        }
     </style>
 
 </head>
@@ -79,13 +96,12 @@
 
 <div class = "container">
   <div class="wrapper">
-    <form action="{{ url('/') }}" method="post" name="Login_Form" class="form-signin">
+    <form id="form" action="{{ url('/') }}" method="post" name="Login_Form" class="form-signin">
       {{ csrf_field() }}
       
-      <h3 class="form-signin-heading"><span id="cms">Control Monitoring System</span></h3>
-        <hr class="colorgraph"><br>
+      <h3 class="form-signin-heading"><span style="color:white;" id="cms">Control Monitoring System</span></h3>
         
-        <input type="text" class="form-control" name="name" placeholder="Username" required="" autofocus="" />
+        <input type="text" class="form-control" name="name" placeholder="Username" required autofocus />
 
         @if($errors->has('user'))
           <span class="help-block">
@@ -93,14 +109,16 @@
           </span>
         @endif
 
-        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+        <input type="password" class="form-control" name="password" placeholder="Password" required />
         @if ($errors->has('password'))
           <span class="help-block">
               <strong>{{ $errors->first('password') }}</strong>
           </span>
         @endif
 
-        <button class="btn btn-lg btn-danger btn-block"  name="Submit" value="Login" type="Submit">Login</button>            
+        <button id="login-button" class="btn btn-lg btn-default btn-block"  name="Submit" value="Login" type="Submit">
+            Login
+        </button>            
     </form>         
   </div>
 </div>

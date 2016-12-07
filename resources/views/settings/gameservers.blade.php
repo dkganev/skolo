@@ -310,7 +310,7 @@ $('#updateGameModal').on('show.bs.modal', function(e) {
     $(e.currentTarget).find('strong#color-label').text(color);
 });
 
-$('#game-update').on('click', function() {
+$('#game-update').on('click', function () {
     $.ajax({
         method: 'POST',
         url: update_game,
@@ -323,19 +323,14 @@ $('#game-update').on('click', function() {
             db_name: $('#updateGameModal input[name="db_name"]').val(),
             color: $('#updateGameModal input[name="color"]').val(),
             _token: token 
-        },
-        success: function () {
-
-        },
-        error: function () {
-
         }
-    }).done(function (msg) {
-        console.log(msg['message']);
+    }).done(function () {
         $('#updateGameModal').modal('hide');
-        javascript:ajaxLoad('/settings/gameservers');
-    });
-});
+        $('body').removeClass('modal-open')
+        $('.modal-backdrop').remove()
+        javascript:ajaxLoad('{{url('settings/gameservers')}}')
+    })
+})
 
 // CATEGORY
 $('#add-category').on('click', function() {
@@ -346,15 +341,14 @@ $('#add-category').on('click', function() {
             idx: $('#addCategoryModal input[name="idx"]').val() ,
             name: $('#addCategoryModal input[name="name"]').val() ,
             _token: token 
-        } 
+        }
+    }).done(function() {
+        $('#addCategoryModal').modal('hide')
+        $('body').removeClass('modal-open')
+        $('.modal-backdrop').remove()
+        javascript:ajaxLoad('{{url('settings/gameservers')}}')
     })
-    .done(function (msg) {
-        console.log(msg['message']);
-        $('#addCategoryModal').modal('hide');
-        window.location.reload();
-    });
-});
-
+})
 
 $('#updateCategoryModal').on('show.bs.modal', function(e) {
     //get data-* attributes of the clicked element
@@ -362,10 +356,10 @@ $('#updateCategoryModal').on('show.bs.modal', function(e) {
     var name = $(e.relatedTarget).data('name');
 
     //populate the textbox
-    $(e.currentTarget).find('input[name="idx"]').val(idx);
-    $(e.currentTarget).find('input[name="name"]').val(name);
+    $(e.currentTarget).find('input[name="idx"]').val(idx)
+    $(e.currentTarget).find('input[name="name"]').val(name)
 
-});
+})
 
 $('#update-category').on('click', function() {
     $.ajax({
@@ -376,11 +370,11 @@ $('#update-category').on('click', function() {
             name: $('#updateCategoryModal input[name="name"]').val() ,
             _token: token 
         } 
-    })
-    .done(function (msg) {
-        console.log(msg['message']);
+    }).done(function() {
         $('#updateCategoryModal').modal('hide');
-        window.location.reload();
-    });
-});
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        javascript:ajaxLoad('{{url('settings/gameservers')}}')
+    })
+})
 </script>
