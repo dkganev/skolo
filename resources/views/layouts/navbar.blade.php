@@ -109,8 +109,8 @@
     </div><!--/.nav-collapse -->
   </div><!--/ .container -->
 </nav>
-<img src="images/bgr_fx.png" style="width: 55%; background-color: red; position: absolute;top: 48px; left: 10px;">
-<img src="images/bgr_right.png" style="width: 55%; background-color: red; position: absolute; top: 48px;">
+<img src="images/bgr_fx.png" style="width: 50%; background-color: red; position: absolute;top: 48px; left: 0.1px;">
+<img src="images/bgr_right.png" style="width: 50%; background-color: red; position: absolute; top: 48px; right: 0.1px;">
 @if(Request::is('settings*'))
     @include('settings.navbar')
 @endif

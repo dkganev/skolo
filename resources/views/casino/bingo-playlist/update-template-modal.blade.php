@@ -68,7 +68,6 @@
                 <div class="divTable">
                   <div class="divTableBody">
                     <div class="divTableRow">
-                      <div class="divTableCell"><strong>Idx</strong></div>
                       <div class="divTableCell"><strong>Ticket Cost (cents)</strong></div>
                       <div class="divTableCell"><strong>Game Type</strong></div>
                       <div class="divTableCell"><strong>Line Cost (cents)</strong></div>
@@ -77,7 +76,6 @@
 
                     @foreach($template->template_games as $game)
                     <div class="divTableRow">
-                      <div class="divTableCell">{{ $game->idx }}</div>
                       <div class="divTableCell">{{ $game->bingo_ticket_cost }}</div>
                       <div class="divTableCell">
                         {{ $game->bingo_cost_line1_fixed && $game->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}

@@ -109,6 +109,7 @@
      <table class="table table-bordered">
         <thead class="w3-blue-grey">
           <tr>
+            <th>Idx</th>
             <th>Ticket Cost(cents)</th>
             <th>Game Type</th>
             <th>Line Cost (cents)</th>
@@ -118,6 +119,11 @@
         <tbody>
           @foreach($playlists as $playlist)
           <tr>
+            <td>
+              <span class="glyphicon glyphicon-chevron-up up"></span>
+              <span class="glyphicon glyphicon-chevron-down down"></span>
+            </td>
+            <td>{{ $playlist->idx}}</td>
             <td>{{ $playlist->bingo_ticket_cost }}</td>
             <td>
               {{ $playlist->bingo_cost_line1_fixed && $playlist->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}
@@ -135,9 +141,18 @@
 </div><!-- End Container-->
 
 <script>
-  $(document).ready(function() {
+      $(".up,.down").click(function(){
+        var row = $(this).parents("tr:first");
+        if ($(this).is(".up")) {
+            row.insertBefore(row.prev());
+        } else {
+            row.insertAfter(row.next());
+        }
+    });
+</script>
 
-
+<script>
+  $(function() {
     // ADD PLAYLIST
     $('#load-template-button').on('click', function(event) {
         event.preventDefault();
@@ -156,7 +171,6 @@
         });
     });
 
-
     // ADD PLAYLIST
     $('#send-button').on('click', function(event) {
         event.preventDefault();
@@ -172,10 +186,8 @@
                template_id: $('form#game-type-form  input[name="template_id"]').val(),
                _token: token,
           }
-        })
-        .done(function() {
+        }).done(function() {
           javascript:ajaxLoad('{{url('/casino/playlist')}}');
-          // console.log('Success');
         });
     });
 

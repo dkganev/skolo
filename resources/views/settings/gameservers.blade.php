@@ -292,23 +292,23 @@ $('#add-game').on('click', function() {
 // Update Machine Modal
 $('#updateGameModal').on('show.bs.modal', function(e) {
     //get data-* attributes of the clicked element
-    var clientGameId = $(e.relatedTarget).data('clientgameid');
-    var gameId = $(e.relatedTarget).data('gameid');
-    var description = $(e.relatedTarget).data('description');
-    var gameType = $(e.relatedTarget).data('gametype');
-    var dbName = $(e.relatedTarget).data('dbname');
-    var shortName = $(e.relatedTarget).data('shortname');
-    var color = $(e.relatedTarget).data('color');
+    var clientGameId = $(e.relatedTarget).data('clientgameid')
+    var gameId = $(e.relatedTarget).data('gameid')
+    var description = $(e.relatedTarget).data('description')
+    var gameType = $(e.relatedTarget).data('gametype')
+    var dbName = $(e.relatedTarget).data('dbname')
+    var shortName = $(e.relatedTarget).data('shortname')
+    var color = $(e.relatedTarget).data('color')
     //populate the textbox
-    $(e.currentTarget).find('select[name="client_game_id"]').val(clientGameId);
-    $(e.currentTarget).find('input[name="gameid"]').val(gameId);
-    $(e.currentTarget).find('input[name="description"]').val(description);
-    $(e.currentTarget).find('select[name="game_type"]').val();
-    $(e.currentTarget).find('input[name="db_name"]').val(dbName);
-    $(e.currentTarget).find('input[name="short_name"]').val(shortName);
-    $(e.currentTarget).find('input[name="color"]').val(color);
-    $(e.currentTarget).find('strong#color-label').text(color);
-});
+    $(e.currentTarget).find('select[name="client_game_id"]').val(clientGameId)
+    $(e.currentTarget).find('input[name="gameid"]').val(gameId)
+    $(e.currentTarget).find('input[name="description"]').val(description)
+    $(e.currentTarget).find('select[name="game_type"]').val()
+    $(e.currentTarget).find('input[name="db_name"]').val(dbName)
+    $(e.currentTarget).find('input[name="short_name"]').val(shortName)
+    $(e.currentTarget).find('input[name="color"]').val(color)
+    $(e.currentTarget).find('strong#color-label').text(color)
+})
 
 $('#game-update').on('click', function () {
     $.ajax({
@@ -365,15 +365,15 @@ $('#update-category').on('click', function() {
     $.ajax({
         method: 'POST',
         url: update_category,
-        data: { 
-            idx: $('#updateCategoryModal input[name="idx"]').val() ,
-            name: $('#updateCategoryModal input[name="name"]').val() ,
+        data: {
+            idx: $('#updateCategoryModal input[name="idx"]').val(),
+            name: $('#updateCategoryModal input[name="name"]').val(),
             _token: token 
-        } 
+        }
     }).done(function() {
-        $('#updateCategoryModal').modal('hide');
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
+        $('#updateCategoryModal').modal('hide')
+        $('body').removeClass('modal-open')
+        $('.modal-backdrop').remove()
         javascript:ajaxLoad('{{url('settings/gameservers')}}')
     })
 })

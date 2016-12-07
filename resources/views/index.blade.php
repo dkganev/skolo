@@ -118,8 +118,8 @@
 
         <button id="login-button" class="btn btn-lg btn-default btn-block"  name="Submit" value="Login" type="Submit">
             Login
-        </button>            
-    </form>         
+        </button>
+    </form>
   </div>
 </div>
 <!-- JavaScripts -->
