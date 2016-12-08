@@ -3,6 +3,10 @@ var pageHrefSocket = $('#CasinoCasino').attr('data-url') + ":3000";
 //console.log (pageHrefSocket);
 var socket = io(pageHrefSocket);
 
+var pageHrefBingoGameStateSocket = $('#CasinoCasino').attr('data-url') + ":3000/game_state";
+//console.log (pageHrefSocket);
+var socketBingoGameState = io.connect(pageHrefBingoGameStateSocket);
+/*
 var pageHrefBingoMeinconfSocket = $('#CasinoCasino').attr('data-url') + ":3000/bingoMainconf";
 //console.log (pageHrefSocket);
 var socketBingoMeinconf = io.connect(pageHrefBingoMeinconfSocket);
@@ -11,7 +15,7 @@ var pageHrefbingoPsTicketsSocket = $('#CasinoCasino').attr('data-url') + ":3000/
 //console.log (pageHrefSocket);
 var socketbingoPsTickets = io.connect(pageHrefbingoPsTicketsSocket);
 //var socket = io('http://10.0.0.199:3000');
-
+*/
 socket.on('news', function (data) {
     console.log ("test222");
     console.log(data);
@@ -29,43 +33,41 @@ socket.on('typing', function (data) {
     console.log ("test2");
     addChatTyping(data);
 });
-socketbingoPsTickets.on('new message', function (data) {
+socketBingoGameState.on('new message', function (data) {
     var jsonObj = data.message;
     var obj = $.parseJSON(jsonObj);
     console.log (obj);
-    if (obj.query == "UPDATE")
-    {
-                
+    
+    if (obj.query == "UPDATE" || obj.query == "INSERT")
+    {   
+        unique_game_seq = $("#ticket_price").attr('data-unique_game_seq');
+        if (unique_game_seq != obj.dataNew.unique_game_seq ){
+            $("#ticket_price").attr('data-unique_game_seq', obj.dataNew.unique_game_seq);
+            
+            $("#jackpot_bingo_max_ball").text(obj.mainconf[0].jackpot_bingo_max_ball);
+            $("#jackpot_line_max_ball").text(obj.mainconf[0].jackpot_line_max_ball);
+            $("#bonus_bingo_max_ball").text(obj.mainconf[0].bonus_bingo_max_ball);
+            $("#bonus_line_max_ball").text(obj.mainconf[0].bonus_line_max_ball);
+            
+            
+            
+        }
+            
+            $("#ticket_price").text(obj.dataNew.ticket_price);
+            $("#tickets").text(obj.dataNew.tickets);
+            $("#players").text(obj.dataNew.players);
+            $("#bingo_value").text(obj.dataNew.bingo_value);
+            $("#line_value").text(obj.dataNew.line_value);
+            $("#jackpot_bingo").text(obj.dataNew.jackpot_bingo);
+            $("#jackpot_line").text(obj.dataNew.jackpot_line);
+            $("#my_bonus").text(obj.dataNew.my_bonus);
+            $("#bonus_bingo").text(obj.dataNew.bonus_bingo);
+            $("#bonus_line").text(obj.dataNew.bonus_line);
+    
+    
     }else if (obj.query == "DELETE"){
           
-    }else if (obj.query == "INSERT"){
-          
-    }
-});
-socketBingoMeinconf.on('new message', function (data) {
-    var jsonObj = data.message;
-    var obj = $.parseJSON(jsonObj);
-    console.log (obj);
-    if (obj.query == "UPDATE")
-    {
-        $("#bingo_ticket_cost").text(obj.dataNew.bingo_ticket_cost);
-        $("#BingoMainConfig").attr("data-bingo_ticket_cost",obj.dataNew.bingo_ticket_cost);
-        $("#BingoMainConfig").attr("data-bingo_win_pr",obj.dataNew.bingo_win_pr);
-        $("#BingoMainConfig").attr("data-bingo_line_pr",obj.dataNew.bingo_line_pr);
-        $("#BingoMainConfig").attr("data-jackpot_bingo_pr_visible",obj.dataNew.jackpot_bingo_pr_visible);
-        $("#BingoMainConfig").attr("data-jackpot_bingo_max_ball",obj.dataNew.jackpot_bingo_max_ball);
-        $("#BingoMainConfig").attr("data-jackpot_line_pr_visible",obj.dataNew.jackpot_line_pr_visible);
-        $("#BingoMainConfig").attr("data-jackpot_line_max_ball",obj.dataNew.jackpot_line_max_ball);
-        $("#BingoMainConfig").attr("data-mybonus_pr_visible",obj.dataNew.mybonus_pr_visible);
-        $("#BingoMainConfig").attr("data-bonus_bingo_pr_visible",obj.dataNew.bonus_bingo_pr_visible);
-        $("#BingoMainConfig").attr("data-bonus_bingo_max_ball",obj.dataNew.bonus_bingo_max_ball);
-        $("#BingoMainConfig").attr("data-bonus_line_pr_visible",obj.dataNew.bonus_line_pr_visible);
-        $("#BingoMainConfig").attr("data-bonus_line_max_ball",obj.dataNew.bonus_line_max_ball);
-        
-        
-    }else if (obj.query == "DELETE"){
-          
-    }else if (obj.query == "INSERT"){
+    //}else if (obj.query == "INSERT"){
           
     }
 });
