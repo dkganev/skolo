@@ -150,6 +150,7 @@ Route::get('/settings/blackjack/mainconfig/export', 'Settings\BlackjackControlle
  
 Route::post('/settings/blackjack/mainconfig/edit', 'Settings\BlackjackController@main_config_edit');
 Route::post('/settings/blackjack/table/edit', 'Settings\BlackjackController@table_edit');
+Route::post('/settings/blackjack/table/enabled', 'Settings\BlackjackController@enabled_tables');
 Route::get('/settings/blackjack/table/export', 'Settings\BlackjackController@tables_export');
 
 Route::get('/settings/blackjack/accconfig', 'Settings\BlackjackController@acc_config_index');

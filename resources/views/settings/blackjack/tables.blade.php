@@ -92,56 +92,61 @@
             </table> 
         </form>
 
-        <form action="">
+        <form id="enabled-tables-form" style="border: 1px solid #fff; padding: 10px">
             <div class="tables">
                 <span class="button-checkbox" style="margin-left: 0;">
-                    <label for="enabled">Table 1</label><br>
-                    <input type="hidden" name="enabled" value="false">
+                    <label for="t1_enabled">Table 1</label><br>
+                    <input type="hidden" name="t1_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="enabled" class="hidden"
+                    <input type="checkbox" name="t1_enabled" class="hidden"
                         {{ $enabled->t1_enabled ? 'checked' : '' }}
                         />
                 </span>
                 <span class="button-checkbox">
-                    <label for="enabled">Table 2</label><br>
-                    <input type="hidden" name="enabled" value="false">
+                    <label for="t2_enabled">Table 2</label><br>
+                    <input type="hidden" name="t2_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="enabled" class="hidden"
+                    <input type="checkbox" name="t2_enabled" class="hidden"
                         {{ $enabled->t2_enabled ? 'checked' : '' }}
                      />
                 </span>
                 <span class="button-checkbox">
-                    <label for="enabled">Table 3</label><br>
-                    <input type="hidden" name="enabled" value="false">
+                    <label for="t3_enabled">Table 3</label><br>
+                    <input type="hidden" name="t3_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="enabled" class="hidden"
+                    <input type="checkbox" name="t3_enabled" class="hidden"
                        {{ $enabled->t3_enabled ? 'checked' : '' }}
                      />
                 </span>
                 <span class="button-checkbox">
-                    <label for="enabled">Table 4</label><br>
-                    <input type="hidden" name="enabled" value="false">
+                    <label for="t4_enabled">Table 4</label><br>
+                    <input type="hidden" name="t4_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="enabled" class="hidden"
+                    <input type="checkbox" name="t4_enabled" class="hidden"
                        {{ $enabled->t4_enabled ? 'checked' : '' }}
                      />
                 </span>
                 <span class="button-checkbox">
-                    <label for="enabled">Table 5</label><br>
-                    <input type="hidden" name="enabled" value="false">
+                    <label for="t5_enabled">Table 5</label><br>
+                    <input type="hidden" name="t5_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="enabled" class="hidden"
+                    <input type="checkbox" name="t5_enabled" class="hidden"
                        {{ $enabled->t5_enabled ? 'checked' : '' }}
                      />
                 </span>
                 <span class="button-checkbox">
-                    <label for="enabled">Table 6</label><br>
-                    <input type="hidden" name="enabled" value="false">
+                    <label for="t6_enabled">Table 6</label><br>
+                    <input type="hidden" name="t6_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="enabled" class="hidden"
+                    <input type="checkbox" name="t6_enabled" class="hidden"
                        {{ $enabled->t6_enabled ? 'checked' : '' }}
                      />
                 </span>
+                {{ csrf_field() }}
+                <button class="btn btn-danger btn-sm btn-block enabled-table-button" type="submit">
+                    Update
+                </button>
+                </div>
             </form>
         </div>
 
@@ -186,6 +191,22 @@ $('.bj-table-button').on('click', function(event) {
         },
         error: function (error) {
             console.log("Error " + error);
+        }
+    });
+});
+
+
+$('.enabled-table-button').on('click', function(event) {
+    event.preventDefault();   
+    $.ajax({
+        method: 'POST',
+        url: '/settings/blackjack/table/enabled',
+        data: $('form#enabled-tables-form').serialize(),
+        success: function (response) {
+            //
+        },
+        error: function (response) {
+            //
         }
     });
 });
@@ -304,9 +325,10 @@ $('input[type="checkbox"]').change(function(){
 </script>
 
 <style>
-    .button-checkbox {
+    .button-checkbox,
+    .enabled-table-button {
         display: inline-block;
-        margin-left: 60px;
+        margin-left: 30px;
     }
 
     .button-checkbox > button {

@@ -77,6 +77,11 @@ class BlackjackController extends Controller
         return response()->json(['response' => $table], 200);
     }
 
+    public function enabled_tables(Request $request) 
+    {
+        EnabledTables::first()->update($request->except('_token'));
+    }
+
     public function tables_export()
     {
         $export = BlackjackTable::orderBy('table_id', 'asc')->get();
