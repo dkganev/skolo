@@ -14,6 +14,7 @@
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li> -->
               <li ><a id="historyRoulette" href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}')">Roulette 2</a></li>
               <li class="active"><a id="historyBlackjack" href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>-->
               <!--<li><a href="javascript:ajaxLoad('#')">Slots </a></li>-->
@@ -59,7 +60,7 @@
                                 </li>
                             </ul>
                         </span>
-                        rows per page
+                        <span style="color: #fff">rows per page</span> 
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; "> <!--$page['current']  $historys->currentPage() $page['last'] $historys->lastPage()-->
@@ -163,7 +164,7 @@
                     </ul>
                 </div>
                 <!--<button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button> -->
-                <div class="keep-open btn-group open pull-right" title="Columns">
+                <div class="keep-open btn-group open pull-right" >
                     <!--<a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=2&rowsPerPage=50')" class="btn btn-success RouletteSort" >test</a> -->
                     <a class="btn btn-success RouletteSort" style="display: none;" onclick="changePageSortMenu();"><i class="fa fa-search" aria-hidden="true"></i></a>
                     <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunction();"><i class="fa fa-close" aria-hidden="true"></i></a> 

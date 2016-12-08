@@ -228,6 +228,11 @@ Route::post('/ajax_nextPrevRouletteHistory', 'StatisticsController@ajax_nextPrev
 Route::post('/ajax_sortRouletteHistory', 'StatisticsController@ajax_sortRouletteHistory');
 Route::get('/export2excelR', 'StatisticsController@export2excelR')->name('export2excelR');
 
+Route::get('statistics/historyRoulette2', 'StatisticsController@historyRoulette2_statistics');
+Route::post('/ajax_statRoulette2History', 'StatisticsController@ajax_statRoulette2History');
+Route::post('/ajax_nextPrevRoulette2History', 'StatisticsController@ajax_nextPrevRoulette2History');
+Route::get('/export2excelR2', 'StatisticsController@export2excelR2')->name('export2excelR2');
+
 
 Route::get('statistics/historyBlackjack', 'StatisticsController@historyBlackjack');
 Route::post('/ajax_statBJHistory', 'StatisticsController@ajax_statBJHistory');

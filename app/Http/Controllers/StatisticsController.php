@@ -1111,7 +1111,12 @@ class StatisticsController extends Controller
         }
         
         $historyClas = new GameHistory();
-        //$tesatHistorys = $historyClas->select('win as Twin')->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->first();
+        // $someModel = new SomeModel;
+
+        $historyClas->setConnection('pgsql4');
+        //$historyClas->setConnection('pgsql6');
+        //$something = $historyClas->find(1);
+        ////$tesatHistorys = $historyClas->select('win as Twin')->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->first();
         //$page['win'] = $tesatHistorys;
         if ($PSIDexist == 1){
             //$historys = $historyClas->where($SortQuery)->whereIn('psid', $PSIDarray)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
@@ -1622,6 +1627,406 @@ class StatisticsController extends Controller
     }
    
     
+    //end Roulette
+    //start Roulette2
+    public function historyRoulette2_statistics(Request $request)
+    {
+        if ($request['rowsPerPage']) {
+            $page['rowsPerPage'] = $request['rowsPerPage'];
+        
+        } else {
+            $page['rowsPerPage'] = 20;
+        
+        }
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'ts';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'desc';
+        }
+        if ($request['sortMenuOpen'] == 1 ) {
+            $page['sortMenuOpen'] = 1;
+        } else {
+            $page['sortMenuOpen'] = 0;
+        }
+        $SortQuery = array(); 
+        if ($request['FromGameTs']){
+            array_push($SortQuery,['ts', '>=', $request['FromGameTs']]);
+            $page['FromGameTs'] = $request['FromGameTs'];
+        }else{
+            $page['FromGameTs'] = "";
+        }
+        if ($request['ToGameTs']){
+             array_push($SortQuery,['ts', '<=', $request['ToGameTs']]);
+            $page['ToGameTs'] = $request['ToGameTs'];
+        }else{
+            $page['ToGameTs'] = "";
+        }
+        if ($request['GameSort']){
+            array_push($SortQuery,['rlt_seq', '=', $request['GameSort']]);
+            $page['GameSort'] = $request['GameSort'];
+        }else{
+            $page['GameSort'] = "";
+        }
+        $PSIDexist = 0;
+        if ($request['PSID']){
+            array_push($SortQuery,['psid', '=', $request['PSID']]);
+            $page['PSID'] = $request['PSID'];
+            /*$PSIDs = ServerPs::where('seatid', $request['PSID'])->get();
+            if ($PSIDs->count()){
+                $PSIDexist = 1;
+                $page['PSID'] = $request['PSID'];
+                $PSIDarray = array();
+                foreach ($PSIDs as $PSIDv){
+                    array_push($PSIDarray, $PSIDv->psid);
+                }
+            }else{
+                array_push($SortQuery,['psid','=', 0 ]);
+                $page['PSID'] = $request['PSID'];
+            };*/
+            //array_push($SortQuery,['psid','=', $request['PSID'] ]);
+            //$page['PSID'] = $request['PSID'];
+        }else{
+            $page['PSID'] = "";
+        }
+        if ($request['SeatID']){
+            array_push($SortQuery,['seatid', '=', $request['SeatID']]);
+            $page['SeatID'] = $request['SeatID'];
+        }else{
+            $page['SeatID'] = "";
+        }
+        if ($request['FromGameNum']){
+             array_push($SortQuery,['win_num','>=', $request['FromGameNum'] ]);
+            $page['FromGameNum'] = $request['FromGameNum'];
+        }else{
+            $page['FromGameNum'] = "";
+        }
+        if ($request['ToGameNum']){
+             array_push($SortQuery,['win_num','<=', $request['ToGameNum'] ]);
+            $page['ToGameNum'] = $request['ToGameNum'];
+        }else{
+            $page['ToGameNum'] = "";
+        }
+        if ($request['FromGameBet']){
+             array_push($SortQuery,['bet','>=', $request['FromGameBet'] * 100 ]);
+            $page['FromGameBet'] = $request['FromGameBet'] ;
+        }else{
+            $page['FromGameBet'] = "";
+        }
+        if ($request['ToGameBet']){
+             array_push($SortQuery,['bet','<=', $request['ToGameBet'] * 100 ]);
+            $page['ToGameBet'] = $request['ToGameBet'];
+        }else{
+            $page['ToGameBet'] = "";
+        }
+        if ($request['FromGameWin']){
+             array_push($SortQuery,['win_val','>=', $request['FromGameWin'] * 100 ]);
+            $page['FromGameWin'] = $request['FromGameWin'] ;
+        }else{
+            $page['FromGameWin'] = "";
+        }
+        if ($request['ToGameWin']){
+             array_push($SortQuery,['win_val','<=', $request['ToGameWin'] * 100 ]);
+            $page['ToGameWin'] = $request['ToGameWin'] ;
+        }else{
+            $page['ToGameWin'] = "";
+        }
+        if ($request['FromGameJack']){
+             array_push($SortQuery,['jackpot','>=', $request['FromGameJack'] * 100 ]);
+            $page['FromGameJack'] = $request['FromGameJack'] ;
+        }else{
+            $page['FromGameJack'] = "";
+        }
+        if ($request['ToGameJack']){
+             array_push($SortQuery,['jackpot','<=', $request['ToGameJack'] * 100 ]);
+            $page['ToGameJack'] = $request['ToGameJack'] ;
+        }else{
+            $page['ToGameJack'] = "";
+        }
+        
+        $historyClas = new GameHistory();
+        // $someModel = new SomeModel;
+
+        //$historyClas->setConnection('pgsql4');
+        $historyClas->setConnection('pgsql6');
+        //$something = $historyClas->find(1);
+        ////$tesatHistorys = $historyClas->select('win as Twin')->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->first();
+        //$page['win'] = $tesatHistorys;
+        if ($PSIDexist == 1){
+            //$historys = $historyClas->where($SortQuery)->whereIn('psid', $PSIDarray)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        
+        }else{
+            $historys = $historyClas->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        
+        }
+        
+        
+        //$historys = GameHistory::orderBy('ts', 'desc')->get();
+        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
+
+        return view('statistics.historyRoulette2', ['historys' => $historys, 'server_ps' => $server_ps, 'page' => $page ]); 
+    }
+    
+    public function ajax_statRoulette2History(Request $request)
+    {
+        $dataRowID = $request['rowID'];
+        $dataRowTS = $request['rowTS'];
+        $historyClas = new GameHistory();
+        //$historyClas->setConnection('pgsql4');
+        $historyClas->setConnection('pgsql6');
+        $historys = $historyClas->where('ts', $dataRowTS)->orderBy('ts', 'desc')->first();
+        /*$server_ps = ServerPs::where('psid', $historys->psid )->first();
+        if ($server_ps != null){
+            $seatid = "PS: " . $server_ps->seatid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
+            $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
+        }*/
+        $seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $positions = array();
+        $positionN =161;
+        $num_max = $positionN + 1;
+        $blob = $historys->bets ;
+        $positionsStr = unpack('S' . $num_max, stream_get_contents($blob, -1, 0));
+        for ($i = 1; $i <= $num_max; $i++) {
+            if($positionsStr[$i] > 0) {
+                $positions[$i  - 1] = $positionsStr[$i];
+            }
+        }
+        $rlt_chip_positions = array();
+        $rlt_chip_positions = $this->chip_positions();
+       
+        $testPage = view('statistics.rouletteHistory', ['positions' => $positions, 'rlt_chip_positions' => $rlt_chip_positions])->render();
+       
+        $dataArray1 = array(
+            "success" => "success",
+            "dataRowID" => $dataRowID,
+            "seatid" => $seatid,
+            "gameIDArrow" => $historys->rlt_seq,
+            "winNumber" => $historys->win_num,
+            "totalBet" =>  number_format($historys->bet / 100, 2),
+            "totalWin" =>  number_format($historys->win_val / 100, 2),
+            "jackpotWon" =>  number_format($historys->jackpot / 100, 2),
+            "html" => $testPage,
+        );
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
+    
+    public function ajax_nextPrevRoulette2History(Request $request)
+    {
+        $dataRowID = $request['rowId'];
+        $dataRowTS = $request['rowTS'];
+        $dataRowNextPrev = $request['NextPrev'];
+        $prevArrow = 1;
+        $nextArrow = 1;
+        $historyClas = new GameHistory();
+        //$historyClas->setConnection('pgsql4');
+        $historyClas->setConnection('pgsql6');
+        if ($dataRowNextPrev == "Prev"){
+            //var_dump($dataRowNextPrev);
+            if ($historyClas->where('psid', $dataRowID)->where('ts', '>', $dataRowTS)->count()){
+                $dataRowTS = $historyClas->where('psid', $dataRowID)->where('ts', '>', $dataRowTS)->orderBy('ts', 'asc')->first()->ts;
+                if (!$historyClas->where('psid', $dataRowID)->where('ts', '>', $dataRowTS)->count()){
+                    $prevArrow = 0;
+                }
+            }
+        }else{
+            if ($historyClas->where('psid', $dataRowID)->where('ts', '<', $dataRowTS)->count()){
+                $dataRowTS = $historyClas->where('psid', $dataRowID)->where('ts', '<', $dataRowTS)->orderBy('ts', 'desc')->first()->ts;
+                if (!$historyClas->where('psid', $dataRowID)->where('ts', '<', $dataRowTS)->count()){
+                    $nextArrow = 0;
+                }
+            }    
+        }
+        
+        
+        
+        $historys = $historyClas->where('ts', $dataRowTS)->first();
+        /*$server_ps = ServerPs::where('psid', $historys->psid )->first();
+        if ($server_ps != null){
+            $seatid = "PS: " . $server_ps->seatid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
+            $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
+        }*/
+        $seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $positions = array();
+        $positionN =161;
+        $num_max = $positionN + 1;
+        $blob = $historys->bets ;
+        $positionsStr = unpack('S' . $num_max, stream_get_contents($blob, -1, 0));
+        for ($i = 1; $i <= $num_max; $i++) {
+            if($positionsStr[$i] > 0) {
+                $positions[$i  - 1] = $positionsStr[$i];
+            }
+        }
+        $rlt_chip_positions = array();
+        $rlt_chip_positions = $this->chip_positions();
+       
+        $testPage = view('statistics.rouletteHistory', ['positions' => $positions, 'rlt_chip_positions' => $rlt_chip_positions])->render();
+       
+        $dataArray1 = array(
+            "success" => "success",
+            "dataRowTS" => $dataRowTS,
+            "prevArrow" => $prevArrow, 
+            "nextArrow" => $nextArrow,
+            "dataRowID" => $dataRowID,
+            "seatid" => $seatid,
+            "gameIDArrow" => $historys->rlt_seq,
+            "winNumber" => $historys->win_num,
+            "totalBet" =>  number_format($historys->bet / 100, 2),
+            "totalWin" =>  number_format($historys->win_val / 100, 2),
+            "jackpotWon" =>  number_format($historys->jackpot / 100, 2),
+            "html" => $testPage,
+        );
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
+    
+    public function export2excelR2(Request $request)
+    {
+        if ($request['rowsPerPage']) {
+            $page['rowsPerPage'] = $request['rowsPerPage'];
+        
+        } else {
+            $page['rowsPerPage'] = 20;
+        
+        }
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'ts';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'desc';
+        }
+        if ($request['sortMenuOpen'] == 1 ) {
+            $page['sortMenuOpen'] = 1;
+        } else {
+            $page['sortMenuOpen'] = 0;
+        }
+        $SortQuery = array(); 
+        if ($request['FromGameTs']){
+            array_push($SortQuery,['ts', '>=', $request['FromGameTs']]);
+            $page['FromGameTs'] = $request['FromGameTs'];
+        }else{
+            $page['FromGameTs'] = "";
+        }
+        if ($request['ToGameTs']){
+             array_push($SortQuery,['ts', '<=', $request['ToGameTs']]);
+            $page['ToGameTs'] = $request['ToGameTs'];
+        }else{
+            $page['ToGameTs'] = "";
+        }
+        if ($request['GameSort']){
+            array_push($SortQuery,['rlt_seq', '=', $request['GameSort']]);
+            $page['GameSort'] = $request['GameSort'];
+        }else{
+            $page['GameSort'] = "";
+        }
+        $PSIDexist = 0;
+        if ($request['PSID']){
+            array_push($SortQuery,['psid', '=', $request['PSID']]);
+            $page['PSID'] = $request['PSID'];
+        }else{
+            $page['PSID'] = "";
+        }
+        if ($request['SeatID']){
+            array_push($SortQuery,['seatid', '=', $request['SeatID']]);
+            $page['SeatID'] = $request['SeatID'];
+        }else{
+            $page['SeatID'] = "";
+        }
+        if ($request['FromGameNum']){
+             array_push($SortQuery,['win_num','>=', $request['FromGameNum'] ]);
+            $page['FromGameNum'] = $request['FromGameNum'];
+        }else{
+            $page['FromGameNum'] = "";
+        }
+        if ($request['ToGameNum']){
+             array_push($SortQuery,['win_num','<=', $request['ToGameNum'] ]);
+            $page['ToGameNum'] = $request['ToGameNum'];
+        }else{
+            $page['ToGameNum'] = "";
+        }
+        if ($request['FromGameBet']){
+             array_push($SortQuery,['bet','>=', $request['FromGameBet'] * 100 ]);
+            $page['FromGameBet'] = $request['FromGameBet'] ;
+        }else{
+            $page['FromGameBet'] = "";
+        }
+        if ($request['ToGameBet']){
+             array_push($SortQuery,['bet','<=', $request['ToGameBet'] * 100 ]);
+            $page['ToGameBet'] = $request['ToGameBet'];
+        }else{
+            $page['ToGameBet'] = "";
+        }
+        if ($request['FromGameWin']){
+             array_push($SortQuery,['win_val','>=', $request['FromGameWin'] * 100 ]);
+            $page['FromGameWin'] = $request['FromGameWin'] ;
+        }else{
+            $page['FromGameWin'] = "";
+        }
+        if ($request['ToGameWin']){
+             array_push($SortQuery,['win_val','<=', $request['ToGameWin'] * 100 ]);
+            $page['ToGameWin'] = $request['ToGameWin'] ;
+        }else{
+            $page['ToGameWin'] = "";
+        }
+        if ($request['FromGameJack']){
+             array_push($SortQuery,['jackpot','>=', $request['FromGameJack'] * 100 ]);
+            $page['FromGameJack'] = $request['FromGameJack'] ;
+        }else{
+            $page['FromGameJack'] = "";
+        }
+        if ($request['ToGameJack']){
+             array_push($SortQuery,['jackpot','<=', $request['ToGameJack'] * 100 ]);
+            $page['ToGameJack'] = $request['ToGameJack'] ;
+        }else{
+            $page['ToGameJack'] = "";
+        }
+        
+        $historyClas = new GameHistory();
+        //$historyClas->setConnection('pgsql4');
+        $historyClas->setConnection('pgsql6');
+        $historys = $historyClas->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        $export = array();
+        foreach ($historys as $key => $history) {
+            $export[$key] = array(
+                'Time' => $history->ts, 
+                'Game #' => $history->rlt_seq,
+                'Ps ID' =>  $history->psid, 
+                'Seat ID' => $history->seatid,
+                'Win Number' => $history->win_num,
+                'Total Bet' => $history->bet / 100,
+                'Total Win' => $history->win_val / 100 ,
+                'Jackpot' => $history->jackpot / 100,
+                'No Spin Game' => $history->no_spin / 100
+            );
+            
+        }
+        //$export = $historys = BingoHistory::orderBy('tstamp', 'desc')->get();
+
+        Excel::create('Ruolette Data', function($excel) use($export){
+            $excel->sheet('Ruolette', function($sheet) use($export){
+                $sheet->fromArray($export);
+                $sheet->freezeFirstRow();
+                $sheet->setFontFamily('Liberation Sans');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+            });
+        })->export('xls');
+    }
+   
     //end Roulette
     //start BJ
     public function historyBlackjack(Request $request)

@@ -14,8 +14,8 @@
             <ul class="breadcrumb">
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li> -->
-              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
-              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}')">Roulette 2</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
+              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}')">Roulette 2</a></li>
               <li><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>-->
               <!--<li><a href="javascript:ajaxLoad('#')">Slots </a></li>-->
@@ -66,7 +66,7 @@
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; ">
-                    <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}" data-excel-url="{{ route('export2excelR') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
+                    <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}" data-excel-url="{{ route('export2excelR2') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
                     <ul class="pagination" style="margin: 0px;">
                         @if ( !$historys->lastPage()  )
                             <li class="page-number active" >
@@ -324,7 +324,7 @@
 
                         <tbody>
                             @foreach($historys as $history)
-                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' data-Ids='{{ $history->psid }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR tr-class" data-toggle="modal" data-target="#rouletteHistory_modal" >
+                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' data-Ids='{{ $history->psid }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR2 tr-class" data-toggle="modal" data-target="#rouletteHistory_modal" >
                        
                                     <td class="text-center"><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
                                     <td class="text-right">{{ $history->rlt_seq }}</td>
