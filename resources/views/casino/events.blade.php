@@ -35,7 +35,7 @@
                                 </li>
                             </ul>
                         </span>
-                        rows per page
+                        <span style="color: #fff">rows per page</span> 
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; "> 
@@ -136,7 +136,7 @@
                     </ul>
                 </div>
                 <!--<button class="btn btn-danger btn-sm bootstrap-modal-form-open" style="visibility: hidden"> Add Machine </button> -->
-                <div class="keep-open btn-group open pull-right" title="Columns">
+                <div class="keep-open btn-group open pull-right" >
                     <a class="btn btn-success EventsSort" style="display: none;" onclick="changePageSortMenuEvents()"><i class="fa fa-search" aria-hidden="true"></i></a>
                     <a class="btn btn-default EventsSort" style="display: none;" onclick="cleanSortFunctionEvents()"><i class="fa fa-close" aria-hidden="true"></i></a> 
                     <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuEvents();">

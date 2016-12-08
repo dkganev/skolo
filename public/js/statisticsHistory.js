@@ -1,4 +1,10 @@
 var firstClick = 0;
+var sortTimer;
+var ShowHideI = 0;
+var GameInfo = 0;
+var sortMenuRV = 0;
+
+ //start Bingo scripts
 $(document).on("click","tr.rows td", function(e){
     //console.log( $(this).parent("tr").attr('data-id'));
     boxID = parseInt($(this).parent("tr").attr('data-id'));
@@ -22,97 +28,6 @@ $(document).on("click","tr.rows td", function(e){
 
     
 });
-$(document).on("click","tr.rowsR td", function(e){
-    wTop = $(window).height() / 2;
-    wLeft = $(window).width() / 2;
-    $(".faSpinner").css('top', wTop );
-    $(".faSpinner").css("left", wLeft);
-    $(".faSpinner").show();
-    rowID = parseInt($(this).parent("tr").attr('data-id'));
-    rowTS = $(this).parent("tr").attr('data-ts');
-    rowIds = $(this).parent("tr").attr('data-Ids');
-    token = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        type:'POST',
-        url:'ajax_statRouletteHistory',
-        dataType: "json",
-        data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
-        success:function(data){
-            if (data.success == "success"){
-                $('#roulettePic').html(data.html); //seatid
-                $('#rouletteHead').html(data.seatid);
-                $('#winNumber').html(data.winNumber);
-                $('#totalBet').html(data.totalBet);
-                $('#totalWin').html(data.totalWin);
-                $('#gameIDArrowR').html(data.gameIDArrow);
-                $('#jackpotWon').html(data.jackpotWon);
-                $('#next-prevR').attr("data-Id", rowIds);
-                $('#next-prevR').attr("data-ts", rowTS);
-                
-                $(".faSpinner").hide();
-                
-            }
-            $(".faSpinner").hide();
-        },
-        error: function (error) {
-            alert ("Unexpected wrong.");
-             $(".faSpinner").hide();
-        }
-        
-    });
-
-    
-});    
-
-$(document).on("click","tr.rowsBJ td", function(e){
-    //wTop = $(window).height() / 2;
-    //wLeft = $(window).width() / 2;
-    //$(".faSpinner").css('top', wTop );
-    //$(".faSpinner").css("left", wLeft);data-table
-    $(".faSpinnerBJ").show();
-    $('#BJcards').hide();
-    rowID = parseInt($(this).parent("tr").attr('data-id'));
-    rowTS = $(this).parent("tr").attr('data-ts');
-    rowTable = $(this).parent("tr").attr('data-table');
-    token = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        type:'POST',
-        url:'ajax_statBJHistory',
-        dataType: "json",
-        data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
-        success:function(data){
-            if (data.success == "success"){
-                $('#BJcards').html(data.html); //seatid
-                $('#BJHead').html(data.seatid);
-                $('#totalBet').html(data.totalBet);
-                $('#totalWin').html(data.totalWin);
-                $('#gameIDArrow').html(data.gameIDArrow);
-                $('#next-prev').attr("data-table", rowTable);
-                $('#next-prev').attr("data-ts", rowTS);
-                $(".faSpinnerBJ").hide();
-                $('#BJcards').show();
-                
-            }
-            $(".faSpinnerBJ").hide();
-        },
-        error: function (error) {
-            alert ("Unexpected wrong.");
-            $(".faSpinnerBJ").hide();
-            
-        }
-        
-    });
-
-    
-}); 
-
-
-var sortTimer;
-var ShowHideI = 0;
-var GameInfo = 0;
-var sortMenuRV = 0;
-
- //start Bingo scripts
 function changeRowsPerPageFBingo(rowsPerPage) {
     pageHref = $('#pageReload').attr('data-URL');
     pageRowsPerPage = rowsPerPage; // $('#pageReload').attr('data-rowsPerPage');
@@ -1011,6 +926,47 @@ function ExportToPNGBingoTable() {
 
  //end Bingo scripts  
  //start BlackJack scripts
+$(document).on("click","tr.rowsBJ td", function(e){
+    //wTop = $(window).height() / 2;
+    //wLeft = $(window).width() / 2;
+    //$(".faSpinner").css('top', wTop );
+    //$(".faSpinner").css("left", wLeft);data-table
+    $(".faSpinnerBJ").show();
+    $('#BJcards').hide();
+    rowID = parseInt($(this).parent("tr").attr('data-id'));
+    rowTS = $(this).parent("tr").attr('data-ts');
+    rowTable = $(this).parent("tr").attr('data-table');
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type:'POST',
+        url:'ajax_statBJHistory',
+        dataType: "json",
+        data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#BJcards').html(data.html); //seatid
+                $('#BJHead').html(data.seatid);
+                $('#totalBet').html(data.totalBet);
+                $('#totalWin').html(data.totalWin);
+                $('#gameIDArrow').html(data.gameIDArrow);
+                $('#next-prev').attr("data-table", rowTable);
+                $('#next-prev').attr("data-ts", rowTS);
+                $(".faSpinnerBJ").hide();
+                $('#BJcards').show();
+                
+            }
+            $(".faSpinnerBJ").hide();
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+            $(".faSpinnerBJ").hide();
+            
+        }
+        
+    });
+
+    
+}); 
 function changeRowsPerPageF(rowsPerPage) {
     pageHref = $('#pageReload').attr('data-URL');
     pageRowsPerPage = rowsPerPage; // $('#pageReload').attr('data-rowsPerPage');
@@ -1460,6 +1416,47 @@ function ExportToPNGBJTable() {
 
  //end BlackJack scripts
  //start Roulete scripts
+$(document).on("click","tr.rowsR td", function(e){
+    wTop = $(window).height() / 2;
+    wLeft = $(window).width() / 2;
+    $(".faSpinner").css('top', wTop );
+    $(".faSpinner").css("left", wLeft);
+    $(".faSpinner").show();
+    rowID = parseInt($(this).parent("tr").attr('data-id'));
+    rowTS = $(this).parent("tr").attr('data-ts');
+    rowIds = $(this).parent("tr").attr('data-Ids');
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type:'POST',
+        url:'ajax_statRouletteHistory',
+        dataType: "json",
+        data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#roulettePic').html(data.html); //seatid
+                $('#rouletteHead').html(data.seatid);
+                $('#winNumber').html(data.winNumber);
+                $('#totalBet').html(data.totalBet);
+                $('#totalWin').html(data.totalWin);
+                $('#gameIDArrowR').html(data.gameIDArrow);
+                $('#jackpotWon').html(data.jackpotWon);
+                $('#next-prevR').attr("data-Id", rowIds);
+                $('#next-prevR').attr("data-ts", rowTS);
+                
+                $(".faSpinner").hide();
+                
+            }
+            $(".faSpinner").hide();
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+             $(".faSpinner").hide();
+        }
+        
+    });
+
+    
+});    
 function changeRowsPerPageFR(rowsPerPage) {
     pageHref = $('#pageReload').attr('data-URL');
     pageRowsPerPage = rowsPerPage; // $('#pageReload').attr('data-rowsPerPage');
@@ -1936,6 +1933,97 @@ function ExportToPNGRTable() {
         }
     });
 }
+
+//end Roulete scripts
+//start Roulete2 scripts
+function changeModalWindowR2(NextPrev) {
+    wTop = $(window).height() / 2;
+    wLeft = $(window).width() / 2;
+    $(".faSpinner").css('top', wTop );
+    $(".faSpinner").css("left", wLeft);
+    $(".faSpinner").show();
+    rowTS = $('#next-prevR').attr('data-ts');
+    rowId = $('#next-prevR').attr("data-Id");
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type:'POST',
+        url:'ajax_nextPrevRoulette2History',
+        dataType: "json",
+        data:{'rowTS': rowTS, 'rowId': rowId, 'NextPrev': NextPrev, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#roulettePic').html(data.html); //seatid
+                $('#rouletteHead').html(data.seatid);
+                $('#winNumber').html(data.winNumber);
+                $('#totalBet').html(data.totalBet);
+                $('#totalWin').html(data.totalWin);
+                $('#jackpotWon').html(data.jackpotWon);
+                $('#gameIDArrowR').html(data.gameIDArrow);
+                $('#next-prevR').attr("data-ts", data.dataRowTS);
+                if (data.nextArrow == 0){
+                    $('#nextArrowR').hide();
+                } else {
+                    $('#nextArrowR').show();
+                }
+                if (data.prevArrow == 0){
+                    $('#prevArrowR').hide();
+                } else {
+                    $('#prevArrowR').show();
+                }
+                
+                $(".faSpinner").hide();
+                
+            }
+            //$(".faSpinner").hide();
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+             $(".faSpinner").hide();
+        }
+        
+    });
+}    
+$(document).on("click","tr.rowsR2 td", function(e){
+    wTop = $(window).height() / 2;
+    wLeft = $(window).width() / 2;
+    $(".faSpinner").css('top', wTop );
+    $(".faSpinner").css("left", wLeft);
+    $(".faSpinner").show();
+    rowID = parseInt($(this).parent("tr").attr('data-id'));
+    rowTS = $(this).parent("tr").attr('data-ts');
+    rowIds = $(this).parent("tr").attr('data-Ids');
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        type:'POST',
+        url:'ajax_statRoulette2History',
+        dataType: "json",
+        data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#roulettePic').html(data.html); //seatid
+                $('#rouletteHead').html(data.seatid);
+                $('#winNumber').html(data.winNumber);
+                $('#totalBet').html(data.totalBet);
+                $('#totalWin').html(data.totalWin);
+                $('#gameIDArrowR').html(data.gameIDArrow);
+                $('#jackpotWon').html(data.jackpotWon);
+                $('#next-prevR').attr("data-Id", rowIds);
+                $('#next-prevR').attr("data-ts", rowTS);
+                
+                $(".faSpinner").hide();
+                
+            }
+            $(".faSpinner").hide();
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+             $(".faSpinner").hide();
+        }
+        
+    });
+
+    
+});    
 
 //end Roulete scripts
 //start Statistics scripts 

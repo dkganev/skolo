@@ -18,6 +18,7 @@
               <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li>-->
               <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}')">Roulette 2</a></li>
               <li><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>-->
               <!--<li><a href="javascript:ajaxLoad('#')">Slots </a></li>-->
@@ -67,7 +68,7 @@
                                 </li>
                             </ul>
                         </span>
-                        rows per page
+                        <span style="color: #fff">rows per page</span> 
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; ">           <!--$historys->currentPage()  $historys->lastPage()-->
@@ -170,7 +171,7 @@
                         @endif
                     </ul>
                 </div>
-                <div class="keep-open btn-group open pull-right" title="Columns">
+                <div class="keep-open btn-group open pull-right" >
                     <!--<a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}?page=2&rowsPerPage=50')" class="btn btn-success RouletteSort" >test</a> -->
                     <a class="btn btn-success RouletteSort" style="display: none;" onclick="changePageSortMenuBingo();"><i class="fa fa-search" aria-hidden="true"></i></a>
                     <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunctionBingo();"><i class="fa fa-close" aria-hidden="true"></i></a> 
@@ -179,7 +180,7 @@
                        <span class="caret"></span>
                     </button>
                 </div>
-                <div class="keep-open btn-group open pull-right" title="Columns">
+                <div class="keep-open btn-group open pull-right" >
                     <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="ShowHide();">
                        <i class="glyphicon glyphicon-th icon-th"></i>
                        <span class="caret"></span>
