@@ -115,34 +115,21 @@
     <h4 style="text-align: center; line-height: 3;">Bingo Live Feed</h4>
     <span style="line-height: 3;">Bingo Live Feed</span>
     <div style="line-height: 0.5;">
-        <input id="BingoMainConfig" type="hidden"
-            data-bingo_ticket_cost="{{$MainConfig->bingo_ticket_cost}}"
-            data-bingo_win_pr="{{$MainConfig->bingo_win_pr}}"
-            data-bingo_line_pr="{{$MainConfig->bingo_line_pr}}"
-            data-jackpot_bingo_pr_visible="{{$MainConfig->jackpot_bingo_pr_visible}}"
-            data-jackpot_bingo_max_ball="{{$MainConfig->jackpot_bingo_max_ball}}"
-            data-jackpot_line_pr_visible="{{$MainConfig->jackpot_line_pr_visible}}"
-            data-jackpot_line_max_ball="{{$MainConfig->jackpot_line_max_ball}}"
-            data-mybonus_pr_visible="{{$MainConfig->mybonus_pr_visible}}"
-            data-bonus_bingo_pr_visible="{{$MainConfig->bonus_bingo_pr_visible}}"
-            data-bonus_bingo_max_ball="{{$MainConfig->bonus_bingo_max_ball}}"
-            data-bonus_line_pr_visible="{{$MainConfig->bonus_line_pr_visible}}"
-            data-bonus_line_max_ball="{{$MainConfig->bonus_line_max_ball}}"
-        >
-        <p>Ticket Value: <span id="bingo_ticket_cost">{{$MainConfig->bingo_ticket_cost}}</span></p>
-        <p>Tickets Sold: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') : 0 }}</span></p>
-        <p>Active Players: <span>{{count($psTickets) ? count($psTickets) : 0 }}</span></p>
-        <p>Bingo Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bingo_win_pr : 0 }}</span></p>
-        <p>Bingo Line: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bingo_line_pr : 0 }}</span></p>
-        <p>Jackpot Bingo: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->jackpot_bingo_pr_visible : 0 }}</span></p>
-        <p>Jackpot Bingo Max Ball Value: <span>{{$MainConfig->jackpot_bingo_max_ball}}</span></p>
-        <p>Jackpot Line Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->jackpot_line_pr_visible : 0 }}</span></p>
-        <p>Jackpot Line Max Ball: <span>{{$MainConfig->jackpot_line_max_ball}}</span></p>
-        <p>My Bonus Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->mybonus_pr_visible : 0 }}</span></p>
-        <p>Bonus Bingo Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bonus_bingo_pr_visible : 0 }}</span></p>
-        <p>Bonus Bingo Max Ball: <span>{{$MainConfig->bonus_bingo_max_ball}}</span></p>
-        <p>Bonus Line Prize: <span>{{count($psTickets) ? $psTickets->sum('num_tickets') * $MainConfig->bingo_ticket_cost * $MainConfig->bonus_line_pr_visible : 0 }}</span></p>
-        <p>Bonus Line Max Ball: <span>{{$MainConfig->bonus_line_max_ball}}</span></p>
+        
+        <p>Ticket Value: <span id="ticket_price" data-unique_game_seq="{{$GameState->unique_game_seq}}">{{$GameState->ticket_price}}</span></p>
+        <p>Tickets Sold: <span id="tickets">{{$GameState->tickets}}</span></p>
+        <p>Active Players: <span id="players">{{$GameState->players}}</span></p>
+        <p>Bingo Prize: <span id="bingo_value">{{$GameState->bingo_value}}</span></p>
+        <p>Bingo Line: <span id="line_value">{{$GameState->line_value}}</span></p>
+        <p>Jackpot Bingo: <span id="jackpot_bingo">{{$GameState->jackpot_bingo}}</span></p>
+        <p>Jackpot Bingo Max Ball Value: <span id="jackpot_bingo_max_ball">{{$MainConfig->jackpot_bingo_max_ball}}</span></p>
+        <p>Jackpot Line Prize: <span id="jackpot_line">{{$GameState->jackpot_line}}</span></p>
+        <p>Jackpot Line Max Ball: <span id="jackpot_line_max_ball">{{$MainConfig->jackpot_line_max_ball}}</span></p>
+        <p>My Bonus Prize: <span id="my_bonus">{{$GameState->my_bonus}}</span></p>
+        <p>Bonus Bingo Prize: <span id="bonus_bingo">{{$GameState->bonus_bingo}}</span></p>
+        <p>Bonus Bingo Max Ball: <span id="bonus_bingo_max_ball">{{$MainConfig->bonus_bingo_max_ball}}</span></p>
+        <p>Bonus Line Prize: <span id="bonus_line">{{$GameState->bonus_line}}</span></p>
+        <p>Bonus Line Max Ball: <span id="bonus_line_max_ball">{{$MainConfig->bonus_line_max_ball}}</span></p>
     </div>
 </div>
 
