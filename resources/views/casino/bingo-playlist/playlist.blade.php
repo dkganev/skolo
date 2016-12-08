@@ -118,12 +118,12 @@
         </thead>
         <tbody>
           @foreach($playlists as $playlist)
-          <tr>
+          <tr class="tr-class">
             <td>
               <span class="glyphicon glyphicon-chevron-up up"></span>
               <span class="glyphicon glyphicon-chevron-down down"></span>
             </td>
-            <td>{{ $playlist->idx}}</td>
+            {{-- <td> $playlist->idx</td> --}}
             <td>{{ $playlist->bingo_ticket_cost }}</td>
             <td>
               {{ $playlist->bingo_cost_line1_fixed && $playlist->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}
