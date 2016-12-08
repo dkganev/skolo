@@ -17,9 +17,4 @@ class BlackjackTable extends Model
 	public $increments = false;
 
 	protected $guarded = [];
-
-	public function game_state()
-	{
-		return $this->hasOne(GameState::class, 'table_idx', 'table_id');
-	}
 }

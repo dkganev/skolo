@@ -1,6 +1,6 @@
 <div class="container">
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-11">
         <div class="panel panel-default" id="panelTerminatsContend">
             <div class="panel-heading" id="socketConect">
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 5%;">
@@ -30,11 +30,11 @@
                         <tr>
                             <th data-sortable="true">PS ID</th>
                             <th data-sortable="true">Dallas ID</th>
-                            <th data-sortable="true">Total In</th>
-                            <th data-sortable="true">Total Out</th>
-                            <th data-sortable="true">Total Bet</th>
-                            <th data-sortable="true">Total Win</th>
-                            <th data-sortable="true">Total Credit</th>
+                            <th data-sortable="true">Total In (cents)</th>
+                            <th data-sortable="true">Total Out (cents)</th>
+                            <th data-sortable="true">Total Bet (cents)</th>
+                            <th data-sortable="true">Total Win (cents)</th>
+                            <th data-sortable="true">Total Credit (cents)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,21 +42,21 @@
                             <tr class="tr-class" id="tr{{$c->psid}}">
                                 <td>{{ $c->server_ps->psid }}</td>
                                 <td>{{ $c->server_ps->dallasid }}</td>
-                                <td id="TotalIn{{$c->psid}}">{{ $c->totalIn() }}</td>
-                                <td id="TotalOut{{$c->psid}}">{{ $c->totalOut() }}</td>
-                                <td id="TotalBet{{$c->psid}}">{{ $c->totalBet() }}</td>
-                                <td id="TotalWin{{$c->psid}}">{{ $c->totalWin() }}</td>
-                                <td id="TotalCredit{{$c->psid}}">{{ $c->totalCredit() }}</td>
+                                <td class="text-center" id="TotalIn{{$c->psid}}">{{ number_format($c->totalIn()/100, 2) }}</td>
+                                <td class="text-center" id="TotalOut{{$c->psid}}">{{ number_format($c->totalOut()/100, 2) }}</td>
+                                <td class="text-center" id="TotalBet{{$c->psid}}">{{ number_format($c->totalBet()/100, 2) }}</td>
+                                <td class="text-center" id="TotalWin{{$c->psid}}">{{ number_format($c->totalWin()/100, 2) }}</td>
+                                <td class="text-center" id="TotalCredit{{$c->psid}}">{{ number_format($c->totalCredit()/100, 2) }}</td>
 
                             </tr>
                         @endforeach
                         <tr class="danger" >
                             <td class="text-center" colspan="2"><strong style="color:black;">TOTAL</strong></td>
-                            <td id="TotalIn">{{ $totals['totalIn'] }}</td>
-                            <td id="TotalOut">{{ $totals['totalOut'] }}</td>
-                            <td id="TotalBet">{{ $totals['totalBet'] }}</td>
-                            <td id="TotalWin">{{ $totals['totalWin'] }}</td>
-                            <td id="TotalCredit">{{ $totals['totalCredit'] }}</td>
+                            <td class="text-center" id="TotalIn">{{ number_format($totals['totalIn']/100, 2) }}</td>
+                            <td class="text-center" id="TotalOut">{{ number_format($totals['totalOut']/100, 2) }}</td>
+                            <td class="text-center" id="TotalBet">{{ number_format($totals['totalBet']/100, 2) }}</td>
+                            <td class="text-center" id="TotalWin">{{ number_format($totals['totalWin']/100, 2) }}</td>
+                            <td class="text-center" id="TotalCredit">{{ number_format($totals['totalCredit']/100, 2) }}</td>
                         </tr>
                     </tbody>
                 </table>

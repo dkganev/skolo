@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Models\Blackjack\BlackjackTable;
 use App\Models\Blackjack\MainConfig;
 use App\Models\Blackjack\AccConfig;
+use App\Models\Blackjack\EnabledTables;
 
 
 class BlackjackController extends Controller
@@ -42,15 +43,14 @@ class BlackjackController extends Controller
     public function tables_index()
     {
         $tables = BlackjackTable::orderBy('table_id', 'asc')->get();
+        $enabled = EnabledTables::first();
 
-        return view('settings.blackjack.tables', ['tables' => $tables]);
+        return view('settings.blackjack.tables', compact('tables', 'enabled'));
     }
 
     public function table_edit(Request $request)
     {
         $table = BlackjackTable::where('table_id', $request->table_id)->first();
-
-        // $status = $table->update($request->except('_token', 'enabled'));
 
         $bet_min = 0;
         if($request->bet_min < $request->chip1) {
@@ -69,10 +69,7 @@ class BlackjackController extends Controller
             'chip5' => $request->chip5
         ]);
 
-        $table->game_state->enabled = $request->enabled;
-        $table->push();
-
-        if (!$status) {
+        if (!$table->update()) {
             $msg = 'Something Wrong Happend!';
             return response()->json(['response' => $msg], 400);
         }

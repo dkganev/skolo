@@ -1,9 +1,9 @@
 <div class="container">
 
 <div class="row" >
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="panel panel-default" id="panelGameContend">
-            <div class="panel-heading">
+            <div class="panel-heading" id="panel-heading">
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 25%;">
                     Game Statistics
                 </h2>
@@ -29,9 +29,9 @@
                         <tr>
                             <th data-sortable="true">ID</th>
                             <th data-sortable="true">Description</th>
-                            <th data-sortable="true">BET</th>
-                            <th data-sortable="true">WIN</th>
-                            <th data-sortable="true">JP</th>
+                            <th data-sortable="true">BET (cents)</th>
+                            <th data-sortable="true">WIN (cents)</th>
+                            <th data-sortable="true">JP (cents)</th>
                             <th data-sortable="true">GAMES</th>
                             <th data-sortable="true">JP HITS</th>
                         </tr>
@@ -40,9 +40,9 @@
                             <tr class="tr-class">
                                 <td>{{ $game->gameid }}</td>
                                 <td>{{ $game->description }}</td>
-                                <td>{{ $game->counters_bet }}</td>
-                                <td>{{ $game->counters_win }}</td>
-                                <td>{{ $game->counters_jp }}</td>
+                                <td>{{ number_format($game->counters_bet/100, 2) }}</td>
+                                <td>{{ number_format($game->counters_win/100, 2) }}</td>
+                                <td>{{ number_format($game->counters_jp/100, 2) }}</td>
                                 <td>{{ $game->counters_games }}</td>
                                 <td>{{ $game->counter_jp_hits }}</td>
                             </tr>

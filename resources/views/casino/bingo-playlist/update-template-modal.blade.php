@@ -111,17 +111,27 @@ $('#send-button--{{ $template->template_id }}').on('click', function() {
            template_id: $('#editTemplateModal--{{ $template->template_id }} input[name="template_id"]').val(),
            _token: token,
       },
-      success: function () {
-        //
+      success: function (response) {
+
+          if(response.bingo_cost_line1_fixed === false) {
+            var gameType = 'Standard';
+          } else {
+            var gameType = 'Fixed';
+          }
+
+          if(response.bingo_cost_line1_fixed === false && response.bingo_cost_bingo_fixed === false) {
+             var bingoCostLine = "";
+             var bingoCostBingo = "";
+          } else {
+            var bingoCostLine = response.bingo_cost_line1;
+            var bingoCostBingo = response.bingo_cost_bingo;
+          }
+
+          $('.divTable').append('<div class="divTableRow"><div class="divTableCell">' + response.bingo_ticket_cost + '</div><div class="divTableCell">' + gameType + '</div><div class="divTableCell">' + bingoCostLine + '</div><div class="divTableCell">' + bingoCostBingo + '</div></div>');
       }, 
       error: function () {
         //
       }
-    }).done(function() {
-        $('#editTemplateModal-{{ $template->template_id }}').modal('hide');
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
-        // javascript:ajaxLoad('{{url('/casino/templates')}}');
     });
 });
 

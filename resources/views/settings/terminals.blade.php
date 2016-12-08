@@ -32,8 +32,8 @@
                     >
                     <thead>
                         <tr>
-                            <th data-sortable="true">Machine ID</th>
-                            <th data-sortable="true">Unique ID</th>
+                            <th data-sortable="true">Dallas ID</th>
+                            <th data-sortable="true">PS ID</th>
                             <th data-sortable="true">Seat ID</th>
                             <th data-sortable="true">Description</th>
                             <th data-sortable="true">Type</th>

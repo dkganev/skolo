@@ -39,7 +39,6 @@
             <thead class="w3-blue-grey">
               <tr>
                 <th>Table</th>
-                <th>Enabled</th>
                 <th>Min Bet</th>
                 <th>Max Bet</th>
                 <th>Chip 1</th>
@@ -54,14 +53,7 @@
                 @foreach($tables as $table)
                 <tr id="{{ $table->table_id }}">
                     <td><span class="badge">{{ $table->table_id + 1 }}</span></td>
-                    <td>
-                        <span class="button-checkbox">
-                            <input type="hidden" name="enabled" value="false">
-                            <button type="button" class="btn" data-color="danger"></button>
-                            <input type="checkbox" name="enabled" class="hidden"
-                             {{ $table->game_state->enabled ? " checked" : "" }} />
-                        </span>
-                    </td>
+
                     <td>
                         <input name="bet_min" style="height:30px;" class="form-control" value="{{ $table->bet_min }}" type="text">
                     </td>
@@ -99,6 +91,59 @@
               </tbody>
             </table> 
         </form>
+
+        <form action="">
+            <div class="tables">
+                <span class="button-checkbox" style="margin-left: 0;">
+                    <label for="enabled">Table 1</label><br>
+                    <input type="hidden" name="enabled" value="false">
+                    <button type="button" class="btn" data-color="warning"></button>
+                    <input type="checkbox" name="enabled" class="hidden"
+                        {{ $enabled->t1_enabled ? 'checked' : '' }}
+                        />
+                </span>
+                <span class="button-checkbox">
+                    <label for="enabled">Table 2</label><br>
+                    <input type="hidden" name="enabled" value="false">
+                    <button type="button" class="btn" data-color="warning"></button>
+                    <input type="checkbox" name="enabled" class="hidden"
+                        {{ $enabled->t2_enabled ? 'checked' : '' }}
+                     />
+                </span>
+                <span class="button-checkbox">
+                    <label for="enabled">Table 3</label><br>
+                    <input type="hidden" name="enabled" value="false">
+                    <button type="button" class="btn" data-color="warning"></button>
+                    <input type="checkbox" name="enabled" class="hidden"
+                       {{ $enabled->t3_enabled ? 'checked' : '' }}
+                     />
+                </span>
+                <span class="button-checkbox">
+                    <label for="enabled">Table 4</label><br>
+                    <input type="hidden" name="enabled" value="false">
+                    <button type="button" class="btn" data-color="warning"></button>
+                    <input type="checkbox" name="enabled" class="hidden"
+                       {{ $enabled->t4_enabled ? 'checked' : '' }}
+                     />
+                </span>
+                <span class="button-checkbox">
+                    <label for="enabled">Table 5</label><br>
+                    <input type="hidden" name="enabled" value="false">
+                    <button type="button" class="btn" data-color="warning"></button>
+                    <input type="checkbox" name="enabled" class="hidden"
+                       {{ $enabled->t5_enabled ? 'checked' : '' }}
+                     />
+                </span>
+                <span class="button-checkbox">
+                    <label for="enabled">Table 6</label><br>
+                    <input type="hidden" name="enabled" value="false">
+                    <button type="button" class="btn" data-color="warning"></button>
+                    <input type="checkbox" name="enabled" class="hidden"
+                       {{ $enabled->t6_enabled ? 'checked' : '' }}
+                     />
+                </span>
+            </form>
+        </div>
 
       </div> <!--End Panel Body -->
   </div> <!--End Panel -->
@@ -257,3 +302,19 @@ $('input[type="checkbox"]').change(function(){
     });
 }
 </script>
+
+<style>
+    .button-checkbox {
+        display: inline-block;
+        margin-left: 60px;
+    }
+
+    .button-checkbox > button {
+        width: 80px;
+    }
+
+    .tables {
+        display: flex;
+
+    }
+</style>
