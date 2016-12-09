@@ -3,8 +3,12 @@
       <div class="col-md-9">
         <ul class="breadcrumb">
           <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/game-machine-blackjack')}}')">Blackjack</a></li>
-
+          
           <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-bingo')}}')">Bingo</a></li>
+  
+          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl1')}}')">Roulette 1</a></li>
+
+          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl2')}}')">Roulette 2</a></li>
         </ul>
       </div>
     </div>
