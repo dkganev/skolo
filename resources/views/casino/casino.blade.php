@@ -113,23 +113,22 @@
 
 <div id="DivBingoFeed">
     <h4 style="text-align: center; line-height: 3;">Bingo Live Feed</h4>
-    <span style="line-height: 3;">Bingo Live Feed</span>
     <div style="line-height: 0.5;">
         
-        <p>Ticket Value: <span id="ticket_price" data-unique_game_seq="{{$GameState->unique_game_seq}}">{{$GameState->ticket_price}}</span></p>
-        <p>Tickets Sold: <span id="tickets">{{$GameState->tickets}}</span></p>
-        <p>Active Players: <span id="players">{{$GameState->players}}</span></p>
-        <p>Bingo Prize: <span id="bingo_value">{{$GameState->bingo_value}}</span></p>
-        <p>Bingo Line: <span id="line_value">{{$GameState->line_value}}</span></p>
-        <p>Jackpot Bingo: <span id="jackpot_bingo">{{$GameState->jackpot_bingo}}</span></p>
-        <p>Jackpot Bingo Max Ball Value: <span id="jackpot_bingo_max_ball">{{$MainConfig->jackpot_bingo_max_ball}}</span></p>
-        <p>Jackpot Line Prize: <span id="jackpot_line">{{$GameState->jackpot_line}}</span></p>
-        <p>Jackpot Line Max Ball: <span id="jackpot_line_max_ball">{{$MainConfig->jackpot_line_max_ball}}</span></p>
-        <p>My Bonus Prize: <span id="my_bonus">{{$GameState->my_bonus}}</span></p>
-        <p>Bonus Bingo Prize: <span id="bonus_bingo">{{$GameState->bonus_bingo}}</span></p>
-        <p>Bonus Bingo Max Ball: <span id="bonus_bingo_max_ball">{{$MainConfig->bonus_bingo_max_ball}}</span></p>
-        <p>Bonus Line Prize: <span id="bonus_line">{{$GameState->bonus_line}}</span></p>
-        <p>Bonus Line Max Ball: <span id="bonus_line_max_ball">{{$MainConfig->bonus_line_max_ball}}</span></p>
+        <p style=" margin-right: 20px">Ticket Value: <span id="ticket_price" class="pull-right" data-unique_game_seq="{{$GameState->unique_game_seq}}">{{number_format($GameState->ticket_price / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">Tickets Sold: <span id="tickets" class="pull-right">{{$GameState->tickets}}</span></p>
+        <p style=" margin-right: 20px">Active Players: <span id="players" class="pull-right">{{$GameState->players}}</span></p>
+        <p style=" margin-right: 20px">Bingo Prize: <span id="bingo_value" class="pull-right">{{number_format($GameState->bingo_value / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">Bingo Line: <span id="line_value" class="pull-right">{{number_format($GameState->line_value / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">Jackpot Bingo: <span id="jackpot_bingo" class="pull-right">{{number_format($GameState->jackpot_bingo / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">Jackpot Bingo Max Ball: <span id="jackpot_bingo_max_ball" class="pull-right">{{$MainConfig->jackpot_bingo_max_ball}}</span></p>
+        <p style=" margin-right: 20px">Jackpot Line Prize: <span id="jackpot_line" class="pull-right">{{number_format($GameState->jackpot_line / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">Jackpot Line Max Ball: <span id="jackpot_line_max_ball" class="pull-right">{{$MainConfig->jackpot_line_max_ball}}</span></p>
+        <p style=" margin-right: 20px">My Bonus Prize: <span id="my_bonus" class="pull-right">{{number_format($GameState->my_bonus / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">Bonus Bingo Prize: <span id="bonus_bingo" class="pull-right">{{number_format($GameState->bonus_bingo / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">Bonus Bingo Max Ball: <span id="bonus_bingo_max_ball" class="pull-right">{{$MainConfig->bonus_bingo_max_ball}}</span></p>
+        <p style=" margin-right: 20px">Bonus Line Prize: <span id="bonus_line" class="pull-right">{{number_format($GameState->bonus_line / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">Bonus Line Max Ball: <span id="bonus_line_max_ball" class="pull-right">{{$MainConfig->bonus_line_max_ball}}</span></p>
     </div>
 </div>
 

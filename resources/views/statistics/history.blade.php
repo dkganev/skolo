@@ -737,23 +737,23 @@
                        
                                     <td class="text-center text-ri tableTh1"><?php echo date("Y-m-d H:i:s", strtotime($history->tstamp)); ?></td>
                                     <td class="text-right tableTh2">{{ $history->bingo_seq }}</td>
-                                    <td class="text-right tableTh3">{{$history->ticket_cost}}</td>
+                                    <td class="text-right tableTh3">{{number_format($history->ticket_cost / 100, 2 )}}</td>
                                     <td class="text-right tableTh4">{{ $history->players }}</td>
                                     <td class="text-right tableTh5">{{ $history->tickets }}</td>
                                     <td class="text-right Line">{{ $history->line }}</td>
-                                    <td class="text-right Line">{{ $history->line_val }}</td>
+                                    <td class="text-right Line">{{ number_format($history->line_val / 100, 2 ) }}</td>
                                     <td class="text-right Bingo">{{ $history->bingo }}</td>
-                                    <td class="text-right Bingo">{{ $history->bingo_val }}</td>
+                                    <td class="text-right Bingo">{{ number_format($history->bingo_val / 100, 2 ) }}</td>
                                     <td class="text-right MyBonus">{{ $history->mybonus }}</td>
-                                    <td class="text-right MyBonus">{{ $history->mybonus_val }}</td>
+                                    <td class="text-right MyBonus">{{ number_format($history->mybonus_val / 100, 2 ) }}</td>
                                     <td class="text-right BonusLine">{{ $history->bonus_line }}</td>
-                                    <td class="text-right BonusLine">{{ $history->bonus_line_val }}</td>
+                                    <td class="text-right BonusLine">{{ number_format($history->bonus_line_val / 100, 2 ) }}</td>
                                     <td class="text-right BonusBingo">{{ $history->bonus_bingo }}</td>
-                                    <td class="text-right BonusBingo">{{ $history->bonus_bingo_val }}</td>
+                                    <td class="text-right BonusBingo">{{ number_format($history->bonus_bingo_val / 100, 2 ) }}</td>
                                     <td class="text-right JackpotLine">{{ $history->jackpot_line }}</td>
-                                    <td class="text-right JackpotLine">{{ $history->jackpot_line_val }}</td>
+                                    <td class="text-right JackpotLine">{{ number_format($history->jackpot_line_val / 100, 2 ) }}</td>
                                     <td class="text-right JackpotBingo">{{ $history->jackpot_bingo }}</td>
-                                    <td class="text-right JackpotBingo">{{ $history->jackpot_bingo_val }}</td>
+                                    <td class="text-right JackpotBingo">{{ number_format($history->jackpot_bingo_val / 100, 2 ) }}</td>
                                     <td class="text-right ">{{ $history->cancel_val }}</td>
                               
                                 </tr>

@@ -53,16 +53,16 @@ socketBingoGameState.on('new message', function (data) {
             
         }
             
-            $("#ticket_price").text(obj.dataNew.ticket_price);
+            $("#ticket_price").text((obj.dataNew.ticket_price/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
             $("#tickets").text(obj.dataNew.tickets);
             $("#players").text(obj.dataNew.players);
-            $("#bingo_value").text(obj.dataNew.bingo_value);
-            $("#line_value").text(obj.dataNew.line_value);
-            $("#jackpot_bingo").text(obj.dataNew.jackpot_bingo);
-            $("#jackpot_line").text(obj.dataNew.jackpot_line);
-            $("#my_bonus").text(obj.dataNew.my_bonus);
-            $("#bonus_bingo").text(obj.dataNew.bonus_bingo);
-            $("#bonus_line").text(obj.dataNew.bonus_line);
+            $("#bingo_value").text((obj.dataNew.bingo_value/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $("#line_value").text((obj.dataNew.line_value/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $("#jackpot_bingo").text((obj.dataNew.jackpot_bingo/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $("#jackpot_line").text((obj.dataNew.jackpot_line/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $("#my_bonus").text((obj.dataNew.my_bonus/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $("#bonus_bingo").text((obj.dataNew.bonus_bingo/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            $("#bonus_line").text((obj.dataNew.bonus_line/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
     
     
     }else if (obj.query == "DELETE"){
