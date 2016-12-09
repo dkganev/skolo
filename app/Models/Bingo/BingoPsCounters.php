@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models\Blackjack;
+namespace App\Models\Bingo;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PsCounters extends Model
+class BingoPsCounters extends Model
 {
-	protected $connection = 'pgsql5';
+	protected $connection = 'pgsql3';
 
 	protected $table = 'ps_counters';
 
-	protected $primaryKey = 'psid';
+	protected $primaryKey  = 'psid';
 
 	public $timestamps = false;
 

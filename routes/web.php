@@ -207,8 +207,8 @@ Route::get('/settings/System', 'Settings\System@system');
  * STATISTICS / GAME-MACHINE 
  */
 
-Route::get('/statistics/game-machine', 'Statistics\GameMachineStatisticsController@index');
-
+Route::get('/statistics/game-machine-blackjack', 'Statistics\GameMachineStatisticsController@index_blackjack');
+Route::get('/statistics/game-machine-bingo', 'Statistics\GameMachineStatisticsController@index_bingo');
 
 /**
  * STATISTICS
@@ -220,8 +220,6 @@ Route::get('export2excelTerminalsStatistics', 'StatisticsController@export2excel
 
 Route::get('statistics/games', 'StatisticsController@games_statistics');
 Route::get('export2excelGamesStatistics', 'StatisticsController@export2excelGamesStatistics')->name('export2excelGamesStatistics');
-
-//Route::get('statistics/{id}', 'StatisticsController@navbar');  
 
 Route::get('statistics/history', 'StatisticsController@history_statistics');
 Route::post('/ajax_statBingoHistory', 'StatisticsController@ajax_statBingoHistory');
