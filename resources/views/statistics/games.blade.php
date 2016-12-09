@@ -38,13 +38,13 @@
                         <tbody>
                             @foreach($games as $game)
                             <tr class="tr-class">
-                                <td>{{ $game->gameid }}</td>
-                                <td>{{ $game->description }}</td>
-                                <td>{{ number_format($game->counters_bet/100, 2) }}</td>
-                                <td>{{ number_format($game->counters_win/100, 2) }}</td>
-                                <td>{{ number_format($game->counters_jp/100, 2) }}</td>
-                                <td>{{ $game->counters_games }}</td>
-                                <td>{{ $game->counter_jp_hits }}</td>
+                                <td class="text-center">{{ $game->gameid }}</td>
+                                <td class="text-center">{{ $game->description }}</td>
+                                <td class="text-right">{{ number_format($game->counters_bet/100, 2) }}</td>
+                                <td class="text-right">{{ number_format($game->counters_win/100, 2) }}</td>
+                                <td class="text-right">{{ number_format($game->counters_jp/100, 2) }}</td>
+                                <td class="text-right">{{ $game->counters_games }}</td>
+                                <td class="text-right">{{ $game->counter_jp_hits }}</td>
                             </tr>
                             @endforeach
                         </tbody>

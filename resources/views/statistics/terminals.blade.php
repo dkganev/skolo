@@ -40,23 +40,23 @@
                     <tbody>
                     	@foreach($counters as $c)
                             <tr class="tr-class" id="tr{{$c->psid}}">
-                                <td>{{ $c->server_ps->psid }}</td>
-                                <td>{{ $c->server_ps->dallasid }}</td>
-                                <td class="text-center" id="TotalIn{{$c->psid}}">{{ number_format($c->totalIn()/100, 2) }}</td>
-                                <td class="text-center" id="TotalOut{{$c->psid}}">{{ number_format($c->totalOut()/100, 2) }}</td>
-                                <td class="text-center" id="TotalBet{{$c->psid}}">{{ number_format($c->totalBet()/100, 2) }}</td>
-                                <td class="text-center" id="TotalWin{{$c->psid}}">{{ number_format($c->totalWin()/100, 2) }}</td>
-                                <td class="text-center" id="TotalCredit{{$c->psid}}">{{ number_format($c->totalCredit()/100, 2) }}</td>
+                                <td class="text-center">{{ $c->server_ps->psid }}</td>
+                                <td class="text-center">{{ $c->server_ps->dallasid }}</td>
+                                <td class="text-right" id="TotalIn{{$c->psid}}">{{ number_format($c->totalIn()/100, 2) }}</td>
+                                <td class="text-right" id="TotalOut{{$c->psid}}">{{ number_format($c->totalOut()/100, 2) }}</td>
+                                <td class="text-right" id="TotalBet{{$c->psid}}">{{ number_format($c->totalBet()/100, 2) }}</td>
+                                <td class="text-right" id="TotalWin{{$c->psid}}">{{ number_format($c->totalWin()/100, 2) }}</td>
+                                <td class="text-right" id="TotalCredit{{$c->psid}}">{{ number_format($c->totalCredit()/100, 2) }}</td>
 
                             </tr>
                         @endforeach
                         <tr class="danger" >
                             <td class="text-center" colspan="2"><strong style="color:black;">TOTAL</strong></td>
-                            <td class="text-center" id="TotalIn" data-total="{{$totals['totalIn']}}">{{ number_format($totals['totalIn']/100, 2) }}</td>
-                            <td class="text-center" id="TotalOut" data-total="{{$totals['totalOut']}}">{{ number_format($totals['totalOut']/100, 2) }}</td>
-                            <td class="text-center" id="TotalBet" data-total="{{$totals['totalBet']}}">{{ number_format($totals['totalBet']/100, 2) }}</td>
-                            <td class="text-center" id="TotalWin" data-total="{{$totals['totalWin']}}">{{ number_format($totals['totalWin']/100, 2) }}</td>
-                            <td class="text-center" id="TotalCredit" data-total="{{$totals['totalCredit']}}">{{ number_format($totals['totalCredit']/100, 2) }}</td>
+                            <td class="text-right" id="TotalIn" data-total="{{$totals['totalIn']}}">{{ number_format($totals['totalIn']/100, 2) }}</td>
+                            <td class="text-right" id="TotalOut" data-total="{{$totals['totalOut']}}">{{ number_format($totals['totalOut']/100, 2) }}</td>
+                            <td class="text-right" id="TotalBet" data-total="{{$totals['totalBet']}}">{{ number_format($totals['totalBet']/100, 2) }}</td>
+                            <td class="text-right" id="TotalWin" data-total="{{$totals['totalWin']}}">{{ number_format($totals['totalWin']/100, 2) }}</td>
+                            <td class="text-right" id="TotalCredit" data-total="{{$totals['totalCredit']}}">{{ number_format($totals['totalCredit']/100, 2) }}</td>
                         </tr>
                     </tbody>
                 </table>
