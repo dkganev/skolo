@@ -16,6 +16,8 @@
 
               <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Game History</a></li>
               @endhasanyrole
+
+              <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine')}}')">Machine Game Statistics</a></li>
             </ul>
         </div>
     </div>

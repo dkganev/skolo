@@ -203,6 +203,11 @@ Route::post('/ajax_CardTypeBonusPeriod', 'Settings\PBS@ajax_CardTypeBonusPeriod'
 Route::get('/settings/System', 'Settings\System@system');
 
 
+/**
+ * STATISTICS / GAME-MACHINE 
+ */
+
+Route::get('/statistics/game-machine', 'Statistics\GameMachineStatisticsController@index');
 
 
 /**
@@ -254,7 +259,3 @@ Route::post('/ajax_SaveAddCard', 'Players\PlayersController@ajax_SaveAddCard');
 Route::get('/export2excelCards', 'Players\PlayersController@export2excelCards')->name('export2excelCards');
 Route::post('/ajax_SaveEditCart', 'Players\PlayersController@ajax_SaveEditCart');
 Route::post('/ajax_AddBankCreditCard', 'Players\PlayersController@ajax_AddBankCreditCard');
- 
- 
- 
- 
