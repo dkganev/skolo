@@ -209,7 +209,8 @@ Route::get('/settings/System', 'Settings\System@system');
 
 Route::get('/statistics/game-machine-blackjack', 'Statistics\GameMachineStatisticsController@index_blackjack');
 Route::get('/statistics/game-machine-bingo', 'Statistics\GameMachineStatisticsController@index_bingo');
-
+Route::get('/statistics/game-machine-rl1', 'Statistics\GameMachineStatisticsController@index_rlt1');
+Route::get('/statistics/game-machine-rl2', 'Statistics\GameMachineStatisticsController@index_rlt2');
 /**
  * STATISTICS
  */

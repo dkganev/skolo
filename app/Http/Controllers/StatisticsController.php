@@ -40,8 +40,7 @@ class StatisticsController extends Controller
         $totalWin = 0;
         $totalCredit = 0;
 
-        foreach($counters as $counter)
-        {
+        foreach($counters as $counter) {
             $totalIn += $counter->totalIn();
             $totalOut += $counter->totalOut();
             $totalBet += $counter->totalBet();

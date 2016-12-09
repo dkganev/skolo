@@ -4,9 +4,9 @@
         <ul class="breadcrumb">
           <li><a href="javascript:ajaxLoad('{{url('statistics/game-machine-blackjack')}}')">Blackjack</a></li>
           
-          <li class="active"><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-bingo')}}')">Bingo</a></li>
+          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-bingo')}}')">Bingo</a></li>
   
-          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl1')}}')">Roulette 1</a></li>
+          <li class="active"><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl1')}}')">Roulette 1</a></li>
 
           <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl2')}}')">Roulette 2</a></li>
         </ul>
@@ -24,7 +24,7 @@
                 </a>
 
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 30%;">
-                    Bingo
+                    Roulette 1
                 </h2>
 
                 <a class="btn btn-warning  pull-right" onclick="ExportToPNGTerminatsTable();">
