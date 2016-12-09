@@ -565,7 +565,7 @@ class StatisticsController extends Controller
         $server_ps_seatid =$datapsid; // $server_ps_seatid = ServerPs::where('psid', $datapsid)->count() ? ServerPs::where('psid', $datapsid)->first()->seatid : "Missing saitid (PSID is $datapsid )";
         $wins_history = BingoWins_History::where('unique_game_seq', $dataUnique_game_seq)->get();
         $BingoBalls = BingoBall_History::where('unique_game_seq', $dataUnique_game_seq)->first();
-        $psTicketsArchive = psTicketsArchive::where('unique_game_seq', $dataUnique_game_seq)->first();
+        $psTicketsArchive = psTicketsArchive::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->first();
         $bingoCount = $psTicketsArchive->ticket_count - 1 ; 
         $bingoStr = $psTicketsArchive->tickets_id ; 
         $psTicketsArchiveHTML = "My Bonus Numbers: " . $psTicketsArchive->mybonus_b1 . ", " . $psTicketsArchive->mybonus_b2 . ", " . $psTicketsArchive->mybonus_b3;
