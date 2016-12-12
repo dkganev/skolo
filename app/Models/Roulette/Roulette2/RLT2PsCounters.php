@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\RouletteRoulette2;
+namespace App\Models\Roulette\Roulette2;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -47,6 +47,14 @@
                                 <td class="text-right">{{ $game->counter_jp_hits }}</td>
                             </tr>
                             @endforeach
+                            <tr class="danger">
+                                <td class="text-center" colspan="2"><strong style="color:black;">TOTAL</strong></td>
+                                <td class="text-right">1111</td>
+                                <td class="text-right">1111</td>
+                                <td class="text-right">1111</td>
+                                <td class="text-right">1111</td>
+                                <td class="text-right">1111</td>
+                            </tr>
                         </tbody>
                     </thead>
                 </table>

@@ -50,15 +50,23 @@
                     </thead>
                     <tbody>
                       @foreach($counters as $counter)
-                        <tr class="tr-class">
-                            <td class="text-center">{{ $counter->psid }}</td>
-                            <td class="text-right">{{ number_format($counter->bet/100, 2) }}</td>
-                            <td class="text-right">{{ number_format($counter->win/100, 2) }}</td>
-                            <td class="text-right">{{ number_format($counter->jp/100, 2) }}</td>
-                            <td class="text-right">{{ $counter->games }}</td>
-                            <td class="text-right">{{ $counter->jp_hits }}</td>
-                        </tr>
+                      <tr class="tr-class">
+                          <td class="text-center">{{ $counter->psid }}</td>
+                          <td class="text-right">{{ number_format($counter->bet/100, 2) }}</td>
+                          <td class="text-right">{{ number_format($counter->win/100, 2) }}</td>
+                          <td class="text-right">{{ number_format($counter->jp/100, 2) }}</td>
+                          <td class="text-right">{{ $counter->games }}</td>
+                          <td class="text-right">{{ $counter->jp_hits }}</td>
+                      </tr>
                       @endforeach
+                      <tr class="danger">
+                        <td class="text-center"><strong style="color:black;">TOTAL</strong></td>
+                        <td class="text-right">{{ number_format($totals['bet']/100, 2) }}</td>
+                        <td class="text-right">{{ number_format($totals['win']/100, 2) }}</td>
+                        <td class="text-right">{{ number_format($totals['jp']/100, 2) }}</td>
+                        <td class="text-right">{{ $totals['games'] }}</td>
+                        <td class="text-right">{{ $totals['jp_hits'] }}</td>
+                      </tr>
                     </tbody>
                 </table>
             </div><!--End Panel Body -->

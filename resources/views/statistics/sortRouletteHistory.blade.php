@@ -143,23 +143,23 @@
                         </tr>
                     </thead>
 
-                        <tbody>
-                            @foreach($historys as $history)
-                                @if ($server_ps->where('psid', $history->psid)->where('seatid', $dataSeat_ID)->count() || $dataSeat_ID == 0 )
-                                    <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' data-Ids='{{ $history->psid }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
-                       
-                                        <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
-                                        <td>{{ $history->rlt_seq }}</td>
-                                        <td>{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}</td>
-                                        <td>{{ $history->win_num }}</td>
-                                        <td>{{ number_format($history->bet / 100, 2 ) }}</td>
-                                        <td>{{ number_format($history->win_val / 100, 2 ) }}</td>
-                                        <td>{{ number_format($history->jackpot / 100, 2 ) }}</td>
-                                        <td>{{ $history->ho_spin }}</td>
-                                    </tr>
-                                @endif
-                            @endforeach
-                        </tbody>
+                    <tbody>
+                        @foreach($historys as $history)
+                            @if ($server_ps->where('psid', $history->psid)->where('seatid', $dataSeat_ID)->count() || $dataSeat_ID == 0 )
+                                <tr id='Row{{ $history->rlt_seq }}' data-id='{{ $history->rlt_seq }}' data-ts='{{ $history->ts }}' data-Ids='{{ $history->psid }}' class="disableTextSelect offline bootstrap-modal-form-open rowsR" data-toggle="modal" data-target="#rouletteHistory_modal" >
+                   
+                                    <td><?php echo date("Y-m-d H:i:s", strtotime($history->ts)); ?></td>
+                                    <td>{{ $history->rlt_seq }}</td>
+                                    <td>{{$server_ps->where('psid', $history->psid)->count() ? $server_ps->where('psid', $history->psid)->first()->seatid : "Missing saitid"}}</td>
+                                    <td>{{ $history->win_num }}</td>
+                                    <td>{{ number_format($history->bet / 100, 2 ) }}</td>
+                                    <td>{{ number_format($history->win_val / 100, 2 ) }}</td>
+                                    <td>{{ number_format($history->jackpot / 100, 2 ) }}</td>
+                                    <td>{{ $history->ho_spin }}</td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
                 </table>
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>

@@ -50,7 +50,7 @@
 
                             </tr>
                         @endforeach
-                        <tr class="danger" >
+                        <tr class="danger">
                             <td class="text-center" colspan="2"><strong style="color:black;">TOTAL</strong></td>
                             <td class="text-right" id="TotalIn" data-total="{{$totals['totalIn']}}">{{ number_format($totals['totalIn']/100, 2) }}</td>
                             <td class="text-right" id="TotalOut" data-total="{{$totals['totalOut']}}">{{ number_format($totals['totalOut']/100, 2) }}</td>
