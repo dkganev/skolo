@@ -29,7 +29,7 @@ class BingoPlaylistController extends Controller
     	$playlist->bingo_cost_bingo_fixed = false;
 
     	if($request->game_type == 1)
-    	{
+        {
     		$playlist->bingo_cost_line1 = $request->line_cost;
     		$playlist->bingo_cost_bingo = $request->bingo_cost;
 
@@ -65,7 +65,7 @@ class BingoPlaylistController extends Controller
             
         }
 
-        return redirect()->back();
+        return response()->json(['msg' => 'success'], 200);
     }
 
     public function index_templates()

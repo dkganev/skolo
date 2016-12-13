@@ -105,31 +105,42 @@
 
   <!-- Playlist Table -->
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-7">
      <table class="table table-bordered">
         <thead class="w3-blue-grey">
           <tr>
-            <th>Idx</th>
             <th>Ticket Cost(cents)</th>
             <th>Game Type</th>
             <th>Line Cost (cents)</th>
             <th>Bingo Cost (cents)</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           @foreach($playlists as $playlist)
           <tr class="tr-class">
-            <td>
-              <span class="glyphicon glyphicon-chevron-up up"></span>
-              <span class="glyphicon glyphicon-chevron-down down"></span>
-            </td>
-            {{-- <td> $playlist->idx</td> --}}
             <td>{{ $playlist->bingo_ticket_cost }}</td>
             <td>
               {{ $playlist->bingo_cost_line1_fixed && $playlist->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}
             </td>
             <td>{{ $playlist->bingo_cost_line1 }}</td>
             <td>{{ $playlist->bingo_cost_bingo }}</td>
+            <td>
+              <a class="btn btn-primary btn-xs top">
+                <span class="glyphicon glyphicon-eject"></span>
+              </a>
+
+              <a class="btn btn-success btn-xs up">
+                <span class="glyphicon glyphicon-arrow-up"></span>
+              </a>
+              <a class="btn btn-success btn-xs down">
+                <span class="glyphicon glyphicon-arrow-down"></span>
+              </a>
+
+              <a class="btn btn-danger btn-xs remove">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
+            </td>
           </tr>
           @endforeach
         </tbody>
@@ -141,14 +152,25 @@
 </div><!-- End Container-->
 
 <script>
-      $(".up,.down").click(function(){
-        var row = $(this).parents("tr:first");
-        if ($(this).is(".up")) {
-            row.insertBefore(row.prev());
-        } else {
-            row.insertAfter(row.next());
-        }
+    $(".up,.down").click(function() {
+      var row = $(this).parents("tr:first");
+      if ($(this).is(".up")) {
+          row.insertBefore(row.prev());
+      } else {
+          row.insertAfter(row.next());
+      }
     });
+
+    $(".top").click(function(){
+      var row = $(this).parents("tr:first");
+      row.prependTo('table');
+    });
+
+    $(".remove").click(function(){
+      var row = $(this).parents("tr:first");
+      row.remove();
+    });
+
 </script>
 
 <script>
@@ -167,7 +189,6 @@
         })
         .done(function() {
           javascript:ajaxLoad('{{url('/casino/playlist')}}');
-          // console.log('Success');
         });
     });
 

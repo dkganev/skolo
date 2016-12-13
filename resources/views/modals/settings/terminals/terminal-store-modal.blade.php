@@ -26,7 +26,7 @@
                 <option value="0">PlayStation</option>
                 <option value="1">Statistics</option>
                 <option value="2">Sphere</option>
-                <option value="3">Balls</option>
+             {{--    <option value="3">Balls</option> --}}
                 <option value="4">Wheel</option>
                 <option value="5">Statistic RLT</option>
                 <option value="6">Jackpot Statistic</option>
@@ -88,8 +88,8 @@
             <hr>
 
             <div class="form-group" style="width:270px; display: inline-block;">
-              <label for="langname">Language: </label><br>
-              <select name="langname" class="form-control selectpicker" id="langname">
+              <label for="default_lang">Language: </label><br>
+              <select name="default_lang" class="form-control selectpicker" id="default_lang">
                 <option selected="true" disabled="disabled">Choose Language</option>
                 @foreach($languages as $language)
                   <option value="{{ $language->langid }}">{{ $language->langname }}</option>
@@ -123,7 +123,7 @@ $(function() {
             seatid: $('#addMachineModal input[name="seatid"]').val() ,
             psdescription: $('#addMachineModal input[name="psdescription"]').val() ,
             ps_type: $('#addMachineModal select[name="ps_type"]').val() ,
-            //langname: $('#addMachineModal select[name="langname"]').val() ,
+            default_lang: $('#addMachineModal select[name="default_lang"]').val() ,
             games: $('#addMachineModal select[name="games[]"]').val() ,
             default_game: $('#addMachineModal select[name="default_game"]').val() ,
             _token: token 

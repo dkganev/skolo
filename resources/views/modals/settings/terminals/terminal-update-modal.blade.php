@@ -39,7 +39,7 @@
                 <option value="0" {{ $ps->ps_settings->ps_type == 0 ? 'selected="true"' : '' }}>PlayStation</option>
                 <option value="1" {{ $ps->ps_settings->ps_type == 1 ? 'selected="true"' : '' }}>Statistics</option>
                 <option value="2" {{ $ps->ps_settings->ps_type == 2 ? 'selected="true"' : '' }}>Sphere</option>
-                <option value="3" {{ $ps->ps_settings->ps_type == 3 ? 'selected="true"' : '' }}>Balls</option>
+                {{-- <option value="3" {{ $ps->ps_settings->ps_type == 3 ? 'selected="true"' : '' }}>Balls</option> --}}
                 <option value="4" {{ $ps->ps_settings->ps_type == 4 ? 'selected="true"' : '' }}>Wheel</option>
                 <option value="5" {{ $ps->ps_settings->ps_type == 5 ? 'selected="true"' : '' }}>Statistic RLT</option>
                 <option value="6" {{ $ps->ps_settings->ps_type == 6 ? 'selected="true"' : '' }}>Jackpot Statistic</option>
@@ -58,14 +58,15 @@
               @endforeach
               </select>
             </div>
-
+            <hr>
             <div class="form-group" style="width:270px; display: inline-block;">
               <label for="default_game">Default Game</label><br>
               <select name="default_game" id="default_game" class="selectpicker" title="Choose default game..." data-actions-box="true">
 
               <option value="0" {{ $ps->ps_settings->default_game == 0 ? ' selected="true"' : '' }}
-              
-              >None</option>
+              >   
+                  None
+              </option>
 
               @foreach($clientgameids as $clientgameid)
                 <option value="{{ $clientgameid->client_game_id }}"
@@ -74,6 +75,20 @@
 
                 >{{ $clientgameid->client_game_name }}</option>
               @endforeach
+              </select>
+            </div>
+
+            <div class="form-group" style="width:270px; display: inline-block;">
+              <label for="default_lang">Language: </label><br>
+              <select name="default_lang" class="form-control selectpicker" id="default_lang">
+                <option selected="true" disabled="disabled">Choose Language</option>
+                @foreach($languages as $language)
+                  <option value="{{ $language->langid }}"
+                          {{ $language->langid === $ps->ps_settings->default_lang  ? ' selected="true"' : '' }}
+                  >
+                        {{ $language->langname }}
+                  </option>
+                @endforeach
               </select>
             </div>
 
@@ -107,6 +122,7 @@ $(function() {
         ps_type: $('#updateMachineModal-{{ $ps->psid }} select[name="ps_type"]').val() ,
         psid: $('#updateMachineModal-{{ $ps->psid }} input[name="psid"]').val() ,
         games: $('#updateMachineModal-{{ $ps->psid }} select[name="games[]"]').val() ,
+        default_lang: $('#updateMachineModal-{{ $ps->psid }} select[name="default_lang"]').val() ,
         default_game: $('#updateMachineModal-{{ $ps->psid }} select[name="default_game"]').val() ,
         _token: '{{ Session::token() }}'
       },

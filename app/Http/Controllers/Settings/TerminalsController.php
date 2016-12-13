@@ -67,7 +67,10 @@ class TerminalsController extends Controller
         $ps_settings = new PsSettings();
         $ps_settings->psdescription = $request['psdescription'];
         $ps_settings->ps_type = $request['ps_type'];
+
         $ps_settings->enable_lang = '{' . $request['langname'] . '}';
+        $ps_settings->default_lang = $request['default_lang'];
+
         $ps_settings->setSubscribedGames($request['games']);
 
     	$server_ps->ps_settings()->save($ps_settings);
@@ -77,8 +80,7 @@ class TerminalsController extends Controller
         $ps_counter = new PsCounters();
 
         $counters = [];
-        for ($i = 0; $i <= 255; $i++)
-        {
+        for ($i = 0; $i <= 255; $i++) {
             $counters[] = 0;
         }
 
@@ -119,6 +121,8 @@ class TerminalsController extends Controller
         
         $ps_settings->psdescription = $request['psdescription'];
         $ps_settings->ps_type = $request['ps_type'];
+
+        $ps_settings->default_lang = $request['default_lang'];
         $ps_settings->enable_lang = '{' . $request['langname'] . '}';
 
         $ps_settings->default_game = $request['default_game'];
