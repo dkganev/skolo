@@ -178,13 +178,13 @@
 		<h3 style="margin: 0; position: relative; left: 124px; ;color: #474747; font-family: sans-serif; font-size: 21px;">
 			Max Ball Defaults
 		</h3>
-		
+
 		<hr style="margin-top: 7px; width: 420px;padding: 0;">
 
 		<div class="col-md-3">
 	
 			<div class="form-group">
-		    	<label style="color: #474747">Jackpot Max Ball:</label><br>
+		    	<label style="color: #474747">Jackpot Bingo Max Ball:</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">#</span>
 					<input name="jackpot_bingo_max_ball" value="{{ $bingo->jackpot_bingo_max_ball }}" type="text" class="form-control text-center" placeholder="Jackpot Bingo Max Ball" aria-describedby="sizing-addon2">
@@ -192,7 +192,7 @@
 			</div>
 
 			<div class="form-group">
-		    	<label style="color: #474747">Jackpot Line M.B.:</label><br>
+		    	<label style="color: #474747">Jackpot Line Max Ball:</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
 					<input name="jackpot_line_max_ball" value="{{ $bingo->jackpot_line_max_ball }}" type="text" class="form-control text-center" placeholder="Jackport Line MB" aria-describedby="sizing-addon2">
@@ -216,7 +216,7 @@
 			</div>
 
 			<div class="form-group">
-		    	<label style="color: #474747">My Bonus Max Ball.:</label><br>
+		    	<label style="color: #474747">My Bonus Max Ball :</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">#</span>
 					<input name="mybonus_max_ball" value="{{ $bingo->mybonus_max_ball }}" type="text" class="form-control text-center" placeholder="My Bonus MB" aria-describedby="sizing-addon2">
