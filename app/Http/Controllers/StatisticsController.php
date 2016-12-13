@@ -130,7 +130,16 @@ class StatisticsController extends Controller
     {
         $games = Games::orderBy('gameid', 'asc')->get();
 
-        return view('statistics.games', [ 'games' => $games]);
+        $games_bet = Games::all()->sum('counters_bet');
+        $games_win = Games::all()->sum('counters_win');
+        $games_jp = Games::all()->sum('counters_jp');
+        $games_bet = Games::all()->sum('counters_bet');
+        $games_games = Games::all()->sum('counters_games');
+        $games_jp_hits = Games::all()->sum('counter_jp_hits');
+
+        return view('statistics.games', compact(
+                    'games', 'games_bet', 'games_win', 'games_jp', 'games_games',  'games_jp_hits'
+                ));
     }
 
     public function export2excelGamesStatistics()

@@ -11,8 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	// $this->call(PsErrorsLevelSeeder::class);
-     //    $this->call(PsErrorsListSeeder::class);
+    	$this->call(PsErrorsLevelSeeder::class);
+        $this->call(PsErrorsListSeeder::class);
         $this->call(RoleSeeder::class);
     }
 }

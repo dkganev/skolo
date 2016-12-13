@@ -49,11 +49,11 @@
                             @endforeach
                             <tr class="danger">
                                 <td class="text-center" colspan="2"><strong style="color:black;">TOTAL</strong></td>
-                                <td class="text-right">1111</td>
-                                <td class="text-right">1111</td>
-                                <td class="text-right">1111</td>
-                                <td class="text-right">1111</td>
-                                <td class="text-right">1111</td>
+                                <td class="text-right">{{ number_format($games_bet/100, 2) }}</td>
+                                <td class="text-right">{{ number_format($games_win/100, 2) }}</td>
+                                <td class="text-right">{{ number_format($games_jp/100, 2) }}</td>
+                                <td class="text-right">{{ $games_games }}</td>
+                                <td class="text-right">{{ $games_jp_hits }}</td>
                             </tr>
                         </tbody>
                     </thead>
