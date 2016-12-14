@@ -63,16 +63,20 @@ $( "#GridDrag" ).click(function() {
     }
 });
 $( "#GridColor" ).click(function() {
-    if($("#GridColor").is(':checked'))
+    if($("#GridColor").is(':checked')){
         $( "#DivColor" ).show();
-    else
-        $( "#DivColor" ).hide();    
+    }else{
+        $( "#DivColor" ).hide();
+    }    
 });
 $( "#GridBingoFeed" ).click(function() {
-    if($("#GridBingoFeed").is(':checked'))
-        $( "#DivBingoFeed" ).show();
-    else
-        $( "#DivBingoFeed" ).hide();    
+    if($("#GridBingoFeed").is(':checked')){
+        //$( "#DivBingoFeed" ).show();
+        //$( "#DivBingoWins" ).show();
+    }else{
+        //$( "#DivBingoFeed" ).hide();
+        //$( "#DivBingoWins" ).hide();
+    }    
 });
 function boxModalWindow(bixID) {
     $('#ModalBoxID').text(bixID);

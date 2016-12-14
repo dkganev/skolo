@@ -6,16 +6,12 @@ var socket = io(pageHrefSocket);
 var pageHrefBingoGameStateSocket = $('#CasinoCasino').attr('data-url') + ":3000/game_state";
 //console.log (pageHrefSocket);
 var socketBingoGameState = io.connect(pageHrefBingoGameStateSocket);
-/*
-var pageHrefBingoMeinconfSocket = $('#CasinoCasino').attr('data-url') + ":3000/bingoMainconf";
-//console.log (pageHrefSocket);
-var socketBingoMeinconf = io.connect(pageHrefBingoMeinconfSocket);
 
-var pageHrefbingoPsTicketsSocket = $('#CasinoCasino').attr('data-url') + ":3000/bingoPsTickets";
-//console.log (pageHrefSocket);
-var socketbingoPsTickets = io.connect(pageHrefbingoPsTicketsSocket);
+var pageHrefWinsHistorySocket = $('#CasinoCasino').attr('data-url') + ":3000/wins_history";
+//console.log (pageHrefSocket);wins_history
+var socketWinsHistory = io.connect(pageHrefWinsHistorySocket);
 //var socket = io('http://10.0.0.199:3000');
-*/
+
 socket.on('news', function (data) {
     console.log ("test222");
     console.log(data);
@@ -33,6 +29,52 @@ socket.on('typing', function (data) {
     console.log ("test2");
     addChatTyping(data);
 });
+var TimeOut = [1];
+var TimeOutKey = 1;
+var Type = " ";
+socketWinsHistory.on('new message', function (data) {
+    var jsonObj = data.message;
+    var obj = $.parseJSON(jsonObj);
+    console.log (obj);
+    if (obj.query == "UPDATE" || obj.query == "INSERT")
+    {
+        if(obj.dataNew.win_type == 1){
+            Type = "Line"; 
+        }else if(obj.dataNew.win_type == 2) {
+            Type = "Bingo";
+        }else if(obj.dataNew.win_type == 3) {
+            Type = "Bonus Line";
+        }else if(obj.dataNew.win_type == 4) {
+            Type = "Bonus Bingo";
+        }else if(obj.dataNew.win_type == 5) {
+            Type = "Jackpot Line";
+        }else if(obj.dataNew.win_type == 6) {
+            Type = "Jackpot_Bingo";
+        }else if(obj.dataNew.win_type == 7) {
+            Type = "My Bonus";
+        }else if(obj.dataNew.win_type == 8) {
+            Type = "Cancel game";
+        };
+        unique_game_seq = $("#ticket_price").attr('data-unique_game_seq');
+            
+        if(TimeOutKey > 100){
+            TimeOutKey = 1; 
+        }else{
+            TimeOutKey = TimeOutKey + 1;
+        };
+        if (obj.dataNew.win_type == 8){
+            $("#DivBingoWins").prepend("<div id='DivBingoWins" + TimeOutKey + "' style='border: 1px solid #000000; border-radius: 15px; background-color: #ffffff; text-align: center;' >Game was canceled. </div>. ");
+            clearTimeout(TimeOut[TimeOutKey]);
+            TimeOut[TimeOutKey] = setTimeout(function(){ $('#DivBingoWins' + TimeOutKey).remove() }, 20000);
+        }else{
+            $("#DivBingoWins").prepend("<div id='DivBingoWins" + TimeOutKey + "' style='border: 1px solid #000000; border-radius: 15px; background-color: #ffffff; text-align: center;' >PSID: " + obj.dataNew.psid + "<br />SeatID: " + obj.dataNew.seatid + "<br />Win " + Type + ": " + (((obj.dataNew.win_val)/100).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 })) + " </div>. ");
+            clearTimeout(TimeOut[TimeOutKey]);
+            TimeOut[TimeOutKey] = setTimeout(function(){ $('#DivBingoWins' + TimeOutKey).remove() }, 20000);
+        }
+    }   
+});
+
+
 socketBingoGameState.on('new message', function (data) {
     var jsonObj = data.message;
     var obj = $.parseJSON(jsonObj);

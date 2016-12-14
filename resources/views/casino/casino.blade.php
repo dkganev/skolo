@@ -109,6 +109,7 @@
             {{ $game->client_game_ids->client_game_name }}---{{ $game->short_name}}
         </div>
     @endforeach
+    <h4 style="text-align: center; height: 20px; border-radius: 15px 15px 15px 15px;">&nbsp;</h4>
 </div>
 
 <div id="DivBingoFeed">
@@ -131,8 +132,13 @@
         <p style=" margin-right: 20px">Bonus Line Max Ball: <span id="bonus_line_max_ball" class="pull-right">{{$MainConfig->bonus_line_max_ball}}</span></p>
     </div>
 </div>
-
+<div id="DivBingoWins">
+    <div style="line-height: 0.5;">
+      
+    </div>
 </div>
+
+
 
 <style>
     div#casino-panel-body {
@@ -148,10 +154,11 @@
         display: none;
         width: 250px;
         border: 1px solid #000000;
+        border-radius: 15px;
         text-align: center;
         position: absolute;
-        top: 400px;
-        left: 1200px;
+        top: 200px;
+        left: 900px;
         z-index: 1000;
         color: black;
         background-color: #ffffff;
@@ -159,14 +166,30 @@
 
     div#DivBingoFeed {
         display: none;
-        width: 250px; border: 1px solid #000000;
+        width: 250px; 
+        border: 1px solid #000000;
+        border-radius: 15px;
         text-align: left;
         position: absolute;
-        top: 400px;
+        top: 200px;
         left: 1200px;
         z-index: 1000;
         color: black;
         background-color:#ffffff;
+        padding-left: 20px;
+    }
+    
+    div#DivBingoWins {
+        display: none;
+        width: 250px;
+        min-height: 250px;
+        text-align: left;
+        position: absolute;
+        top: 200px;
+        left: 1450px;
+        z-index: 1000;
+        color: black;
+        background-color: transparent;
         padding-left: 20px;
     }
 </style>
@@ -183,17 +206,21 @@ $( "#GridDrag" ).click(function() {
 });
 
 $( "#GridColor" ).click(function() {
-    if($("#GridColor").is(':checked'))
+    if($("#GridColor").is(':checked')){
         $( "#DivColor" ).show();
-    else
+    }else{
         $( "#DivColor" ).hide();    
+    }
 });
 
 $( "#GridBingoFeed" ).click(function() {
-    if($("#GridBingoFeed").is(':checked'))
+    if($("#GridBingoFeed").is(':checked')){
         $( "#DivBingoFeed" ).show();
-    else
-        $( "#DivBingoFeed" ).hide();    
+        $( "#DivBingoWins" ).show();
+    }else{
+        $( "#DivBingoFeed" ).hide();
+        $( "#DivBingoWins" ).hide();
+    }
 });
 
 //var number = 1234567.89;

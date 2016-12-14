@@ -57,7 +57,7 @@ $allRows = ceil($allThickets / 8);
                         $bingoTicket = unpack("C15", stream_get_contents($psTicketsArchive->Tickets($ticketID[1]), 15, 0));
                     ?>
                     <div id="wonL{{$bingoLine}}" style="position: absolute; background-color: #fff;margin-left: 5px; margin-top: 30px; min-width: 100px; min-height: 20px; border-radius: 5px; border: 1px solid #333; display: none;">
-                        Line: {{number_format($wins_history->where('psid', $datapsid)->where('win_type', 1)->first()->win_val / 100,2)}}<br/>
+                        Line: {{number_format(($wins_history->where('psid', $datapsid)->where('win_type', 1)->first()->win_val / $wins_history->where('psid', $datapsid)->where('win_type', 1)->first()->ticket_count) / 100,2)}}<br/>
                         <?php $wins_history->where('psid', $datapsid)->where('win_type', 3)->count() ?  print ('Bonus Line: ' . number_format($wins_history->where('psid', $datapsid)->where('win_type', 3)->first()->win_val / 100,2)) : "" ?>
                     </div>
                         <table style='border: 1px solid #428bca; text-align: center; border-collapse: separate; border-spacing: 4px;'>
@@ -108,7 +108,7 @@ $allRows = ceil($allThickets / 8);
                         $bingoTicket = unpack("C15", stream_get_contents($psTicketsArchive->Tickets($ticketID[1]), 15, 0));
                      ?>
                     <div id="wonB{{$bingoBingo}}" style="position: absolute; background-color: #fff;margin-left: 5px; margin-top: 30px; min-width: 100px; min-height: 20px; border-radius: 5px; border: 1px solid #333; display: none;">
-                        Bingo: {{number_format($wins_history->where('psid', $datapsid)->where('win_type', 2)->first()->win_val / 100,2)}}<br/>
+                        Bingo: {{number_format(($wins_history->where('psid', $datapsid)->where('win_type', 2)->first()->win_val / $wins_history->where('psid', $datapsid)->where('win_type', 2)->first()->ticket_count ) / 100,2)}}<br/>
                         <?php $wins_history->where('psid', $datapsid)->where('win_type', 4)->count() ?  print ('Bonus Bingo: ' . number_format($wins_history->where('psid', $datapsid)->where('win_type', 4)->first()->win_val / 100,2)) : "" ?>
                     </div>
                          <table style='border: 1px solid #428bca; text-align: center; border-collapse: separate; border-spacing: 4px;'>
