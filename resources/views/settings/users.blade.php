@@ -1,4 +1,5 @@
 @include('modals.settings.users.add-user-modal')
+@include('modals.settings.users.destroy-user-modal')
 <div class="container">
 <div class="row">
     <div class="col-lg-8">
@@ -46,13 +47,24 @@
                             </td>
                             <td>{{ $user->phone }}</td>
                             <td>
-                                <a  href="" role="button" data-toggle="modal"
+                                <a  role="button" data-toggle="modal"
                                     data-toggle="modal"
                                     data-target="#editUserModal-{{ $user->id }}"
-                                    class="btn btn-success btn-xs"
+                                    class="btn btn-primary btn-xs"
                                 >
                                     Edit
                                 </a>
+
+                                <a  role="button" data-toggle="modal"
+                                    data-toggle="modal"
+                                    data-target="#destroyUserModal"
+                                    data-id="{{ $user->id }}"
+                                    data-fullname="{{ $user->fullName() }}"
+                                    class="btn btn-danger btn-xs"
+                                >
+                                    Delete
+                                </a>
+
                             </td>
                         </tr>
                         @endforeach

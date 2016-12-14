@@ -118,7 +118,7 @@
         </thead>
         <tbody>
           @foreach($playlists as $playlist)
-          <tr class="tr-class">
+          <tr class="tr-class" idx="{{ $playlist->idx }}">
             <td>{{ $playlist->bingo_ticket_cost }}</td>
             <td>
               {{ $playlist->bingo_cost_line1_fixed && $playlist->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}
@@ -163,11 +163,26 @@
 
     $(".top").click(function(){
       var row = $(this).parents("tr:first");
+      var data = {
+          idx: row.attr('idx'),
+          _token: $('meta[name="csrf-token"]').attr('content')
+      }
+      $.post('/casino/playlist/top', data, function(response) {
+        console.log(response.msg, response.idx);
+      });
+
       row.prependTo('table');
     });
 
-    $(".remove").click(function(){
+    $(".remove").click(function() {
       var row = $(this).parents("tr:first");
+      var data = {
+          idx: row.attr('idx'),
+          _token: $('meta[name="csrf-token"]').attr('content')
+      }
+      $.post('/casino/playlist/destroy', data, function(response) {
+        console.log(response.msg, response.id);
+      });
       row.remove();
     });
 

@@ -45,6 +45,45 @@ class BingoPlaylistController extends Controller
 
     }
 
+    public function playlist_top(Request $request)
+    {
+        $playlist = Playlist::where('idx', $request['idx'])->first();
+        $playlist->idx = Playlist::count() + 10;
+
+        if($playlist->update()) {
+            $response = [
+                'msg' => 'Template Moved : Top',
+                'idx'  => $request['idx']
+            ];
+        }
+
+        return response()->json($response);
+    }
+
+    public function playlist_up(Request $request)
+    {
+        //
+    }
+
+    public function playlist_down(Request $request)
+    {
+        //
+    }
+
+    public function playlist_destroy(Request $request)
+    {
+        $playlist = Playlist::where('idx', $request['idx'])->first();
+        
+        if($playlist->delete()) {
+            $response = [
+                'msg' => 'Template Removed',
+                'idx'  => $request['idx']
+            ];
+        }
+
+        return response()->json($response);
+    }
+
     public function load_template(Request $request)
     {
         $template = Templates::where('template_id', $request->template_id)->first();

@@ -37,14 +37,18 @@ Route::get('/export2excelEvents', 'Casino\CasinoController@export2excelEvents')-
  * CASINO / BINGO PLAYLIST
 **/
 Route::get('/casino/playlist', 'Casino\BingoPlaylistController@index_playlist');
-
-Route::get('/casino/templates', 'Casino\BingoPlaylistController@index_templates');
-Route::post('/casino/playlist/store', 'Casino\BingoPlaylistController@playlist_store');
 Route::post('/casino/playlist/load', 'Casino\BingoPlaylistController@load_template');
 
+
+Route::post('/casino/playlist/store', 'Casino\BingoPlaylistController@playlist_store');
+Route::post('/casino/playlist/destroy', 'Casino\BingoPlaylistController@playlist_destroy');
+Route::post('/casino/playlist/top', 'Casino\BingoPlaylistController@playlist_top');
+Route::post('/casino/playlist/up', 'Casino\BingoPlaylistController@playlist_up');
+Route::post('/casino/playlist/down', 'Casino\BingoPlaylistController@playlist_down');
+
+Route::get('/casino/templates', 'Casino\BingoPlaylistController@index_templates');
 Route::post('/casino/templates/store', 'Casino\BingoPlaylistController@template_store');
 Route::post('/casino/templates/destroy', 'Casino\BingoPlaylistController@template_destroy');
-
 Route::post('/casino/template/game/store', 'Casino\BingoPlaylistController@template_game_store');
 
 /**
@@ -86,7 +90,7 @@ Route::get('/settings/exportCasinos', 'Settings\CasinosController@exportCasinos'
 Route::get('/settings/users', 'Settings\UserController@index');
 Route::post('/settings/users/store', 'Settings\UserController@store');
 Route::post('/settings/users/edit', 'Settings\UserController@edit');
-
+Route::post('/settings/users/destroy', 'Settings\UserController@destroy');
 
 /**
  * SETTINGS / BILL TYPES

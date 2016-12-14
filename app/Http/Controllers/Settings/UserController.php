@@ -41,7 +41,7 @@ class UserController extends Controller
             'phone' => 'required|min:8|max:15'
         ]);
 
-        $user = User::find($request->id);   
+        $user = User::find($request->id);
         $user->name = $request->name;
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
@@ -56,5 +56,13 @@ class UserController extends Controller
 
         $response = 'User Created';
         return response()->json($response, 200);
+    }
+
+    public function destroy(Request $request)
+    {
+        $user = User::find($request->id);
+        if($user->delete()) {
+            return response()->json(['msg' => 'User removed from records!'], 200);
+        }
     }
 }
