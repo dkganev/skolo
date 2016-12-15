@@ -11,6 +11,10 @@
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 33%;">
                     Users
                 </h2>
+                
+                <a href="{{ route('export.terminals') }}" class="btn btn-primary btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                </a>
             </div>
             <div class="panel-body">
                 <table class="table table-striped table-hover"

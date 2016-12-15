@@ -19,9 +19,14 @@
                @endhasanyrole
                 <li><a href="javascript:ajaxLoad('{{url('settings/casinos')}}')">Casinos</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('settings/billtypes')}}')">Billing Types</a></li>
+                {{-- <li><a href="javascript:ajaxLoad('{{url('settings/billtypes')}}')">Billing Types</a></li> --}}
 
-                <li ><a class="active-secondary-nav" style="color:white;" href="javascript:ajaxLoad('{{url('settings/langs')}}')"">Languages</a></li>
+                <li><a class="active-secondary-nav" style="color:white;"
+                        href="javascript:ajaxLoad('{{url('settings/langs')}}')"
+                      >
+                        Languages
+                    </a>
+                </li>
 
                 <li><a href="javascript:ajaxLoad('{{url('settings/errors')}}')">Errors</a></li>
 

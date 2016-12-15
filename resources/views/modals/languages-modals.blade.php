@@ -107,6 +107,8 @@ $(function() {
             }
         }).done(function() {
             $('#updateLanguageModal').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
             javascript:ajaxLoad('{{url('settings/langs')}}')
         })
     })

@@ -87,7 +87,7 @@ class StatisticsController extends Controller
         ];
         $export = array();
         foreach ($counters as $key => $counter) {
-            $export[$key] = array(
+            $export[$key] = [
                 'PS ID' => $counter->psid, 
                 'Dallas ID' => $counter->server_ps->dallasid,
                 'Total In' =>  $counter->totalIn(), 
@@ -95,8 +95,7 @@ class StatisticsController extends Controller
                 'Total Bet' => $counter->totalBet(),
                 'Total Win' => $counter->totalWin(),
                 'Total Credit' => $counter->totalCredit()
-            );
-            
+            ];
         }
             $export[$key + 1] = array(
                 'PS ID' => "", 

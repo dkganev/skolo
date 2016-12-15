@@ -67,7 +67,7 @@ class BingoPlaylistController extends Controller
 
     public function playlist_down(Request $request)
     {
-        //
+        $playlist = Playlist::where('idx', $request['idx'])->first();
     }
 
     public function playlist_destroy(Request $request)
@@ -88,8 +88,7 @@ class BingoPlaylistController extends Controller
     {
         $template = Templates::where('template_id', $request->template_id)->first();
 
-        foreach($template->template_games as $games)
-        {
+        foreach($template->template_games as $games) {
             $data = [
                 'bingo_ticket_cost' => $games->bingo_ticket_cost,
                 'bingo_cost_bingo' => $games->bingo_cost_bingo,
@@ -101,7 +100,6 @@ class BingoPlaylistController extends Controller
             ];
 
             Playlist::create($data);
-            
         }
 
         return response()->json(['msg' => 'success'], 200);
@@ -118,10 +116,8 @@ class BingoPlaylistController extends Controller
     {
     	$template = new Templates();
     	$template->name = $request->name;
-    	$status = $template->save();
 
-        if(!$status)
-        {
+        if($template->save()) {
             $msg = 'Something went wrong!';
             return response()->json(['message' => $msg], 501);
         }
@@ -135,7 +131,6 @@ class BingoPlaylistController extends Controller
     	return redirect()->back();
     }
 
-
     public function template_game_store(Request $request)
     {
         $template = Templates::where('template_id', $request->template_id)->first();
@@ -147,8 +142,7 @@ class BingoPlaylistController extends Controller
         $playlist->bingo_cost_line1_fixed = false;
         $playlist->bingo_cost_bingo_fixed = false;
 
-        if($request->game_type == 1)
-        {
+        if($request->game_type == 1) {
             $playlist->bingo_cost_line1 = $request->line_cost;
             $playlist->bingo_cost_bingo = $request->bingo_cost;
 
