@@ -54,7 +54,7 @@
          <hr style="margin: 15px 0 15px 0">
 
           {{ csrf_field() }}
-          <button id="sphere-config-btn" type="submit" class="btn btn-success btn-sm btn-block">Update</button>
+          <button id="sphere-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">Update</button>
 
       </div>
 

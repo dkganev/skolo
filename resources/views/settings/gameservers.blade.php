@@ -8,7 +8,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addGameClientModal">
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addGameClientModal">
                     Add Game Client 
                 </button>
 
@@ -16,8 +16,8 @@
                     Client Game IDs
                 </h2>
 
-                <a href="{{ route('export.clients') }}" class="btn btn-danger btn-sm pull-right">
-                    Export
+                <a href="{{ route('export.clients') }}" class="btn btn-primary btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
                 </a>
             </div>
             
@@ -71,7 +71,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addCategoryModal">
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addCategoryModal">
                     Add Game Category 
                 </button>
 
@@ -79,8 +79,8 @@
                     Game Categories
                 </h2>
 
-                <a href="#" class="btn btn-danger btn-sm pull-right">
-                    Export
+                <a href="{{ url('/settings/category/export') }}" class="btn btn-primary btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
                 </a>
             </div>
             <div class="panel-body">
@@ -136,7 +136,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#addGameModal">
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addGameModal">
                     Add Game 
                 </button>
 
@@ -144,8 +144,8 @@
                     Game Servers
                 </h2>
                 
-                <a href="{{ route('export.games') }}" class="btn btn-danger btn-sm pull-right">
-                   Export
+                <a href="{{ route('export.games') }}" class="btn btn-primary btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
                 </a>
             </div>
 

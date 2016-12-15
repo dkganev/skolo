@@ -151,7 +151,7 @@
          <hr style="margin: 15px 0 15px 0">
 
           {{ csrf_field() }}
-          <button id="wheel-config-btn" type="submit" class="btn btn-success btn-sm btn-block">Update</button>
+          <button id="wheel-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">Update</button>
 
       </div>
 

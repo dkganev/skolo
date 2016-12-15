@@ -19,7 +19,7 @@
 <div class="col-lg-9">
   <div class="panel panel-default" id="blackjack-tables-panel">
     <div class="panel-heading">
-        <a class="btn btn-danger  btn-sm pull-left" href="/settings/blackjack/table/export">
+        <a class="btn btn-primary  btn-sm pull-left" href="/settings/blackjack/table/export">
             <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
         </a>
 
@@ -28,7 +28,7 @@
         </h2>
 
         <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
-        <a class="btn btn-success btn-sm pull-right" onclick="ExportToPNGBJTables();">
+        <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGBJTables();">
             Export to PNG
         </a>
     </div>

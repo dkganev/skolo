@@ -20,17 +20,17 @@
 	<div class="panel panel-default" id="blackjack-main-config-panel">
 
 	<div class="panel-heading">
-        <a class="btn btn-danger  btn-sm pull-left" href="/settings/blackjack/mainconfig/export">
+{{--         <a class="btn btn-primary  btn-sm pull-left" href="/settings/blackjack/mainconfig/export">
             <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
-        </a>
+        </a> --}}
 
-        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 30%;">
+        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 40%;">
              Main Config
         </h2>
 
 
         <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
-        <a class="btn btn-success btn-sm pull-right" onclick="ExportToPNGBJMainConfig();">
+        <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGBJMainConfig();">
             Export to PNG
         </a>
     </div>
@@ -189,7 +189,7 @@
 			<hr style="margin: 15px 0 15px 0">
 			<div class="pull-right" style="width: 400px;">
 				{{ csrf_field() }}
-				<button id="main-config-btn" type="submit" class="btn btn-warning btn-sm btn-block">Update</button>
+				<button id="main-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">Update</button>
 			</div>
 
 	 	</form>

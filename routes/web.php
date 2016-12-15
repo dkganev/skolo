@@ -75,6 +75,7 @@ Route::get('/settings/exportClients', 'Settings\GameServersController@exportClie
 Route::get('/settings/exportGames', 'Settings\GameServersController@exportGames')->name('export.games');
 Route::post('/settings/addCategory', 'Settings\GameServersController@addCategory')->name('add.category');
 Route::post('/settings/updateCategory', 'Settings\GameServersController@updateCategory')->name('update.category');
+Route::get('/settings/category/export', 'Settings\GameServersController@exportCategories');
 
 /**
  * SETTINGS / CASINO
@@ -91,6 +92,7 @@ Route::get('/settings/users', 'Settings\UserController@index');
 Route::post('/settings/users/store', 'Settings\UserController@store');
 Route::post('/settings/users/edit', 'Settings\UserController@edit');
 Route::post('/settings/users/destroy', 'Settings\UserController@destroy');
+Route::get('/settings/users/export', 'Settings\UserController@export_users');
 
 /**
  * SETTINGS / BILL TYPES

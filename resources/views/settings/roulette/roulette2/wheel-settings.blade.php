@@ -36,11 +36,19 @@
 <div class="container">
 <div class="row">
 <div class="col-lg-8">
-  <div class="panel panel-default">
+  <div class="panel panel-default" id="wheel-settings-panel-rlt-2">
 
     <div class="panel-heading">
-      <h2 class="panel-title text-center" style="color:white;"><strong>Wheel Settings</strong></h2>
+        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 37%;">
+           Wheel Settings
+        </h2>
+
+        <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+        <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGBJWheelSettings2();">
+            Export to PNG
+        </a>
     </div>
+
 
     <div class="panel-body">
     <form action="/settings/roulette2/wheelconfig/edit" method="POST" role="form" id="weel-settings-form">
@@ -211,7 +219,7 @@
         <strong>DB: roulette_sas1</strong>
         <div class="pull-right" style="width: 400px;">
           {{ csrf_field() }}
-          <button id="main-config-rlt" type="submit" class="btn btn-success btn-sm btn-block">Update</button>
+          <button id="main-config-rlt" type="submit" class="btn btn-danger btn-sm btn-block">Update</button>
         </div>
 
       </div>
@@ -238,4 +246,21 @@ $('button#main-config-rlt').on('click', function(event) {
          javascript:ajaxLoad('{{url('/settings/roulette2/wheelsettings/')}}');
     });
 });
+</script>
+<script>
+    function ExportToPNGBJWheelSettings2() {
+    html2canvas($('#wheel-settings-panel-rlt-2'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>

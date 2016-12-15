@@ -12,7 +12,7 @@
                     Users
                 </h2>
                 
-                <a href="{{ route('export.terminals') }}" class="btn btn-primary btn-sm pull-right">
+                <a href="{{ url('/settings/users/export') }}" class="btn btn-primary btn-sm pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
                 </a>
             </div>

@@ -22,7 +22,7 @@
 
         <div class="panel panel-default" id="my-bonus-panel">
             <div class="panel-heading">
-                <a class="btn btn-warning btn-sm pull-left" href="/settings/bingo/mybonus-export">
+                <a class="btn btn-primary btn-sm pull-left" href="/settings/bingo/mybonus-export">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
                 </a>
 
@@ -31,7 +31,7 @@
                 </h2>
 
                 <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
-                <a class="btn btn-success btn-sm pull-right" onclick="ExportToPNGMyBonus();">
+                <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGMyBonus();">
                     Export to PNG
                 </a>
             </div>

@@ -27,19 +27,19 @@
 <div class="panel panel-default" id="max-balls-panel">
     <div class="panel-heading">
         <a id="toggle-max-balls" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addMaxBallsModal">
-            Add New
+            Add New Max Ball
         </a>
 
         <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 30%;">
              Max Balls
         </h2>
 
-        <a class="btn btn-warning  btn-sm pull-right" href="/settings/bingo/maxballs/export">
+        <a class="btn btn-primary  btn-sm pull-right" href="/settings/bingo/maxballs/export">
             <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
         </a>
 
         <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
-        <a class="btn btn-success btn-sm pull-right" onclick="ExportToPNGMaxBalls();">
+        <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGMaxBalls();">
             Export to PNG
         </a>
     </div>

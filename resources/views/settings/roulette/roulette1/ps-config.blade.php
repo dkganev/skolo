@@ -46,23 +46,22 @@
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
-        @foreach($ps_conf as $conf)
-        <tr style="height: 20px">
-          <td>{{ $conf->ps_id }}</td>
-          <td>{{ $conf->seat_id }}</td>
-          <td>
-            <button class="btn btn-warning btn-xs ps-config-toggle"
-                    type="submit"
-                    data-id="{{ $conf->ps_id }}"
-            >
-              Edit
-            </button>
-          </td>
-        </tr>
-        @endforeach
-
-        </tbody>
+          <tbody>
+            @foreach($ps_conf as $conf)
+            <tr style="height: 20px">
+              <td>{{ $conf->ps_id }}</td>
+              <td>{{ $conf->seat_id }}</td>
+              <td>
+                <button class="btn btn-primary btn-xs ps-config-toggle"
+                        type="submit"
+                        data-id="{{ $conf->ps_id }}"
+                >
+                  Edit
+                </button>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
         </table>
       </div>
 

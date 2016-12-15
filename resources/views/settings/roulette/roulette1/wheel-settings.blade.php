@@ -40,11 +40,11 @@
   <div class="panel panel-default" id="wheel-settings-panel">
 
     <div class="panel-heading">
-        <a class="btn btn-danger  btn-sm pull-left" href="/settings/blackjack/table/export">
+{{--         <a class="btn btn-primary  btn-sm pull-left" href="/settings/blackjack/table/export">
             <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
-        </a>
+        </a> --}}
 
-        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 25%;">
+        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 37%;">
            Wheel Settings
         </h2>
 

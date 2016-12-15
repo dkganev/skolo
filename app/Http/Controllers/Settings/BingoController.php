@@ -38,7 +38,7 @@ class BingoController extends Controller
                 $sheet->setBorder('A1', 'thin');
                 $sheet->setHeight(1, 20);
             });
-        })->export('xlsx');
+        })->export('xls');
     }
 
     public function main_config_edit(Request $request)
@@ -62,8 +62,8 @@ class BingoController extends Controller
     public function my_bonus_export()
     {
         $export = MyBonus::orderBy('id', 'asc')->get();
-        Excel::create('Main-Config Data', function($excel) use($export){
-            $excel->sheet('Bingo', function($sheet) use($export){
+        Excel::create('Bingo My Bonus Data', function($excel) use($export){
+            $excel->sheet('Bingo My Bonus', function($sheet) use($export){
                 $sheet->FromArray($export);
                 $sheet->freezeFirstRow();
                 $sheet->setFontFamily('Liberation Sans');

@@ -4,8 +4,8 @@
     <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#addErrorListModal">
-                    Add 
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addErrorListModal">
+                    Add Error List
                 </button>
 
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">

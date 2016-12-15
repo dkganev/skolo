@@ -27,16 +27,16 @@
 
 <div class="panel panel-default" id="bingo-main-config-panel">
   	<div class="panel-heading clearfix">
-        <a class="btn btn-warning pull-left" href="/settings/bingo/main-config-export">
+{{--         <a class="btn btn-primary pull-left" href="/settings/bingo/main-config-export">
             <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
-        </a>
+        </a> --}}
 
-        <h2 class='text-center' style="display: inline; color: #fff; font-family: 'italic';  padding-left: 30%;">
+        <h2 class='text-center' style="display: inline; color: #fff; font-family: 'italic';  padding-left: 35%;">
              Main Config
         </h2>
 
 	    <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
-	    <a class="btn btn-success  pull-right" onclick="ExportToPNGMainConfig();">
+	    <a class="btn btn-warning pull-right" onclick="ExportToPNGMainConfig();">
 	        Export to PNG
 	    </a>
   	</div>
@@ -227,11 +227,11 @@
 
 		</div><!-- End Panel Body-->
 		<div class="panel-footer">
-			<button id="cancel-game" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-danger">
+			<button id="cancel-game" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-primary">
 				Cancel Bingo Game
 			</button>
 
-			<button id="bingo-main-config-sbt" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-primary pull-right">
+			<button id="bingo-main-config-sbt" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-danger pull-right">
 				Update
 			</button>
 

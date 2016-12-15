@@ -13,7 +13,7 @@
 
             <div class="form-group">
                 <label for="client_game_id">Game Client ID:</label><br>
-                <input class="form-control" type="text" name="client_game_id" id="client_game_id" placeholder="Cannot be edited">
+                <input class="form-control" type="text" name="client_game_id" id="client_game_id" placeholder="Game Client ID">
             </div>
 
             <div class="form-group">
@@ -257,7 +257,7 @@
           <form class="form-inline"> 
             <div class="form-group">
                 <label for="idx">Category ID:</label><br>
-                <input class="form-control" type="text" name="idx" id="idx" placeholder="Cannot be edited">
+                <input class="form-control" type="text" name="idx" id="idx" placeholder="Category ID">
             </div>
             <div class="form-group">
                 <label for="name">Category Name:</label><br>
@@ -293,7 +293,7 @@
         <form class="form-inline"> 
           <div class="form-group">
               <label for="idx">Category ID:</label><br>
-              <input class="form-control" type="text" name="idx" id="idx" placeholder="Cannot be edited" disabled>
+              <input class="form-control" type="text" name="idx" id="idx" disabled>
           </div>
 
           <div class="form-group">

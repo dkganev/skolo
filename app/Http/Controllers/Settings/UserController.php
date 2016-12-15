@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Settings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Excel;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Requests;
@@ -64,5 +65,26 @@ class UserController extends Controller
         if($user->delete()) {
             return response()->json(['msg' => 'User removed from records!'], 200);
         }
+    }
+
+    public function export_users()
+    {
+        $export = User::all();
+
+        Excel::create('Users Data', function($excel) use($export){
+
+            $excel->sheet('Users', function($sheet) use($export){
+                $sheet->fromArray($export);
+
+                $sheet->setFontFamily('Verdana');
+                $sheet->setFontSize(10);
+                $sheet->row(1, function ($row) {
+                    $row->setFontWeight('bold');
+                });
+                $sheet->setBorder('A1', 'thin');
+                $sheet->setHeight(1, 20);
+
+            });
+        })->export('xls');
     }
 }
