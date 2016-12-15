@@ -10,12 +10,15 @@ use App\Models\Roulette\WheelSettings;
 use App\Models\Roulette\WheelConfig;
 use App\Models\Roulette\PsConf;
 use App\Models\Roulette\AccConfig;
+use App\Models\Roulette\MainConfig;
 
 class RouletteController extends Controller
 {
     public function wheel_settings_index() {
     	$wheel_settings = WheelSettings::first();
-        return view('settings.roulette.roulette1.wheel-settings', ['wheel_settings' => $wheel_settings]);
+        $main_config = MainConfig::first();
+
+        return view('settings.roulette.roulette1.wheel-settings', compact('wheel_settings', 'main_config'));
     }
 
     public function wheel_settings_edit(Request $request)
@@ -43,6 +46,9 @@ class RouletteController extends Controller
             'auto_max_video' => $request->auto_max_video,
             'video_on_statistic' => $request->video_on_statistic,
         ]);
+
+        // MainConfig::all()->update(['game_id' => $request->game_id]);
+        $affected = \DB::connection('pgsql4')->table('mainconf')->update(['game_id' => $request->game_id]);
     }
 
     public function wheel_config_index()
@@ -53,7 +59,7 @@ class RouletteController extends Controller
 
     public function wheel_config_edit(Request $request)
     {
-    	WheelConfig::first()->update($request->except('_token'));;
+    	WheelConfig::first()->update($request->except('_token'));
     }
 
     public function ps_config_index()

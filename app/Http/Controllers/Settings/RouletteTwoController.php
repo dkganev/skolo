@@ -6,17 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\Roulette\Roulette2\WheelSettings;
-use App\Models\Roulette\Roulette2\WheelConfig;
 use App\Models\Roulette\Roulette2\PsConf;
 use App\Models\Roulette\Roulette2\AccConfig;
+use App\Models\Roulette\Roulette2\MainConfig;
+use App\Models\Roulette\Roulette2\WheelConfig;
+use App\Models\Roulette\Roulette2\WheelSettings;
 
 class RouletteTwoController extends Controller
 {
     public function wheel_settings_index()
     {
     	$wheel_settings = WheelSettings::first();
-        return view('settings.roulette.roulette2.wheel-settings', ['wheel_settings' => $wheel_settings]);
+        $main_config = MainConfig::first();
+
+        return view('settings.roulette.roulette2.wheel-settings', compact('wheel_settings', 'main_config'));
     }
 
     public function wheel_settings_edit(Request $request)
@@ -44,6 +47,8 @@ class RouletteTwoController extends Controller
             'auto_max_video' => $request->auto_max_video,
             'video_on_statistic' => $request->video_on_statistic,
         ]);
+
+        $affected = \DB::connection('pgsql6')->table('mainconf')->update(['game_id' => $request->game_id]);
     }
 
     public function wheel_config_index()

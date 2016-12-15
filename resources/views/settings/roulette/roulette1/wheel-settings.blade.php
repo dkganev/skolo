@@ -60,6 +60,11 @@
       <div class="col-lg-4">
 
           <div class="form-group">
+              <label style="color: #474747">Game ID:</label><br>
+              <input name="game_id" value="{{ $main_config->game_id }}" type="text" class="form-control text-center">
+          </div>
+
+          <div class="form-group">
               <label style="color: #474747">Wheel Label:</label><br>
               <input name="wheel_label" value="{{ $wheel_settings->wheel_label }}" type="text" class="form-control text-center">
           </div>
