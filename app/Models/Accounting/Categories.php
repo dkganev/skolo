@@ -18,6 +18,6 @@ class Categories extends Model
     
     public function game()
     {
-    	return $this->hasMany('App\Models\Games', 'game_category', 'idx');
+    	return $this->hasMany(Games::class, 'game_category', 'idx');
     }
 }

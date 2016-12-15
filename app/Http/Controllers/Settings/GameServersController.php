@@ -136,6 +136,8 @@ class GameServersController extends Controller
         $game->game_type = $request['game_type']; 
         $game->description = $request['description'];
         $game->db_name = $request['db_name'];
+        //$game->game_category = $request['game_category'];
+        
 
         $game_client = ClientGameIds::where('client_game_id','=', $request['client_game_id'])->first();
         $game_client->games()->save($game);
