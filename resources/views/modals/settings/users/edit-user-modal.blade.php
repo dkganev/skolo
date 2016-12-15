@@ -60,6 +60,17 @@
                                 @endforeach
                             </select>
                         </div>
+                         <div class="form-group">
+                            <label for="Language">Prefered Language: </label><br>
+                            <select name="Language" class="form-control selectpicker" id="Language-{{ $user->id }}">                            
+                                <option selected="true" disabled="disabled">Choose Language</option>
+                                @foreach($CmsLangs as $key => $val)
+                                    <option {{ $user->lang_id == $val->langid ? 'selected' : '' }} value="{{ $val->langid }}">
+                                       {{$val->lang_short_name}} - {{$val->langname}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
                 </div><!-- End Row -->
@@ -90,6 +101,7 @@ $('#edit-user-{{ $user->id }}').on('click', function(event) {
           phone: $('#phone-{{ $user->id }}').val(),
           password: $('#password-{{ $user->id }}').val(),
           role: $('#role-{{ $user->id }}').val(),
+          Language: $('#Language-{{ $user->id }}').val(),
           _token: "{{ Session::token() }}",
         },
         success: function(response) {

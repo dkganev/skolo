@@ -61,30 +61,23 @@
       <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">
 
-          <a href="" data-toggle="dropdown">
+            <a href="" data-toggle="dropdown">
+                <strong class="nav-secondary">{{ \App::isLocale('en') ? 'EN' : 'BG '}}</strong>
+                <span class="flag-icon flag-icon-{{ \App::isLocale('en') ? 'gb' : 'bg' }} flag-icon-squared nav-secondary"></span>
+                <span class="caret"></span> 
+            </a>
 
-            <strong class="nav-secondary">{{ \App::isLocale('en') ? 'EN' : 'BG '}}</strong>
-
-            <span class="flag-icon flag-icon-{{ \App::isLocale('en') ? 'gb' : 'bg' }} flag-icon-squared nav-secondary"></span>
-
-            <span class="caret"></span> 
-          </a>
-
-          <ul class="dropdown-menu" role="menu">
-              <li>
-                <a href="#" class="langSupport" data-lang="bg">
-                  <span class="flag-icon flag-icon-bg flag-icon-squared"></span>
-                  BG
-                </a>
-              </li>
-              <li>
-                <a href="#" class="langSupport" data-lang="en">
-                  <span class="flag-icon flag-icon-gb flag-icon-squared"></span>
-                  EN
-                </a>
-              </li>
-          </ul>
-          </li>  
+            <ul class="dropdown-menu" role="menu">
+                @foreach($CmsLangs as $key => $val)
+                    <li>
+                        <a href="#" class="langSupport" data-lang="{{$val->lang_code}}">
+                            <span class="flag-icon flag-icon-{{$val->lang_code == "en" ? "gb" : $val->lang_code}} flag-icon-squared"></span>
+                            {{$val->lang_short_name}} - {{$val->langname}}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </li>  
       </ul>
       <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">
@@ -97,12 +90,14 @@
             </a>
 
             <ul class="dropdown-menu" role="menu">
-              <li>
                 @foreach($casinos as $casino)
-                  <a class="CasinoName" data-casino="{{ $casino->casinoid }}" >{{ $casino->casinoname }}</a>
+                    <li>
+                
+                        <a class="CasinoName" data-casino="{{ $casino->casinoid }}" >{{ $casino->casinoname }}</a>
+                
+                    </li>
                 @endforeach
-              </li>
-           </ul>
+            </ul>
         </li>  
       </ul>  
   

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\Accounting\Casinos;
+use App\Models\Cms\CmsLangs;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -40,10 +41,14 @@ class AuthController extends Controller
         // Get first(default) Casino and store it in the session)
         $casino = Casinos::first();
         session(['casino' => $casino]);
-
+        
+        $CmsLangs = CmsLangs::where('langid' , Auth::user()->lang_id )->first();
+        
         $locale = \App::setLocale(Auth::user()->lang);
-        session(['locale' => $locale]);
-
+        //$locale = \App::setLocale($CmsLangs->lang_code);
+        //$locale = 'test' . $locale;
+        session(['locale' => $CmsLangs]);
+        session(['LoginUser.lang' => $CmsLangs->lang_code]);
         return redirect('/');
     }
 
