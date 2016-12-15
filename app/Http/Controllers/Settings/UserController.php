@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Requests;
 use App\Models\Cms\User;
+use App\Models\Cms\CmsLangs;
 
 class UserController extends Controller
 {
@@ -16,7 +17,8 @@ class UserController extends Controller
     {
     	$users = User::all();
         $roles = Role::all();
-		return view('settings.users', compact('users', 'roles'));
+        $CmsLangs = CmsLangs::get();
+    return view('settings.users', compact('users', 'roles', 'CmsLangs') );  //['historys' => $historys, 'page' => $page ] compact('users', 'roles') ['users' => $users, 'roles' => $roles, 'CmsLangs' => $CmsLangs]
 	}
 
 	public function store(Request $request)
@@ -27,6 +29,7 @@ class UserController extends Controller
     	$user->lastname = $request->lastname;
     	$user->phone = $request->phone;
     	$user->password = bcrypt($request->password);
+        $user->lang_id = $request->Language;
     	$user->save();
         $user->assignRole($request->role);
 
@@ -46,6 +49,7 @@ class UserController extends Controller
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
         $user->phone = $request->phone;
+        $user->lang_id = $request->Language;
 
         if(!empty($request->password)) {
             $user->password = bcrypt($request->password);

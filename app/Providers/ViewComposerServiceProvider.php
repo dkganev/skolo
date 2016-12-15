@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Accounting\Casinos;
+use App\Models\Cms\CmsLangs;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,8 @@ class ViewComposerServiceProvider extends ServiceProvider
         view()->composer('layouts.navbar', function($view) {
             $casinos = Casinos::all();
             $view->with('casinos', $casinos);
+            $CmsLangs = CmsLangs::get();
+            $view->with('CmsLangs', $CmsLangs);
         });
     }
 
