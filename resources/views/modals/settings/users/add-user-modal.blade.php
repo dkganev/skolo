@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <label for="Language">Prefered Language: </label><br>
                             <select name="Language" class="form-control selectpicker" id="Language">                            
-                                <option selected="true" disabled="disabled">Choose Language</option>
+                                <!--<option selected="true" disabled="disabled">Choose Language</option>-->
                                 @foreach($CmsLangs as $key => $val)
                                     <option value="{{ $val->langid }}">
                                        {{$val->lang_short_name}} - {{$val->langname}}

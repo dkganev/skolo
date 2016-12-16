@@ -5,14 +5,14 @@
             <div class="panel-heading">
                 <div>
                     <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
-                         Events
+                         @lang('messages.events')
                     </h2>
                     <a class="btn btn-warning  pull-right" onclick="export2excelEvents();">
-                        <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                        <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> @lang('messages.Export')
                     </a>
                     <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                     <a  class="btn btn-warning  pull-right" onclick="ExportToPNGEventsTable();">
-                        Export to PNG
+                        @lang('messages.Export to PNG')
                     </a>
                 </div> <br />
                
@@ -35,7 +35,7 @@
                                 </li>
                             </ul>
                         </span>
-                        <span style="color: #fff">rows per page</span> 
+                        <span style="color: #fff">@lang('messages.rows per page')</span> 
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; "> 
@@ -140,7 +140,7 @@
                     <a class="btn btn-success EventsSort" style="display: none;" onclick="changePageSortMenuEvents()"><i class="fa fa-search" aria-hidden="true"></i></a>
                     <a class="btn btn-default EventsSort" style="display: none;" onclick="cleanSortFunctionEvents()"><i class="fa fa-close" aria-hidden="true"></i></a> 
                     <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuEvents();">
-                       Sort Menu
+                       @lang('messages.Sort Menu')
                        <span class="caret"></span>
                     </button>
                 </div>
@@ -162,7 +162,7 @@
                             <th class="EventsSort " style="display: none;">
                                <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker44(); ">
@@ -179,7 +179,7 @@
                                 </div>    
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker55(); ">
@@ -196,10 +196,10 @@
                             </th>
                         </tr>
                         <tr>
-                            <th class="text-center col-lg-1" data-sortable="true" onclick="changePageSortEvents('psid', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">PS ID<i class="fa {{ $page['OrderQuery'] == 'psid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center col-lg-1" data-sortable="true" onclick="changePageSortEvents('err_code', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Error Code<i class="fa {{ $page['OrderQuery'] == 'err_code' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center" data-sortable="true" onclick="changePageSortEvents('error', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Error Text<i class="fa {{ $page['OrderQuery'] == 'error' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center col-lg-3" data-sortable="true" onclick="changePageSortEvents('time', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Time<i class="fa {{ $page['OrderQuery'] == 'time' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center col-lg-1" data-sortable="true" onclick="changePageSortEvents('psid', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.PS ID')<i class="fa {{ $page['OrderQuery'] == 'psid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center col-lg-1" data-sortable="true" onclick="changePageSortEvents('err_code', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Error Code')<i class="fa {{ $page['OrderQuery'] == 'err_code' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-sortable="true" onclick="changePageSortEvents('error', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Error Text')<i class="fa {{ $page['OrderQuery'] == 'error' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center col-lg-3" data-sortable="true" onclick="changePageSortEvents('time', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Time')<i class="fa {{ $page['OrderQuery'] == 'time' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                         </tr>
                     </thead>
                     <tbody>

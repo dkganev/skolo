@@ -13,14 +13,14 @@
                             <input id="GridDrag" type="checkbox" checked >
                             <div class="slider round"></div>
                         </label>
-                        <span style="vertical-align: top; line-height: 2.00;"> Grid</span>
+                        <span style="vertical-align: top; line-height: 2.00;">@lang('messages.Grid')</span>
                     </div>
                     <div class="col-md-2"> 
                         <label class="switch">
                             <input id="GridColor" type="checkbox" >
                             <div class="slider round"></div>
                         </label>
-                        <span style="vertical-align: top; line-height: 2.00;"> Games Colors</span>
+                        <span style="vertical-align: top; line-height: 2.00;">@lang('messages.Games Colors')</span>
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-2"> 
@@ -28,37 +28,37 @@
                             <input id="GridBingoFeed" type="checkbox" >
                             <div class="slider round"></div>
                         </label>
-                        <span style="vertical-align: top; line-height: 2.00;">Bingo Feed</span>
+                        <span style="vertical-align: top; line-height: 2.00;">@lang('messages.Bingo Feed')</span>
                     </div>  
 
-                     <button type="button" style="margin-right: 15px;" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG</button>  
+                     <button type="button" style="margin-right: 15px;" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>@lang('messages.Export to PNG')</button>  
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 ">
                         <button class="btn btn-info">
-                            Free
+                            @lang('messages.Free')
                             <span id="BtnFree" class="badge" style="background-color: #303030;color: #fff;"> {{$statuses['free']}}</span>
                         </button>
                         <button class="btn-success btn-sm">
-                            Active
+                            @lang('messages.Active')
                             <span id="BtnActive" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['active']}}</span>
                         </button>
                         <button class="btn btn-sm" style="background-color: #ccb2ff;">
-                            Call Attend
+                            @lang('messages.Call Attend')
                             <span id="BtnCallAttend" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['attendant']}}</span>
                         </button>
                         <button class="btn btn-warning btn-sm">
-                            Cash Out
+                            @lang('messages.Cash Out')
                             <span class="badge" style="background-color: #303030;color: #fff;"> 14 </span>
                         </button>
                         <button class="btn btn-sm" style="background-color: #9c9c9c;">
-                            Offline
+                            @lang('messages.Offline')
                             <span id="BtnOffline" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['offline']}}</span>
                         </button>
                         <button class="btn btn-danger btn-sm">
                             <i class="glyphicon glyphicon-remove"></i>
-                            Errors
+                            @lang('messages.Errors')
                             <span id="BtnErrors" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['error']}}</span>
                         </button>
                     </div><!-- End Col -->
@@ -80,7 +80,7 @@
 
                             <div class="ps_body" style="font-size: 11px;">
 
-                                <div class="ps_text pull-left">Credit:</div>
+                                <div class="ps_text pull-left">@lang('messages.Credit'):</div>
                                 <div class="boxCdredit" style="line-height: 16px;font-size: 11px;">
                                     {{ number_format($ps->ps_status->current_credit / 100, 2 ) }}
                                 </div>
@@ -103,7 +103,7 @@
 </div>
 
 <div id="DivColor">
-    <h4 style="text-align: center; line-height: 3;">Casino colors.</h4>
+    <h4 style="text-align: center; line-height: 3;">@lang('messages.Casino colors').</h4>
     @foreach($games as $game)
         <div style="height: 20px; background-color: {{ $game->color}}">
             {{ $game->client_game_ids->client_game_name }}---{{ $game->short_name}}
@@ -113,23 +113,23 @@
 </div>
 
 <div id="DivBingoFeed">
-    <h4 style="text-align: center; line-height: 3;">Bingo Live Feed</h4>
+    <h4 style="text-align: center; line-height: 3;">@lang('messages.Bingo Live Feed')</h4>
     <div style="line-height: 0.5;">
         
-        <p style=" margin-right: 20px">Ticket Value: <span id="ticket_price" class="pull-right" data-unique_game_seq="{{$GameState->unique_game_seq}}">{{number_format($GameState->ticket_price / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">Tickets Sold: <span id="tickets" class="pull-right">{{$GameState->tickets}}</span></p>
-        <p style=" margin-right: 20px">Active Players: <span id="players" class="pull-right">{{$GameState->players}}</span></p>
-        <p style=" margin-right: 20px">Bingo Prize: <span id="bingo_value" class="pull-right">{{number_format($GameState->bingo_value / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">Bingo Line: <span id="line_value" class="pull-right">{{number_format($GameState->line_value / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">Jackpot Bingo: <span id="jackpot_bingo" class="pull-right">{{number_format($GameState->jackpot_bingo / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">Jackpot Bingo Max Ball: <span id="jackpot_bingo_max_ball" class="pull-right">{{$MainConfig->jackpot_bingo_max_ball}}</span></p>
-        <p style=" margin-right: 20px">Jackpot Line Prize: <span id="jackpot_line" class="pull-right">{{number_format($GameState->jackpot_line / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">Jackpot Line Max Ball: <span id="jackpot_line_max_ball" class="pull-right">{{$MainConfig->jackpot_line_max_ball}}</span></p>
-        <p style=" margin-right: 20px">My Bonus Prize: <span id="my_bonus" class="pull-right">{{number_format($GameState->my_bonus / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">Bonus Bingo Prize: <span id="bonus_bingo" class="pull-right">{{number_format($GameState->bonus_bingo / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">Bonus Bingo Max Ball: <span id="bonus_bingo_max_ball" class="pull-right">{{$MainConfig->bonus_bingo_max_ball}}</span></p>
-        <p style=" margin-right: 20px">Bonus Line Prize: <span id="bonus_line" class="pull-right">{{number_format($GameState->bonus_line / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">Bonus Line Max Ball: <span id="bonus_line_max_ball" class="pull-right">{{$MainConfig->bonus_line_max_ball}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Ticket Value'): <span id="ticket_price" class="pull-right" data-unique_game_seq="{{$GameState->unique_game_seq}}">{{number_format($GameState->ticket_price / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Tickets Sold'): <span id="tickets" class="pull-right">{{$GameState->tickets}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Active Players'): <span id="players" class="pull-right">{{$GameState->players}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bingo Prize'): <span id="bingo_value" class="pull-right">{{number_format($GameState->bingo_value / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bingo Line'): <span id="line_value" class="pull-right">{{number_format($GameState->line_value / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Jackpot Bingo'): <span id="jackpot_bingo" class="pull-right">{{number_format($GameState->jackpot_bingo / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Jackpot Bingo Max Ball'): <span id="jackpot_bingo_max_ball" class="pull-right">{{$MainConfig->jackpot_bingo_max_ball}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Jackpot Line Prize'): <span id="jackpot_line" class="pull-right">{{number_format($GameState->jackpot_line / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Jackpot Line Max Ball'): <span id="jackpot_line_max_ball" class="pull-right">{{$MainConfig->jackpot_line_max_ball}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.My Bonus Prize'): <span id="my_bonus" class="pull-right">{{number_format($GameState->my_bonus / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bonus Bingo Prize'): <span id="bonus_bingo" class="pull-right">{{number_format($GameState->bonus_bingo / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bonus Bingo Max Ball'): <span id="bonus_bingo_max_ball" class="pull-right">{{$MainConfig->bonus_bingo_max_ball}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bonus Line Prize'): <span id="bonus_line" class="pull-right">{{number_format($GameState->bonus_line / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bonus Line Max Ball'): <span id="bonus_line_max_ball" class="pull-right">{{$MainConfig->bonus_line_max_ball}}</span></p>
     </div>
 </div>
 <div id="DivBingoWins">

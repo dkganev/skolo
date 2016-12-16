@@ -4,18 +4,18 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong id="strong">Delete template</strong></h2>
+          <h2><strong id="strong">@lang('messages.Delete template')</strong></h2>
       </div>
       
       <div class="modal-body">
 
-          <h4>Delete Template <span></span>  ?</h4>
+          <h4>@lang('messages.Delete template') <span></span>  ?</h4>
 
       </div>
       <div class="modal-footer">
           <input  type="hidden" name="template-id">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="delete-template-button" type="submit" class="btn btn-warning">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+          <button id="delete-template-button" type="submit" class="btn btn-warning">@lang('messages.Delete')</button>
       </div>
     </div>
   </div>

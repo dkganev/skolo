@@ -3,9 +3,9 @@
       <div class="col-lg-5">
           <div style="padding-top:2px; margin-top: 0px;">
             <ul class="breadcrumb">
-                <li class="active"><a href="javascript:ajaxLoad('{{url('/casino/playlist')}}')">Playlist</a></li>
+                <li class="active"><a href="javascript:ajaxLoad('{{url('/casino/playlist')}}')">@lang('messages.Playlist')</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('/casino/templates')}}')">Templates</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/casino/templates')}}')">@lang('messages.Templates')</a></li>
               </ul>
           </div>
     </div>
@@ -18,12 +18,12 @@
   <div class="row">
     <div class="col-lg-5">
       <button id="toggle-game-type-form" class="btn btn-primary btn-sm">
-          Add Next Game
+          @lang('messages.Add Next Game')
           <span style="margin-left: 6px;" class="caret"></span>
       </button>
 
       <button id="toggle-load-template-form" class="btn btn-primary btn-sm">
-          Load Template
+          @lang('messages.Load Template')
           <span style="margin-left: 6px;" class="caret"></span>
       </button>
     </div><!-- End Col-->
@@ -35,27 +35,27 @@
       <form method="post" id="game-type-form" action="/casino/playlist/store" class="form-inline" style="padding-top: 15px;">
 
         <div style="width: 169px" class="form-group">
-          <label for="game_type">Game Type: </label><br>
+          <label for="game_type">@lang('messages.Game Type'): </label><br>
           <select  name="game_type" class="form-control selectpicker" id="game_type">
-            <option selected="true" disabled="disabled">Choose Game Type</option>
-              <option value="0">Standard</option>
-              <option value="1">Fixed</option>
+            <option selected="true" disabled="disabled">@lang('messages.Choose Game Type')</option>
+              <option value="0">@lang('messages.Standard')</option>
+              <option value="1" >@lang('messages.Fixed')</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="ticket_cost">Ticket Cost (cents):</label><br>
+          <label for="ticket_cost">@lang('messages.Ticket Cost') (@lang('messages.cents')):</label><br>
           <input class="form-control" type="text" name="ticket_cost" id="ticket_cost">
 
         </div>
 
         <div id="line-cost-form-group"  class="form-group" style="display: none;">
-          <label for="line_cost">Line Cost (cents):</label><br>
+          <label for="line_cost">@lang('messages.Line Cost') (@lang('messages.cents')):</label><br>
           <input class="form-control" type="text" name="line_cost" id="lineline_cost">
         </div>
 
         <div id="bingo-cost-form-group" class="form-group" style="display: none;">
-          <label for="bingo_cost">Bingo Cost (cents):</label><br>
+          <label for="bingo_cost">@lang('messages.Bingo Cost') (@lang('messages.cents')):</label><br>
           <input class="form-control" type="text" name="bingo_cost" id="bingo_cost">
         </div>
 
@@ -67,7 +67,7 @@
                 style="margin-top: 25px;" 
                 class="btn btn-info btn-sm form-control"
         >
-                Add
+                @lang('messages.Add')
         </button>
 
         </form>
@@ -92,7 +92,7 @@
           <div class="form-group">
 
             <button  id="load-template-button" type="Submit" value="Submit"  style="margin-top: 25px;" class="btn btn-info btn-sm form-control">
-                Add
+                @lang('messages.Add')
             </button>
             <!-- <input style="margin-top: 25px;" class="btn btn-info btn-sm" type="submit" name="submit" value="Load"> -->
           </div>
@@ -109,11 +109,11 @@
      <table class="table table-bordered">
         <thead class="w3-blue-grey">
           <tr>
-            <th>Ticket Cost(cents)</th>
-            <th>Game Type</th>
-            <th>Line Cost (cents)</th>
-            <th>Bingo Cost (cents)</th>
-            <th>Action</th>
+            <th>@lang('messages.Ticket Cost') (@lang('messages.cents'))</th>
+            <th>@lang('messages.Game Type')</th>
+            <th>@lang('messages.Line Cost') (@lang('messages.cents'))</th>
+            <th>@lang('messages.Bingo Cost') (@lang('messages.cents'))</th>
+            <th>@lang('messages.Action')</th>
           </tr>
         </thead>
         <tbody>
