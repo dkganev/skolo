@@ -46,17 +46,14 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">  
-
         <li class="nav-secondary"><a ><strong class="nav-secondary">User: {{ Auth::user()->fullName() }}</strong></a></li>
 
         <li class="nav-option">
-
             <a href="{{ url('logout') }}">
               <img src="/images/logout.png" alt="" style="margin-bottom: -7px;">
             </a>
         </li>
       </ul> 
-
 
       <ul class="nav navbar-nav navbar-right">  
         <li class="dropdown">
@@ -70,10 +67,10 @@
             <ul class="dropdown-menu" role="menu">
                 @foreach($CmsLangs as $key => $val)
                     <li>
-                        <a href="#" class="langSupport" data-lang="{{$val->lang_code}}">
-                            <span class="flag-icon flag-icon-{{$val->lang_code == "en" ? "gb" : $val->lang_code}} flag-icon-squared"></span>
-                            {{$val->lang_short_name}} - {{$val->langname}}
-                        </a>
+                      <a href="#" class="langSupport" data-lang="{{$val->lang_code}}">
+                          <span class="flag-icon flag-icon-{{$val->lang_code == "en" ? "gb" : $val->lang_code}} flag-icon-squared"></span>
+                          {{$val->lang_short_name}} - {{$val->langname}}
+                      </a>
                     </li>
                 @endforeach
             </ul>
@@ -92,9 +89,7 @@
             <ul class="dropdown-menu" role="menu">
                 @foreach($casinos as $casino)
                     <li>
-                
-                        <a class="CasinoName" data-casino="{{ $casino->casinoid }}" >{{ $casino->casinoname }}</a>
-                
+                      <a class="CasinoName" data-casino="{{ $casino->casinoid }}" >{{ $casino->casinoname }}</a> 
                     </li>
                 @endforeach
             </ul>
