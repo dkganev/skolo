@@ -31,6 +31,7 @@
                         <span style="vertical-align: top; line-height: 2.00;">@lang('messages.Bingo Feed')</span>
                     </div>  
 
+
                      <button type="button" style="margin-right: 15px;" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>@lang('messages.Export to PNG')</button>  
                 </div>
 
