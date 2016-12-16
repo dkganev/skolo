@@ -83,6 +83,8 @@ $(function() {
             } 
         }).done(function() {
             $('#addLanguageModal').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
             javascript:ajaxLoad('{{url('settings/langs')}}')
         })
     })

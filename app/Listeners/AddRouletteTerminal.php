@@ -6,7 +6,7 @@ use App\Events\TerminalCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Models\Roulette\PsConf;
-
+use App\Models\Roulette\Roulette2\PsConf as PsConf2;
 class AddRouletteTerminal
 {
     /**
@@ -36,8 +36,7 @@ class AddRouletteTerminal
         $new_psconf->save();
 
         // Get the Default Ps Config with ID 0
-        $default_ps = App\Models\Roulette\Roulette2\PsConf::where('ps_id', 0 )->first();
-        
+        $default_ps = PsConf2::where('ps_id', 0 )->first();
         $new_psconf = $default_ps->replicate();
         $new_psconf->ps_id = $event->psid;
         $new_psconf->seat_id = $event->seatid;

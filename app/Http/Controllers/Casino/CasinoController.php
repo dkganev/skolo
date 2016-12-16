@@ -60,28 +60,25 @@ class CasinoController extends Controller
         }else{
             $page['ToGameTs'] = "";
         }
-        if ($request['PSID']){
+        if ($request['PSID']) {
             array_push($SortQuery,['psid', '=', $request['PSID']]);
             $page['PSID'] = $request['PSID'];
-        }else{
+        } else {
             $page['PSID'] = "";
         }
-        if ($request['ErrorCode']){
+        if ($request['ErrorCode']) {
             array_push($SortQuery,['err_code', '=',$request['ErrorCode']]);
             $page['ErrorCode'] = $request['ErrorCode'];
-        }else{
+        } else {
             $page['ErrorCode'] = "";
         }
-        if ($request['ErrorText']){
+        if ($request['ErrorText']) {
             array_push($SortQuery,['error','like', '%' .  $request['ErrorText'] . '%' ]);
             $page['ErrorText'] = $request['ErrorText'];
-        }else{
+        } else {
             $page['ErrorText'] = "";
         }
-        
-        
-        
-        
+
         $historys = PsErrors::where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage'] );
 
         return view('casino.events', ['historys' => $historys, 'page' => $page]);
@@ -176,12 +173,6 @@ class CasinoController extends Controller
         })->export('xls');
     }
     
-    public function events_index()
-    {
-        $errors = PsErrors::orderBy('time', 'asc')->paginate(10);
-        return $errors;
-    }
-
     public function getList()
     {
         Session::put('product_search', Input::has('ok') ? Input::get('search') : (Session::has('product_search') ? Session::get('product_search') : ''));
@@ -253,7 +244,7 @@ class CasinoController extends Controller
                             $server_ps[$key]['current_game'] = $curentGames->first()->short_name;
                             $server_ps[$key]['current_game_color'] = $curentGames->first()->color;
                         } else {
-                            var_dump($PsStatus->first()->current_game_i);
+                            // var_dump($PsStatus->first()->current_game_i);
                         }
                     }
                 } else {

@@ -31,7 +31,8 @@
                         <span style="vertical-align: top; line-height: 2.00;">Bingo Feed</span>
                     </div>  
 
-                     <button type="button" style="margin-right: 15px;" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG</button>  
+                     <button type="button" style="margin-right: 15px;" class="btn btn-warning pull-right" onclick='ExportToPNGPreview();'>Export to PNG
+                     </button>  
                 </div>
 
                 <div class="row">
