@@ -4,7 +4,7 @@
   <div class="modal-dialog" style="width: 50%">
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong>Update Template</strong></h2>
+          <h2><strong>@lang('messages.Update Template')</strong></h2>
       </div>
       <div class="modal-body">
 
@@ -14,26 +14,26 @@
 
               <form id="game-type-form--{{ $template->template_id }}" class="form-inline" style="padding-top: 15px;">
                 <div style="width: 202px" class="form-group">
-                  <label>Game Type: </label><br>
+                  <label>@lang('messages.Game Type'): </label><br>
                   <select name="game_type" class="form-control selectpicker">
-                    <option selected="true" disabled="disabled">Choose Game Type</option>
-                      <option value="0">Standard</option>
-                      <option value="1">Fixed</option>
+                    <option selected="true" disabled="disabled">@lang('messages.Choose Game Type')</option>
+                      <option value="0">@lang('messages.Standard')</option>
+                      <option value="1">@lang('messages.Fixed')</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label for="ticket_cost">Ticket Cost (cents):</label><br>
+                  <label for="ticket_cost">@lang('messages.Ticket Cost') (@lang('messages.cents')):</label><br>
                   <input class="form-control" type="text" name="ticket_cost" id="ticket_cost--{{ $template->template_id }}">
                 </div>
 
                 <div id="line-cost-form-group--{{ $template->template_id }}"  class="form-group" style="display: none;">
-                  <label>Line Cost (cents):</label><br>
+                  <label>@lang('messages.Line Cost') (@lang('messages.cents')):</label><br>
                   <input class="form-control" type="text" name="line_cost">
                 </div>
 
                 <div id="bingo-cost-form-group--{{ $template->template_id }}" class="form-group" style="display: none;">
-                  <label>Bingo Cost (cents):</label><br>
+                  <label>@lang('messages.Bingo Cost') (@lang('messages.cents')):</label><br>
                   <input class="form-control" type="text" name="bingo_cost">
                 </div>
 
@@ -47,7 +47,7 @@
                         style="margin-top: 25px;" 
                         class="btn btn-primary btn-sm form-control"
                 >
-                  Add
+                  @lang('messages.Add')
                 </button>
 
                 <button type="button"
@@ -55,30 +55,30 @@
                         style="margin-top: 25px;"
                         class="btn btn-default btn-sm form-control"
                         >
-                          Close
+                          @lang('messages.Close')
                 </button>
 
                 </form>
               </div><!-- End Col--> 
 
               <div class="col-sm-9">
-                <h4><strong>Games</strong></h4>
+                <h4><strong>@lang('messages.Games')</strong></h4>
                 <hr>
 
                 <div class="divTable">
                   <div class="divTableBody">
                     <div class="divTableRow">
-                      <div class="divTableCell"><strong>Ticket Cost (cents)</strong></div>
-                      <div class="divTableCell"><strong>Game Type</strong></div>
-                      <div class="divTableCell"><strong>Line Cost (cents)</strong></div>
-                      <div class="divTableCell"><strong>Bingo Cost (cents)</strong></div>
+                      <div class="divTableCell"><strong>@lang('messages.Ticket Cost') (@lang('messages.cents'))</strong></div>
+                      <div class="divTableCell"><strong>@lang('messages.Game Type')</strong></div>
+                      <div class="divTableCell"><strong>@lang('messages.Line Cost') (@lang('messages.cents'))</strong></div>
+                      <div class="divTableCell"><strong>@lang('messages.Bingo Cost') (@lang('messages.cents'))</strong></div>
                     </div>
 
                     @foreach($template->template_games as $game)
                     <div class="divTableRow">
                       <div class="divTableCell">{{ $game->bingo_ticket_cost }}</div>
                       <div class="divTableCell">
-                        {{ $game->bingo_cost_line1_fixed && $game->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}
+                        {{ $game->bingo_cost_line1_fixed && $game->bingo_cost_bingo_fixed ? app('translator')->get('messages.Fixed') : app('translator')->get('messages.Standard')}}
                       </div>
                       <div class="divTableCell">{{ $game->bingo_cost_line1 }}</div>
                       <div class="divTableCell">{{ $game->bingo_cost_bingo }}</div>
@@ -114,9 +114,9 @@ $('#send-button--{{ $template->template_id }}').on('click', function() {
       success: function (response) {
 
           if(response.bingo_cost_line1_fixed === false) {
-            var gameType = 'Standard';
+            var gameType = '<?php echo app('translator')->get('messages.Standard'); ?>';
           } else {
-            var gameType = 'Fixed';
+            var gameType = '<?php echo app('translator')->get('messages.Fixed'); ?>' ;
           }
 
           if(response.bingo_cost_line1_fixed === false && response.bingo_cost_bingo_fixed === false) {

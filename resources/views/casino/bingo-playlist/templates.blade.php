@@ -4,9 +4,9 @@
       <div class="col-lg-5">
           <div style="padding-top:2px; margin-top: 0px;">
             <ul class="breadcrumb">
-              <li><a href="javascript:ajaxLoad('{{url('/casino/playlist')}}')">Playlist</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('/casino/playlist')}}')">@lang('messages.Playlist')</a></li>
 
-              <li class="active"><a href="javascript:ajaxLoad('{{url('/casino/templates')}}')">Templates</a></li>
+              <li class="active"><a href="javascript:ajaxLoad('{{url('/casino/templates')}}')">@lang('messages.Templates')</a></li>
             </ul>
           </div>
     </div>
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-lg-5">
         <button id="toggle-create-template-form" class="btn btn-primary btn-sm">
-            Create Template
+            @lang('messages.Create Template')
             <span style="margin-left: 6px;" class="caret"></span>
         </button>
       </div><!-- End Col-->
@@ -29,7 +29,7 @@
       <form id="create-template-form" action="/casino/templates/store" method="post" class="form-inline" style="padding-top: 15px;">
         <div class="form-group">
 
-          <label for="name">Template Name: </label>
+          <label for="name">@lang('messages.Template Name'): </label>
           <input class="form-control" type="text" name="name" id="name">
 
           <button id="add-template-button"
@@ -37,7 +37,7 @@
                   value="Submit"
                   class="btn btn-info btn-sm form-control"
           >
-                  Add
+                  @lang('messages.Add')
           </button>
 
         </div>
@@ -52,9 +52,9 @@
        <table class="table table-bordered">
           <thead class="w3-blue-grey">
             <tr>
-              <th>Name</th>
-              <th>Number of Games</th>
-              <th>Action</th>
+              <th>@lang('messages.Name')</th>
+              <th>@lang('messages.Number of Games')</th>
+              <th>@lang('messages.Action')</th>
             </tr>
           </thead>
           <tbody>
@@ -68,7 +68,7 @@
                     data-toggle="modal"
                     data-target="#editTemplateModal--{{ $template->template_id }}"
                 >
-                  Edit
+                  @lang('messages.Edit')
                 </a>
                 <a class="btn btn-danger btn-xs" href="#"
                     role="button" data-toggle="modal"
@@ -76,7 +76,7 @@
                     data-target="#deleteTemplateModal"
                     data-template-name="{{ $template->name }}"
                     data-template-id="{{ $template->template_id }}"
-                >Delete</a>
+                >@lang('messages.Delete')</a>
               </td>
             </tr>
             @include('casino.bingo-playlist.update-template-modal')

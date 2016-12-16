@@ -18,9 +18,10 @@ class UserController extends Controller
     {
     	$users = User::all();
         $roles = Role::all();
-        $CmsLangs = CmsLangs::get();
-    return view('settings.users', compact('users', 'roles', 'CmsLangs') );  //['historys' => $historys, 'page' => $page ] compact('users', 'roles') ['users' => $users, 'roles' => $roles, 'CmsLangs' => $CmsLangs]
-	}
+        //$CmsLangs = CmsLangs::get();
+        return view('settings.users', compact('users', 'roles') );
+        //return view('settings.users', compact('users', 'roles', 'CmsLangs') );  //['historys' => $historys, 'page' => $page ] compact('users', 'roles') ['users' => $users, 'roles' => $roles, 'CmsLangs' => $CmsLangs]
+    }
 
 	public function store(Request $request)
     {

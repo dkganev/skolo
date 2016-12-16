@@ -15,17 +15,17 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('layouts.navbar', function($view) {
+        view()->composer('*', function($view) {
             $dataGet = session()->get('LoginUser.lang');
             app()->setLocale($dataGet);
 
             $view->with('dataGet', $dataGet);
         });
 
-        view()->composer('layouts.navbar', function($view) {
+        view()->composer('*', function($view) {
             $casinos = Casinos::all();
             $view->with('casinos', $casinos);
-            $CmsLangs = CmsLangs::get();
+            $CmsLangs = CmsLangs::orderBy("langid", "asc")->get();
             $view->with('CmsLangs', $CmsLangs);
         });
     }

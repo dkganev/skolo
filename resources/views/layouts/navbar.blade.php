@@ -46,7 +46,8 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">  
-        <li class="nav-secondary"><a ><strong class="nav-secondary">User: {{ Auth::user()->fullName() }}</strong></a></li>
+
+        <li class="nav-secondary"><a ><strong class="nav-secondary">@lang('messages.user'): {{ Auth::user()->fullName() }}</strong></a></li>
 
         <li class="nav-option">
             <a href="{{ url('logout') }}">
