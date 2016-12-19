@@ -17,9 +17,9 @@ class CreateUserLogsTable extends Migration
 
             $table->increments('id');
             $table->integer('user_id')->nullable();
-            $table->integer('psid');
-            $table->text('message');
-            $table->ipAddress('ip');
+            $table->integer('psid')->nullable();
+            $table->text('message')->nullable();
+            $table->ipAddress('ip')->nullable();
 
             $table->timestamps();
             

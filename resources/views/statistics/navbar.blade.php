@@ -12,7 +12,7 @@
 
                 <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-blackjack')}}')">@lang('messages.Machine Game Statistics')</a></li>
 
-                <li><a href="#">@lang('messages.User Logs')</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/statistics/user-logs')}}')">@lang('messages.User Logs')</a></li>
             </ul>
         </div>
     </div>

@@ -250,6 +250,9 @@ Route::post('/ajax_nextPrevBJHistory', 'StatisticsController@ajax_nextPrevBJHist
 Route::post('/ajax_sortBJHistory', 'StatisticsController@ajax_sortBJHistory');
 Route::get('/export2excelBJ', 'StatisticsController@export2excelBJ')->name('export2excelBJ');
 
+Route::get('statistics/user-logs', 'Statistics\UserLogsController@index');
+
+
 });
 
 /**
