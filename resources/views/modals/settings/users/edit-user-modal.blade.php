@@ -7,7 +7,7 @@
         <h2><strong>+ Edit User</strong></h2>
       </div>
         <div class="modal-body">
-            <form role="form" method="POST" style="width: 80%;">
+            <form role="form" method="POST" style="width: 80%;" autocomplete="off">
             <input type="hidden" value="{{ $user->id }}" id="id-{{ $user->id }}" }}">
             {{ csrf_field() }}
                 <div class="row">

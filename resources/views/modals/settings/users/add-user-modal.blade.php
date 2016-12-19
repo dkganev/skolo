@@ -8,7 +8,7 @@
         <h2><strong>+ Add User</strong></h2>
       </div>
         <div class="modal-body">
-            <form id="add-user-form" role="form" method="POST" style="width: 80%;">
+            <form id="add-user-form" role="form" method="POST" style="width: 80%;" autocomplete="off">
             {{ csrf_field() }}
                 <div class="row">
                     <div class="col-xs-6">

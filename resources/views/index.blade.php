@@ -96,7 +96,7 @@
 
 <div class = "container">
   <div class="wrapper">
-    <form id="form" action="{{ url('/') }}" method="post" name="Login_Form" class="form-signin">
+    <form id="form" action="{{ url('/') }}" method="post" name="Login_Form" class="form-signin" autocomplete="off">
       {{ csrf_field() }}
       
       <h3 class="form-signin-heading"><span style="color:white;" id="cms">Control Monitoring System</span></h3>

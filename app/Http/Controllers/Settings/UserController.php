@@ -42,8 +42,8 @@ class UserController extends Controller
     public function edit(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:5|max:15',
-            'phone' => 'required|min:8|max:15'
+            'name' => 'required|max:15',
+            'phone' => 'required|max:15'
         ]);
 
         $user = User::find($request->id);
@@ -67,6 +67,7 @@ class UserController extends Controller
     public function destroy(Request $request)
     {
         $user = User::find($request->id);
+        
         if($user->delete()) {
             return response()->json(['msg' => 'User removed from records!'], 200);
         }
