@@ -14,16 +14,12 @@ class CreateUserLogsTable extends Migration
     public function up()
     {
         Schema::connection('pgsql2')->create('user_logs', function (Blueprint $table) {
-
             $table->increments('id');
-            $table->integer('user_id')->nullable();
+            $table->string('user_name')->nullable();
             $table->integer('psid')->nullable();
             $table->text('message')->nullable();
             $table->ipAddress('ip')->nullable();
-
             $table->timestamps();
-            
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
