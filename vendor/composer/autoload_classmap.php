@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CreatePermissionTables' => $baseDir . '/database/migrations/2016_11_17_143532_create_permission_tables.php',
+    'CreateUserLogsTable' => $baseDir . '/database/migrations/2016_12_19_114810_create_user_logs_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',

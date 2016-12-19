@@ -304,6 +304,7 @@ class ComposerStaticInit9a172ed8732733f5554a51917ff13b86
 
     public static $classMap = array (
         'CreatePermissionTables' => __DIR__ . '/../..' . '/database/migrations/2016_11_17_143532_create_permission_tables.php',
+        'CreateUserLogsTable' => __DIR__ . '/../..' . '/database/migrations/2016_12_19_114810_create_user_logs_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
