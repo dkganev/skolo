@@ -4,15 +4,16 @@
     <div class="col-md-9">
         <div class="panel panel-default" id="panelGameContend">
             <div class="panel-heading" id="panel-heading">
-                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 25%;">
-                    Game Statistics
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 15%;">
+                    @lang('messages.Game Statistics')
                 </h2>
                 <a href="{{ route('export2excelGamesStatistics') }}" class="btn btn-warning  pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
+                    @lang('messages.Export')
                 </a>
                 <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                     <a  class="btn btn-warning  pull-right" onclick="ExportToPNGGameTable();">
-                        Export to PNG
+                        @lang('messages.Export to PNG')
                     </a>
                 </div>
                 <div class="panel-body" >
@@ -27,13 +28,13 @@
                     >
                     <thead class="w3-dark-grey">
                         <tr>
-                            <th data-sortable="true">ID</th>
-                            <th data-sortable="true">Description</th>
-                            <th data-sortable="true">BET (cents)</th>
-                            <th data-sortable="true">WIN (cents)</th>
-                            <th data-sortable="true">JP (cents)</th>
-                            <th data-sortable="true">GAMES</th>
-                            <th data-sortable="true">JP HITS</th>
+                            <th data-sortable="true">@lang('messages.ID')</th>
+                            <th data-sortable="true">@lang('messages.Description')</th>
+                            <th data-sortable="true">@lang('messages.Bet') (@lang('messages.dollar'))</th>
+                            <th data-sortable="true">@lang('messages.Win') (@lang('messages.dollar'))</th>
+                            <th data-sortable="true">@lang('messages.JP') (@lang('messages.dollar'))</th>
+                            <th data-sortable="true">@lang('messages.Games')</th>
+                            <th data-sortable="true">@lang('messages.JP Hits')</th>
                         </tr>
                         <tbody>
                             @foreach($games as $game)
@@ -48,7 +49,7 @@
                             </tr>
                             @endforeach
                             <tr class="danger">
-                                <td class="text-center" colspan="2"><strong style="color:black;">TOTAL</strong></td>
+                                <td class="text-center" colspan="2"><strong style="color:black;">@lang('messages.TOTAL')</strong></td>
                                 <td class="text-right">{{ number_format($games_bet/100, 2) }}</td>
                                 <td class="text-right">{{ number_format($games_win/100, 2) }}</td>
                                 <td class="text-right">{{ number_format($games_jp/100, 2) }}</td>

@@ -4,19 +4,19 @@
         <div class="panel panel-default" id="panelTerminatsContend">
             <div class="panel-heading" id="socketConect">
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 5%;">
-                    Machine Statistics
+                    @lang('messages.Machine Statistics')
                 </h2>
 
                 <a href="{{ route('export2excelTerminalsStatistics') }}" class="btn btn-warning  pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> @lang('messages.Export')
                 </a>
                 <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                 <a  class="btn btn-warning  pull-right" onclick="ExportToPNGTerminatsTable();">
-                    Export to PNG
+                    @lang('messages.Export to PNG')
                 </a>
                 <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                 <a id="socketConectRealtime" class="btn btn-warning  pull-right" onclick="socketConect();">
-                    Start Real Time
+                    @lang('messages.Start Real Time')
                 </a>
             </div>
                 <div class="panel-body" >
@@ -28,13 +28,13 @@
                     >
                     <thead class="w3-dark-grey">
                         <tr>
-                            <th data-sortable="true">PS ID</th>
-                            <th data-sortable="true">Dallas ID</th>
-                            <th data-sortable="true">Total In (cents)</th>
-                            <th data-sortable="true">Total Out (cents)</th>
-                            <th data-sortable="true">Total Bet (cents)</th>
-                            <th data-sortable="true">Total Win (cents)</th>
-                            <th data-sortable="true">Total Credit (cents)</th>
+                            <th data-sortable="true">@lang('messages.PS ID')</th>
+                            <th data-sortable="true">@lang('messages.Dallas ID')</th>
+                            <th data-sortable="true">@lang('messages.Total In') (@lang('messages.dollar'))</th>
+                            <th data-sortable="true">@lang('messages.Total Out') (@lang('messages.dollar'))</th>
+                            <th data-sortable="true">@lang('messages.Total Bet') (@lang('messages.dollar'))</th>
+                            <th data-sortable="true">@lang('messages.Total Win') (@lang('messages.dollar'))</th>
+                            <th data-sortable="true">@lang('messages.Total Credit') (@lang('messages.dollar'))</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +51,7 @@
                             </tr>
                         @endforeach
                         <tr class="danger">
-                            <td class="text-center" colspan="2"><strong style="color:black;">TOTAL</strong></td>
+                            <td class="text-center" colspan="2"><strong style="color:black;">@lang('messages.TOTAL')</strong></td>
                             <td class="text-right" id="TotalIn" data-total="{{$totals['totalIn']}}">{{ number_format($totals['totalIn']/100, 2) }}</td>
                             <td class="text-right" id="TotalOut" data-total="{{$totals['totalOut']}}">{{ number_format($totals['totalOut']/100, 2) }}</td>
                             <td class="text-right" id="TotalBet" data-total="{{$totals['totalBet']}}">{{ number_format($totals['totalBet']/100, 2) }}</td>
@@ -69,6 +69,8 @@
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
 <script src="bootstrap-table/bootstrap-table.js"></script>
 <script>
+    var stopRealTime = '<?php echo app('translator')->get('messages.Stop Real Time'); ?>';
+    var startRealTime = '<?php echo app('translator')->get('messages.Start Real Time'); ?>';
     if (sockStatus == 1) {
         socket.connect();
         //sockStatus = 1;
@@ -84,7 +86,7 @@
         //background: linear-gradient(to bottom, rgba(164,179,87,1) 0%, rgba(164,179,86,1) 57%, rgba(164,179,86,1) 62%, rgba(164,179,86,1) 72%, rgba(117,137,12,1) 100%);
         //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4b357', endColorstr='#75890c', GradientType=0 );
         $("#socketConect").attr('style', 'background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(164, 179, 87, 1) 0%, rgba(164, 179, 86, 1) 57%, rgba(164, 179, 86, 1) 62%, rgba(164, 179, 86, 1) 72%, rgba(117, 137, 12, 1) 100%) repeat scroll 0 0 !important;');
-        $("#socketConectRealtime").text('Stop Real Time');
+        $("#socketConectRealtime").text(stopRealTime);
     }else{
         socket.disconnect();
         //sockStatus = 0;
@@ -92,6 +94,6 @@
         $("#socketConect").attr('style', 'background: rgba(0, 0, 0, 0) linear-gradient(background: linear-gradient(top, rgba(164,179,86,1) 0%, rgba(164,179,86,1) 1%, rgba(164,179,86,1) 20%, rgba(164,179,86,1) 29%, rgba(164,179,86,1) 63%, rgba(116,137,14,1) 99%, rgba(115,136,12,1) 100%);, rgba(76, 76, 76, 1) 0%, rgba(89, 89, 89, 1) 12%, rgba(102, 102, 102, 1) 25%, rgba(71, 71, 71, 1) 39%, rgba(44, 44, 44, 1) 46%, rgba(0, 0, 0, 1) 51%, rgba(44, 44, 44, 1) 55%, rgba(17, 17, 17, 1) 60%, rgba(43, 43, 43, 1) 76%, rgba(28, 28, 28, 1) 91%, rgba(19, 19, 19, 1) 100%) repeat scroll 0 0 !important;'); 
         
         //$("#div.panel-heading").css('background', '#fff', 'important');
-        $("#socketConectRealtime").text('Start Real Time');
+        $("#socketConectRealtime").text(startRealTime);
     }
 </script>

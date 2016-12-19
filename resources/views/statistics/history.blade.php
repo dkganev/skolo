@@ -15,11 +15,11 @@
         <div class="" style="">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb">
-              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
+              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">@lang('messages.Bingo')</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li>-->
-              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
-              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}')">Roulette 2</a></li>
-              <li><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">@lang('messages.Roulette')</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}')">@lang('messages.Roulette') 2</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">@lang('messages.Blackjack')</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>-->
               <!--<li><a href="javascript:ajaxLoad('#')">Slots </a></li>-->
             </ul>
@@ -36,15 +36,16 @@
             <div class="panel-heading">
                 <div>
                     <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
-                        Bingo History Statistics
+                        @lang('messages.Bingo History Statistics')
                     </h2>
                     
                     <a class="btn btn-warning  pull-right" onclick="export2excelBingo();"> 
-                        <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                        <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
+                        @lang('messages.Export')
                     </a>
                     <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                     <a  class="btn btn-warning  pull-right" onclick="ExportToPNGBingoTable();">
-                        Export to PNG
+                        @lang('messages.Export to PNG')
                     </a>
                 </div> <br />
                 
@@ -68,7 +69,7 @@
                                 </li>
                             </ul>
                         </span>
-                        <span style="color: #fff">rows per page</span> 
+                        <span style="color: #fff">@lang('messages.rows per page')</span> 
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; ">           <!--$historys->currentPage()  $historys->lastPage()-->
@@ -176,7 +177,7 @@
                     <a class="btn btn-success RouletteSort" style="display: none;" onclick="changePageSortMenuBingo();"><i class="fa fa-search" aria-hidden="true"></i></a>
                     <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunctionBingo();"><i class="fa fa-close" aria-hidden="true"></i></a> 
                     <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuBingo();">
-                       Sort Menu
+                       @lang('messages.Sort Menu')
                        <span class="caret"></span>
                     </button>
                 </div>
@@ -189,84 +190,84 @@
                         <li>
                             <label>&nbsp;
                                 <input id="checkbox1" value="0" {{ $page['tableTh1'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Time
+                                    @lang('messages.Time')
                                 <br>
                             </label>
                         </li>
                         <li>
                             <label>&nbsp;
                                 <input id="checkbox2" value="0" {{ $page['tableTh2'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Game 
+                                    @lang('messages.Game') 
                                 <br>
                             </label>
                         </li>
                         <li>
                             <label>&nbsp;
                                 <input id="checkbox3" value="0" {{ $page['tableTh3'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Ticket Cost
+                                    @lang('messages.Ticket Cost')
                                 <br>
                             </label>
                         </li> 
                         <li>
                             <label>&nbsp;
                                 <input id="checkbox4" value="0" {{ $page['tableTh4'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Players
+                                    @lang('messages.Active Players')
                                 <br>
                             </label>
                         </li> 
                         <li>
                             <label>&nbsp;
                                 <input id="checkbox5" value="0" {{ $page['tableTh5'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Tickets
+                                    @lang('messages.Tickets')
                                 <br>
                             </label>
                         </li> 
                         <li>
                             <label>&nbsp;
                                 <input id="checkboxLine" value="0" {{ $page['tableLine'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Line
+                                    @lang('messages.Bingo Line')
                                 <br>
                             </label>
                         </li> 
                         <li>
                             <label>&nbsp;
                                 <input id="checkboxBingo" value="0" {{ $page['tableBingo'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Bingo
+                                    @lang('messages.Bingo Prize')
                                 <br>
                             </label>
                         </li> 
                         <li>
                             <label>&nbsp;
                                 <input id="checkboxMyBonus" value="0" {{ $page['tableMyBonus'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    My Bonus
+                                    @lang('messages.My Bonus Prize')
                                 <br>
                             </label>
                         </li> 
                         <li>
                             <label>&nbsp;
                                 <input id="checkboxBonusLine" value="0" {{ $page['tableBonusLine'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Bonus Line
+                                    @lang('messages.Bonus Line Prize')
                                 <br>
                             </label>
                         </li> 
                         <li>
                             <label>&nbsp;
                                 <input id="checkboxBonusBingo" value="0" {{ $page['tableBonusBingo'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Bonus Bingo
+                                    @lang('messages.Bonus Bingo Prize')
                                 <br>
                             </label>
                         </li> 
                         <li>
                             <label>&nbsp;
                                 <input id="checkboxJackpotLine" value="0" {{ $page['tableJackpotLine'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Jackpot Line
+                                    @lang('messages.Jackpot Line Prize')
                                 <br>
                             </label>
                         </li> 
                         <li>
                             <label>&nbsp;
                                 <input id="checkboxJackpotBingo" value="0" {{ $page['tableJackpotBingo'] == 1 ? 'checked="checked"' : '' }} type="checkbox">
-                                    Jackpot Bingo
+                                    @lang('messages.Jackpot Bingo')
                                 <br>
                             </label>
                         </li>
@@ -280,21 +281,21 @@
                     <table id="example" class="table table-striped table-bordered table-hover" role="grid">
                     <thead class="w3-dark-grey">
                         <tr>
-                            <th colspan="5" class="text-center GameInfo" style='text-align: center !Important; '>Game Info</th>
-                            <th colspan="2" class="text-center Line">Line</th>
-                            <th colspan="2" class="text-center Bingo">Bingo</th>
-                            <th colspan="2" class="text-center MyBonus">My Bonus</th>
-                            <th colspan="2" class="text-center BonusLine">Bonus Line</th>
-                            <th colspan="2" class="text-center BonusBingo">Bonus Bingo</th>
-                            <th colspan="2" class="text-center JackpotLine">Jackpot Line</th>
-                            <th colspan="2" class="text-center JackpotBingo">Jackpot Bingo</th>
+                            <th colspan="5" class="text-center GameInfo" style='text-align: center !Important; '>@lang('messages.Game Info')</th>
+                            <th colspan="2" class="text-center Line">@lang('messages.Bingo Line')</th>
+                            <th colspan="2" class="text-center Bingo">@lang('messages.Bingo Prize')</th>
+                            <th colspan="2" class="text-center MyBonus">@lang('messages.My Bonus Prize')</th>
+                            <th colspan="2" class="text-center BonusLine">@lang('messages.Bonus Line Prize')</th>
+                            <th colspan="2" class="text-center BonusBingo">@lang('messages.Bonus Bingo Prize')</th>
+                            <th colspan="2" class="text-center JackpotLine">@lang('messages.Jackpot Line Prize')</th>
+                            <th colspan="2" class="text-center JackpotBingo">@lang('messages.Jackpot Bingo')</th>
                             <th rowspan="1" class="text-center" ></th>
                         </tr>
                         <tr class="RouletteSort">
                             <th colspan="1"  class="text-center tableTh1"  data-field="test">
                                 <div class="row tbleGame">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker22(); ">
@@ -311,7 +312,7 @@
                                 </div>    
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker33(); ">
@@ -330,7 +331,7 @@
                             <th colspan="1" class="text-center tableTh3" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -340,7 +341,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -352,7 +353,7 @@
                             <th class="text-center tableTh4">
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -362,7 +363,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -374,7 +375,7 @@
                             <th class="text-center tableTh5" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -384,7 +385,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -396,7 +397,7 @@
                             <th class="text-centert Line" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -406,7 +407,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -418,7 +419,7 @@
                             <th class="text-center Line" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -428,7 +429,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -440,7 +441,7 @@
                             <th class="text-center Bingo" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -450,7 +451,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -462,7 +463,7 @@
                             <th class="text-center Bingo" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -472,7 +473,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -484,7 +485,7 @@
                             <th class="text-center MyBonus" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -494,7 +495,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -506,7 +507,7 @@
                             <th class="text-center MyBonus" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -516,7 +517,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -528,7 +529,7 @@
                             <th class="text-center BonusLine" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -538,7 +539,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -550,7 +551,7 @@
                             <th class="text-center BonusLine" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -560,7 +561,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -572,7 +573,7 @@
                             <th class="text-center BonusBingo" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -582,7 +583,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -594,7 +595,7 @@
                             <th class="text-center BonusBingo" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -604,7 +605,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -616,7 +617,7 @@
                             <th class="text-center JackpotLine" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -626,7 +627,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -638,7 +639,7 @@
                             <th class="text-center JackpotLine" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -648,7 +649,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -660,7 +661,7 @@
                             <th class="text-center JackpotBingo" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -670,7 +671,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <div class="">
@@ -682,7 +683,7 @@
                             <th class="text-center JackpotBingo" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -692,7 +693,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <br/>
                                     <div class='col-md-12' style="margin-top: 3px;">
@@ -708,26 +709,26 @@
                             </th>
                         </tr>
                         <tr>
-                            <th class="text-center tableTh1"   data-field="id1" data-sortable="true" onclick="changePageSortBingo('tstamp', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Time<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'tstamp' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center tableTh2" data-align="right" data-field="id2" data-sortable="true" onclick="changePageSortBingo('bingo_seq', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Game #<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'bingo_seq' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center tableTh3" data-align="right" data-field="id3" data-sortable="true" onclick="changePageSortBingo('ticket_cost', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Ticket<br/>Cost<i class="fa {{ $page['OrderQuery'] == 'ticket_cost' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center tableTh4" data-align="right" data-field="id4" data-sortable="true" onclick="changePageSortBingo('players', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Players<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'players' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center tableTh5" data-align="right" data-field="id5" data-sortable="true" onclick="changePageSortBingo('tickets', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Tickets<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'tickets' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center Line" data-align="right" data-field="id6" data-sortable="true" onclick="changePageSortBingo('line', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">at<br/>ball<i class="fa {{ $page['OrderQuery'] == 'line' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center Line" data-align="right" data-field="id7" data-sortable="true" onclick="changePageSortBingo('line_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">$<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'line_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center Bingo" data-align="right" data-field="id8" data-sortable="true" onclick="changePageSortBingo('bingo', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">at<br/>ball<i class="fa {{ $page['OrderQuery'] == 'bingo' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center Bingo" data-align="right" data-field="id9" data-sortable="true" onclick="changePageSortBingo('bingo_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">$<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'bingo_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center MyBonus" data-align="right" data-field="id10" data-sortable="true" onclick="changePageSortBingo('mybonus', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">at<br/>ball<i class="fa {{ $page['OrderQuery'] == 'mybonus' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center MyBonus" data-align="right" data-field="id11" data-sortable="true" onclick="changePageSortBingo('mybonus_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">$<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'mybonus_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center BonusLine" data-align="right" data-field="id12" data-sortable="true" onclick="changePageSortBingo('bonus_line', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">at<br/>ball<i class="fa {{ $page['OrderQuery'] == 'bonus_line' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center BonusLine" data-align="right" data-field="id13" data-sortable="true" onclick="changePageSortBingo('bonus_line_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">$<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'bonus_line_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center BonusBingo" data-align="right" data-field="id14" data-sortable="true" onclick="changePageSortBingo('bonus_bingo', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">at<br/>ball<i class="fa {{ $page['OrderQuery'] == 'bonus_bingo' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center BonusBingo" data-align="right" data-field="id15" data-sortable="true" onclick="changePageSortBingo('bonus_bingo_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">$<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'bonus_bingo_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center JackpotLine" data-align="right" data-field="id16" data-sortable="true" onclick="changePageSortBingo('jackpot_line', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">at<br/>ball<i class="fa {{ $page['OrderQuery'] == 'jackpot_line' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center JackpotLine" data-align="right" data-field="id17" data-sortable="true" onclick="changePageSortBingo('jackpot_line_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">$<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'jackpot_line_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center JackpotBingo" data-align="right" data-field="id18" data-sortable="true" onclick="changePageSortBingo('jackpot_bingo', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">at<br/>ball<i class="fa {{ $page['OrderQuery'] == 'jackpot_bingo' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th> 
-                            <th class="text-center JackpotBingo" data-align="right" data-field="id19" data-sortable="true" onclick="changePageSortBingo('jackpot_bingo_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">$<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'jackpot_bingo_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th rowspan="1" class="text-center" data-field="id20" data-sortable="true" >Game<br/>Cancelled</th>
+                            <th class="text-center tableTh1"   data-field="id1" data-sortable="true" onclick="changePageSortBingo('tstamp', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Time')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'tstamp' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center tableTh2" data-align="right" data-field="id2" data-sortable="true" onclick="changePageSortBingo('bingo_seq', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Game') #<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'bingo_seq' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center tableTh3" data-align="right" data-field="id3" data-sortable="true" onclick="changePageSortBingo('ticket_cost', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Ticket<br/>Cost')<i class="fa {{ $page['OrderQuery'] == 'ticket_cost' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center tableTh4" data-align="right" data-field="id4" data-sortable="true" onclick="changePageSortBingo('players', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Active Players')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'players' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center tableTh5" data-align="right" data-field="id5" data-sortable="true" onclick="changePageSortBingo('tickets', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Tickets')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'tickets' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center Line" data-align="right" data-field="id6" data-sortable="true" onclick="changePageSortBingo('line', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.at<br/>ball')<i class="fa {{ $page['OrderQuery'] == 'line' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center Line" data-align="right" data-field="id7" data-sortable="true" onclick="changePageSortBingo('line_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.$')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'line_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center Bingo" data-align="right" data-field="id8" data-sortable="true" onclick="changePageSortBingo('bingo', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.at<br/>ball')<i class="fa {{ $page['OrderQuery'] == 'bingo' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center Bingo" data-align="right" data-field="id9" data-sortable="true" onclick="changePageSortBingo('bingo_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.$')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'bingo_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center MyBonus" data-align="right" data-field="id10" data-sortable="true" onclick="changePageSortBingo('mybonus', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.at<br/>ball')<i class="fa {{ $page['OrderQuery'] == 'mybonus' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center MyBonus" data-align="right" data-field="id11" data-sortable="true" onclick="changePageSortBingo('mybonus_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.$')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'mybonus_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center BonusLine" data-align="right" data-field="id12" data-sortable="true" onclick="changePageSortBingo('bonus_line', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.at<br/>ball')<i class="fa {{ $page['OrderQuery'] == 'bonus_line' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center BonusLine" data-align="right" data-field="id13" data-sortable="true" onclick="changePageSortBingo('bonus_line_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.$')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'bonus_line_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center BonusBingo" data-align="right" data-field="id14" data-sortable="true" onclick="changePageSortBingo('bonus_bingo', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.at<br/>ball')<i class="fa {{ $page['OrderQuery'] == 'bonus_bingo' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center BonusBingo" data-align="right" data-field="id15" data-sortable="true" onclick="changePageSortBingo('bonus_bingo_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.$')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'bonus_bingo_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center JackpotLine" data-align="right" data-field="id16" data-sortable="true" onclick="changePageSortBingo('jackpot_line', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.at<br/>ball')<i class="fa {{ $page['OrderQuery'] == 'jackpot_line' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center JackpotLine" data-align="right" data-field="id17" data-sortable="true" onclick="changePageSortBingo('jackpot_line_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.$')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'jackpot_line_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center JackpotBingo" data-align="right" data-field="id18" data-sortable="true" onclick="changePageSortBingo('jackpot_bingo', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.at<br/>ball')<i class="fa {{ $page['OrderQuery'] == 'jackpot_bingo' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th> 
+                            <th class="text-center JackpotBingo" data-align="right" data-field="id19" data-sortable="true" onclick="changePageSortBingo('jackpot_bingo_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.$')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'jackpot_bingo_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th rowspan="1" class="text-center" data-field="id20" data-sortable="true" >@lang('messages.Game<br/>Cancelled')</th>
                         </tr>
                     </thead>
 
