@@ -94,7 +94,7 @@ return array(
     'Total Bet' => 'Заложили',
     'Total Win' => 'Спечелили',
     'Total Credit' => 'Кредит',
-    'TOTAL' => 'TOTAL',
+    'TOTAL' => 'ОБЩО',
     'dollar' => 'Лев',
     'ID' => 'ID',
     'Description' => 'Опиасние',
@@ -127,6 +127,14 @@ return array(
     'Win<br />Number' => 'Печелившо<br />число',
     'Jackpot' => 'Джакпот',
     'Win Number' => 'Печелившо число',
+    'Blackjack History Statistics' => 'История на Блекджек',
+    'Table ID' => ' Маса ID',
+    'Table' => ' Маса',
+    'Insurance' => 'Застраховка',
+    'Win' => 'Печалба',
+    'Bet' => 'Заложил',
+    'Split' => 'Разцепил',
+    'Surrender' => 'Отказал се',
     
     
     'welcome' => 'Welcome to our application'

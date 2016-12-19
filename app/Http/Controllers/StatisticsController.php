@@ -2262,7 +2262,8 @@ class StatisticsController extends Controller
         }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
         }*/
-        $tableid = "Table: " . ($historys->table_idx + 1) . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $tableid = ($historys->table_idx + 1);
+        $tableidTime = date("Y-m-d H:i:s", strtotime($historys->ts));
         $totalSeatIDArray = $historys->getArraySeat_id();
         $totalWinArray = $historys->getArrayWin();
         $totalBetArray = $historys->getArrayBet();
@@ -2384,6 +2385,7 @@ class StatisticsController extends Controller
             "success" => "success",
             "dataRowID" => $totalSplitArray,
             "seatid" => $tableid,
+            "tableidTime" => $tableidTime,
             "gameIDArrow" => $historys->game_seq  ,
             "totalBet" =>  number_format($totalBet / 100, 2),
             "totalWin" =>  number_format($totalWin / 100, 2),
@@ -2418,7 +2420,10 @@ class StatisticsController extends Controller
         }
         
         $historys = $historyClas->where('ts', $dataRowTS)->first();
-        $tableid = "Table: " . ($historys->table_idx + 1) . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        //$tableid = "Table: " . ($historys->table_idx + 1) . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $tableid = ($historys->table_idx + 1);
+        $tableidTime = date("Y-m-d H:i:s", strtotime($historys->ts));
+        
         $totalSeatIDArray = $historys->getArraySeat_id();
         $totalWinArray = $historys->getArrayWin();
         $totalBetArray = $historys->getArrayBet();
@@ -2535,6 +2540,7 @@ class StatisticsController extends Controller
             "nextArrow" => $nextArrow,
             "dataRowTS" => $dataRowTS,
             "seatid" => $tableid,
+            "tableidTime" => $tableidTime,
             "gameIDArrow" => $historys->game_seq,
             "totalBet" =>  number_format($totalBet / 100, 2),
             "totalWin" =>  number_format($totalWin / 100, 2),

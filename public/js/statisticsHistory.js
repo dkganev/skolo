@@ -944,8 +944,9 @@ $(document).on("click","tr.rowsBJ td", function(e){
         data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
         success:function(data){
             if (data.success == "success"){
-                $('#BJcards').html(data.html); //seatid
+                $('#BJcards').html(data.html); 
                 $('#BJHead').html(data.seatid);
+                $('#BJHead1').html(data.tableidTime);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
                 $('#gameIDArrow').html(data.gameIDArrow);
@@ -1330,6 +1331,7 @@ function changeModalWindow(boxAttr) {
             if (data.success == "success"){
                 $('#BJcards').html(data.html); //seatid
                 $('#BJHead').html(data.seatid);
+                $('#BJHead1').html(data.tableidTime);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
                 $('#gameIDArrow').html(data.gameIDArrow);
