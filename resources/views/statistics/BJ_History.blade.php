@@ -16,20 +16,20 @@
         @endforeach
     @endforeach
     <div class="lucky_chip ng-scope"  style="left: 5px; top: 225px; background-color: #ffffff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
-        Bet: {{number_format($totalBetArray[4] / 100, 2)}} <br />
+        @lang('messages.Bet'): {{number_format($totalBetArray[4] / 100, 2)}} <br />
         @if ( array_key_exists(4,$totalDblArray))
             x2: {{number_format($totalDblArray[4] / 100, 2)}}<br />
         @endif  
         @if ( array_key_exists(4,$totalInsuranceArray))
-            Insurance: {{number_format($totalInsuranceArray[4] / 100, 2)}}<br />
+            @lang('messages.Insurance'): {{number_format($totalInsuranceArray[4] / 100, 2)}}<br />
         @endif
         @if ( array_key_exists(4,$totalSplitArray))
-            Split: {{number_format($totalSplitArray[4] / 100, 2)}}<br />
+            @lang('messages.Split'): {{number_format($totalSplitArray[4] / 100, 2)}}<br />
         @endif 
         
-        Win: {{number_format($totalWinArray[4] / 100, 2)}} <br />
+        @lang('messages.Win'): {{number_format($totalWinArray[4] / 100, 2)}} <br />
         @if ( array_key_exists(4,$totalSurrenderArray))
-            Surrender: {{number_format($totalSurrenderArray[4] / 100, 2)}}<br />
+            @lang('messages.Surrender'): {{number_format($totalSurrenderArray[4] / 100, 2)}}<br />
         @endif 
     </div>
     <div class="lucky_chip ng-scope"  style="left: 65px; top: 490px; background-color: transparent; color: #fff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
@@ -54,20 +54,20 @@
         @endforeach
     @endforeach
      <div class="lucky_chip ng-scope"  style="left: 240px; top: 340px; background-color: #ffffff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
-        Bet: {{number_format($totalBetArray[3] / 100, 2)}} <br />
+        @lang('messages.Bet'): {{number_format($totalBetArray[3] / 100, 2)}} <br />
         @if ( array_key_exists(3,$totalDblArray))
             x2: {{number_format($totalDblArray[3] / 100, 2)}}<br />
         @endif
         @if ( array_key_exists(3,$totalInsuranceArray))
-            Insurance: {{number_format($totalInsuranceArray[3] / 100, 2)}}<br />
+            @lang('messages.Insurance'): {{number_format($totalInsuranceArray[3] / 100, 2)}}<br />
         @endif
         @if ( array_key_exists(3,$totalSplitArray))
-            Split: {{number_format($totalSplitArray[3] / 100, 2)}}<br />
+            @lang('messages.Split'): {{number_format($totalSplitArray[3] / 100, 2)}}<br />
         @endif 
         
-        Win: {{number_format($totalWinArray[3] / 100, 2)}} <br />
-         @if ( array_key_exists(3,$totalSurrenderArray))
-            Surrender: {{number_format($totalSurrenderArray[3] / 100, 2)}}<br />
+        @lang('messages.Win'): {{number_format($totalWinArray[3] / 100, 2)}} <br />
+        @if ( array_key_exists(3,$totalSurrenderArray))
+            @lang('messages.Surrender'): {{number_format($totalSurrenderArray[3] / 100, 2)}}<br />
         @endif 
     </div>
     <div class="lucky_chip ng-scope"  style="left: 305px; top: 585px; background-color: transparent; color: #fff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
@@ -92,19 +92,19 @@
         @endforeach
     @endforeach
     <div class="lucky_chip ng-scope"  style="left: 495px; top: 380px; background-color: #ffffff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
-        Bet: {{number_format($totalBetArray[2] / 100, 2)}} <br />
+        @lang('messages.Bet'): {{number_format($totalBetArray[2] / 100, 2)}} <br />
         @if ( array_key_exists(2,$totalDblArray))
             x2: {{number_format($totalDblArray[2] / 100, 2)}}<br />
         @endif
         @if ( array_key_exists(2,$totalInsuranceArray))
-            Insurance: {{number_format($totalInsuranceArray[2] / 100, 2)}}<br />
+            @lang('messages.Insurance'): {{number_format($totalInsuranceArray[2] / 100, 2)}}<br />
         @endif 
         @if ( array_key_exists(2,$totalSplitArray))
-            Split: {{number_format($totalSplitArray[2] / 100, 2)}}<br />
+            @lang('messages.Split'): {{number_format($totalSplitArray[2] / 100, 2)}}<br />
         @endif 
-        Win: {{number_format($totalWinArray[2] / 100, 2)}} <br />
+        @lang('messages.Win'): {{number_format($totalWinArray[2] / 100, 2)}} <br />
         @if ( array_key_exists(2,$totalSurrenderArray))
-            Surrender: {{number_format($totalSurrenderArray[2] / 100, 2)}}<br />
+            @lang('messages.Surrender'): {{number_format($totalSurrenderArray[2] / 100, 2)}}<br />
         @endif 
         
     </div>
@@ -131,19 +131,19 @@
         @endforeach
     @endforeach
     <div class="lucky_chip ng-scope"  style="left: 775px; top: 340px; background-color: #ffffff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
-        Bet: {{number_format($totalBetArray[1] / 100, 2)}} <br />
+        @lang('messages.Bet'): {{number_format($totalBetArray[1] / 100, 2)}} <br />
         @if ( array_key_exists(1,$totalDblArray))
             x2: {{number_format($totalDblArray[1] / 100, 2)}}<br />
         @endif
         @if ( array_key_exists(1,$totalInsuranceArray))
-            Insurance: {{number_format($totalInsuranceArray[1] / 100, 2)}}<br />
+            @lang('messages.Insurance'): {{number_format($totalInsuranceArray[1] / 100, 2)}}<br />
         @endif 
         @if ( array_key_exists(1,$totalSplitArray))
-            Split: {{number_format($totalSplitArray[1] / 100, 2)}}<br />
+            @lang('messages.Split'): {{number_format($totalSplitArray[1] / 100, 2)}}<br />
         @endif 
-        Win: {{number_format($totalWinArray[1] / 100, 2)}} <br />
+        @lang('messages.Win'): {{number_format($totalWinArray[1] / 100, 2)}} <br />
         @if ( array_key_exists(1,$totalSurrenderArray))
-            Surrender: {{number_format($totalSurrenderArray[1] / 100, 2)}}<br />
+            @lang('messages.Surrender'): {{number_format($totalSurrenderArray[1] / 100, 2)}}<br />
         @endif 
     </div>
     <div class="lucky_chip ng-scope"  style="left: 830px; top: 585px; background-color: transparent; color: #fff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
@@ -168,20 +168,20 @@
         @endforeach
     @endforeach
     <div class="lucky_chip ng-scope"  style="left: 995px; top: 225px; background-color: #ffffff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">
-        Bet: {{ number_format($totalBetArray[0] / 100, 2)}} <br />
+        @lang('messages.Bet'): {{ number_format($totalBetArray[0] / 100, 2)}} <br />
         @if ( array_key_exists(0,$totalDblArray))
             x2: {{number_format($totalDblArray[0] / 100, 2)}}<br />
         @endif
         @if ( array_key_exists(0,$totalInsuranceArray))
-            Insurance: {{number_format($totalInsuranceArray[0] / 100, 2)}}<br />
+            @lang('messages.Insurance'): {{number_format($totalInsuranceArray[0] / 100, 2)}}<br />
         @endif
         @if ( array_key_exists(0,$totalSplitArray))
-            Split: {{number_format($totalSplitArray[0] / 100, 2)}}<br />
+            @lang('messages.Split'): {{number_format($totalSplitArray[0] / 100, 2)}}<br />
         @endif 
         
-        Win: {{ number_format($totalWinArray[0] / 100, 2)}} <br />
+        @lang('messages.Win'): {{ number_format($totalWinArray[0] / 100, 2)}} <br />
         @if ( array_key_exists(0,$totalSurrenderArray))
-            Surrender: {{number_format($totalSurrenderArray[0] / 100, 2)}}<br />
+            @lang('messages.Surrender'): {{number_format($totalSurrenderArray[0] / 100, 2)}}<br />
         @endif 
     </div>
     <div class="lucky_chip ng-scope"  style="left: 1060px; top: 490px; background-color: transparent; color: #fff;  position: absolute; min-width: 75px; border-radius: 10px; text-align: center;">

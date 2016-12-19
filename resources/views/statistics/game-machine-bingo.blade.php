@@ -2,13 +2,13 @@
     <div class="row">
       <div class="col-md-9">
         <ul class="breadcrumb">
-          <li><a href="javascript:ajaxLoad('{{url('statistics/game-machine-blackjack')}}')">Blackjack</a></li>
+          <li><a href="javascript:ajaxLoad('{{url('statistics/game-machine-blackjack')}}')">@lang('messages.Blackjack')</a></li>
           
-          <li class="active"><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-bingo')}}')">Bingo</a></li>
+          <li class="active"><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-bingo')}}')">@lang('messages.Bingo')</a></li>
   
-          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl1')}}')">Roulette 1</a></li>
+          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl1')}}')">@lang('messages.Roulette') 1</a></li>
 
-          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl2')}}')">Roulette 2</a></li>
+          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl2')}}')">@lang('messages.Roulette') 2</a></li>
         </ul>
       </div>
     </div>
@@ -19,16 +19,16 @@
     <div class="col-md-9">
         <div class="panel panel-default" id="panelTerminatsContend">
             <div class="panel-heading" id="socketConect">
-                <a href="#" class="btn btn-danger ">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
-                </a>
-
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 30%;">
-                    Bingo
+                    @lang('messages.Bingo')
                 </h2>
-
+                <a href="#" class="btn btn-warning  pull-right ">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
+                    @lang('messages.Export')
+                </a>
+                <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                 <a class="btn btn-warning  pull-right" onclick="ExportToPNGTerminatsTable();">
-                    Export to PNG
+                    @lang('messages.Export to PNG')
                 </a>
             </div>
                 <div class="panel-body" >
@@ -40,12 +40,12 @@
                           >
                     <thead class="w3-dark-grey">
                       <tr>
-                          <th data-sortable="true">PS ID</th>
-                          <th data-sortable="true">Total Bet (cents)</th>
-                          <th data-sortable="true">Total Win (cents)</th>
-                          <th data-sortable="true">Jackpot (cents)</th>
-                          <th data-sortable="true">Games</th>
-                          <th data-sortable="true">Jackpot Hits</th>
+                          <th data-sortable="true">@lang('messages.PS ID')</th>
+                          <th data-sortable="true">@lang('messages.Total Bet') (@lang('messages.dollar'))</th>
+                          <th data-sortable="true">@lang('messages.Total Win') (@lang('messages.dollar'))</th>
+                          <th data-sortable="true">@lang('messages.Jackpot') (@lang('messages.dollar'))</th>
+                          <th data-sortable="true">@lang('messages.Games')</th>
+                          <th data-sortable="true">@lang('messages.JP Hits')</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -60,7 +60,7 @@
                         </tr>
                       @endforeach
                       <tr class="danger">
-                        <td class="text-center"><strong style="color:black;">TOTAL</strong></td>
+                        <td class="text-center"><strong style="color:black;">@lang('messages.TOTAL')</strong></td>
                         <td class="text-right">{{ number_format($totals['bet']/100, 2) }}</td>
                         <td class="text-right">{{ number_format($totals['win']/100, 2) }}</td>
                         <td class="text-right">{{ number_format($totals['jp']/100, 2) }}</td>
