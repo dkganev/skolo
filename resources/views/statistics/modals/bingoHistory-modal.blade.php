@@ -7,17 +7,17 @@
                 <a href="#" class=" pull-right" style="font-size: 16px; right: 15px !important;  color: #ffffff;" onclick="$('#ModalClose').click();">
                     <i class="glyphicon glyphicon-remove"></i>
                 </a>
-                <span style="font-size: 16px; ">Bingo</span>
+                <span style="font-size: 16px; ">@lang('messages.Bingo')</span>
             </div>
             <div class="modal-body" >
                <table class="table table-striped" id='bingoPurchase_History'>
                     <tbody>
                         <tr>
-                            <th>PS ID</th>
-                            <th>Total tickets</th>
-                            <th>Ticket cost</th>
-                            <th>Amount Won</th>
-                            <th>Action</th>
+                            <th>@lang('messages.PS ID')</th>
+                            <th>@lang('messages.Total tickets')</th>
+                            <th>@lang('messages.Ticket cost')</th>
+                            <th>@lang('messages.Amount Won')</th>
+                            <th>@lang('messages.Action')</th>
                         </tr>
                         
                     </tbody>
@@ -25,8 +25,8 @@
                
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning" onclick='ExportToPNGBingo();'>Export to PNG</button>
-                <button id="ModalClose" type="button" class="btn btn-default" data-dismiss="modal">Close <i class="glyphicon glyphicon-arrow-right"></i></button>
+                <button type="button" class="btn btn-warning" onclick='ExportToPNGBingo();'>@lang('messages.Export to PNG')</button>
+                <button id="ModalClose" type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close') <i class="glyphicon glyphicon-arrow-right"></i></button>
         
             </div>
         </div>

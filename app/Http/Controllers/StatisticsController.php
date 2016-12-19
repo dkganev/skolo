@@ -576,8 +576,8 @@ class StatisticsController extends Controller
         $psTicketsArchive = psTicketsArchive::where('unique_game_seq', $dataUnique_game_seq)->where('psid', $datapsid)->first();
         $bingoCount = $psTicketsArchive->ticket_count - 1 ; 
         $bingoStr = $psTicketsArchive->tickets_id ; 
-        $psTicketsArchiveHTML = "My Bonus Numbers: " . $psTicketsArchive->mybonus_b1 . ", " . $psTicketsArchive->mybonus_b2 . ", " . $psTicketsArchive->mybonus_b3;
-        $BingoBallsHTML = "Balls: ";
+        $psTicketsArchiveHTML = $psTicketsArchive->mybonus_b1 . ", " . $psTicketsArchive->mybonus_b2 . ", " . $psTicketsArchive->mybonus_b3;
+        $BingoBallsHTML = "";
         $BingoBallsArray = array();
            for ($i = 1; $i <= $BingoBalls->ball_cnt; $i++) {
                $curBal = "b" . $i;
@@ -1151,7 +1151,8 @@ class StatisticsController extends Controller
         }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
         }*/
-        $seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $seatid = $historys->psid;
+        $seatTime = date("Y-m-d H:i:s", strtotime($historys->ts));
         $positions = array();
         $positionN =161;
         $num_max = $positionN + 1;
@@ -1171,6 +1172,7 @@ class StatisticsController extends Controller
             "success" => "success",
             "dataRowID" => $dataRowID,
             "seatid" => $seatid,
+            "seatTime" => $seatTime,
             "gameIDArrow" => $historys->rlt_seq,
             "winNumber" => $historys->win_num,
             "totalBet" =>  number_format($historys->bet / 100, 2),
@@ -1215,7 +1217,9 @@ class StatisticsController extends Controller
         }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
         }*/
-        $seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        //$seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $seatid = $historys->psid;
+        $seatTime = date("Y-m-d H:i:s", strtotime($historys->ts));
         $positions = array();
         $positionN =161;
         $num_max = $positionN + 1;
@@ -1238,6 +1242,7 @@ class StatisticsController extends Controller
             "nextArrow" => $nextArrow,
             "dataRowID" => $dataRowID,
             "seatid" => $seatid,
+            "seatTime" => $seatTime,
             "gameIDArrow" => $historys->rlt_seq,
             "winNumber" => $historys->win_num,
             "totalBet" =>  number_format($historys->bet / 100, 2),
@@ -1792,7 +1797,9 @@ class StatisticsController extends Controller
         }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
         }*/
-        $seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        //$seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $seatid = $historys->psid;
+        $seatTime = date("Y-m-d H:i:s", strtotime($historys->ts));
         $positions = array();
         $positionN =161;
         $num_max = $positionN + 1;
@@ -1812,6 +1819,7 @@ class StatisticsController extends Controller
             "success" => "success",
             "dataRowID" => $dataRowID,
             "seatid" => $seatid,
+            "seatTime" => $seatTime,
             "gameIDArrow" => $historys->rlt_seq,
             "winNumber" => $historys->win_num,
             "totalBet" =>  number_format($historys->bet / 100, 2),
@@ -1859,7 +1867,9 @@ class StatisticsController extends Controller
         }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
         }*/
-        $seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        //$seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $seatid = $historys->psid;
+        $seatTime = date("Y-m-d H:i:s", strtotime($historys->ts));
         $positions = array();
         $positionN =161;
         $num_max = $positionN + 1;
@@ -1882,6 +1892,7 @@ class StatisticsController extends Controller
             "nextArrow" => $nextArrow,
             "dataRowID" => $dataRowID,
             "seatid" => $seatid,
+            "seatTime" => $seatTime,
             "gameIDArrow" => $historys->rlt_seq,
             "winNumber" => $historys->win_num,
             "totalBet" =>  number_format($historys->bet / 100, 2),

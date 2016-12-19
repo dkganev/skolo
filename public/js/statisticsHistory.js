@@ -1433,8 +1433,9 @@ $(document).on("click","tr.rowsR td", function(e){
         data:{'rowID': rowID, 'rowTS': rowTS, _token: token},
         success:function(data){
             if (data.success == "success"){
-                $('#roulettePic').html(data.html); //seatid
-                $('#rouletteHead').html(data.seatid);
+                $('#roulettePic').html(data.html); 
+                $('#rouletteHead').html(data.seatid); 
+                $('#rouletteHead1').html(data.seatTime); 
                 $('#winNumber').html(data.winNumber);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
@@ -1844,8 +1845,9 @@ function changeModalWindowR(NextPrev) {
         data:{'rowTS': rowTS, 'rowId': rowId, 'NextPrev': NextPrev, _token: token},
         success:function(data){
             if (data.success == "success"){
-                $('#roulettePic').html(data.html); //seatid
+                $('#roulettePic').html(data.html); 
                 $('#rouletteHead').html(data.seatid);
+                $('#rouletteHead1').html(data.seatTime);
                 $('#winNumber').html(data.winNumber);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
@@ -1954,6 +1956,7 @@ function changeModalWindowR2(NextPrev) {
             if (data.success == "success"){
                 $('#roulettePic').html(data.html); //seatid
                 $('#rouletteHead').html(data.seatid);
+                $('#rouletteHead1').html(data.seatTime);
                 $('#winNumber').html(data.winNumber);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);
@@ -2002,6 +2005,7 @@ $(document).on("click","tr.rowsR2 td", function(e){
             if (data.success == "success"){
                 $('#roulettePic').html(data.html); //seatid
                 $('#rouletteHead').html(data.seatid);
+                $('#rouletteHead1').html(data.seatTime);
                 $('#winNumber').html(data.winNumber);
                 $('#totalBet').html(data.totalBet);
                 $('#totalWin').html(data.totalWin);

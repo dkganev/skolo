@@ -63,7 +63,7 @@ $allRows = ceil($allThickets / 8);
                         <table style='border: 1px solid #428bca; text-align: center; border-collapse: separate; border-spacing: 4px;'>
                              <tbody>
                                 <tr>
-                                    <th colspan="5" style='border: 1px solid #428bca; text-align: center; background-color: #428bca; color: #fff; border-collapse: collapse; ' onmouseover="$('#wonL{{$bingoLine}}').show();" onmouseout="$('#wonL{{$bingoLine}}').hide();">Ticket ID: {{$ticketID[1]}}</th>
+                                    <th colspan="5" style='border: 1px solid #428bca; text-align: center; background-color: #428bca; color: #fff; border-collapse: collapse; ' onmouseover="$('#wonL{{$bingoLine}}').show();" onmouseout="$('#wonL{{$bingoLine}}').hide();">@lang('messages.Ticket ID'): {{$ticketID[1]}}</th>
                                 </tr>
                                 <tr>
                                     <td style='border: 1px solid #428bca; text-align: center; background-color: <?php in_array($bingoTicket[1], $BingoBallsArray) ? print '#e0f0ff' : print '#fff' ; ?>; border-collapse: unset; border-spacing: 4px;'>{{$bingoTicket[1]}}</td>
@@ -114,7 +114,7 @@ $allRows = ceil($allThickets / 8);
                          <table style='border: 1px solid #428bca; text-align: center; border-collapse: separate; border-spacing: 4px;'>
                              <tbody>
                                 <tr>
-                                    <th colspan="5" style='border: 1px solid #428bca; text-align: center; background-color: #428bca; color: #fff; border-collapse: collapse; ' onmouseover="$('#wonB{{$bingoBingo}}').show();" onmouseout="$('#wonB{{$bingoBingo}}').hide();">Ticket ID: {{$ticketID[1]}}</th>
+                                    <th colspan="5" style='border: 1px solid #428bca; text-align: center; background-color: #428bca; color: #fff; border-collapse: collapse; ' onmouseover="$('#wonB{{$bingoBingo}}').show();" onmouseout="$('#wonB{{$bingoBingo}}').hide();">@lang('messages.Ticket ID'): {{$ticketID[1]}}</th>
                                 </tr>
                                 <tr>
                                     <td style='border: 1px solid #428bca; text-align: center; background-color: <?php in_array($bingoTicket[1], $BingoBallsArray) ? print '#e0f0ff' : print '#fff' ; ?>; border-collapse: unset; border-spacing: 4px;'>{{$bingoTicket[1]}}</td>
@@ -160,7 +160,7 @@ $allRows = ceil($allThickets / 8);
                         <table style='border: 1px solid #d9edf7; text-align: center; border-collapse: separate; border-spacing: 4px;'>
                              <tbody>
                                 <tr>
-                                    <th colspan="5" style='border: 1px solid #d9edf7; text-align: center; background-color: #d9edf7; color: #31708f; border-collapse: collapse; '>Ticket ID: {{$ticketID[1]}}</th>
+                                    <th colspan="5" style='border: 1px solid #d9edf7; text-align: center; background-color: #d9edf7; color: #31708f; border-collapse: collapse; '>@lang('messages.Ticket ID'): {{$ticketID[1]}}</th>
                                 </tr>
 
                                 <tr>

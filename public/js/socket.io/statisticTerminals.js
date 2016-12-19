@@ -24,7 +24,7 @@ function socketConect() {
         ////style.setProperty('background', '#fff', 'important');  //style.setProperty( 'height', '0px', 'important' )
         //$("#socketConect").css({'background-image': 'linear-gradient(to bottom,#f5f5f5 0%,#e8e8e8 100%)'});
         //background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(76, 76, 76, 1) 0%, rgba(89, 89, 89, 1) 12%, rgba(102, 102, 102, 1) 25%, rgba(71, 71, 71, 1) 39%, rgba(44, 44, 44, 1) 46%, rgba(0, 0, 0, 1) 51%, rgba(44, 44, 44, 1) 55%, rgba(17, 17, 17, 1) 60%, rgba(43, 43, 43, 1) 76%, rgba(28, 28, 28, 1) 91%, rgba(19, 19, 19, 1) 100%) repeat scroll 0 0 !important;
-        $("#socketConectRealtime").text('Start Real Time');
+        $("#socketConectRealtime").text(startRealTime);
     }
 }
 

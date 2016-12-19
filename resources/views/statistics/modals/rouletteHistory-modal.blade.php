@@ -7,26 +7,30 @@
                 <a href="#" class=" pull-right" style="font-size: 16px; right: 15px !important;  color: #ffffff;" onclick="$('#ModalClose').click();">
                     <i class="glyphicon glyphicon-remove"></i>
                 </a>
-                <span id='rouletteHead' style="font-size: 16px; ">PS: 2, Time: 2016-09-12 14:19:43</span>
+                <span style="font-size: 16px; ">PS: </span>
+                <span id='rouletteHead' style="font-size: 16px; ">\</span>
+                <span style="font-size: 16px; ">, @lang('messages.Time'): </span>
+                <span id='rouletteHead1' style="font-size: 16px; "></span>
+                
             </div>
             <div class="modal-body" >
                 <div style="display: table-cell;vertical-align: top;padding-right: 20px; width: 200px">
                     <div>
-                        Win Number
-                        <b id='winNumber'>1</b>
+                        @lang('messages.Win Number')
+                        <b id='winNumber'></b>
                     </div>
                     <br>
                     <div>
-                        Total Bet:
-                        <b id='totalBet'>110.00</b>
+                        @lang('messages.Total Bet'):
+                        <b id='totalBet'></b>
                     </div>
                     <div>
-                        Total Win:
-                        <b id='totalWin'>0.00</b>
+                        @lang('messages.Total Win'):
+                        <b id='totalWin'></b>
                     </div>
-                    <div class="ng-hide" ng-show="hist.rlt_row.jackpot > 0" aria-hidden="true">
-                        Jackpot Won:
-                        <b id='jackpotWon'>0.00</b>
+                    <div class="ng-hide" >
+                        @lang('messages.Jackpot'):
+                        <b id='jackpotWon'></b>
                     </div>
                 </div>
                 
@@ -45,13 +49,13 @@
                 <div style='text-align: center;'>
                     <input id='next-prevR' type="hidden" data-id='' data-ts='' >
                     <a><i id='prevArrowR' class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindowR("Prev");'></i></a>
-                    &nbsp;&nbsp;Game: <span id="gameIDArrowR">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;
+                    &nbsp;&nbsp;@lang('messages.Game'): <span id="gameIDArrowR">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;
                     <a><i id='nextArrowR' class="fa fa-angle-right" style="color: #333; font-size: 20px;" onclick='changeModalWindowR("Next");'></i></a>
                 </div>
             </div>    
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning" onclick='ExportToPNGR();'>Export to PNG</button>
-                <button id="ModalClose" type="button" class="btn btn-default" data-dismiss="modal">Close <i class="glyphicon glyphicon-arrow-right"></i></button>
+                <button type="button" class="btn btn-warning" onclick='ExportToPNGR();'>@lang('messages.Export to PNG')</button>
+                <button id="ModalClose" type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close') <i class="glyphicon glyphicon-arrow-right"></i></button>
             </div>
         </div>
     </div>

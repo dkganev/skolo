@@ -2,12 +2,12 @@
 <table class="table table-striped">
     <tbody>
         <tr>
-            <th>PS ID</th>
-            <th>Seat ID</th>
-            <th>Total tickets</th>
-            <th>Ticket cost</th>
-            <th>Amount Won</th>
-            <th>Action</th>
+            <th>@lang('messages.PS ID')</th>
+            <th>@lang('messages.Seat ID')</th>
+            <th>@lang('messages.Total Tickets')</th>
+            <th>@lang('messages.Ticket Value')</th>
+            <th>@lang('messages.Amount Won')</th>
+            <th>@lang('messages.Action')</th>
         </tr>
         @foreach($psTicketsArchives as $psTicketsArchive)
 
@@ -20,7 +20,7 @@
                 <td>
                     <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#bingoHistory2_modal" onclick='boxModalWindow2({{ $psTicketsArchive->bingo_seq}}, "{{$psTicketsArchive->unique_game_seq}}", {{$psTicketsArchive->psid }});' style="float: left;" tabindex="0">
                         <i class="glyphicon glyphicon-open"></i>
-                        Show Tickets
+                        @lang('messages.Show Tickets')
                     </button>
                 </td>
             </tr>

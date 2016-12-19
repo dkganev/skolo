@@ -12,11 +12,11 @@
         <div class="" style="">
             <!-- Secondary Navigation -->
             <ul class="breadcrumb">
-              <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">Bingo</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">@lang('messages.Bingo')</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Casino Battle</a></li> -->
-              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">Roulette</a></li>
-              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}')">Roulette 2</a></li>
-              <li><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">Blackjack</a></li>
+              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">@lang('messages.Roulette')</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}')">@lang('messages.Roulette') 2</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historyBlackjack')}}')">@lang('messages.Blackjack')</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>-->
               <!--<li><a href="javascript:ajaxLoad('#')">Slots </a></li>-->
             </ul>
@@ -32,14 +32,15 @@
             <div class="panel-heading">
                 <div>
                     <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 20%;">
-                        Roulette History Statistics
+                        @lang('messages.Roulette History Statistics')
                     </h2>
                     <a class="btn btn-warning  pull-right" onclick="export2excelR();">
-                        <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                        <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
+                        @lang('messages.Export')
                     </a>
                     <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                     <a  class="btn btn-warning  pull-right" onclick="ExportToPNGRTable();">
-                        Export to PNG
+                        @lang('messages.Export to PNG')
                     </a>
                 </div> <br />
                 <div class="pull-left pagination-detail">
@@ -62,7 +63,7 @@
                                 </li>
                             </ul>
                         </span>
-                        <span style="color: #fff">rows per page</span> 
+                        <span style="color: #fff">@lang('messages.rows per page')</span> 
                     </span>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="pagination" style="margin: 0px; ">
@@ -167,7 +168,7 @@
                     <a class="btn btn-success RouletteSort" style="display: none;" onclick="changePageSortMenuR()"><i class="fa fa-search" aria-hidden="true"></i></a>
                     <a class="btn btn-default RouletteSort" style="display: none;" onclick="cleanSortFunctionR()"><i class="fa fa-close" aria-hidden="true"></i></a> 
                     <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuR();">
-                       Sort Menu
+                       @lang('messages.Sort Menu')
                        <span class="caret"></span>
                     </button>
                 </div>
@@ -192,7 +193,7 @@
                             <th  class="RouletteSort col-md-2"  style="display: none; ">
                                <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker44(); ">
@@ -209,7 +210,7 @@
                                 </div>    
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="" onclick="datetimepicker55(); ">
@@ -230,7 +231,7 @@
                             <th class="text-center RouletteSort" style="display: none;" data-field="id204" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -240,7 +241,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="" style="margin-top: 3px;">
@@ -252,7 +253,7 @@
                             <th class="text-center RouletteSort" style="display: none;" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="">
@@ -262,7 +263,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12'>
                                         <div class="" style="margin-top: 3px;">
@@ -274,7 +275,7 @@
                             <th class="text-center RouletteSort" style="display: none;" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <input class="form-control" type='number' style="color: #333" value="{{$page['FromGameWin'] == "" ? "" : $page['FromGameWin']}}" id='FromGameWinR' >
@@ -282,7 +283,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <input class="form-control" type='number' style="color: #333" value="{{$page['ToGameWin'] == "" ? "" : $page['ToGameWin']}}" id='ToGameWinR' >
@@ -292,7 +293,7 @@
                             <th class="text-center  RouletteSort" style="display: none;" >
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        From:
+                                        @lang('messages.From'):
                                     </div>
                                     <div class='col-md-12'>
                                         <input class="form-control" type='number' style="color: #333" value="{{$page['FromGameJack'] == "" ? "" : $page['FromGameJack']}}" id='FromGameJackR' >
@@ -300,7 +301,7 @@
                                 </div>
                                 <div class="row">
                                     <div class='col-md-3'>
-                                        To:
+                                        @lang('messages.To'):
                                     </div>
                                     <div class='col-md-12' style="margin-top: 3px;">
                                         <input class="form-control" type='number' style="color: #333" value="{{$page['ToGameJack'] == "" ? "" : $page['ToGameJack']}}" id='ToGameJackR' >
@@ -310,15 +311,15 @@
                             <th class="RouletteSort" style="display: none;"></th>
                         </tr>
                         <tr>
-                            <th class="text-center" data-field="date" data-field="id101" data-sortable="true" onclick="changePageSortR('ts', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Time<i class="fa {{ $page['OrderQuery'] == 'ts' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center" data-align="right" data-field="id102" data-sortable="true" onclick="changePageSortR('rlt_seq', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Game #<i class="fa {{ $page['OrderQuery'] == 'rlt_seq' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center" data-align="right" data-field="id103" data-sortable="true" onclick="changePageSortR('psid', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">PS ID<i class="fa {{ $page['OrderQuery'] == 'psid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center" data-align="right" data-field="id103" data-sortable="true" onclick="changePageSortR('seatid', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Seat ID<i class="fa {{ $page['OrderQuery'] == 'seatid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center" data-align="right" data-field="id104" data-sortable="true" onclick="changePageSortR('win_num', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Win<br />Number<i class="fa {{ $page['OrderQuery'] == 'win_num' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center" data-align="right" data-field="id105" data-sortable="true" onclick="changePageSortR('bet', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Total Bet<i class="fa {{ $page['OrderQuery'] == 'bet' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center" data-align="right" data-field="id106" data-sortable="true" onclick="changePageSortR('win_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Total Win<i class="fa {{ $page['OrderQuery'] == 'win_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center" data-align="right" data-field="id107" data-sortable="true" onclick="changePageSortR('jackpot', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Jackpot<i class="fa {{ $page['OrderQuery'] == 'jackpot' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center" data-align="right" data-field="id108" data-sortable="true" >No Spin Game</th>
+                            <th class="text-center" data-field="date" data-field="id101" data-sortable="true" onclick="changePageSortR('ts', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Time')<i class="fa {{ $page['OrderQuery'] == 'ts' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id102" data-sortable="true" onclick="changePageSortR('rlt_seq', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Game') #<i class="fa {{ $page['OrderQuery'] == 'rlt_seq' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id103" data-sortable="true" onclick="changePageSortR('psid', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.PS ID')<i class="fa {{ $page['OrderQuery'] == 'psid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id103" data-sortable="true" onclick="changePageSortR('seatid', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Seat ID')<i class="fa {{ $page['OrderQuery'] == 'seatid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id104" data-sortable="true" onclick="changePageSortR('win_num', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Win<br />Number')<i class="fa {{ $page['OrderQuery'] == 'win_num' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id105" data-sortable="true" onclick="changePageSortR('bet', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Total Bet')<i class="fa {{ $page['OrderQuery'] == 'bet' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id106" data-sortable="true" onclick="changePageSortR('win_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Total Win')<i class="fa {{ $page['OrderQuery'] == 'win_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id107" data-sortable="true" onclick="changePageSortR('jackpot', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Jackpot')<i class="fa {{ $page['OrderQuery'] == 'jackpot' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center" data-align="right" data-field="id108" data-sortable="true" >@lang('messages.No Spin Game')</th>
                         </tr>
                     </thead>
 

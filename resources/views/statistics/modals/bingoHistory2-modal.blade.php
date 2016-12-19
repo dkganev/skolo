@@ -7,31 +7,26 @@
                 <a href="#" class=" pull-right" style="font-size: 16px; right: 15px !important;  color: #ffffff;" onclick="$('.ModalClose').click();">
                     <i class="glyphicon glyphicon-remove"></i>
                 </a>
-                <span style="font-size: 16px; ">Bingo - Tickets bought on PS </span><span id='ticketNumber'>1</span><span> for Game # </span><span id='gameNumber'></span>
+                <span style="font-size: 16px; ">@lang('messages.Bingo - Tickets bought on PS') </span><span id='ticketNumber'>1</span><span> @lang('messages.for Game #') </span><span id='gameNumber'></span>
             </div>
             <div class="modal-body" >
-                <span id='balsHistory' style="font-size: 14px; ">Balls:  </span>
+                <span style="font-size: 14px; ">@lang('messages.Balls'):  </span>
+                <span id='balsHistory' style="font-size: 14px; "></span>
                 <br/><br/>
-                <span id='psTicketsArchive' style="font-size: 14px; font-weight: bold; ">My Bonus Numbers: </span>
-                
+                <span style="font-size: 14px; font-weight: bold; ">@lang('messages.My Bonus Numbers'): </span>
+                <span id='psTicketsArchive' style="font-size: 14px; font-weight: bold; "></span>
                 
                 <table class="table table-striped" id='bingoTickets_History'>
                     <tbody>
-                        <tr>
-                            <th>PS ID</th>
-                            <th>Total tickets</th>
-                            <th>Ticket cost</th>
-                            <th>Amount Won</th>
-                            <th>Action</th>
-                        </tr>
+                        
                         
                     </tbody>
                 </table> 
                
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning" onclick='ExportToPNGBingoT();'>Export to PNG</button>
-                <button type="button" class="btn btn-default ModalClose" data-dismiss="modal">Close <i class="glyphicon glyphicon-arrow-right"></i></button>
+                <button type="button" class="btn btn-warning" onclick='ExportToPNGBingoT();'>@lang('messages.Export to PNG')</button>
+                <button type="button" class="btn btn-default ModalClose" data-dismiss="modal">@lang('messages.Close') <i class="glyphicon glyphicon-arrow-right"></i></button>
         
             </div>
         </div>
