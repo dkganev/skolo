@@ -81,6 +81,11 @@ return array(
     'Close' => 'Затвори',
     'Update Template' => 'Актуализирай Шаблона',
     'Games' => 'Игри',
+    'Machine Statistics' => 'Статистика по Терминали',
+    'Game Statistics' => 'Статистика по Игри',
+    'Game History' => 'История на Игрите',
+    'Machine Game Statistics' => 'Статистика по Терминали и Игри',
+    'User Logs' => 'Език на Потребителите',
     'B' => 'B',
     
     'welcome' => 'Welcome to our application'
