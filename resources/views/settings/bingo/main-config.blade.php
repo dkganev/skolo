@@ -235,7 +235,6 @@
 				Update
 			</button>
 
-
 		</div><!-- End Panel Footer-->
 	</form>
 	</div>
