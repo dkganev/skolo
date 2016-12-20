@@ -9,4 +9,6 @@ class UserLogs extends Model
     protected $connection = 'pgsql2';
 
     protected $table = 'user_logs';
+
+    protected $guarded = [];
 }

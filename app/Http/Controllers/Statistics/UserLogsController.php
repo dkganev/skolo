@@ -12,7 +12,7 @@ class UserLogsController extends Controller
 {
 	public function index()
 	{
-		$logs = UserLogs::orderBy('created_at', 'asc');
+		$logs = UserLogs::orderBy('created_at', 'asc')->get();
 
 		return view('statistics.user-logs', compact('logs'));
 	}

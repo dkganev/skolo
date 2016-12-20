@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use Auth;
 use Session;
 use App\Models\User;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Models\Accounting\Casinos;
 use App\Models\Cms\CmsLangs;
-
+use Illuminate\Http\Request;
+use App\Events\UserFailedToLogIn;
+use App\Models\Accounting\Casinos;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -35,6 +34,11 @@ class AuthController extends Controller
 
         if(!Auth::attempt(['name' => $request['name'], 'password' => $request['password']]))
         {
+            event(new UserFailedToLogIn(
+                    request()->ip(),
+                    $request->name
+                ));
+
             return redirect('/');
         }
         

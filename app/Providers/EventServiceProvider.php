@@ -16,6 +16,17 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\TerminalCreated' => [
             'App\Listeners\AddRouletteTerminal',
         ],
+
+        'App\Events\UserLoggedIn' => [
+            'App\Listeners\LogSuccessLogin',
+        ],
+
+        'App\Events\UserFailedToLogIn' => [
+            'App\Listeners\LogFailedLogin',
+        ],
+        // 'App\Events\TerminalCreated' => [
+        //     'App\Listeners\AddRouletteTerminal',
+        // ],
     ];
 
     /**

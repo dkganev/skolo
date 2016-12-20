@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Models\Roulette\PsConf;
 use App\Models\Roulette\Roulette2\PsConf as PsConf2;
+
 class AddRouletteTerminal
 {
     /**
