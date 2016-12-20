@@ -205,6 +205,16 @@ return array(
     'Prefered Language' => 'Предпочитан Език',
     'Delete User' => 'Изтриване на Потребител',
     'Edit User' => 'Редактиране не Потрбител',
+    'Casino ID' => 'ID на Казиното',
+    'Casino Name' => 'Име На Казиното',
+    'Casino Address' => 'Адрес на Казиното',
+    'Casino GSM' => 'GSM на Казиното',
+    'Add Casino' => 'Добави Казино',
+    'Update Casino' => 'Редактиране на Казиното',
+    'Language Name' => 'Име на Езика',
+    'Language ID' => 'ID на Езика',
+    'Add Language' => 'Добави Език',
+    'Update Language' => 'Редактиране на Езика',
     
     
     

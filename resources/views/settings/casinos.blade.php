@@ -2,17 +2,18 @@
 
 <div class="container">
 <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-9">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addCasinoModal">
-                    Add Casino 
+                    @lang('messages.Add') 
                 </button>
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 27%;">
-                    Casinos
+                    @lang('messages.Casinos')
                 </h2>
-                <a href="{{ route('export.casinos') }}" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export
+                <a href="{{ route('export.casinos') }}" class="btn btn-warning btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  
+                    @lang('messages.Export')
                 </a>
             </div>
             <div class="panel-body">
@@ -30,11 +31,11 @@
                   >
                     <thead class="w3-blue-grey">
                         <tr>
-                            <th data-sortable="true">Casino ID</th>
-                            <th data-sortable="true">Casino Name</th>
-                            <th data-sortable="true">Casino Address</th>
-                            <th data-sortable="true">Casino GSM</th>
-                            <th data-sortable="true">Action</th>
+                            <th data-sortable="true">ID</th>
+                            <th data-sortable="true">@lang('messages.Casino Name')</th>
+                            <th data-sortable="true">@lang('messages.Casino Address')</th>
+                            <th data-sortable="true">@lang('messages.Casino GSM')</th>
+                            <th data-sortable="true">@lang('messages.Action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,7 +55,7 @@
                                     data-casinogsm="{{ $casino->casinogsm }}"
                                     class="btn btn-primary btn-xs"
                                 >
-                                    Edit
+                                    @lang('messages.Edit')
                                 </a>
                             </td>
                         </tr>

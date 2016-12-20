@@ -4,27 +4,27 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2><strong>+ Add Language</strong></h2>
+        <h2><strong>@lang('messages.Add Language')</strong></h2>
       </div>
       <div class="modal-body">
 
         <form class="form-inline" role="form" method="POST" name="server-modal">
             <div class="form-group">
-                <label for="langid">Language ID:</label><br>
-                <input class="form-control" type="text" name="langid" id="langid" placeholder="ID">
+                <label for="langid">@lang('messages.Language ID'):</label><br>
+                <input class="form-control" type="text" name="langid" id="langid" placeholder="@lang('messages.Language ID')">
             </div>
 
             <div class="form-group ">
-                <label for="langname">Language Name: </label><br>
-                <input class="form-control" type="text" name="langname" id="langname" placeholder="Name">
+                <label for="langname">@lang('messages.Language Name'): </label><br>
+                <input class="form-control" type="text" name="langname" id="langname" placeholder="@lang('messages.Language Name')">
             </div>
             <hr>
         </form>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="add-language" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+        <button id="add-language" class="btn btn-primary">@lang('messages.Save')</button>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2><strong> Update Language</strong></h2>
+        <h2><strong> @lang('messages.Update Language')</strong></h2>
       </div>
       <div class="modal-body">
 
@@ -46,21 +46,21 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="langid">Language ID:</label><br>
-                <input disabled class="form-control" type="text" name="langid" id="langid" placeholder="ID">
+                <label for="langid">@lang('messages.Language ID'):</label><br>
+                <input disabled class="form-control" type="text" name="langid" id="langid" placeholder="@lang('messages.Language ID')">
             </div>
 
             <div class="form-group ">
-                <label for="langname">Language Name: </label><br>
-                <input class="form-control" type="text" name="langname" id="langname" placeholder="Name">
+                <label for="langname">@lang('messages.Language Name'): </label><br>
+                <input class="form-control" type="text" name="langname" id="langname" placeholder="@lang('messages.Language Name')">
             </div>
             <hr>
         </form>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="update-language" class="btn btn-primary">Update</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+        <button id="update-language" class="btn btn-primary">@lang('messages.Update')</button>
       </div>
     </div>
   </div>
