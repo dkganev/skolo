@@ -49,6 +49,7 @@ class RouletteTwoController extends Controller
         ]);
 
         $affected = \DB::connection('pgsql6')->table('mainconf')->update(['game_id' => $request->game_id]);
+        $affected = \DB::connection('pgsql6')->table('mainconf')->update(['url' => $request->stream_url]);
     }
 
     public function wheel_config_index()

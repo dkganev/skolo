@@ -4,16 +4,16 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong>Restart Terminal</strong></h2>
+          <h2><strong>@lang('messages.Restart Terminal')</strong></h2>
       </div>
       
       <div class="modal-body">
-          <h4>Restart Terminal <span id="dallasid"></span>  ?</h4>
+          <h4>@lang('messages.Restart Terminal') <span id="dallasid"></span>  ?</h4>
       </div>
       <div class="modal-footer">
           <input  type="hidden" name="psid">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="reset-ps" type="submit" class="btn btn-warning">Restart</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+          <button id="reset-ps" type="submit" class="btn btn-warning">@lang('messages.Restart')</button>
       </div>
     </div>
   </div>

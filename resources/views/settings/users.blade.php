@@ -6,14 +6,15 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addUserModal">
-                    Add User
+                    @lang('messages.Add')
                 </button>
-                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 33%;">
-                    Users
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 25%;">
+                    @lang('messages.Users')
                 </h2>
                 
-                <a href="{{ url('/settings/users/export') }}" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                <a href="{{ url('/settings/users/export') }}" class="btn btn-warning btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
+                    @lang('messages.Export')
                 </a>
             </div>
             <div class="panel-body">
@@ -31,11 +32,11 @@
                   >
                     <thead class="w3-blue-grey">
                         <tr>
-                            <th data-sortable="true">Username</th>
-                            <th data-sortable="true">Full Name</th>
-                            <th data-sortable="true">Role</th>
-                            <th data-sortable="true">Phone</th>
-                            <th>Action</th>
+                            <th data-sortable="true">@lang('messages.Username')</th>
+                            <th data-sortable="true">@lang('messages.Full Name')</th>
+                            <th data-sortable="true">@lang('messages.Role')</th>
+                            <th data-sortable="true">@lang('messages.Phone')</th>
+                            <th>@lang('messages.Action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,7 +57,7 @@
                                     data-target="#editUserModal-{{ $user->id }}"
                                     class="btn btn-primary btn-xs"
                                 >
-                                    Edit
+                                    @lang('messages.Edit')
                                 </a>
 
                                 <a  role="button" data-toggle="modal"
@@ -66,7 +67,7 @@
                                     data-fullname="{{ $user->fullName() }}"
                                     class="btn btn-danger btn-xs"
                                 >
-                                    Delete
+                                    @lang('messages.Delete')
                                 </a>
 
                             </td>

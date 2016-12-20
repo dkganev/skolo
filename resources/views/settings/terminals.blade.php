@@ -8,15 +8,16 @@
         <div class="panel panel-default">
             <div class="panel-heading" >
                 <button class="btn btn-danger btn-sm bootstrap-modal-form-open" data-toggle="modal" data-target="#addMachineModal">
-                    Add Machine
+                    @lang('messages.Add')
                 </button>
                 
-                <h2 style="display: inline; color: #fff; font-family: 'italic';  padding-left: 35%;">
-                    Terminals
+                <h2 style="display: inline; color: #fff; font-family: 'italic';  padding-left: 25%;">
+                    @lang('messages.Terminals')
                 </h2>
 
-                <a href="{{ route('export.terminals') }}" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                <a href="{{ route('export.terminals') }}" class="btn btn-warning btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
+                    @lang('messages.Export')
                 </a>
             </div>
 
@@ -32,15 +33,15 @@
                     >
                     <thead>
                         <tr>
-                            <th data-sortable="true">Dallas ID</th>
-                            <th data-sortable="true">PS ID</th>
-                            <th data-sortable="true">Seat ID</th>
-                            <th data-sortable="true">Description</th>
-                            <th data-sortable="true">Type</th>
-                            <th data-sortable="true">Status</th>
-                            <th data-sortable="true">IP Adress</th>
-                            <th data-sortable="true">Casino</th>
-                            <th>Action</th>
+                            <th data-sortable="true">@lang('messages.Dallas ID')</th>
+                            <th data-sortable="true">@lang('messages.PS ID')</th>
+                            <th data-sortable="true">@lang('messages.Seat ID')</th>
+                            <th data-sortable="true">@lang('messages.Description')</th>
+                            <th data-sortable="true">@lang('messages.Type')</th>
+                            <th data-sortable="true">@lang('messages.Status')</th>
+                            <th data-sortable="true">@lang('messages.IP Adress')</th>
+                            <th data-sortable="true">@lang('messages.casino')</th>
+                            <th>@lang('messages.Action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,7 +79,7 @@
                                     data-games="{{ $ps->ps_settings->subscribed }}"
                                     class="btn btn-primary btn-xs"
                                 >
-                                    Edit
+                                    @lang('messages.Edit')
                                 </a>
                                 <a  role="button" data-toggle="modal"
                                     data-toggle="modal"
@@ -87,7 +88,7 @@
                                     data-dallasid="{{ $ps->dallasid }}"
                                     class="btn btn-warning btn-xs"
                                 >  
-                                    Restart
+                                    @lang('messages.Restart')
                                 </a>
 
                                 <a  role="button" data-toggle="modal"
@@ -97,7 +98,7 @@
                                     data-dallasid="{{ $ps->dallasid }}"
                                     class="btn btn-danger btn-xs"
                                 >
-                                    Delete
+                                    @lang('messages.Delete')
                                 </a>
 
                             </td>

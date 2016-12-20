@@ -4,16 +4,16 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong>Delete User</strong></h2>
+          <h2><strong>@lang('messages.Delete User')</strong></h2>
       </div>
       
       <div class="modal-body">
-          <h4>Delete User <span id="dallasid"></span>  ?</h4>
+          <h4>@lang('messages.Delete User') <span id="dallasid"></span>  ?</h4>
       </div>
       <div class="modal-footer">
           <input  type="hidden" name="id">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="destroy-user" type="submit" class="btn btn-warning">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+          <button id="destroy-user" type="submit" class="btn btn-warning">@lang('messages.Delete')</button>
       </div>
     </div>
   </div>

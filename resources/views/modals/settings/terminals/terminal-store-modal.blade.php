@@ -4,7 +4,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2><strong>+ Add Machine</strong></h2>
+        <h2><strong>@lang('messages.Add Machine')</strong></h2>
       </div>
       <div class="modal-body">
 
@@ -12,8 +12,8 @@
             {{ csrf_field() }}
 
             <div class="form-group" style="width:270px; display: inline-block; margin-right:5px;">
-              <label for="casinoid">Casino: </label><br>
-              <select title="Choose casino.." name="casinoid" class="form-control selectpicker" id="casinoid" >
+              <label for="casinoid">@lang('messages.Casino'): </label><br>
+              <select title="@lang('messages.Choose casino').." name="casinoid" class="form-control selectpicker" id="casinoid" >
                 @foreach($casinos as $casino)
                   <option value="{{ $casino->casinoid }}">{{ $casino->casinoname }}</option>
                 @endforeach
@@ -21,30 +21,30 @@
             </div>
 
             <div class="form-group" style="width:240px; display: inline-block;">
-              <label for="ps_type">PS Type: </label><br>
-              <select name="ps_type" class="form-control selectpicker" id="ps_type" title="Choose type..">
-                <option value="0">PlayStation</option>
-                <option value="1">Statistics</option>
-                <option value="2">Sphere</option>
-             {{--    <option value="3">Balls</option> --}}
-                <option value="4">Wheel</option>
-                <option value="5">Statistic RLT</option>
-                <option value="6">Jackpot Statistic</option>
+              <label for="ps_type">@lang('messages.PS Type'): </label><br>
+              <select name="ps_type" class="form-control selectpicker" id="ps_type" title="@lang('messages.Choose type'):..">
+                <option value="0">@lang('messages.PlayStation')</option>
+                <option value="1">@lang('messages.Statistics')</option>
+                <option value="2">@lang('messages.Sphere')</option>
+             {{--    <option value="3">:Balls</option> --}}
+                <option value="4">@lang('messages.Wheel')</option>
+                <option value="5">@lang('messages.Statistic RLT')</option>
+                <option value="6">@lang('messages.Jackpot Statistic')</option>
               </select>
             </div>
             <hr>
 
             <div class="form-group" style="width:270px; display: inline-block;">
-                <label class="control-label" for="psid">PS ID:</label><br>
-                <input class="form-control" type="text" name="psid" id="psid" placeholder="Unique ID">
+                <label class="control-label" for="psid">@lang('messages.PS ID'):</label><br>
+                <input class="form-control" type="text" name="psid" id="psid" placeholder="@lang('messages.Unique ID')">
                 <span class="help-block">
                     <strong id="psid"></strong>
                 </span>
             </div>
 
             <div class="form-group" style="width:270px; display: inline-block;">
-                <label class="control-label" for="dallasid">Machine ID:</label><br>
-                <input class="form-control" type="text" name="dallasid" id="dallasid" placeholder="Dallas ID">
+                <label class="control-label" for="dallasid">@lang('messages.Machine ID'):</label><br>
+                <input class="form-control" type="text" name="dallasid" id="dallasid" placeholder="@lang('messages.Dallas ID')">
                 <span class="help-block">
                     <strong id="dallasid"></strong>
                 </span>
@@ -53,18 +53,18 @@
             <hr>
 
             <div class="form-group" style="width:270px; display: inline-block;">
-                <label for="seatid">Seat ID: </label><br>
-                <input class="form-control" type="text" name="seatid" id="seatid" placeholder="Seat ID">
+                <label for="seatid">@lang('messages.Seat ID'): </label><br>
+                <input class="form-control" type="text" name="seatid" id="seatid" placeholder="@lang('messages.Seat ID')">
             </div>
 
             <div class="form-group" style="width:270px; display: inline-block;">
-                <label for="psdescription">Description: </label><br>
-                <input class="form-control" type="text" name="psdescription" id="psdescription" placeholder="A Description">
+                <label for="psdescription">@lang('messages.Description'): </label><br>
+                <input class="form-control" type="text" name="psdescription" id="psdescription" placeholder="@lang('messages.A Description')">
             </div>
             <hr>
             <div class="form-group" style="width:270px; display: inline-block;">
-              <label for="default_game">Default Game</label><br>
-              <select name="default_game" id="default_game" class="selectpicker" title="Choose default game..." data-actions-box="true">
+              <label for="default_game">@lang('messages.Default Game')</label><br>
+              <select name="default_game" id="default_game" class="selectpicker" title="@lang('messages.Choose default game')..." data-actions-box="true">
 
               <option value="0">None</option>
 
@@ -77,8 +77,8 @@
             </div>
 
             <div class="form-group" style="width:270px; display: inline-block;">
-              <label for="games">Games</label><br>
-              <select name="games[]" id="games" class="selectpicker" multiple data-selected-text-format="count > 3" title="Choose games..." data-actions-box="true">
+              <label for="games">@lang('messages.Games')</label><br>
+              <select name="games[]" id="games" class="selectpicker" multiple data-selected-text-format="count > 3" title="@lang('messages.Choose games')..." data-actions-box="true">
               @foreach($clientgameids as $clientgameid)
                 <option value="{{ $clientgameid->client_game_id }}">{{ $clientgameid->client_game_name }}</option>
               @endforeach
@@ -88,9 +88,9 @@
             <hr>
 
             <div class="form-group" style="width:270px; display: inline-block;">
-              <label for="default_lang">Language: </label><br>
+              <label for="default_lang">@lang('messages.Languages'): </label><br>
               <select name="default_lang" class="form-control selectpicker" id="default_lang">
-                <option selected="true" disabled="disabled">Choose Language</option>
+                <option selected="true" disabled="disabled">@lang('messages.Choose Language')</option>
                 @foreach($languages as $language)
                   <option value="{{ $language->langid }}">{{ $language->langname }}</option>
                 @endforeach
@@ -100,8 +100,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="add-machine" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+        <button id="add-machine" class="btn btn-primary">@lang('messages.Save')</button>
       </div>
     </div>
   </div>

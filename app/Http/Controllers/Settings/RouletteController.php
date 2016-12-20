@@ -47,8 +47,9 @@ class RouletteController extends Controller
             'video_on_statistic' => $request->video_on_statistic,
         ]);
 
-        // MainConfig::all()->update(['game_id' => $request->game_id]);
+        // MainConfig::all()->update(['game_id' => $request->game_id]); $main_config->url = ($request->stream_url);
         $affected = \DB::connection('pgsql4')->table('mainconf')->update(['game_id' => $request->game_id]);
+        $affected = \DB::connection('pgsql4')->table('mainconf')->update(['url' => $request->stream_url]);
     }
 
     public function wheel_config_index()
@@ -60,6 +61,8 @@ class RouletteController extends Controller
     public function wheel_config_edit(Request $request)
     {
     	WheelConfig::first()->update($request->except('_token'));
+        //$main_config = MainConfig::first();
+        //$main_config->url = ($request->stream_url);
     }
 
     public function ps_config_index()
