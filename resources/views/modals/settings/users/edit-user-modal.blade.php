@@ -4,7 +4,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2><strong>+ Edit User</strong></h2>
+        <h2><strong>@lang('messages.Edit User')</strong></h2>
       </div>
         <div class="modal-body">
             <form role="form" method="POST" style="width: 80%;" autocomplete="off">
@@ -13,26 +13,26 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label>Username:</label><br>
-                            <input id="name-{{ $user->id }}" value="{{ $user->name }}" class="form-control" type="text" id="username" name="username" placeholder="Username">
+                            <label>@lang('messages.Username'):</label><br>
+                            <input id="name-{{ $user->id }}" value="{{ $user->name }}" class="form-control" type="text" id="username" name="username" placeholder="@lang('messages.Username')">
                             <span class="help-block">
                                 <strong id="name{{ $user->id }}"></strong>
                             </span>
                         </div>
 
                         <div class="form-group ">
-                            <label>First Name: </label><br>
-                            <input id="firstname-{{ $user->id }}" value="{{ $user->firstname }}" class="form-control" type="text" name="firstname" placeholder="First Name">
+                            <label>@lang('messages.First Name'): </label><br>
+                            <input id="firstname-{{ $user->id }}" value="{{ $user->firstname }}" class="form-control" type="text" name="firstname" placeholder="@lang('messages.First Name')">
                         </div>
 
                         <div class="form-group">
-                            <label>Last Name:</label><br>
-                            <input id="lastname-{{ $user->id }}" value="{{ $user->lastname }}"  class="form-control" type="text" name="lastname" placeholder="Last Name">
+                            <label>@lang('messages.Last Name'):</label><br>
+                            <input id="lastname-{{ $user->id }}" value="{{ $user->lastname }}"  class="form-control" type="text" name="lastname" placeholder="@lang('messages.Last Name')">
                         </div>
 
                         <div class="form-group">
-                            <label>Phone Number: </label><br>
-                            <input id="phone-{{ $user->id }}" value="{{ $user->phone }}" class="form-control" type="text" name="phone" placeholder="Phone Number">
+                            <label>@lang('messages.Phone Number'): </label><br>
+                            <input id="phone-{{ $user->id }}" value="{{ $user->phone }}" class="form-control" type="text" name="phone" placeholder="@lang('messages.Phone Number')">
 
                             <span class="help-block">
                                 <strong id="phone{{ $user->id }}"></strong>
@@ -42,28 +42,28 @@
 
                     <div class="col-xs-6">
                         <div class="form-group ">
-                            <label>Password </label><br>
-                            <input id="password-{{ $user->id }}" class="form-control" type="password" name="password" placeholder="Password">
+                            <label>@lang('messages.Password')</label><br>
+                            <input id="password-{{ $user->id }}" class="form-control" type="password" name="password" placeholder="@lang('messages.Password')">
                         </div>
 
                         <div class="form-group">
-                            <label for="password_confirmation">Confirm Password:</label><br>
-                            <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password">
+                            <label for="password_confirmation">@lang('messages.Confirm Password'):</label><br>
+                            <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="@lang('messages.Confirm Password')">
                         </div>
 
                         <div class="form-group">
-                            <label for="role">User Role: </label><br>
+                            <label for="role">@lang('messages.Choose Role'): </label><br>
                             <select name="role" class="form-control selectpicker" id="role-{{ $user->id }}">                            
-                                <option selected="true" disabled="disabled">Choose Role</option>
+                                <option selected="true" disabled="disabled">@lang('messages.Choose Role')</option>
                                 @foreach($roles as $role)
                                     <option {{ $user->hasRole($role->name) == $role->name ? 'selected' : '' }} value="{{ $role->name }}">{{ $role->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                          <div class="form-group">
-                            <label for="Language">Prefered Language: </label><br>
+                            <label for="Language">@lang('messages.Prefered Language'): </label><br>
                             <select name="Language" class="form-control selectpicker" id="Language-{{ $user->id }}">                            
-                                <option selected="true" disabled="disabled">Choose Language</option>
+                                <!--<option selected="true" disabled="disabled">@lang('messages.Choose Language')</option> -->
                                 @foreach($CmsLangs as $key => $val)
                                     <option {{ $user->lang_id == $val->langid ? 'selected' : '' }} value="{{ $val->langid }}">
                                        {{$val->lang_short_name}} - {{$val->langname}}
@@ -78,8 +78,8 @@
         </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="edit-user-{{ $user->id }}" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+        <button id="edit-user-{{ $user->id }}" class="btn btn-primary">@lang('messages.Save')</button>
       </div>
     </div>
   </div>

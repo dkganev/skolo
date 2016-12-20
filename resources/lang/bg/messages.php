@@ -203,6 +203,8 @@ return array(
     'First Name' => 'Име',
     'Add User' => 'Добавяне на Портебител',
     'Prefered Language' => 'Предпочитан Език',
+    'Delete User' => 'Изтриване на Потребител',
+    'Edit User' => 'Редактиране не Потрбител',
     
     
     
