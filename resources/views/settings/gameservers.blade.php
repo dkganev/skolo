@@ -9,15 +9,16 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addGameClientModal">
-                    Add Game Client 
+                    @lang('messages.Add') 
                 </button>
 
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 10%;">
-                    Client Game IDs
+                    @lang('messages.Client Game IDs')
                 </h2>
 
-                <a href="{{ route('export.clients') }}" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+                <a href="{{ route('export.clients') }}" class="btn btn-warning btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;
+                    @lang('messages.Export')
                 </a>
             </div>
             
@@ -38,9 +39,9 @@
                     >
                     <thead class="w3-blue-grey">
                         <tr>
-                            <th data-sortable="true">Game ID</th>
-                            <th data-sortable="true">Description</th>
-                            <th>Action</th>
+                            <th data-sortable="true">@lang('messages.Game ID')</th>
+                            <th data-sortable="true">@lang('messages.Description')</th>
+                            <th>@lang('messages.Action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,7 +57,7 @@
                                     data-name="{{ $game_client->client_game_name }}"
                                     class="btn btn-primary btn-xs"
                                 >
-                                Edit
+                                @lang('messages.Edit')
                                 </a>
                             </td>
                         </tr>
@@ -72,15 +73,16 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addCategoryModal">
-                    Add Game Category 
+                    @lang('messages.Add')
                 </button>
 
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 7%;">
-                    Game Categories
+                    @lang('messages.Game Categories')
                 </h2>
 
-                <a href="{{ url('/settings/category/export') }}" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+                <a href="{{ url('/settings/category/export') }}" class="btn btn-warning btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;
+                    @lang('messages.Export')
                 </a>
             </div>
             <div class="panel-body">
@@ -100,9 +102,9 @@
                     >
                     <thead class="w3-blue-grey">
                         <tr>
-                            <th data-sortable="true">Category ID</th>
-                            <th data-sortable="true">Category Name</th>
-                            <th>Action</th>
+                            <th data-sortable="true">@lang('messages.Category ID')</th>
+                            <th data-sortable="true">@lang('messages.Category Name')</th>
+                            <th>@lang('messages.Action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -118,7 +120,7 @@
                                     data-name="{{ $category->name }}"
                                     class="btn btn-primary btn-xs"
                                 >
-                                Edit
+                                @lang('messages.Edit')
                                 </a>
                             </td>
                         </tr>
@@ -137,15 +139,16 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addGameModal">
-                    Add Game 
+                    @lang('messages.Add')
                 </button>
 
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
-                    Game Servers
+                    @lang('messages.Game Servers')
                 </h2>
                 
-                <a href="{{ route('export.games') }}" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+                <a href="{{ route('export.games') }}" class="btn btn-warning btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;
+                    @lang('messages.Export')
                 </a>
             </div>
 
@@ -165,14 +168,14 @@
                 >
                     <thead>
                         <tr>
-                            <th data-sortable="true">Client Game ID</th>
-                            <th data-sortable="true">Game ID</th>
-                            <th data-sortable="true">Game Description</th>
-                            <th data-sortable="true">Game Type</th>
-                            <th data-sortable="true">DB Name</th>
-                            <th data-sortable="true">Category</th>
-                            <th data-sortable="true">Short Name:</th>
-                            <th>Action</th>
+                            <th data-sortable="true">@lang('messages.Client Game ID')</th>
+                            <th data-sortable="true">@lang('messages.Game ID')</th>
+                            <th data-sortable="true">@lang('messages.Description')</th>
+                            <th data-sortable="true">@lang('messages.Game Type')</th>
+                            <th data-sortable="true">@lang('messages.DB Name')</th>
+                            <th data-sortable="true">@lang('messages.Category')</th>
+                            <th data-sortable="true">@lang('messages.Short Name'):</th>
+                            <th>@lang('messages.Action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -198,7 +201,7 @@
                                     data-color="{{ $game->color }}"
                                     class="btn btn-primary btn-xs"
                                 >
-                                Edit
+                                @lang('messages.Edit')
                                 </a>
                             </td>
                         </tr>
