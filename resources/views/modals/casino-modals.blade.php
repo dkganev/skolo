@@ -4,34 +4,34 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong>Add Casino</strong></h2>
+          <h2><strong>@lang('messages.Add Casino')</strong></h2>
       </div>
       <div class="modal-body">
           <form class="form-inline">
             <div class="form-group">
-                <label for="casinoid">Casino ID:</label><br>
+                <label for="casinoid">@lang('messages.Casino ID'):</label><br>
                 <input  class="form-control" type="text" name="casinoid" id="casinoid" >
             </div>
 
             <div class="form-group">
-                <label for="casinoname">Casino Name:</label><br>
-                <input  class="form-control" type="text" name="casinoname" id="casinoname" placeholder="Name">
+                <label for="casinoname">@lang('messages.Casino Name'):</label><br>
+                <input  class="form-control" type="text" name="casinoname" id="casinoname" placeholder="@lang('messages.Casino Name')">
             </div>
             <hr>
             <div class="form-group">
-                <label for="casinoaddr">Casino Address:</label><br>
-                <input placeholder="Address" class="form-control" type="text" name="casinoaddr" id="casinoaddr">
+                <label for="casinoaddr">@lang('messages.Casino Address'):</label><br>
+                <input placeholder="@lang('messages.Casino Address')" class="form-control" type="text" name="casinoaddr" id="casinoaddr">
             </div>
 
             <div class="form-group">
-                <label for="casinogsm">Casino GSM:</label><br>
-                <input placeholder="Mobile Number" class="form-control" type="text" name="casinogsm" id="casinogsm">
+                <label for="casinogsm">@lang('messages.Casino GSM'):</label><br>
+                <input placeholder="@lang('messages.Casino GSM')" class="form-control" type="text" name="casinogsm" id="casinogsm">
             </div>
           </form>
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="add-casino" type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+          <button id="add-casino" type="submit" class="btn btn-primary">@lang('messages.Save')</button>
       </div>
     </div>
   </div>
@@ -45,35 +45,35 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong>Update Casino</strong></h2>
+          <h2><strong>@lang('messages.Update Casino')</strong></h2>
       </div>
       
       <div class="modal-body">
           <form class="form-inline"> 
             <div class="form-group">
-                <label for="casinoid">Casino ID:</label><br>
+                <label for="casinoid">@lang('messages.Casino ID'):</label><br>
                 <input  class="form-control" type="text" name="casinoid" id="casinoid" >
             </div>
 
             <div class="form-group">
-                <label for="casinoname">Casino Name:</label><br>
-                <input  class="form-control" type="text" name="casinoname" id="casinoname" placeholder="Name">
+                <label for="casinoname">@lang('messages.Casino Name'):</label><br>
+                <input  class="form-control" type="text" name="casinoname" id="casinoname" placeholder="@lang('messages.Casino Name')">
             </div>
             <hr>
             <div class="form-group">
-                <label for="casinoaddr">Casino Address:</label><br>
-                <input placeholder="Address" class="form-control" type="text" name="casinoaddr" id="casinoaddr">
+                <label for="casinoaddr">@lang('messages.Casino Address'):</label><br>
+                <input placeholder="@lang('messages.Casino Address')" class="form-control" type="text" name="casinoaddr" id="casinoaddr">
             </div>
 
             <div class="form-group">
-                <label for="casinogsm">Casino GSM:</label><br>
-                <input placeholder="Mobile Number" class="form-control" type="text" name="casinogsm" id="casinogsm">
+                <label for="casinogsm">@lang('messages.Casino GSM'):</label><br>
+                <input placeholder="@lang('messages.Casino GSM')" class="form-control" type="text" name="casinogsm" id="casinogsm">
             </div>
           </form>
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="update-casino" type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+          <button id="update-casino" type="submit" class="btn btn-primary">@lang('messages.Save')</button>
       </div>
     </div>
   </div>

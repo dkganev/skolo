@@ -6,13 +6,14 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addLanguageModal">
-                    Add Language
+                    @lang('messages.Add')
                 </button>
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 20%;">
-                    Languages
+                    @lang('messages.Languages')
                 </h2>
-                <a href="{{ url('/settings/exportLanguages') }}" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  Export
+                <a href="{{ url('/settings/exportLanguages') }}" class="btn btn-warning btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>  
+                    @lang('messages.Export')
                 </a>
             </div>
             
@@ -32,9 +33,9 @@
                     >
                         <thead class="w3-blue-grey">
                             <tr>
-                                <th data-sortable="true">Language ID</th>
-                                <th data-sortable="true">Language Name</th>
-                                <th>Action</th>
+                                <th data-sortable="true">@lang('messages.ID')</th>
+                                <th data-sortable="true">@lang('messages.Language Name')</th>
+                                <th>@lang('messages.Action')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +51,7 @@
                                         data-langname="{{ $language->langname }}"
                                         class="btn btn-primary btn-xs"
                                     >
-                                       Edit
+                                       @lang('messages.Edit')
                                     </a>
                                 </td>
                             </tr>
