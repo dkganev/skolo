@@ -190,6 +190,19 @@ return array(
     'Update Game' => 'Редактиране на Играта',
     'Update Category' => 'Редактирай Категорията',
     'Add Category' => 'Добави Категория',
+    'Full Name' => 'Име',
+    'Role' => 'Роля',
+    'Phone' => 'Телефон',
+    'Username' => 'Username',
+    'Password' => 'Парола',
+    'Confirm Password' => 'Потвърди Паролата',
+    'Choose Role' => 'Избери Роля',
+    'User Role' => 'Роля на Потребителя',
+    'Phone Number' => 'Телефонен Номер',
+    'Last Name' => 'Фамилия',
+    'First Name' => 'Име',
+    'Add User' => 'Добавяне на Портебител',
+    'Prefered Language' => 'Предпочитан Език',
     
     
     
