@@ -23,7 +23,7 @@
 <!-- Bingo Main Conf Panel -->
 <div class="container">
 <div class="row">
-<div class="col-md-10">
+<div class="col-md-11">
 
 <div class="panel panel-default" id="bingo-main-config-panel">
   	<div class="panel-heading clearfix">
@@ -47,12 +47,12 @@
 		{{ csrf_field() }}
 
 		<!-- SETIINGS -->
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Settings</h3>
 			<hr style="margin-top: 7px;">
 
 		    <div class="form-group">
-		    	<label style="color: #474747">Ticket Cost(cents):</label><br>
+		    	<label style="color: #474747">Ticket Cost (cents):</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">$</span>
 					<input name="bingo_ticket_cost" value="{{ $bingo->bingo_ticket_cost }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -77,7 +77,7 @@
 
 			<div class="form-group">
 		    	<label style="color: #474747">URL:</label><br>
-				<input style="width: 130px;" name="url" value="{{ $bingo->url }}" type="text" class="form-control text-center" placeholder="URL">
+				<input name="url" value="{{ $bingo->url }}" type="text" class="form-control text-center" placeholder="URL">
 			</div>
 		</div><!-- End Col -->
 
@@ -95,7 +95,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Bonus Line:</label><br>
+					<label style="color: #474747">Bonus Line:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="bonus_line_pr_visible" value="{{ $bingo->bonus_line_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -103,7 +103,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Bonus Bingo:</label><br>
+					<label style="color: #474747">Bonus Bingo:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="bonus_bingo_pr_visible" value="{{ $bingo->bonus_bingo_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -111,7 +111,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Jackpot Line:</label><br>
+					<label style="color: #474747">Jackpot Line:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="jackpot_line_pr_visible" value="{{ $bingo->jackpot_line_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -119,7 +119,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Jackpot Bingo:</label><br>
+					<label style="color: #474747">Jackpot Bingo:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="jackpot_bingo_pr_visible" value="{{ $bingo->jackpot_bingo_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -142,7 +142,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Bonus Bingo:</label><br>
+					<label style="color: #474747">Bonus Bingo:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="bonus_bingo_pr_hidden" value="{{ $bingo->bonus_bingo_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -150,7 +150,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Bonus Line:</label><br>
+					<label style="color: #474747">Bonus Line:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="bonus_line_pr_hidden" value="{{ $bingo->bonus_line_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -166,7 +166,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Jackpot Bingo:</label><br>
+					<label style="color: #474747">Jackpot Bingo:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="jackpot_bingo_pr_hidden" value="{{ $bingo->jackpot_bingo_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -226,6 +226,40 @@
 		</div><!-- End Col -->
 
 		</div><!-- End Panel Body-->
+
+		<hr>
+
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group"	style="margin-left: 15px;">
+		    		<label style="color: #474747">Bngo + Line Total::</label><br>
+					<input disabled name="bingo_line_total" value="434333" type="text" class="form-control text-center">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+		    		<label style="color: #474747">Visible Total:</label><br>
+					<input disabled name="visible_total" value="434333" type="text" class="form-control text-center">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group">
+		    		<label style="color: #474747">Hidden Total:</label><br>
+					<input disabled name="hidden_total" value="434333" type="text" class="form-control text-center">
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="form-group" style="margin-right: 15px;">
+		    		<label style="color: #474747">Visible + Hidden Total:</label><br>
+					<input disabled name="visible_hidden_total" value="434333" type="text" class="form-control text-center">
+				</div>
+			</div>
+		</div>
+
+
 		<div class="panel-footer">
 			<button id="cancel-game" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-primary">
 				Cancel Bingo Game
@@ -234,8 +268,8 @@
 			<button id="bingo-main-config-sbt" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-danger pull-right">
 				Update
 			</button>
-
 		</div><!-- End Panel Footer-->
+
 	</form>
 	</div>
 </div><!-- End Col-->
@@ -275,18 +309,18 @@
 </script>
 <script>
 	function ExportToPNGMainConfig() {
-    html2canvas($('#bingo-main-config-panel'), {
-        onrendered: function(canvas) {
-            theCanvas = canvas;
-            //document.body.appendChild(canvas);
-            $(".faSpinner").show();
-            // Convert and download as image 
-            Canvas2Image.saveAsPNG(canvas); 
-            //document.body.append(canvas);
-            // Clean up 
-            //document.body.removeChild(canvas);
-            $(".faSpinner").hide();
-        }
+    	html2canvas($('#bingo-main-config-panel'), {
+	        onrendered: function(canvas) {
+	            theCanvas = canvas;
+	            //document.body.appendChild(canvas);
+	            $(".faSpinner").show();
+	            // Convert and download as image 
+	            Canvas2Image.saveAsPNG(canvas); 
+	            //document.body.append(canvas);
+	            // Clean up 
+	            //document.body.removeChild(canvas);
+	            $(".faSpinner").hide();
+	        }
     });
 }
 </script>
