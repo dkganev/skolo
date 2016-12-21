@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-	    <div class="col-md-8">
+	    <div class="col-md-12">
 	        {{-- <h1 style="margin-top: 0px;" class="page-header"></h1> --}}
 	        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
 	            <!-- Secondary Navigation -->
@@ -49,11 +49,11 @@
 
 		<!-- SETIINGS -->
 		<div class="col-md-3">
-			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Settings</h3>
+			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">@lang('messages.Settings')</h3>
 			<hr style="margin-top: 7px;">
 
 		    <div class="form-group">
-		    	<label style="color: #474747">Ticket Cost (cents):</label><br>
+		    	<label style="color: #474747">@lang('messages.Ticket Cost') (@lang('messages.cents')):</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">$</span>
 					<input name="bingo_ticket_cost" value="{{ $bingo->bingo_ticket_cost }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -61,7 +61,7 @@
 			</div>
 
 			<div class="form-group">
-		    	<label style="color: #474747">Bingo:</label><br>
+		    	<label style="color: #474747">@lang('messages.Bingo'):</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">%</span>
 					<input name="bingo_win_pr" value="{{ $bingo->bingo_win_pr }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -69,7 +69,7 @@
 			</div>
 
 			<div class="form-group">
-		    	<label style="color: #474747">Line:</label><br>
+		    	<label style="color: #474747">@lang('messages.Line'):</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">%</span>
 					<input name="bingo_line_pr" value="{{ $bingo->bingo_line_pr }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -77,18 +77,18 @@
 			</div>
 
 			<div class="form-group">
-		    	<label style="color: #474747">URL:</label><br>
+		    	<label style="color: #474747">@lang('messages.URL'):</label><br>
 				<input name="url" value="{{ $bingo->url }}" type="text" class="form-control text-center" placeholder="URL">
 			</div>
 		</div><!-- End Col -->
 
 		<!-- VISIBLE -->
 		<div class="col-md-2">
-			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Vissible</h3>
+			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">@lang('messages.Vissible')</h3>
 			<hr style="margin-top: 7px;">
 
 				<div class="form-group">
-					<label style="color: #474747">My Bonus:</label><br>
+					<label style="color: #474747">@lang('messages.My Bonus'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="mybonus_pr_visible" value="{{ $bingo->mybonus_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -96,7 +96,7 @@
 				</div>
 
 				<div class="form-group">
-					<label style="color: #474747">Bonus Line:</label><br>
+					<label style="color: #474747">@lang('messages.Bonus Line'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="bonus_line_pr_visible" value="{{ $bingo->bonus_line_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -104,7 +104,7 @@
 				</div>
 
 				<div class="form-group">
-					<label style="color: #474747">Bonus Bingo:</label><br>
+					<label style="color: #474747">@lang('messages.Bonus Bingo'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="bonus_bingo_pr_visible" value="{{ $bingo->bonus_bingo_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -112,7 +112,7 @@
 				</div>
 
 				<div class="form-group">
-					<label style="color: #474747">Jackpot Line:</label><br>
+					<label style="color: #474747">@lang('messages.Jackpot Line'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="jackpot_line_pr_visible" value="{{ $bingo->jackpot_line_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -120,7 +120,7 @@
 				</div>
 
 				<div class="form-group">
-					<label style="color: #474747">Jackpot Bingo:</label><br>
+					<label style="color: #474747">@lang('messages.Jackpot Bingo'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="jackpot_bingo_pr_visible" value="{{ $bingo->jackpot_bingo_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -131,11 +131,11 @@
 
 		<!-- HIDDEN -->
 		<div class="col-md-2">
-			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Hidden</h3>
+			<h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">@lang('messages.Hidden')</h3>
 			<hr style="margin-top: 7px;">
 
 				<div class="form-group">
-					<label style="color: #474747">My Bonus:</label><br>
+					<label style="color: #474747">@lang('messages.My Bonus'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="mybonus_pr_hidden" value="{{ $bingo->mybonus_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -143,7 +143,7 @@
 				</div>
 
 				<div class="form-group">
-					<label style="color: #474747">Bonus Bingo:</label><br>
+					<label style="color: #474747">@lang('messages.Bonus Bingo'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="bonus_bingo_pr_hidden" value="{{ $bingo->bonus_bingo_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -151,7 +151,7 @@
 				</div>
 
 				<div class="form-group">
-					<label style="color: #474747">Bonus Line:</label><br>
+					<label style="color: #474747">@lang('messages.Bonus Line'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="bonus_line_pr_hidden" value="{{ $bingo->bonus_line_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -159,7 +159,7 @@
 				</div>
 
 				<div class="form-group">
-					<label style="color: #474747">Jackpot Line:</label><br>
+					<label style="color: #474747">@lang('messages.Jackpot Line'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="jackpot_line_pr_hidden" value="{{ $bingo->jackpot_line_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -167,7 +167,7 @@
 				</div>
 
 				<div class="form-group">
-					<label style="color: #474747">Jackpot Bingo:</label><br>
+					<label style="color: #474747">@lang('messages.Jackpot Bingo'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
 						<input name="jackpot_bingo_pr_hidden" value="{{ $bingo->jackpot_bingo_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
@@ -185,7 +185,7 @@
 		<div class="col-md-3">
 	
 			<div class="form-group">
-		    	<label style="color: #474747">Jackpot Bingo Max Ball:</label><br>
+		    	<label style="color: #474747">@lang('messages.Jackpot Bingo Max Ball'):</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">#</span>
 					<input name="jackpot_bingo_max_ball" value="{{ $bingo->jackpot_bingo_max_ball }}" type="text" class="form-control text-center" placeholder="Jackpot Bingo Max Ball" aria-describedby="sizing-addon2">
@@ -193,7 +193,7 @@
 			</div>
 
 			<div class="form-group">
-		    	<label style="color: #474747">Jackpot Line Max Ball:</label><br>
+		    	<label style="color: #474747">@lang('messages.Jackpot Line Max Ball'):</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">#</span>
 					<input name="jackpot_line_max_ball" value="{{ $bingo->jackpot_line_max_ball }}" type="text" class="form-control text-center" placeholder="Jackport Line MB" aria-describedby="sizing-addon2">
@@ -201,7 +201,7 @@
 			</div>
 
 			<div class="form-group">
-				<label style="color: #474747">Bonus Line Max Ball:</label><br>
+				<label style="color: #474747">@lang('messages.Bonus Line Max Ball'):</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">#</span>
 					<input name="bonus_line_max_ball" value="{{ $bingo->bonus_line_max_ball }}" type="text" class="form-control text-center" placeholder="Bonus Line MB" aria-describedby="sizing-addon2">
@@ -209,7 +209,7 @@
 			</div>
 
 			<div class="form-group">
-		    	<label style="color: #474747">Bonus Bingo Max Ball:</label><br>
+		    	<label style="color: #474747">@lang('messages.Bonus Bingo Max Ball'):</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">#</span>
 					<input name="bonus_bingo_max_ball" value="{{ $bingo->bonus_bingo_max_ball }}" type="text" class="form-control text-center" placeholder="Bonus Bingo MB" aria-describedby="sizing-addon2">
@@ -217,7 +217,7 @@
 			</div>
 
 			<div class="form-group">
-		    	<label style="color: #474747">My Bonus Max Ball:</label><br>
+		    	<label style="color: #474747">@lang('messages.My Bonus Max Ball'):</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">#</span>
 					<input name="mybonus_max_ball" value="{{ $bingo->mybonus_max_ball }}" type="text" class="form-control text-center" placeholder="My Bonus MB" aria-describedby="sizing-addon2">
@@ -233,28 +233,28 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="form-group"	style="margin-left: 15px;">
-		    		<label style="color: #474747">Bngo + Line Total::</label><br>
+		    		<label style="color: #474747">@lang('messages.Bngo + Line Total')::</label><br>
 					<input disabled name="bingo_line_total" value="434333" type="text" class="form-control text-center">
 				</div>
 			</div>
 
 			<div class="col-md-3">
 				<div class="form-group">
-		    		<label style="color: #474747">Visible Total:</label><br>
+		    		<label style="color: #474747">@lang('messages.Visible Total'):</label><br>
 					<input disabled name="visible_total" value="434333" type="text" class="form-control text-center">
 				</div>
 			</div>
 
 			<div class="col-md-3">
 				<div class="form-group">
-		    		<label style="color: #474747">Hidden Total:</label><br>
+		    		<label style="color: #474747">@lang('messages.Hidden Total'):</label><br>
 					<input disabled name="hidden_total" value="434333" type="text" class="form-control text-center">
 				</div>
 			</div>
 
 			<div class="col-md-3">
 				<div class="form-group" style="margin-right: 15px;">
-		    		<label style="color: #474747">Visible + Hidden Total:</label><br>
+		    		<label style="color: #474747">@lang('messages.Visible + Hidden Total'):</label><br>
 					<input disabled name="visible_hidden_total" value="434333" type="text" class="form-control text-center">
 				</div>
 			</div>
@@ -263,11 +263,11 @@
 
 		<div class="panel-footer">
 			<button id="cancel-game" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-primary">
-				Cancel Bingo Game
+				@lang('messages.Cancel Bingo Game')
 			</button>
 
 			<button id="bingo-main-config-sbt" type="submit" style="width:300px; margin-left: 17px;" class="btn btn-danger pull-right">
-				Update
+				@lang('messages.Update')
 			</button>
 		</div><!-- End Panel Footer-->
 

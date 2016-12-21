@@ -1,38 +1,37 @@
 <div class="container">
 <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-12">
         <div style="padding-top:2px; margin-top: 0px;">
             <ul class="breadcrumb">
-                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">@lang('messages.Main Config')</a></li>
 
-                <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
+	        <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">@lang('messages.My Bonus')</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">@lang('messages.Max Balls')</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">@lang('messages.Sphere Config')</a></li>
 
-                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
             </ul>
         </div>
 	</div><!--End Col -->
 </div><!-- End Row -->
 
 <div class="row">
-	<div class="col-lg-5">
+	<div class="col-lg-6">
 
         <div class="panel panel-default" id="my-bonus-panel">
             <div class="panel-heading">
-                <a class="btn btn-primary btn-sm pull-left" href="/settings/bingo/mybonus-export">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
-                </a>
-
-                <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 15%;">
-                     My Bonus
+                <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 0%;">
+                     @lang('messages.My Bonus')
                 </h2>
-
+                <a class="btn btn-warning btn-sm pull-right" href="/settings/bingo/mybonus-export">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>
+                    @lang('messages.Export')
+                </a>
                 <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                 <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGMyBonus();">
-                    Export to PNG
+                    @lang('messages.Export to PNG')
                 </a>
             </div>
 
@@ -41,10 +40,10 @@
                  <table class="table table-bordered">
                     <thead class="w3-blue-grey">
                       <tr>
-                        <th>ID</th>
-                        <th>Ticket Cost</th>
-                        <th>Max Ball</th>
-                        <th>Action</th>
+                        <th>@lang('messages.ID')</th>
+                        <th>@lang('messages.Ticket Cost')</th>
+                        <th>@lang('messages.Max Ball')</th>
+                        <th>@lang('messages.Action')</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -63,7 +62,7 @@
                                     type="submit"
                                     data-id="{{ $bonus->id }}"
                             >
-                                Update
+                                @lang('messages.Update')
                             </button>
                         </td>
                     </tr>

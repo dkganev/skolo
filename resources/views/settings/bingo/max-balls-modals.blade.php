@@ -4,7 +4,7 @@
   <div class="modal-dialog" style="width: 80%;">
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong>Add Max Balls</strong></h2>
+          <h2><strong>@lang('messages.Add Max Balls')</strong></h2>
       </div>
       
       <form class="form-inline" action="/settings/bingo/maxballs/store" method="POST">
@@ -12,41 +12,41 @@
 
       <div class="modal-body">
 
-        <label>Ticket Cost</label>
+        <label>@lang('messages.Ticket Cost')</label>
         <input style="width:110px; height: 30px;" name="bingo_ticket_cost"  type="text" class="form-control">
 
-        <label>JB. Max Ball</label>
+        <label>@lang('messages.JB. Max Ball')</label>
         <input style="width:110px; height: 30px;" name="jackpot_bingo_max_ball"  type="text" class="form-control">
       
-        <label>JL. Max Ball</label>
+        <label>@lang('messages.JL. Max Ball')</label>
         <input style="width:110px; height: 30px;" name="jackpot_line_max_ball"  type="text" class="form-control">
       
-        <label>BL. Max Ball</label>
+        <label>@lang('messages.BL. Max Ball')</label>
         <input style="width:110px; height: 30px;" name="bonus_line_max_ball"  type="text" class="form-control">
       
-        <label>BB. Max Ball</label>
+        <label>@lang('messages.BB. Max Ball')</label>
         <input style="width:110px; height: 30px;" name="bonus_bingo_max_ball"  type="text" class="form-control">
       
-        <label>JL. Ticket Count</label>
+        <label>@lang('messages.JL. Ticket Count')</label>
         <input style="width:110px; height: 30px;" name="jackpo_line_ticket_cnt"  type="text" class="form-control"><hr>
       
-        <label>JB. Ticket Count</label>
+        <label>@lang('messages.JB. Ticket Count')</label>
         <input style="width:110px; height: 30px;" name="jackpo_bingo_ticket_cnt" type="text" class="form-control">
       
-        <label>BL. Ticket Count</label>
+        <label>@lang('messages.BL. Ticket Count')</label>
         <input style="width:110px; height: 30px;" name="bonus_line_ticket_cnt" type="text" class="form-control">
       
-        <label>BB. Ticket Count</label>
+        <label>@lang('messages.BB. Ticket Count')</label>
         <input style="width:110px; height: 30px;" name="bonus_bingo_ticket_cnt"  type="text" class="form-control">
       
-        <label>Fixed Cost:</label>
+        <label>@lang('messages.Fixed Cost')</label>
         <input name="bingo_cost_fixed" type="checkbox">
 
       </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
 
-            <button name="Submit" value="Login" type="Submit" style="width:315px; margin-left: 17px;" type="submit" class="btn btn-danger">Update</button>
+            <button name="Submit" value="Login" type="Submit" style="width:315px; margin-left: 17px;" type="submit" class="btn btn-danger">@lang('messages.Save')</button>
     
         </div>
       </form>
@@ -61,18 +61,18 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-          <h2><strong>Delete Max Ball</strong></h2>
+          <h2><strong>@lang('messages.Delete Max Bal')</strong></h2>
       </div>
       
       <div class="modal-body">
 
-          <h4>Delete Max Ball <span id="ball"></span>  ?</h4>
+          <h4>@lang('messages.Delete Max Bal') <span id="ball"></span>  ?</h4>
 
       </div>
       <div class="modal-footer">
           <input  type="hidden" name="id">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="delete-max-ball" type="submit" class="btn btn-warning">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+          <button id="delete-max-ball" type="submit" class="btn btn-warning">@lang('messages.Delete')</button>
       </div>
     </div>
   </div>
