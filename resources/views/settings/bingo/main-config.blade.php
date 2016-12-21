@@ -5,15 +5,15 @@
 	        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
 	            <!-- Secondary Navigation -->
 	            <ul class="breadcrumb secondary-breadcrumb">
-	              <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
+	              <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">@lang('messages.Main Config')</a></li>
 
-	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
+	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">@lang('messages.My Bonus')</a></li>
 
-	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
+	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">@lang('messages.Max Balls')</a></li>
 
-	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
+	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">@lang('messages.Sphere Config')</a></li>
 
-	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
+	              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
 	            </ul>
 	        </div>
 		</div>
@@ -28,16 +28,17 @@
 <div class="panel panel-default" id="bingo-main-config-panel">
   	<div class="panel-heading clearfix">
 {{--         <a class="btn btn-primary pull-left" href="/settings/bingo/main-config-export">
-            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;
+                @lang('messages.Export')
         </a> --}}
 
         <h2 class='text-center' style="display: inline; color: #fff; font-family: 'italic';  padding-left: 35%;">
-             Main Config
+             @lang('messages.Main Config')
         </h2>
 
 	    <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
 	    <a class="btn btn-warning pull-right" onclick="ExportToPNGMainConfig();">
-	        Export to PNG
+	        @lang('messages.Export to PNG')
 	    </a>
   	</div>
 

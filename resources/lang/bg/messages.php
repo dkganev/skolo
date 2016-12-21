@@ -103,7 +103,7 @@ return array(
     'JP' => 'Джакпот',
     'JP Hits' => 'Спечелен<br />Джакпот ',
     'Bingo' => 'Бинго',
-    'Roulette' => 'Ролетка',
+    'Roulette' => 'Рулетка',
     'Blackjack' => 'Блeкджeк',
     'Bingo History Statistics' => 'Бинго История',
     'Game' => 'Игра',
@@ -122,7 +122,7 @@ return array(
     'Balls' => 'Топки',
     'My Bonus Numbers' => 'Моите Бонус числа',
     'Ticket ID' => 'Талон ID',
-    'Roulette History Statistics' => 'История на Ролетката',
+    'Roulette History Statistics' => 'История на Рулетката',
     'No Spin Game' => 'Не Разпознато<br /> Число',
     'Win<br />Number' => 'Печелившо<br />число',
     'Jackpot' => 'Джакпот',
@@ -159,7 +159,7 @@ return array(
     'Jackpot Statistic' => 'Jackpot Statistic',
     'Statistic RLT' => 'Statistic RLT',
     'Wheel' => 'Колело',
-    'Sphere' => 'Сфера',
+    'Sphere' => 'Свера',
     'Statistics' => 'Statistics',
     'PlayStation' => 'PlayStation',
     'Choose type' => 'Избери Тип',
@@ -222,6 +222,11 @@ return array(
     'Error Level' => 'Ниво на Грешката',
     'Error Code' => 'Код на Грешката',
     'Error List' => 'Списък с Грешки',
+    'Main Config' => 'Основна Конфигурация',
+    'Accounting Config' => 'Accounting Конфигурация',
+    'Sphere Config' => 'Конфигуриране на сверата',
+    'Max Balls' => 'Максимална топка',
+    'My Bonus' => 'Моя Бонус',
     
     
     
