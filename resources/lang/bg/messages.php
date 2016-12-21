@@ -215,6 +215,13 @@ return array(
     'Language ID' => 'ID на Езика',
     'Add Language' => 'Добави Език',
     'Update Language' => 'Редактиране на Езика',
+    'Error Level String' => 'Грешка-ниво текст',
+    'Error Level Int' => 'Грешка-ниво ID',
+    'Error Levels' => 'Нива на <br/>Грешките',
+    'Error Group' => 'Група На Грешката',
+    'Error Level' => 'Ниво на Грешката',
+    'Error Code' => 'Код на Грешката',
+    'Error List' => 'Списък с Грешки',
     
     
     

@@ -5,15 +5,16 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addErrorListModal">
-                    Add Error List
+                    @lang('messages.Add')
                 </button>
 
-                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
-                    Error List
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 25%;">
+                    @lang('messages.Error List')
                 </h2>
 
-                <a href="/settings/errors-list-export" class="btn btn-primary btn-sm pull-right">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                <a href="/settings/errors-list-export" class="btn btn-warning btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
+                    @lang('messages.Export')
                 </a>
             </div>
             <div class="panel-body">
@@ -32,10 +33,10 @@
                 >
                     <thead class="w3-blue-grey">
                         <tr class="tr-class">
-                            <th data-sortable="true">Error Code</th>
-                            <th data-sortable="true">Error Level</th>
-                            <th data-sortable="true">Error Group</th>
-                            <th data-sortable="true">Error Text</th>
+                            <th data-sortable="true">@lang('messages.Error Code')</th>
+                            <th data-sortable="true">@lang('messages.Error Level')</th>
+                            <th data-sortable="true">@lang('messages.Error Group')</th>
+                            <th data-sortable="true">@lang('messages.Error Text')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,12 +75,13 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a href="/settings/error-levels-export" class="btn btn-primary btn-sm">
-                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
-                </a>
-                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 7%;">
-                    Error Levels
+                <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 0%;">
+                    @lang('messages.Error Levels')
                 </h2>
+                <a href="/settings/error-levels-export" class="btn btn-warning btn-sm pull-right">
+                    <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
+                    @lang('messages.Export')
+                </a>
             </div>
             <div class="panel-body">
                <table class="table table-striped table-bordered table-hover data-table-table" id="gameTable" role="grid"
@@ -89,8 +91,8 @@
                >
                     <thead class="w3-blue-grey">
                         <tr>
-                            <th data-sortable="true">Error Level Int</th>
-                            <th data-sortable="true">Error Level String</th>
+                            <th data-sortable="true">@lang('messages.Error Level Int')</th>
+                            <th data-sortable="true">@lang('messages.Error Level String')</th>
                         </tr>
                     </thead>
                     <tbody>

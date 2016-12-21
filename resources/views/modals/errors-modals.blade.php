@@ -4,26 +4,26 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2><strong>+ Error Level</strong></h2>
+        <h2><strong>@lang('messages.Error Levels')</strong></h2>
       </div>
       <div class="modal-body">
         <form class="form-inline" role="form" method="POST" name="server-modal">
             <div class="form-group">
-                <label for="err_level">Error ID:</label><br>
-                <input class="form-control" type="text" name="err_level" id="err_level" placeholder="Level Int">
+                <label for="err_level">@lang('messages.Error Level Int'):</label><br>
+                <input class="form-control" type="text" name="err_level" id="err_level" placeholder="@lang('messages.Error Level Int')">
             </div>
 
             <div class="form-group ">
-                <label for="level_str">Error Str: </label><br>
-                <input class="form-control" type="text" name="level_str" id="level_str" placeholder="Level Text">
+                <label for="level_str">@lang('messages.Error Level String'): </label><br>
+                <input class="form-control" type="text" name="level_str" id="level_str" placeholder="@lang('messages.Error Level String')">
             </div>
             <hr>
         </form>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="add-error-lvl" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+        <button id="add-error-lvl" class="btn btn-primary">@lang('messages.Save')</button>
       </div>
     </div>
   </div>
@@ -36,13 +36,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2><strong>+ Error List</strong></h2>
+        <h2><strong>@lang('messages.Error List')</strong></h2>
       </div>
       <div class="modal-body">
         <form class="form-inline" role="form" method="POST" name="server-modal">
             <div class="form-group">
-              <label for="err_level">Error Level: </label><br>
-              <select name="err_level" class="form-control selectpicker" title="Error Level.." id="err_level">
+              <label for="err_level">@lang('messages.Error Level'): </label><br>
+              <select name="err_level" class="form-control selectpicker" title="@lang('messages.Error Level')l.." id="err_level">
                 @foreach($error_lvls as $error_lvl)
                   <option value="{{ $error_lvl->err_level }}">{{ $error_lvl->level_str }}</option>
                 @endforeach
@@ -50,8 +50,8 @@
             </div>
 
             <div class="form-group">
-              <label for="err_group">Error Group: </label><br>
-              <select name="err_group" class="form-control selectpicker" id="err_group" title="Error Group..">
+              <label for="err_group">@lang('messages.Error Group'): </label><br>
+              <select name="err_group" class="form-control selectpicker" id="err_group" title="@lang('messages.Error Group')..">
                 <option value="1">NOTE</option>
                 <option value="2">DOORS</option>
                 <option value="4">DOORSOFF</option>
@@ -71,20 +71,20 @@
             </div>
 
             <div class="form-group">
-                <label for="err_code">Error Code:</label><br>
-                <input class="form-control" type="text" name="err_code" id="err_code" placeholder="Error Code">
+                <label for="err_code">@lang('messages.Error Code'):</label><br>
+                <input class="form-control" type="text" name="err_code" id="err_code" placeholder="@lang('messages.Error Code')">
             </div>
             <hr>
             <div class="form-group ">
-                <label for="err_text">Error Text: </label><br>
-                <input class="form-control" type="text" name="err_text" id="err_text" placeholder="Level Text">
+                <label for="err_text">@lang('messages.Error Text'): </label><br>
+                <input class="form-control" type="text" name="err_text" id="err_text" placeholder="@lang('messages.Error Text')">
             </div>
         </form>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="add-error-list" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+        <button id="add-error-list" class="btn btn-primary">@lang('messages.Save')</button>
       </div>
     </div>
   </div>
