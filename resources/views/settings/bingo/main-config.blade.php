@@ -64,7 +64,7 @@
 		    	<label style="color: #474747">Bingo:</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">%</span>
-					<input name="bingo_win_pr" value="{{ $bingo->bingo_win_pr }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+					<input name="bingo_win_pr" value="{{ $bingo->bingo_win_pr * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 				</div>
 			</div>
 
@@ -72,7 +72,7 @@
 		    	<label style="color: #474747">Line:</label><br>
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon2">%</span>
-					<input name="bingo_line_pr" value="{{ $bingo->bingo_line_pr }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+					<input name="bingo_line_pr" value="{{ $bingo->bingo_line_pr * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 				</div>
 			</div>
 
@@ -91,7 +91,7 @@
 					<label style="color: #474747">My Bonus:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="mybonus_pr_visible" value="{{ $bingo->mybonus_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="mybonus_pr_visible" value="{{ $bingo->mybonus_pr_visible * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
@@ -99,7 +99,7 @@
 					<label style="color: #474747">Bonus Line:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="bonus_line_pr_visible" value="{{ $bingo->bonus_line_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="bonus_line_pr_visible" value="{{ $bingo->bonus_line_pr_visible * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
@@ -107,7 +107,7 @@
 					<label style="color: #474747">Bonus Bingo:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="bonus_bingo_pr_visible" value="{{ $bingo->bonus_bingo_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="bonus_bingo_pr_visible" value="{{ $bingo->bonus_bingo_pr_visible * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
@@ -115,7 +115,7 @@
 					<label style="color: #474747">Jackpot Line:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="jackpot_line_pr_visible" value="{{ $bingo->jackpot_line_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="jackpot_line_pr_visible" value="{{ $bingo->jackpot_line_pr_visible * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
@@ -123,7 +123,7 @@
 					<label style="color: #474747">Jackpot Bingo:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="jackpot_bingo_pr_visible" value="{{ $bingo->jackpot_bingo_pr_visible }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="jackpot_bingo_pr_visible" value="{{ $bingo->jackpot_bingo_pr_visible * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 			</div><!-- End Col -->
@@ -138,7 +138,7 @@
 					<label style="color: #474747">My Bonus:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="mybonus_pr_hidden" value="{{ $bingo->mybonus_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="mybonus_pr_hidden" value="{{ $bingo->mybonus_pr_hidden * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
@@ -146,7 +146,7 @@
 					<label style="color: #474747">Bonus Bingo:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="bonus_bingo_pr_hidden" value="{{ $bingo->bonus_bingo_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="bonus_bingo_pr_hidden" value="{{ $bingo->bonus_bingo_pr_hidden * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
@@ -154,7 +154,7 @@
 					<label style="color: #474747">Bonus Line:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="bonus_line_pr_hidden" value="{{ $bingo->bonus_line_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="bonus_line_pr_hidden" value="{{ $bingo->bonus_line_pr_hidden * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
@@ -162,7 +162,7 @@
 					<label style="color: #474747">Jackpot Line:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="jackpot_line_pr_hidden" value="{{ $bingo->jackpot_line_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="jackpot_line_pr_hidden" value="{{ $bingo->jackpot_line_pr_hidden * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 
@@ -170,7 +170,7 @@
 					<label style="color: #474747">Jackpot Bingo:</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">%</span>
-						<input name="jackpot_bingo_pr_hidden" value="{{ $bingo->jackpot_bingo_pr_hidden }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
+						<input name="jackpot_bingo_pr_hidden" value="{{ $bingo->jackpot_bingo_pr_hidden * 100 }}" type="text" class="form-control text-center" placeholder="Ticket Cost" aria-describedby="sizing-addon2">
 					</div>
 				</div>
 			</div><!-- End Col -->
@@ -233,29 +233,29 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="form-group"	style="margin-left: 15px;">
-		    		<label style="color: #474747">Bngo + Line Total::</label><br>
-					<input disabled name="bingo_line_total" value="434333" type="text" class="form-control text-center">
+		    		<label style="color: #474747">Bingo + Line Total:</label><br>
+					<input disabled name="bingo_line_total" value="{{ $bingo_line_total }}" type="text" class="form-control text-center">
 				</div>
 			</div>
 
 			<div class="col-md-3">
 				<div class="form-group">
 		    		<label style="color: #474747">Visible Total:</label><br>
-					<input disabled name="visible_total" value="434333" type="text" class="form-control text-center">
+					<input disabled name="visible_total" value="{{ $bingo_visible_total }}" type="text" class="form-control text-center">
 				</div>
 			</div>
 
 			<div class="col-md-3">
 				<div class="form-group">
 		    		<label style="color: #474747">Hidden Total:</label><br>
-					<input disabled name="hidden_total" value="434333" type="text" class="form-control text-center">
+					<input disabled name="hidden_total" value="{{ $bingo_hidden_total }}" type="text" class="form-control text-center">
 				</div>
 			</div>
 
 			<div class="col-md-3">
 				<div class="form-group" style="margin-right: 15px;">
 		    		<label style="color: #474747">Visible + Hidden Total:</label><br>
-					<input disabled name="visible_hidden_total" value="434333" type="text" class="form-control text-center">
+					<input disabled name="visible_hidden_total" value="{{ $bingo_visible_hidden_total }}" type="text" class="form-control text-center">
 				</div>
 			</div>
 		</div>

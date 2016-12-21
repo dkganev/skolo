@@ -19,8 +19,15 @@ class BingoController extends Controller
     public function main_config()
     {
     	$bingo = MainConfig::first();
+        $bingo_line_total = $bingo->bingo_win_pr * 100 +  $bingo->bingo_line_pr * 100;
+        $bingo_visible_total = $bingo->mybonus_pr_visible * 100 + $bingo->bonus_line_pr_visible * 100 + $bingo->bonus_bingo_pr_visible * 100 + $bingo->jackpot_line_pr_visible * 100 + $bingo->jackpot_bingo_pr_visible * 100;
 
-    	return view('settings.bingo.main-config', ['bingo' => $bingo]);
+        $bingo_hidden_total = $bingo->mybonus_pr_hidden * 100 + $bingo->bonus_line_pr_hidden * 100 + $bingo->bonus_bingo_pr_hidden * 100 + $bingo->jackpot_line_pr_hidden * 100 + $bingo->jackpot_bingo_pr_hidden * 100;
+
+        $bingo_visible_hidden_total = $bingo_hidden_total + $bingo_visible_total;
+
+    	return view('settings.bingo.main-config',
+                        compact('bingo', 'bingo_line_total', 'bingo_visible_total', 'bingo_hidden_total', 'bingo_visible_hidden_total'));
     }
 
     public function export_main_config()
@@ -43,12 +50,32 @@ class BingoController extends Controller
 
     public function main_config_edit(Request $request)
     {
-        DB::connection('pgsql3')
-                        ->table('mainconf')
-                        ->where('casino_id', 1)
-                        ->update($request->except('_token'));
+        $updated = DB::connection('pgsql3')->table('mainconf')->where('casino_id', 1)
+            ->update([
+                  "bingo_ticket_cost" => $request->bingo_ticket_cost,
+                  "bingo_win_pr" => $request->bingo_win_pr / 100,
+                  "bingo_line_pr" => $request->bingo_line_pr / 100,
+                  "url" => $request->url,
+                  "mybonus_pr_visible" => $request->mybonus_pr_visible / 100,
+                  "bonus_line_pr_visible" => $request->bonus_line_pr_visible / 100,
+                  "bonus_bingo_pr_visible" => $request->bonus_bingo_pr_visible / 100,
+                  "jackpot_line_pr_visible" => $request->jackpot_line_pr_visible / 100,
+                  "jackpot_bingo_pr_visible" => $request->jackpot_bingo_pr_visible / 100,
+                  "mybonus_pr_hidden" => $request->mybonus_pr_hidden / 100,
+                  "bonus_bingo_pr_hidden" => $request->bonus_bingo_pr_hidden / 100,
+                  "bonus_line_pr_hidden" => $request->bonus_line_pr_hidden / 100,
+                  "jackpot_line_pr_hidden" => $request->jackpot_line_pr_hidden / 100,
+                  "jackpot_bingo_pr_hidden" => $request->jackpot_bingo_pr_hidden / 100,
+                  "jackpot_bingo_max_ball" => $request->jackpot_bingo_max_ball,
+                  "jackpot_line_max_ball" => $request->jackpot_line_max_ball,
+                  "bonus_line_max_ball" => $request->bonus_line_max_ball,
+                  "bonus_bingo_max_ball" => $request->bonus_bingo_max_ball,
+                  "mybonus_max_ball" => $request->mybonus_max_ball,
+            ]);
 
-        return response()->json(['msg' => 'success']);
+        if($updated) {
+            return response()->json(['msg' => 'success', 'updated' => $updated], 200);
+        }
     }
 
     public function my_bonus()
