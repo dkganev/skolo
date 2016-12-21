@@ -1,18 +1,18 @@
 @include('settings.bingo.max-balls-modals')
 <div class="container">
   <div class="row">
-      <div class="col-lg-7">
+      <div class="col-lg-12">
         <div style="padding-top:2px; margin-top: 0px">
             <ul class="breadcrumb">
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">@lang('messages.Main Config')</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">@lang('messages.My Bonus')</a></li>
 
-              <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
+	        <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">@lang('messages.Max Balls')</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">@lang('messages.Sphere Config')</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
             </ul>
         </div>
   	</div>
@@ -21,26 +21,27 @@
 
 <div class="container">
 <div class="row">
-<div class="col-lg-11">
+<div class="col-lg-12">
 
 <!--    Context Classes  -->
 <div class="panel panel-default" id="max-balls-panel">
     <div class="panel-heading">
         <a id="toggle-max-balls" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addMaxBallsModal">
-            Add New Max Ball
+            @lang('messages.Add')
         </a>
 
         <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 30%;">
-             Max Balls
+             @lang('messages.Max Balls')
         </h2>
 
-        <a class="btn btn-primary  btn-sm pull-right" href="/settings/bingo/maxballs/export">
-            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
+        <a class="btn btn-warning  btn-sm pull-right" href="/settings/bingo/maxballs/export">
+            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>
+            @lang('messages.Export')
         </a>
 
         <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
         <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGMaxBalls();">
-            Export to PNG
+            @lang('messages.Export to PNG')
         </a>
     </div>
 
@@ -58,19 +59,19 @@
         >
           <thead class="w3-blue-grey">
             <tr>
-              <th data-sortable="true">ID</th>
-              <th data-sortable="true">Fixed</th>                         
-              <th data-sortable="true">Ticket Cost</th>
-              <th data-sortable="true">JB. Max Ball</th>
-              <th data-sortable="true">JL. Max Ball</th>
-              <th data-sortable="true">BL. Max Ball</th>
-              <th data-sortable="true">BB. Max Ball</th>
-              <th data-sortable="true">JL. Ticket Count</th>
-              <th data-sortable="true">JB. Ticket Count</th>
-              <th data-sortable="true">BL. Ticket Count</th>
-              <th data-sortable="true">BB. Ticket Count</th>
+              <th data-sortable="true">@lang('messages.ID')</th>
+              <th data-sortable="true">@lang('messages.Fixed')</th>                         
+              <th data-sortable="true">@lang('messages.Ticket Cost')</th>
+              <th data-sortable="true">@lang('messages.JB. Max Ball')</th>
+              <th data-sortable="true">@lang('messages.JL. Max Ball')</th>
+              <th data-sortable="true">@lang('messages.BL. Max Ball')</th>
+              <th data-sortable="true">@lang('messages.BB. Max Ball')</th>
+              <th data-sortable="true">@lang('messages.JL. Ticket Count')</th>
+              <th data-sortable="true">@lang('messages.JB. Ticket Count')</th>
+              <th data-sortable="true">@lang('messages.BL. Ticket Count')</th>
+              <th data-sortable="true">@lang('messages.BB. Ticket Count')</th>
 
-              <th class="text-center">Action</th>
+              <th class="text-center">@lang('messages.Action')</th>
             </tr>
           </thead>
             <tbody>
@@ -114,7 +115,7 @@
           <td style="width: 140px;">
               {{ csrf_field() }}
               <input type="hidden" name="id" value="{{ $steps->id }}">
-              <button  type="submit" class="btn btn-primary btn-sm edit-max-balls-btn" data-id="{{ $steps->id }}">Edit</button>
+              <button  type="submit" class="btn btn-primary btn-sm edit-max-balls-btn" data-id="{{ $steps->id }}">@lang('messages.Edit')</button>
               <a href="#"
                 class="btn btn-danger btn-sm"
                 role="button"
@@ -122,7 +123,7 @@
                 data-target="#deleteMaxBallModal"
                 data-id="{{ $steps->id }}"
               >
-                Delete
+                @lang('messages.Delete')
               </a>
           </td>
         </tr>

@@ -1,17 +1,17 @@
 <div class="container">
 <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-12">
         <div style="padding-top:2px; margin-top: 0px;">
             <ul class="breadcrumb">
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">Main Config</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">@lang('messages.Main Config')</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">My Bonus</a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">@lang('messages.My Bonus')</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">Max Balls</a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">@lang('messages.Max Balls')</a></li>
 
-              <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">Sphere Config</a></li>
+	        <li class="active" ><a href="javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}')">@lang('messages.Sphere Config')</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">Accounting Config</a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
             </ul>
         </div>
 	</div><!--End Col -->
@@ -22,8 +22,8 @@
 <div class="col-lg-3">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 20%;">
-          Sphere Config
+      <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 0%; text-align: center;">
+          @lang('messages.Sphere Config')
       </h3>
     </div>
 
@@ -33,17 +33,17 @@
       <div class="col-lg-3">
 
         <div class="form-group" style="width:190px; display: inline-block;">
-          <label for="wheeltype">ID:</label><br>
+          <label for="wheeltype">@lang('messages.Sphere ID'):</label><br>
           <input disabled class="form-control text-center" type="text" name="id" value="{{ $sphere_config->id }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
-          <label>Sphere IP:</label><br>
+          <label>@lang('messages.Sphere IP'):</label><br>
           <input class="form-control text-center" type="text" name="sphere_ip" value="{{ $sphere_config->sphere_ip }}">
         </div>
 
         <div class="form-group" style="width:190px; display: inline-block;">
-          <label>Sphere Port:</label><br>
+          <label>@lang('messages.Sphere Port'):</label><br>
           <input class="form-control text-center" type="text" name="sphere_port" value="{{ $sphere_config->sphere_port }}">
         </div>
 
@@ -54,7 +54,7 @@
          <hr style="margin: 15px 0 15px 0">
 
           {{ csrf_field() }}
-          <button id="sphere-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">Update</button>
+          <button id="sphere-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">@lang('messages.Update')</button>
 
       </div>
 

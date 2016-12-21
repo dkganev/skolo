@@ -282,12 +282,12 @@
                     <thead class="w3-dark-grey">
                         <tr>
                             <th colspan="5" class="text-center GameInfo" style='text-align: center !Important; '>@lang('messages.Game Info')</th>
-                            <th colspan="2" class="text-center Line">@lang('messages.Bingo Line')</th>
-                            <th colspan="2" class="text-center Bingo">@lang('messages.Bingo Prize')</th>
-                            <th colspan="2" class="text-center MyBonus">@lang('messages.My Bonus Prize')</th>
-                            <th colspan="2" class="text-center BonusLine">@lang('messages.Bonus Line Prize')</th>
-                            <th colspan="2" class="text-center BonusBingo">@lang('messages.Bonus Bingo Prize')</th>
-                            <th colspan="2" class="text-center JackpotLine">@lang('messages.Jackpot Line Prize')</th>
+                            <th colspan="2" class="text-center Line">@lang('messages.Line')</th>
+                            <th colspan="2" class="text-center Bingo">@lang('messages.Bingo')</th>
+                            <th colspan="2" class="text-center MyBonus">@lang('messages.My Bonus')</th>
+                            <th colspan="2" class="text-center BonusLine">@lang('messages.Bonus Line')</th>
+                            <th colspan="2" class="text-center BonusBingo">@lang('messages.Bonus Bingo')</th>
+                            <th colspan="2" class="text-center JackpotLine">@lang('messages.Jackpot Line')</th>
                             <th colspan="2" class="text-center JackpotBingo">@lang('messages.Jackpot Bingo')</th>
                             <th rowspan="1" class="text-center" ></th>
                         </tr>
