@@ -1,17 +1,17 @@
 <div class="container">
-  <div class="row">
-      <div class="col-lg-6">
-        <div style="padding-top:2px; margin-top: 0px;">
-            <ul class="breadcrumb">
-              <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}')">Main Config</a></li>
+    <div class="row">
+        <div class="col-lg-12">
+            <div style="padding-top:2px; margin-top: 0px;">
+	        <ul class="breadcrumb">
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}')">@lang('messages.Main Config')</a></li>
 
-              <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">Tables</a></li>
-              
-              <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">Accounting Config</a></li>
-            </ul>
-        </div>
+                    <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">@lang('messages.Tables')</a></li>
+
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
+	        </ul>
+            </div>
   	</div>
-  </div><!-- End Row -->
+    </div><!-- End Row -->
 </div><!-- End Container-->
 
 <div class="container">
@@ -19,17 +19,16 @@
 <div class="col-lg-9">
   <div class="panel panel-default" id="blackjack-tables-panel">
     <div class="panel-heading">
-        <a class="btn btn-primary  btn-sm pull-left" href="/settings/blackjack/table/export">
-            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
-        </a>
-
         <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 35%;">
-            Tables
+            @lang('messages.Tables')
         </h2>
-
+        <a class="btn btn-warning  btn-sm pull-right" href="/settings/blackjack/table/export">
+            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>
+            @lang('messages.Export')
+        </a>
         <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
         <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGBJTables();">
-            Export to PNG
+            @lang('messages.Tables')Export to PNG
         </a>
     </div>
 
@@ -38,15 +37,15 @@
          <table class="table table-bordered">
             <thead class="w3-blue-grey">
               <tr>
-                <th>Table</th>
-                <th>Min Bet</th>
-                <th>Max Bet</th>
-                <th>Chip 1</th>
-                <th>Chip 2</th>
-                <th>Chip 3</th>
-                <th>Chip 4</th>
-                <th>Chip 5</th>
-                <th>Action</th>
+                <th>@lang('messages.Table')</th>
+                <th>@lang('messages.Min Bet')</th>
+                <th>@lang('messages.Max Bet')</th>
+                <th>@lang('messages.Chip') 1</th>
+                <th>@lang('messages.Chip') 2</th>
+                <th>@lang('messages.Chip') 3</th>
+                <th>@lang('messages.Chip') 4</th>
+                <th>@lang('messages.Chip') 5</th>
+                <th>@lang('messages.Action')</th>
               </tr>
             </thead>
               <tbody>
@@ -83,7 +82,7 @@
                                 type="submit"
                                 data-id="{{ $table->table_id }}"
                         >
-                            Update
+                            @lang('messages.Update')
                         </button>
                     </td>
                 </tr>
@@ -95,7 +94,7 @@
         <form id="enabled-tables-form" style="border: 1px solid #fff; padding: 10px">
             <div class="tables">
                 <span class="button-checkbox" style="margin-left: 0;">
-                    <label for="t1_enabled">Table 1</label><br>
+                    <label for="t1_enabled">@lang('messages.Table') 1</label><br>
                     <input type="hidden" name="t1_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
                     <input type="checkbox" name="t1_enabled" class="hidden"
@@ -103,7 +102,7 @@
                         />
                 </span>
                 <span class="button-checkbox">
-                    <label for="t2_enabled">Table 2</label><br>
+                    <label for="t2_enabled">@lang('messages.Table') 2</label><br>
                     <input type="hidden" name="t2_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
                     <input type="checkbox" name="t2_enabled" class="hidden"
@@ -111,7 +110,7 @@
                      />
                 </span>
                 <span class="button-checkbox">
-                    <label for="t3_enabled">Table 3</label><br>
+                    <label for="t3_enabled">@lang('messages.Table') 3</label><br>
                     <input type="hidden" name="t3_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
                     <input type="checkbox" name="t3_enabled" class="hidden"
@@ -119,7 +118,7 @@
                      />
                 </span>
                 <span class="button-checkbox">
-                    <label for="t4_enabled">Table 4</label><br>
+                    <label for="t4_enabled">@lang('messages.Table') 4</label><br>
                     <input type="hidden" name="t4_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
                     <input type="checkbox" name="t4_enabled" class="hidden"
@@ -135,7 +134,7 @@
                      />
                 </span>
                 <span class="button-checkbox">
-                    <label for="t6_enabled">Table 6</label><br>
+                    <label for="t6_enabled">@lang('messages.Table') 6</label><br>
                     <input type="hidden" name="t6_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
                     <input type="checkbox" name="t6_enabled" class="hidden"
@@ -144,7 +143,7 @@
                 </span>
                 {{ csrf_field() }}
                 <button class="btn btn-danger btn-sm btn-block enabled-table-button" type="submit">
-                    Update
+                    @lang('messages.Update')
                 </button>
                 </div>
             </form>

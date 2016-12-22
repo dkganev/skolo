@@ -1,37 +1,37 @@
 <div class="container">
-  <div class="row">
-      <div class="col-lg-8">
-        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
-            <ul class="breadcrumb" style="margin-bottom: 10px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div style="padding-top:2px; margin-top: 0px;">
+                <ul class="breadcrumb" style="margin-bottom: 10px;">
 
-              <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">Roulette 1</a></li>
+                    <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">@lang('messages.Roulette') 1</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/roulette2/wheelsettings')}}')">Roulette 2</a></li>
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/roulette2/wheelsettings')}}')">@lang('messages.Roulette') 2</a></li>
 
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-  </div><!-- End Row -->
+    </div><!-- End Row -->
 </div><!-- End Container-->
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-7">
-      <div style="padding-top:2px; margin-top: 0px;">
-          <ul class="breadcrumb secondary-breadcrumb" style="margin-bottom: 10px;">
-            <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">Wheel Settings</a></li>
+    <div class="row">
+        <div class="col-lg-12">
+            <div style="padding-top:2px; margin-top: 0px; background-color: none;">
+                <ul class="breadcrumb" style="margin-bottom: 10px;">
 
-            <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelconfig')}}')">Wheel Config</a></li>
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">@lang('messages.Wheel Settings')</a></li>
 
-            <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/roulette1/psconfig')}}')">Terminals Config</a></li>
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelconfig')}}')">@lang('messages.Wheel Config')</a></li>
 
-            <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/accconfig')}}')">Accounting Config</a></li>
-          </ul>
-      </div>
-    </div>
-  </div><!-- End Row -->
+                    <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/roulette1/psconfig')}}')">@lang('messages.Terminals Config')</a></li>
+  
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
+                </ul>
+            </div>
+  	</div>
+    </div><!-- End Row -->
 </div><!-- End Container-->
-
 <div class="container">
 <div class="row">
 <div class="col-lg-12">
@@ -41,9 +41,9 @@
       <table class="table" style="width: 250px; margin-top: 50px;">
         <thead class="w3-blue-grey">
           <tr>
-            <th>PS ID</th>
-            <th>SEAT ID</th>
-            <th>Action</th>
+            <th>@lang('messages.PS ID')</th>
+            <th>@lang('messages.Seat ID')</th>
+            <th>@lang('messages.Action')</th>
           </tr>
         </thead>
           <tbody>
@@ -56,7 +56,7 @@
                         type="submit"
                         data-id="{{ $conf->ps_id }}"
                 >
-                  Edit
+                  @lang('messages.Edit')
                 </button>
               </td>
             </tr>
@@ -84,11 +84,11 @@
 
     <!-- MIN BETS -->
     <div class="col-lg-2">
-      <h4 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Min Bets (credits):</h4>
+      <h4 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">@lang('messages.Min Bets') (@lang('messages.credits')):</h4>
       <hr style="margin: 7px 0 12px 0;">
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Game Min Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Game Min Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="game_min_bet" value="{{ $conf->game_min_bet }}" type="text" class="form-control text-center" placeholder="Game Min Bet" aria-describedby="sizing-addon2">
@@ -96,7 +96,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Straight Min Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Straight Min Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="straight_min" value="{{ $conf->straight_min }}" type="text" class="form-control text-center" placeholder="Straight Min Bet" aria-describedby="sizing-addon2">
@@ -104,7 +104,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Split Min Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Split Min Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="split_min" value="{{ $conf->split_min }}" type="text" class="form-control text-center" placeholder="Split Min Bet" aria-describedby="sizing-addon2">
@@ -112,7 +112,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Basket & Street Min Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Basket & Street Min Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="basket_a_street_bet_min" value="{{ $conf->basket_a_street_bet_min }}" type="text" class="form-control text-center" placeholder="Basket & Street Min Bet" aria-describedby="sizing-addon2">
@@ -120,7 +120,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Corner Min Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Corner Min Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="corner_bet_min" value="{{ $conf->corner_bet_min }}" type="text" class="form-control text-center" placeholder="Corner Bet Min" aria-describedby="sizing-addon2">
@@ -128,7 +128,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Six Number Min Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Six Number Min Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="six_number_line_min" value="{{ $conf->six_number_line_min }}" type="text" class="form-control text-center" placeholder="Six Number Line Min" aria-describedby="sizing-addon2">
@@ -136,7 +136,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Dozen Min Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Dozen Min Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="dozen_bet_min" value="{{ $conf->dozen_bet_min }}" type="text" class="form-control text-center" placeholder="Dozen Bet Min" aria-describedby="sizing-addon2">
@@ -144,7 +144,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Even Min Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Even Min Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="even_bet_min" value="{{ $conf->even_bet_min }}" type="text" class="form-control text-center" placeholder="Even Bet Min" aria-describedby="sizing-addon2">
@@ -153,13 +153,14 @@
 
     </div><!-- End Col -->
 
+
     <!-- MAX BETS -->
     <div class="col-lg-2">
-      <h4 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Max Bets (credits):</h4>
+      <h4 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Max Bets') (@lang('messages.credits')):</h4>
       <hr style="margin: 7px 0 12px 0;">
 
           <div class="form-group form-group-sm">
-            <label style="color: #474747">Game Max Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Game Max Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="game_max_bet" value="{{ $conf->game_max_bet }}" type="text" class="form-control text-center" placeholder="Game Max Bet" aria-describedby="sizing-addon2">
@@ -167,7 +168,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Straight Max Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Straight Max Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="straight_max" value="{{ $conf->straight_max }}" type="text" class="form-control text-center" placeholder="Straight Max Bet" aria-describedby="sizing-addon2">
@@ -175,7 +176,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Split Max Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Split Max Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="split_max" value="{{ $conf->split_max }}" type="text" class="form-control text-center" placeholder="Split Max Bet" aria-describedby="sizing-addon2">
@@ -183,7 +184,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Basket & Street Max Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Basket & Street Max Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="basket_a_street_bet_max" value="{{ $conf->basket_a_street_bet_max }}" type="text" class="form-control text-center" placeholder="Basket & Street Max Bet" aria-describedby="sizing-addon2">
@@ -191,7 +192,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Corner Max Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Corner Max Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="corner_bet_max" value="{{ $conf->corner_bet_max }}" type="text" class="form-control text-center" placeholder="Corner Bet Max" aria-describedby="sizing-addon2">
@@ -199,7 +200,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Six Number Max Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Six Number Max Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="six_number_line_max" value="{{ $conf->six_number_line_max }}" type="text" class="form-control text-center" placeholder="Six Number Line Max" aria-describedby="sizing-addon2">
@@ -207,7 +208,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Dozen Max Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Dozen Max Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="dozen_bet_max" value="{{ $conf->dozen_bet_max }}" type="text" class="form-control text-center" placeholder="Dozen Max Bet" aria-describedby="sizing-addon2">
@@ -215,7 +216,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Even Max Bet:</label><br>
+            <label style="color: #474747">@lang('messages.Even Max Bet'):</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
             <input name="even_bet_max" value="{{ $conf->even_bet_max }}" type="text" class="form-control text-center" placeholder="Even Bet Max" aria-describedby="sizing-addon2">
@@ -228,11 +229,11 @@
   <!-- Multipliers -->
     <div class="col-lg-2">
 
-      <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Multipliers:</h3>
+        <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Multipliers'): <br/>&nbsp;</h3>
       <hr style="margin: 7px 0 12px 0;">
 
         <div class="form-group form-group-sm">
-          <label style="color: #474747">Multiplier #1:</label><br>
+          <label style="color: #474747">@lang('messages.Multiplier') #1:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
             <input name="mult1" value="{{ $conf->mult1 }}" type="text" class="form-control text-center" placeholder="Multiplier #1" aria-describedby="sizing-addon2">
@@ -240,7 +241,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Multiplier #2:</label><br>
+            <label style="color: #474747">@lang('messages.Multiplier') #2:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
             <input name="mult2" value="{{ $conf->mult2 }}" type="text" class="form-control text-center" placeholder="Multiplier #2" aria-describedby="sizing-addon2">
@@ -248,7 +249,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Multiplier #3:</label><br>
+            <label style="color: #474747">@lang('messages.Multiplier') #3:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
             <input name="mult3" value="{{ $conf->mult3 }}" type="text" class="form-control text-center" placeholder="Multiplier #3" aria-describedby="sizing-addon2">
@@ -256,7 +257,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-          <label style="color: #474747">Multiplier #4:</label><br>
+          <label style="color: #474747">@lang('messages.Multiplier') #4:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
             <input name="mult4" value="{{ $conf->mult4 }}" type="text" class="form-control text-center" placeholder="Multiplier #4" aria-describedby="sizing-addon2">
@@ -264,7 +265,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Multiplier #5:</label><br>
+            <label style="color: #474747">@lang('messages.Multiplier') #5:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
             <input name="mult5" value="{{ $conf->mult5 }}" type="text" class="form-control text-center" placeholder="Multiplier #5" aria-describedby="sizing-addon2">
@@ -272,7 +273,7 @@
         </div>
 
         <div class="form-group form-group-sm">
-            <label style="color: #474747">Multiplier #6:</label><br>
+            <label style="color: #474747">@lang('messages.Multiplier') #6:</label><br>
           <div class="input-group">
             <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
             <input name="mult6" value="{{ $conf->mult6 }}" type="text" class="form-control text-center" placeholder="Multiplier #6" aria-describedby="sizing-addon2">
@@ -281,16 +282,17 @@
 
       </div><!-- End Col -->
 
+
   <!-- Denominations -->
     <div class="col-lg-2">
 
-      <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   Denominations:</h3>
+      <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations'):<br/>&nbsp;</h3>
       <hr style="margin: 7px 0 12px 0;">
 
         <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
-          <label for="denom1">Denomination #1:</label><br>
+          <label for="denom1">@lang('messages.Denomination') #1:</label><br>
           <select name="denom1" id="denom1" class="selectpicker" data-actions-box="true">
-            <option {{ $conf->denom1 == 0 ? 'selected="true"' : '' }} value="0">None</option>
+           <option {{ $conf->denom1 == 0 ? 'selected="true"' : '' }} value="0">None</option>
             <option {{ $conf->denom1 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
             <option {{ $conf->denom1 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
             <option {{ $conf->denom1 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
@@ -318,10 +320,10 @@
             <option {{ $conf->denom1 == 25 ? 'selected="true"' : '' }} value="25">$0.15</option>
             <option {{ $conf->denom1 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
           </select>
-        </div>
+         </div>
 
         <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
-          <label for="denom2">Denomination #2:</label><br>
+          <label for="denom2">@lang('messages.Denomination') #2:</label><br>
           <select style="height: 40px; line-height:30px;" name="denom2" id="denom2" class="selectpicker" data-actions-box="true">
             <option {{ $conf->denom2 == 0 ? 'selected="true"' : '' }} value="0">None</option>
             <option {{ $conf->denom2 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
@@ -352,8 +354,9 @@
             <option {{ $conf->denom2 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
           </select>
         </div>
+    
         <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
-          <label for="denom3">Denomination #3:</label><br>
+          <label for="denom3">@lang('messages.Denomination') #3:</label><br>
           <select name="denom3" id="denom3" class="selectpicker" data-actions-box="true">
             <option {{ $conf->denom3 == 0 ? 'selected="true"' : '' }} value="0">None</option>
             <option {{ $conf->denom3 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
@@ -386,7 +389,7 @@
         </div>
 
         <div class="form-group form-group-sm" style="width:270px; display: inline-block; padding: 0;">
-          <label for="denom4">Denomination #4:</label><br>
+          <label for="denom4">@lang('messages.Denomination') #4:</label><br>
           <select name="denom4" id="denom4" class="selectpicker" data-actions-box="true">
             <option {{ $conf->denom4 == 0 ? 'selected="true"' : '' }} value="0">None</option>
             <option {{ $conf->denom4 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
@@ -419,6 +422,7 @@
         </div>
 
       </div><!-- End Col -->
+      
       <hr>
       {{ csrf_field() }}
       <input type="hidden" value="{{ $conf->ps_id }}" name="ps_id">
@@ -426,10 +430,10 @@
               style="width:315px; margin: 203px 10px 10px 17px; position: relative; bottom: 35px; right: 5px" 
               class="btn btn-danger pull-right ps-config-submit"
       >
-          Update
+          @lang('messages.Update')
       </button>
       </form>
-      <script>
+      {{--<script>
           $('select').on('change', function() {
             $('option[value="0"]').removeAttr('disabled');
             var select = $("#ps-config-form-{{ $conf->ps_id }}").find('select');
@@ -445,7 +449,7 @@
               });
             });
           }).change(); //trihgger change handler initially!
-      </script>
+      </script> --}}
       @endforeach
 
 </div><!-- End PsConfig--> 
