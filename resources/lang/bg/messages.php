@@ -250,7 +250,7 @@ return array(
     'BB. Max Ball' => 'BB. Max. Топка',
     'BL. Max Ball' => 'BL. Max. Топка',
     'JL. Max Ball' => 'JL. Max. Топка',
-    'JB. Max Ball' => 'JL. Max. Топка',
+    'JB. Max Ball' => 'JB. Max. Топка',
     'Add Max Balls' => 'Добави Максимална Топка ',
     'Fixed Cost' => 'Фиксирана Цана',
     'Delete Max Bal' => 'Изтрий Максималната Топка',

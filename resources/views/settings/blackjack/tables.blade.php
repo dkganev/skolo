@@ -28,7 +28,7 @@
         </a>
         <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
         <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGBJTables();">
-            @lang('messages.Tables')Export to PNG
+            @lang('messages.Export to PNG')
         </a>
     </div>
 
