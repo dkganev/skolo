@@ -41,7 +41,7 @@
                     <thead class="w3-blue-grey">
                       <tr>
                         <th>@lang('messages.ID')</th>
-                        <th>@lang('messages.Ticket Cost')</th>
+                        <th>Bought Tickets</th>
                         <th>@lang('messages.Max Ball')</th>
                         <th>@lang('messages.Action')</th>
                       </tr>
