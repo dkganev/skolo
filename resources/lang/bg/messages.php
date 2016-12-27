@@ -172,7 +172,7 @@ return array(
     'Game ID' => 'ID на Играта',
     'Category Name' => 'Име на Категорията',
     'Category ID' => 'ID на Категорията',
-    'Game Categories' => 'Категотий',
+    'Game Categories' => 'Категории',
     'Short Name' => 'Кратко Име',
     'Category' => 'Категотия',
     'DB Name' => 'Име на Базата',
