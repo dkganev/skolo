@@ -68,6 +68,55 @@
 </div>
 <!-- End Add Language Modal -->
 
+<!-- Delete Terminal Modal -->
+<div class="row">
+<div class="modal fade" id="destroyLangModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+          <h2><strong>@lang('messages.Delete Language')</strong></h2>
+      </div>
+      
+      <div class="modal-body">
+          <h4>@lang('messages.Delete Language') <span id="dallasid"></span>  ?</h4>
+      </div>
+      <div class="modal-footer">
+          <input  type="hidden" name="id">
+          <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
+          <button id="destroy-lang" type="submit" class="btn btn-warning">@lang('messages.Delete')</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+$(function() {
+
+    // POPULATE DELETE PS MODAL
+    $('#destroyLangModal').on('show.bs.modal', function(e) {
+        var id = $(e.relatedTarget).data('id');
+        var langName = $(e.relatedTarget).data('lang');
+
+        $(e.currentTarget).find('span').html(langName);
+        $(e.currentTarget).find('input[name="id"]').val(id);
+    });
+
+    $('#destroy-lang').on('click', function() {
+        var token = $('meta[name="csrf-token"]').attr('content');
+        
+        $.post('/settings/languages/destroy', { id: $('#destroyLangModal input[name="id"]').val(), _token: token })
+          .done(function() {
+            $('#destroyLangModal').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            javascript:ajaxLoad('{{url('/settings/langs')}}');
+        });
+    });
+
+}); // <== End Document Ready
+</script>
+
 <script>
 $(function() {
 

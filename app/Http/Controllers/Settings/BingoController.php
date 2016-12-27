@@ -142,6 +142,10 @@ class BingoController extends Controller
 
     public function max_balls_store(Request $request)
     {
+        $this->validate($request, [
+            'bingo_ticket_cost' => 'required|unique:pgsql3.jackpot_steps'
+        ]);
+
         DB::connection('pgsql3')->table('jackpot_steps')->insert([
             'bingo_ticket_cost' => $request->bingo_ticket_cost,
             'jackpot_bingo_max_ball' => $request->jackpot_bingo_max_ball,
@@ -156,7 +160,7 @@ class BingoController extends Controller
 
         ]);
 
-        return redirect('/settings');
+        // return redirect('/settings');
     }
 
     public function max_balls_edit(Request $request)

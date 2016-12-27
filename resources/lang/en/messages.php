@@ -342,8 +342,10 @@ return array(
     'Multipliers' => 'Multipliers',
     'B' => 'B',
     'B' => 'B',
-    
-    
+    'Bought Tickets' => 'Bought Tickets',
+    'Common Bet Time' => 'Common Bet Time',
+    'Personal Bet Time' => 'Personal Bet Time',
+    'Delete Language' => 'Delete Language',
     
     
     'welcome' => 'Welcome to our application'

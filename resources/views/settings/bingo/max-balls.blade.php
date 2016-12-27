@@ -62,8 +62,8 @@
               <th data-sortable="true">@lang('messages.ID')</th>
               <th data-sortable="true">@lang('messages.Fixed')</th>                         
               <th data-sortable="true">@lang('messages.Ticket Cost')</th>
-              <th data-sortable="true">@lang('messages.JB. Max Ball')</th>
               <th data-sortable="true">@lang('messages.JL. Max Ball')</th>
+              <th data-sortable="true">@lang('messages.JB. Max Ball')</th>
               <th data-sortable="true">@lang('messages.BL. Max Ball')</th>
               <th data-sortable="true">@lang('messages.BB. Max Ball')</th>
               <th data-sortable="true">@lang('messages.JL. Ticket Count')</th>
@@ -87,22 +87,27 @@
           <td>
             <input name="bingo_ticket_cost" value="{{ $steps->bingo_ticket_cost }}" type="text" class="form-control">
           </td>
+          
+          <td>
+            <input  name="jackpot_line_max_ball" value="{{ $steps->jackpot_line_max_ball }}" type="text" class="form-control">
+          </td>
 
           <td>
             <input  name="jackpot_bingo_max_ball" value="{{ $steps->jackpot_bingo_max_ball }}" type="text" class="form-control">
           </td>
-          <td>
-            <input  name="jackpot_line_max_ball" value="{{ $steps->jackpot_line_max_ball }}" type="text" class="form-control">
-          </td>
+          
           <td>
             <input  name="bonus_line_max_ball" value="{{ $steps->bonus_line_max_ball }}" type="text" class="form-control">
           </td>
+
           <td>
             <input  name="bonus_bingo_max_ball" value="{{ $steps->bonus_bingo_max_ball }}" type="text" class="form-control">
           </td>
+
           <td>
             <input  name="jackpo_line_ticket_cnt" value="{{ $steps->jackpo_line_ticket_cnt }}" type="text" class="form-control">
           </td>
+
           <td>
             <input  name="jackpo_bingo_ticket_cnt" value="{{ $steps->jackpo_bingo_ticket_cnt }}" type="text" class="form-control">
           </td>

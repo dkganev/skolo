@@ -340,9 +340,10 @@ return array(
     'Denominations' => 'Denominations',
     'Multiplier' => 'Multiplier',
     'Multipliers' => 'Multipliers',
-    
-    
-    
-    
+    'Bought Tickets' => 'Закупени Билети',
+    'Common Bet Time' => 'Общо Време За Залог',
+    'Personal Bet Time' => 'Лично Време За Залог',
+    'Delete Language' => 'Изтрий Език',
+
     'welcome' => 'Welcome to our application'
 );

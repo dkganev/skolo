@@ -39,7 +39,13 @@
   <div class="panel panel-default">
 
     <div class="panel-heading">
-      <h2 class="panel-title text-center" style="color:white;"><strong>@lang('messages.Wheel Config')</strong></h2>
+      <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 35%;">
+        @lang('messages.Wheel Config')
+      </h2>
+
+      <a style="margin:5px;" class="btn btn-warning btn-sm pull-right" onclick="ExportToPNG();">
+        @lang('messages.Export to PNG')
+      </a>
     </div>
 
     <div class="panel-body">
@@ -177,4 +183,21 @@ $('button#wheel-config-btn').on('click', function(event) {
          javascript:ajaxLoad('{{url('/settings/roulette2/wheelconfig')}}');
     });
 });
+</script>
+<script>
+    function ExportToPNG() {
+      html2canvas($('.panel'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>
