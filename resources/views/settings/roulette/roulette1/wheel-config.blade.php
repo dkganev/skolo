@@ -1,36 +1,36 @@
 <div class="container">
-  <div class="row">
-      <div class="col-lg-8">
-        <div style="padding-top:2px; margin-top: 0px;">
-            <ul class="breadcrumb" style="margin-bottom: 10px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div style="padding-top:2px; margin-top: 0px;">
+                <ul class="breadcrumb" style="margin-bottom: 10px;">
 
-              <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">Roulette 1</a></li>
+                    <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">@lang('messages.Roulette') 1</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/roulette2/wheelsettings')}}')">Roulette 2</a></li>
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/roulette2/wheelsettings')}}')">@lang('messages.Roulette') 2</a></li>
 
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-  </div><!-- End Row -->
+    </div><!-- End Row -->
 </div><!-- End Container-->
 
 <div class="container">
-  <div class="row">
-      <div class="col-lg-7">
-        <div style="padding-top:2px; margin-top: 0px; background-color: none;">
-            <ul class="breadcrumb" style="margin-bottom: 10px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div style="padding-top:2px; margin-top: 0px; background-color: none;">
+                <ul class="breadcrumb" style="margin-bottom: 10px;">
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">Wheel Settings</a></li>
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelsettings')}}')">@lang('messages.Wheel Settings')</a></li>
 
-              <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelconfig')}}')">Wheel Config</a></li>
+                    <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/roulette1/wheelconfig')}}')">@lang('messages.Wheel Config')</a></li>
 
-              <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/psconfig')}}')">Terminals Config</a></li>
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/psconfig')}}')">@lang('messages.Terminals Config')</a></li>
   
-              <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/accconfig')}}')">Accounting Config</a></li>
-            </ul>
-        </div>
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/roulette1/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
+                </ul>
+            </div>
   	</div>
-  </div><!-- End Row -->
+    </div><!-- End Row -->
 </div><!-- End Container-->
 
 <!-- Wheel Config -->
@@ -41,7 +41,7 @@
 
     <div class="panel-heading">
       <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 40%;">
-        Wheel Config
+        @lang('messages.Wheel Config')
       </h3>
     </div>
 
@@ -51,55 +51,55 @@
       <div class="col-lg-6">
 
         <div class="form-group" style="width:270px; display: inline-block;">
-          <label for="wheeltype">Wheel Type:</label><br>
+          <label for="wheeltype">@lang('messages.Wheel Type'):</label><br>
           <select name="wheeltype" id="wheeltype" class="selectpicker" data-actions-box="true">
             <option value="0" {{ $wheel_config->wheeltype  == 0 ? ' selected="true"' : '' }} >
-                    Automatic
+                    @lang('messages.Automatic')
             </option>
 
             <option value="1" {{ $wheel_config->wheeltype  == 1 ? ' selected="true"' : '' }} >
-                    Live
+                    @lang('messages.Live')
             </option>
           </select>
         </div>
 
         <div class="form-group" style="width:270px; display: inline-block;">
-          <label for="roulettetype">Roulette Type:</label><br>
+          <label for="roulettetype">@lang('messages.Roulette Type'):</label><br>
           <select name="roulettetype" id="roulettetype" class="selectpicker" data-actions-box="true">
             <option value="0" {{ $wheel_config->roulettetype  == 0 ? ' selected="true"' : '' }} >
-                    Single Zero
+                    @lang('messages.Single Zero')
             </option>
 
             <option value="1" {{ $wheel_config->roulettetype  == 1 ? ' selected="true"' : '' }} >
-                    Double Zero
+                    @lang('messages.Double Zero')
             </option>
           </select>
         </div>
 
         <div class="form-group" style="width:270px; display: inline-block;">
-          <label for="colorscheme">Color Scheme:</label><br>
+          <label for="colorscheme">@lang('messages.Color Scheme'):</label><br>
           <select name="colorscheme" id="colorscheme" class="selectpicker" data-actions-box="true">
             <option value="0" {{ $wheel_config->colorscheme  == 0 ? ' selected="true"' : '' }} >
-                    Green
+                    @lang('messages.Green')
             </option>
             
             <option value="1" {{ $wheel_config->colorscheme  == 1 ? ' selected="true"' : '' }} >
-                    Blue
+                    @lang('messages.Blue')
             </option>
             <option value="2" {{ $wheel_config->colorscheme  == 2 ? ' selected="true"' : '' }} >
-                    Red
+                    @lang('messages.Red')
             </option>
             
             <option value="3" {{ $wheel_config->colorscheme  == 3 ? ' selected="true"' : '' }} >
-                    Black
+                    @lang('messages.Black')
             </option>
 
             <option value="4" {{ $wheel_config->colorscheme  == 4 ? ' selected="true"' : '' }} >
-                    Yellow
+                    @lang('messages.Yellow')
             </option>
             
             <option value="5" {{ $wheel_config->colorscheme  == 5 ? ' selected="true"' : '' }} >
-                    Classic
+                    @lang('messages.Classic')
             </option>
           </select>
         </div>
@@ -110,40 +110,40 @@
       <div class="col-lg-6">
 
         <div class="form-group" style="width:270px; display: inline-block;">
-            <label for="partialrepeat">Partial Repeat:</label><br>
+            <label for="partialrepeat">@lang('messages.Partial Repeat'):</label><br>
             <select name="partialrepeat" id="partialrepeat" class="selectpicker" data-actions-box="true">
               <option value="0" {{  $wheel_config->partialrepeat  == 0 ? ' selected="true"' : '' }} >
-                      Disabled
+                      @lang('messages.Disabled')
               </option>
 
               <option value="1" {{  $wheel_config->partialrepeat  == 1 ? ' selected="true"' : '' }} >
-                      Enabled
+                      @lang('messages.Enabled')
               </option>
             </select>
         </div>
 
         <div class="form-group" style="width:270px; display: inline-block;">
-            <label for="chevalrule">Cheval Rule:</label><br>
+            <label for="chevalrule">@lang('messages.Cheval Rule'):</label><br>
             <select name="chevalrule" id="chevalrule" class="selectpicker" data-actions-box="true">
               <option value="0" {{  $wheel_config->chevalrule  == 0 ? ' selected="true"' : '' }} >
-                      Disabled
+                      @lang('messages.Disabled')
               </option>
 
               <option value="1" {{  $wheel_config->chevalrule  == 1 ? ' selected="true"' : '' }} >
-                      Enabled
+                      @lang('messages.Enabled')
               </option>
             </select>
         </div>
 
         <div class="form-group" style="width:270px; display: inline-block;">
-            <label for="halfbackrule">Halfback Rule:</label><br>
+            <label for="halfbackrule">@lang('messages.Halfback Rule'):</label><br>
             <select name="halfbackrule" id="halfbackrule" class="selectpicker" data-actions-box="true">
               <option value="0" {{  $wheel_config->halfbackrule  == 0 ? ' selected="true"' : '' }} >
-                      Disabled
+                      @lang('messages.Disabled')
               </option>
 
               <option value="1" {{  $wheel_config->halfbackrule  == 1 ? ' selected="true"' : '' }} >
-                      Enabled
+                      @lang('messages.Enabled')
               </option>
             </select>
         </div>
@@ -154,7 +154,7 @@
          <hr style="margin: 15px 0 15px 0">
 
           {{ csrf_field() }}
-          <button id="wheel-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">Update</button>
+          <button id="wheel-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">@lang('messages.Update')</button>
 
       </div>
 

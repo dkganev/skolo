@@ -1,39 +1,39 @@
 <div class="container">
-  <div class="row">
-      <div class="col-lg-6">
-        <div style="padding-top:2px; margin-top: 0px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div style="padding-top:2px; margin-top: 0px;">
 	        <ul class="breadcrumb">
-	          <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}')">Main Config</a></li>
+                    <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}')">@lang('messages.Main Config')</a></li>
 
-	          <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">Tables</a></li>
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">@lang('messages.Tables')</a></li>
 
-	          <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">Accounting Config</a></li>
+                    <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
 	        </ul>
-        </div>
+            </div>
   	</div>
-  </div><!-- End Row -->
+    </div><!-- End Row -->
 </div><!-- End Container-->
 
 <div class="container">
 <div class="row">
 <div class="col-lg-8">
-	<div class="panel panel-default" id="blackjack-main-config-panel">
+    <div class="panel panel-default" id="blackjack-main-config-panel">
+        <div class="panel-heading">
+            <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 20%;">
+                @lang('messages.Main Config')
+            </h2>
 
-	<div class="panel-heading">
-{{--         <a class="btn btn-primary  btn-sm pull-left" href="/settings/blackjack/mainconfig/export">
-            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Export
-        </a> --}}
-
-        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 40%;">
-             Main Config
-        </h2>
+{{--        <a class="btn btn-warning  btn-sm pull-right" href="/settings/blackjack/mainconfig/export">
+                <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i>
+                @lang('messages.Export')
+            </a> --}}
 
 
-        <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
-        <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGBJMainConfig();">
-            Export to PNG
-        </a>
-    </div>
+            <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+            <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGBJMainConfig();">
+                @lang('messages.Export to PNG')
+            </a>
+        </div>
 
 	  <div class="panel-body">
 		<form action="/settings/blackjack/mainconfig/edit" method="POST" role="form" id="main-config-form">
@@ -41,7 +41,7 @@
 			<div class="col-lg-4">
 
 				    <div class="form-group">
-				    	<label style="color: #474747">Game ID:</label><br>
+				    	<label style="color: #474747">@lang('messages.Game ID'):</label><br>
 						<div class="input-group">
 							<span class="input-group-addon" id="sizing-addon2">#</span>
 							<input disabled name="game_id" value="{{ $config->game_id }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -49,7 +49,7 @@
 					</div>
 
 					<div class="form-group">
-				    	<label style="color: #474747">Max Ps:</label><br>
+				    	<label style="color: #474747">@lang('messages.Max Ps'):</label><br>
 						<div class="input-group">
 							<span class="input-group-addon" id="sizing-addon2">#</span>
 							<input name="max_ps_per_game" value="{{ $config->max_ps_per_game }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -57,7 +57,7 @@
 					</div>
 
 					<div class="form-group">
-				    	<label style="color: #474747">Common Bet Time:</label><br>
+				    	<label style="color: #474747">@lang('messages.Main Config'):</label><br>
 						<div class="input-group">
 							<span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
 							<input name="common_bet_time" value="{{ $config->common_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -65,7 +65,7 @@
 					</div>
 
 					<div class="form-group">
-				    	<label style="color: #474747">BJ Bet Time:</label><br>
+				    	<label style="color: #474747">@lang('messages.BJ Bet Time'):</label><br>
 						<div class="input-group">
 							<span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
 							<input name="bj_bet_time" value="{{ $config->bj_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -77,7 +77,7 @@
 			<!-- SECOND COLUMN -->
 			<div class="col-lg-4">
 				<div class="form-group">
-					<label style="color: #474747">Draw Card Time:</label><br>
+					<label style="color: #474747">@lang('messages.Draw Card Time'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="draw_card_time" value="{{ $config->draw_card_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -85,7 +85,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Num Card Packs:</label><br>
+			    	<label style="color: #474747">@lang('messages.Num Card Packs'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="num_card_packs" value="{{ $config->num_card_packs }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -93,7 +93,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Removed Cards Min:</label><br>
+			    	<label style="color: #474747">@lang('messages.Removed Cards Min'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="removed_cards_min" value="{{ $config->removed_cards_min }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -101,7 +101,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Removed Cards Max:</label><br>
+			    	<label style="color: #474747">@lang('messages.Removed Cards Max'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="removed_cards_max" value="{{ $config->removed_cards_max }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -109,7 +109,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Shuffle Cards Min:</label><br>
+			    	<label style="color: #474747">@lang('messages.Shuffle Cards Min'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="shuffle_cards_min" value="{{ $config->shuffle_cards_min }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -121,7 +121,7 @@
 			<!-- THIRD COLUMN -->
 			<div class="col-lg-4">
 				<div class="form-group">
-					<label style="color: #474747">Shuffle Cards Max:</label><br>
+					<label style="color: #474747">@lang('messages.Shuffle Cards Max'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="shuffle_cards_max" value="{{ $config->shuffle_cards_max }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -129,7 +129,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Win Pause:</label><br>
+			    	<label style="color: #474747">@lang('messages.Win Pause'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="win_pause" value="{{ $config->win_pause }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -137,7 +137,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Insurance On:</label><br>
+			    	<label style="color: #474747">@lang('messages.Insurance On'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="insurance_on" value="{{ $config->insurance_on }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -145,7 +145,7 @@
 				</div>
 
 				<div class="form-group">
-			    	<label style="color: #474747">Shuffle Timeout:</label><br>
+			    	<label style="color: #474747">@lang('messages.Shuffle Timeout'):</label><br>
 					<div class="input-group">
 						<span class="input-group-addon" id="sizing-addon2">#</span>
 						<input name="shuffle_timeout" value="{{ $config->shuffle_timeout }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
@@ -160,25 +160,25 @@
 
 					<span class="button-checkbox" style="padding: 0 0 0 15px ;">
 						<input type="hidden" name="shuffle_on_each_game" value="false">
-				        <button type="button" class="btn" data-color="danger">Shuffle On Each Game</button>
+				        <button type="button" class="btn" data-color="danger">@lang('messages.Shuffle On Each Game')</button>
 				        <input type="checkbox" name="shuffle_on_each_game" class="hidden" {{ $config->shuffle_on_each_game ? " checked" : "" }}  />
     				</span>
 
 					<span class="button-checkbox" style="padding: 0 0 0 15px ;">
 						<input type="hidden" name="allow_split_aces" value="false">
-				        <button type="button" class="btn" data-color="danger">Allow Split Aces</button>
+				        <button type="button" class="btn" data-color="danger">@lang('messages.Allow Split Aces')</button>
 				        <input type="checkbox" name="allow_split_aces" class="hidden" {{ $config->allow_split_aces ? " checked" : "" }} />
     				</span>
 
     				<span class="button-checkbox" style="padding: 0 0 0 15px;">
 						<input type="hidden" name="double_after_split" value="false">
-				        <button type="button" class="btn" data-color="danger">Double After Split</button>
+				        <button type="button" class="btn" data-color="danger">@lang('messages.Double After Split')</button>
 				        <input type="checkbox" name="double_after_split" class="hidden" {{ $config->double_after_split ? " checked" : "" }}  />
     				</span>
 
 					<span class="button-checkbox" style="padding: 0 0 0 15x;">
 						<input type="hidden" name="surrender" value="false">
-				        <button type="button" class="btn" data-color="danger">Surrender</button>
+				        <button type="button" class="btn" data-color="danger">@lang('messages.Surrender')</button>
 				        <input type="checkbox" name="surrender" class="hidden" {{ $config->surrender ? " checked" : "" }} />
     				</span>
 
@@ -189,7 +189,7 @@
 			<hr style="margin: 15px 0 15px 0">
 			<div class="pull-right" style="width: 400px;">
 				{{ csrf_field() }}
-				<button id="main-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">Update</button>
+				<button id="main-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">@lang('messages.Update')</button>
 			</div>
 
 	 	</form>

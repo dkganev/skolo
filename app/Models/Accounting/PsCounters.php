@@ -31,13 +31,17 @@ class PsCounters extends Model
     public function getCounters()
     {
         $counters = $this->counter;
+        //$countersArr = explode("=",$counters1);
+        //$counters = $countersArr[1];
         // Checks for prefix in postgres arrays 
-        $type = strpos($counters, '[0:256]');
+        $type = strpos($counters, '[0:255]');
         // If there is prefix, remove it
+        //var_dump($type);
         if($type !== false)
         {
             $arr = explode('=', $counters);
             $counters = $arr[1];
+        //var_dump($counters);
         }
         //Parse psql to php array
         return self::accessPgArray($counters);
