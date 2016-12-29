@@ -57,7 +57,7 @@ return array(
     'Error Code' => 'Error Code',
     'Error Text' => 'Error Text',
     'Time' => 'Time',
-    'Playlist' => 'Playlis',
+    'Playlist' => 'Playlist',
     'Templates' => 'Templates',
     'Add Next Game' => 'Add Next Game',
     'Load Template' => 'Load Template',

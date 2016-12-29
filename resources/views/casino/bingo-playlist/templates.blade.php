@@ -32,11 +32,11 @@
           <label for="name">@lang('messages.Template Name'): </label>
           <input class="form-control" type="text" name="name" id="name">
 
-          <button id="add-template-button"
-                  type="Submit"
-                  value="Submit"
-                  class="btn btn-info btn-sm form-control"
-          >
+          <button   id="add-template-button"
+                    type="Submit"
+                    value="Submit"
+                    class="btn btn-info btn-sm form-control"
+                  >
                   @lang('messages.Add')
           </button>
 
