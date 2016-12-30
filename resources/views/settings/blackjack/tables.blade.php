@@ -126,7 +126,7 @@
                      />
                 </span>
                 <span class="button-checkbox">
-                    <label for="t5_enabled">Table 5</label><br>
+                    <label for="t5_enabled">@lang('messages.Table') 5</label><br>
                     <input type="hidden" name="t5_enabled" value="false">
                     <button type="button" class="btn" data-color="warning"></button>
                     <input type="checkbox" name="t5_enabled" class="hidden"
@@ -141,6 +141,25 @@
                        {{ $enabled->t6_enabled ? 'checked' : '' }}
                      />
                 </span>
+
+                <span class="button-checkbox">
+                    <label for="t7_enabled">@lang('messages.Table') 7</label><br>
+                    <input type="hidden" name="t7_enabled" value="false">
+                    <button type="button" class="btn" data-color="warning"></button>
+                    <input type="checkbox" name="t7_enabled" class="hidden"
+                       {{ $enabled->t7_enabled ? 'checked' : '' }}
+                     />
+                </span>
+
+                <span class="button-checkbox">
+                    <label for="t8_enabled">@lang('messages.Table') 8</label><br>
+                    <input type="hidden" name="t8_enabled" value="false">
+                    <button type="button" class="btn" data-color="warning"></button>
+                    <input type="checkbox" name="t8_enabled" class="hidden"
+                       {{ $enabled->t8_enabled ? 'checked' : '' }}
+                     />
+                </span>
+
                 {{ csrf_field() }}
                 <button class="btn btn-danger btn-sm btn-block enabled-table-button" type="submit">
                     @lang('messages.Update')
@@ -331,11 +350,10 @@ $('input[type="checkbox"]').change(function(){
     }
 
     .button-checkbox > button {
-        width: 80px;
+        width: 50px;
     }
 
     .tables {
         display: flex;
-
     }
 </style>

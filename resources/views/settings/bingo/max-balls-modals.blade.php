@@ -1,7 +1,7 @@
 <!-- Add Casino  Modal -->
 <div class="row">
 <div class="modal fade" id="addMaxBallsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" style="width: 80%;">
+  <div class="modal-dialog" style="width: 50%;">
     <div class="modal-content">
       <div class="modal-header">
           <h2><strong>@lang('messages.Add Max Balls')</strong></h2>
@@ -12,42 +12,66 @@
 
       <div class="modal-body">
 
-        <label>@lang('messages.Ticket Cost')</label>
-        <input style="width:110px; height: 30px;" name="bingo_ticket_cost"  type="text" class="form-control">
+        <div class="form-group">
+          <label>@lang('messages.Ticket Cost')</label><br>
+          <input style="width:150px; height: 30px;" name="bingo_ticket_cost" type="text" class="form-control">
+        </div>
 
-        <label>@lang('messages.JB. Max Ball')</label>
-        <input style="width:110px; height: 30px;" name="jackpot_bingo_max_ball"  type="text" class="form-control">
+        <div class="form-group">
+          <label>@lang('messages.JL. Max Ball')</label><br>
+          <input style="width:150px; height: 30px;" name="jackpot_line_max_ball"  type="text" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label>@lang('messages.JB. Max Ball')</label><br>
+          <input style="width:150px; height: 30px;" name="jackpot_bingo_max_ball"  type="text" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label>@lang('messages.BL. Max Ball')</label><br>
+          <input style="width:150px; height: 30px;" name="bonus_line_max_ball"  type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>@lang('messages.BB. Max Ball')</label><br>
+          <input style="width:150px; height: 30px;" name="bonus_bingo_max_ball"  type="text" class="form-control">
+        </div>
       
-        <label>@lang('messages.JL. Max Ball')</label>
-        <input style="width:110px; height: 30px;" name="jackpot_line_max_ball"  type="text" class="form-control">
-      
-        <label>@lang('messages.BL. Max Ball')</label>
-        <input style="width:110px; height: 30px;" name="bonus_line_max_ball"  type="text" class="form-control">
-      
-        <label>@lang('messages.BB. Max Ball')</label>
-        <input style="width:110px; height: 30px;" name="bonus_bingo_max_ball"  type="text" class="form-control">
-      
-        <label>@lang('messages.JL. Ticket Count')</label>
-        <input style="width:110px; height: 30px;" name="jackpo_line_ticket_cnt"  type="text" class="form-control"><hr>
-      
-        <label>@lang('messages.JB. Ticket Count')</label>
-        <input style="width:110px; height: 30px;" name="jackpo_bingo_ticket_cnt" type="text" class="form-control">
-      
-        <label>@lang('messages.BL. Ticket Count')</label>
-        <input style="width:110px; height: 30px;" name="bonus_line_ticket_cnt" type="text" class="form-control">
-      
-        <label>@lang('messages.BB. Ticket Count')</label>
-        <input style="width:110px; height: 30px;" name="bonus_bingo_ticket_cnt"  type="text" class="form-control">
-      
-        <label>@lang('messages.Fixed Cost')</label>
-        <input name="bingo_cost_fixed" type="checkbox">
+        <hr><br>
+
+        <div class="form-group">
+          <label>@lang('messages.JL. Ticket Count')</label><br>
+          <input style="width:150px; height: 30px;" name="jackpo_line_ticket_cnt" type="text" class="form-control">
+        </div> 
+
+        <div class="form-group">
+          <label>@lang('messages.JB. Ticket Count')</label><br>
+          <input style="width:150px; height: 30px;" name="jackpo_bingo_ticket_cnt" type="text" class="form-control">
+        </div>
+
+        <div class="form-group"> 
+          <label>@lang('messages.BL. Ticket Count')</label><br>
+          <input style="width:150px; height: 30px;" name="bonus_line_ticket_cnt" type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>@lang('messages.BB. Ticket Count')</label><br>
+          <input style="width:150px; height: 30px;" name="bonus_bingo_ticket_cnt"  type="text" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>@lang('messages.Fixed Cost')</label>
+          <input name="bingo_cost_fixed" type="checkbox">
+        </div>
 
       </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">@lang('messages.Close')</button>
-
-            <button name="Submit" value="Login" type="Submit" style="width:315px; margin-left: 17px;" type="submit" class="btn btn-danger">@lang('messages.Save')</button>
-    
+            <button name="Submit" value="Login" type="Submit" style="width:315px; margin-left: 17px;" 
+                    type="submit" class="btn btn-danger"
+                    >
+                      @lang('messages.Save')
+            </button>
         </div>
       </form>
     </div>

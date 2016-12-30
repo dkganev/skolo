@@ -107,6 +107,7 @@ Route::get('/settings/exportBillTypes', 'Settings\BillTypesController@exportBill
 Route::get('/settings/langs', 'Settings\LangsController@getLangs')->name('langs');
 Route::post('settings/addLang', 'Settings\LangsController@addLanguage')->name('add.language');
 Route::post('settings/updatelang', 'Settings\LangsController@updateLanguage')->name('update.language');
+Route::post('/settings/languages/destroy', 'Settings\LangsController@destroy');
 Route::get('/settings/exportLanguages', 'Settings\LangsController@exportLangs')->name('export.languages');
 
 /**
@@ -213,9 +214,17 @@ Route::get('/settings/System', 'Settings\System@system');
  */
 
 Route::get('/statistics/game-machine-blackjack', 'Statistics\GameMachineStatisticsController@index_blackjack');
+Route::get('/statistics/game-machine-blackjack/export', 'Statistics\GameMachineStatisticsController@export_gm_bj');
+
 Route::get('/statistics/game-machine-bingo', 'Statistics\GameMachineStatisticsController@index_bingo');
+Route::get('/statistics/game-machine-bingo/export', 'Statistics\GameMachineStatisticsController@export_gm_bingo');
+
 Route::get('/statistics/game-machine-rl1', 'Statistics\GameMachineStatisticsController@index_rlt1');
+Route::get('/statistics/game-machine-rl1/export', 'Statistics\GameMachineStatisticsController@export_gm_rlt1');
+
 Route::get('/statistics/game-machine-rl2', 'Statistics\GameMachineStatisticsController@index_rlt2');
+Route::get('/statistics/game-machine-rl2/export', 'Statistics\GameMachineStatisticsController@export_gm_rlt2');
+
 /**
  * STATISTICS
  */

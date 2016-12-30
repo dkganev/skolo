@@ -33,6 +33,7 @@
     </div><!-- End Row -->
 </div><!-- End Container-->
 <div class="container">
+
     <div class="row">
         <div class="col-lg-12">
             <div class="well" style="margin: 0; padding: 0; height:730px">
@@ -69,6 +70,9 @@
                               method="POST" role="form" id="ps-config-form-{{ $conf->ps_id }}"
                         >
                             <div class=" col-lg-12w3-blue-grey" id="heading" style="width: 100%;  height: 35px; margin-bottom: 15px;">
+                                  <a style="margin:5px;" class="btn btn-warning btn-sm pull-right" onclick="ExportToPNG();">
+                                             @lang('messages.Export to PNG')
+                                    </a>
                                 <h3 style="margin:0; padding: 0; color: #fff; font-family: sans-serif;">
                                     <strong><i style="margin:0 0 0 268px; position: relative; top: 5px">
                                         @if($conf->ps_id === 0)
@@ -496,7 +500,23 @@ $('select').on('change', function() {
     $('#ps-config-form-0').fadeIn();
   });
 </script>
-
+<script>
+    function ExportToPNG() {
+      html2canvas($('.well'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
+</script>
 <style>
 tr {
 width: 100%;

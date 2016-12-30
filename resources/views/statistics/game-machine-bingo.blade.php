@@ -22,7 +22,7 @@
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 30%;">
                     @lang('messages.Bingo')
                 </h2>
-                <a href="#" class="btn btn-warning  pull-right ">
+                <a href="/statistics/game-machine-bingo/export" class="btn btn-warning  pull-right ">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
                     @lang('messages.Export')
                 </a>

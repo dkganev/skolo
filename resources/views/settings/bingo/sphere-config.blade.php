@@ -19,12 +19,16 @@
 
 <div class="container">
 <div class="row">
-<div class="col-lg-3">
+<div class="col-lg-4">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 0%; text-align: center;">
+      <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 15%;">
           @lang('messages.Sphere Config')
       </h3>
+
+        <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNG();">
+            @lang('messages.Export to PNG')
+        </a>
     </div>
 
     <div class="panel-body">
@@ -32,17 +36,17 @@
       <!-- FIRST COLUMN -->
       <div class="col-lg-3">
 
-        <div class="form-group" style="width:190px; display: inline-block;">
+        <div class="form-group" style="width:300px; display: inline-block;">
           <label for="wheeltype">@lang('messages.Sphere ID'):</label><br>
           <input disabled class="form-control text-center" type="text" name="id" value="{{ $sphere_config->id }}">
         </div>
 
-        <div class="form-group" style="width:190px; display: inline-block;">
+        <div class="form-group" style="width:300px; display: inline-block;">
           <label>@lang('messages.Sphere IP'):</label><br>
           <input class="form-control text-center" type="text" name="sphere_ip" value="{{ $sphere_config->sphere_ip }}">
         </div>
 
-        <div class="form-group" style="width:190px; display: inline-block;">
+        <div class="form-group" style="width:300px; display: inline-block;">
           <label>@lang('messages.Sphere Port'):</label><br>
           <input class="form-control text-center" type="text" name="sphere_port" value="{{ $sphere_config->sphere_port }}">
         </div>
@@ -79,4 +83,21 @@ $('button#sphere-config-btn').on('click', function(event) {
          javascript:ajaxLoad('{{url('/settings/bingo/sphereconfig')}}');
     });
 });
+</script>
+<script>
+    function ExportToPNG() {
+        html2canvas($('.panel'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>

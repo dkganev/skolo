@@ -41,7 +41,7 @@
                     <thead class="w3-blue-grey">
                       <tr>
                         <th>@lang('messages.ID')</th>
-                        <th>Bought Tickets</th>
+                        <th>@lang('messages.Bought Tickets')</th>
                         <th>@lang('messages.Max Ball')</th>
                         <th>@lang('messages.Action')</th>
                       </tr>
@@ -51,10 +51,10 @@
                     <tr id="{{ $bonus->id }}">
                         <td><span class="badge">{{ $bonus->id }}</span></td>
                         <td>
-                            <input class="form-control text-center" name="ticket_cnt" style="height:30px;" class="form-control" value="{{ $bonus->ticket_cnt }}" type="text" placeholder="Ticket Count">
+                            <input class="form-control text-center" name="ticket_cnt" style="height:30px;" value="{{ $bonus->ticket_cnt }}" type="text" placeholder="Ticket Count">
                         </td>
                         <td>
-                            <input class="form-control text-center"  name="max_ball_idx" style="height:30px;" class="form-control" value="{{ $bonus->max_ball_idx }}" type="text" placeholder="Max Ball">
+                            <input class="form-control text-center" name="max_ball_idx" style="height:30px;" value="{{ $bonus->max_ball_idx }}" type="text" placeholder="Max Ball">
                         </td>
                         <td>
                             <input type="hidden" name="id" value="{{ $bonus->id }}">

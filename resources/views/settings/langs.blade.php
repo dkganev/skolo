@@ -53,6 +53,18 @@
                                     >
                                        @lang('messages.Edit')
                                     </a>
+
+
+                                <a  role="button" data-toggle="modal"
+                                    data-toggle="modal"
+                                    data-target="#destroyLangModal"
+                                    data-id="{{ $language->langid }}"
+                                    data-lang="{{ $language->langname }}"
+                                    class="btn btn-danger btn-xs"
+                                >
+                                    @lang('messages.Delete')
+                                </a>
+
                                 </td>
                             </tr>
                             @endforeach

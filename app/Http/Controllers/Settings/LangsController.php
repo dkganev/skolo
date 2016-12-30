@@ -40,6 +40,18 @@ class LangsController extends Controller
         return $request->session()->flash('alert-success', $msg);
     }
 
+    public function destroy(Request $request)
+    {
+        $language = Langs::where('langid', $request->id)->first();
+        $deleted = $language->delete();
+
+        if(!$deleted) {
+            return response()->json(['message' => 'Cannot Delete Language!'], 401);
+        }
+
+        return response()->json(['message' => 'Language Deleted!'], 200);
+    }
+
     public function exportLangs()
     {
         $export = Langs::all();

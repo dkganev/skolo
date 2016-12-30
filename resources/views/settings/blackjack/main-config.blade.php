@@ -2,15 +2,21 @@
     <div class="row">
         <div class="col-lg-12">
             <div style="padding-top:2px; margin-top: 0px;">
-	        <ul class="breadcrumb">
-                    <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}')">@lang('messages.Main Config')</a></li>
+		        <ul class="breadcrumb">
+	                <li class="active">
+	                	<a href="javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}')">@lang('messages.Main Config')</a>
+	                </li>
 
-                    <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">@lang('messages.Tables')</a></li>
+	                <li>
+	                	<a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">@lang('messages.Tables')</a>
+	                </li>
 
-                    <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
-	        </ul>
+	                <li>
+	                	<a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">@lang('messages.Accounting Config')</a>
+	                </li>
+		        </ul>
             </div>
-  	</div>
+  		</div>
     </div><!-- End Row -->
 </div><!-- End Container-->
 
@@ -28,8 +34,8 @@
                 @lang('messages.Export')
             </a> --}}
 
-
             <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
+
             <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNGBJMainConfig();">
                 @lang('messages.Export to PNG')
             </a>
@@ -57,17 +63,17 @@
 					</div>
 
 					<div class="form-group">
-				    	<label style="color: #474747">@lang('messages.Main Config'):</label><br>
+				    	<label style="color: #474747">@lang('messages.Common Bet Time'):</label><br>
 						<div class="input-group">
-							<span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
+							<span class="input-group-addon" id="sizing-addon2">#</span>
 							<input name="common_bet_time" value="{{ $config->common_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
 						</div>
 					</div>
 
 					<div class="form-group">
-				    	<label style="color: #474747">@lang('messages.BJ Bet Time'):</label><br>
+				    	<label style="color: #474747">@lang('messages.Personal Bet Time'):</label><br>
 						<div class="input-group">
-							<span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
+							<span class="input-group-addon" id="sizing-addon2">#</span>
 							<input name="bj_bet_time" value="{{ $config->bj_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
 						</div>
 					</div>
@@ -136,12 +142,16 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-			    	<label style="color: #474747">@lang('messages.Insurance On'):</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="insurance_on" value="{{ $config->insurance_on }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
+				<div class="form-group" >
+					<label for="insurance_on">@lang('messages.Insurance On'):</label><br>
+					    <select name="insurance_on" id="insurance_on" class="selectpicker" data-actions-box="true">
+					        <option value="7" {{ $config->insurance_on  == 7 ? ' selected="true"' : '' }} >
+					            7
+					        </option>
+					        <option value="11" {{ $config->insurance_on  == 11 ? ' selected="true"' : '' }} >
+								11
+							</option>
+						</select>
 				</div>
 
 				<div class="form-group">

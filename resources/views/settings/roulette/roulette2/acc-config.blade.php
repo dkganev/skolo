@@ -36,11 +36,17 @@
 <!-- Wheel Config -->
 <div class="container">
 <div class="row">
-<div class="col-lg-3">
+<div class="col-lg-4">
   <div class="panel panel-default">
 
     <div class="panel-heading">
-      <h2 class="panel-title text-center" style="color:white;"><strong>@lang('messages.Accounting Config')</strong></h2>
+      <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 10%;">
+        @lang('messages.Accounting Config')
+      </h3>
+
+      <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNG();">
+        @lang('messages.Export to PNG')
+      </a>
     </div>
 
     <div class="panel-body">
@@ -48,22 +54,22 @@
       <!-- FIRST COLUMN -->
       <div class="col-lg-3">
 
-        <div class="form-group" style="width:190px; display: inline-block;">
+        <div class="form-group" style="width:300px; display: inline-block;">
           <label>@lang('messages.ID'):</label><br>
           <input disabled class="form-control text-center" type="text" name="id" value="{{ $acc_config->id }}">
         </div>
 
-        <div class="form-group" style="width:190px; display: inline-block;">
+        <div class="form-group" style="width:300px; display: inline-block;">
           <label>@lang('messages.Acc IP'):</label><br>
           <input class="form-control text-center" type="text" name="acc_ip" value="{{ $acc_config->acc_ip }}">
         </div>
 
-        <div class="form-group" style="width:190px; display: inline-block;">
+        <div class="form-group" style="width:300px; display: inline-block;">
           <label>@lang('messages.Acc Port'):</label><br>
           <input class="form-control text-center" type="text" name="acc_port" value="{{ $acc_config->acc_port }}">
         </div>
 
-        <div class="form-group" style="width:190px; display: inline-block;">
+        <div class="form-group" style="width:300px; display: inline-block;">
           <label>@lang('messages.Game Port'):</label><br>
           <input class="form-control text-center" type="text" name="game_port" value="{{ $acc_config->game_port }}">
         </div>
@@ -97,4 +103,21 @@ $('button#acc-config-btn').on('click', function(event) {
         javascript:ajaxLoad('{{url('/settings/roulette2/accconfig')}}');
     });
 });
+</script>
+<script>
+    function ExportToPNG() {
+      html2canvas($('.panel'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
 </script>
