@@ -40,7 +40,7 @@
   <div class="panel panel-default">
 
     <div class="panel-heading">
-      <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 40%;">
+      <h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 15%;">
         @lang('messages.Wheel Config')
       </h3>
 
