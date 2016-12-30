@@ -1,12 +1,12 @@
 $(".langSupport").click(function() {
     token = $('meta[name="csrf-token"]').attr('content');
-
+    langid = $(this).attr("data-langid");
     lang = $(this).attr("data-lang");
     $.ajax({
        type:'POST',
        url:'localize',
        dataType: "json",
-       data:{'lang': lang , _token: token},
+       data:{'lang': lang , 'langid': langid , _token: token},
        success:function(data){
           if (data.success == "success"){
               $("#LangMenu").text( data.set);

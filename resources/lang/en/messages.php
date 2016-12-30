@@ -71,6 +71,7 @@ return array(
     'Bingo Cost' => 'Bingo Cost',
     'Add' => 'Add',
     'Action' => 'Action',
+    'Actions' => 'Actions',
     'Create Template' => 'Create Template',
     'Template Name' => 'Template Name',
     'Name' => 'Name',
