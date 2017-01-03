@@ -92,7 +92,9 @@
               <select name="default_lang" class="form-control selectpicker" id="default_lang">
                 <option selected="true" disabled="disabled">@lang('messages.Choose Language')</option>
                 @foreach($languages as $language)
-                  <option value="{{ $language->langid }}">{{ $language->langname }}</option>
+                  <option {{ $language->langname == "French" ? "selected" : "" }} value="{{ $language->langid }}">
+                        {{ $language->langname }}
+                  </option>
                 @endforeach
               </select>
             </div>

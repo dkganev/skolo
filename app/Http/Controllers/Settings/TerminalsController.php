@@ -50,7 +50,8 @@ class TerminalsController extends Controller
     {
         $this->validate($request, [
             'psid' => 'required|unique:server_ps',
-            'dallasid' => 'required|unique:server_ps'
+            'dallasid' => 'required|unique:server_ps',
+            'default_lang' => 'required'
         ]);
         
         // Initialize current casino
@@ -60,7 +61,7 @@ class TerminalsController extends Controller
         $server_ps = $casino->server_ps()->create([
             'psid'     => $request->psid,
             'dallasid' => $request->dallasid,
-            'seatid'   => $request->seatid
+            'seatid'   => $request->seatid,
         ]);
         
         // Ps Settings Model
@@ -99,6 +100,7 @@ class TerminalsController extends Controller
         $response = [
             'msg' => 'Machine added Successfully'
         ];
+
         return response()->json($response, 200);
     }
 
