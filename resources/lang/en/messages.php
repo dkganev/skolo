@@ -343,12 +343,12 @@ return array(
     'Denominations' => 'Denominations',
     'Multiplier' => 'Multiplier',
     'Multipliers' => 'Multipliers',
-    'B' => 'B',
-    'B' => 'B',
     'Bought Tickets' => 'Bought Tickets',
     'Common Bet Time' => 'Common Bet Time',
     'Personal Bet Time' => 'Personal Bet Time',
     'Delete Language' => 'Delete Language',
+    'B' => 'B',
+    'B' => 'B',
     
     
     'welcome' => 'Welcome to our application'

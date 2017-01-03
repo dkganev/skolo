@@ -343,6 +343,10 @@ return array(
     'Denominations' => 'Dénominations',
     'Multiplier' => 'Multiplier ',
     'Multipliers' => 'Multipliers',
+    'Bought Tickets' => 'Bought Tickets',
+    'Common Bet Time' => 'Common Bet Time',
+    'Personal Bet Time' => 'Personal Bet Time',
+    'Delete Language' => 'Delete Language',
     
     
     
