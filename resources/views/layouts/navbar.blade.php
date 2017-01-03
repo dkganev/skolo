@@ -24,14 +24,14 @@
             <strong style="{{ Request::is('statistics*') ? "color:  #ffe630;" : ''}}">@lang('messages.statistics')</strong>
           </a>
         </li>
-
-        <!--<li class="nav-option">
+        @if(Request::is('players*'))    
+        <li class="nav-option">
           <a href="{{ url('players') }}">
             <img src="/images/players.png" alt="" style="margin-bottom: -7px;">
             <strong style="{{ Request::is('players*') ? "color: #ffe630;" : ''}}">@lang('messages.players')</strong>
           </a>
-        </li>-->
- 
+        </li>
+        @endif
         @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
         <li class="nav-option">
           <a
@@ -60,15 +60,15 @@
         <li class="dropdown">
 
             <a href="" data-toggle="dropdown">
-                <strong class="nav-secondary">{{ \App::isLocale('en') ? 'EN' : 'BG '}}</strong>
-                <span class="flag-icon flag-icon-{{ \App::isLocale('en') ? 'gb' : 'bg' }} flag-icon-squared nav-secondary"></span>
+                <strong class="nav-secondary">{{ Session::get('locale.lang_short_name') }}</strong>
+                <span class="flag-icon flag-icon-{{ \App::isLocale('en') ? 'gb' : Session::get('locale.lang_code') }} flag-icon-squared nav-secondary"></span>
                 <span class="caret"></span> 
             </a>
 
             <ul class="dropdown-menu" role="menu">
                 @foreach($CmsLangs as $key => $val)
                     <li>
-                      <a href="#" class="langSupport" data-lang="{{$val->lang_code}}">
+                      <a href="#" class="langSupport" data-lang="{{$val->lang_code}}" data-langid="{{$val->langid}}">
                           <span class="flag-icon flag-icon-{{$val->lang_code == "en" ? "gb" : $val->lang_code}} flag-icon-squared"></span>
                           {{$val->lang_short_name}} - {{$val->langname}}
                       </a>

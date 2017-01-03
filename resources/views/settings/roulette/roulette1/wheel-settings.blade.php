@@ -40,7 +40,7 @@
   <div class="panel panel-default" id="wheel-settings-panel">
 
     <div class="panel-heading">
-        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 37%;">
+        <h2 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 20%;">
            @lang('messages.Wheel Settings')
         </h2>
 

@@ -26,8 +26,8 @@
   <div class="panel panel-default">
 
 	<div class="panel-heading">
-	   	<h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 10%;">
-			@lang('messages.Accounting Config')
+	   	<h3 class='text-center' style="display: inline; color: white; font-family: 'italic';  padding-left: 0%;">
+			@lang('messages.Accounting Config1')
 	   	</h3>
 	      {{-- <span class="pull-right">&nbsp;&nbsp;&nbsp;</span> --}}
           <a class="btn btn-warning btn-sm pull-right" onclick="ExportToPNG();">

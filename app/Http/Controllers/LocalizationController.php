@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Models\Cms\CmsLangs;
+
 
 class LocalizationController extends Controller
 {
@@ -12,7 +14,12 @@ class LocalizationController extends Controller
 	public function index(Request $request)
     {
         $dataLang = $request->lang;
-        $dataSet = session(['LoginUser.lang' => $dataLang]); 
+        $dataLangID = $request->langid;
+        $CmsLangs = CmsLangs::where('langid' , $dataLangID )->first();
+        session(['locale' => $CmsLangs]);
+        session(['LoginUser.lang' => $CmsLangs->lang_code]);
+        
+        //$dataSet = session(['LoginUser.lang' => $dataLang]); 
         $dataGet = session()->get('LoginUser.lang');
         $dataArray1 = array(
             "success" => "success",

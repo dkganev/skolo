@@ -168,29 +168,29 @@
 			<div class="col-md-12">
 				<div class="form-group">
 
-					<span class="button-checkbox" style="padding: 0 0 0 15px ;">
-						<input type="hidden" name="shuffle_on_each_game" value="false">
-				        <button type="button" class="btn" data-color="danger">@lang('messages.Shuffle On Each Game')</button>
+                                    <span class="button-checkbox col-lg-3" style="padding: 0 0 0 15px ;">
+					<input type="hidden" name="shuffle_on_each_game" value="false">
+				        <button type="button" class="btn col-lg-12" data-color="danger">@lang('messages.Shuffle On Each Game')</button>
 				        <input type="checkbox" name="shuffle_on_each_game" class="hidden" {{ $config->shuffle_on_each_game ? " checked" : "" }}  />
-    				</span>
+                                    </span>
 
-					<span class="button-checkbox" style="padding: 0 0 0 15px ;">
-						<input type="hidden" name="allow_split_aces" value="false">
-				        <button type="button" class="btn" data-color="danger">@lang('messages.Allow Split Aces')</button>
+                                    <span class="button-checkbox col-lg-3" style="padding: 0 0 0 15px ;">
+					<input type="hidden" name="allow_split_aces" value="false">
+				        <button type="button" class="btn col-lg-12" data-color="danger">@lang('messages.Allow Split Aces')</button>
 				        <input type="checkbox" name="allow_split_aces" class="hidden" {{ $config->allow_split_aces ? " checked" : "" }} />
-    				</span>
+                                    </span>
 
-    				<span class="button-checkbox" style="padding: 0 0 0 15px;">
-						<input type="hidden" name="double_after_split" value="false">
-				        <button type="button" class="btn" data-color="danger">@lang('messages.Double After Split')</button>
+                                    <span class="button-checkbox col-lg-3" style="padding: 0 0 0 15px;">
+					<input type="hidden" name="double_after_split" value="false">
+				        <button type="button" class="btn col-lg-12" data-color="danger">@lang('messages.Double After Split')</button>
 				        <input type="checkbox" name="double_after_split" class="hidden" {{ $config->double_after_split ? " checked" : "" }}  />
-    				</span>
+                                    </span>
 
-					<span class="button-checkbox" style="padding: 0 0 0 15x;">
-						<input type="hidden" name="surrender" value="false">
-				        <button type="button" class="btn" data-color="danger">@lang('messages.Surrender')</button>
+                                    <span class="button-checkbox col-lg-3" style="padding: 0 0 0 15px;">
+					<input type="hidden" name="surrender" value="false">
+				        <button type="button" class="btn col-lg-12" data-color="danger">@lang('messages.Surrender1')</button>
 				        <input type="checkbox" name="surrender" class="hidden" {{ $config->surrender ? " checked" : "" }} />
-    				</span>
+                                    </span>
 
 				</div>
 			</div><!-- End Col -->
