@@ -282,7 +282,7 @@ return array(
     'Chip' => 'Чип',
     'Max Bet' => 'Макс. Залог',
     'Min Bet' => 'Мин. Залог',
-    'Wheel Config' => 'Wheel Config',
+    'Wheel Config' => 'Game Config',
     'Terminals Config' => 'Terminals Config',
     'Wheel Settings' => 'Wheel Settings',
     'Enabled' => 'Включена',

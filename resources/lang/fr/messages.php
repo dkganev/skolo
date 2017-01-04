@@ -282,7 +282,7 @@ return array(
     'Chip' => 'Jeton',
     'Max Bet' => 'Mise Max.',
     'Min Bet' => 'Mise Мin.',
-    'Wheel Config' => 'Configuration de la Roue',
+    'Wheel Config' => 'Configuration de Jeu',
     'Terminals Config' => 'Configuration des Terminals',
     'Wheel Settings' => 'Configuration de la roue',
     'Enabled' => 'Activée',

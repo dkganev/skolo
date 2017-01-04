@@ -5,7 +5,7 @@
             <div class="panel panel-default" id="panelCardsContend">
                 <div class="panel-heading">
                     <div>
-                        <h2 class='text-center' style="display: inline; color: #444649; font-family: 'italic';  padding-left: 35%;">
+                        <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
                             Cards
                         </h2>
                         <a onclick="export2excelCards();" class="btn btn-warning  pull-right" >
