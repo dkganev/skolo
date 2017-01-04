@@ -79,7 +79,51 @@ class BlackjackController extends Controller
 
     public function enabled_tables(Request $request) 
     {
-        EnabledTables::first()->update($request->except('_token'));
+        if ($request->radio == 1) {
+            EnabledTables::first()->update([
+                't1_enabled' => true,
+                't2_enabled' => false,
+                't3_enabled' => false,
+                't4_enabled' => false,
+                't5_enabled' => false,
+                't6_enabled' => false,
+                't7_enabled' => false,
+                't8_enabled' => false,
+            ]);
+        } elseif ($request->radio == 2) {
+            EnabledTables::first()->update([
+                't1_enabled' => true,
+                't2_enabled' => true,
+                't3_enabled' => false,
+                't4_enabled' => false,
+                't5_enabled' => false,
+                't6_enabled' => false,
+                't7_enabled' => false,
+                't8_enabled' => false,
+            ]);
+        } elseif ($request->radio == 4) {
+            EnabledTables::first()->update([
+                't1_enabled' => true,
+                't2_enabled' => true,
+                't3_enabled' => true,
+                't4_enabled' => true,
+                't5_enabled' => false,
+                't6_enabled' => false,
+                't7_enabled' => false,
+                't8_enabled' => false,
+            ]);
+        } elseif ($request->radio == 8) {
+            EnabledTables::first()->update([
+                't1_enabled' => true,
+                't2_enabled' => true,
+                't3_enabled' => true,
+                't4_enabled' => true,
+                't5_enabled' => true,
+                't6_enabled' => true,
+                't7_enabled' => true,
+                't8_enabled' => true,
+            ]);
+        }
     }
 
     public function tables_export()
