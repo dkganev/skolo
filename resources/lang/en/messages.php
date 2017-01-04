@@ -282,7 +282,7 @@ return array(
     'Chip' => 'Chip',
     'Max Bet' => 'Max Bet',
     'Min Bet' => 'Min Bet',
-    'Wheel Config' => 'Wheel Config',
+    'Wheel Config' => 'Game Config',
     'Terminals Config' => 'Terminals Config',
     'Wheel Settings' => 'Wheel Settings',
     'Enabled' => 'Enabled',
