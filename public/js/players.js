@@ -238,11 +238,11 @@ function ExportToPNGCardsTable() {
 function AddNewCart() {
     if (addMenu == 0){
         $(".rowInputAdd").show();
-        $("#addCard").text('Close Add');
+        $("#addCard").text($("#addCard").attr('data_close'));
         addMenu = 1;
     }else{
         $(".rowInputAdd").hide();
-        $("#addCard").text('Add Card');
+        $("#addCard").text($("#addCard").attr('data_add'));
         addMenu = 0;
     }
 }
@@ -408,11 +408,11 @@ function SaveAddCard() {
 function AddWithdrawCart() {
     if (addMenu2 == 0){
         $(".rowInputAddWithdraw").show();
-        $("#addWithdrawCard").text('Close Add/Withdraw Credit');
+        $("#addWithdrawCard").text($("#addWithdrawCard").attr('data_close'));
         addMenu2 = 1;
     }else{
         $(".rowInputAddWithdraw").hide();
-        $("#addWithdrawCard").text('Add/Withdraw Credit');
+        $("#addWithdrawCard").text($("#addWithdrawCard").attr('data_add'));
         addMenu2 = 0;
     }
 }

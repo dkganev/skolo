@@ -38,7 +38,7 @@
                                     </li>
                                 </ul>
                             </span>
-                            <span style="color: #fff;">rows per page</span>
+                            <span style="color: #fff;">@lang('messages.rows per page')</span>
                         </span>
                     </div>&nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="pagination" style="margin: 0px; ">
@@ -142,7 +142,7 @@
                         <a class="btn btn-success CardsSort" style="display: none;" onclick="changePageSortMenuCards()"><i class="fa fa-search" aria-hidden="true"></i></a>
                         <a class="btn btn-default CardsSort" style="display: none;" onclick="cleanSortFunctionCards()"><i class="fa fa-close" aria-hidden="true"></i></a> 
                         <button class="btn btn-default " type="button" id="hide-column" data-method="hideColumn"  aria-expanded="true" onclick="sortMenuCards();">
-                           Sort Menu
+                           @lang('messages.Sort Menu')
                            <span class="caret"></span>
                         </button>
                     </div>
@@ -165,16 +165,16 @@
                                 <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id203" ><input class="form-control" type='text' style="color: #333" value="{{$page['Name'] == "" ? "" : $page['Name']}}" id='Name' ></th>
                                 <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id203" >
                                     <select id='Level' class="form-control input-sm rowInputAdd"  style=" display: show;">
-                                        <option value="" >Select</option>
-                                        <option value="bronze" {{$page['Level'] == "bronze" ? "selected" : ""}}>Bronze</option>
-                                        <option value="gold" {{$page['Level'] == "gold" ? "selected" : ""}}>Gold</option>
-                                        <option value="platinum" {{$page['Level'] == "platinum" ? "selected" : ""}}>Platinum</option>
+                                        <option value="" >@lang('messages.Select')</option>
+                                        <option value="bronze" {{$page['Level'] == "bronze" ? "selected" : ""}}>@lang('messages.Bronze')</option>
+                                        <option value="gold" {{$page['Level'] == "gold" ? "selected" : ""}}>@lang('messages.Gold')</option>
+                                        <option value="platinum" {{$page['Level'] == "platinum" ? "selected" : ""}}>@lang('messages.Platinum')</option>
                                     </select>
                                 </th>
                                 <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id204" >
                                     <div class="row">
                                         <div class='col-md-3'>
-                                            From:
+                                            @lang('messages.From'):
                                         </div>
                                         <div class='col-md-12'>
                                             <div class="">
@@ -184,7 +184,7 @@
                                     </div>
                                     <div class="row">
                                         <div class='col-md-3'>
-                                            To:
+                                            @lang('messages.To'):
                                         </div>
                                         <div class='col-md-12'>
                                             <div class="" style="margin-top: 3px;">
@@ -196,7 +196,7 @@
                                 <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id204" >
                                     <div class="row">
                                         <div class='col-md-3'>
-                                            From:
+                                            @lang('messages.From'):
                                         </div>
                                         <div class='col-md-12'>
                                             <div class="">
@@ -206,7 +206,7 @@
                                     </div>
                                     <div class="row">
                                         <div class='col-md-3'>
-                                            To:
+                                            @lang('messages.To'):
                                         </div>
                                         <div class='col-md-12'>
                                             <div class="" style="margin-top: 3px;">
@@ -218,7 +218,7 @@
                                 <th class="text-center CardsSort" style="display: none; vertical-align: middle;" data-field="id204" >
                                     <div class="row">
                                         <div class='col-md-3'>
-                                            From:
+                                            @lang('messages.From'):
                                         </div>
                                         <div class='col-md-12'>
                                             <div class="">
@@ -228,7 +228,7 @@
                                     </div>
                                     <div class="row">
                                         <div class='col-md-3'>
-                                            To:
+                                            @lang('messages.To'):
                                         </div>
                                         <div class='col-md-12'>
                                             <div class="" style="margin-top: 3px;">
@@ -244,112 +244,112 @@
                             
                             
                             <tr>
-                                <th class="text-center" onclick="changePageSortCards('card_id', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Card #<i class="fa {{ $page['OrderQuery'] == 'card_id' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" style="color: #fff" ></i></th>
-                                <th class="text-center" onclick="changePageSortCards('name', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Name<i class="fa {{ $page['OrderQuery'] == 'name' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
-                                <th class="text-center" onclick="changePageSortCards('level', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Type<i class="fa {{ $page['OrderQuery'] == 'level' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
-                                <th class="text-center" onclick="changePageSortCards('deposit', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Cash in<i class="fa {{ $page['OrderQuery'] == 'deposit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
-                                <th class="text-center" onclick="changePageSortCards('bank_credit', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Card Balance<i class="fa {{ $page['OrderQuery'] == 'bank_credit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
-                                <th class="text-center" onclick="changePageSortCards('bonus_points', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">Bonus Points<i class="fa {{ $page['OrderQuery'] == 'bonus_points' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
+                                <th class="text-center" onclick="changePageSortCards('card_id', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Card') #<i class="fa {{ $page['OrderQuery'] == 'card_id' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" style="color: #fff" ></i></th>
+                                <th class="text-center" onclick="changePageSortCards('name', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Name')<i class="fa {{ $page['OrderQuery'] == 'name' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
+                                <th class="text-center" onclick="changePageSortCards('level', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Type')<i class="fa {{ $page['OrderQuery'] == 'level' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
+                                <th class="text-center" onclick="changePageSortCards('deposit', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Cash in')<i class="fa {{ $page['OrderQuery'] == 'deposit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" ></i></th>
+                                <th class="text-center" onclick="changePageSortCards('bank_credit', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Card Balance')<i class="fa {{ $page['OrderQuery'] == 'bank_credit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
+                                <th class="text-center" onclick="changePageSortCards('bonus_points', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Bonus Points')<i class="fa {{ $page['OrderQuery'] == 'bonus_points' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right"></i></th>
                                 <th class="text-center col-md-3">
                                     <button class="btn btn-danger btn-xs" type="button"  tabindex="0" onclick="AddNewCart()"  style="width: 31%;">
                                         <span id="refresh" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
                                         <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
                                         <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
                                         <i class="glyphicon glyphicon-plus-sign"></i>
-                                        <span id="addCard">Add Card</span>
+                                        <span id="addCard" data_close="@lang('messages.Close Add')" data_add="@lang('messages.Add')">@lang('messages.Add')</span>
                                     </button>
                                     <button class="btn btn-default btn-xs" type="button"  tabindex="0" onclick="AddWithdrawCart()"  style="width: 67%;">
                                         <span id="OKWithdraw" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
                                         <span id="OKAddWithdraw" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
                                         <i class="glyphicon glyphicon-transfer"></i>
-                                        <span id="addWithdrawCard">Add/Withdraw Credit</span> 
+                                        <span id="addWithdrawCard" data_close="@lang('messages.Close Add/Withdraw Credit')" data_add="@lang('messages.Add/Withdraw Credit')">@lang('messages.Add/Withdraw Credit')</span> 
                                     </button>
                                 </th>
                             </tr>
                             <tr id="rowAdd" class="rowInputAdd" style="display: none;">
-                                        <th class="text-center rowInputAdd">
-                                            <span id="errorAdd" style="color: #d9534f; display: none;"> Read the card, please.</span> 
-                                            <span id="errorAddT" style="color: #d9534f; display: none;"> This Card ID: <span id="CartIDExist">111</span> exist in the database.</span> 
-                                            <span id="errorAddI" style="color: #d9534f; display: none;"> Insert the card, please.</span> 
-                                            <input id="CartIDAdd" class="form-control input-sm rowInputAdd" value="" name="CartIDAdd" placeholder="Card ID" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" readonly>
-                                            <button class="form-control btn btn-primary btn-xs rowInputAdd" type="button" onclick="ReadNewCard()" style="display: show;" tabindex="0">
-                                                <span id="refreshRNC" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
-                                                <span id="OKRNC" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
-                                                <span id="removeRNC" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
-                                                Read New Card
-                                            </button>
-                                        </th>
-                                        <th class="text-center rowInputAdd">
-                                            <span id="errorAddUser" style="color: #d9534f; display: none;"> Enter username, please.</span> 
-                                            <input id="userName" class="form-control input-sm rowInputAdd" value="" name="userName" placeholder="Player Name" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
-                                            <input id="userAddress" class="form-control input-sm rowInputAdd" value="" name="userAddress"  placeholder="Player Address" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
-                                            <input id="userPhone" class="form-control input-sm rowInputAdd" value="" name="userPhone" placeholder="Player Phone" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
-                                        </th>
-                                        <th class="text-right rowInputAdd" style="vertical-align: middle;">
-                                            <select id="nameAdd" class="form-control input-sm rowInputAdd" disabled="" style=" display: show;">
-                                                <option value="bronze" >Bronze</option>
-                                                <option value="gold" >Gold</option>
-                                                <option value="platinum" >Platinum</option>
-                                            </select>
-                                        </th>
-                                        <th class="text-right rowInputAdd" style="vertical-align: middle;">
-                                            <input id="cashIn" class="form-control input-sm rowInputAdd" value="" name="cashIn" placeholder="CashIn Amount" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="number" >
-                                        </th>
-                                        <th class="text-right rowInputAdd" style="vertical-align: middle;">
-                                        </th>
-                                        <th class="text-right rowInputAdd" style="vertical-align: middle;">
-                                       </th>
-                                       <th class="text-center rowInputAdd" style="vertical-align: middle;">
-                                            <button class="form-control btn btn-warning btn-xs rowInputAdd" type="button" onclick="SaveAddCard()" style="display: show; width: 30%;" tabindex="0">
-                                                Save
-                                            </button>
+                                <th class="text-center rowInputAdd">
+                                    <span id="errorAdd" style="color: #d9534f; display: none;">@lang('messages.Read the card, please'). </span> 
+                                    <span id="errorAddT" style="color: #d9534f; display: none;"> @lang('messages.This Card ID'): <span id="CartIDExist">111</span> @lang('messages.exist in the database').</span> 
+                                    <span id="errorAddI" style="color: #d9534f; display: none;"> @lang('messages.Insert the card, please').</span> 
+                                    <input id="CartIDAdd" class="form-control input-sm rowInputAdd" value="" name="CartIDAdd" placeholder="@lang('messages.Card ID')" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" readonly>
+                                    <button class="form-control btn btn-primary btn-xs rowInputAdd" type="button" onclick="ReadNewCard()" style="display: show;" tabindex="0">
+                                        <span id="refreshRNC" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
+                                        <span id="OKRNC" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                                        <span id="removeRNC" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                        @lang('messages.Read New Card')
+                                    </button>
+                                </th>
+                                <th class="text-center rowInputAdd">
+                                    <span id="errorAddUser" style="color: #d9534f; display: none;">@lang('messages.Enter username, please'). </span> 
+                                    <input id="userName" class="form-control input-sm rowInputAdd" value="" name="userName" placeholder="@lang('messages.Player Name')" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
+                                    <input id="userAddress" class="form-control input-sm rowInputAdd" value="" name="userAddress"  placeholder="@lang('messages.Player Address')" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
+                                    <input id="userPhone" class="form-control input-sm rowInputAdd" value="" name="userPhone" placeholder="@lang('messages.Player Phone')" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
+                                </th>
+                                <th class="text-right rowInputAdd" style="vertical-align: middle;">
+                                    <select id="nameAdd" class="form-control input-sm rowInputAdd" disabled="" style=" display: show;">
+                                        <option value="bronze" >@lang('messages.Bronze')</option>
+                                        <option value="gold" >@lang('messages.Gold')</option>
+                                        <option value="platinum" >@lang('messages.Platinum')</option>
+                                    </select>
+                                </th>
+                                <th class="text-right rowInputAdd" style="vertical-align: middle;">
+                                    <input id="cashIn" class="form-control input-sm rowInputAdd" value="" name="cashIn" placeholder="@lang('messages.CashIn Amount')" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="number" >
+                                </th>
+                                <th class="text-right rowInputAdd" style="vertical-align: middle;">
+                                </th>
+                                <th class="text-right rowInputAdd" style="vertical-align: middle;">
+                                </th>
+                                <th class="text-center rowInputAdd" style="vertical-align: middle;">
+                                    <button class="form-control btn btn-warning btn-xs rowInputAdd" type="button" onclick="SaveAddCard()" style="display: show; width: 30%;" tabindex="0">
+                                        @lang('messages.Save')
+                                    </button>
                                            
-                                        </th>
-                                    </tr>
-                                    <tr id="rowAddWithdraw" class="rowInputAddWithdraw" style="display: none;">
-                                        <th class="text-center rowInputAddWithdraw">
-                                            <span id="errorAddWithdraw" style="color: #d9534f; display: none;"> Read the card, please.</span> 
-                                            <span id="errorAddWithdrawT" style="color: #d9534f; display: none;"> This Card ID: <span id="CartID2Exist">111</span> exist in the database.</span> 
-                                            <span id="errorAddWithdrawI" style="color: #d9534f; display: none;"> Insert the card, please.</span> 
-                                            <input id="CartIDAddWithdraw" class="form-control input-sm rowInputAddWithdraw" value="" name="CartIDAddWithdraw" placeholder="Card ID" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" readonly>
-                                            <button class="form-control btn btn-primary btn-xs rowInputAddWithdraw" type="button" onclick="ReadWithdrawCard()" style="display: show;" tabindex="0">
-                                                <span id="refreshRNC" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
-                                                <span id="OKRNC" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
-                                                <span id="removeRNC" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
-                                                Read New Card
-                                            </button>
-                                        </th>
-                                        <th class="text-center rowInputAddWithdraw" style="vertical-align: middle;">
-                                            <span id="userWithdrawName" > </span> 
-                                        </th>
-                                        <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
-                                            <span id="levelWithdraw" > </span>
-                                        </th>
-                                        <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
-                                            <span id="cashInWithdraw" > </span>
-                                        </th>
-                                        <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
-                                            <span id="errorBankCredit" style="color: #d9534f; display: none;">The withdrawal amount is bigger than existing Card Balance.<br /></span> 
-                                            <span id="BankCreditText" > </span> 
-                                            <input id="BankCreditWithdraw" class="form-control input-sm rowInputAddWithdraw" value="" name="BankCredit" placeholder="CashIn Amount" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="number" >
-                                        </th>
-                                        <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
-                                            <span id="BonusPointsText" ></span> 
-                                        </th>
-                                        <th class="text-center rowInputAddWithdraw" style="vertical-align: middle;">
-                                            <button class="form-control btn btn-warning btn-xs rowInputAddWithdraw" type="button" onclick="SaveAddWithdrawCard()" style="display: show; width: 31%;" tabindex="0">
-                                                <span id="refreshAddWithdraw" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
-                                                <span id="removeAddWithdraw" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
-                                                Add
-                                            </button>
-                                            <button class="form-control btn btn-warning btn-xs rowInputAddWithdraw" type="button" onclick="SaveWithdrawCard()" style="display: show; width: 67%;" tabindex="0">
-                                                <span id="refreshWithdraw" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
-                                                <span id="removeWithdraw" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
-                                                Withdraw
-                                            </button>
+                                </th>
+                            </tr>
+                            <tr id="rowAddWithdraw" class="rowInputAddWithdraw" style="display: none;">
+                                <th class="text-center rowInputAddWithdraw">
+                                    <span id="errorAddWithdraw" style="color: #d9534f; display: none;"> @lang('messages.Read the card, please').</span> 
+                                    <span id="errorAddWithdrawT" style="color: #d9534f; display: none;"> @lang('messages.This Card ID'): <span id="CartID2Exist">111</span> @lang('messages.exist in the database').</span> 
+                                    <span id="errorAddWithdrawI" style="color: #d9534f; display: none;"> @lang('messages.Insert the card, please').</span> 
+                                    <input id="CartIDAddWithdraw" class="form-control input-sm rowInputAddWithdraw" value="" name="CartIDAddWithdraw" placeholder="@lang('messages.Card ID')" required="" numbers-only="" style="display:show; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" readonly>
+                                    <button class="form-control btn btn-primary btn-xs rowInputAddWithdraw" type="button" onclick="ReadWithdrawCard()" style="display: show;" tabindex="0">
+                                        <span id="refreshRNC" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
+                                        <span id="OKRNC" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                                        <span id="removeRNC" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                        @lang('messages.Read New Card')
+                                    </button>
+                                </th>
+                                <th class="text-center rowInputAddWithdraw" style="vertical-align: middle;">
+                                    <span id="userWithdrawName" > </span> 
+                                </th>
+                                <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
+                                    <span id="levelWithdraw" > </span>
+                                </th>
+                                <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
+                                    <span id="cashInWithdraw" > </span>
+                                </th>
+                                <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
+                                    <span id="errorBankCredit" style="color: #d9534f; display: none;">@lang('messages.The withdrawal amount is bigger than existing Card Balance.')<br /></span> 
+                                    <span id="BankCreditText" > </span> 
+                                    <input id="BankCreditWithdraw" class="form-control input-sm rowInputAddWithdraw" value="" name="BankCredit" placeholder="@lang('messages.CashIn Amount')" required="" numbers-only="" style="display:show;" tabindex="0" aria-required="false" aria-invalid="false" type="number" >
+                                </th>
+                                <th class="text-right rowInputAddWithdraw" style="vertical-align: middle;">
+                                    <span id="BonusPointsText" ></span> 
+                                </th>
+                                <th class="text-center rowInputAddWithdraw" style="vertical-align: middle;">
+                                    <button class="form-control btn btn-warning btn-xs rowInputAddWithdraw" type="button" onclick="SaveAddWithdrawCard()" style="display: show; width: 31%;" tabindex="0">
+                                        <span id="refreshAddWithdraw" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
+                                        <span id="removeAddWithdraw" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                        @lang('messages.Add')
+                                    </button>
+                                    <button class="form-control btn btn-warning btn-xs rowInputAddWithdraw" type="button" onclick="SaveWithdrawCard()" style="display: show; width: 67%;" tabindex="0">
+                                        <span id="refreshWithdraw" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
+                                        <span id="removeWithdraw" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                        @lang('messages.Withdraw')
+                                    </button>
                                            
-                                        </th>
-                                    </tr>
+                                </th>
+                            </tr>
                         </thead>
                         </tbody>
                            @if ($UserInfoViews)
@@ -357,24 +357,24 @@
                                     <tr class="tr-class bootstrap-modal-form-open rows" id="row{{$val->id}}" data-toggle="modal" data-target="#bingoHistory_modal">
                                         <td class="text-center" style="vertical-align: bottom;">
                                             <span id="CartIDText{{$val->id}}" class="row{{$val->id}}">{{$val->card_id}} </span>
-                                            <span id="errorAdd{{$val->id}}" style="color: #d9534f; display: none;"> Read the card, please.</span> 
-                                            <span id="errorAddT{{$val->id}}" style="color: #d9534f; display: none;"> This Card ID: <span id="CartIDExist{{$val->id}}">111</span> exist in the database.</span> 
-                                            <span id="errorAddI{{$val->id}}" style="color: #d9534f; display: none;"> Insert the card, please.</span> 
-                                            <input id="CartID{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->card_id}}" placeholder="Cart ID" name="CartID" readonly="" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
+                                            <span id="errorAdd{{$val->id}}" style="color: #d9534f; display: none;">@lang('messages.Read the card, please').</span> 
+                                            <span id="errorAddT{{$val->id}}" style="color: #d9534f; display: none;">@lang('messages.This Card ID'): <span id="CartIDExist{{$val->id}}">111</span> @lang('messages.exist in the database').</span> 
+                                            <span id="errorAddI{{$val->id}}" style="color: #d9534f; display: none;">@lang('messages.Insert the card, please').</span> 
+                                            <input id="CartID{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->card_id}}" placeholder="@lang('messages.Cart ID')" name="CartID" readonly="" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
                                             <button class="form-control btn btn-primary btn-xs rowInput{{$val->id}}" type="button" onclick="ReadNewCard2({{$val->id}})" style="display: none;" tabindex="0">
                                                 <span id="refreshRNC{{$val->id}}" class="glyphicon glyphicon-refresh icon-spinner icon-submit " style="display: none;"></span>
                                                 <span id="OKRNC{{$val->id}}" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
                                                 <span id="removeRNC{{$val->id}}" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
-                                                Read New Card
+                                                @lang('messages.Read New Card')
                                             </button>
                                         
                                         </td>
                                         <td class="text-center">
                                             <span id="nameText{{$val->id}}" class="row{{$val->id}}">{{$val->name}} </span>
-                                            <span id="errorAddUser{{$val->id}}" style="color: #d9534f; display: none;"> Enter username, please.</span> 
-                                            <input id="name{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->name}}" placeholder="Player Name" name="name" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
-                                            <input id="userAddress{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->address}}" name="userAddress" placeholder="Player Address" required="" numbers-only="" style="display:none; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
-                                            <input id="userPhone{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->phone}}" name="userPhone" placeholder="Player Phone" required="" numbers-only="" style="display:none;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
+                                            <span id="errorAddUser{{$val->id}}" style="color: #d9534f; display: none;">@lang('messages.Save') Enter username, please.</span> 
+                                            <input id="name{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->name}}" placeholder="@lang('messages.Player Name')" name="name" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
+                                            <input id="userAddress{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->address}}" name="userAddress" placeholder="@lang('messages.Player Address')" required="" numbers-only="" style="display:none; margin-bottom: 3px;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
+                                            <input id="userPhone{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->phone}}" name="userPhone" placeholder="@lang('messages.Player Phone')" required="" numbers-only="" style="display:none;" tabindex="0" aria-required="false" aria-invalid="false" type="text" >
                                         </td>
                                         <td class="text-right">
                                             <span id="td2{{$val->id}}" class="row{{$val->id}}">{{$val->level}}</span>
@@ -400,17 +400,17 @@
                                                 <span id="OKEdit{{$val->id}}" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
                                                 <span id="remove1Edit{{$val->id}}" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
                                                 <i class="glyphicon glyphicon-edit"></i>
-                                                Edit
+                                                @lang('messages.Edit')
                                             </button>
                                             <button class="btn btn-default btn-xs row{{$val->id}} bootstrap-modal-form-open" data-toggle="modal" data-target="#cardTransactions"  type="button" onclick="TransactionsCard({{$val->id}})" tabindex="0"  style="width: 67%;">
                                                 Transactions
                                             </button>
                                             <button class="btn btn-primary btn-xs rowInput{{$val->id}} form-control" type="button" onclick="SaveEditCart({{$val->id}})" style="display: none;" tabindex="0">
                                                 <span id="removeEdit{{$val->id}}" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
-                                                Save
+                                                @lang('messages.Save')
                                             </button>
                                             <button class="btn btn-primary btn-xs row2Input{{$val->id}}" type="button" onclick="RemoveBet2BonusPoints({{$val->id}})" style="display: none; margin-top: 0px" tabindex="0">
-                                                Remove
+                                               @lang('messages.Remove') 
                                             </button>
                                         </td>
                                     </tr>
