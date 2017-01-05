@@ -2,7 +2,7 @@
 <td class="text-center" style="vertical-align: bottom;">
     <span id="CartIDText{{$val->id}}" class="row{{$val->id}}">{{$val->card_id}} </span>
     <span id="errorAdd{{$val->id}}" style="color: #d9534f; display: none;"> Read the card, please.</span> 
-    <span id="errorAddT{{$val->id}}" style="color: #d9534f; display: none;"> This Card ID: <span id="CartIDExist">111</span> exist in the database.</span> 
+    <span id="errorAddT{{$val->id}}" style="color: #d9534f; display: none;"> This Card ID: <span id="CartIDExist{{$val->id}}">111</span> exist in the database.</span> 
     <span id="errorAddI{{$val->id}}" style="color: #d9534f; display: none;"> Insert the card, please.</span> 
     <input id="CartID{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->card_id}}" placeholder="Cart ID" name="CartID" readonly="" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
     <button class="form-control btn btn-primary btn-xs rowInput{{$val->id}}" type="button" onclick="ReadNewCard2({{$val->id}})" style="display: none;" tabindex="0">

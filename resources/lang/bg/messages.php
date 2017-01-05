@@ -303,7 +303,7 @@ return array(
     'Live' => 'Жива',
     'Automatic' => 'Автоматична',
     'Wheel Type' => 'Тип Колело',
-    'Video on Statistic' => 'Video on Statistic',
+    'Video on Statistic' => 'Video on Statistics',
     'Auto Max Video' => 'Auto Max Video',
     'Rotor Speed' => 'Rotor Speed',
     'Blow Speed' => 'Blow Speed',
@@ -347,6 +347,11 @@ return array(
     'Common Bet Time' => 'Общо Време За Залог',
     'Personal Bet Time' => 'Лично Време За Залог',
     'Delete Language' => 'Изтрий Език',
+    'Transaction History' => 'Transaction History',
+    'Cards' => 'Cards',
+    'Transactions' => 'Transactions',
+    'Bonus Points' => 'Bonus Points',
+    
 
     'welcome' => 'Welcome to our application'
 );

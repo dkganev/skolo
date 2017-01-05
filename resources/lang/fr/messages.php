@@ -265,7 +265,7 @@ return array(
     'Game Port' => 'Port du jeu',
     'Tables' => 'Tables',
     'Double After Split' => 'Double After<br/>Split',
-    'Allow Split Aces' => 'Allow Split<br/>Aces',
+    'Allow Split Aces' => 'Allow Split<br/>Access',
     'Shuffle On Each Game' => 'Mélanger les cartes<br/>pour chaques jeux',
     'Shuffle Timeout' => 'Temps pour mélanger les cartes',
     'Insurance On' => 'Assurance incluse',
@@ -347,6 +347,11 @@ return array(
     'Common Bet Time' => 'Temps commun pour miser',
     'Personal Bet Time' => 'Temps personnel pour miser',
     'Delete Language' => 'Effacer une langue',
+    'Transaction History' => 'Transaction History',
+    'Cards' => 'Cards',
+    'Transactions' => 'Transactions',
+    'Bonus Points' => 'Bonus Points',
+    
     
     
     

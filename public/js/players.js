@@ -803,8 +803,23 @@ function SaveEditCart(id) {
    
 }
 
-function TransactionsCart(id){
-    alert (id);
+function TransactionsCard(id){
+    //alert (id);
+    //CasinoID = $("#currenCasino").attr("data-casino");
+    token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            type:'POST',
+            url:'ajax_TransactionsCard',
+            dataType: "json",
+            data:{'id': id, _token: token},
+            success:function(data){
+                
+            },
+            error: function (error) {
+                alert ("Unexpected wrong.");
+               
+            }
+        });
 } 
 
 

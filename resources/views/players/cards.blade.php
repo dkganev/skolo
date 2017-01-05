@@ -1,3 +1,4 @@
+@include('players.modals.card-modal')
 <div class="container">
     <div class="row" >
         <div class="col-md-12" >
@@ -6,14 +7,15 @@
                 <div class="panel-heading">
                     <div>
                         <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
-                            Cards
+                            @lang('messages.Cards')
                         </h2>
                         <a onclick="export2excelCards();" class="btn btn-warning  pull-right" >
-                            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> Export
+                            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
+                            @lang('messages.Export')
                         </a>
                         <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                         <a  class="btn btn-warning  pull-right" onclick="ExportToPNGCardsTable();">
-                            Export to PNG
+                            @lang('messages.Export to PNG')
                         </a>
                     </div><br />
                     <div class="pull-left pagination-detail">
@@ -356,7 +358,7 @@
                                         <td class="text-center" style="vertical-align: bottom;">
                                             <span id="CartIDText{{$val->id}}" class="row{{$val->id}}">{{$val->card_id}} </span>
                                             <span id="errorAdd{{$val->id}}" style="color: #d9534f; display: none;"> Read the card, please.</span> 
-                                            <span id="errorAddT{{$val->id}}" style="color: #d9534f; display: none;"> This Card ID: <span id="CartIDExist">111</span> exist in the database.</span> 
+                                            <span id="errorAddT{{$val->id}}" style="color: #d9534f; display: none;"> This Card ID: <span id="CartIDExist{{$val->id}}">111</span> exist in the database.</span> 
                                             <span id="errorAddI{{$val->id}}" style="color: #d9534f; display: none;"> Insert the card, please.</span> 
                                             <input id="CartID{{$val->id}}" class="form-control input-sm rowInput{{$val->id}}" value="{{$val->card_id}}" placeholder="Cart ID" name="CartID" readonly="" required="" numbers-only="" style="display: none;" tabindex="0" aria-required="false" aria-invalid="false" type="text">
                                             <button class="form-control btn btn-primary btn-xs rowInput{{$val->id}}" type="button" onclick="ReadNewCard2({{$val->id}})" style="display: none;" tabindex="0">
@@ -400,7 +402,7 @@
                                                 <i class="glyphicon glyphicon-edit"></i>
                                                 Edit
                                             </button>
-                                            <button class="btn btn-default btn-xs row{{$val->id}}" type="button" onclick="TransactionsCart({{$val->id}})" tabindex="0"  style="width: 67%;">
+                                            <button class="btn btn-default btn-xs row{{$val->id}} bootstrap-modal-form-open" data-toggle="modal" data-target="#cardTransactions"  type="button" onclick="TransactionsCard({{$val->id}})" tabindex="0"  style="width: 67%;">
                                                 Transactions
                                             </button>
                                             <button class="btn btn-primary btn-xs rowInput{{$val->id}} form-control" type="button" onclick="SaveEditCart({{$val->id}})" style="display: none;" tabindex="0">

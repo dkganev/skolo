@@ -232,7 +232,7 @@ class PlayersController extends Controller
             $CartInfo = CardReader::where("casino_id", $request['CasinoID'])->first();
             if (count($CartInfo)){
                 $userInfo = UserInfo::where('card_id', $CartInfo->card_id)->first();
-                if (count($userInfo)){
+                if (count($userInfo) && $CartInfo->reader_status == 1){
                     $dataArray1 = array(
                         "success" => "error",
                         "CartInfo" => $CartInfo,
@@ -423,8 +423,25 @@ class PlayersController extends Controller
         
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
     }
-   
+    public function ajax_TransactionsCard(Request $request)
+    {   
+        if ($request['id'] ) {
+                $dataArray1 = array(
+                    "success" => "success",
+                    "error" => "CartID missing in Database."
+                );
+           
+        } else {
+            $dataArray1 = array(
+                "success" => "error",
+                "error" => "id missing."
+            );
+        }    
+        
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
     
-    //stop Cards functions 
+    //stop Cards functions  ajax_TransactionsCard
 
 }
