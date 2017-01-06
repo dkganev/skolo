@@ -164,8 +164,26 @@ class TerminalsController extends Controller
 
     public function exportTerminals()
     {
-        $export = ServerPs::all();
-
+        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
+        $export = array();
+        foreach ($server_ps as $key => $val) {
+            $export[$key] = array(
+                'Dallas ID' => $val->dallasid, 
+                'PS ID' => $val->psid,
+                'Seat ID' =>  $val->seatid, 
+                'Description' => $val->ps_settings->psdescription,
+                'Type' => $val->ps_settings->ps_type === 0 ? "PlayStation" : (
+                                    $val->ps_settings->ps_type === 1 ? "Statistics" : (
+                                    $val->ps_settings->ps_type === 2 ? "Sphere" : (
+                                    $val->ps_settings->ps_type === 3 ? "Balls" : (
+                                    $val->ps_settings->ps_type === 4 ? "Wheel" : (
+                                    $val->ps_settings->ps_type === 5 ? "Statistic RLT" : (
+                                    $val->ps_settings->ps_type === 6 ? "Jackpot Statistic" : 0 )))))),
+                'Status' => $val->ps_status->bonline ? 'Online' : 'Offline',
+                'IP Adress' => $val->ps_status->ip,
+                'Casino' => $val->casino->casinoname
+            );
+        }
         Excel::create('Terminals Data', function($excel) use($export){
             $excel->sheet('Terminals', function($sheet) use($export){
                 $sheet->fromArray($export);

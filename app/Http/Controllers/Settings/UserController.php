@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     public function index()
     {
-    	$users = User::all();
+    	$users = User::orderBy('id', 'asc')->get();
         $roles = Role::all();
         //$CmsLangs = CmsLangs::get();
         return view('settings.users', compact('users', 'roles') );
@@ -75,8 +75,26 @@ class UserController extends Controller
 
     public function export_users()
     {
-        $export = User::all();
-
+        //$export = User::all();
+        $users = User::orderBy('id', 'asc')->get();
+        $roles = Role::all();
+        $export = array();
+        foreach ($users as $key => $val) {
+            //$roles = Role::where() all();
+            foreach($roles as $role) {
+                if ($val->hasRole($role->name)){
+                    $userRole =  $role->name ;
+                }
+            }
+            
+            $export[$key] = array(
+                'Username' => $val->name, 
+                'Full Name' => $val->fullName(), 
+                'Role' => $userRole, 
+                'Phone' => $val->phone
+            );
+            
+        }
         Excel::create('Users Data', function($excel) use($export){
 
             $excel->sheet('Users', function($sheet) use($export){

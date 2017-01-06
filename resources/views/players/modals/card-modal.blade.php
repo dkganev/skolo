@@ -9,7 +9,7 @@
                 </a>
                 <span style="font-size: 16px; ">@lang('messages.Transaction History')</span>
             </div>
-            <div class="modal-body" >
+            <div class="modal-body" id="pageTable">
                <table class="table table-striped" id='bingoPurchase_History'>
                     <tbody>
                         <tr>

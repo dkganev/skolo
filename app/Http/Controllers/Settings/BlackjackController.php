@@ -128,7 +128,23 @@ class BlackjackController extends Controller
 
     public function tables_export()
     {
-        $export = BlackjackTable::orderBy('table_id', 'asc')->get();
+        //$export = BlackjackTable::orderBy('table_id', 'asc')->get();
+        $tables = BlackjackTable::orderBy('table_id', 'asc')->get();
+        $export = array();
+            foreach ($tables as $key => $val) {
+            
+                $export[$key] = array(
+                    'Table' => $val->table_id + 1, 
+                    'Min Bet' => $val->bet_min, 
+                    'Max Bet' => $val->bet_max, 
+                    'Chip 1' => $val->chip1, 
+                    'Chip 2' => $val->chip2, 
+                    'Chip 3' => $val->chip3, 
+                    'Chip 4' => $val->chip4, 
+                    'Chip 5' => $val->chip5
+                );
+            
+            }
         Excel::create('Blackjack Tables Data', function($excel) use($export){
             $excel->sheet('Tables', function($sheet) use($export){
                 $sheet->FromArray($export);

@@ -88,7 +88,19 @@ class BingoController extends Controller
 
     public function my_bonus_export()
     {
-        $export = MyBonus::orderBy('id', 'asc')->get();
+        //$export = MyBonus::orderBy('id', 'asc')->get();
+        $my_bonus = MyBonus::orderBy('id', 'asc')->get();
+        $export = array();
+            foreach ($my_bonus as $key => $val) {
+            
+                $export[$key] = array(
+                    'ID' => $val->id, 
+                    'Bought Tickets' => $val->ticket_cnt, 
+                    'Max Ball' => $val->max_ball_idx
+                );
+            
+            }
+
         Excel::create('Bingo My Bonus Data', function($excel) use($export){
             $excel->sheet('Bingo My Bonus', function($sheet) use($export){
                 $sheet->FromArray($export);
@@ -124,7 +136,25 @@ class BingoController extends Controller
 
     public function max_balls_export()
     {
-        $export = JackpotSteps::orderBy('id', 'asc')->get();
+        //$export = JackpotSteps::orderBy('id', 'asc')->get();
+        $jackpot_steps = JackpotSteps::orderBy('id', 'asc')->get();
+            foreach ($jackpot_steps as $key => $val) {
+            
+                $export[$key] = array(
+                    'ID' => $val->id, 
+                    'Fixed' => $val->bingo_cost_fixed ? " checked" : "" , 
+                    'Ticket Cost' => $val->bingo_ticket_cost, 
+                    'JL. Max Ball' => $val->jackpot_line_max_ball, 
+                    'JB. Max Ball' => $val->jackpot_bingo_max_ball, 
+                    'BL. Max Ball' => $val->bonus_line_max_ball, 
+                    'BB. Max Ball' => $val->bonus_bingo_max_ball, 
+                    'JL. Ticket Count' => $val->jackpo_line_ticket_cnt, 
+                    'JB. Ticket Count' => $val->jackpo_bingo_ticket_cnt, 
+                    'BL. Ticket Count' => $val->bonus_line_ticket_cnt, 
+                    'BB. Ticket Count' => $val->bonus_bingo_ticket_cnt
+                );
+            
+            }
         Excel::create('Max Balls Data', function($excel) use($export){
             $excel->sheet('Max Balls', function($sheet) use($export){
                 $sheet->FromArray($export);

@@ -51,7 +51,17 @@ class ErrorsController extends Controller
 
     public function export_errors_level()
     {
-        $export = PsErrorLevels::orderBy('err_level', 'asc')->get();
+        //$export = PsErrorLevels::orderBy('err_level', 'asc')->get();
+        $error_lvls = PsErrorLevels::orderBy('err_level', 'asc')->get();
+        $export = array();
+        foreach ($error_lvls as $key => $val) {
+            
+            $export[$key] = array(
+                'Error Level Int' => $val->err_level, 
+                'Error Level String' => $val->level_str
+            );
+            
+        }
         Excel::create('Errors Level Data', function($excel) use($export){
             $excel->sheet('Errors Level', function($sheet) use($export){
                 $sheet->fromArray($export);
@@ -69,7 +79,33 @@ class ErrorsController extends Controller
 
     public function export_errors_list()
     {
-        $export = PsErrorsList::orderBy('err_code', 'asc')->get();
+        //$export = PsErrorsList::orderBy('err_code', 'asc')->get();
+        $error_list = PsErrorsList::orderBy('err_code', 'asc')->get();
+        $export = array();
+        foreach ($error_list as $key => $val) {
+            
+            $export[$key] = array(
+                'Error Code' => $val->err_code, 
+                'Error Level' => $val->err_lvl->level_str, 
+                'Error Group' => $val->err_group === 1 ? "NOTE" : (
+                                    $val->err_group === 2 ? "DOORS" : (
+                                    $val->err_group === 4 ? "DOORSOFF" : (
+                                    $val->err_group === 8 ? "ERROR" : (
+                                    $val->err_group === 16 ? "CR_IN" : (
+                                    $val->err_group === 32 ? "BILL" : (
+                                    $val->err_group === 64 ? "HANDPAY" : (
+                                    $val->err_group === 128 ? "PRGR" : (
+                                    $val->err_group === 256 ? "VOUCHRIN" : (
+                                    $val->err_group === 512 ? "VOUCHOUT" : (
+                                    $val->err_group === 1024 ? "CASHLESSIN" : (
+                                    $val->err_group === 2048 ? "CASHLESSOUT" : (
+                                    $val->err_group === 4096 ? "BONUS" : (
+                                    $val->err_group === 8192 ? "MONEY" : (
+                                    $val->err_group === 16384 ? "SERVER" : $val->err_group )))))))))))))), 
+                'Error Text' => $val->err_text
+            );
+            
+        }
         Excel::create('Errors List Data', function($excel) use($export){
             $excel->sheet('Errors List', function($sheet) use($export){
                 $sheet->fromArray($export);

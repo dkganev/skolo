@@ -13,7 +13,7 @@ class LangsController extends Controller
 {
     public function getLangs()
     {
-    	$languages = Langs::all();
+    	$languages = Langs::orderBy('langid', 'asc')->get();
 
     	return view('settings.langs',['languages' => $languages]);
     }
@@ -54,8 +54,17 @@ class LangsController extends Controller
 
     public function exportLangs()
     {
-        $export = Langs::all();
-
+        //$export = Langs::all();
+        $languages = Langs::orderBy('langid', 'asc')->get();
+        $export = array();
+        foreach ($languages as $key => $val) {
+            
+            $export[$key] = array(
+                'ID' => $val->langid, 
+                'Language Name' => $val->langname
+            );
+            
+        }
         Excel::create('Langs Data', function($excel) use($export){
             $excel->sheet('Langs', function($sheet) use($export){
                 

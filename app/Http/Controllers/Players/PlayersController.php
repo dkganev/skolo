@@ -426,8 +426,98 @@ class PlayersController extends Controller
     public function ajax_TransactionsCard(Request $request)
     {   
         if ($request['id'] ) {
+            $userID = $request['id'];
+             if ($request['rowsPerPage']) {
+            $page['rowsPerPage'] = $request['rowsPerPage'];
+        
+        } else {
+            $page['rowsPerPage'] = 20;
+        
+        }
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'id';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        if ($request['sortMenuOpen'] == 1 ) {
+            $page['sortMenuOpen'] = 1;
+        } else {
+            $page['sortMenuOpen'] = 0;
+        }
+        $SortQuery = array(); 
+        if ($request['CardID']){
+            array_push($SortQuery,['card_id', 'like', '%' . $request['CardID'] .'%']);
+            $page['CardID'] = $request['CardID'];
+        }else{
+            $page['CardID'] = "";
+        }
+        if ($request['Name']){
+            array_push($SortQuery,['name', 'like', '%' . $request['Name'] .'%']);
+            $page['Name'] = $request['Name'];
+        }else{
+            $page['Name'] = "";
+        }
+        if ($request['Level']){
+            array_push($SortQuery,['level', '=', $request['Level'] ]);
+            $page['Level'] = $request['Level'];
+        }else{
+            $page['Level'] = "";
+        }
+        
+        if ($request['FromDeposit']){
+            array_push($SortQuery,['deposit', '>=', $request['FromDeposit']]);
+            $page['FromDeposit'] = $request['FromDeposit'];
+        }else{
+            $page['FromDeposit'] = "";
+        }
+        if ($request['ToDeposit']){
+            array_push($SortQuery,['deposit', '<=', $request['ToDeposit']]);
+            $page['ToDeposit'] = $request['ToDeposit'];
+        }else{
+            $page['ToDeposit'] = "";
+        }
+        if ($request['FromBankCredit']){
+            array_push($SortQuery,['bank_credit', '>=', $request['FromBankCredit']]);
+            $page['FromBankCredit'] = $request['FromBankCredit'];
+        }else{
+            $page['FromBankCredit'] = "";
+        }
+        if ($request['ToBankCredit']){
+            array_push($SortQuery,['bank_credit', '<=', $request['ToBankCredit']]);
+            $page['ToBankCredit'] = $request['ToBankCredit'];
+        }else{
+            $page['ToBankCredit'] = "";
+        }
+        if ($request['FromBonusPoints']){
+            array_push($SortQuery,['bonus_points', '>=', $request['FromBonusPoints']]);
+            $page['FromBonusPoints'] = $request['FromBonusPoints'];
+        }else{
+            $page['FromBonusPoints'] = "";
+        }
+        if ($request['ToBonusPoints']){
+            array_push($SortQuery,['bonus_points', '<=', $request['ToBonusPoints']]);
+            $page['ToBonusPoints'] = $request['ToBonusPoints'];
+        }else{
+            $page['ToBonusPoints'] = "";
+        }
+        
+        
+        
+        
+        $UserInfoViews = UserInfoView::where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+            
+            
+            $testPage = view('players.ajax_TransactionsCard', ['userID' => $userID,'UserInfoViews' => $UserInfoViews, 'page' => $page])->render();
+            
+            
                 $dataArray1 = array(
                     "success" => "success",
+                    "testPage" => $testPage,
                     "error" => "CartID missing in Database."
                 );
            

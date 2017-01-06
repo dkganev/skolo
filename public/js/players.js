@@ -813,7 +813,11 @@ function TransactionsCard(id){
             dataType: "json",
             data:{'id': id, _token: token},
             success:function(data){
-                
+                if (data.success == "success"){
+                    $("#pageTable").html(data.testPage);
+                }else{
+                    
+                }    
             },
             error: function (error) {
                 alert ("Unexpected wrong.");
