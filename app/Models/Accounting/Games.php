@@ -23,7 +23,7 @@ class Games extends Model
 
     public function category()
     {
-    	return $this->belongsTo(Categories::class,'game_category', 'idx' );
+    	return $this->belongsTo(Categories::class,'game_category', 'idx');
     }
 
     public function type()

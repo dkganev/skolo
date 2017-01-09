@@ -110,11 +110,15 @@ $(document).ready(function() {
        data: {
            name: $('form#create-template-form input[name="name"]').val(),
            _token: token,
+      },
+      success: function(response) {
+          console.log(response);
+      },
+      error: function(response) {
+          console.log(response.responseText);
       }
-    })
-    .done(function() {
-       javascript:ajaxLoad('{{url('/casino/templates')}}');
-       console.log('Success');
+    }).done(function() {
+        javascript:ajaxLoad('{{url('/casino/templates')}}');
     });
   });
 

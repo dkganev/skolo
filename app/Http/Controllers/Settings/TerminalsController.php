@@ -17,6 +17,7 @@ use App\Models\Accounting\Langs;
 use App\Models\Accounting\ClientGameIds;
 use App\Models\Roulette\PsConf;
 use Excel;
+use App\Events\TerminalAdded;
 use App\Events\TerminalCreated;
 
 class TerminalsController extends Controller
@@ -94,6 +95,8 @@ class TerminalsController extends Controller
 
         // Ps Status Model
         $ps_status = $server_ps->ps_status()->create([]);
+
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->psid));
 
         event(new TerminalCreated($request->psid, $request->seatid));
 

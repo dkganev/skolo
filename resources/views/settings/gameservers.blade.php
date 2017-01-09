@@ -199,6 +199,7 @@
                                     data-dbname="{{ $game->db_name }}"
                                     data-shortname="{{ $game->short_name }}"
                                     data-color="{{ $game->color }}"
+                                    data-type="{{ $game->type->game_type}}"
                                     class="btn btn-primary btn-xs"
                                 >
                                 @lang('messages.Edit')
@@ -302,14 +303,16 @@ $('#updateGameModal').on('show.bs.modal', function(e) {
     var dbName = $(e.relatedTarget).data('dbname')
     var shortName = $(e.relatedTarget).data('shortname')
     var color = $(e.relatedTarget).data('color')
+    var type = $(e.relatedTarget).data('type')
     //populate the textbox
     $(e.currentTarget).find('select[name="client_game_id"]').val(clientGameId)
     $(e.currentTarget).find('input[name="gameid"]').val(gameId)
     $(e.currentTarget).find('input[name="description"]').val(description)
-    $(e.currentTarget).find('select[name="game_type"]').val()
+    // $(e.currentTarget).find('select[name="game_type"]').val()
     $(e.currentTarget).find('input[name="db_name"]').val(dbName)
     $(e.currentTarget).find('input[name="short_name"]').val(shortName)
     $(e.currentTarget).find('input[name="color"]').val(color)
+    $(e.currentTarget).find('select[name="game_type"] option[value=' + type + ']').attr('selected',true).change();;
     $(e.currentTarget).find('strong#color-label').text(color)
 })
 

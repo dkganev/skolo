@@ -117,10 +117,21 @@ class BingoPlaylistController extends Controller
     	$template = new Templates();
     	$template->name = $request->name;
 
-        if($template->save()) {
-            $msg = 'Something went wrong!';
-            return response()->json(['message' => $msg], 501);
+        $saved = $template->save();
+
+        if(!$saved) {
+            $reponse = [
+                'message' => 'Something went wrong!'
+            ];
+            
+            return response()->json($response, 501);
         }
+
+        $response = [
+            'message' => 'Template stored successfully!'
+        ];
+        return response()->json($response, 200);
+
     }
 
     public function template_destroy(Request $request)
@@ -128,7 +139,7 @@ class BingoPlaylistController extends Controller
     	$template = Templates::where('template_id', $request->template_id)->first();
     	$template->delete();
 
-    	return redirect()->back();
+    	return response()->json([], 200);
     }
 
     public function template_game_store(Request $request)
@@ -137,6 +148,7 @@ class BingoPlaylistController extends Controller
 
         $playlist = new TemplateGames();
 
+        $playlist->idx = $template->template_games->count() + 1;
         $playlist->bingo_ticket_cost = $request->ticket_cost;
 
         $playlist->bingo_cost_line1_fixed = false;
@@ -154,6 +166,15 @@ class BingoPlaylistController extends Controller
         $playlist->save();
 
         return response()->json($playlist->load('template'), 200);
+    }
+
+    public function template_game_destroy(Request $request)
+    {
+        $template = Templates::where('template_id', $request->template_id)->first();
+        $template_game = $template->template_games()->where('idx', $request->idx)->first();
+        $deleted = $template_game->delete();
+
+        return response()->json([], 200);
     }
 
 }

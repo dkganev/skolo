@@ -49,8 +49,10 @@
               </tr>
             </thead>
               <tbody>
+
                 @foreach($tables as $table)
-                <tr id="{{ $table->table_id }}">
+                <tr id="{{ $table->table_id }}" style="background-color: {{ in_array($table->table_id + 1, $enabled_color_ids) ? '#0dad3b;' : '' }}">
+
                     <td><span class="badge">{{ $table->table_id + 1 }}</span></td>
 
                     <td>
@@ -90,7 +92,6 @@
               </tbody>
             </table> 
         </form>
-
         <form id="enabled-tables-form" style="border: 1px solid #fff; padding: 10px">
             <div class="tables">
 {{--                 <span class="button-checkbox" style="margin-left: 0;">
@@ -257,7 +258,7 @@ $('.enabled-table-button').on('click', function(event) {
         url: '/settings/blackjack/table/enabled',
         data: $('form#enabled-tables-form').serialize(),
         success: function (response) {
-            //
+            javascript:ajaxLoad('{{ url('/settings/blackjack/tables') }}');
         },
         error: function (response) {
             //

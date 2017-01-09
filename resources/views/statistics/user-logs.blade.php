@@ -39,7 +39,7 @@
                         </tr>
                         <tbody>
                             @foreach($logs as $log)
-                            <tr>
+                            <tr class="tr-class">
                                 <td>{{ $log->created_at }}</td>
                                 <td>{{ $log->psid }}</td>
                                 <td>{{ $log->message }}</td>

@@ -17,16 +17,16 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\AddRouletteTerminal',
         ],
 
-        'App\Events\UserLoggedIn' => [
-            'App\Listeners\LogSuccessLogin',
-        ],
-
-        'App\Events\UserFailedToLogIn' => [
-            'App\Listeners\LogFailedLogin',
-        ],
-        // 'App\Events\TerminalCreated' => [
-        //     'App\Listeners\AddRouletteTerminal',
+        // 'App\Events\UserLoggedIn' => [
+        //     'App\Listeners\LogSuccessLogin',
         // ],
+
+        // 'App\Events\UserFailedToLogIn' => [
+        //     'App\Listeners\LogFailedLogin',
+        // ],
+        // // 'App\Events\TerminalCreated' => [
+        // //     'App\Listeners\AddRouletteTerminal',
+        // // ],
     ];
 
     /**
@@ -40,4 +40,13 @@ class EventServiceProvider extends ServiceProvider
 
         //
     }
+
+    /**
+     * The subscriber classes to register.
+     *
+     * @var array
+     */
+    protected $subscribe = [
+        'App\Listeners\UserEventSubscriber',
+    ];
 }

@@ -7,10 +7,11 @@ use Session;
 use App\Models\User;
 use App\Http\Requests;
 use App\Models\Cms\CmsLangs;
+use App\Events\UserLoggedIn;
 use Illuminate\Http\Request;
 use App\Events\UserFailedToLogIn;
-use App\Models\Accounting\Casinos;
 use Spatie\Permission\Models\Role;
+use App\Models\Accounting\Casinos;
 use Spatie\Permission\Models\Permission;
 
 class AuthController extends Controller
@@ -34,10 +35,7 @@ class AuthController extends Controller
 
         if(!Auth::attempt(['name' => $request['name'], 'password' => $request['password']]))
         {
-            event(new UserFailedToLogIn(
-                    request()->ip(),
-                    $request->name
-                ));
+            event(new UserFailedToLogIn(request()->ip(), $request->name));
 
             return redirect('/');
         }
@@ -53,6 +51,8 @@ class AuthController extends Controller
         //$locale = 'test' . $locale;
         session(['locale' => $CmsLangs]);
         session(['LoginUser.lang' => $CmsLangs->lang_code]);
+
+        event(new UserLoggedIn(request()->ip(), $request->name));
         return redirect('/');
     }
 

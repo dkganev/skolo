@@ -45,7 +45,18 @@ class BlackjackController extends Controller
         $tables = BlackjackTable::orderBy('table_id', 'asc')->get();
         $enabled = EnabledTables::first();
 
-        return view('settings.blackjack.tables', compact('tables', 'enabled'));
+        $enabled_color_ids = [];
+
+        $enabled_color_ids[] = $enabled->t1_enabled == true ? 1 : '';
+        $enabled_color_ids[] = $enabled->t2_enabled == true ? 2 : '';
+        $enabled_color_ids[] = $enabled->t3_enabled == true ? 3 : '';
+        $enabled_color_ids[] = $enabled->t4_enabled == true ? 4 : '';
+        $enabled_color_ids[] = $enabled->t5_enabled == true ? 5 : '';
+        $enabled_color_ids[] = $enabled->t6_enabled == true ? 6 : '';
+        $enabled_color_ids[] = $enabled->t7_enabled == true ? 7 : '';
+        $enabled_color_ids[] = $enabled->t8_enabled == true ? 8 : '';
+
+        return view('settings.blackjack.tables', compact('tables', 'enabled', 'enabled_color_ids'));
     }
 
     public function table_edit(Request $request)

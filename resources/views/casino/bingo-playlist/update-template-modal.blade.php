@@ -76,7 +76,7 @@
                     </div>
 
                     @foreach($template->template_games as $game)
-                    <div class="divTableRow dataTableRow">
+                    <div class="divTableRow dataTableRow" id="{{ $game->idx }}" data-template-id="{{ $template->template_id }}">
                       <div class="divTableCell">{{ $game->bingo_ticket_cost }}</div>
                       <div class="divTableCell">
                         {{ $game->bingo_cost_line1_fixed && $game->bingo_cost_bingo_fixed ? app('translator')->get('messages.Fixed') : app('translator')->get('messages.Standard')}}
@@ -121,7 +121,7 @@
       }
     });
 
-    $(".top").click(function(){
+    $(".top").click(function() {
       var row = $(this).parents(".divTableRow:first");
       // var data = {
       //     idx: row.attr('idx'),
@@ -136,14 +136,21 @@
 
     $(".remove").click(function() {
       var row = $(this).parents(".dataTableRow:first");
-      // var data = {
-      //     idx: row.attr('idx'),
-      //     _token: $('meta[name="csrf-token"]').attr('content')
-      // }
-      // $.post('/casino/playlist/destroy', data, function(response) {
-      //   console.log(response.msg, response.id);
-      // });
-      row.remove();
+      
+
+      var data = {
+          idx: row.attr('id'),
+          template_id: row.data('template-id'),
+          _token: $('meta[name="csrf-token"]').attr('content')
+      }
+      console.log(data);
+      
+      $.post('//', data, function(response) {
+        // console.log(response);
+      });
+      // row.remove();
+
+      // row.remove();
     });
 
 </script>
@@ -163,8 +170,7 @@ $('#send-button--{{ $template->template_id }}').on('click', function() {
              template_id: $('#editTemplateModal--{{ $template->template_id }} input[name="template_id"]').val(),
              _token: token,
           },
-        success: function (response) {
-
+        success: function(response) {
             if(response.bingo_cost_line1_fixed === false) {
               var gameType = '<?php echo app('translator')->get('messages.Standard'); ?>';
             } else {
