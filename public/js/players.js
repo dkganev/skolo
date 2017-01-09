@@ -238,11 +238,11 @@ function ExportToPNGCardsTable() {
 function AddNewCart() {
     if (addMenu == 0){
         $(".rowInputAdd").show();
-        $("#addCard").text('Close Add');
+        $("#addCard").text($("#addCard").attr('data_close'));
         addMenu = 1;
     }else{
         $(".rowInputAdd").hide();
-        $("#addCard").text('Add Card');
+        $("#addCard").text($("#addCard").attr('data_add'));
         addMenu = 0;
     }
 }
@@ -408,11 +408,11 @@ function SaveAddCard() {
 function AddWithdrawCart() {
     if (addMenu2 == 0){
         $(".rowInputAddWithdraw").show();
-        $("#addWithdrawCard").text('Close Add/Withdraw Credit');
+        $("#addWithdrawCard").text($("#addWithdrawCard").attr('data_close'));
         addMenu2 = 1;
     }else{
         $(".rowInputAddWithdraw").hide();
-        $("#addWithdrawCard").text('Add/Withdraw Credit');
+        $("#addWithdrawCard").text($("#addWithdrawCard").attr('data_add'));
         addMenu2 = 0;
     }
 }
@@ -803,8 +803,27 @@ function SaveEditCart(id) {
    
 }
 
-function TransactionsCart(id){
-    alert (id);
+function TransactionsCard(id){
+    //alert (id);
+    //CasinoID = $("#currenCasino").attr("data-casino");
+    token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            type:'POST',
+            url:'ajax_TransactionsCard',
+            dataType: "json",
+            data:{'id': id, _token: token},
+            success:function(data){
+                if (data.success == "success"){
+                    $("#pageTable").html(data.testPage);
+                }else{
+                    
+                }    
+            },
+            error: function (error) {
+                alert ("Unexpected wrong.");
+               
+            }
+        });
 } 
 
 

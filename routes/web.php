@@ -275,3 +275,5 @@ Route::post('/ajax_SaveAddCard', 'Players\PlayersController@ajax_SaveAddCard');
 Route::get('/export2excelCards', 'Players\PlayersController@export2excelCards')->name('export2excelCards');
 Route::post('/ajax_SaveEditCart', 'Players\PlayersController@ajax_SaveEditCart');
 Route::post('/ajax_AddBankCreditCard', 'Players\PlayersController@ajax_AddBankCreditCard');
+Route::post('/ajax_TransactionsCard', 'Players\PlayersController@ajax_TransactionsCard');
+

@@ -3,17 +3,17 @@
         <ul class="breadcrumb">
             <li>
                 <a id="CasinoCasino" href="javascript:ajaxLoad('{{url('players/cards')}}')" data-url="{{substr(url(''),0,-5)}}">
-                    Cards
+                    @lang('messages.Cards')
                 </a>
             </li>
             <li>
                 <a id="CasinoEvents" href="javascript:ajaxLoad('{{url('players')}}')">
-                    Transactions
+                    @lang('messages.Transactions')
                 </a>
             </li>
             <li>
                 <a id="CasinoEvents" href="javascript:ajaxLoad('{{url('players')}}')">
-                    Bonus Points
+                    @lang('messages.Bonus Points')
                 </a>
             </li>
             <!--<li>

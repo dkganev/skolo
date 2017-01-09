@@ -24,7 +24,7 @@
                 </h2>
                 <a href="/statistics/game-machine-rl2/export" class="btn btn-warning  pull-right">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
-                    @lang('messages.Roulette')E
+                    @lang('messages.Export')
                 </a>
                 <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
                 <a class="btn btn-warning  pull-right" onclick="ExportToPNGTerminatsTable();">

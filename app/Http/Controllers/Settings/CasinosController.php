@@ -14,7 +14,7 @@ class CasinosController extends Controller
 {
 	public function getCasinos()
 	{
-		$casinos = Casinos::all();
+		$casinos = Casinos::orderBy('casinoid', 'asc')->get();
 		return view('settings.casinos', compact('casinos'));
 	}
 
@@ -50,7 +50,19 @@ class CasinosController extends Controller
 
 	public function exportCasinos()
 	{
-		$export = Casinos::all();
+		//$export = Casinos::all();
+            $casinos = Casinos::orderBy('casinoid', 'asc')->get();
+            $export = array();
+            foreach ($casinos as $key => $val) {
+            
+                $export[$key] = array(
+                    'ID' => $val->casinoid, 
+                    'Casino Name' => $val->casinoname, 
+                    'Casino Address' => $val->casinoaddr, 
+                    'Casino GSM' => $val->casinogsm
+                );
+            
+            }
 
 		Excel::create('Casinos Data', function($excel) use($export) {
 			$excel->sheet('Casinos', function($sheet) use($export) {

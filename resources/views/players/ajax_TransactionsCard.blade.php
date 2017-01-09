@@ -1,23 +1,5 @@
-@include('players.modals.card-modal')
-<div class="container">
-    <div class="row" >
-        <div class="col-md-12" >
-
-            <div class="panel panel-default" id="panelCardsContend">
+ <div class="panel panel-default" id="panelCardsContend">
                 <div class="panel-heading">
-                    <div>
-                        <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
-                            @lang('messages.Cards')
-                        </h2>
-                        <a onclick="export2excelCards();" class="btn btn-warning  pull-right" >
-                            <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
-                            @lang('messages.Export')
-                        </a>
-                        <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
-                        <a  class="btn btn-warning  pull-right" onclick="ExportToPNGCardsTable();">
-                            @lang('messages.Export to PNG')
-                        </a>
-                    </div><br />
                     <div class="pull-left pagination-detail">
                          <!-- <span class="pagination-info">Showing 1 page</span> -->
                         <span class="page-list">
@@ -422,19 +404,4 @@
             
                 </div>        
             </div>
-        </div>
-    </div>    
-</div> 
-
-
-<link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
-<script >
-//sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
-pageSortMenuOpen =  $('#pageReload').attr('data-sortMenuOpen');    
-if (pageSortMenuOpen == 1){
-    sortTimer123 = setTimeout(function(){ $('.CardsSort').show(); }, 200);
-}else{
-    sortTimer123 = setTimeout(function(){ $('.CardsSort').hide(); }, 200);
-}    
-//$("#rouletteHistory_modal").css({'overflow': 'scroll'});
-</script>
+{{--<link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">--}}

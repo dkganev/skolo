@@ -16,17 +16,17 @@ class GameServersController extends Controller
 {
 	public function getGameServers()
 	{
-		$game_clients = ClientGameIds::orderBy('client_game_id','asc')->get();
-        $games = Games::orderBy('gameid', 'asc')->get();
-        $categories = Categories::orderBy('idx', 'asc')->get();
-        $game_types = GameTypes::all();
+            $game_clients = ClientGameIds::orderBy('client_game_id','asc')->get();
+            $games = Games::orderBy('gameid', 'asc')->get();
+            $categories = Categories::orderBy('idx', 'asc')->get();
+            $game_types = GameTypes::all();
 
-    	return view('settings.gameservers', [
-            'game_clients' => $game_clients,
-            'games'        => $games,
-            'categories'   => $categories,
-            'game_types'   => $game_types
-        ]);
+            return view('settings.gameservers', [
+                'game_clients' => $game_clients,
+                'games'        => $games,
+                'categories'   => $categories,
+                'game_types'   => $game_types
+            ]);
 	}
 
     public function addGameClient(Request $request)
@@ -54,8 +54,16 @@ class GameServersController extends Controller
 
     public function exportClientGames()
     {
-        $export = ClientGameIds::all();
-
+        //$export = ClientGameIds::all();
+        $game_clients = ClientGameIds::orderBy('client_game_id','asc')->get();
+        $export = array();
+        foreach ($game_clients as $key => $val) {
+            $export[$key] = array(
+                'Game ID' => $val->client_game_id, 
+                'Description' => $val->client_game_name
+            );
+            
+        }
         Excel::create('Client Games Data', function($excel) use($export){
 
             $excel->sheet('Client Games', function($sheet) use($export){
@@ -104,8 +112,17 @@ class GameServersController extends Controller
 
     public function exportCategories()
     {
-        $export = Categories::select(['idx', 'name'])->get();
-
+        //$export = Categories::select(['idx', 'name'])->get();
+        $categories = Categories::orderBy('idx', 'asc')->get();
+        $export = array();
+        foreach ($categories as $key => $val) {
+            $export[$key] = array(
+                'Category ID' => $val->idx, 
+                'Category Name' => $val->name
+            );
+            
+        }
+        
         Excel::create('Categoris Data', function($excel) use($export){
 
             $excel->sheet('Categories', function($sheet) use($export){
@@ -175,8 +192,21 @@ class GameServersController extends Controller
 
     public function exportGames()
     {
-        $export = Games::select(['client_game_id', 'gameid', 'description', 'game_type', 'db_name', 'short_name'])->get();
-
+        //$export = Games::select(['client_game_id', 'gameid', 'description', 'game_type', 'db_name', 'short_name'])->get();
+        $games = Games::orderBy('gameid', 'asc')->get();
+        $export = array();
+        foreach ($games as $key => $val) {
+            $export[$key] = array(
+                'Client Game ID' => $val->client_game_id, 
+                'Game ID' => $val->gameid, 
+                'Description' => $val->description, 
+                'Game Type' => $val->type->type, 
+                'DB Name' => $val->db_name, 
+                'Category' => $val->category->name, 
+                'Short Name' => $val->short_name
+            );
+            
+        }
         Excel::create('Games Data', function($excel) use($export){
 
             $excel->sheet('Games', function($sheet) use($export){
