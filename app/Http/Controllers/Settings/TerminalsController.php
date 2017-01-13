@@ -80,14 +80,27 @@ class TerminalsController extends Controller
 
         // Ps Counters Model
         $ps_counter = new PsCounters();
-
+        /*
         $counters = [];
         for ($i = 0; $i <= 255; $i++) {
             $counters[] = 0;
         }
-
         $ps_counter->setCounters($counters);
         $server_ps->ps_counters()->save($ps_counter);
+        */
+        $countersStr = "[0:255]={";
+        $countersFirst = 0;
+        for ($i = 0; $i <= 255; $i++) {
+            if ($countersFirst == 0){
+                $countersFirst = 1;
+            }else{
+               $countersStr .= ","; 
+            }
+            $countersStr .= 0;
+        }
+        $countersStr .= "}";
+        $ps_counter->psid = $request->psid;
+        $ps_counter->counter = $countersStr;
         $ps_counter->save();
 
         // Billing Config Model
