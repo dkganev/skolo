@@ -46,37 +46,40 @@
 			<!-- FIRST COLUMN -->
 			<div class="col-lg-4">
 
-				    <div class="form-group">
-				    	<label style="color: #474747">@lang('messages.Game ID'):</label><br>
-						<div class="input-group">
-							<span class="input-group-addon" id="sizing-addon2">#</span>
-							<input disabled name="game_id" value="{{ $config->game_id }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-						</div>
-					</div>
+			    <div class="form-group">
+			    	<label style="color: #474747">@lang('messages.Game ID'):</label><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input disabled name="game_id" value="{{ $config->game_id }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
+                                </div>
+                            </div>
 
-					<div class="form-group">
-				    	<label style="color: #474747">@lang('messages.Max Ps'):</label><br>
-						<div class="input-group">
-							<span class="input-group-addon" id="sizing-addon2">#</span>
-							<input name="max_ps_per_game" value="{{ $config->max_ps_per_game }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-						</div>
-					</div>
+                            <div class="form-group">
+                                <label style="color: #474747">@lang('messages.Max Ps'):</label><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input name="max_ps_per_game" value="{{ $config->max_ps_per_game }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
+                                </div>
+                                <label id="max_ps_per_game" style="color: red; display: none; ">@lang('messages.Max Ps must be between 1-2000')</label>
+                            </div>
 
-					<div class="form-group">
-				    	<label style="color: #474747">@lang('messages.Common Bet Time'):</label><br>
-						<div class="input-group">
-							<span class="input-group-addon" id="sizing-addon2">#</span>
-							<input name="common_bet_time" value="{{ $config->common_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-						</div>
-					</div>
+                            <div class="form-group">
+                                <label style="color: #474747">@lang('messages.Common Bet Time'):</label><br>
+                            	<div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input name="common_bet_time" value="{{ $config->common_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
+				</div>
+				<label id="common_bet_time" style="color: red; display: none; ">@lang('messages.Common Bet Time must be between 1-600')</label>
+                            </div>
 
-					<div class="form-group">
-				    	<label style="color: #474747">@lang('messages.Personal Bet Time'):</label><br>
-						<div class="input-group">
-							<span class="input-group-addon" id="sizing-addon2">#</span>
-							<input name="bj_bet_time" value="{{ $config->bj_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-						</div>
-					</div>
+                            <div class="form-group">
+			    	<label style="color: #474747">@lang('messages.Personal Bet Time'):</label><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input name="bj_bet_time" value="{{ $config->bj_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
+				</div>
+				<label id="bj_bet_time" style="color: red; display: none; ">@lang('messages.Personal Bet Time must be between 1-600')</label>
+                            </div>
 
 			</div><!-- End Col -->
 
@@ -149,9 +152,9 @@
 					            7
 					        </option>
 					        <option value="11" {{ $config->insurance_on  == 11 ? ' selected="true"' : '' }} >
-								11
-							</option>
-						</select>
+                                                    A
+						</option>
+                                            </select>
 				</div>
 
 				<div class="form-group">
@@ -199,7 +202,11 @@
 			<hr style="margin: 15px 0 15px 0">
 			<div class="pull-right" style="width: 400px;">
 				{{ csrf_field() }}
-				<button id="main-config-btn" type="submit" class="btn btn-danger btn-sm btn-block">@lang('messages.Update')</button>
+				<button id="main-config-btn" type="submit" class="btn btn-danger btn-sm btn-block" data-success="2">
+                                    <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                                    <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                    @lang('messages.Update')
+                                </button>
 			</div>
 
 	 	</form>
@@ -213,17 +220,64 @@
 
 <script>
 // SEND MAIN CONFIG FORM
+updateSuccess = $('button#main-config-btn').attr('data-success');
+if (updateSuccess == 1){
+    $('#OK').show();
+    sortTimer123 = setTimeout(function(){ $('#OK').hide(); }, 10000);
+}else if (updateSuccess == 2){
+    $('#remove').show();
+    sortTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
+}else{
+    //sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
+}    
 $('button#main-config-btn').on('click', function(event) {
     event.preventDefault();
-
-    $.ajax({
+    var dataValid = 0;
+    var data123 = $('form#main-config-form').serializeArray();
+    var dataAray = [0] ;
+    $.each(data123, function(i, field){
+        dataAray[field.name] = field.value;
+        //$("#results").append(field.name + ":" + field.value + " ");
+    });
+    console.log( dataAray);
+    dataValid = 0;
+    if (dataAray['max_ps_per_game'] < 1 || dataAray['max_ps_per_game'] > 2000){
+        $('#max_ps_per_game').show();
+        dataValid = 1;
+    }else{
+        $('#max_ps_per_game').hide();
+    }
+    if (dataAray['common_bet_time'] < 10 || dataAray['common_bet_time'] > 600){
+        $('#common_bet_time').show();
+        dataValid = 1;
+    }else{
+        $('#common_bet_time').hide();
+    }
+    if (dataAray['bj_bet_time'] < 10 || dataAray['bj_bet_time'] > 600){
+        $('#bj_bet_time').show();
+        dataValid = 1;
+    }else{
+        $('#bj_bet_time').hide();
+    }
+    
+    
+    if (dataValid == 0){ 
+    /*$.ajax({
         method: 'POST',
         url: '/settings/blackjack/mainconfig/edit',
-        data: $('form#main-config-form').serialize(),
+        data: {'boxID': boxID, 'rowUnique': rowUnique, _token: token},
+        //data: $('form#main-config-form').serialize(),
     })
     .done(function () {
          javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}');
     });
+    */
+    $('#OK').show();
+    sortTimer123 = setTimeout(function(){ $('#OK').hide(); }, 10000);
+    }else{
+        $('#remove').show();
+        sortTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
+    }
 });
 
 // CHANGE VALUE ON CHECKBOX ON CHANGE T/F

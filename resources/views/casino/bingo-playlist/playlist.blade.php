@@ -105,7 +105,7 @@
 
   <!-- Playlist Table -->
   <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-8">
      <table class="table table-bordered">
         <thead class="w3-blue-grey">
           <tr>
@@ -118,7 +118,7 @@
         </thead>
         <tbody>
           @foreach($playlists as $playlist)
-          <tr class="tr-class" idx="{{ $playlist->idx }}">
+          <tr id="row{{ $playlist->idx }}" class="tr-class " idx="{{ $playlist->idx }}">
             <td>{{ $playlist->bingo_ticket_cost }}</td>
             <td>
               {{ $playlist->bingo_cost_line1_fixed && $playlist->bingo_cost_bingo_fixed ? 'Fixed' : 'Standard'}}
@@ -153,12 +153,40 @@
 
 <script>
     $(".up,.down").click(function() {
-      var row = $(this).parents("tr:first");
-      if ($(this).is(".up")) {
-          row.insertBefore(row.prev());
-      } else {
-          row.insertAfter(row.next());
-      }
+        var row = $(this).parents("tr:first");
+        if ($(this).is(".up")) {
+            //row.insertBefore(row.prev());
+            var data = {
+                idx: row.attr('idx'),
+                _token: $('meta[name="csrf-token"]').attr('content')
+            }
+            $.post('/casino/playlist/up', data, function(response) {
+                //console.log(response.msg, response.idx);
+                $('#row' + response.idx ).attr('idx', response.idxC );    
+                $('#row' + response.idx ).attr('id', 'rowNew' );
+                $('#row' + response.idxNew ).attr('idx', response.idx );    
+                $('#row' + response.idxNew ).attr('id', 'row' + response.idx );
+                $('#rowNew' ).attr('idx', response.idxNew );    
+                $('#rowNew' ).attr('id', 'row' + response.idxNew );
+                row.insertBefore(row.prev());
+            });
+
+        } else if ($(this).is(".down")) {
+            //row.insertAfter(row.next());
+            var data = {
+                idx: row.attr('idx'),
+                _token: $('meta[name="csrf-token"]').attr('content')
+            }
+            $.post('/casino/playlist/down', data, function(response) {
+                $('#row' + response.idx ).attr('idx', response.idxC );    
+                $('#row' + response.idx ).attr('id', 'rowNew' );
+                $('#row' + response.idxNew ).attr('idx', response.idx );    
+                $('#row' + response.idxNew ).attr('id', 'row' + response.idx );
+                $('#rowNew' ).attr('idx', response.idxNew );    
+                $('#rowNew' ).attr('id', 'row' + response.idxNew );
+                row.insertAfter(row.next());
+            });
+        }
     });
 
     $(".top").click(function(){
@@ -168,7 +196,11 @@
           _token: $('meta[name="csrf-token"]').attr('content')
       }
       $.post('/casino/playlist/top', data, function(response) {
-        console.log(response.msg, response.idx);
+        //console.log(response.msg, response.idx);
+        //row.attr('idx',response.idxNew ); 
+        $('#row' + response.idx ).attr('idx', response.idxNew );    
+        $('#row' + response.idx ).attr('id', 'row' + response.idxNew );
+                
       });
 
       row.prependTo('table');
@@ -181,7 +213,7 @@
           _token: $('meta[name="csrf-token"]').attr('content')
       }
       $.post('/casino/playlist/destroy', data, function(response) {
-        console.log(response.msg, response.id);
+        //console.log(response.msg, response.id);
       });
       row.remove();
     });

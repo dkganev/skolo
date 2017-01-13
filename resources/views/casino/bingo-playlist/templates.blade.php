@@ -90,6 +90,47 @@
 </div><!-- End Container-->
 
 <script>
+    $(".up,.down").click(function() {
+      var row = $(this).parents(".dataTableRow:first");
+      if ($(this).is(".up")) {
+          console.log(row.prev());
+          row.insertBefore(row.prev());
+      } else {
+          row.insertAfter(row.next());
+      }
+    });
+    $(".top").click(function() {
+      var row = $(this).parents(".divTableRow:first");
+      // var data = {
+      //     idx: row.attr('idx'),
+      //     _token: $('meta[name="csrf-token"]').attr('content')
+      // }
+      // $.post('/casino/playlist/top', data, function(response) {
+      //   console.log(response.msg, response.idx);
+      // });
+
+      row.insertAfter('.dataHeadingRow');
+    });
+    $(".remove").click(function() {
+      var row = $(this).parents(".dataTableRow:first");
+      
+
+      var data = {
+          idx: row.attr('id'),
+          template_id: row.data('template-id'),
+          _token: $('meta[name="csrf-token"]').attr('content')
+      }
+      console.log(data);
+      
+      $.post('//', data, function(response) {
+        // console.log(response);
+      });
+      // row.remove();
+
+      // row.remove();
+    });
+
+
 $(document).ready(function() {
 
   // TOGGLE STORE TEMPLATE FORM

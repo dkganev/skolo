@@ -47,13 +47,18 @@ class BingoPlaylistController extends Controller
 
     public function playlist_top(Request $request)
     {
+        $playlist = Playlist::orderBy('idx', 'asc')->first();
+        $playlistIDX = $playlist->idx;
         $playlist = Playlist::where('idx', $request['idx'])->first();
-        $playlist->idx = Playlist::count() + 10;
+        //$playlistC = Playlist::count() + 100;
+        $playlist->idx = $playlistIDX - 1;
 
         if($playlist->update()) {
             $response = [
                 'msg' => 'Template Moved : Top',
-                'idx'  => $request['idx']
+                'idx'  => $request['idx'],
+                'idxNew'  => $playlistIDX - 1,
+                //'idxC'  => $playlistIDX,
             ];
         }
 
@@ -61,13 +66,53 @@ class BingoPlaylistController extends Controller
     }
 
     public function playlist_up(Request $request)
-    {
-        //
+    {   
+        $playlist = Playlist::orderBy('idx', 'desc')->first();
+        $playlistC = $playlist->idx + 1;
+        $playlist = Playlist::where('idx', $request['idx'])->first();
+        //$playlistC = Playlist::count() + 100;
+        $playlist->idx = $playlistC;
+        $playlist->update();
+        $playlist = Playlist::where('idx', "<", $request['idx'])->orderBy('idx', 'desc')->first();
+        $idxNew = $playlist->idx;
+        $playlist->idx = $request['idx'];
+        $playlist->update();
+        $playlist = Playlist::where('idx', $playlistC)->first();
+        $playlist->idx = $idxNew;
+        if($playlist->update()) {
+            $response = [
+                'msg' => 'Template Moved : Up',
+                'idx'  => $request['idx'],
+                'idxNew'  => $idxNew,
+                'idxC'  => $playlistC,
+            ];
+        }
+        return response()->json($response);
+
     }
 
     public function playlist_down(Request $request)
     {
+        $playlist = Playlist::orderBy('idx', 'desc')->first();
+        $playlistC = $playlist->idx + 1;
         $playlist = Playlist::where('idx', $request['idx'])->first();
+        $playlist->idx = $playlistC;
+        $playlist->update();
+        $playlist = Playlist::where('idx', ">", $request['idx'])->first();
+        $idxNew = $playlist->idx;
+        $playlist->idx = $request['idx'];
+        $playlist->update();
+        $playlist = Playlist::where('idx', $playlistC)->first();
+        $playlist->idx = $idxNew;
+        if($playlist->update()) {
+            $response = [
+                'msg' => 'Template Moved : Down',
+                'idx'  => $request['idx'],
+                'idxNew'  => $idxNew,
+                'idxC'  => $playlistC,
+            ];
+        }
+        return response()->json($response);
     }
 
     public function playlist_destroy(Request $request)
@@ -87,6 +132,12 @@ class BingoPlaylistController extends Controller
     public function load_template(Request $request)
     {
         $template = Templates::where('template_id', $request->template_id)->first();
+        $playlist = Playlist::orderBy('idx', 'desc')->first();
+        if ( $playlist){ //Playlist::count()
+            $playlistIDX = $playlist->idx;
+        }else{
+            $playlistIDX = 1;
+        }
 
         foreach($template->template_games as $games) {
             $data = [
@@ -96,7 +147,7 @@ class BingoPlaylistController extends Controller
 
                 'bingo_cost_line1_fixed' => $games->bingo_cost_line1_fixed,
                 'bingo_cost_bingo_fixed' => $games->bingo_cost_bingo_fixed,
-                'idx' => Playlist::count() + 1
+                'idx' => $games->idx + $playlistIDX
             ];
 
             Playlist::create($data);

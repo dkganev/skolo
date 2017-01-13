@@ -49,10 +49,10 @@
                             @lang('messages.Call Attend')
                             <span id="BtnCallAttend" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['attendant']}}</span>
                         </button>
-                        <button class="btn btn-warning btn-sm">
+                        {{--<button class="btn btn-warning btn-sm">
                             @lang('messages.Cash Out')
                             <span class="badge" style="background-color: #303030;color: #fff;"> 14 </span>
-                        </button>
+                        </button>--}}
                         <button class="btn btn-sm" style="background-color: #9c9c9c;">
                             @lang('messages.Offline')
                             <span id="BtnOffline" class="badge" style="background-color: #303030;color: #fff;">{{$statuses['offline']}}</span>

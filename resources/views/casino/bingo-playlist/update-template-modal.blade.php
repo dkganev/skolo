@@ -112,16 +112,17 @@
 </div>
 </div>
 <script>
-    $(".up,.down").click(function() {
+    /*$(".up,.down").click(function() {
       var row = $(this).parents(".dataTableRow:first");
       if ($(this).is(".up")) {
-          row.insertBefore(row.prev());
+          console.log(row.prev());
+          //row.insertBefore(row.prev());
       } else {
-          row.insertAfter(row.next());
+          //row.insertAfter(row.next());
       }
-    });
+    });*/
 
-    $(".top").click(function() {
+    /*$(".top").click(function() {
       var row = $(this).parents(".divTableRow:first");
       // var data = {
       //     idx: row.attr('idx'),
@@ -132,9 +133,9 @@
       // });
 
       row.insertAfter('.dataHeadingRow');
-    });
+    });*/
 
-    $(".remove").click(function() {
+    /*$(".remove").click(function() {
       var row = $(this).parents(".dataTableRow:first");
       
 
@@ -151,7 +152,7 @@
       // row.remove();
 
       // row.remove();
-    });
+    });*/
 
 </script>
 <script>
