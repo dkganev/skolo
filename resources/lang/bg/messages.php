@@ -390,6 +390,8 @@ return array(
     'Removed Cards Min must be less then Removed Cards Max' => 'Removed Cards Min must be less then Removed Cards Max',
     'Shuffle Cards Min must be less then Shuffle Cards Max' => 'Shuffle Cards Min must be less then Shuffle Cards Max',
     'Min Bet must be bigger or equal then chip1' => 'Min Bet must be bigger or equal then chip1',
+    'You cant add standard record with this Ticket Cost' => "You can't add standard record with this Ticket Cost",
+    'You cant add fixed record with this Ticket Cost' => "You can't add fixed record with this Ticket Cost",
     
 
     'welcome' => 'Welcome to our application'

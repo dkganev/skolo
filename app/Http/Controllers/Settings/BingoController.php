@@ -11,6 +11,7 @@ use App\Models\Bingo\MyBonus;
 use App\Models\Bingo\JackpotSteps;
 use App\Models\Bingo\SphereConfig;
 use App\Models\Bingo\AccConfig;
+//use App\Models\Bingo\JackpotSteps;
 use DB;
 use Excel;
 
@@ -172,24 +173,40 @@ class BingoController extends Controller
 
     public function max_balls_store(Request $request)
     {
-        $this->validate($request, [
-            'bingo_ticket_cost' => 'required|unique:pgsql3.jackpot_steps'
-        ]);
+        //$this->validate($request, [
+        //    'bingo_ticket_cost' => 'required|unique:pgsql3.jackpot_steps'
+        //]);
+        $bingo_cost_fixed = isset($request->bingo_cost_fixed) ? true : false;
+        $jackpot_steps = JackpotSteps::where('bingo_ticket_cost', $request->bingo_ticket_cost)->where('bingo_cost_fixed', $bingo_cost_fixed)->first();
+        
+        if ($jackpot_steps) {
+            $dataArray1 = array(
+                "success" => "error",
+                "fixed" => $bingo_cost_fixed
+            );
+        }else {
 
-        DB::connection('pgsql3')->table('jackpot_steps')->insert([
-            'bingo_ticket_cost' => $request->bingo_ticket_cost,
-            'jackpot_bingo_max_ball' => $request->jackpot_bingo_max_ball,
-            'jackpot_line_max_ball' => $request->jackpot_line_max_ball,
-            'bonus_line_max_ball' => $request->bonus_line_max_ball,
-            'bonus_bingo_max_ball' => $request->bonus_bingo_max_ball,
-            'jackpo_line_ticket_cnt' => $request->jackpo_line_ticket_cnt,
-            'jackpo_bingo_ticket_cnt' => $request->jackpo_bingo_ticket_cnt,
-            'bonus_line_ticket_cnt' => $request->bonus_line_ticket_cnt,
-            'bonus_bingo_ticket_cnt' => $request->bonus_bingo_ticket_cnt,
-            'bingo_cost_fixed' => isset($request->bingo_cost_fixed) ? true : false
+            DB::connection('pgsql3')->table('jackpot_steps')->insert([
+                'bingo_ticket_cost' => $request->bingo_ticket_cost,
+                'jackpot_bingo_max_ball' => $request->jackpot_bingo_max_ball,
+                'jackpot_line_max_ball' => $request->jackpot_line_max_ball,
+                'bonus_line_max_ball' => $request->bonus_line_max_ball,
+                'bonus_bingo_max_ball' => $request->bonus_bingo_max_ball,
+                'jackpo_line_ticket_cnt' => $request->jackpo_line_ticket_cnt,
+                'jackpo_bingo_ticket_cnt' => $request->jackpo_bingo_ticket_cnt,
+                'bonus_line_ticket_cnt' => $request->bonus_line_ticket_cnt,
+                'bonus_bingo_ticket_cnt' => $request->bonus_bingo_ticket_cnt,
+                'bingo_cost_fixed' => isset($request->bingo_cost_fixed) ? true : false
 
-        ]);
-
+            ]);
+            $dataArray1 = array(
+                "success" => "success",
+                "fixed" => $bingo_cost_fixed
+            );
+        }
+        
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
         // return redirect('/settings');
     }
 
