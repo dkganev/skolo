@@ -57,6 +57,7 @@
 
                     <td>
                         <input name="bet_min" style="height:30px;" class="form-control" value="{{ $table->bet_min }}" type="text">
+                     	<label id="bet_min{{ $table->table_id }}" style="color: red; display: none; ">@lang('messages.Min Bet must be bigger or equal then chip1')</label>
                     </td>
                     <td>
                         <input name="bet_max" style="height:30px;" class="form-control" value="{{ $table->bet_max }}" type="text">
@@ -84,6 +85,8 @@
                                 type="submit"
                                 data-id="{{ $table->table_id }}"
                         >
+                            <span id="OK{{ $table->table_id }}" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                            <span id="remove{{ $table->table_id }}" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
                             @lang('messages.Update')
                         </button>
                     </td>
@@ -94,41 +97,7 @@
         </form>
         <form id="enabled-tables-form" style="border: 1px solid #fff; padding: 10px">
             <div class="tables">
-{{--                 <span class="button-checkbox" style="margin-left: 0;">
-                    <label style="margin-left: 48px;" for="t1_t2">1 Table</label><br>
-                    <input type="hidden" name="t1_t2" value="false">
-                    <button type="button" class="btn" data-color="warning"></button>
-                    <input type="radio" name="t1_t2" class="hidden" 
-                        {{ $enabled->t1_enabled && $enabled->t2_enabled ? 'checked' : '' }}
-                    />
-                </span>
 
-                <span class="button-checkbox" style="margin-left: 0;">
-                    <label style="margin-left: 48px;" for="t1_t2">1 Table</label><br>
-                    <input type="hidden" name="t1_t2" value="false">
-                    <button type="radio" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="t1_t2" class="hidden" 
-                        {{ $enabled->t1_enabled && $enabled->t2_enabled ? 'checked' : '' }}
-                    />
-                </span>
-
-                <span class="button-checkbox">
-                    <label style="margin-left: 48px;" for="t3_t4">4 Tables</label><br>
-                    <input type="hidden" name="t3_t4" value="false">
-                    <button type="radio" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="t3_t4" class="hidden" 
-                        {{ $enabled->t3_enabled && $enabled->t4_enabled ? 'checked' : '' }}
-                    />
-                </span>
-
-                <span class="button-checkbox">
-                    <label style="margin-left: 48px;" for="t3_t4">8 Tables</label><br>
-                    <input type="hidden" name="t3_t4" value="false">
-                    <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="t3_t4" class="hidden" 
-                        {{ $enabled->t3_enabled && $enabled->t4_enabled ? 'checked' : '' }}
-                    />
-                </span> --}}
 
                 <div class="funkyradio">
 
@@ -160,45 +129,12 @@
                     </div>
                 </div>
 
-{{--                 <span class="button-checkbox" style="margin-left: 0;">
-                    <label for="t1_t2">@lang('messages.Table') 1 &#38; @lang('messages.Table') 2</label><br>
-                    <input type="hidden" name="t1_t2" value="false">
-                    <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="t1_t2" class="hidden" 
-                        
-                    />
-                </span>
-
-                <span class="button-checkbox">
-                    <label for="t3_t4">@lang('messages.Table') 3 &#38; @lang('messages.Table') 4</label><br>
-                    <input type="hidden" name="t3_t4" value="false">
-                    <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="t3_t4" class="hidden" 
-                        {{ $enabled->t3_enabled && $enabled->t4_enabled ? 'checked' : '' }}
-                    />
-                </span>
-
-                <span class="button-checkbox">
-                    <label for="t5_t6">@lang('messages.Table') 5 &#38; @lang('messages.Table') 6</label><br>
-                    <input type="hidden" name="t5_t6" value="false">
-                    <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="t5_t6" class="hidden" 
-                        {{ $enabled->t5_enabled && $enabled->t6_enabled ? 'checked' : '' }}
-                    />
-                </span>
-
-                <span class="button-checkbox">
-                    <label for="t7_t8">@lang('messages.Table') 7 &#38; 8</label><br>
-                    <input type="hidden" name="t7_t8" value="false">
-                    <button type="button" class="btn" data-color="warning"></button>
-                    <input type="checkbox" name="t7_t8" class="hidden" 
-                        {{ $enabled->t7_enabled && $enabled->t8_enabled ? 'checked' : '' }}
-                    />
-                </span> --}}
 
 
                 {{ csrf_field() }}
                 <button style="position: relative; left: 1%; width: 17%; height: 50px; margin-top: 14px;" class="btn btn-danger btn-sm  enabled-table-button pull-right" type="submit">
+                    <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                    <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
                     @lang('messages.Update')
                 </button>
                 </div>
@@ -216,43 +152,71 @@
 /* Edit Table Row */
 // SEND TABLE EDIT FORM
 $('.bj-table-button').on('click', function(event) {
+    
+
     event.preventDefault();
     var id = $(this).attr('data-id');
     var trForm = $('tr#' + id + ' :input[name="bet_max"]').val();
     
-    $.ajax({
-        method: 'POST',
-        url: '/settings/blackjack/table/edit',
-        data: $('tr#' + id + ' :input').serialize(),
-        success: function(data) {
-            // For Version
-            // for(key in data.response) {
-            //     $('tr#' + id + ' :input[name="' + key + '"]').val(data.response[key]);
-            // }
-
-            // Each Version
-            $.each(data.response, function(key, value) {
-                $('tr#' + id + ' :input[name="' + key + '"]').val(value);
-            });
-
-            $('tr#' + id).addClass('flashNow');
-            setTimeout(function() {
-                $('tr#' + id).removeClass('flashNow');
-            }, 500);
-
-            $('.alert-success').delay(50).fadeIn(function() {
-              $(this).delay(1500).fadeOut();
-            });
-        },
-        error: function (error) {
-            console.log("Error " + error);
-        }
+    var dataValid = 0;
+    var data123 = $('tr#' + id + ' :input').serializeArray();
+    var dataAray = [0] ;
+    $.each(data123, function(i, field){
+        dataAray[field.name] = field.value;
+        //$("#results").append(field.name + ":" + field.value + " ");
     });
+    //console.log( dataAray);
+    dataValid = 0;
+    if (dataAray['bet_min'] < dataAray['chip1']){
+        $('#bet_min' + id).show();
+        dataValid = 1;
+    }else{
+        $('#bet_min' + id).hide();
+    }
+    
+    if (dataValid == 0){
+        $.ajax({
+            method: 'POST',
+            url: '/settings/blackjack/table/edit',
+            data: $('tr#' + id + ' :input').serialize(),
+            success: function(data) {
+                // For Version
+                // for(key in data.response) {
+                //     $('tr#' + id + ' :input[name="' + key + '"]').val(data.response[key]);
+                // }
+
+                // Each Version
+                $.each(data.response, function(key, value) {
+                    $('tr#' + id + ' :input[name="' + key + '"]').val(value);
+                });
+
+                $('tr#' + id).addClass('flashNow');
+                setTimeout(function() {
+                    $('tr#' + id).removeClass('flashNow');
+                }, 500);
+
+                //$('.alert-success').delay(50).fadeIn(function() {
+                //    $(this).delay(1500).fadeOut();
+                //});
+                $('#OK' + id).show();
+                sortTimer123 = setTimeout(function(){ $('#OK' + id).hide(); }, 10000);
+            },
+            error: function (error) {
+                console.log("Error " + error);
+                $('#remove' + id).show();
+                sortTimer123 = setTimeout(function(){ $('#remove' + id).hide(); }, 10000);
+            }
+        });
+    } else {
+        $('#remove' + id).show();
+        sortTimer123 = setTimeout(function(){ $('#remove' + id).hide(); }, 10000);
+    }
 });
 
 
 $('.enabled-table-button').on('click', function(event) {
-    event.preventDefault();   
+    event.preventDefault();
+    console.log('test');
     $.ajax({
         method: 'POST',
         url: '/settings/blackjack/table/enabled',
@@ -261,7 +225,8 @@ $('.enabled-table-button').on('click', function(event) {
             javascript:ajaxLoad('{{ url('/settings/blackjack/tables') }}');
         },
         error: function (response) {
-            //
+            $('#remove').show();
+            sortTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
         }
     });
 });
@@ -362,9 +327,9 @@ $('input[type="checkbox"]').change(function(){
 });
 </script>
 <script>
-    function ExportToPNGBJTables() {
+function ExportToPNGBJTables() {
     html2canvas($('#blackjack-tables-panel'), {
-        onrendered: function(canvas) {
+            onrendered: function(canvas) {
             theCanvas = canvas;
             //document.body.appendChild(canvas);
             $(".faSpinner").show();
@@ -375,7 +340,7 @@ $('input[type="checkbox"]').change(function(){
             //document.body.removeChild(canvas);
             $(".faSpinner").hide();
         }
-    });
+        });
 }
 </script>
 

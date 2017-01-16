@@ -69,7 +69,7 @@
                                     <span class="input-group-addon" id="sizing-addon2">#</span>
                                     <input name="common_bet_time" value="{{ $config->common_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
 				</div>
-				<label id="common_bet_time" style="color: red; display: none; ">@lang('messages.Common Bet Time must be between 1-600')</label>
+                            	<label id="common_bet_time" style="color: red; display: none; ">@lang('messages.Common Bet Time must be between 10-600')</label>
                             </div>
 
                             <div class="form-group">
@@ -78,92 +78,97 @@
                                     <span class="input-group-addon" id="sizing-addon2">#</span>
                                     <input name="bj_bet_time" value="{{ $config->bj_bet_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
 				</div>
-				<label id="bj_bet_time" style="color: red; display: none; ">@lang('messages.Personal Bet Time must be between 1-600')</label>
+				<label id="bj_bet_time" style="color: red; display: none; ">@lang('messages.Personal Bet Time must be between 10-600')</label>
                             </div>
 
 			</div><!-- End Col -->
 
 			<!-- SECOND COLUMN -->
 			<div class="col-lg-4">
-				<div class="form-group">
-					<label style="color: #474747">@lang('messages.Draw Card Time'):</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="draw_card_time" value="{{ $config->draw_card_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
-				</div>
+                            <div class="form-group">
+                                <label style="color: #474747">@lang('messages.Draw Card Time'):</label><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input name="draw_card_time" value="{{ $config->draw_card_time }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
+                                </div>
+                            	<label id="draw_card_time" style="color: red; display: none; ">@lang('messages.Draw Card Time must be between 500000-2000000')</label>
+                            </div>
 
-				<div class="form-group">
+                            <div class="form-group">
 			    	<label style="color: #474747">@lang('messages.Num Card Packs'):</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="num_card_packs" value="{{ $config->num_card_packs }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
+				<div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input name="num_card_packs" value="{{ $config->num_card_packs }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
 				</div>
+                            	<label id="num_card_packs" style="color: red; display: none; ">@lang('messages.Num Card Packs must be between 4-10')</label>
+                            </div>
 
-				<div class="form-group">
+                            <div class="form-group">
 			    	<label style="color: #474747">@lang('messages.Removed Cards Min'):</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="removed_cards_min" value="{{ $config->removed_cards_min }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
+				<div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input name="removed_cards_min" value="{{ $config->removed_cards_min }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
 				</div>
+                            	<label id="removed_cards_min" style="color: red; display: none; ">@lang('messages.Removed Cards Min must be between 5-52')</label>
+                            	<label id="removed_cards_min1" style="color: red; display: none; ">@lang('messages.Removed Cards Min must be less then Removed Cards Max')</label>
+                            </div>
 
-				<div class="form-group">
+                            <div class="form-group">
 			    	<label style="color: #474747">@lang('messages.Removed Cards Max'):</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="removed_cards_max" value="{{ $config->removed_cards_max }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
-				</div>
+				<div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input name="removed_cards_max" value="{{ $config->removed_cards_max }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
+                                </div>
+                            	<label id="removed_cards_max" style="color: red; display: none; ">@lang('messages.Removed Cards Max must be between 5-52')</label>
+                            </div>
 
-				<div class="form-group">
+                            <div class="form-group">
 			    	<label style="color: #474747">@lang('messages.Shuffle Cards Min'):</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="shuffle_cards_min" value="{{ $config->shuffle_cards_min }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
-				</div>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input name="shuffle_cards_min" value="{{ $config->shuffle_cards_min }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
+                                </div>
+                            	<label id="shuffle_cards_min" style="color: red; display: none; ">@lang('messages.Shuffle Cards Min must be between 5-52')</label>
+                             	<label id="shuffle_cards_min1" style="color: red; display: none; ">@lang('messages.Shuffle Cards Min must be less then Shuffle Cards Max')</label>
+                            </div>
 
 			</div><!-- End Col -->
 
 			<!-- THIRD COLUMN -->
 			<div class="col-lg-4">
-				<div class="form-group">
-					<label style="color: #474747">@lang('messages.Shuffle Cards Max'):</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="shuffle_cards_max" value="{{ $config->shuffle_cards_max }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
+                            <div class="form-group">
+				<label style="color: #474747">@lang('messages.Shuffle Cards Max'):</label><br>
+				<div class="input-group">
+                                    <span class="input-group-addon" id="sizing-addon2">#</span>
+                                    <input name="shuffle_cards_max" value="{{ $config->shuffle_cards_max }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
 				</div>
+			    	<label id="shuffle_cards_max" style="color: red; display: none; ">@lang('messages.Shuffle Cards Max must be between 5-52')</label>
+                        </div>
 
-				<div class="form-group">
-			    	<label style="color: #474747">@lang('messages.Win Pause'):</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="win_pause" value="{{ $config->win_pause }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
-				</div>
+			<div class="form-group">
+                            <label style="color: #474747">@lang('messages.Win Pause'):</label><br>
+                            <div class="input-group">
+				<span class="input-group-addon" id="sizing-addon2">#</span>
+				<input name="win_pause" value="{{ $config->win_pause }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
+                            </div>
+                            <label id="win_pause" style="color: red; display: none; ">@lang('messages.Win Pause must be between 1-10')</label>
+                        </div>
+    			<div class="form-group" >
+                            <label for="insurance_on">@lang('messages.Insurance On'):</label><br>
+			    <select name="insurance_on" id="insurance_on" class="selectpicker" data-actions-box="true">
+                                <option value="7" {{ $config->insurance_on  == 7 ? ' selected="true"' : '' }} > 7 </option>
+				<option value="11" {{ $config->insurance_on  == 11 ? ' selected="true"' : '' }} > A </option>
+                            </select>
+			</div>
 
-				<div class="form-group" >
-					<label for="insurance_on">@lang('messages.Insurance On'):</label><br>
-					    <select name="insurance_on" id="insurance_on" class="selectpicker" data-actions-box="true">
-					        <option value="7" {{ $config->insurance_on  == 7 ? ' selected="true"' : '' }} >
-					            7
-					        </option>
-					        <option value="11" {{ $config->insurance_on  == 11 ? ' selected="true"' : '' }} >
-                                                    A
-						</option>
-                                            </select>
-				</div>
-
-				<div class="form-group">
-			    	<label style="color: #474747">@lang('messages.Shuffle Timeout'):</label><br>
-					<div class="input-group">
-						<span class="input-group-addon" id="sizing-addon2">#</span>
-						<input name="shuffle_timeout" value="{{ $config->shuffle_timeout }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
-					</div>
-				</div>
+			<div class="form-group">
+                            <label style="color: #474747">@lang('messages.Shuffle Timeout'):</label><br>
+                            <div class="input-group">
+				<span class="input-group-addon" id="sizing-addon2">#</span>
+				<input name="shuffle_timeout" value="{{ $config->shuffle_timeout }}" type="text" class="form-control text-center" aria-describedby="sizing-addon2">
+                            </div>
+                            <label id="shuffle_timeout" style="color: red; display: none; ">@lang('messages.Shuffle Timeout must be between 1-10')</label>
+                       	</div>
 
 			</div><!-- End Col -->
 
@@ -220,6 +225,7 @@
 
 <script>
 // SEND MAIN CONFIG FORM
+/*
 updateSuccess = $('button#main-config-btn').attr('data-success');
 if (updateSuccess == 1){
     $('#OK').show();
@@ -229,7 +235,8 @@ if (updateSuccess == 1){
     sortTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
 }else{
     //sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
-}    
+} 
+*/
 $('button#main-config-btn').on('click', function(event) {
     event.preventDefault();
     var dataValid = 0;
@@ -239,7 +246,7 @@ $('button#main-config-btn').on('click', function(event) {
         dataAray[field.name] = field.value;
         //$("#results").append(field.name + ":" + field.value + " ");
     });
-    console.log( dataAray);
+    //console.log( dataAray);
     dataValid = 0;
     if (dataAray['max_ps_per_game'] < 1 || dataAray['max_ps_per_game'] > 2000){
         $('#max_ps_per_game').show();
@@ -259,21 +266,80 @@ $('button#main-config-btn').on('click', function(event) {
     }else{
         $('#bj_bet_time').hide();
     }
-    
-    
+    if (dataAray['draw_card_time'] < 500000 || dataAray['draw_card_time'] > 2000000){
+        $('#draw_card_time').show();
+        dataValid = 1;
+    }else{
+        $('#draw_card_time').hide();
+    }
+    if (dataAray['num_card_packs'] < 4 || dataAray['num_card_packs'] > 10){
+        $('#num_card_packs').show();
+        dataValid = 1;
+    }else{
+        $('#num_card_packs').hide();
+    }
+    if (dataAray['removed_cards_min'] >= dataAray['removed_cards_max']){
+        $('#removed_cards_min1').show();
+        dataValid = 1;
+    }else{
+        $('#removed_cards_min1').hide();
+    }
+    if (dataAray['removed_cards_min'] < 5 || dataAray['removed_cards_min'] > 52){
+        $('#removed_cards_min').show();
+        dataValid = 1;
+    }else{
+        $('#removed_cards_min').hide();
+    }
+    if (dataAray['removed_cards_min'] < 5 || dataAray['removed_cards_max'] > 52){
+        $('#removed_cards_max').show();
+        dataValid = 1;
+    }else{
+        $('#removed_cards_max').hide();
+    }
+    if (dataAray['shuffle_cards_min'] >= dataAray['shuffle_cards_max'] ){
+        $('#shuffle_cards_min1').show();
+        dataValid = 1;
+    }else{
+        $('#shuffle_cards_min1').hide();
+    }
+    if (dataAray['shuffle_cards_min'] < 5 || dataAray['shuffle_cards_min'] > 52 ){
+        $('#shuffle_cards_min').show();
+        dataValid = 1;
+    }else{
+        $('#shuffle_cards_min').hide();
+    }
+    if (dataAray['shuffle_cards_max'] < 5 || dataAray['shuffle_cards_max'] > 52){
+        $('#shuffle_cards_max').show();
+        dataValid = 1;
+    }else{
+        $('#shuffle_cards_max').hide();
+    }
+    if (dataAray['win_pause'] < 1 || dataAray['win_pause'] > 10){
+        $('#win_pause').show();
+        dataValid = 1;
+    }else{
+        $('#win_pause').hide();
+    }
+    if (dataAray['shuffle_timeout'] < 1 || dataAray['shuffle_timeout'] > 10){
+        $('#shuffle_timeout').show();
+        dataValid = 1;
+    }else{
+        $('#shuffle_timeout').hide();
+    }
     if (dataValid == 0){ 
-    /*$.ajax({
-        method: 'POST',
-        url: '/settings/blackjack/mainconfig/edit',
-        data: {'boxID': boxID, 'rowUnique': rowUnique, _token: token},
-        //data: $('form#main-config-form').serialize(),
-    })
-    .done(function () {
-         javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}');
-    });
-    */
-    $('#OK').show();
-    sortTimer123 = setTimeout(function(){ $('#OK').hide(); }, 10000);
+        $.ajax({
+            method: 'POST',
+            url: '/settings/blackjack/mainconfig/edit',
+            //data: {'boxID': boxID, 'rowUnique': rowUnique, _token: token},
+            data: $('form#main-config-form').serialize(),
+        })
+        .done(function () {
+            $('#OK').show();
+            sortTimer123 = setTimeout(function(){ $('#OK').hide(); }, 10000);
+            //javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}');
+ 
+        });
+    
     }else{
         $('#remove').show();
         sortTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);

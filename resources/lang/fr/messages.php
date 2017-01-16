@@ -376,6 +376,20 @@ return array(
     'The withdrawal amount is bigger than existing Card Balance' => 'The withdrawal amount is bigger than existing Card Balance',
     'CashIn Amount' => 'CashIn Amount',
     'Card ID' => 'Card ID',
+    'Max Ps must be between 1-2000' => 'Max Ps must be between 1-2000',
+    'Common Bet Time must be between 10-600' => 'Common Bet Time must be between 10-600',
+    'Personal Bet Time must be between 10-600' => 'Personal Bet Time must be between 10-600',
+    'Draw Card Time must be between 0.5-2' => 'Draw Card Time must be between 0.5-2',
+    'Num Card Packs must be between 4-10' => 'Num Card Packs must be between 4-10',
+    'Removed Cards Min must be between 5-52' => 'Removed Cards Min must be between 5-52',
+    'Removed Cards Max must be between 5-52' => 'Removed Cards Max must be between 5-52',
+    'Shuffle Cards Min must be between 5-52' => 'Shuffle Cards Min must be between 5-52',
+    'Shuffle Cards Max must be between 5-52' => 'Shuffle Cards Max must be between 5-52',
+    'Shuffle Timeout must be between 1-10' => 'Shuffle Timeout must be between 1-10',
+    'Win Pause must be between 1-10' => 'Win Pause must be between 1-10',
+    'Removed Cards Min must be less then Removed Cards Max' => 'Removed Cards Min must be less then Removed Cards Max',
+    'Shuffle Cards Min must be less then Shuffle Cards Max' => 'Shuffle Cards Min must be less then Shuffle Cards Max',
+    'Min Bet must be bigger or equal then chip1' => 'Min Bet must be bigger or equal then chip1',
     
     
     
