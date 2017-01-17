@@ -93,8 +93,8 @@
     $(".closeTemp").click(function() {
         var template_id = $(this).attr("data-id");
         $('#editTemplateModal--' + template_id).modal('hide');
-        sortTimer123 = setTimeout(function(){ javascript:ajaxLoad('{{url('/casino/templates')}}')}, 1000);
-        //javascript:ajaxLoad('{{url('/casino/templates')}}');
+        //sortTimer123 = setTimeout(function(){ javascript:ajaxLoad('{{url('/casino/templates')}}')}, 1000);
+        javascript:ajaxLoad('{{url('/casino/templates')}}');
       
         console.log(template_id);
         
