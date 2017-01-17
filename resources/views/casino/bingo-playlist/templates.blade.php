@@ -64,7 +64,7 @@
               <td>{{ $template->template_games->count() }}</td>
               <td>
                 <a class="btn btn-primary btn-xs" href="#"
-                    role="button" data-toggle="modal"
+                    role="button" 
                     data-toggle="modal"
                     data-target="#editTemplateModal--{{ $template->template_id }}"
                 >
@@ -92,7 +92,7 @@
 <script>
     $(".closeTemp").click(function() {
         var template_id = $(this).attr("data-id");
-        $('#editTemplateModal--' + template_id).modal('hide');
+        //$('#editTemplateModal--' + template_id).modal('hide');
         javascript:ajaxLoad('{{url('/casino/templates')}}');
       
         console.log(template_id);
