@@ -51,9 +51,10 @@
                 </button>
 
                 <button type="button"
+                        data-id="{{ $template->template_id }}"
                         data-dismiss="modal"
                         style="margin-top: 25px;"
-                        class="btn btn-default btn-sm form-control"
+                        class="btn btn-default btn-sm form-control closeTemp"
                         >
                           @lang('messages.Close')
                 </button>
@@ -67,7 +68,7 @@
 
                 <div class="divTable">
                   <div class="divTableBody">
-                    <div class="divTableRow dataHeadingRow">
+                    <div class="divTableRow dataHeadingRow{{ $template->template_id }}">
                       <div class="divTableCell"><strong>@lang('messages.Ticket Cost') (@lang('messages.cents'))</strong></div>
                       <div class="divTableCell"><strong>@lang('messages.Game Type')</strong></div>
                       <div class="divTableCell"><strong>@lang('messages.Line Cost') (@lang('messages.cents'))</strong></div>
@@ -76,7 +77,7 @@
                     </div>
 
                     @foreach($template->template_games as $game)
-                    <div class="divTableRow dataTableRow" id="{{ $game->idx }}" data-template-id="{{ $template->template_id }}">
+                    <div class="divTableRow dataTableRow" id="row{{ $template->template_id }}idx{{ $game->idx }}" data-idx="{{ $game->idx }}" data-template-id="{{ $template->template_id }}">
                       <div class="divTableCell">{{ $game->bingo_ticket_cost }}</div>
                       <div class="divTableCell">
                         {{ $game->bingo_cost_line1_fixed && $game->bingo_cost_bingo_fixed ? app('translator')->get('messages.Fixed') : app('translator')->get('messages.Standard')}}
@@ -112,6 +113,9 @@
 </div>
 </div>
 <script>
+    
+    
+    
     /*$(".up,.down").click(function() {
       var row = $(this).parents(".dataTableRow:first");
       if ($(this).is(".up")) {

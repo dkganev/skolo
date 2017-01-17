@@ -90,42 +90,101 @@
 </div><!-- End Container-->
 
 <script>
+    $(".closeTemp").click(function() {
+        var template_id = $(this).attr("data-id");
+        $('#editTemplateModal--' + template_id).modal('hide');
+        javascript:ajaxLoad('{{url('/casino/templates')}}');
+      
+        console.log(template_id);
+        
+    });
     $(".up,.down").click(function() {
-      var row = $(this).parents(".dataTableRow:first");
-      if ($(this).is(".up")) {
-          console.log(row.prev());
-          row.insertBefore(row.prev());
-      } else {
-          row.insertAfter(row.next());
-      }
+        var row = $(this).parents(".dataTableRow:first");
+        idx = row.attr('data-idx');
+        template_id = row.data('template-id');
+        var data = {
+            idx: row.attr('data-idx'),
+            template_id: row.data('template-id'),
+            _token: $('meta[name="csrf-token"]').attr('content')
+        }
+        if ($(this).is(".up")) {
+            $.post('casino/templates/up', data, function(response) {
+                if (response.success == "success") {
+                    //console.log(response.idx, response.idxNew, response.idxC);
+                    $('#row' + template_id + "idx" + response.idx ).attr('data-idx', response.idxC );    
+                    $('#row' + template_id + "idx" + response.idx ).attr('id', 'rowNew' );
+                    $('#row' + template_id + "idx" + response.idxNew ).attr('data-idx', response.idx );    
+                    $('#row' +  template_id + "idx" + response.idxNew  ).attr('id', 'row' +  template_id + "idx" + response.idx );
+                    $('#rowNew' ).attr('data-idx', response.idxNew );    
+                    $('#rowNew' ).attr('id', 'row' +  template_id + "idx" + response.idxNew );
+                    row.insertBefore(row.prev());
+                } else {
+                    console.log(response);
+                }
+            });
+            
+        } else {
+            $.post('casino/templates/down', data, function(response) {
+                if (response.success == "success") {
+                    //console.log(response.idx, response.idxNew, response.idxC);
+                    $('#row' + template_id + "idx" + response.idx ).attr('data-idx', response.idxC );    
+                    $('#row' + template_id + "idx" + response.idx ).attr('id', 'rowNew' );
+                    $('#row' + template_id + "idx" + response.idxNew ).attr('data-idx', response.idx );    
+                    $('#row' +  template_id + "idx" + response.idxNew  ).attr('id', 'row' +  template_id + "idx" + response.idx );
+                    $('#rowNew' ).attr('data-idx', response.idxNew );    
+                    $('#rowNew' ).attr('id', 'row' +  template_id + "idx" + response.idxNew );
+                    row.insertAfter(row.next());
+                } else {
+                    console.log(response);
+                }
+            });
+            
+        }
     });
     $(".top").click(function() {
       var row = $(this).parents(".divTableRow:first");
-      // var data = {
-      //     idx: row.attr('idx'),
-      //     _token: $('meta[name="csrf-token"]').attr('content')
-      // }
-      // $.post('/casino/playlist/top', data, function(response) {
-      //   console.log(response.msg, response.idx);
-      // });
-
-      row.insertAfter('.dataHeadingRow');
-    });
-    $(".remove").click(function() {
-      var row = $(this).parents(".dataTableRow:first");
-      
-
+      idx = row.attr('data-idx');
+      template_id = row.data('template-id');
+      var idxArray = new Array();
       var data = {
-          idx: row.attr('id'),
+          idx: row.attr('data-idx'),
           template_id: row.data('template-id'),
           _token: $('meta[name="csrf-token"]').attr('content')
       }
-      console.log(data);
-      
-      $.post('//', data, function(response) {
-        // console.log(response);
+      $.post('casino/templates/top', data, function(response) {
+        $.each( response.idxArray, function( key, value ) {
+            idxArray.push(value);
+        });
+        for ( var i = 0, l = idxArray.length; l > i  ; l-- ) {
+            idx2 = idxArray[ l-1 ] - 1; 
+            $('#row' + template_id + "idx" + idx2 ).attr('data-idx', idxArray[ l-1 ] );
+            $('#row' + template_id + "idx" + idx2 ).attr('id', 'row' + template_id + "idx" + idxArray[ l-1 ]);
+        }
+        
+        //row.attr('idx',response.idxNew ); 
+        idxN = parseInt(response.idx) + 1;
+        $('#row' + template_id + "idx" + idxN ).attr('data-idx', response.idxNew );
+        $('#row' + template_id + "idx" + idxN ).attr('id', 'row' + template_id + "idx" + response.idxNew);
       });
-      // row.remove();
+      row.insertAfter('.dataHeadingRow' + template_id);
+    });
+    $(".remove").click(function() {
+      var row = $(this).parents(".dataTableRow:first");
+      template_id = row.data('template-id');
+
+      var data = {
+          idx: row.attr('data-idx'),
+          template_id: row.data('template-id'),
+          _token: $('meta[name="csrf-token"]').attr('content')
+      }
+      //console.log(data);
+      
+      $.post('casino/templates/destroy', data, function(response) {
+        // console.log(response);
+        //$('#editTemplateModal--' + template_id).modal('hide');
+        //javascript:ajaxLoad('{{url('/casino/templates')}}');
+      });
+       row.remove();
 
       // row.remove();
     });

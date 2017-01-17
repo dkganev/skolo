@@ -48,6 +48,9 @@ Route::post('/casino/playlist/down', 'Casino\BingoPlaylistController@playlist_do
 Route::get('/casino/templates', 'Casino\BingoPlaylistController@index_templates');
 Route::post('/casino/templates/store', 'Casino\BingoPlaylistController@template_store');
 Route::post('/casino/templates/destroy', 'Casino\BingoPlaylistController@template_destroy');
+Route::post('/casino/templates/top', 'Casino\BingoPlaylistController@template_top');
+Route::post('/casino/templates/up', 'Casino\BingoPlaylistController@template_up');
+Route::post('/casino/templates/down', 'Casino\BingoPlaylistController@template_down');
 Route::post('/casino/template/game/store', 'Casino\BingoPlaylistController@template_game_store');
 
 /**

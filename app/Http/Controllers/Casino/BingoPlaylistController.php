@@ -185,12 +185,126 @@ class BingoPlaylistController extends Controller
 
     }
 
+    public function template_down(Request $request)
+    {
+        $playlist2 = TemplateGames::where('template_id', $request->template_id)->where('idx', ">", $request['idx'])->orderBy('idx', 'asc')->first();
+        if ($playlist2){
+            $playlist = TemplateGames::where('template_id', $request->template_id)->orderBy('idx', 'desc')->first();
+            $playlistC = $playlist->idx + 1;
+            $playlist = TemplateGames::where('template_id', $request->template_id)->where('idx', $request['idx'])->first();
+            //$playlistC = Playlist::count() + 100;
+            $playlist->idx = $playlistC;
+            $playlist->where('idx', $request['idx'] )->where('template_id', $request->template_id)->update(['idx' => $playlistC]);
+            //$playlist2 = TemplateGames::where('template_id', $request->template_id)->where('idx', ">", $request['idx'])->first();
+            $idxNew = $playlist2->idx;
+            $playlist2->idx = $request['idx'];
+            $playlist2->where('idx', $idxNew )->where('template_id', $request->template_id)->update(['idx' => $request['idx']]);
+            $playlist = TemplateGames::where('template_id', $request->template_id)->where('idx', $playlistC)->first();
+            $playlist->idx = $idxNew;
+            if($playlist->where('idx', $playlistC )->where('template_id', $request->template_id)->update(['idx' => $idxNew])) {
+                $response = [
+                    'success' => 'success',
+                    'msg' => 'Template Moved : down',
+                    'idx'  => $request['idx'],
+                    'idxNew'  => $idxNew,
+                    'idxC'  => $playlistC,
+                ];
+            }else {
+                $response = [
+                    'success' => 'error',
+                    'msg' => 'Template Moved : down',
+                ];
+            }
+        } else {
+                $response = [
+                    'success' => 'error',
+                    'msg' => 'Template Moved : down',
+                ];
+        }
+        return response()->json($response);
+    }
+    
+    
+    public function template_up(Request $request)
+    {
+        $playlist2 = TemplateGames::where('template_id', $request->template_id)->where('idx', "<", $request['idx'])->orderBy('idx', 'desc')->first();
+        if ($playlist2){
+            $playlist = TemplateGames::where('template_id', $request->template_id)->orderBy('idx', 'desc')->first();
+            $playlistC = $playlist->idx + 1;
+            $playlist = TemplateGames::where('template_id', $request->template_id)->where('idx', $request['idx'])->first();
+            //$playlistC = Playlist::count() + 100;
+            $playlist->idx = $playlistC;
+            $playlist->where('idx', $request['idx'] )->where('template_id', $request->template_id)->update(['idx' => $playlistC]);
+            //$playlist2 = TemplateGames::where('template_id', $request->template_id)->where('idx', "<", $request['idx'])->orderBy('idx', 'desc')->first();
+            $idxNew = $playlist2->idx;
+            $playlist2->idx = $request['idx'];
+            $playlist2->where('idx', $idxNew )->where('template_id', $request->template_id)->update(['idx' => $request['idx']]);
+            $playlist = TemplateGames::where('template_id', $request->template_id)->where('idx', $playlistC)->first();
+            $playlist->idx = $idxNew;
+            if($playlist->where('idx', $playlistC )->where('template_id', $request->template_id)->update(['idx' => $idxNew])) {
+                $response = [
+                    'success' => 'success',
+                    'msg' => 'Template Moved : Up',
+                    'idx'  => $request['idx'],
+                    'idxNew'  => $idxNew,
+                    'idxC'  => $playlistC,
+                ];
+            }else {
+                $response = [
+                    'success' => 'error',
+                    'msg' => 'Template Moved : Up',
+                ];
+            }
+        } else {
+                $response = [
+                    'success' => 'error',
+                    'msg' => 'Template Moved : Up',
+                ];
+        }
+        return response()->json($response);
+    }
+    
+    public function template_top(Request $request)
+    {
+        $playlist3 = TemplateGames::where('template_id', $request->template_id)->orderBy('idx', 'desc')->get();
+        $idxArray = array();
+        foreach ($playlist3 as $key => $val){
+            $playlist4 = TemplateGames::where('idx', $val->idx)->where('template_id', $request->template_id)->first();
+            $playlist4->where('idx', $val->idx)->where('template_id', $request->template_id)->update(['idx' => ($val->idx + 1)]);
+            $idxArray[$val->idx] = $val->idx + 1; 
+        }
+        $playlist = TemplateGames::where('template_id', $request->template_id)->orderBy('idx', 'asc')->first();
+        $playlistIDX = $playlist->idx;
+        $idx = $request->idx + 1;
+        $playlist2 = TemplateGames::where('idx', $idx)->where('template_id', $request->template_id)->first();
+        //$playlistC = Playlist::count() + 100;
+        $playlist2->idx = $playlistIDX - 1;
+        
+        if($playlist2->where('idx', $idx )->where('template_id', $request->template_id)->update(['idx' => ($playlistIDX - 1)])) {
+            $response = [
+                'msg' => 'Template Moved : Top',
+                'idx'  => $request['idx'],
+                'idxNew'  => $playlistIDX - 1,
+                'idxC'  => $playlist,
+                'idxArray' => $idxArray
+            ];
+        }
+
+        return response()->json($response);
+    }
+    
     public function template_destroy(Request $request)
     {
-    	$template = Templates::where('template_id', $request->template_id)->first();
-    	$template->delete();
+    	$template = TemplateGames::where('idx', $request->idx)->where('template_id', $request->template_id)->delete();
+    	//$template->delete();
+        $response = [
+                'msg' => 'Template Moved : Down',
+                'idx'  => $request['idx'],
+                'idxNew'  => $request['template_id'],
+                'idxC'  => $template
+            ];
 
-    	return response()->json([], 200);
+    	return response()->json($response);
     }
 
     public function template_game_store(Request $request)
