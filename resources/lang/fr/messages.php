@@ -392,6 +392,9 @@ return array(
     'Min Bet must be bigger or equal then chip1' => 'Min Bet must be bigger or equal then chip1',
     'You cant add standard record with this Ticket Cost' => "You can't add standard record with this Ticket Cost",
     'You cant add fixed record with this Ticket Cost' => "You can't add fixed record with this Ticket Cost",
+    'All' => 'All',
+    'All User Logs' => 'All User Logs',
+    'User' => 'User',
     
     
     

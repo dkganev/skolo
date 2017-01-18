@@ -2065,4 +2065,214 @@ function ExportToPNGTerminatsTable() {
 }
 
 //end Statistics scripts
+//start User-log-all scripts 
+function changeRowsPerPageAll(rowsPerPage) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = rowsPerPage; // $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    PSID = $('#PSID').val();
+    Message = $('#Message').val();
+    UserName = $('#UserName').val();
+    ip = $('#ip').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&PSID=" + PSID + 
+            "&Message=" + Message + 
+            "&UserName=" + UserName + 
+            "&ip=" + ip + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageNumAll(PageNum1) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = PageNum1 //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    PSID = $('#PSID').val();
+    Message = $('#Message').val();
+    UserName = $('#UserName').val();
+    ip = $('#ip').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&PSID=" + PSID + 
+            "&Message=" + Message + 
+            "&UserName=" + UserName + 
+            "&ip=" + ip + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageSortAll(pageOrderV, pageDescV) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = pageOrderV; //  $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  pageDescV; // $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    PSID = $('#PSID').val();
+    Message = $('#Message').val();
+    UserName = $('#UserName').val();
+    ip = $('#ip').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&PSID=" + PSID + 
+            "&Message=" + Message + 
+            "&UserName=" + UserName + 
+            "&ip=" + ip + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageSortMenuAll() {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    PSID = $('#PSID').val();
+    Message = $('#Message').val();
+    UserName = $('#UserName').val();
+    ip = $('#ip').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&PSID=" + PSID + 
+            "&Message=" + Message + 
+            "&UserName=" + UserName + 
+            "&ip=" + ip + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function cleanSortFunctionAll() {
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+    $('#datetimepicker4').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setStartDate', "");
+    $('#datetimepicker4I').val("");
+    $('#datetimepicker5I').val("");
+    $('#PSID').val("");
+    $('#Message').val("");
+    $('#UserName').val("");
+    $('#ip').val("");
+    changePageSortMenuAll();
+    
+}
 
+//use datetimepicker4 and datetimepicker5
+function sortMenuAll() {
+    if (sortMenuRV == 0) {
+        $('.MenuSort').show();
+        sortMenuRV = 1;
+    }else{
+        $('.MenuSort').hide();
+        sortMenuRV = 0;
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        $('#datetimepicker4').datetimepicker('setEndDate', output );
+        $('#datetimepicker5').datetimepicker('setEndDate', output );
+        $('#datetimepicker5').datetimepicker('setStartDate', "");
+        $('#datetimepicker4I').val("");
+        $('#datetimepicker5I').val("");
+        $('#PSID').val("");
+        $('#Message').val("");
+        $('#UserName').val("");
+        $('#ip').val("");
+        //changePageSortMenuAll();
+        
+    }
+    
+}
+function export2excelAll() {
+    pageHref = $('#pageReload').attr('data-excel-url');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = $('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    PSID = $('#PSID').val();
+    Message = $('#Message').val();
+    UserName = $('#UserName').val();
+    ip = $('#ip').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&rowsPerPage=" + pageRowsPerPage + 
+            "&OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "&sortMenuOpen=" + sortMenuOpen + 
+            "&FromGameTs=" + FromGameTs + 
+            "&ToGameTs=" + ToGameTs + 
+            "&PSID=" + PSID + 
+            "&Message=" + Message + 
+            "&UserName=" + UserName + 
+            "&ip=" + ip ;
+    window.location.href = pageHref; 
+}
+function ExportToPNGAllTable() {
+    html2canvas($('#panelGameContend'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
+
+//end User-log-all scripts

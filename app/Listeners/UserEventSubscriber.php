@@ -13,6 +13,7 @@ class UserEventSubscriber
         UserLogs::create([
             'user_name' => $event->user_name,
             'ip' => $event->user_ip,
+            'type' => $event->type,
             'message' => $event->message
         ]);
     }
@@ -23,6 +24,7 @@ class UserEventSubscriber
             'user_name' => $event->user_name,
             'ip' => $event->user_ip,
             'message' => $event->message,
+            'type' => $event->type,
             'psid' => $event->psid
         ]);
     }

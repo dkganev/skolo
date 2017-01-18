@@ -16,6 +16,7 @@ class UserLoggedIn
     public $user_ip;
     public $user_name;
     public $message;
+    public $type;
 
     /**
      * Create a new event instance.
@@ -26,6 +27,7 @@ class UserLoggedIn
     {
         $this->user_ip = $user_ip;
         $this->user_name = $user_name;
+        $this->type = 1;
         $this->message = 'User logged in!';
     }
     /**

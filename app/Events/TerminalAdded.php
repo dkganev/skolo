@@ -17,6 +17,7 @@ class TerminalAdded
     public $user_name;
     public $message;
     public $psid;
+    public $type;
 
     /**
      * Create a new event instance.
@@ -28,6 +29,7 @@ class TerminalAdded
         $this->psid = $psid;
         $this->user_ip = $user_ip;
         $this->user_name = $user_name;
+        $this->type = 2;
         $this->message = 'Terminal added!';
     }
     /**
