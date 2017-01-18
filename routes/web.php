@@ -264,6 +264,10 @@ Route::get('/export2excelBJ', 'StatisticsController@export2excelBJ')->name('expo
 
 Route::get('statistics/user-logs', 'Statistics\UserLogsController@index');
 Route::get('/export2excelAll', 'Statistics\UserLogsController@export2excelAll')->name('export2excelAll');
+Route::get('statistics/user-logs-system', 'Statistics\UserLogsController@system');
+Route::get('/export2excelSystem', 'Statistics\UserLogsController@export2excelSystem')->name('export2excelSystem');
+Route::get('statistics/user-logs-settings', 'Statistics\UserLogsController@settings');
+Route::get('/export2excelSettings', 'Statistics\UserLogsController@export2excelSettings')->name('export2excelSettings');
 
 });
 

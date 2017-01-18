@@ -395,6 +395,8 @@ return array(
     'All' => 'All',
     'All User Logs' => 'All User Logs',
     'User' => 'User',
+    'Settings User Logs' => 'Settings User Logs',
+    'System User Logs' => 'System User Logs',
     
     
     

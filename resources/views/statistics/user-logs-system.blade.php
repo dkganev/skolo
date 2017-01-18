@@ -23,7 +23,7 @@
                         </a>-->
 
                         <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 25%;">
-                            @lang('messages.All User Logs')
+                            @lang('messages.System User Logs')
                         </h2>
                         <a class="btn btn-warning  pull-right" onclick="export2excelAll();"> 
                             <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
@@ -58,7 +58,7 @@
                         </span>
                     </div>&nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="pagination" style="margin: 0px; ">
-                          <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/user-logs')}}" data-excel-url="{{ route('export2excelAll') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
+                          <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/user-logs-system')}}" data-excel-url="{{ route('export2excelSystem') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
                           <ul class="pagination" style="margin: 0px;">
                               @if ( !$historys->lastPage()  )
                                   <li class="page-number active" >
@@ -254,4 +254,11 @@ if (pageSortMenuOpen == 1){
     sortTimer123 = setTimeout(function(){ $('.MenuSort').hide(); }, 200);
 }    
 //$("#rouletteHistory_modal").css({'overflow': 'scroll'});
-</script>
+</script><?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
