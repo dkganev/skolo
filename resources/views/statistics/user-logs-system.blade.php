@@ -3,8 +3,8 @@
         <div class="" style="">
             <!-- Secondary Navigation javascript:ajaxLoad('http://dkganev.com:8000/statistics/user-logs')-->
             <ul class="breadcrumb">
-              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/user-logs')}}')">@lang('messages.All')</a></li>
-              <li><a href="javascript:ajaxLoad('{{url('statistics/user-logs-system')}}')">@lang('messages.System')</a></li>
+              <li><a href="javascript:ajaxLoad('{{url('statistics/user-logs')}}')">@lang('messages.All')</a></li>
+              <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/user-logs-system')}}')">@lang('messages.System')</a></li>
               <li><a href="javascript:ajaxLoad('{{url('statistics/user-logs-settings')}}')">@lang('messages.Settings')</a></li>
             </ul>
         </div>
