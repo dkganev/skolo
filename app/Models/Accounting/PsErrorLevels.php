@@ -18,6 +18,6 @@ class PsErrorLevels extends Model
     
     public function error_list()
     {
-    	return $this->hasMany('App\Models\PsErrorsList', 'err_level');
+    	return $this->hasMany('App\Models\Accounting\PsErrorsList', 'err_level');
     }
 }
