@@ -11,6 +11,7 @@ use App\Models\Bingo\MyBonus;
 use App\Models\Bingo\JackpotSteps;
 use App\Models\Bingo\SphereConfig;
 use App\Models\Bingo\AccConfig;
+use App\Events\TerminalAdded;
 //use App\Models\Bingo\JackpotSteps;
 use DB;
 use Excel;
@@ -75,6 +76,7 @@ class BingoController extends Controller
             ]);
 
         if($updated) {
+            event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo Main Config Updated', 2));
             return response()->json(['msg' => 'success', 'updated' => $updated], 200);
         }
     }
@@ -124,7 +126,7 @@ class BingoController extends Controller
             'ticket_cnt' => $request->ticket_cnt,
             'max_ball_idx' => $request->max_ball_idx
         ]);
-
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo My Bonus Updated', 2));
         return redirect('/settings');
     }
 
@@ -204,19 +206,22 @@ class BingoController extends Controller
                 "fixed" => $bingo_cost_fixed
             );
         }
-        
-        
+        //event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo Main Config Updated', 2));
+                
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo Max Balls Added', 2));
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
         // return redirect('/settings');
     }
 
     public function max_balls_edit(Request $request)
     {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo Max Balls Updated', 2));
         $jackpot_step = JackpotSteps::where('id', $request->id)->update($request->except('_token'));
     }
 
     public function max_balls_destroy(Request $request)
     {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo Max Balls Deleted', 2));
         DB::connection('pgsql3')->table('jackpot_steps')->where('id', $request->id)->delete();
     }
 
@@ -228,6 +233,7 @@ class BingoController extends Controller
 
     public function sphere_config_edit(Request $request)
     {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo Sphere Config Updated', 2));
         SphereConfig::first()->update($request->except('_token'));
     }
 
@@ -239,14 +245,17 @@ class BingoController extends Controller
 
     public function acc_config_edit(Request $request)
     {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo Accounting Config Updated', 2));
         AccConfig::first()->update($request->except('_token'));
     }
 
-    public function cancel_game()
+    public function cancel_game(Request $request)
     {
         // DB::connection('pgsql3')->table('cancel_game')->where('do_cancel', '=', 0)->first()->update([
         //     'do_cancel' => 1
         // ]);
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo Main Config Cancel Game', 2));
+        
         DB::connection('pgsql3')->table('cancel_game')->increment('do_cancel');
     }
 }

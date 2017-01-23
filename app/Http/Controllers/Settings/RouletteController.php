@@ -11,6 +11,8 @@ use App\Models\Roulette\WheelConfig;
 use App\Models\Roulette\PsConf;
 use App\Models\Roulette\AccConfig;
 use App\Models\Roulette\MainConfig;
+use App\Events\TerminalAdded;
+
 
 class RouletteController extends Controller
 {
@@ -48,6 +50,7 @@ class RouletteController extends Controller
         ]);
 
         // MainConfig::all()->update(['game_id' => $request->game_id]); $main_config->url = ($request->stream_url);
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Roulette 1 Wheel Settings Updated', 2));
         $affected = \DB::connection('pgsql4')->table('mainconf')->update(['game_id' => $request->game_id]);
         $affected = \DB::connection('pgsql4')->table('mainconf')->update(['url' => $request->stream_url]);
     }
@@ -60,7 +63,8 @@ class RouletteController extends Controller
 
     public function wheel_config_edit(Request $request)
     {
-    	WheelConfig::first()->update($request->except('_token'));
+    	event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Roulette 1 Game Config Updated', 2));
+        WheelConfig::first()->update($request->except('_token'));
         //$main_config = MainConfig::first();
         //$main_config->url = ($request->stream_url);
     }
@@ -73,6 +77,7 @@ class RouletteController extends Controller
 
     public function ps_config_edit(Request $request)
     {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->ps_id , 'Roulette 1 Terminals Config Updated', 2));
         PsConf::where('ps_id', $request->ps_id)->first()->update($request->except('_token'));
     }
 
@@ -84,6 +89,7 @@ class RouletteController extends Controller
 
     public function acc_config_edit(Request $request)
     {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->ps_id , 'Roulette 1 Accounting Config Updated', 2));
         AccConfig::first()->update($request->except('_token'));
     }
 }

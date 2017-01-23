@@ -11,6 +11,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Requests;
 use App\Models\Cms\User;
 use App\Models\Cms\CmsLangs;
+use App\Events\TerminalAdded;
 
 class UserController extends Controller
 {
@@ -36,7 +37,8 @@ class UserController extends Controller
         $user->assignRole($request->role);
 
     	$response = 'User Created';
-    	return response()->json($response, 200);
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'User Created', 2));
+        return response()->json($response, 200);
 	}
 
     public function edit(Request $request)
@@ -61,6 +63,7 @@ class UserController extends Controller
         $user->update();
 
         $response = 'User Created';
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'User Updated', 2));
         return response()->json($response, 200);
     }
 
@@ -69,6 +72,7 @@ class UserController extends Controller
         $user = User::find($request->id);
         
         if($user->delete()) {
+            event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'User removed from records!', 2));
             return response()->json(['msg' => 'User removed from records!'], 200);
         }
     }

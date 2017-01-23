@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Accounting\PsErrorLevels;
 use App\Models\Accounting\PsErrorsList;
+use App\Events\TerminalAdded;
 use Excel;
 
 class ErrorsController extends Controller
@@ -46,6 +47,7 @@ class ErrorsController extends Controller
         $error_list->save();
 
         $msg = 'Error List Added Successfully!';
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Error List Added Successfully!', 2));
         return $request->session()->flash('alert-success', $msg);
     }
 

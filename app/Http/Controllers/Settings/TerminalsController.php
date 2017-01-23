@@ -109,9 +109,9 @@ class TerminalsController extends Controller
         // Ps Status Model
         $ps_status = $server_ps->ps_status()->create([]);
 
-        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->psid));
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->psid , 'Terminal added!', 2));
 
-        event(new TerminalCreated($request->psid, $request->seatid));
+        //event(new TerminalCreated($request->psid, $request->seatid));
 
         $response = [
             'msg' => 'Machine added Successfully'
@@ -152,11 +152,14 @@ class TerminalsController extends Controller
             'server_ps' => $server_ps,
             'msg'       => 'Machine Updated Successfully'
         ];
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->psid , 'Machine Updated Successfully!', 2));
         return response()->json($response, 200);
     }
 
     public function reset_ps(Request $request)
     {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->psid , 'Machine Reseted Successfully!', 2));
+        
         DB::table('reset_ps')->insert(['psid' => $request->psid]);
     }
 
@@ -175,6 +178,8 @@ class TerminalsController extends Controller
 
         $roulette_ps = PsConf::where('ps_id', $request->psid)->first();
         $roulette_ps->delete();
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->psid , 'Machine Deleted!', 2));
+        
         return back();
     }
 

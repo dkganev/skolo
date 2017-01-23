@@ -13,9 +13,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\TerminalCreated' => [
-            'App\Listeners\AddRouletteTerminal',
-        ],
+        //'App\Events\TerminalCreated' => [
+        //    'App\Listeners\AddRouletteTerminal',
+        //],
 
         // 'App\Events\UserLoggedIn' => [
         //     'App\Listeners\LogSuccessLogin',

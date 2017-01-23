@@ -36,10 +36,10 @@ class UserEventSubscriber
             'App\Listeners\UserEventSubscriber@user_auth_log'
         );
 
-        $events->listen(
-            'App\Events\UserFailedToLogIn',
-            'App\Listeners\UserEventSubscriber@user_auth_log'
-        );
+        //$events->listen(
+        //    'App\Events\UserFailedToLogIn',
+        //    'App\Listeners\UserEventSubscriber@user_auth_log'
+        //);
 
         $events->listen(
             'App\Events\TerminalAdded',

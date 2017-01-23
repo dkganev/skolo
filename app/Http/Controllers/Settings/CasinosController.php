@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\Accounting\Casinos;
+use App\Events\TerminalAdded;
 use Excel;
 use Ajax;
 
@@ -15,7 +16,7 @@ class CasinosController extends Controller
 	public function getCasinos()
 	{
 		$casinos = Casinos::orderBy('casinoid', 'asc')->get();
-		return view('settings.casinos', compact('casinos'));
+        return view('settings.casinos', ['casinos' => $casinos]);
 	}
 
 	public function addCasino(Request $request)
@@ -28,7 +29,8 @@ class CasinosController extends Controller
 		$casino->save();
 
 		$msg = 'Casino successfully added!';
-		return redirect()->back()->with('alert-success', $msg);
+		event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Casino successfully added!', 2));
+                return redirect()->back()->with('alert-success', $msg);
 	}
 
 	public function updateCasino(Request $request)
@@ -45,7 +47,8 @@ class CasinosController extends Controller
 			'casino' => $casino,
 			'msg' => 'Casino updated successfully'
 		];
-		return response()->json($response, 200);
+		event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Casino updated successfully', 2));
+                return response()->json($response, 200);
 	}
 
 	public function exportCasinos()

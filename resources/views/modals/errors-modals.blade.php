@@ -121,7 +121,8 @@ $('#add-error-list').on('click', function() {
         } 
     }).done(function() {
         $('#addErrorListModal').modal('hide');
-        javascript:ajaxLoad('{{url('settings/errors')}}')
+        sortTimer123 = setTimeout(function(){ javascript:ajaxLoad('{{url('settings/errors')}}')}, 200);
+        
     });
 });
 </script>

@@ -10,6 +10,7 @@ use App\Models\Accounting\ClientGameIds;
 use App\Models\Accounting\Games;
 use App\Models\Accounting\Categories;
 use App\Models\Accounting\GameTypes;
+use App\Events\TerminalAdded;
 use Excel;
 
 class GameServersController extends Controller
@@ -37,6 +38,8 @@ class GameServersController extends Controller
         $game_server->save();
 
         $msg = 'Game Client Added Successfully!';
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL, 'Game Client Added Successfully!', 2));
+
         return $request->session()->flash('alert-success', $msg);
     }
 
@@ -49,6 +52,8 @@ class GameServersController extends Controller
     	$game_client->update();
 
         $msg = 'Game Client Updated Successfully!';
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL, 'Game Client Updated Successfully!', 2));
+
         return $request->session()->flash('alert-success', $msg);
     }
 
@@ -95,6 +100,7 @@ class GameServersController extends Controller
         $category->save();
 
         $msg = 'Categorry Added Successfully!';
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL, 'Categorry Added Successfully!', 2));
         return $request->session()->flash('alert-success', $msg);
     }
 
@@ -107,6 +113,7 @@ class GameServersController extends Controller
         $category->update();
 
         $msg = 'Category Updated Successfully!';
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL, 'Category Updated Successfully!', 2));
         return $request->session()->flash('alert-info', $msg);
     }
 
@@ -165,6 +172,7 @@ class GameServersController extends Controller
         $game->save();
 
         $msg = 'Game Added Successfully!';
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Game Added Successfully!', 2));
         return $request->session()->flash('alert-info', $msg);
     }
 
@@ -187,6 +195,7 @@ class GameServersController extends Controller
             'msg'  => 'Game Updated Successfully!',
         ];
 
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Game Updated Successfully!', 2));
         return response()->json($response, 200);
     }
 

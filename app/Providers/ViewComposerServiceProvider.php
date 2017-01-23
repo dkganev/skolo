@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Accounting\Casinos;
 use App\Models\Cms\CmsLangs;
+//use Illuminate\Support\Facades\Auth;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,16 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //view()->composer('*', function($view) {
+        //if (session())
+        //if( Auth::check() )
+        //{
+            //Auth::logout();
+            //return redirect('/');
+        //}
+        //    $dataGet = session()->all();
+        //    var_dump($dataGet);
+        //});
         view()->composer('*', function($view) {
             $dataGet = session()->get('LoginUser.lang');
             app()->setLocale($dataGet);

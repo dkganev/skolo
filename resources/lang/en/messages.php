@@ -240,7 +240,7 @@ return array(
     'Bonus Bingo' => 'Bonus Bingo',
     'Jackpot Line' => 'Jackpot Line',
     'My Bonus Max Ball' => 'My Bonus Max Ball',
-    'Bngo + Line Total' => 'Bngo + Line Total',
+    'Bngo + Line Total' => 'Bingo + Line Total',
     'Visible Total' => 'Visible Total',
     'Hidden Total' => 'Hidden Total',
     'Visible + Hidden Total' => 'Visible + Hidden Total',

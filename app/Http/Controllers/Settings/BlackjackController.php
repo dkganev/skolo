@@ -11,6 +11,7 @@ use App\Models\Blackjack\BlackjackTable;
 use App\Models\Blackjack\MainConfig;
 use App\Models\Blackjack\AccConfig;
 use App\Models\Blackjack\EnabledTables;
+use App\Events\TerminalAdded;
 
 
 class BlackjackController extends Controller
@@ -82,15 +83,18 @@ class BlackjackController extends Controller
 
         if (!$table->update()) {
             $msg = 'Something Wrong Happend!';
-            return response()->json(['response' => $msg], 400);
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Blackjack Tables Updated. Something Wrong Happend!', 2));
+        return response()->json(['response' => $msg], 400);
         }
 
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Blackjack Tables Updated', 2));
         return response()->json(['response' => $table], 200);
     }
 
     public function enabled_tables(Request $request) 
     {
         if ($request->radio == 1) {
+            event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Blackjack  One Table Updated', 2));
             EnabledTables::first()->update([
                 't1_enabled' => true,
                 't2_enabled' => false,
@@ -102,6 +106,7 @@ class BlackjackController extends Controller
                 't8_enabled' => false,
             ]);
         } elseif ($request->radio == 2) {
+            event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Blackjack 2 Tables Updated', 2));
             EnabledTables::first()->update([
                 't1_enabled' => true,
                 't2_enabled' => true,
@@ -113,6 +118,7 @@ class BlackjackController extends Controller
                 't8_enabled' => false,
             ]);
         } elseif ($request->radio == 4) {
+            event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Blackjack 4 Tables Updated', 2));
             EnabledTables::first()->update([
                 't1_enabled' => true,
                 't2_enabled' => true,
@@ -124,6 +130,7 @@ class BlackjackController extends Controller
                 't8_enabled' => false,
             ]);
         } elseif ($request->radio == 8) {
+            event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Blackjack 8 Tables Updated', 2));
             EnabledTables::first()->update([
                 't1_enabled' => true,
                 't2_enabled' => true,
@@ -173,6 +180,7 @@ class BlackjackController extends Controller
     
     public function main_config_edit(Request $request)
     {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Blackjack Main Config Updated.', 2));
         MainConfig::first()->update($request->except('_token'));
     }
 
@@ -184,6 +192,7 @@ class BlackjackController extends Controller
 
     public function acc_config_edit(Request $request)
     {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Blackjack Accounting Config Updated', 2));
         AccConfig::first()->update($request->except('_token'));
     }
 }

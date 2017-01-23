@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\Accounting\Langs;
+use App\Events\TerminalAdded;
 use Excel;
 
 class LangsController extends Controller
@@ -26,6 +27,7 @@ class LangsController extends Controller
     	$language->save();
 
     	$msg = 'Language successfully added!';
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Language successfully added!', 2));
         return $request->session()->flash('alert-success', $msg);
     }
 
@@ -37,6 +39,7 @@ class LangsController extends Controller
         $language->update();
 
         $msg = 'Language successfully updated!';
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Language successfully updated!', 2));
         return $request->session()->flash('alert-success', $msg);
     }
 
@@ -46,9 +49,12 @@ class LangsController extends Controller
         $deleted = $language->delete();
 
         if(!$deleted) {
+            event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Cannot Delete Language!', 2));
+        
             return response()->json(['message' => 'Cannot Delete Language!'], 401);
         }
 
+        event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Language Deleted!', 2));
         return response()->json(['message' => 'Language Deleted!'], 200);
     }
 

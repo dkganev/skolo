@@ -23,12 +23,12 @@ class UserLoggedIn
      *
      * @return void
      */
-    public function __construct($user_ip, $user_name)
+    public function __construct($user_ip, $user_name, $message, $type)
     {
         $this->user_ip = $user_ip;
         $this->user_name = $user_name;
-        $this->type = 1;
-        $this->message = 'User logged in!';
+        $this->type = $type;
+        $this->message =  $message; //'User logged in!';
     }
     /**
      * Get the channels the event should broadcast on.
