@@ -11,7 +11,7 @@ class AuthenticationException extends Exception
      *
      * @param string  $message
      */
-    public function __construct($message = 'Unauthenticated.1')
+    public function __construct($message = 'Unauthenticated.')
     {
         parent::__construct($message);
     }

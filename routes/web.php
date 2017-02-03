@@ -14,19 +14,19 @@ Route::post('session/ajaxCheck','AuthController@ajaxCheck')->middleware('auth');
  * AUTH MIDDLEWARE
  */
 //Route::group(['middleware' => ['web', 'resetLastActive']], function () {
-Route::group(array('middleware' => 'auth'), function(){
+//Route::group(array('middleware' => 'auth'), function(){
 
-/**
- * LOCALIZATION
- */
-Route::post('/localize', 'LocalizationController@index');
-Route::post('ajax_casino', 'Casino\AjaxCasinoController@ajax_casino');
-//Route::post('/test123', 'Settings\PBS@test1235'); 
-//Route::get('/test123', 'Settings\PBS@test123'); 
+    /**
+     * LOCALIZATION
+     */
+    Route::post('/localize', 'LocalizationController@index');
+    Route::post('ajax_casino', 'Casino\AjaxCasinoController@ajax_casino');
+    //Route::post('/test123', 'Settings\PBS@test1235'); 
+    //Route::get('/test123', 'Settings\PBS@test123'); 
 
-/**
- * CASINO / PREVIEW
-**/
+    /**
+     * CASINO / PREVIEW
+    **/
     Route::get('/casino', 'Casino\CasinoController@index');
     Route::post('/ajax_casinoBox', 'Casino\AjaxCasinoController@casinoBox'); 
     Route::post('/ajax_NewGame', 'Casino\AjaxCasinoController@NewGame');
@@ -271,8 +271,7 @@ Route::post('ajax_casino', 'Casino\AjaxCasinoController@ajax_casino');
     Route::get('statistics/user-logs-settings', 'Statistics\UserLogsController@settings');
     Route::get('/export2excelSettings', 'Statistics\UserLogsController@export2excelSettings')->name('export2excelSettings');
 
-  //  });
-
+  
     /**
      * Players  
      */
@@ -285,4 +284,4 @@ Route::post('ajax_casino', 'Casino\AjaxCasinoController@ajax_casino');
     Route::post('/ajax_SaveEditCart', 'Players\PlayersController@ajax_SaveEditCart');
     Route::post('/ajax_AddBankCreditCard', 'Players\PlayersController@ajax_AddBankCreditCard');
     Route::post('/ajax_TransactionsCard', 'Players\PlayersController@ajax_TransactionsCard');
-});
+//});
