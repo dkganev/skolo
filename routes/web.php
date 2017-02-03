@@ -14,7 +14,7 @@ Route::post('session/ajaxCheck','AuthController@ajaxCheck')->middleware('auth');
  * AUTH MIDDLEWARE
  */
 //Route::group(['middleware' => ['web', 'resetLastActive']], function () {
-//Route::group(array('middleware' => 'auth'), function(){
+Route::group(array('middleware' => 'auth'), function(){
 
     /**
      * LOCALIZATION
@@ -284,4 +284,4 @@ Route::post('session/ajaxCheck','AuthController@ajaxCheck')->middleware('auth');
     Route::post('/ajax_SaveEditCart', 'Players\PlayersController@ajax_SaveEditCart');
     Route::post('/ajax_AddBankCreditCard', 'Players\PlayersController@ajax_AddBankCreditCard');
     Route::post('/ajax_TransactionsCard', 'Players\PlayersController@ajax_TransactionsCard');
-//});
+});
