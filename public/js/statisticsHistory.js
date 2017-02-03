@@ -89,8 +89,8 @@ function changeRowsPerPageFBingo(rowsPerPage) {
     
     
     pageHref = pageHref + 
-            /*"?page=" + pageNum + 
-            "&rowsPerPage=" + pageRowsPerPage + 
+            "?page=" + pageNum + 
+            /*"&rowsPerPage=" + pageRowsPerPage + 
             "&OrderDesc=" + pageDesc + 
             "&OrderQuery=" + pageOrder + 
             "&sortMenuOpen=" + sortMenuOpen + 
