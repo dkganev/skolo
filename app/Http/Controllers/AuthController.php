@@ -94,6 +94,7 @@ class AuthController extends Controller
         //$maxIdleBeforeLogout = 1800 * 1;
         //$maxIdleBeforeWarning = 1700 * 1;
         $maxIdleBeforeLogout = ini_get("session.gc_maxlifetime") - 100;
+        
         //$maxIdleBeforeLogout = 20;
         $maxIdleBeforeWarning = $maxIdleBeforeLogout - 100;
         $warningTime = $maxIdleBeforeLogout - $maxIdleBeforeWarning;
@@ -103,12 +104,12 @@ class AuthController extends Controller
         if ($idleTime > $maxIdleBeforeWarning && empty(Session::get('idleWarningDisplayed'))) {
             Session::set('idleWarningDisplayed', true);
 
-            return 'You have ' . $warningTime . ' seconds left before you are logged out';
+            return 'You have ' . $warningTime . ' seconds left before you are logged out' . $maxIdleBeforeLogout;
         }
 
         // Log out user if idle for too long
         if ($idleTime > $maxIdleBeforeLogout ) {
-
+            Session::set('idleWarningDisplayed', folse);
             // *** Do stuff to log out user here
             /*UserLogs::create([
                 'user_name' => request()->user()->name,
