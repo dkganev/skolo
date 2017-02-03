@@ -94,7 +94,7 @@ function changeRowsPerPageFBingo(rowsPerPage) {
             "&OrderDesc=" + pageDesc + 
             "&OrderQuery=" + pageOrder + 
             "&sortMenuOpen=" + sortMenuOpen + 
-            /*"&tableTh1=" + tableTh1 + 
+            "&tableTh1=" + tableTh1 + 
             "&tableTh2=" + tableTh2 + 
             "&tableTh3=" + tableTh3 + 
             "&tableTh4=" + tableTh4 + 
@@ -106,7 +106,7 @@ function changeRowsPerPageFBingo(rowsPerPage) {
             "&tableBonusBingo=" + tableBonusBingo + 
             "&tableJackpotLine=" + tableJackpotLine + 
             "&tableJackpotBingo=" + tableJackpotBingo + 
-            "&FromGameTs=" + FromGameTs + 
+            /*"&FromGameTs=" + FromGameTs + 
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
             "&FromTicketCost=" + FromTicketCost + 
