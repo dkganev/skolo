@@ -104,7 +104,7 @@ class AuthController extends Controller
         if ($idleTime > $maxIdleBeforeWarning && empty(Session::get('idleWarningDisplayed'))) {
             Session::set('idleWarningDisplayed', true);
 
-            return 'You have ' . $warningTime . ' seconds left before you are logged out' . $maxIdleBeforeLogout;
+            return 'You have ' . $warningTime . ' seconds left'.date('U').' before '.Session::get('lastActive').' you are'.$idleTime.' logged out' . $maxIdleBeforeLogout;
         }
 
         // Log out user if idle for too long
