@@ -109,8 +109,8 @@ class AuthController extends Controller
 
         // Log out user if idle for too long
         if ($idleTime > $maxIdleBeforeLogout ) {
-            Session::set('idleWarningDisplayed', folse);
-            // *** Do stuff to log out user here
+            Session::forget('idleWarningDisplayed');
+            // *** Do stuff to log out user here  ///->flush()   ////->forget('key')
             /*UserLogs::create([
                 'user_name' => request()->user()->name,
                 'ip' => request()->ip(),
