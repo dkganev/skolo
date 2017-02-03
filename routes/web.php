@@ -26,7 +26,7 @@ Route::post('ajax_casino', 'Casino\AjaxCasinoController@ajax_casino');
 /**
  * CASINO / PREVIEW
 **/
-Route::group(array('middleware' => 'auth'), function(){
+//Route::group(array('middleware' => 'auth'), function(){
     Route::get('/casino', 'Casino\CasinoController@index');
     Route::post('/ajax_casinoBox', 'Casino\AjaxCasinoController@casinoBox'); 
     Route::post('/ajax_NewGame', 'Casino\AjaxCasinoController@NewGame');
@@ -271,7 +271,7 @@ Route::group(array('middleware' => 'auth'), function(){
     Route::get('statistics/user-logs-settings', 'Statistics\UserLogsController@settings');
     Route::get('/export2excelSettings', 'Statistics\UserLogsController@export2excelSettings')->name('export2excelSettings');
 
-    });
+  //  });
 
     /**
      * Players  
