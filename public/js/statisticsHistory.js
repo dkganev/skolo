@@ -105,7 +105,7 @@ function changeRowsPerPageFBingo(rowsPerPage) {
             "&tableBonusLine=" + tableBonusLine + 
             "&tableBonusBingo=" + tableBonusBingo + 
             "&tableJackpotLine=" + tableJackpotLine + 
-            "&tableJackpotBingo=" + tableJackpotBingo + 
+            "&tableJackpotBingo=" + tableJackpotBingo + */
             "&FromGameTs=" + FromGameTs + 
             "&ToGameTs=" + ToGameTs + 
             "&GameSort=" + GameSort + 
@@ -143,7 +143,7 @@ function changeRowsPerPageFBingo(rowsPerPage) {
             "&ToJackpotLineVal=" + ToJackpotLineVal + 
             "&FromJackpotBingoVal=" + FromJackpotBingoVal + 
             "&ToJackpotBingoVal=" + ToJackpotBingoVal + 
-            //        "&TableSort=" + TableSort + */
+            //"&TableSort=" + TableSort + 
             "')" 
     window.location.href = pageHref; 
 }
