@@ -13,7 +13,8 @@ Route::post('session/ajaxCheck','AuthController@ajaxCheck')->middleware('auth');
 /**
  * AUTH MIDDLEWARE
  */
-Route::group(['middleware' => ['web', 'resetLastActive']], function () {
+//Route::group(['middleware' => ['web', 'resetLastActive']], function () {
+Route::group(array('middleware' => 'auth'), function(){
 
 /**
  * LOCALIZATION
@@ -26,7 +27,6 @@ Route::post('ajax_casino', 'Casino\AjaxCasinoController@ajax_casino');
 /**
  * CASINO / PREVIEW
 **/
-//Route::group(array('middleware' => 'auth'), function(){
     Route::get('/casino', 'Casino\CasinoController@index');
     Route::post('/ajax_casinoBox', 'Casino\AjaxCasinoController@casinoBox'); 
     Route::post('/ajax_NewGame', 'Casino\AjaxCasinoController@NewGame');
