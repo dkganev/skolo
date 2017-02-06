@@ -83,7 +83,36 @@
     });
 
     function checkSession() {
-        $.post('session/ajaxCheck', { '_token' : '{{ csrf_token() }}' }, function(data) {
+        token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            type: "POST",
+            url: 'session/ajaxCheck',
+            //contentType: false,
+            data: { '_token' : token },
+            success: function (data) {
+                if (data == 'loggedOut') {
+                    // User was logged out. Redirect to login page
+                    document.location.href = '/';
+                }else if (data != '') {
+                    swal({
+                        title: "You will be logged out!",
+                        text: "Session will expire soon.",
+                        timer: 60000,
+                        showConfirmButton: true,
+                        confirmButtonText: 'Cancel'
+                    },function(isConfirm) {
+                        if(isConfirm) {
+                            document.location.reload();
+                        }
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log(error + "--" + status );
+                document.location.href = '/';
+            }
+        })
+        /*$.post('session/ajaxCheck', { '_token' : '{{ csrf_token() }}' }, function(data) {
             console.log(data);
             if (data == 'loggedOut') {
                 // User was logged out. Redirect to login page
@@ -102,7 +131,7 @@
                     }
                 });
             }
-        });
+        });*/
     }
     // Check Session Every 60 Seconds
     setInterval(checkSession, 60000);
