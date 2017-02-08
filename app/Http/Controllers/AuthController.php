@@ -63,6 +63,9 @@ class AuthController extends Controller
         //$locale = 'test' . $locale;
         session(['locale' => $CmsLangs]);
         session(['LoginUser.lang' => $CmsLangs->lang_code]);
+        Session::set('lastActive', date('U'));
+        Session::forget('idleWarningDisplayed');
+        Session::forget('logoutWarningDisplayed');
         $typeE = 1;
         $messageE = 'User logged in!';
         event(new UserLoggedIn(request()->ip(), $request->name, $messageE, $typeE));
