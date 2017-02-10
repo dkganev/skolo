@@ -293,7 +293,7 @@ class BingoPlaylistController extends Controller
         return response()->json($response);
     }
     
-    public function template_destroy(Request $request)
+    public function template_destroyRow(Request $request)
     {
     	$template = TemplateGames::where('idx', $request->idx)->where('template_id', $request->template_id)->delete();
     	//$template->delete();
@@ -310,10 +310,15 @@ class BingoPlaylistController extends Controller
     public function template_game_store(Request $request)
     {
         $template = Templates::where('template_id', $request->template_id)->first();
-
+        $lastRow = TemplateGames::where('template_id', $request->template_id)->orderBy('idx', 'desc')->first();
+        if ($lastRow){
+            $newIdx = $lastRow->idx + 1;
+        }else{
+            $newIdx = 1;
+        }
         $playlist = new TemplateGames();
 
-        $playlist->idx = $template->template_games->count() + 1;
+        $playlist->idx = $newIdx; //$template->template_games->count() + 1;
         $playlist->bingo_ticket_cost = $request->ticket_cost;
 
         $playlist->bingo_cost_line1_fixed = false;
@@ -329,15 +334,22 @@ class BingoPlaylistController extends Controller
 
         $template->template_games()->save($playlist);
         $playlist->save();
-
-        return response()->json($playlist->load('template'), 200);
+        $htmlPage = view('casino.bingo-playlist.addTempRow', ['game' => $playlist->load('template'),'template_id' => $request->template_id])->render();
+        $resuut = array(
+            'success' => 'success',
+            'html' => $htmlPage,
+        );
+        return response()->json($resuut, 200);
+        //return response()->json($playlist->load('template'), 200);
     }
 
     public function template_game_destroy(Request $request)
     {
-        $template = Templates::where('template_id', $request->template_id)->first();
-        $template_game = $template->template_games()->where('idx', $request->idx)->first();
-        $deleted = $template_game->delete();
+        $template = Templates::where('template_id', $request->template_id)->delete();
+        $template_game = TemplateGames::where('template_id', $request->template_id)->delete();
+        
+        //$template_game = $template->template_games()->where('idx', $request->idx)->first();
+        //$deleted = $template_game->delete();
 
         return response()->json([], 200);
     }

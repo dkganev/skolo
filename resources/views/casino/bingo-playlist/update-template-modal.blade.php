@@ -66,8 +66,8 @@
                 <h4><strong>@lang('messages.Games')</strong></h4>
                 <hr>
 
-                <div class="divTable">
-                  <div class="divTableBody">
+                <div id="divTable{{ $template->template_id }}" class="divTable">
+                  <div id="divTableBody{{ $template->template_id }}" class="divTableBody">
                     <div class="divTableRow dataHeadingRow{{ $template->template_id }}">
                       <div class="divTableCell"><strong>@lang('messages.Ticket Cost') (@lang('messages.cents'))</strong></div>
                       <div class="divTableCell"><strong>@lang('messages.Game Type')</strong></div>
@@ -84,19 +84,19 @@
                       </div>
                       <div class="divTableCell">{{ $game->bingo_cost_line1 }}</div>
                       <div class="divTableCell">{{ $game->bingo_cost_bingo }}</div>
-                      <div class="divTableCell" id="{{ $game->idx }}">
-                        <a class="btn btn-primary btn-xs top">
+                      <div class="divTableCell">
+                        <a class="btn btn-primary btn-xs top" onclick="toTop({{ $template->template_id }},{{ $game->idx }});">
                           <span class="glyphicon glyphicon-eject"></span>
                         </a>
 
-                        <a class="btn btn-success btn-xs up">
+                        <a class="btn btn-success btn-xs up" onclick="toUp({{ $template->template_id }},{{ $game->idx }},1);">
                           <span class="glyphicon glyphicon-arrow-up"></span>
                         </a>
-                        <a class="btn btn-success btn-xs down">
+                        <a class="btn btn-success btn-xs down" onclick="toUp({{ $template->template_id }},{{ $game->idx }},0);">
                           <span class="glyphicon glyphicon-arrow-down"></span>
                         </a>
 
-                        <a class="btn btn-danger btn-xs remove">
+                          <a class="btn btn-danger btn-xs remove" onclick="removeRow({{ $template->template_id }},{{ $game->idx }});">
                           <span class="glyphicon glyphicon-remove"></span>
                         </a>
                       </div>
@@ -112,71 +112,29 @@
   </div>
 </div>
 </div>
-<script>
-    
-    
-    
-    /*$(".up,.down").click(function() {
-      var row = $(this).parents(".dataTableRow:first");
-      if ($(this).is(".up")) {
-          console.log(row.prev());
-          //row.insertBefore(row.prev());
-      } else {
-          //row.insertAfter(row.next());
-      }
-    });*/
 
-    /*$(".top").click(function() {
-      var row = $(this).parents(".divTableRow:first");
-      // var data = {
-      //     idx: row.attr('idx'),
-      //     _token: $('meta[name="csrf-token"]').attr('content')
-      // }
-      // $.post('/casino/playlist/top', data, function(response) {
-      //   console.log(response.msg, response.idx);
-      // });
-
-      row.insertAfter('.dataHeadingRow');
-    });*/
-
-    /*$(".remove").click(function() {
-      var row = $(this).parents(".dataTableRow:first");
-      
-
-      var data = {
-          idx: row.attr('id'),
-          template_id: row.data('template-id'),
-          _token: $('meta[name="csrf-token"]').attr('content')
-      }
-      console.log(data);
-      
-      $.post('//', data, function(response) {
-        // console.log(response);
-      });
-      // row.remove();
-
-      // row.remove();
-    });*/
-
-</script>
 <script>
 $(document).ready(function() {
 
 $('#send-button--{{ $template->template_id }}').on('click', function() {
     var token = $('meta[name="csrf-token"]').attr('content');
+    var game_type = $('#editTemplateModal--{{ $template->template_id }} select[name="game_type"]').val();
+    var template_id = $('#editTemplateModal--{{ $template->template_id }} input[name="template_id"]').val();
     $.ajax({
         method: 'POST',
         url: '/casino/template/game/store',
         data: {
-             game_type: $('#editTemplateModal--{{ $template->template_id }} select[name="game_type"]').val(),
+             game_type: game_type,
              ticket_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="ticket_cost"]').val(),
              line_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="line_cost"]').val(),
              bingo_cost: $('#editTemplateModal--{{ $template->template_id }} input[name="bingo_cost"]').val(),
-             template_id: $('#editTemplateModal--{{ $template->template_id }} input[name="template_id"]').val(),
+             template_id: template_id,
              _token: token,
           },
         success: function(response) {
-            if(response.bingo_cost_line1_fixed === false) {
+            //if(response.bingo_cost_line1_fixed === false) {
+            
+            if(game_type != 1) {
               var gameType = '<?php echo app('translator')->get('messages.Standard'); ?>';
             } else {
               var gameType = '<?php echo app('translator')->get('messages.Fixed'); ?>' ;
@@ -189,8 +147,9 @@ $('#send-button--{{ $template->template_id }}').on('click', function() {
               var bingoCostLine = response.bingo_cost_line1;
               var bingoCostBingo = response.bingo_cost_bingo;
             }
-
-            $('.divTable').append('<div class="divTableRow"><div class="divTableCell">' + response.bingo_ticket_cost + '</div><div class="divTableCell">' + gameType + '</div><div class="divTableCell">' + bingoCostLine + '</div><div class="divTableCell">' + bingoCostBingo + '</div></div>');
+            //console.log(response.html);
+            $('#divTableBody' + template_id).append(response.html);
+            //$('.divTable').append('<div class="divTableRow"><div class="divTableCell">' + response.bingo_ticket_cost + '</div><div class="divTableCell">' + gameType + '</div><div class="divTableCell">' + bingoCostLine + '</div><div class="divTableCell">' + bingoCostBingo + '</div><div class="divTableCell"><a class="btn btn-primary btn-xs top"><span class="glyphicon glyphicon-eject"></span></a><a class="btn btn-success btn-xs up"><span class="glyphicon glyphicon-arrow-up"></span></a><a class="btn btn-success btn-xs down"><span class="glyphicon glyphicon-arrow-down"></span></a><a class="btn btn-danger btn-xs remove"><span class="glyphicon glyphicon-remove"></span></a></div></div>');
         }, 
         error: function () {
           //

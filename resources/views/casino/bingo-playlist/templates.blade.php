@@ -99,8 +99,9 @@
         console.log(template_id);
         
     });
-    $(".up,.down").click(function() {
-        var row = $(this).parents(".dataTableRow:first");
+    function toUp(template_id , idx, isUp) {
+        //var row = $(this).parents(".dataTableRow:first");
+        var row = $('#row' + template_id + "idx" + idx );
         idx = row.attr('data-idx');
         template_id = row.data('template-id');
         var data = {
@@ -108,15 +109,23 @@
             template_id: row.data('template-id'),
             _token: $('meta[name="csrf-token"]').attr('content')
         }
-        if ($(this).is(".up")) {
+        if (isUp == 1) {
             $.post('casino/templates/up', data, function(response) {
                 if (response.success == "success") {
                     //console.log(response.idx, response.idxNew, response.idxC);
                     $('#row' + template_id + "idx" + response.idx ).attr('data-idx', response.idxC );    
                     $('#row' + template_id + "idx" + response.idx ).attr('id', 'rowNew' );
                     $('#row' + template_id + "idx" + response.idxNew ).attr('data-idx', response.idx );    
+                    $('#row' +  template_id + "idx" + response.idxNew  + " .top" ).attr("onclick","toTop("+ template_id + ", " + response.idx  + ");");
+                    $('#row' +  template_id + "idx" + response.idxNew  + " .up" ).attr("onclick","toUp("+ template_id + ", " + response.idx  + ",1);");
+                    $('#row' +  template_id + "idx" + response.idxNew  + " .down" ).attr("onclick","toUp("+ template_id + ", " + response.idx  + ",0);");
+                    $('#row' +  template_id + "idx" + response.idxNew  + " .remove" ).attr("onclick","removeRow("+ template_id + ", " + response.idx  + ");");
                     $('#row' +  template_id + "idx" + response.idxNew  ).attr('id', 'row' +  template_id + "idx" + response.idx );
                     $('#rowNew' ).attr('data-idx', response.idxNew );    
+                    $('#rowNew .top').attr("onclick","toTop("+ template_id + ", " + response.idxNew  + ");");
+                    $('#rowNew .up').attr("onclick","toUp("+ template_id + ", " + response.idxNew  + ",1);");
+                    $('#rowNew .down').attr("onclick","toUp("+ template_id + ", " + response.idxNew  + ",0);");
+                    $('#rowNew .remove').attr("onclick","removeRow("+ template_id + ", " + response.idxNew  + ");");
                     $('#rowNew' ).attr('id', 'row' +  template_id + "idx" + response.idxNew );
                     row.insertBefore(row.prev());
                 } else {
@@ -131,8 +140,16 @@
                     $('#row' + template_id + "idx" + response.idx ).attr('data-idx', response.idxC );    
                     $('#row' + template_id + "idx" + response.idx ).attr('id', 'rowNew' );
                     $('#row' + template_id + "idx" + response.idxNew ).attr('data-idx', response.idx );    
+                    $('#row' +  template_id + "idx" + response.idxNew  + " .top" ).attr("onclick","toTop("+ template_id + ", " + response.idx  + ");");
+                    $('#row' +  template_id + "idx" + response.idxNew  + " .up" ).attr("onclick","toUp("+ template_id + ", " + response.idx  + ",1);");
+                    $('#row' +  template_id + "idx" + response.idxNew  + " .down" ).attr("onclick","toUp("+ template_id + ", " + response.idx  + ",0);");
+                    $('#row' +  template_id + "idx" + response.idxNew  + " .remove" ).attr("onclick","removeRow("+ template_id + ", " + response.idx  + ");");
                     $('#row' +  template_id + "idx" + response.idxNew  ).attr('id', 'row' +  template_id + "idx" + response.idx );
                     $('#rowNew' ).attr('data-idx', response.idxNew );    
+                    $('#rowNew .top').attr("onclick","toTop("+ template_id + ", " + response.idxNew  + ");");
+                    $('#rowNew .up').attr("onclick","toUp("+ template_id + ", " + response.idxNew  + ",1);");
+                    $('#rowNew .down').attr("onclick","toUp("+ template_id + ", " + response.idxNew  + ",0);");
+                    $('#rowNew .remove').attr("onclick","removeRow("+ template_id + ", " + response.idxNew  + ");");
                     $('#rowNew' ).attr('id', 'row' +  template_id + "idx" + response.idxNew );
                     row.insertAfter(row.next());
                 } else {
@@ -141,9 +158,10 @@
             });
             
         }
-    });
-    $(".top").click(function() {
-      var row = $(this).parents(".divTableRow:first");
+    };
+    function toTop (template_id , idx) {
+      //var row = $(this).parents(".divTableRow:first");
+      var row = $('#row' + template_id + "idx" + idx );
       idx = row.attr('data-idx');
       template_id = row.data('template-id');
       var idxArray = new Array();
@@ -159,36 +177,39 @@
         for ( var i = 0, l = idxArray.length; l > i  ; l-- ) {
             idx2 = idxArray[ l-1 ] - 1; 
             $('#row' + template_id + "idx" + idx2 ).attr('data-idx', idxArray[ l-1 ] );
+            $('#row' +  template_id + "idx" + idx2  + " .top" ).attr("onclick","toTop("+ template_id + ", " + idxArray[ l-1 ]  + ");");
+            $('#row' +  template_id + "idx" + idx2  + " .up" ).attr("onclick","toUp("+ template_id + ", " + idxArray[ l-1 ]  + ",1);");
+            $('#row' +  template_id + "idx" + idx2  + " .down" ).attr("onclick","toUp("+ template_id + ", " + idxArray[ l-1 ]  + ",0);");
+            $('#row' +  template_id + "idx" + idx2  + " .remove" ).attr("onclick","removeRow("+ template_id + ", " + idxArray[ l-1 ]  + ");");
             $('#row' + template_id + "idx" + idx2 ).attr('id', 'row' + template_id + "idx" + idxArray[ l-1 ]);
         }
         
         //row.attr('idx',response.idxNew ); 
         idxN = parseInt(response.idx) + 1;
         $('#row' + template_id + "idx" + idxN ).attr('data-idx', response.idxNew );
+        $('#row' + template_id + "idx" + idxN + ' .top').attr("onclick","toTop("+ template_id + ", " + response.idxNew  + ");");
+        $('#row' + template_id + "idx" + idxN + ' .up').attr("onclick","toUp("+ template_id + ", " + response.idxNew  + ",1);");
+        $('#row' + template_id + "idx" + idxN + ' .down').attr("onclick","toUp("+ template_id + ", " + response.idxNew  + ",0);");
+        $('#row' + template_id + "idx" + idxN + ' .remove').attr("onclick","removeRow("+ template_id + ", " + response.idxNew  + ");");
         $('#row' + template_id + "idx" + idxN ).attr('id', 'row' + template_id + "idx" + response.idxNew);
       });
       row.insertAfter('.dataHeadingRow' + template_id);
-    });
-    $(".remove").click(function() {
-      var row = $(this).parents(".dataTableRow:first");
-      template_id = row.data('template-id');
+    };
 
+    function removeRow(template_id , idx) {
+      var row = $('#row' + template_id + "idx" + idx );
       var data = {
-          idx: row.attr('data-idx'),
-          template_id: row.data('template-id'),
+          idx: idx, //row.attr('data-idx'),
+          template_id: template_id, // row.data('template-id'),
           _token: $('meta[name="csrf-token"]').attr('content')
       }
-      //console.log(data);
-      
-      $.post('casino/templates/destroy', data, function(response) {
+      $.post('casino/templates/destroyRow', data, function(response) {
         // console.log(response);
         //$('#editTemplateModal--' + template_id).modal('hide');
         //javascript:ajaxLoad('{{url('/casino/templates')}}');
       });
-       row.remove();
-
-      // row.remove();
-    });
+      row.remove();
+    };
 
 
 $(document).ready(function() {
@@ -222,21 +243,5 @@ $(document).ready(function() {
         javascript:ajaxLoad('{{url('/casino/templates')}}');
     });
   });
-
-       //   success:function(data){
-       //    if (data.success == "success"){
-       //        $("#CasinoMenu").text( data.casinoname);
-       //        //$("#casinoEvents1").click();
-       //        //var href = $('#casinoEvents').attr('href');
-       //        var href = $('#CasinoCasino').attr('href');
-       //        window.location.href = href; 
-       //        //location.reload();casinoEvents
-       //        //window.location.href = "http://10.0.0.156:8000/casino/events";
-       //    }
-       // },
-       // error: function (error) {
-       //      alert ("Unexpected wrong.");
-       //  }
-
 });
 </script>
