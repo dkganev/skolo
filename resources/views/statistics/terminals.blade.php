@@ -20,6 +20,7 @@
                 </a>
             </div>
                 <div class="panel-body" >
+                    <input id="pageReload" type="hidden" val="" data-URL="javascript:ajaxLoad('{{url('statistics/terminals')}}" data-excel-url="{{ route('export2excelBJ') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" > 
                     <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
                             data-toggle="table"
                             data-locale="en-US"
@@ -28,25 +29,25 @@
                     >
                     <thead class="w3-dark-grey">
                         <tr>
-                            <th data-sortable="true">@lang('messages.PS ID')</th>
-                            <th data-sortable="true">@lang('messages.Dallas ID')</th>
-                            <th data-sortable="true">@lang('messages.Total In') (@lang('messages.dollar'))</th>
-                            <th data-sortable="true">@lang('messages.Total Out') (@lang('messages.dollar'))</th>
-                            <th data-sortable="true">@lang('messages.Total Bet') (@lang('messages.dollar'))</th>
-                            <th data-sortable="true">@lang('messages.Total Win') (@lang('messages.dollar'))</th>
-                            <th data-sortable="true">@lang('messages.Total Credit') (@lang('messages.dollar'))</th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('psid', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'psid' ? 'asc' : 'desc' }}');">@lang('messages.PS ID')<i class="fa {{ $page['OrderQuery'] == 'psid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('dallasid', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'dallasid' ? 'asc' : 'desc' }}');">@lang('messages.Dallas ID')<i class="fa {{ $page['OrderQuery'] == 'dallasid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('total_in', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'total_in' ? 'asc' : 'desc' }}');">@lang('messages.Total In') (@lang('messages.dollar'))<i class="fa {{ $page['OrderQuery'] == 'total_in' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('total_out', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'total_out' ? 'asc' : 'desc' }}');">@lang('messages.Total Out') (@lang('messages.dollar'))<i class="fa {{ $page['OrderQuery'] == 'total_out' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('total_bet', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'total_bet' ? 'asc' : 'desc' }}');">@lang('messages.Total Bet') (@lang('messages.dollar'))<i class="fa {{ $page['OrderQuery'] == 'total_bet' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('total_win', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'total_win' ? 'asc' : 'desc' }}');">@lang('messages.Total Win') (@lang('messages.dollar'))<i class="fa {{ $page['OrderQuery'] == 'total_win' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('total_credit', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'total_credit' ? 'asc' : 'desc' }}');">@lang('messages.Total Credit') (@lang('messages.dollar'))<i class="fa {{ $page['OrderQuery'] == 'total_credit' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                         </tr>
                     </thead>
                     <tbody>
                     	@foreach($counters as $c)
                             <tr class="tr-class" id="tr{{$c->psid}}">
-                                <td class="text-center">{{ $c->server_ps->psid }}</td>
-                                <td class="text-center">{{ $c->server_ps->dallasid }}</td>
-                                <td class="text-right" id="TotalIn{{$c->psid}}">{{ number_format($c->totalIn()/100, 2) }}</td>
-                                <td class="text-right" id="TotalOut{{$c->psid}}">{{ number_format($c->totalOut()/100, 2) }}</td>
-                                <td class="text-right" id="TotalBet{{$c->psid}}">{{ number_format($c->totalBet()/100, 2) }}</td>
-                                <td class="text-right" id="TotalWin{{$c->psid}}">{{ number_format($c->totalWin()/100, 2) }}</td>
-                                <td class="text-right" id="TotalCredit{{$c->psid}}">{{ number_format($c->totalCredit()/100, 2) }}</td>
+                                <td class="text-center">{{ $c->psid }}</td>
+                                <td class="text-center">{{ $c->dallasid }}</td>
+                                <td class="text-right" id="TotalIn{{$c->psid}}">{{ number_format($c->total_in/100, 2) }}</td>
+                                <td class="text-right" id="TotalOut{{$c->psid}}">{{ number_format($c->total_out/100, 2) }}</td>
+                                <td class="text-right" id="TotalBet{{$c->psid}}">{{ number_format($c->total_bet/100, 2) }}</td>
+                                <td class="text-right" id="TotalWin{{$c->psid}}">{{ number_format($c->total_win/100, 2) }}</td>
+                                <td class="text-right" id="TotalCredit{{$c->psid}}">{{ number_format($c->total_credit/100, 2) }}</td>
 
                             </tr>
                         @endforeach
@@ -67,7 +68,7 @@
 </div><!--End Container -->
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
-<script src="bootstrap-table/bootstrap-table.js"></script>
+<!--<script src="bootstrap-table/bootstrap-table.js"></script>-->
 <script>
     var stopRealTime = '<?php echo app('translator')->get('messages.Stop Real Time'); ?>';
     var startRealTime = '<?php echo app('translator')->get('messages.Start Real Time'); ?>';

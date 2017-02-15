@@ -112,7 +112,7 @@ return array(
     'Ticket<br/>Cost' => 'Ticket<br/> Cost',
     'at<br/>ball' => 'at<br/>ball',
     'Tickets' => 'Tickets',
-    'Game<br/>Cancelled' => 'Game<br/>Cancelled',
+    'Game<br/>Cancelled' => 'Cancelled<br/>Game',
     '$' => '$',
     'Amount Won' => 'Amount Won',
     'Show Tickets' => 'Show Tickets',

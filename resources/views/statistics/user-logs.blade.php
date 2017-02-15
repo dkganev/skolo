@@ -165,15 +165,7 @@
                 </div>
 
                 <div class="panel-body" >
-                    <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
-                        data-toggle="table"
-                        data-locale="en-US"
-                        data-sortable="true"
-                        data-pagination="true"
-                        data-side-pagination="client"
-                        data-page-list="[20, 40, 100]"
-                        data-classes="table-condensed"
-                    >
+                    <table class="table table-striped table-bordered table-hover data-table-table" role="grid">
                         <thead class="w3-dark-grey">
                             <tr >
                                 <th  class="MenuSort col-md-2"  style="display: none; ">

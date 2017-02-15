@@ -30,9 +30,34 @@ class StatisticsController extends Controller
         return view('statistics.index');
     }
 
-    public function terminals_statistics()
+    public function terminals_statistics(Request $request)
     {
-        $counters = PsCounters::orderBy('psid', 'asc')->get();
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        
+        $counters = DB::connection('pgsql')->select(' 
+                SELECT
+                    c.psid as psid,
+                    c.counter as counter,
+                    (SELECT sps.dallasid FROM server_ps as sps WHERE sps.psid = c.psid ) as dallasid,
+                    (c.counter[11] + c.counter[21] + c.counter[23] )  as total_in, 
+                    (c.counter[2] + c.counter[3] + c.counter[22] + c.counter[24] )  as total_out, 
+                    c.counter[0]  as total_bet, 
+                    c.counter[34] as total_win, 
+                    c.counter[12] as total_credit 
+                FROM ps_counters as c
+                ORDER BY '. $page['OrderQuery'].' '.$page['OrderDesc'].' 
+        ');
+        //$counters = PsCounters::orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$counters = PsCounters::orderBy('psid', 'asc')->get();
 
         $totalIn  = 0;
         $totalOut = 0;
@@ -41,11 +66,12 @@ class StatisticsController extends Controller
         $totalCredit = 0;
 
         foreach($counters as $counter) {
-            $totalIn += $counter->totalIn();
-            $totalOut += $counter->totalOut();
-            $totalBet += $counter->totalBet();
-            $totalWin += $counter->totalWin();
-            $totalCredit += $counter->totalCredit();
+            
+            $totalIn += $counter->total_in;
+            $totalOut += $counter->total_out;
+            $totalBet += $counter->total_bet;
+            $totalWin += $counter->total_win;
+            $totalCredit += $counter->total_credit;
         }
 
         $totals = [
@@ -56,7 +82,7 @@ class StatisticsController extends Controller
             'totalCredit' => $totalCredit
         ];
 
-        return view('statistics.terminals', ['counters' => $counters , 'totals' => $totals]);
+        return view('statistics.terminals', ['counters' => $counters , 'totals' => $totals, 'page' => $page ]);
     }
 
     public function export2excelTerminalsStatistics()
@@ -529,7 +555,7 @@ class StatisticsController extends Controller
                     (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 4 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 4 GROUP BY w2.unique_game_seq) ELSE 0 END ) as bonus_bingo_val,
                     (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 5 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 5 GROUP BY w2.unique_game_seq) ELSE 0 END ) as jackpot_line_val,
                     (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 6 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 6 GROUP BY w2.unique_game_seq) ELSE 0 END ) as jackpot_bingo_val,
-                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 8 GROUP BY w2.unique_game_seq)) THEN ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 8 GROUP BY w2.unique_game_seq) ELSE 0 END ) as cancel_val
+                    (CASE WHEN (EXISTS ( SELECT SUM(w2.win_val) FROM wins_history as w2 WHERE w2.unique_game_seq = s.unique_game_seq  and w2.win_type = 8 GROUP BY w2.unique_game_seq)) THEN 1 ELSE 0 END ) as cancel_val
                         
                 FROM history as s
                 WHERE 1 = 1'. $wherQuery . '

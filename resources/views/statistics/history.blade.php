@@ -728,7 +728,7 @@
                             <th class="text-center JackpotLine" data-align="right" data-field="id17" data-sortable="true" onclick="changePageSortBingo('jackpot_line_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.$')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'jackpot_line_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center JackpotBingo" data-align="right" data-field="id18" data-sortable="true" onclick="changePageSortBingo('jackpot_bingo', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.at<br/>ball')<i class="fa {{ $page['OrderQuery'] == 'jackpot_bingo' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th> 
                             <th class="text-center JackpotBingo" data-align="right" data-field="id19" data-sortable="true" onclick="changePageSortBingo('jackpot_bingo_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.$')<br/>&nbsp;&nbsp;<i class="fa {{ $page['OrderQuery'] == 'jackpot_bingo_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th rowspan="1" class="text-center" data-field="id20" data-sortable="true" >@lang('messages.Game<br/>Cancelled')</th>
+                            <th rowspan="1" class="text-center" data-field="id20" data-sortable="true" onclick="changePageSortBingo('cancel_val', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Game<br/>Cancelled')<i class="fa {{ $page['OrderQuery'] == 'cancel_val' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                         </tr>
                     </thead>
 
@@ -755,7 +755,7 @@
                                     <td class="text-right JackpotLine">{{ number_format($history->jackpot_line_val / 100, 2 ) }}</td>
                                     <td class="text-right JackpotBingo">{{ $history->jackpot_bingo }}</td>
                                     <td class="text-right JackpotBingo">{{ number_format($history->jackpot_bingo_val / 100, 2 ) }}</td>
-                                    <td class="text-right ">{{ $history->cancel_val }}</td>
+                                    <td class="text-right ">{{ $history->cancel_val == 1 ? "Cancelled" : 0 }}</td>
                               
                                 </tr>
                             @endforeach
