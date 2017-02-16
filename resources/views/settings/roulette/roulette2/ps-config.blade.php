@@ -422,6 +422,16 @@
                                   <option {{ $conf->denom4 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
                                 </select>
                               </div>
+                                <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Chip Sound'):</h3>
+                                        <hr style="margin: 7px 0 12px 0;">
+                                        <div class="form-group form-group-sm" style="width:270px; display: inline-block; padding: 0;" >
+                                            <label for="chip_sound">@lang('messages.Chip Sound'):</label><br>
+                                            <select name="chip_sound" id="chip_sound" class="selectpicker" data-actions-box="true" data-id="5" > 
+                                                <option {{ $conf->chip_sound == 0 ? 'selected="true"' : '' }} value="0">0</option>
+                                                <option {{ $conf->chip_sound == 1 ? 'selected="true"' : '' }} value="1">1</option>
+                                                <option {{ $conf->chip_sound == 2 ? 'selected="true"' : '' }} value="2">2</option>
+                                            </select>
+                                        </div>
 
                             </div><!-- End Col -->
 
@@ -449,32 +459,43 @@
 <script>
 var denom = new Array("0", $('#denom1').val(), $('#denom2').val(), $('#denom3').val(), $('#denom4').val()); //$('#denom1').attr('data-prev', denom[1]);
 var denomPrev = new Array("0", $('#denom1').val(), $('#denom2').val(), $('#denom3').val(), $('#denom4').val()); //$('#denom1').attr('data-prev', denom[1]);
+var  pageID = {{$page['pageID']}};
+Timer123 = setTimeout(function(){ $('form').css('display', 'none'); $('#ps-config-form-' + pageID).fadeIn(); }, 200);
+
+
 $('select').on('change', function() {
     denomID =  parseInt($(this).attr("data-id"));
     denomNew = $(this).val();
-        if ((denom[1] != denomNew && denom[2] != denomNew  && denom[3] != denomNew  && denom[4] != denomNew) || denomNew == 0 ){
-            denom[denomID] = denomNew;
-            denomPrev[denomID] = denomNew;
-        }else{
-            thisVal = denomPrev[denomID];
-            $(this).val(thisVal).change(function() {
-                //alert("previous"); //I have previous value 
-            });
+        if (denomID != 5){
+            if ((denom[1] != denomNew && denom[2] != denomNew  && denom[3] != denomNew  && denom[4] != denomNew) || denomNew == 0 ){
+                denom[denomID] = denomNew;
+                denomPrev[denomID] = denomNew;
+            }else{
+                thisVal = denomPrev[denomID];
+                $(this).val(thisVal).change(function() {
+                    //alert("previous"); //I have previous value 
+                });
+            }
         }
 });
-        
-  $('.ps-config-submit').on('click', function(event) {
+  
+$('.ps-config-submit').on('click', function(event) {
     event.preventDefault();
-
+    
+    //console.log($(this).attr('data-id'));
+    dataID = $(this).attr('data-id');
     $.ajax({
         method: 'POST',
         url: '/settings/roulette2/psconfig/edit',
         data: $(this).parents('form:first').serialize(),
     })
     .done(function () {
-         javascript:ajaxLoad('{{url('/settings/roulette2/psconfig')}}');
+          pageHref="javascript:ajaxLoad('{{url('/settings/roulette2/psconfig')}}";
+          pageHref = pageHref + "?pageID=" + dataID +"')"
+          window.location.href = pageHref; 
     });
-  });
+});
+
 
   $('button.ps-config-toggle').on('click', function(){
     var id = $(this).attr('data-id');

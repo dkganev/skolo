@@ -397,6 +397,7 @@ return array(
     'User' => 'User',
     'Settings User Logs' => 'Settings User Logs',
     'System User Logs' => 'System User Logs',
+    'Chip Sound' => 'Chip Sound',
     
     
     

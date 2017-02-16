@@ -66,10 +66,17 @@ class RouletteTwoController extends Controller
         WheelConfig::first()->update($request->except('_token'));;
     }
 
-    public function ps_config_index()
+    public function ps_config_index(Request $request)
     {
+        if ($request['pageID']) {
+            $page['pageID'] = $request['pageID'];
+        
+        } else {
+            $page['pageID'] = 0;
+        
+        }
         $ps_conf = PsConf::orderBy('ps_id', 'asc')->get();
-        return view('settings.roulette.roulette2.ps-config', ['ps_conf' => $ps_conf]);
+        return view('settings.roulette.roulette2.ps-config', ['ps_conf' => $ps_conf, 'page' => $page ]);
     }
 
     public function ps_config_edit(Request $request)
