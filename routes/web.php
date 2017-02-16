@@ -237,6 +237,7 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     Route::get('statistics', 'StatisticsController@index');
 
     Route::get('statistics/terminals', 'StatisticsController@terminals_statistics');
+    Route::post('statistics/terminals', 'StatisticsController@terminals_statistics');
     Route::get('export2excelTerminalsStatistics', 'StatisticsController@export2excelTerminalsStatistics')->name('export2excelTerminalsStatistics');
 
     Route::get('statistics/games', 'StatisticsController@games_statistics');
