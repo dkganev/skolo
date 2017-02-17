@@ -1,5 +1,6 @@
 var $messages = $('#inpMassage');
-var pageHrefSocket = $('#CasinoCasino').attr('data-url') + ":3000";
+//var pageHrefSocket = $('#CasinoCasino').attr('data-url') + ":3000";
+var pageHrefSocket = $('#CasinoCasino').attr('data-url') + ":3000/server_ps";
 //console.log (pageHrefSocket);
 var socket = io(pageHrefSocket);
 
@@ -11,7 +12,7 @@ var pageHrefWinsHistorySocket = $('#CasinoCasino').attr('data-url') + ":3000/win
 //console.log (pageHrefSocket);wins_history
 var socketWinsHistory = io.connect(pageHrefWinsHistorySocket);
 //var socket = io('http://10.0.0.199:3000');
-
+/*
 socket.on('news', function (data) {
     console.log ("test222");
     console.log(data);
@@ -28,7 +29,7 @@ socket.on('user joined', function (data) {
 socket.on('typing', function (data) {
     console.log ("test2");
     addChatTyping(data);
-});
+});*/
 var TimeOut = [1];
 var TimeOutKey = 1;
 var Type = " ";
