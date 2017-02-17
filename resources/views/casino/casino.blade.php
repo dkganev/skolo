@@ -13,14 +13,14 @@
                             <input id="GridDrag" type="checkbox" checked >
                             <div class="slider round"></div>
                         </label>
-                        <span style="vertical-align: top; line-height: 2.00;">@lang('messages.Grid')</span>
+                        <span style="vertical-align: top; line-height: 2.00; color: white;">@lang('messages.Grid')</span>
                     </div>
                     <div class="col-md-2"> 
                         <label class="switch">
                             <input id="GridColor" type="checkbox" >
                             <div class="slider round"></div>
                         </label>
-                        <span style="vertical-align: top; line-height: 2.00;">@lang('messages.Games Colors')</span>
+                        <span style="vertical-align: top; line-height: 2.00; color: white;">@lang('messages.Games Colors')</span>
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-2"> 
@@ -28,7 +28,7 @@
                             <input id="GridBingoFeed" type="checkbox" >
                             <div class="slider round"></div>
                         </label>
-                        <span style="vertical-align: top; line-height: 2.00;">@lang('messages.Bingo Feed')</span>
+                        <span style="vertical-align: top; line-height: 2.00; color: white;">@lang('messages.Bingo Feed')</span>
                     </div>  
 
 

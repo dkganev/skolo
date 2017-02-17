@@ -162,67 +162,75 @@
                               <hr style="margin: 7px 0 12px 0;">
 
                                   <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Game Max Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="game_max_bet" value="{{ $conf->game_max_bet }}" type="text" class="form-control text-center" placeholder="Game Max Bet" aria-describedby="sizing-addon2">
-                                  </div>
+                                    <label style="color: #474747">@lang('messages.Game Max Bet'):</label>
+                                    <label class="updateForm" name="game_max_bet" style="color: red; display: none;">@lang('messages.Game Max Bet must be bigger than Game Min Bet').</label><br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                        <input name="game_max_bet" value="{{ $conf->game_max_bet }}" type="text" class="form-control text-center" placeholder="Game Max Bet" aria-describedby="sizing-addon2">
+                                    </div>
                                 </div>
 
                                 <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Straight Max Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="straight_max" value="{{ $conf->straight_max }}" type="text" class="form-control text-center" placeholder="Straight Max Bet" aria-describedby="sizing-addon2">
-                                  </div>
+                                    <label style="color: #474747">@lang('messages.Straight Max Bet'):</label>
+                                    <label class="updateForm" name="straight_max" style="color: red; display: none;">@lang('messages.Straight Max Bet must be bigger than Straight Min Bet').</label><br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                        <input name="straight_max" value="{{ $conf->straight_max }}" type="text" class="form-control text-center" placeholder="Straight Max Bet" aria-describedby="sizing-addon2">
+                                    </div>
                                 </div>
 
                                 <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Split Max Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="split_max" value="{{ $conf->split_max }}" type="text" class="form-control text-center" placeholder="Split Max Bet" aria-describedby="sizing-addon2">
-                                  </div>
+                                    <label style="color: #474747">@lang('messages.Split Max Bet'):</label>
+                                    <label class="updateForm" name="split_max" style="color: red; display: none;">@lang('messages.Split Max Bet must be bigger than Split Min Bet').</label><br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                        <input name="split_max" value="{{ $conf->split_max }}" type="text" class="form-control text-center" placeholder="Split Max Bet" aria-describedby="sizing-addon2">
+                                    </div>
                                 </div>
 
                                 <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Basket & Street Max Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="basket_a_street_bet_max" value="{{ $conf->basket_a_street_bet_max }}" type="text" class="form-control text-center" placeholder="Basket & Street Max Bet" aria-describedby="sizing-addon2">
-                                  </div>
+                                    <label style="color: #474747">@lang('messages.Basket & Street Max Bet'):</label>
+                                    <label class="updateForm" name="basket_a_street_bet_max" style="color: red; display: none;">@lang('messages.Basket & Street Max Bet must be bigger than Basket & Street Min Bet').</label><br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                        <input name="basket_a_street_bet_max" value="{{ $conf->basket_a_street_bet_max }}" type="text" class="form-control text-center" placeholder="Basket & Street Max Bet" aria-describedby="sizing-addon2">
+                                    </div>
                                 </div>
 
                                 <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Corner Max Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="corner_bet_max" value="{{ $conf->corner_bet_max }}" type="text" class="form-control text-center" placeholder="Corner Bet Max" aria-describedby="sizing-addon2">
-                                  </div>
+                                    <label style="color: #474747">@lang('messages.Corner Max Bet'):</label>
+                                    <label class="updateForm" name="corner_bet_max" style="color: red; display: none;">@lang('messages.Corner Max Bet must be bigger than Corner Min Bet').</label><br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                        <input name="corner_bet_max" value="{{ $conf->corner_bet_max }}" type="text" class="form-control text-center" placeholder="Corner Bet Max" aria-describedby="sizing-addon2">
+                                    </div>
                                 </div>
 
                                 <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Six Number Max Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="six_number_line_max" value="{{ $conf->six_number_line_max }}" type="text" class="form-control text-center" placeholder="Six Number Line Max" aria-describedby="sizing-addon2">
-                                  </div>
+                                    <label style="color: #474747">@lang('messages.Six Number Max Bet'):</label>
+                                    <label class="updateForm" name="six_number_line_max" style="color: red; display: none;">@lang('messages.Six Number Max Bet must be bigger than Six Number Min Bet').</label><br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                        <input name="six_number_line_max" value="{{ $conf->six_number_line_max }}" type="text" class="form-control text-center" placeholder="Six Number Line Max" aria-describedby="sizing-addon2">
+                                    </div>
                                 </div>
 
                                 <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Dozen Max Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="dozen_bet_max" value="{{ $conf->dozen_bet_max }}" type="text" class="form-control text-center" placeholder="Dozen Max Bet" aria-describedby="sizing-addon2">
-                                  </div>
+                                    <label style="color: #474747">@lang('messages.Dozen Max Bet'):</label>
+                                    <label class="updateForm" name="dozen_bet_max" style="color: red; display: none;">@lang('messages.Dozen Max Bett must be bigger than Dozen Min Bet').</label><br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                        <input name="dozen_bet_max" value="{{ $conf->dozen_bet_max }}" type="text" class="form-control text-center" placeholder="Dozen Max Bet" aria-describedby="sizing-addon2">
+                                    </div>
                                 </div>
 
                                 <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Even Max Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="even_bet_max" value="{{ $conf->even_bet_max }}" type="text" class="form-control text-center" placeholder="Even Bet Max" aria-describedby="sizing-addon2">
-                                  </div>
+                                    <label style="color: #474747">@lang('messages.Even Max Bet'):</label>
+                                    <label class="updateForm" name="even_bet_max" style="color: red; display: none;">@lang('messages.Even Max Bet must be bigger than Even Min Bet').</label><br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                        <input name="even_bet_max" value="{{ $conf->even_bet_max }}" type="text" class="form-control text-center" placeholder="Even Bet Max" aria-describedby="sizing-addon2">
+                                    </div>
                                 </div>
 
                             </div><!-- End Col -->
@@ -495,8 +503,64 @@ $('select').on('change', function() {
           }); //trihgger change handler initially!*/
 $('.ps-config-submit').on('click', function(event) {
     event.preventDefault();
+    firmID = $(this).parents('form:first').attr('id');
+    errorVal = 0;
+    $(".updateForm").hide();
+    gameMaxBet = parseInt($("#" + firmID).find('input[name="game_max_bet"]').val());
+    gameMinBet = parseInt($("#" + firmID).find('input[name="game_min_bet"]').val());
+    if (gameMaxBet < gameMinBet){
+        $("#" + firmID).find('label[name="game_max_bet"]').show()
+        errorVal = 1;
+    }
+    straight_max = parseInt($("#" + firmID).find('input[name="straight_max"]').val());
+    straight_min = parseInt($("#" + firmID).find('input[name="straight_min"]').val());
+    if (straight_max < straight_min){
+        $("#" + firmID).find('label[name="straight_max"]').show()
+        errorVal = 1;
+    }
+    split_max = parseInt($("#" + firmID).find('input[name="split_max"]').val());
+    split_min = parseInt($("#" + firmID).find('input[name="split_min"]').val());
+    if (split_max < split_min){
+        $("#" + firmID).find('label[name="split_max"]').show()
+        errorVal = 1;
+    }
+    basket_a_street_bet_max = parseInt($("#" + firmID).find('input[name="basket_a_street_bet_max"]').val());
+    basket_a_street_bet_min = parseInt($("#" + firmID).find('input[name="basket_a_street_bet_min"]').val());
+    if (basket_a_street_bet_max < basket_a_street_bet_min){
+        $("#" + firmID).find('label[name="basket_a_street_bet_max"]').show()
+        errorVal = 1;
+    }
+    corner_bet_max = parseInt($("#" + firmID).find('input[name="corner_bet_max"]').val());
+    corner_bet_min = parseInt($("#" + firmID).find('input[name="corner_bet_min"]').val());
+    if (corner_bet_max < corner_bet_min){
+        $("#" + firmID).find('label[name="corner_bet_max"]').show()
+        errorVal = 1;
+    }
+    six_number_line_max = parseInt($("#" + firmID).find('input[name="six_number_line_max"]').val());
+    six_number_line_min = parseInt($("#" + firmID).find('input[name="six_number_line_min"]').val());
+    if (six_number_line_max < six_number_line_min){
+        $("#" + firmID).find('label[name="six_number_line_max"]').show()
+        errorVal = 1;
+    }
+    dozen_bet_max = parseInt($("#" + firmID).find('input[name="dozen_bet_max"]').val());
+    dozen_bet_min = parseInt($("#" + firmID).find('input[name="dozen_bet_min"]').val());
+    if (dozen_bet_max < dozen_bet_min){
+        $("#" + firmID).find('label[name="dozen_bet_max"]').show()
+        errorVal = 1;
+    }
+    even_bet_max = parseInt($("#" + firmID).find('input[name="even_bet_max"]').val());
+    even_bet_min = parseInt($("#" + firmID).find('input[name="even_bet_min"]').val());
+    if (even_bet_max < even_bet_min){
+        $("#" + firmID).find('label[name="even_bet_max"]').show()
+        errorVal = 1;
+    }
+    if (errorVal == 1){
+        //console.log("test");
+        return;
+    }
     
-    //console.log($(this).attr('data-id'));
+    //console.log($("#" + firmID).find('input[name="game_max_bet"]').val());
+    
     dataID = $(this).attr('data-id');
     $.ajax({
         method: 'POST',

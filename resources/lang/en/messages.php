@@ -398,6 +398,16 @@ return array(
     'Settings User Logs' => 'Settings User Logs',
     'System User Logs' => 'System User Logs',
     'Chip Sound' => 'Chip Sound',
+    'Game Max Bet must be bigger than Game Min Bet' => 'Game Max Bet must be bigger than Game Min Bet',
+    'Straight Max Bet must be bigger than Straight Min Bet' => 'Straight Max Bet must be bigger than Straight Min Bet',
+    'Split Max Bet must be bigger than Split Min Bet' => 'Split Max Bet must be bigger than Split Min Bet',
+    'Basket & Street Max Bet must be bigger than Basket & Street Min Bet' => 'Basket & Street Max Bet must be bigger than Basket & Street Min Bet',
+    'Corner Max Bet must be bigger than Corner Min Bet' => 'Corner Max Bet must be bigger than Corner Min Bet',
+    'Six Number Max Bet must be bigger than Six Number Min Bet' => 'Six Number Max Bet must be bigger than Six Number Min Bet',
+    'Dozen Max Bett must be bigger than Dozen Min Bet' => 'Dozen Max Bett must be bigger than Dozen Min Bet',
+    'Even Max Bet must be bigger than Even Min Bet' => 'Even Max Bet must be bigger than Even Min Bet',
+    'B' => 'B',
+    'B' => 'B',
     'B' => 'B',
     
     
