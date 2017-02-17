@@ -50,9 +50,16 @@ class TerminalsController extends Controller
     public function addTerminal(Request $request)
     {
         $this->validate($request, [
+            'casinoid' => 'required',
+            'ps_type' => 'required',
             'psid' => 'required|unique:server_ps',
             'dallasid' => 'required|unique:server_ps',
+            'seatid' => 'required',
+            'psdescription' => 'required',
+            'default_game' => 'required',
+            'games' => 'required',
             'default_lang' => 'required'
+            
         ]);
         
         // Initialize current casino
@@ -176,8 +183,9 @@ class TerminalsController extends Controller
 
         $server_ps->delete();
 
-        $roulette_ps = PsConf::where('ps_id', $request->psid)->first();
-        $roulette_ps->delete();
+        //$roulette_ps = PsConf::where('ps_id', $request->psid)->first();
+        //$roulette_ps->delete();
+        $roulette_ps = PsConf::where('ps_id', $request->psid)->delete();
         event(new TerminalAdded(request()->ip(), request()->user()->name, $request->psid , 'Machine Deleted!', 2));
         
         return back();

@@ -7,7 +7,10 @@
                 <a href="#" class=" pull-right" style="font-size: 16px; right: 15px !important;  color: #ffffff;" onclick="$('.ModalClose').click();">
                     <i class="glyphicon glyphicon-remove"></i>
                 </a>
-                <span style="font-size: 16px; ">@lang('messages.Bingo - Tickets bought on PS') </span><span id='ticketNumber'>1</span><span> @lang('messages.for Game #') </span><span id='gameNumber'></span>
+                <span style="font-size: 16px; ">@lang('messages.Bingo - Tickets bought on PS') </span>
+                <span id='ticketNumber' style="font-size: 16px; ">1</span>
+                <span style="font-size: 16px; "> @lang('messages.for Game #') </span>
+                <span id='gameNumber' style="font-size: 16px; "></span>
             </div>
             <div class="modal-body" >
                 <span style="font-size: 14px; ">@lang('messages.Balls'):  </span>

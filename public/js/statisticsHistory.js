@@ -701,12 +701,13 @@ function ExportToPNGBingo() {
 
 function boxModalWindow2(bingo_seq, unique_game_seq, psid) {
     $(".faSpinnerBingo").show(); //BJHistory_modal opacity: 0.5;
-    //$('#bingoHistory2_modal').hide();
+    //$('bingoHistory_modal').hide();//$('#bingoHistory2_modal').hide();
+    $('#ModalClose').click();
     //$('#bingoHistory_modal').hide();
     $('#bingoTickets_History').hide();
     $('#balsHistory').hide();
     $('#psTicketsArchive').hide();
-    $('#bingoHistory2_modal').css('opacity', 0.3);
+    $('#bingoHistory2_modal').css('opacity', 0);
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
         type:'POST',
