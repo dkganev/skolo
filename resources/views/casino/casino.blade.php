@@ -70,7 +70,7 @@
 
                 <div id="casinoPreview" ondrop="drop(event)" ondragover="allowDrop(event)" style="height: 650px;">  
                     @foreach($server_ps as $ps)
-                        <div id="box{{ $ps->psid }}" data_boxStatus="{{ $ps->boxStatus }}" draggable="folse" ondragstart="drag(event)"  class="box disableTextSelect offline bootstrap-modal-form-open" data-toggle="modal" data-target="#casinoTerminalInfo"  onclick="boxModalWindow({{ $ps->psid }})" data-id="{{ $ps->psid }}" 
+                        <div id="box{{ $ps->psid }}" data_Exist="1" data_boxStatus="{{ $ps->boxStatus }}" draggable="folse" ondragstart="drag(event)"  class="box disableTextSelect offline bootstrap-modal-form-open" data-toggle="modal" data-target="#casinoTerminalInfo"  onclick="boxModalWindow({{ $ps->psid }})" data-id="{{ $ps->psid }}" 
                             style="height: 66px; width: 66px; -moz-user-select: text; left: {{ $ps->leftP }}px; top: {{ $ps->topP }}px;background-color: {{$ps->boxColor}}"
                         >
                             <div class="ps_title shortNameColor" style="background-color: {{$ps->current_game_color !== null ? $ps->current_game_color : 'inherit'}}">

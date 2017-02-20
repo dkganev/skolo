@@ -123,7 +123,8 @@ socket.on('new message', function (data) {
       var obj = $.parseJSON(jsonObj);
       console.log (obj);
       //console.log (obj.dataNew.psid);
-      if (obj.query == "UPDATE")
+      data_Exist = $("#box" + obj.dataNew.psid).attr('data_Exist');
+      if (obj.query == "UPDATE" && data_Exist == "1" ) //data_Exist
       {
         //if  (obj.dataNew.bonline == obj.dataOld.bonline){
         //console.log (obj.dataNew.active_errors);
