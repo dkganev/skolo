@@ -67,7 +67,7 @@
         </div>
 
         <div class="form-group" style="width:270px; display: inline-block;">
-          <label for="roulettetype">Roulette Type:</label><br>
+          <label for="roulettetype">@lang('messages.Roulette Type'):</label><br>
           <select name="roulettetype" id="roulettetype" class="selectpicker" data-actions-box="true">
             <option value="0" {{ $wheel_config->roulettetype  == 0 ? ' selected="true"' : '' }} >
                     @lang('messages.Single Zero')
@@ -80,7 +80,7 @@
         </div>
 
         <div class="form-group" style="width:270px; display: inline-block;">
-          <label for="colorscheme">Color Scheme:</label><br>
+          <label for="colorscheme">@lang('messages.Color Scheme'):</label><br>
           <select name="colorscheme" id="colorscheme" class="selectpicker" data-actions-box="true">
             <option value="0" {{ $wheel_config->colorscheme  == 0 ? ' selected="true"' : '' }} >
                     @lang('messages.Green')
@@ -113,7 +113,7 @@
       <div class="col-lg-6">
 
         <div class="form-group" style="width:270px; display: inline-block;">
-            <label for="partialrepeat">Partial Repeat:</label><br>
+            <label for="partialrepeat">@lang('messages.Partial Repeat'):</label><br>
             <select name="partialrepeat" id="partialrepeat" class="selectpicker" data-actions-box="true">
               <option value="0" {{  $wheel_config->partialrepeat  == 0 ? ' selected="true"' : '' }} >
                       @lang('messages.Disabled')
@@ -126,7 +126,7 @@
         </div>
 
         <div class="form-group" style="width:270px; display: inline-block;">
-            <label for="chevalrule">Cheval Rule:</label><br>
+            <label for="chevalrule">@lang('messages.Cheval Rule'):</label><br>
             <select name="chevalrule" id="chevalrule" class="selectpicker" data-actions-box="true">
               <option value="0" {{  $wheel_config->chevalrule  == 0 ? ' selected="true"' : '' }} >
                       @lang('messages.Disabled')
@@ -139,7 +139,7 @@
         </div>
 
         <div class="form-group" style="width:270px; display: inline-block;">
-            <label for="halfbackrule">Halfback Rule:</label><br>
+            <label for="halfbackrule">@lang('messages.Halfback Rule'):</label><br>
             <select name="halfbackrule" id="halfbackrule" class="selectpicker" data-actions-box="true">
               <option value="0" {{  $wheel_config->halfbackrule  == 0 ? ' selected="true"' : '' }} >
                       @lang('messages.Disabled')

@@ -69,8 +69,9 @@
                   </div>
 
                 <div class="col-lg-9" id="psconfig">
-                  @foreach($ps_conf as $conf)
-                  <form style="display: none" action="/settings/roulette2/psconfig/edit" method="POST" role="form" id="ps-config-form-{{ $conf->ps_id }}">
+                    @foreach($ps_conf as $conf)
+                        @if ($conf->ps_id == $page['pageID'])
+                            <form style="display: none" action="/settings/roulette2/psconfig/edit" method="POST" role="form" id="ps-config-form-{{ $conf->ps_id }}">
 
                         <div class="col-lg-12 w3-blue-grey" id="heading" style="width: 100%;  height: 35px; margin-bottom: 15px;">
                             <a style="margin:5px;" class="btn btn-warning btn-sm pull-right" onclick="ExportToPNG();">
@@ -454,8 +455,8 @@
                         </button>
                       </div>
                       </form>
-                  
-                      @endforeach
+                        @endif
+                    @endforeach
 
                 </div><!-- End PsConfig--> 
 
@@ -560,8 +561,11 @@ $('.ps-config-submit').on('click', function(event) {
 
   $('button.ps-config-toggle').on('click', function(){
     var id = $(this).attr('data-id');
-    $('form').css('display', 'none');
-    $('#ps-config-form-' + id).fadeIn();
+    pageHref="javascript:ajaxLoad('{{url('/settings/roulette2/psconfig')}}";
+    pageHref = pageHref + "?pageID=" + id +"')"
+    window.location.href = pageHref;
+    //$('form').css('display', 'none');
+    //$('#ps-config-form-' + id).fadeIn();
   });
 
   $(function(){

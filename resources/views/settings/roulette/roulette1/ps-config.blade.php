@@ -66,394 +66,396 @@
                 </div>
                 <div class="col-lg-9" id="psconfig">
                     @foreach($ps_conf as $conf)
-                        <form style="display: none" action="/settings/roulette1/psconfig/edit" 
-                              method="POST" role="form" id="ps-config-form-{{ $conf->ps_id }}"
-                        >
-                            <div class=" col-lg-12w3-blue-grey" id="heading" style="width: 100%;  height: 35px; margin-bottom: 15px;">
-                                  <a style="margin:5px;" class="btn btn-warning btn-sm pull-right" onclick="ExportToPNG();">
-                                             @lang('messages.Export to PNG')
-                                    </a>
-                                <h3 style="margin:0; padding: 0; color: #fff; font-family: sans-serif;">
-                                    <strong><i style="margin:0 0 0 268px; position: relative; top: 5px">
-                                        @if($conf->ps_id === 0)
-                                            DEFAULT PS - Config
-                                        @else
-                                            PS ID {{ $conf->ps_id }} - Config
-                                        @endif
-                                    </i></strong>
-                                </h3>
-                            </div>
-
-                            <!-- MIN BETS -->
-                            <div class="col-lg-3">
-                              <h4 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">@lang('messages.Min Bets') (@lang('messages.credits')):</h4>
-                              <hr style="margin: 7px 0 12px 0;">
-
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Game Min Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="game_min_bet" value="{{ $conf->game_min_bet }}" type="text" class="form-control text-center" placeholder="Game Min Bet" aria-describedby="sizing-addon2">
-                                  </div>
+                        @if ($conf->ps_id == $page['pageID'])
+                            <form style="display: none" action="/settings/roulette1/psconfig/edit" 
+                                  method="POST" role="form" id="ps-config-form-{{ $conf->ps_id }}"
+                            >
+                                <div class=" col-lg-12w3-blue-grey" id="heading" style="width: 100%;  height: 35px; margin-bottom: 15px;">
+                                      <a style="margin:5px;" class="btn btn-warning btn-sm pull-right" onclick="ExportToPNG();">
+                                                 @lang('messages.Export to PNG')
+                                        </a>
+                                    <h3 style="margin:0; padding: 0; color: #fff; font-family: sans-serif;">
+                                        <strong><i style="margin:0 0 0 268px; position: relative; top: 5px">
+                                            @if($conf->ps_id === 0)
+                                                DEFAULT PS - Config
+                                            @else
+                                                PS ID {{ $conf->ps_id }} - Config
+                                            @endif
+                                        </i></strong>
+                                    </h3>
                                 </div>
 
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Straight Min Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="straight_min" value="{{ $conf->straight_min }}" type="text" class="form-control text-center" placeholder="Straight Min Bet" aria-describedby="sizing-addon2">
-                                  </div>
-                                </div>
+                                <!-- MIN BETS -->
+                                <div class="col-lg-3">
+                                  <h4 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">@lang('messages.Min Bets') (@lang('messages.credits')):</h4>
+                                  <hr style="margin: 7px 0 12px 0;">
 
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Split Min Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="split_min" value="{{ $conf->split_min }}" type="text" class="form-control text-center" placeholder="Split Min Bet" aria-describedby="sizing-addon2">
-                                  </div>
-                                </div>
-
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Basket & Street Min Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="basket_a_street_bet_min" value="{{ $conf->basket_a_street_bet_min }}" type="text" class="form-control text-center" placeholder="Basket & Street Min Bet" aria-describedby="sizing-addon2">
-                                  </div>
-                                </div>
-
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Corner Min Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="corner_bet_min" value="{{ $conf->corner_bet_min }}" type="text" class="form-control text-center" placeholder="Corner Bet Min" aria-describedby="sizing-addon2">
-                                  </div>
-                                </div>
-
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Six Number Min Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="six_number_line_min" value="{{ $conf->six_number_line_min }}" type="text" class="form-control text-center" placeholder="Six Number Line Min" aria-describedby="sizing-addon2">
-                                  </div>
-                                </div>
-
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Dozen Min Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="dozen_bet_min" value="{{ $conf->dozen_bet_min }}" type="text" class="form-control text-center" placeholder="Dozen Bet Min" aria-describedby="sizing-addon2">
-                                  </div>
-                                </div>
-
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Even Min Bet'):</label><br>
-                                  <div class="input-group">
-                                    <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                    <input name="even_bet_min" value="{{ $conf->even_bet_min }}" type="text" class="form-control text-center" placeholder="Even Bet Min" aria-describedby="sizing-addon2">
-                                  </div>
-                                </div>
-
-                            </div><!-- End Col -->
-
-
-                            <!-- MAX BETS -->
-                            <div class="col-lg-3">
-                              <h4 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Max Bets') (@lang('messages.credits')):</h4>
-                              <hr style="margin: 7px 0 12px 0;">
-
-                                  <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Game Max Bet'):</label>
-                                    <label class="updateForm" name="game_max_bet" style="color: red; display: none;">@lang('messages.Game Max Bet must be bigger than Game Min Bet').</label><br>
-                                    <div class="input-group">
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Game Min Bet'):</label><br>
+                                      <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                        <input name="game_max_bet" value="{{ $conf->game_max_bet }}" type="text" class="form-control text-center" placeholder="Game Max Bet" aria-describedby="sizing-addon2">
+                                        <input name="game_min_bet" value="{{ $conf->game_min_bet }}" type="text" class="form-control text-center" placeholder="Game Min Bet" aria-describedby="sizing-addon2">
+                                      </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Straight Max Bet'):</label>
-                                    <label class="updateForm" name="straight_max" style="color: red; display: none;">@lang('messages.Straight Max Bet must be bigger than Straight Min Bet').</label><br>
-                                    <div class="input-group">
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Straight Min Bet'):</label><br>
+                                      <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                        <input name="straight_max" value="{{ $conf->straight_max }}" type="text" class="form-control text-center" placeholder="Straight Max Bet" aria-describedby="sizing-addon2">
+                                        <input name="straight_min" value="{{ $conf->straight_min }}" type="text" class="form-control text-center" placeholder="Straight Min Bet" aria-describedby="sizing-addon2">
+                                      </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Split Max Bet'):</label>
-                                    <label class="updateForm" name="split_max" style="color: red; display: none;">@lang('messages.Split Max Bet must be bigger than Split Min Bet').</label><br>
-                                    <div class="input-group">
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Split Min Bet'):</label><br>
+                                      <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                        <input name="split_max" value="{{ $conf->split_max }}" type="text" class="form-control text-center" placeholder="Split Max Bet" aria-describedby="sizing-addon2">
+                                        <input name="split_min" value="{{ $conf->split_min }}" type="text" class="form-control text-center" placeholder="Split Min Bet" aria-describedby="sizing-addon2">
+                                      </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Basket & Street Max Bet'):</label>
-                                    <label class="updateForm" name="basket_a_street_bet_max" style="color: red; display: none;">@lang('messages.Basket & Street Max Bet must be bigger than Basket & Street Min Bet').</label><br>
-                                    <div class="input-group">
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Basket & Street Min Bet'):</label><br>
+                                      <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                        <input name="basket_a_street_bet_max" value="{{ $conf->basket_a_street_bet_max }}" type="text" class="form-control text-center" placeholder="Basket & Street Max Bet" aria-describedby="sizing-addon2">
+                                        <input name="basket_a_street_bet_min" value="{{ $conf->basket_a_street_bet_min }}" type="text" class="form-control text-center" placeholder="Basket & Street Min Bet" aria-describedby="sizing-addon2">
+                                      </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Corner Max Bet'):</label>
-                                    <label class="updateForm" name="corner_bet_max" style="color: red; display: none;">@lang('messages.Corner Max Bet must be bigger than Corner Min Bet').</label><br>
-                                    <div class="input-group">
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Corner Min Bet'):</label><br>
+                                      <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                        <input name="corner_bet_max" value="{{ $conf->corner_bet_max }}" type="text" class="form-control text-center" placeholder="Corner Bet Max" aria-describedby="sizing-addon2">
+                                        <input name="corner_bet_min" value="{{ $conf->corner_bet_min }}" type="text" class="form-control text-center" placeholder="Corner Bet Min" aria-describedby="sizing-addon2">
+                                      </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Six Number Max Bet'):</label>
-                                    <label class="updateForm" name="six_number_line_max" style="color: red; display: none;">@lang('messages.Six Number Max Bet must be bigger than Six Number Min Bet').</label><br>
-                                    <div class="input-group">
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Six Number Min Bet'):</label><br>
+                                      <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                        <input name="six_number_line_max" value="{{ $conf->six_number_line_max }}" type="text" class="form-control text-center" placeholder="Six Number Line Max" aria-describedby="sizing-addon2">
+                                        <input name="six_number_line_min" value="{{ $conf->six_number_line_min }}" type="text" class="form-control text-center" placeholder="Six Number Line Min" aria-describedby="sizing-addon2">
+                                      </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Dozen Max Bet'):</label>
-                                    <label class="updateForm" name="dozen_bet_max" style="color: red; display: none;">@lang('messages.Dozen Max Bett must be bigger than Dozen Min Bet').</label><br>
-                                    <div class="input-group">
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Dozen Min Bet'):</label><br>
+                                      <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                        <input name="dozen_bet_max" value="{{ $conf->dozen_bet_max }}" type="text" class="form-control text-center" placeholder="Dozen Max Bet" aria-describedby="sizing-addon2">
+                                        <input name="dozen_bet_min" value="{{ $conf->dozen_bet_min }}" type="text" class="form-control text-center" placeholder="Dozen Bet Min" aria-describedby="sizing-addon2">
+                                      </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group form-group-sm">
-                                    <label style="color: #474747">@lang('messages.Even Max Bet'):</label>
-                                    <label class="updateForm" name="even_bet_max" style="color: red; display: none;">@lang('messages.Even Max Bet must be bigger than Even Min Bet').</label><br>
-                                    <div class="input-group">
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Even Min Bet'):</label><br>
+                                      <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
-                                        <input name="even_bet_max" value="{{ $conf->even_bet_max }}" type="text" class="form-control text-center" placeholder="Even Bet Max" aria-describedby="sizing-addon2">
+                                        <input name="even_bet_min" value="{{ $conf->even_bet_min }}" type="text" class="form-control text-center" placeholder="Even Bet Min" aria-describedby="sizing-addon2">
+                                      </div>
                                     </div>
-                                </div>
 
-                            </div><!-- End Col -->
-                            <div class="col-lg-6">
+                                </div><!-- End Col -->
 
-                                <!-- Multipliers -->
-                                  <div class="col-lg-5">
 
-                                      <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Multipliers'): <br/>&nbsp;</h3>
-                                    <hr style="margin: 7px 0 12px 0;">
+                                <!-- MAX BETS -->
+                                <div class="col-lg-3">
+                                  <h4 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Max Bets') (@lang('messages.credits')):</h4>
+                                  <hr style="margin: 7px 0 12px 0;">
 
                                       <div class="form-group form-group-sm">
-                                        <label style="color: #474747">@lang('messages.Multiplier') #1:</label><br>
+                                        <label style="color: #474747">@lang('messages.Game Max Bet'):</label>
+                                        <label class="updateForm" name="game_max_bet" style="color: red; display: none;">@lang('messages.Game Max Bet must be bigger than Game Min Bet').</label><br>
                                         <div class="input-group">
-                                          <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-                                          <input name="mult1" value="{{ $conf->mult1 }}" type="text" class="form-control text-center" placeholder="Multiplier #1" aria-describedby="sizing-addon2">
+                                            <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                            <input name="game_max_bet" value="{{ $conf->game_max_bet }}" type="text" class="form-control text-center" placeholder="Game Max Bet" aria-describedby="sizing-addon2">
                                         </div>
-                                      </div>
+                                    </div>
 
-                                      <div class="form-group form-group-sm">
-                                          <label style="color: #474747">@lang('messages.Multiplier') #2:</label><br>
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Straight Max Bet'):</label>
+                                        <label class="updateForm" name="straight_max" style="color: red; display: none;">@lang('messages.Straight Max Bet must be bigger than Straight Min Bet').</label><br>
                                         <div class="input-group">
-                                          <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-                                          <input name="mult2" value="{{ $conf->mult2 }}" type="text" class="form-control text-center" placeholder="Multiplier #2" aria-describedby="sizing-addon2">
+                                            <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                            <input name="straight_max" value="{{ $conf->straight_max }}" type="text" class="form-control text-center" placeholder="Straight Max Bet" aria-describedby="sizing-addon2">
                                         </div>
-                                      </div>
+                                    </div>
 
-                                      <div class="form-group form-group-sm">
-                                          <label style="color: #474747">@lang('messages.Multiplier') #3:</label><br>
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Split Max Bet'):</label>
+                                        <label class="updateForm" name="split_max" style="color: red; display: none;">@lang('messages.Split Max Bet must be bigger than Split Min Bet').</label><br>
                                         <div class="input-group">
-                                          <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-                                          <input name="mult3" value="{{ $conf->mult3 }}" type="text" class="form-control text-center" placeholder="Multiplier #3" aria-describedby="sizing-addon2">
+                                            <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                            <input name="split_max" value="{{ $conf->split_max }}" type="text" class="form-control text-center" placeholder="Split Max Bet" aria-describedby="sizing-addon2">
                                         </div>
-                                      </div>
+                                    </div>
 
-                                      <div class="form-group form-group-sm">
-                                        <label style="color: #474747">@lang('messages.Multiplier') #4:</label><br>
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Basket & Street Max Bet'):</label>
+                                        <label class="updateForm" name="basket_a_street_bet_max" style="color: red; display: none;">@lang('messages.Basket & Street Max Bet must be bigger than Basket & Street Min Bet').</label><br>
                                         <div class="input-group">
-                                          <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-                                          <input name="mult4" value="{{ $conf->mult4 }}" type="text" class="form-control text-center" placeholder="Multiplier #4" aria-describedby="sizing-addon2">
+                                            <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                            <input name="basket_a_street_bet_max" value="{{ $conf->basket_a_street_bet_max }}" type="text" class="form-control text-center" placeholder="Basket & Street Max Bet" aria-describedby="sizing-addon2">
                                         </div>
-                                      </div>
+                                    </div>
 
-                                      <div class="form-group form-group-sm">
-                                          <label style="color: #474747">@lang('messages.Multiplier') #5:</label><br>
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Corner Max Bet'):</label>
+                                        <label class="updateForm" name="corner_bet_max" style="color: red; display: none;">@lang('messages.Corner Max Bet must be bigger than Corner Min Bet').</label><br>
                                         <div class="input-group">
-                                          <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-                                          <input name="mult5" value="{{ $conf->mult5 }}" type="text" class="form-control text-center" placeholder="Multiplier #5" aria-describedby="sizing-addon2">
+                                            <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                            <input name="corner_bet_max" value="{{ $conf->corner_bet_max }}" type="text" class="form-control text-center" placeholder="Corner Bet Max" aria-describedby="sizing-addon2">
                                         </div>
-                                      </div>
+                                    </div>
 
-                                      <div class="form-group form-group-sm">
-                                          <label style="color: #474747">@lang('messages.Multiplier') #6:</label><br>
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Six Number Max Bet'):</label>
+                                        <label class="updateForm" name="six_number_line_max" style="color: red; display: none;">@lang('messages.Six Number Max Bet must be bigger than Six Number Min Bet').</label><br>
                                         <div class="input-group">
-                                          <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
-                                          <input name="mult6" value="{{ $conf->mult6 }}" type="text" class="form-control text-center" placeholder="Multiplier #6" aria-describedby="sizing-addon2">
+                                            <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                            <input name="six_number_line_max" value="{{ $conf->six_number_line_max }}" type="text" class="form-control text-center" placeholder="Six Number Line Max" aria-describedby="sizing-addon2">
                                         </div>
-                                      </div>
+                                    </div>
 
-                                    </div><!-- End Col -->
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Dozen Max Bet'):</label>
+                                        <label class="updateForm" name="dozen_bet_max" style="color: red; display: none;">@lang('messages.Dozen Max Bett must be bigger than Dozen Min Bet').</label><br>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                            <input name="dozen_bet_max" value="{{ $conf->dozen_bet_max }}" type="text" class="form-control text-center" placeholder="Dozen Max Bet" aria-describedby="sizing-addon2">
+                                        </div>
+                                    </div>
 
+                                    <div class="form-group form-group-sm">
+                                        <label style="color: #474747">@lang('messages.Even Max Bet'):</label>
+                                        <label class="updateForm" name="even_bet_max" style="color: red; display: none;">@lang('messages.Even Max Bet must be bigger than Even Min Bet').</label><br>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
+                                            <input name="even_bet_max" value="{{ $conf->even_bet_max }}" type="text" class="form-control text-center" placeholder="Even Bet Max" aria-describedby="sizing-addon2">
+                                        </div>
+                                    </div>
 
-                                <!-- Denominations -->
-                                  <div class="col-lg-6">
+                                </div><!-- End Col -->
+                                <div class="col-lg-6">
 
-                                    <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations'):<br/>&nbsp;</h3>
-                                    <hr style="margin: 7px 0 12px 0;">
+                                    <!-- Multipliers -->
+                                      <div class="col-lg-5">
 
-                                      <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
-                                        <label for="denom1">@lang('messages.Denomination') #1:</label><br>
-                                        <select name="denom1" id="denom1" class="selectpicker" data-actions-box="true"  data-id="1" >
-                                         <option {{ $conf->denom1 == 0 ? 'selected="true"' : '' }} value="0">None</option>
-                                          <option {{ $conf->denom1 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
-                                          <option {{ $conf->denom1 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
-                                          <option {{ $conf->denom1 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
-                                          <option {{ $conf->denom1 == 4 ? 'selected="true"' : '' }} value="4">$0.25</option>
-                                          <option {{ $conf->denom1 == 5 ? 'selected="true"' : '' }} value="5">$0.50</option>
-                                          <option {{ $conf->denom1 == 6 ? 'selected="true"' : '' }} value="6">$1.00</option>
-                                          <option {{ $conf->denom1 == 7 ? 'selected="true"' : '' }} value="7">$5.00</option>
-                                          <option {{ $conf->denom1 == 8 ? 'selected="true"' : '' }} value="8">$10.00</option>
-                                          <option {{ $conf->denom1 == 9 ? 'selected="true"' : '' }} value="9">$20.00</option>
-                                          <option {{ $conf->denom1 == 10 ? 'selected="true"' : '' }} value="10">$100.00</option>
-                                          <option {{ $conf->denom1 == 11 ? 'selected="true"' : '' }} value="11">$0.20</option>
-                                          <option {{ $conf->denom1 == 12 ? 'selected="true"' : '' }} value="12">$2.00</option>
-                                          <option {{ $conf->denom1 == 13 ? 'selected="true"' : '' }} value="13">$2.50</option>
-                                          <option {{ $conf->denom1 == 14 ? 'selected="true"' : '' }} value="14">$25.00</option>
-                                          <option {{ $conf->denom1 == 15 ? 'selected="true"' : '' }} value="15">$50.00</option>
-                                          <option {{ $conf->denom1 == 16 ? 'selected="true"' : '' }} value="16">$200.00</option>
-                                          <option {{ $conf->denom1 == 17 ? 'selected="true"' : '' }} value="17">$250.00</option>
-                                          <option {{ $conf->denom1 == 18 ? 'selected="true"' : '' }} value="18">$500.00</option>
-                                          <option {{ $conf->denom1 == 19 ? 'selected="true"' : '' }} value="19">$1000.00</option>
-                                          <option {{ $conf->denom1 == 20 ? 'selected="true"' : '' }} value="20">$2000.00</option>
-                                          <option {{ $conf->denom1 == 21 ? 'selected="true"' : '' }} value="21">$2500.00</option>
-                                          <option {{ $conf->denom1 == 22 ? 'selected="true"' : '' }} value="22">$5000.00</option>
-                                          <option {{ $conf->denom1 == 23 ? 'selected="true"' : '' }} value="23">$0.02</option>
-                                          <option {{ $conf->denom1 == 24 ? 'selected="true"' : '' }} value="24">$0.03</option>
-                                          <option {{ $conf->denom1 == 25 ? 'selected="true"' : '' }} value="25">$0.15</option>
-                                          <option {{ $conf->denom1 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
-                                        </select>
-                                       </div>
-
-                                      <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
-                                        <label for="denom2">@lang('messages.Denomination') #2:</label><br>
-                                        <select style="height: 40px; line-height:30px;" name="denom2" id="denom2" class="selectpicker" data-actions-box="true"  data-id="2" >
-                                          <option {{ $conf->denom2 == 0 ? 'selected="true"' : '' }} value="0">None</option>
-                                          <option {{ $conf->denom2 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
-                                          <option {{ $conf->denom2 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
-                                          <option {{ $conf->denom2 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
-                                          <option {{ $conf->denom2 == 4 ? 'selected="true"' : '' }} value="4">$0.25</option>
-                                          <option {{ $conf->denom2 == 5 ? 'selected="true"' : '' }} value="5">$0.50</option>
-                                          <option {{ $conf->denom2 == 6 ? 'selected="true"' : '' }} value="6">$1.00</option>
-                                          <option {{ $conf->denom2 == 7 ? 'selected="true"' : '' }} value="7">$5.00</option>
-                                          <option {{ $conf->denom2 == 8 ? 'selected="true"' : '' }} value="8">$10.00</option>
-                                          <option {{ $conf->denom2 == 9 ? 'selected="true"' : '' }} value="9">$20.00</option>
-                                          <option {{ $conf->denom2 == 10 ? 'selected="true"' : '' }} value="10">$100.00</option>
-                                          <option {{ $conf->denom2 == 11 ? 'selected="true"' : '' }} value="11">$0.20</option>
-                                          <option {{ $conf->denom2 == 12 ? 'selected="true"' : '' }} value="12">$2.00</option>
-                                          <option {{ $conf->denom2 == 13 ? 'selected="true"' : '' }} value="13">$2.50</option>
-                                          <option {{ $conf->denom2 == 14 ? 'selected="true"' : '' }} value="14">$25.00</option>
-                                          <option {{ $conf->denom2 == 15 ? 'selected="true"' : '' }} value="15">$50.00</option>
-                                          <option {{ $conf->denom2 == 16 ? 'selected="true"' : '' }} value="16">$200.00</option>
-                                          <option {{ $conf->denom2 == 17 ? 'selected="true"' : '' }} value="17">$250.00</option>
-                                          <option {{ $conf->denom2 == 18 ? 'selected="true"' : '' }} value="18">$500.00</option>
-                                          <option {{ $conf->denom2 == 19 ? 'selected="true"' : '' }} value="19">$1000.00</option>
-                                          <option {{ $conf->denom2 == 20 ? 'selected="true"' : '' }} value="20">$2000.00</option>
-                                          <option {{ $conf->denom2 == 21 ? 'selected="true"' : '' }} value="21">$2500.00</option>
-                                          <option {{ $conf->denom2 == 22 ? 'selected="true"' : '' }} value="22">$5000.00</option>
-                                          <option {{ $conf->denom2 == 23 ? 'selected="true"' : '' }} value="23">$0.02</option>
-                                          <option {{ $conf->denom2 == 24 ? 'selected="true"' : '' }} value="24">$0.03</option>
-                                          <option {{ $conf->denom2 == 25 ? 'selected="true"' : '' }} value="25">$0.15</option>
-                                          <option {{ $conf->denom2 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
-                                        </select>
-                                      </div>
-
-                                      <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
-                                        <label for="denom3">@lang('messages.Denomination') #3:</label><br>
-                                        <select name="denom3" id="denom3" class="selectpicker" data-actions-box="true"  data-id="3">
-                                          <option {{ $conf->denom3 == 0 ? 'selected="true"' : '' }} value="0">None</option>
-                                          <option {{ $conf->denom3 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
-                                          <option {{ $conf->denom3 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
-                                          <option {{ $conf->denom3 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
-                                          <option {{ $conf->denom3 == 4 ? 'selected="true"' : '' }} value="4">$0.25</option>
-                                          <option {{ $conf->denom3 == 5 ? 'selected="true"' : '' }} value="5">$0.50</option>
-                                          <option {{ $conf->denom3 == 6 ? 'selected="true"' : '' }} value="6">$1.00</option>
-                                          <option {{ $conf->denom3 == 7 ? 'selected="true"' : '' }} value="7">$5.00</option>
-                                          <option {{ $conf->denom3 == 8 ? 'selected="true"' : '' }} value="8">$10.00</option>
-                                          <option {{ $conf->denom3 == 9 ? 'selected="true"' : '' }} value="9">$20.00</option>
-                                          <option {{ $conf->denom3 == 10 ? 'selected="true"' : '' }} value="10">$100.00</option>
-                                          <option {{ $conf->denom3 == 11 ? 'selected="true"' : '' }} value="11">$0.20</option>
-                                          <option {{ $conf->denom3 == 12 ? 'selected="true"' : '' }} value="12">$2.00</option>
-                                          <option {{ $conf->denom3 == 13 ? 'selected="true"' : '' }} value="13">$2.50</option>
-                                          <option {{ $conf->denom3 == 14 ? 'selected="true"' : '' }} value="14">$25.00</option>
-                                          <option {{ $conf->denom3 == 15 ? 'selected="true"' : '' }} value="15">$50.00</option>
-                                          <option {{ $conf->denom3 == 16 ? 'selected="true"' : '' }} value="16">$200.00</option>
-                                          <option {{ $conf->denom3 == 17 ? 'selected="true"' : '' }} value="17">$250.00</option>
-                                          <option {{ $conf->denom3 == 18 ? 'selected="true"' : '' }} value="18">$500.00</option>
-                                          <option {{ $conf->denom3 == 19 ? 'selected="true"' : '' }} value="19">$1000.00</option>
-                                          <option {{ $conf->denom3 == 20 ? 'selected="true"' : '' }} value="20">$2000.00</option>
-                                          <option {{ $conf->denom3 == 21 ? 'selected="true"' : '' }} value="21">$2500.00</option>
-                                          <option {{ $conf->denom3 == 22 ? 'selected="true"' : '' }} value="22">$5000.00</option>
-                                          <option {{ $conf->denom3 == 23 ? 'selected="true"' : '' }} value="23">$0.02</option>
-                                          <option {{ $conf->denom3 == 24 ? 'selected="true"' : '' }} value="24">$0.03</option>
-                                          <option {{ $conf->denom3 == 25 ? 'selected="true"' : '' }} value="25">$0.15</option>
-                                          <option {{ $conf->denom3 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
-                                        </select>
-                                      </div>
-
-                                      <div class="form-group form-group-sm" style="width:270px; display: inline-block; padding: 0;" >
-                                        <label for="denom4">@lang('messages.Denomination') #4:</label><br>
-                                        <select name="denom4" id="denom4" class="selectpicker" data-actions-box="true" data-id="4" > 
-                                          <option {{ $conf->denom4 == 0 ? 'selected="true"' : '' }} value="0">None</option>
-                                          <option {{ $conf->denom4 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
-                                          <option {{ $conf->denom4 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
-                                          <option {{ $conf->denom4 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
-                                          <option {{ $conf->denom4 == 4 ? 'selected="true"' : '' }} value="4">$0.25</option>
-                                          <option {{ $conf->denom4 == 5 ? 'selected="true"' : '' }} value="5">$0.50</option>
-                                          <option {{ $conf->denom4 == 6 ? 'selected="true"' : '' }} value="6">$1.00</option>
-                                          <option {{ $conf->denom4 == 7 ? 'selected="true"' : '' }} value="7">$5.00</option>
-                                          <option {{ $conf->denom4 == 8 ? 'selected="true"' : '' }} value="8">$10.00</option>
-                                          <option {{ $conf->denom4 == 9 ? 'selected="true"' : '' }} value="9">$20.00</option>
-                                          <option {{ $conf->denom4 == 10 ? 'selected="true"' : '' }} value="10">$100.00</option>
-                                          <option {{ $conf->denom4 == 11 ? 'selected="true"' : '' }} value="11">$0.20</option>
-                                          <option {{ $conf->denom4 == 12 ? 'selected="true"' : '' }} value="12">$2.00</option>
-                                          <option {{ $conf->denom4 == 13 ? 'selected="true"' : '' }} value="13">$2.50</option>
-                                          <option {{ $conf->denom4 == 14 ? 'selected="true"' : '' }} value="14">$25.00</option>
-                                          <option {{ $conf->denom4 == 15 ? 'selected="true"' : '' }} value="15">$50.00</option>
-                                          <option {{ $conf->denom4 == 16 ? 'selected="true"' : '' }} value="16">$200.00</option>
-                                          <option {{ $conf->denom4 == 17 ? 'selected="true"' : '' }} value="17">$250.00</option>
-                                          <option {{ $conf->denom4 == 18 ? 'selected="true"' : '' }} value="18">$500.00</option>
-                                          <option {{ $conf->denom4 == 19 ? 'selected="true"' : '' }} value="19">$1000.00</option>
-                                          <option {{ $conf->denom4 == 20 ? 'selected="true"' : '' }} value="20">$2000.00</option>
-                                          <option {{ $conf->denom4 == 21 ? 'selected="true"' : '' }} value="21">$2500.00</option>
-                                          <option {{ $conf->denom4 == 22 ? 'selected="true"' : '' }} value="22">$5000.00</option>
-                                          <option {{ $conf->denom4 == 23 ? 'selected="true"' : '' }} value="23">$0.02</option>
-                                          <option {{ $conf->denom4 == 24 ? 'selected="true"' : '' }} value="24">$0.03</option>
-                                          <option {{ $conf->denom4 == 25 ? 'selected="true"' : '' }} value="25">$0.15</option>
-                                          <option {{ $conf->denom4 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
-                                        </select>
-                                      </div>
-                                        <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Chip Sound'):</h3>
+                                          <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Multipliers'): <br/>&nbsp;</h3>
                                         <hr style="margin: 7px 0 12px 0;">
-                                        <div class="form-group form-group-sm" style="width:270px; display: inline-block; padding: 0;" >
-                                            <label for="chip_sound">@lang('messages.Chip Sound'):</label><br>
-                                            <select name="chip_sound" id="chip_sound" class="selectpicker" data-actions-box="true" data-id="5" > 
-                                                <option {{ $conf->chip_sound == 0 ? 'selected="true"' : '' }} value="0">0</option>
-                                                <option {{ $conf->chip_sound == 1 ? 'selected="true"' : '' }} value="1">1</option>
-                                                <option {{ $conf->chip_sound == 2 ? 'selected="true"' : '' }} value="2">2</option>
+
+                                          <div class="form-group form-group-sm">
+                                            <label style="color: #474747">@lang('messages.Multiplier') #1:</label><br>
+                                            <div class="input-group">
+                                              <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
+                                              <input name="mult1" value="{{ $conf->mult1 }}" type="text" class="form-control text-center" placeholder="Multiplier #1" aria-describedby="sizing-addon2">
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group form-group-sm">
+                                              <label style="color: #474747">@lang('messages.Multiplier') #2:</label><br>
+                                            <div class="input-group">
+                                              <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
+                                              <input name="mult2" value="{{ $conf->mult2 }}" type="text" class="form-control text-center" placeholder="Multiplier #2" aria-describedby="sizing-addon2">
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group form-group-sm">
+                                              <label style="color: #474747">@lang('messages.Multiplier') #3:</label><br>
+                                            <div class="input-group">
+                                              <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
+                                              <input name="mult3" value="{{ $conf->mult3 }}" type="text" class="form-control text-center" placeholder="Multiplier #3" aria-describedby="sizing-addon2">
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group form-group-sm">
+                                            <label style="color: #474747">@lang('messages.Multiplier') #4:</label><br>
+                                            <div class="input-group">
+                                              <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
+                                              <input name="mult4" value="{{ $conf->mult4 }}" type="text" class="form-control text-center" placeholder="Multiplier #4" aria-describedby="sizing-addon2">
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group form-group-sm">
+                                              <label style="color: #474747">@lang('messages.Multiplier') #5:</label><br>
+                                            <div class="input-group">
+                                              <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
+                                              <input name="mult5" value="{{ $conf->mult5 }}" type="text" class="form-control text-center" placeholder="Multiplier #5" aria-describedby="sizing-addon2">
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group form-group-sm">
+                                              <label style="color: #474747">@lang('messages.Multiplier') #6:</label><br>
+                                            <div class="input-group">
+                                              <span class="input-group-addon" id="sizing-addon2"><strong>#</strong></span>
+                                              <input name="mult6" value="{{ $conf->mult6 }}" type="text" class="form-control text-center" placeholder="Multiplier #6" aria-describedby="sizing-addon2">
+                                            </div>
+                                          </div>
+
+                                        </div><!-- End Col -->
+
+
+                                    <!-- Denominations -->
+                                      <div class="col-lg-6">
+
+                                        <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations'):<br/>&nbsp;</h3>
+                                        <hr style="margin: 7px 0 12px 0;">
+
+                                          <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
+                                            <label for="denom1">@lang('messages.Denomination') #1:</label><br>
+                                            <select name="denom1" id="denom1" class="selectpicker" data-actions-box="true"  data-id="1" >
+                                             <option {{ $conf->denom1 == 0 ? 'selected="true"' : '' }} value="0">None</option>
+                                              <option {{ $conf->denom1 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
+                                              <option {{ $conf->denom1 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
+                                              <option {{ $conf->denom1 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
+                                              <option {{ $conf->denom1 == 4 ? 'selected="true"' : '' }} value="4">$0.25</option>
+                                              <option {{ $conf->denom1 == 5 ? 'selected="true"' : '' }} value="5">$0.50</option>
+                                              <option {{ $conf->denom1 == 6 ? 'selected="true"' : '' }} value="6">$1.00</option>
+                                              <option {{ $conf->denom1 == 7 ? 'selected="true"' : '' }} value="7">$5.00</option>
+                                              <option {{ $conf->denom1 == 8 ? 'selected="true"' : '' }} value="8">$10.00</option>
+                                              <option {{ $conf->denom1 == 9 ? 'selected="true"' : '' }} value="9">$20.00</option>
+                                              <option {{ $conf->denom1 == 10 ? 'selected="true"' : '' }} value="10">$100.00</option>
+                                              <option {{ $conf->denom1 == 11 ? 'selected="true"' : '' }} value="11">$0.20</option>
+                                              <option {{ $conf->denom1 == 12 ? 'selected="true"' : '' }} value="12">$2.00</option>
+                                              <option {{ $conf->denom1 == 13 ? 'selected="true"' : '' }} value="13">$2.50</option>
+                                              <option {{ $conf->denom1 == 14 ? 'selected="true"' : '' }} value="14">$25.00</option>
+                                              <option {{ $conf->denom1 == 15 ? 'selected="true"' : '' }} value="15">$50.00</option>
+                                              <option {{ $conf->denom1 == 16 ? 'selected="true"' : '' }} value="16">$200.00</option>
+                                              <option {{ $conf->denom1 == 17 ? 'selected="true"' : '' }} value="17">$250.00</option>
+                                              <option {{ $conf->denom1 == 18 ? 'selected="true"' : '' }} value="18">$500.00</option>
+                                              <option {{ $conf->denom1 == 19 ? 'selected="true"' : '' }} value="19">$1000.00</option>
+                                              <option {{ $conf->denom1 == 20 ? 'selected="true"' : '' }} value="20">$2000.00</option>
+                                              <option {{ $conf->denom1 == 21 ? 'selected="true"' : '' }} value="21">$2500.00</option>
+                                              <option {{ $conf->denom1 == 22 ? 'selected="true"' : '' }} value="22">$5000.00</option>
+                                              <option {{ $conf->denom1 == 23 ? 'selected="true"' : '' }} value="23">$0.02</option>
+                                              <option {{ $conf->denom1 == 24 ? 'selected="true"' : '' }} value="24">$0.03</option>
+                                              <option {{ $conf->denom1 == 25 ? 'selected="true"' : '' }} value="25">$0.15</option>
+                                              <option {{ $conf->denom1 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
                                             </select>
-                                        </div>
-                                    </div><!-- End Col -->
-                                    
-                                    
-                                <hr class="col-lg-11">
-                                {{ csrf_field() }}
-                                <input type="hidden" value="{{ $conf->ps_id }}" name="ps_id">
-                                <button data-id="{{ $conf->ps_id }}" type="submit" 
-                                    style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
-                                    class="btn btn-danger pull-right ps-config-submit"
-                                >
-                                    @lang('messages.Update')
-                                </button>
-                            </div>
-                        </form>
+                                           </div>
+
+                                          <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
+                                            <label for="denom2">@lang('messages.Denomination') #2:</label><br>
+                                            <select style="height: 40px; line-height:30px;" name="denom2" id="denom2" class="selectpicker" data-actions-box="true"  data-id="2" >
+                                              <option {{ $conf->denom2 == 0 ? 'selected="true"' : '' }} value="0">None</option>
+                                              <option {{ $conf->denom2 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
+                                              <option {{ $conf->denom2 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
+                                              <option {{ $conf->denom2 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
+                                              <option {{ $conf->denom2 == 4 ? 'selected="true"' : '' }} value="4">$0.25</option>
+                                              <option {{ $conf->denom2 == 5 ? 'selected="true"' : '' }} value="5">$0.50</option>
+                                              <option {{ $conf->denom2 == 6 ? 'selected="true"' : '' }} value="6">$1.00</option>
+                                              <option {{ $conf->denom2 == 7 ? 'selected="true"' : '' }} value="7">$5.00</option>
+                                              <option {{ $conf->denom2 == 8 ? 'selected="true"' : '' }} value="8">$10.00</option>
+                                              <option {{ $conf->denom2 == 9 ? 'selected="true"' : '' }} value="9">$20.00</option>
+                                              <option {{ $conf->denom2 == 10 ? 'selected="true"' : '' }} value="10">$100.00</option>
+                                              <option {{ $conf->denom2 == 11 ? 'selected="true"' : '' }} value="11">$0.20</option>
+                                              <option {{ $conf->denom2 == 12 ? 'selected="true"' : '' }} value="12">$2.00</option>
+                                              <option {{ $conf->denom2 == 13 ? 'selected="true"' : '' }} value="13">$2.50</option>
+                                              <option {{ $conf->denom2 == 14 ? 'selected="true"' : '' }} value="14">$25.00</option>
+                                              <option {{ $conf->denom2 == 15 ? 'selected="true"' : '' }} value="15">$50.00</option>
+                                              <option {{ $conf->denom2 == 16 ? 'selected="true"' : '' }} value="16">$200.00</option>
+                                              <option {{ $conf->denom2 == 17 ? 'selected="true"' : '' }} value="17">$250.00</option>
+                                              <option {{ $conf->denom2 == 18 ? 'selected="true"' : '' }} value="18">$500.00</option>
+                                              <option {{ $conf->denom2 == 19 ? 'selected="true"' : '' }} value="19">$1000.00</option>
+                                              <option {{ $conf->denom2 == 20 ? 'selected="true"' : '' }} value="20">$2000.00</option>
+                                              <option {{ $conf->denom2 == 21 ? 'selected="true"' : '' }} value="21">$2500.00</option>
+                                              <option {{ $conf->denom2 == 22 ? 'selected="true"' : '' }} value="22">$5000.00</option>
+                                              <option {{ $conf->denom2 == 23 ? 'selected="true"' : '' }} value="23">$0.02</option>
+                                              <option {{ $conf->denom2 == 24 ? 'selected="true"' : '' }} value="24">$0.03</option>
+                                              <option {{ $conf->denom2 == 25 ? 'selected="true"' : '' }} value="25">$0.15</option>
+                                              <option {{ $conf->denom2 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
+                                            </select>
+                                          </div>
+
+                                          <div class="form-group form-group-sm" style="width:270px; display: inline-block;">
+                                            <label for="denom3">@lang('messages.Denomination') #3:</label><br>
+                                            <select name="denom3" id="denom3" class="selectpicker" data-actions-box="true"  data-id="3">
+                                              <option {{ $conf->denom3 == 0 ? 'selected="true"' : '' }} value="0">None</option>
+                                              <option {{ $conf->denom3 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
+                                              <option {{ $conf->denom3 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
+                                              <option {{ $conf->denom3 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
+                                              <option {{ $conf->denom3 == 4 ? 'selected="true"' : '' }} value="4">$0.25</option>
+                                              <option {{ $conf->denom3 == 5 ? 'selected="true"' : '' }} value="5">$0.50</option>
+                                              <option {{ $conf->denom3 == 6 ? 'selected="true"' : '' }} value="6">$1.00</option>
+                                              <option {{ $conf->denom3 == 7 ? 'selected="true"' : '' }} value="7">$5.00</option>
+                                              <option {{ $conf->denom3 == 8 ? 'selected="true"' : '' }} value="8">$10.00</option>
+                                              <option {{ $conf->denom3 == 9 ? 'selected="true"' : '' }} value="9">$20.00</option>
+                                              <option {{ $conf->denom3 == 10 ? 'selected="true"' : '' }} value="10">$100.00</option>
+                                              <option {{ $conf->denom3 == 11 ? 'selected="true"' : '' }} value="11">$0.20</option>
+                                              <option {{ $conf->denom3 == 12 ? 'selected="true"' : '' }} value="12">$2.00</option>
+                                              <option {{ $conf->denom3 == 13 ? 'selected="true"' : '' }} value="13">$2.50</option>
+                                              <option {{ $conf->denom3 == 14 ? 'selected="true"' : '' }} value="14">$25.00</option>
+                                              <option {{ $conf->denom3 == 15 ? 'selected="true"' : '' }} value="15">$50.00</option>
+                                              <option {{ $conf->denom3 == 16 ? 'selected="true"' : '' }} value="16">$200.00</option>
+                                              <option {{ $conf->denom3 == 17 ? 'selected="true"' : '' }} value="17">$250.00</option>
+                                              <option {{ $conf->denom3 == 18 ? 'selected="true"' : '' }} value="18">$500.00</option>
+                                              <option {{ $conf->denom3 == 19 ? 'selected="true"' : '' }} value="19">$1000.00</option>
+                                              <option {{ $conf->denom3 == 20 ? 'selected="true"' : '' }} value="20">$2000.00</option>
+                                              <option {{ $conf->denom3 == 21 ? 'selected="true"' : '' }} value="21">$2500.00</option>
+                                              <option {{ $conf->denom3 == 22 ? 'selected="true"' : '' }} value="22">$5000.00</option>
+                                              <option {{ $conf->denom3 == 23 ? 'selected="true"' : '' }} value="23">$0.02</option>
+                                              <option {{ $conf->denom3 == 24 ? 'selected="true"' : '' }} value="24">$0.03</option>
+                                              <option {{ $conf->denom3 == 25 ? 'selected="true"' : '' }} value="25">$0.15</option>
+                                              <option {{ $conf->denom3 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
+                                            </select>
+                                          </div>
+
+                                          <div class="form-group form-group-sm" style="width:270px; display: inline-block; padding: 0;" >
+                                            <label for="denom4">@lang('messages.Denomination') #4:</label><br>
+                                            <select name="denom4" id="denom4" class="selectpicker" data-actions-box="true" data-id="4" > 
+                                              <option {{ $conf->denom4 == 0 ? 'selected="true"' : '' }} value="0">None</option>
+                                              <option {{ $conf->denom4 == 1 ? 'selected="true"' : '' }} value="1">$0.01</option>
+                                              <option {{ $conf->denom4 == 2 ? 'selected="true"' : '' }} value="2">$0.05</option>
+                                              <option {{ $conf->denom4 == 3 ? 'selected="true"' : '' }} value="3">$0.10</option>
+                                              <option {{ $conf->denom4 == 4 ? 'selected="true"' : '' }} value="4">$0.25</option>
+                                              <option {{ $conf->denom4 == 5 ? 'selected="true"' : '' }} value="5">$0.50</option>
+                                              <option {{ $conf->denom4 == 6 ? 'selected="true"' : '' }} value="6">$1.00</option>
+                                              <option {{ $conf->denom4 == 7 ? 'selected="true"' : '' }} value="7">$5.00</option>
+                                              <option {{ $conf->denom4 == 8 ? 'selected="true"' : '' }} value="8">$10.00</option>
+                                              <option {{ $conf->denom4 == 9 ? 'selected="true"' : '' }} value="9">$20.00</option>
+                                              <option {{ $conf->denom4 == 10 ? 'selected="true"' : '' }} value="10">$100.00</option>
+                                              <option {{ $conf->denom4 == 11 ? 'selected="true"' : '' }} value="11">$0.20</option>
+                                              <option {{ $conf->denom4 == 12 ? 'selected="true"' : '' }} value="12">$2.00</option>
+                                              <option {{ $conf->denom4 == 13 ? 'selected="true"' : '' }} value="13">$2.50</option>
+                                              <option {{ $conf->denom4 == 14 ? 'selected="true"' : '' }} value="14">$25.00</option>
+                                              <option {{ $conf->denom4 == 15 ? 'selected="true"' : '' }} value="15">$50.00</option>
+                                              <option {{ $conf->denom4 == 16 ? 'selected="true"' : '' }} value="16">$200.00</option>
+                                              <option {{ $conf->denom4 == 17 ? 'selected="true"' : '' }} value="17">$250.00</option>
+                                              <option {{ $conf->denom4 == 18 ? 'selected="true"' : '' }} value="18">$500.00</option>
+                                              <option {{ $conf->denom4 == 19 ? 'selected="true"' : '' }} value="19">$1000.00</option>
+                                              <option {{ $conf->denom4 == 20 ? 'selected="true"' : '' }} value="20">$2000.00</option>
+                                              <option {{ $conf->denom4 == 21 ? 'selected="true"' : '' }} value="21">$2500.00</option>
+                                              <option {{ $conf->denom4 == 22 ? 'selected="true"' : '' }} value="22">$5000.00</option>
+                                              <option {{ $conf->denom4 == 23 ? 'selected="true"' : '' }} value="23">$0.02</option>
+                                              <option {{ $conf->denom4 == 24 ? 'selected="true"' : '' }} value="24">$0.03</option>
+                                              <option {{ $conf->denom4 == 25 ? 'selected="true"' : '' }} value="25">$0.15</option>
+                                              <option {{ $conf->denom4 == 26 ? 'selected="true"' : '' }} value="26">$0.40</option>
+                                            </select>
+                                          </div>
+                                            <h3 style="margin: 0; padding: 0; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Chip Sound'):</h3>
+                                            <hr style="margin: 7px 0 12px 0;">
+                                            <div class="form-group form-group-sm" style="width:270px; display: inline-block; padding: 0;" >
+                                                <label for="chip_sound">@lang('messages.Chip Sound'):</label><br>
+                                                <select name="chip_sound" id="chip_sound" class="selectpicker" data-actions-box="true" data-id="5" > 
+                                                    <option {{ $conf->chip_sound == 0 ? 'selected="true"' : '' }} value="0">0</option>
+                                                    <option {{ $conf->chip_sound == 1 ? 'selected="true"' : '' }} value="1">1</option>
+                                                    <option {{ $conf->chip_sound == 2 ? 'selected="true"' : '' }} value="2">2</option>
+                                                </select>
+                                            </div>
+                                        </div><!-- End Col -->
+
+
+                                    <hr class="col-lg-11">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" value="{{ $conf->ps_id }}" name="ps_id">
+                                    <button data-id="{{ $conf->ps_id }}" type="submit" 
+                                        style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
+                                        class="btn btn-danger pull-right ps-config-submit"
+                                    >
+                                        @lang('messages.Update')
+                                    </button>
+                                </div>
+                            </form>
+                        @endif
                     @endforeach
 
                 </div><!-- End PsConfig--> 
@@ -576,8 +578,11 @@ $('.ps-config-submit').on('click', function(event) {
 
 $('button.ps-config-toggle').on('click', function(){
     var id = $(this).attr('data-id');
-    $('form').css('display', 'none');
-    $('#ps-config-form-' + id).fadeIn();
+    pageHref="javascript:ajaxLoad('{{url('/settings/roulette1/psconfig')}}";
+    pageHref = pageHref + "?pageID=" + id +"')"
+    window.location.href = pageHref;
+    //$('form').css('display', 'none');
+    //$('#ps-config-form-' + id).fadeIn();
 });
 
   $(function(){

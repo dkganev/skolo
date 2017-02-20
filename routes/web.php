@@ -164,7 +164,10 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     Route::post('/settings/blackjack/table/edit', 'Settings\BlackjackController@table_edit');
     Route::post('/settings/blackjack/table/enabled', 'Settings\BlackjackController@enabled_tables');
     Route::get('/settings/blackjack/table/export', 'Settings\BlackjackController@tables_export');
-
+    
+    Route::get('/settings/blackjack/psconfig', 'Settings\BlackjackController@ps_config_index');
+    Route::post('/settings/blackjack/psconfig/edit', 'Settings\BlackjackController@ps_config_edit');
+    
     Route::get('/settings/blackjack/accconfig', 'Settings\BlackjackController@acc_config_index');
     Route::post('/settings/blackjack/accconfig/edit', 'Settings\BlackjackController@acc_config_edit');
 

@@ -3,11 +3,21 @@
         <div class="col-lg-12">
             <div style="padding-top:2px; margin-top: 0px;">
 	        <ul class="breadcrumb">
-                    <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}')">@lang('messages.Main Config')</a></li>
+                    <li>
+                        <a href="javascript:ajaxLoad('{{url('/settings/blackjack/mainconfig')}}')">@lang('messages.Main Config')</a>
+                    </li>
 
-                    <li class="active"><a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">@lang('messages.Tables')</a></li>
+                    <li class="active">
+                        <a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">@lang('messages.Tables')</a>
+                    </li>
 
-                    <li><a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">@lang('messages.Accounting Config')</a></li>
+                    <li>
+	              	<a href="javascript:ajaxLoad('{{url('/settings/blackjack/psconfig')}}')">@lang('messages.Terminals Config')</a>
+	            </li>
+
+	            <li>
+                        <a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">@lang('messages.Accounting Config')</a>
+                    </li>
 	        </ul>
             </div>
   	</div>

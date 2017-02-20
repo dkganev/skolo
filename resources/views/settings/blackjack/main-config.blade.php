@@ -10,6 +10,9 @@
 	                <li>
 	                	<a href="javascript:ajaxLoad('{{url('/settings/blackjack/tables')}}')">@lang('messages.Tables')</a>
 	                </li>
+                        <li>
+	                	<a href="javascript:ajaxLoad('{{url('/settings/blackjack/psconfig')}}')">@lang('messages.Terminals Config')</a>
+	                </li>
 
 	                <li>
 	                	<a href="javascript:ajaxLoad('{{url('/settings/blackjack/accconfig')}}')">@lang('messages.Accounting Config')</a>

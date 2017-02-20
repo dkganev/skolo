@@ -182,13 +182,32 @@ class TerminalsController extends Controller
         //$server_ps->ps_errors()->delete();
 
         $server_ps->delete();
-
-        //$roulette_ps = PsConf::where('ps_id', $request->psid)->first();
+        //roulette1
+        $roulette_ps = PsConf::where('ps_id', $request->psid)->first();
         //$roulette_ps->delete();
-        $roulette_ps = PsConf::where('ps_id', $request->psid)->delete();
+        if ($roulette_ps){
+            $roulette_ps = PsConf::where('ps_id', $request->psid)->delete();
+        }
+        //roulette2
+        $roulette_ps2 = new PsConf();
+        $roulette_ps2->setConnection('pgsql6');
+        $roulette_ps2_del = $roulette_ps2->where('ps_id', $request->psid)->first();
+        if ($roulette_ps2_del){
+            $roulette_ps3_del = $roulette_ps2->where('ps_id',$request->psid)->delete();
+            
+        }
+        //BJ
+        $BJ_ps2 = new PsConf();
+        $BJ_ps2->setConnection('pgsql5');
+        $BJ2_del = $BJ_ps2->where('ps_id', $request->psid)->first();
+        if ($BJ2_del){
+            //$BJ3_del = $BJ_ps2->where('ps_id',$request->psid)->delete();
+            
+        }
         event(new TerminalAdded(request()->ip(), request()->user()->name, $request->psid , 'Machine Deleted!', 2));
         
         return back();
+        //return "test-" . $BJ2_del;
     }
 
     public function exportTerminals()

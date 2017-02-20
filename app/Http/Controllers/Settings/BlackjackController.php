@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Models\Blackjack\BlackjackTable;
 use App\Models\Blackjack\MainConfig;
 use App\Models\Blackjack\AccConfig;
+use App\Models\Blackjack\PsConf;
 use App\Models\Blackjack\EnabledTables;
 use App\Events\TerminalAdded;
 
@@ -184,7 +185,26 @@ class BlackjackController extends Controller
         MainConfig::first()->update($request->except('_token'));
     }
 
-    public function acc_config_index()
+    public function ps_config_index(Request $request)
+    {
+        if ($request['pageID']) {
+            $page['pageID'] = $request['pageID'];
+        
+        } else {
+            $page['pageID'] = 0;
+        
+        }
+        $ps_conf = PsConf::orderBy('ps_id', 'asc')->get();
+        return view('settings.blackjack.ps-config', ['ps_conf' => $ps_conf, 'page' => $page ]);
+    }        
+    
+    public function ps_config_edit(Request $request)
+    {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->ps_id , 'BJ Terminals Config Updated', 2));
+        PsConf::where('ps_id', $request->ps_id)->first()->update($request->except('_token'));  
+    }        
+    
+    public function acc_config_index(Request $request)
     {
         $acc_config = AccConfig::first();
         return view('settings.blackjack.acc-config', compact('acc_config'));
