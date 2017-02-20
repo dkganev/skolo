@@ -5,7 +5,7 @@
             <ul class="breadcrumb">
                 <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mainconfig')}}')">@lang('messages.Main Config')</a></li>
 
-	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')"></a></li>
+	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/mybonus')}}')">@lang('messages.My Bonus')</a></li>
 
 	        <li><a href="javascript:ajaxLoad('{{url('/settings/bingo/maxballs')}}')">@lang('messages.Max Balls')</a></li>
 
