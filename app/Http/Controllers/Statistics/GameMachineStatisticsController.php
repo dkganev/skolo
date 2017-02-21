@@ -15,12 +15,39 @@ use App\Models\Roulette\Roulette2\RLT2PsCounters;
 
 class GameMachineStatisticsController extends Controller
 {
-    public function index_blackjack(BjPsCounters $BjPsCounters)
+    public function index_blackjack(BjPsCounters $BjPsCounters, Request $request)
     {
+        
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        
+        /*$counters = DB::connection('pgsql5')->select(' 
+                SELECT
+                    c.psid as psid,
+                    c.counter as counter,
+                    (SELECT sps.dallasid FROM server_ps as sps WHERE sps.psid = c.psid ) as dallasid,
+                    (c.counter[11] + c.counter[21] + c.counter[23] )  as total_in, 
+                    (c.counter[2] + c.counter[3] + c.counter[22] + c.counter[24] )  as total_out, 
+                    c.counter[0]  as total_bet, 
+                    c.counter[34] as total_win, 
+                    c.counter[12] as total_credit 
+                FROM ps_counters as c
+                ORDER BY '. $page['OrderQuery'].' '.$page['OrderDesc'].' 
+        ');*/
+        $counters = $BjPsCounters->orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$counters = $BjPsCounters->orderBy('psid', 'asc')->get();
+
+
+
         $bet = 0; $win = 0; $jp = 0; $games = 0; $jp_hits = 0;
-
-        $counters = $BjPsCounters->orderBy('psid', 'asc')->get();
-
         foreach ($counters as $counter) {
             $bet += $counter->bet;
             $win += $counter->win;
@@ -37,7 +64,7 @@ class GameMachineStatisticsController extends Controller
             'jp_hits' => $jp_hits
         ];
 
-        return view('statistics.game-machine-blackjack', compact('counters', 'totals'));
+        return view('statistics.game-machine-blackjack', compact('counters', 'totals', 'page'));
     }
 
     // export game machine blackjack

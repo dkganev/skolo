@@ -41,7 +41,7 @@
                           >
                     <thead class="w3-dark-grey">
                       <tr>
-                          <th data-sortable="true">@lang('messages.PS ID')</th>
+                          <th data-sortable="true" onclick="changePageSortTerminal('psid', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'psid' ? 'asc' : 'desc' }}');">@lang('messages.PS ID')<i class="fa {{ $page['OrderQuery'] == 'psid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                           <th data-sortable="true">@lang('messages.Total Bet') (@lang('messages.dollar'))</th>
                           <th data-sortable="true">@lang('messages.Total Win') (@lang('messages.dollar'))</th>
                           <th data-sortable="true">@lang('messages.Jackpot') (@lang('messages.dollar'))</th>
@@ -77,4 +77,4 @@
 </div><!--End Container -->
 
 <link rel="stylesheet" type="text/css" href="bootstrap-table/bootstrap-table.css">
-<script src="bootstrap-table/bootstrap-table.js"></script>
+<!--<script src="bootstrap-table/bootstrap-table.js"></script>-->
