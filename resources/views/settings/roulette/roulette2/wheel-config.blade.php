@@ -54,7 +54,7 @@
       <div class="col-lg-6">
 
         <div class="form-group" style="width:270px; display: inline-block;">
-          <label for="wheeltype">@lang('messages.Roulette')Wheel Type:</label><br>
+          <label for="wheeltype">@lang('messages.Wheel Type'):</label><br>
           <select name="wheeltype" id="wheeltype" class="selectpicker" data-actions-box="true">
             <option value="0" {{ $wheel_config->wheeltype  == 0 ? ' selected="true"' : '' }} >
                     @lang('messages.Automatic')
@@ -87,7 +87,7 @@
             </option>
             
             <option value="1" {{ $wheel_config->colorscheme  == 1 ? ' selected="true"' : '' }} >
-                    @lang('messages.Roulette')Blue
+                    @lang('messages.Blue')
             </option>
             <option value="2" {{ $wheel_config->colorscheme  == 2 ? ' selected="true"' : '' }} >
                    @lang('messages.Red')

@@ -185,7 +185,7 @@
         </div>
 
         <div class="form-group" >
-          <label for="rlt_type">@lang('messages.Roulette')Roulette Type:</label><br>
+          <label for="rlt_type">@lang('messages.Roulette Type'):</label><br>
           <select name="rlt_type" id="rlt_type" class="selectpicker" data-actions-box="true">
             <option value="0" {{ $wheel_settings->rlt_type  == 0 ? ' selected="true"' : '' }} >
                     @lang('messages.Single Zero')
