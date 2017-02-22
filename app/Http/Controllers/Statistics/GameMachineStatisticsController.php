@@ -28,20 +28,6 @@ class GameMachineStatisticsController extends Controller
         } else {
             $page['OrderDesc'] = 'asc';
         }
-        
-        /*$counters = DB::connection('pgsql5')->select(' 
-                SELECT
-                    c.psid as psid,
-                    c.counter as counter,
-                    (SELECT sps.dallasid FROM server_ps as sps WHERE sps.psid = c.psid ) as dallasid,
-                    (c.counter[11] + c.counter[21] + c.counter[23] )  as total_in, 
-                    (c.counter[2] + c.counter[3] + c.counter[22] + c.counter[24] )  as total_out, 
-                    c.counter[0]  as total_bet, 
-                    c.counter[34] as total_win, 
-                    c.counter[12] as total_credit 
-                FROM ps_counters as c
-                ORDER BY '. $page['OrderQuery'].' '.$page['OrderDesc'].' 
-        ');*/
         $counters = $BjPsCounters->orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
         //$counters = $BjPsCounters->orderBy('psid', 'asc')->get();
 
@@ -68,12 +54,22 @@ class GameMachineStatisticsController extends Controller
     }
 
     // export game machine blackjack
-    public function export_gm_bj()
+    public function export_gm_bj(Request $request)
     {
-        //$export = BjPsCounters::all();
+         if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        $counters = BjPsCounters::orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$counters = BjPsCounters::orderBy('psid', 'asc')->get();
+        
         $bet = 0; $win = 0; $jp = 0; $games = 0; $jp_hits = 0;
-
-        $counters = BjPsCounters::orderBy('psid', 'asc')->get();
         $export = array();
             foreach ($counters as $key => $val) {
                 $bet += $val->bet;
@@ -83,9 +79,9 @@ class GameMachineStatisticsController extends Controller
                 $jp_hits += $val->jp_hits;
                 $export[$key] = array(
                     'PS ID' => $val->psid, 
-                    'Total Bet' => number_format($val->bet/100, 2), 
-                    'Total Win' => number_format($val->win/100, 2), 
-                    'Jackpot' => number_format($val->jp/100, 2), 
+                    'Total Bet' => $val->bet/100, 
+                    'Total Win' => $val->win/100, 
+                    'Jackpot' => $val->jp/100, 
                     'Games' => $val->games, 
                     'JP Hits' => $val->jp_hits
                 );
@@ -93,9 +89,9 @@ class GameMachineStatisticsController extends Controller
             }
                 $export[$key + 1] = array(
                     'PS ID' => "TOTAL", 
-                    'Total Bet' => number_format($bet/100, 2), 
-                    'Total Win' => number_format($win/100, 2), 
-                    'Jackpot' => number_format($jp/100, 2), 
+                    'Total Bet' => $bet/100, 
+                    'Total Win' => $win/100, 
+                    'Jackpot' => $jp/100, 
                     'Games' => $games, 
                     'JP Hits' => $jp_hits
                 );
@@ -117,12 +113,22 @@ class GameMachineStatisticsController extends Controller
         })->export('xls');
     }
 
-    public function index_bingo(BingoPsCounters $BingoPsCounters)
+    public function index_bingo(BingoPsCounters $BingoPsCounters, Request $request)
     {
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        $counters = $BingoPsCounters->orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$counters = $BingoPsCounters->orderBy('psid', 'asc')->get();
+
         $bet = 0; $win = 0; $jp = 0; $games = 0; $jp_hits = 0;
-
-        $counters = $BingoPsCounters->orderBy('psid', 'asc')->get();
-
         foreach ($counters as $counter) {
             $bet += $counter->bet;
             $win += $counter->win;
@@ -139,16 +145,26 @@ class GameMachineStatisticsController extends Controller
             'jp_hits' => $jp_hits
         ];
 
-        return view('statistics.game-machine-bingo', compact('counters', 'totals'));
+        return view('statistics.game-machine-bingo', compact('counters', 'totals', 'page'));
     }
 
     // export game machine bingo
-    public function export_gm_bingo()
+    public function export_gm_bingo(Request $request)
     {
-        //$export = BingoPsCounters::all();
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        $counters = BingoPsCounters::orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$counters = BingoPsCounters::orderBy('psid', 'asc')->get();
+        
         $bet = 0; $win = 0; $jp = 0; $games = 0; $jp_hits = 0;
-
-        $counters = BingoPsCounters::orderBy('psid', 'asc')->get();
         $export = array();
             foreach ($counters as $key => $val) {
                 $bet += $val->bet;
@@ -158,9 +174,9 @@ class GameMachineStatisticsController extends Controller
                 $jp_hits += $val->jp_hits;
                 $export[$key] = array(
                     'PS ID' => $val->psid, 
-                    'Total Bet' => number_format($val->bet/100, 2), 
-                    'Total Win' => number_format($val->win/100, 2), 
-                    'Jackpot' => number_format($val->jp/100, 2), 
+                    'Total Bet' => $val->bet/100, 
+                    'Total Win' => $val->win/100, 
+                    'Jackpot' => $val->jp/100, 
                     'Games' => $val->games, 
                     'JP Hits' => $val->jp_hits
                 );
@@ -168,9 +184,9 @@ class GameMachineStatisticsController extends Controller
             }
                 $export[$key + 1] = array(
                     'PS ID' => "TOTAL", 
-                    'Total Bet' => number_format($bet/100, 2), 
-                    'Total Win' => number_format($win/100, 2), 
-                    'Jackpot' => number_format($jp/100, 2), 
+                    'Total Bet' => $bet/100, 
+                    'Total Win' => $win/100, 
+                    'Jackpot' => $jp/100, 
                     'Games' => $games, 
                     'JP Hits' => $jp_hits
                 );
@@ -190,12 +206,23 @@ class GameMachineStatisticsController extends Controller
         })->export('xls');
     }
 
-    public function index_rlt1(RLT1PsCounters $RLT1PsCounters)
+    public function index_rlt1(RLT1PsCounters $RLT1PsCounters, Request $request)
     {
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        $counters = $RLT1PsCounters->orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$counters = $RLT1PsCounters->orderBy('psid', 'asc')->get();
+
+        
         $bet = 0; $win = 0; $jp = 0; $games = 0; $jp_hits = 0;
-
-        $counters = $RLT1PsCounters->orderBy('psid', 'asc')->get();
-
         foreach ($counters as $counter) {
             $bet += $counter->bet;
             $win += $counter->win;
@@ -212,16 +239,27 @@ class GameMachineStatisticsController extends Controller
             'jp_hits' => $jp_hits
         ];
 
-        return view('statistics.game-machine-rl1', compact('counters', 'totals'));
+        return view('statistics.game-machine-rl1', compact('counters', 'totals', 'page'));
     }
 
     // export game machine roulette 1
-    public function export_gm_rlt1()
+    public function export_gm_rlt1(Request $request)
     {
-        //$export = RLT1PsCounters::all();
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        $counters = RLT1PsCounters::orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$counters = RLT1PsCounters::orderBy('psid', 'asc')->get();
+        
+        
         $bet = 0; $win = 0; $jp = 0; $games = 0; $jp_hits = 0;
-
-        $counters = RLT1PsCounters::orderBy('psid', 'asc')->get();
         $export = array();
             foreach ($counters as $key => $val) {
                 $bet += $val->bet;
@@ -231,9 +269,9 @@ class GameMachineStatisticsController extends Controller
                 $jp_hits += $val->jp_hits;
                 $export[$key] = array(
                     'PS ID' => $val->psid, 
-                    'Total Bet' => number_format($val->bet/100, 2), 
-                    'Total Win' => number_format($val->win/100, 2), 
-                    'Jackpot' => number_format($val->jp/100, 2), 
+                    'Total Bet' => $val->bet/100, 
+                    'Total Win' => $val->win/100, 
+                    'Jackpot' => $val->jp/100, 
                     'Games' => $val->games, 
                     'JP Hits' => $val->jp_hits
                 );
@@ -241,9 +279,9 @@ class GameMachineStatisticsController extends Controller
             }
                 $export[$key + 1] = array(
                     'PS ID' => "TOTAL", 
-                    'Total Bet' => number_format($bet/100, 2), 
-                    'Total Win' => number_format($win/100, 2), 
-                    'Jackpot' => number_format($jp/100, 2), 
+                    'Total Bet' => $bet/100, 
+                    'Total Win' => $win/100, 
+                    'Jackpot' => $jp/100, 
                     'Games' => $games, 
                     'JP Hits' => $jp_hits
                 );
@@ -263,12 +301,22 @@ class GameMachineStatisticsController extends Controller
         })->export('xls');
     }
 
-    public function index_rlt2(RLT2PsCounters $RLT2PsCounters)
+    public function index_rlt2(RLT2PsCounters $RLT2PsCounters, Request $request)
     {
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        $counters = $RLT2PsCounters->orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$counters = $RLT2PsCounters->orderBy('psid', 'asc')->get();
+        
         $bet = 0; $win = 0; $jp = 0; $games = 0; $jp_hits = 0;
-
-        $counters = $RLT2PsCounters->orderBy('psid', 'asc')->get();
-
         foreach ($counters as $counter) {
             $bet += $counter->bet;
             $win += $counter->win;
@@ -285,17 +333,26 @@ class GameMachineStatisticsController extends Controller
             'jp_hits' => $jp_hits
         ];
 
-        return view('statistics.game-machine-rlt2', compact('counters', 'totals'));
+        return view('statistics.game-machine-rlt2', compact('counters', 'totals', 'page'));
     }
 
     // export game machine roulette 2
-    public function export_gm_rlt2()
+    public function export_gm_rlt2(Request $request)
     {
-        //$export = RLT2PsCounters::all();
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        $counters = RLT2PsCounters::orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$counters = RLT2PsCounters::orderBy('psid', 'asc')->get();
+
         $bet = 0; $win = 0; $jp = 0; $games = 0; $jp_hits = 0;
-
-        $counters = RLT2PsCounters::orderBy('psid', 'asc')->get();
-
         $export = array();
             foreach ($counters as $key => $val) {
                 $bet += $val->bet;
@@ -305,9 +362,9 @@ class GameMachineStatisticsController extends Controller
                 $jp_hits += $val->jp_hits;
                 $export[$key] = array(
                     'PS ID' => $val->psid, 
-                    'Total Bet' => number_format($val->bet/100, 2), 
-                    'Total Win' => number_format($val->win/100, 2), 
-                    'Jackpot' => number_format($val->jp/100, 2), 
+                    'Total Bet' => $val->bet/100, 
+                    'Total Win' => $val->win/100, 
+                    'Jackpot' => $val->jp/100, 
                     'Games' => $val->games, 
                     'JP Hits' => $val->jp_hits
                 );
@@ -315,9 +372,9 @@ class GameMachineStatisticsController extends Controller
             }
                 $export[$key + 1] = array(
                     'PS ID' => "TOTAL", 
-                    'Total Bet' => number_format($bet/100, 2), 
-                    'Total Win' => number_format($win/100, 2), 
-                    'Jackpot' => number_format($jp/100, 2), 
+                    'Total Bet' => $bet/100, 
+                    'Total Win' => $win/100, 
+                    'Jackpot' => $jp/100, 
                     'Games' => $games, 
                     'JP Hits' => $jp_hits
                 );

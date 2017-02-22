@@ -223,16 +223,16 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
      */
 
     Route::get('/statistics/game-machine-blackjack', 'Statistics\GameMachineStatisticsController@index_blackjack');
-    Route::get('/statistics/game-machine-blackjack/export', 'Statistics\GameMachineStatisticsController@export_gm_bj');
+    Route::get('/statistics/game-machine-blackjack/export', 'Statistics\GameMachineStatisticsController@export_gm_bj')->name('export2excelGameBJ');
 
     Route::get('/statistics/game-machine-bingo', 'Statistics\GameMachineStatisticsController@index_bingo');
-    Route::get('/statistics/game-machine-bingo/export', 'Statistics\GameMachineStatisticsController@export_gm_bingo');
+    Route::get('/statistics/game-machine-bingo/export', 'Statistics\GameMachineStatisticsController@export_gm_bingo')->name('export2excelGameBingo');
 
     Route::get('/statistics/game-machine-rl1', 'Statistics\GameMachineStatisticsController@index_rlt1');
-    Route::get('/statistics/game-machine-rl1/export', 'Statistics\GameMachineStatisticsController@export_gm_rlt1');
+    Route::get('/statistics/game-machine-rl1/export', 'Statistics\GameMachineStatisticsController@export_gm_rlt1')->name('export2excelGameR1');
 
     Route::get('/statistics/game-machine-rl2', 'Statistics\GameMachineStatisticsController@index_rlt2');
-    Route::get('/statistics/game-machine-rl2/export', 'Statistics\GameMachineStatisticsController@export_gm_rlt2');
+    Route::get('/statistics/game-machine-rl2/export', 'Statistics\GameMachineStatisticsController@export_gm_rlt2')->name('export2excelGameR2');
 
     /**
      * STATISTICS

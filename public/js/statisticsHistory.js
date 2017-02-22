@@ -2057,45 +2057,26 @@ function ExportToPNGGameTable() {
 
 function changePageSortTerminal(pageOrderV, pageDescV) {
     pageHref = $('#pageReload').attr('data-URL');
-    //pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
-    //pageNum = 1; //$('#pageReload').attr('data-page');
     pageOrder = pageOrderV; //  $('#pageReload').attr('data-OrderQuery');
     pageDesc =  pageDescV; // $('#pageReload').attr('data-desc');
-    
-    /*sortMenuOpen = sortMenuRV;
-    FromGameTs = $('#datetimepicker6I').val();
-    ToGameTs = $('#datetimepicker7I').val();
-    GameSort = $('#GameSort').val();
-    TableSort = $('#TableSort').val();
-    PSID = $('#PSID').val();
-    SeatID = $('#SeatID').val();
-    FromGameBet = $('#FromGameBet').val();
-    ToGameBet = $('#ToGameBet').val();
-    FromGameWin = $('#FromGameWin').val();
-    ToGameWin = $('#ToGameWin').val();
-     */  
-    
     
     pageHref = pageHref + 
             "?OrderDesc=" + pageDesc + 
             "&OrderQuery=" + pageOrder + 
-            /*"&page=" + pageNum + 
-            "&rowsPerPage=" + pageRowsPerPage + 
-            "&sortMenuOpen=" + sortMenuOpen + 
-            "&FromGameTs=" + FromGameTs + 
-            "&ToGameTs=" + ToGameTs + 
-            "&GameSort=" + GameSort + 
-            "&TableSort=" + TableSort + 
-            "&PSID=" + PSID + 
-            "&SeatID=" + SeatID + 
-            "&FromGameBet=" + FromGameBet + 
-            "&ToGameBet=" + ToGameBet + 
-            "&FromGameWin=" + FromGameWin + 
-            "&ToGameWin=" + ToGameWin + */
             "')" 
     window.location.href = pageHref; 
 }
-
+function export2excelTerminal() {
+    pageHref = $('#pageReload').attr('data-excel-url');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    
+    pageHref = pageHref + 
+            "?OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder ; 
+    window.location.href = pageHref; 
+}
 function ExportToPNGTerminatsTable() {
     html2canvas($('#panelTerminatsContend'), {
         onrendered: function(canvas) {
@@ -2324,3 +2305,30 @@ function ExportToPNGAllTable() {
 }
 
 //end User-log-all scripts
+//start Game Statistics scripts 
+function changePageSortGameBJ(pageOrderV, pageDescV) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageOrder = pageOrderV; //  $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  pageDescV; // $('#pageReload').attr('data-desc');
+    
+    pageHref = pageHref + 
+            "?OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder + 
+            "')" 
+    window.location.href = pageHref; 
+}
+function export2excelGameBJ() {
+    pageHref = $('#pageReload').attr('data-excel-url');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    
+    
+    pageHref = pageHref + 
+            "?OrderDesc=" + pageDesc + 
+            "&OrderQuery=" + pageOrder ; 
+    window.location.href = pageHref; 
+}
+
+
+
+//start Game Statistics scripts

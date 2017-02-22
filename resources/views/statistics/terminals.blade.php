@@ -7,7 +7,7 @@
                     @lang('messages.Machine Statistics')
                 </h2>
 
-                <a href="{{ route('export2excelTerminalsStatistics') }}" class="btn btn-warning  pull-right">
+                <a class="btn btn-warning  pull-right" onclick="export2excelTerminal();">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> @lang('messages.Export')
                 </a>
                 <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
@@ -20,7 +20,7 @@
                 </a>
             </div>
                 <div class="panel-body" >
-                    <input id="pageReload" type="hidden" val="" data-URL="javascript:ajaxLoad('{{url('statistics/terminals')}}" data-excel-url="{{ route('export2excelBJ') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" > 
+                    <input id="pageReload" type="hidden" val="" data-URL="javascript:ajaxLoad('{{url('statistics/terminals')}}" data-excel-url="{{ route('export2excelTerminalsStatistics') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" > 
                     <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
                             data-toggle="table"
                             data-locale="en-US"

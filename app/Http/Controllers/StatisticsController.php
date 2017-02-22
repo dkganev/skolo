@@ -85,9 +85,33 @@ class StatisticsController extends Controller
         return view('statistics.terminals', ['counters' => $counters , 'totals' => $totals, 'page' => $page ]);
     }
 
-    public function export2excelTerminalsStatistics()
+    public function export2excelTerminalsStatistics(Request $request)
     {
-        $counters = PsCounters::orderBy('psid', 'asc')->get();
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'psid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        
+        $counters = DB::connection('pgsql')->select(' 
+                SELECT
+                    c.psid as psid,
+                    c.counter as counter,
+                    (SELECT sps.dallasid FROM server_ps as sps WHERE sps.psid = c.psid ) as dallasid,
+                    (c.counter[11] + c.counter[21] + c.counter[23] )  as total_in, 
+                    (c.counter[2] + c.counter[3] + c.counter[22] + c.counter[24] )  as total_out, 
+                    c.counter[0]  as total_bet, 
+                    c.counter[34] as total_win, 
+                    c.counter[12] as total_credit 
+                FROM ps_counters as c
+                ORDER BY '. $page['OrderQuery'].' '.$page['OrderDesc'].' 
+        ');
+        //$counters = PsCounters::orderBy('psid', 'asc')->get();
 
         $totalIn  = 0;
         $totalOut = 0;
@@ -97,11 +121,11 @@ class StatisticsController extends Controller
 
         foreach($counters as $counter)
         {
-            $totalIn += $counter->totalIn();
-            $totalOut += $counter->totalOut();
-            $totalBet += $counter->totalBet();
-            $totalWin += $counter->totalWin();
-            $totalCredit += $counter->totalCredit();
+            $totalIn += $counter->total_in;
+            $totalOut += $counter->total_out;
+            $totalBet += $counter->total_bet;
+            $totalWin += $counter->total_win;
+            $totalCredit += $counter->total_credit;
         }
 
         $totals = [
@@ -115,22 +139,22 @@ class StatisticsController extends Controller
         foreach ($counters as $key => $counter) {
             $export[$key] = [
                 'PS ID' => $counter->psid, 
-                'Dallas ID' => $counter->server_ps->dallasid,
-                'Total In' =>  $counter->totalIn(), 
-                'Total Out' => $counter->totalOut(),
-                'Total Bet' => $counter->totalBet(),
-                'Total Win' => $counter->totalWin(),
-                'Total Credit' => $counter->totalCredit()
+                'Dallas ID' => $counter->dallasid,
+                'Total In' =>  $counter->total_in / 100, 
+                'Total Out' => $counter->total_out / 100,
+                'Total Bet' => $counter->total_bet / 100,
+                'Total Win' => $counter->total_win / 100,
+                'Total Credit' => $counter->total_credit/ 100
             ];
         }
             $export[$key + 1] = array(
                 'PS ID' => "", 
                 'Dallas ID' => "Total",
-                'Total In' =>  $totals['totalIn'], 
-                'Total Out' => $totals['totalOut'],
-                'Total Bet' => $totals['totalBet'],
-                'Total Win' => $totals['totalWin'],
-                'Total Credit' => $totals['totalCredit']
+                'Total In' =>  $totals['totalIn'] /100, 
+                'Total Out' => $totals['totalOut'] / 100,
+                'Total Bet' => $totals['totalBet'] / 100,
+                'Total Win' => $totals['totalWin'] / 100,
+                'Total Credit' => $totals['totalCredit'] / 100
             );
         //$export = $historys = BingoHistory::orderBy('tstamp', 'desc')->get();
 
