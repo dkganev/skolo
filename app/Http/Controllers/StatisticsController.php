@@ -175,38 +175,74 @@ class StatisticsController extends Controller
         //return view('statistics.terminals', ['counters' => $counters , 'totals' => $totals]);
     }
 
-    public function games_statistics()
+    public function games_statistics(Request $request)
     {
-        $games = Games::orderBy('gameid', 'asc')->get();
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'gameid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        $games = Games::orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$games = Games::orderBy('gameid', 'asc')->get();
 
         $games_bet = Games::all()->sum('counters_bet');
         $games_win = Games::all()->sum('counters_win');
         $games_jp = Games::all()->sum('counters_jp');
-        $games_bet = Games::all()->sum('counters_bet');
+        //$games_bet = Games::all()->sum('counters_bet');
         $games_games = Games::all()->sum('counters_games');
         $games_jp_hits = Games::all()->sum('counter_jp_hits');
 
-        return view('statistics.games', compact(
-                    'games', 'games_bet', 'games_win', 'games_jp', 'games_games',  'games_jp_hits'
-                ));
+        return view('statistics.games', compact('games', 'games_bet', 'games_win', 'games_jp', 'games_games',  'games_jp_hits' , 'page'));
     }
 
-    public function export2excelGamesStatistics()
+    public function export2excelGamesStatistics(Request $request)
     {
-        $games = Games::orderBy('gameid', 'asc')->get();
+        if ($request['OrderQuery']) {
+            $page['OrderQuery'] = $request['OrderQuery'];
+        } else {
+            $page['OrderQuery'] = 'gameid';
+        }
+        if ($request['OrderDesc']) {
+            $page['OrderDesc'] = $request['OrderDesc'];
+        } else {
+            $page['OrderDesc'] = 'asc';
+        }
+        $games = Games::orderBy($page['OrderQuery'], $page['OrderDesc'])->get();
+        //$games = Games::orderBy('gameid', 'asc')->get();
+        $games_bet = Games::all()->sum('counters_bet');
+        $games_win = Games::all()->sum('counters_win');
+        $games_jp = Games::all()->sum('counters_jp');
+        //$games_bet = Games::all()->sum('counters_bet');
+        $games_games = Games::all()->sum('counters_games');
+        $games_jp_hits = Games::all()->sum('counter_jp_hits');
+        
         $export = array();
         foreach ($games as $key => $game) {
             $export[$key] = array(
                 'ID' => $game->gameid, 
                 'Description' => $game->description,
-                'BET' =>  $game->counters_bet, 
-                'WIN' => $game->counters_win,
-                'JP' => $game->counters_jp,
+                'BET' =>  $game->counters_bet/100, 
+                'WIN' => $game->counters_win/100,
+                'JP' => $game->counters_jp/100,
                 'GAMES' => $game->counters_games,
                 'JP HITS' => $game->counter_jp_hits
             );
             
         }
+            $export[$key + 1] = array(
+                'ID' => "", 
+                'Description' => "Total",
+                'BET' =>  $games_bet /100, 
+                'WIN' => $games_win / 100,
+                'JP' => $games_jp / 100,
+                'GAMES' => $games_games,
+                'JP HITS' => $games_jp_hits
+            );
         
         Excel::create('Games Data', function($excel) use($export){
             $excel->sheet('Games', function($sheet) use($export){
@@ -1381,6 +1417,7 @@ class StatisticsController extends Controller
         }else{ //PS: 2, Time: 2016-09-13 16:05:33.747872
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
         }*/
+        $denomination =  $historys->denomination;
         $seatid = $historys->psid;
         $seatTime = date("Y-m-d H:i:s", strtotime($historys->ts));
         $positions = array();
@@ -1396,7 +1433,7 @@ class StatisticsController extends Controller
         $rlt_chip_positions = array();
         $rlt_chip_positions = $this->chip_positions();
        
-        $testPage = view('statistics.rouletteHistory', ['positions' => $positions, 'rlt_chip_positions' => $rlt_chip_positions])->render();
+        $testPage = view('statistics.rouletteHistory', ['positions' => $positions, 'denomination' => $denomination, 'rlt_chip_positions' => $rlt_chip_positions])->render();
        
         $dataArray1 = array(
             "success" => "success",
@@ -2028,6 +2065,7 @@ class StatisticsController extends Controller
             $seatid = "PS: Missing saitid (PSID is $historys->psid ), Time: " . date('Y-m-d H:i:s', strtotime($historys->ts)); 
         }*/
         //$seatid = "PS: " . $historys->psid . ", Time: " . date("Y-m-d H:i:s", strtotime($historys->ts));
+        $denomination =  $historys->denomination;
         $seatid = $historys->psid;
         $seatTime = date("Y-m-d H:i:s", strtotime($historys->ts));
         $positions = array();
@@ -2043,7 +2081,7 @@ class StatisticsController extends Controller
         $rlt_chip_positions = array();
         $rlt_chip_positions = $this->chip_positions();
        
-        $testPage = view('statistics.rouletteHistory', ['positions' => $positions, 'rlt_chip_positions' => $rlt_chip_positions])->render();
+        $testPage = view('statistics.rouletteHistory', ['positions' => $positions, 'denomination' => $denomination, 'rlt_chip_positions' => $rlt_chip_positions])->render();
        
         $dataArray1 = array(
             "success" => "success",

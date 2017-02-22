@@ -7,7 +7,7 @@
                 <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 15%;">
                     @lang('messages.Game Statistics')
                 </h2>
-                <a href="{{ route('export2excelGamesStatistics') }}" class="btn btn-warning  pull-right">
+                <a class="btn btn-warning  pull-right" onclick="export2excelTerminal();">
                     <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
                     @lang('messages.Export')
                 </a>
@@ -17,6 +17,7 @@
                     </a>
                 </div>
                 <div class="panel-body" >
+                    <input id="pageReload" type="hidden" val="" data-URL="javascript:ajaxLoad('{{url('statistics/games')}}" data-excel-url="{{ route('export2excelGamesStatistics') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" > 
                     <table class="table table-striped table-bordered table-hover data-table-table" role="grid"
                             data-toggle="table"
                             data-locale="en-US"
@@ -28,13 +29,13 @@
                     >
                     <thead class="w3-dark-grey">
                         <tr>
-                            <th data-sortable="true">@lang('messages.ID')</th>
-                            <th data-sortable="true">@lang('messages.Description')</th>
-                            <th data-sortable="true">@lang('messages.Bet') (@lang('messages.dollar'))</th>
-                            <th data-sortable="true">@lang('messages.Win') (@lang('messages.dollar'))</th>
-                            <th data-sortable="true">@lang('messages.JP') (@lang('messages.dollar'))</th>
-                            <th data-sortable="true">@lang('messages.Games')</th>
-                            <th data-sortable="true">@lang('messages.JP Hits')</th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('gameid', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'gameid' ? 'asc' : 'desc' }}');">@lang('messages.ID')<i class="fa {{ $page['OrderQuery'] == 'gameid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('description', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'description' ? 'asc' : 'desc' }}');">@lang('messages.Description')<i class="fa {{ $page['OrderQuery'] == 'description' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('counters_bet', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'counters_bet' ? 'asc' : 'desc' }}');">@lang('messages.Bet') (@lang('messages.dollar'))<i class="fa {{ $page['OrderQuery'] == 'counters_bet' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('counters_win', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'counters_win' ? 'asc' : 'desc' }}');">@lang('messages.Win') (@lang('messages.dollar'))<i class="fa {{ $page['OrderQuery'] == 'counters_win' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('counters_jp', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'counters_jp' ? 'asc' : 'desc' }}');">@lang('messages.JP') (@lang('messages.dollar'))<i class="fa {{ $page['OrderQuery'] == 'counters_jp' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('counters_games', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'counters_games' ? 'asc' : 'desc' }}');">@lang('messages.Games')<i class="fa {{ $page['OrderQuery'] == 'counters_games' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th data-sortable="true" onclick="changePageSortTerminal('counter_jp_hits', '{{ $page['OrderDesc'] == 'desc' && $page['OrderQuery'] == 'counter_jp_hits' ? 'asc' : 'desc' }}');">@lang('messages.JP Hits')<i class="fa {{ $page['OrderQuery'] == 'counter_jp_hits' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                         </tr>
                         <tbody>
                             @foreach($games as $game)
