@@ -36,7 +36,7 @@
     </div>
 </div>
 <div class='faSpinnerBingo' style="display: none; left: 800px; top: 400px; position: absolute; z-index: 10000;">
-    <i class="fa fa-spinner fa-spin" style="font-size:24px; color: #ffffff;"></i>
+    <i class="fa fa-spinner fa-spin" style="font-size:34px; color: #ffffff;"></i>
 </div>
 <script>
     var token = '{{ Session::token() }}';

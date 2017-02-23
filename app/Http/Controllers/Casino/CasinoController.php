@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Casino;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests;
 use App\Models\Accounting\PsErrors;
@@ -78,10 +79,10 @@ class CasinoController extends Controller
         } else {
             $page['ErrorText'] = "";
         }
-
+        
         $historys = PsErrors::where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage'] );
-
-        return view('casino.events', ['historys' => $historys, 'page' => $page]);
+        
+        return view('casino.events', ['historys' => $historys, 'page' => $page]); 
     }
     
     public function export2excelEvents(Request $request)

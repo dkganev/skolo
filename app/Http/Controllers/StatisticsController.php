@@ -264,6 +264,7 @@ class StatisticsController extends Controller
     // start bingo
     public function history_statistics(Request $request)
     {
+        $timeOpt[0] = date("H:i:s");
         if ($request['arr']) {
             $page['arrayReq']= explode(",",$request['arr']);
             $page['rowsPerPage'] = $page['arrayReq'][0];
@@ -801,7 +802,10 @@ class StatisticsController extends Controller
             $page['ToJackpotBingoVal'] = "";
         }*/
         
+        $timeOpt[1] = date("H:i:s");
         $historyCount = DB::connection('pgsql3')->select('SELECT count(s.tstamp) FROM history as s WHERE 1 = 1'. $wherQuery . ' ');
+        $timeOpt[2] = date("H:i:s");
+        
         foreach ($historyCount as $countVal){
             $countVal1 = $countVal->count ;
         }
@@ -832,6 +836,7 @@ class StatisticsController extends Controller
         //$historys = $historyClas->select('history.*', "BingoWins_History::where('bingo_seq', 25298)->sum('win_val') as testHis"  )->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
         //DB::raw("SELECT * FROM some_table WHERE some_col = '$someVariable'")
         //$historys = $historyClas->select( DB::raw("history.ps as testVal, history.*") )->where($SortQuery)->orderBy($page['OrderQuery'], $page['OrderDesc'])->paginate($page['rowsPerPage']);
+        $timeOpt[3] = date("H:i:s");
         $historys = DB::connection('pgsql3')->select(' 
                 SELECT
                     s.unique_game_seq, 
@@ -861,6 +866,8 @@ class StatisticsController extends Controller
                 ORDER BY '. $page['OrderQuery'].' '.$page['OrderDesc'].' 
                 LIMIT '.$page['rowsPerPage'].' OFFSET '. $page['StartAt'] . '    
                 ');
+        $timeOpt[4] = date("H:i:s");
+        
                 //$historys->currentPage() = 1;
                 //$historys->lastPage() = 1;
         
@@ -869,7 +876,7 @@ class StatisticsController extends Controller
         
         //$historys = BingoHistory::orderBy('tstamp', 'desc')->get();
 
-        return view('statistics.history', ['historys' => $historys, 'page' => $page ]); 
+        return view('statistics.history', ['historys' => $historys, 'page' => $page, 'timeOpt' => $timeOpt ]); 
     }
     
     public function ajax_statBingoHistory(Request $request)

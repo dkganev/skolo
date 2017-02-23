@@ -61,7 +61,7 @@
 <script>
     function ajaxLoad(filename, content) {
         content = typeof content !== 'undefined' ? content : 'content';
-
+        $('body').append( "<div class='modal-backdrop fade in pageReload' ><div class='faSpinnerBingo' style=' left: 800px; top: 400px; position: absolute; z-index: 10000;'><i class='fa fa-spinner fa-spin' style='font-size:34px; color: #ffffff;'></i></div></div>" );
         $.ajax({
             type: "GET",
             url: filename,
@@ -69,12 +69,16 @@
             success: function (data) {
                 // window.location.hash = filename;
                 $("#" + content).css('display','none').html(data).hide().fadeIn(600);
+                //$('html').css('opacity', 1);
+                $( "div" ).remove( ".pageReload" );
             },
             error: function (xhr, status, error) {
                 console.log(error);
+                $( "div" ).remove( ".pageReload" );
             }
         }).done(function() {
             $('select').selectpicker('refresh');
+            $( "div" ).remove( ".pageReload" );
         });
     }
 
@@ -141,6 +145,5 @@
 
 <script src="js-lib/sweet-alert/sweetalert-dev.js"></script>
 <link rel="stylesheet" type="text/css" href="js-lib/sweet-alert/sweetalert.css">
-
 </body>
 </html>

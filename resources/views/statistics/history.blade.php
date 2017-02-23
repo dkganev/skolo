@@ -783,6 +783,14 @@ if (pageSortMenuOpen == 1){
 
 socket.disconnect();
 sockStatus = 0;
+/*
+console.log('<?php print_r($timeOpt[0]); ?>'); //$timeOpt[1] = date("H:i:s");
+console.log('<?php print_r($timeOpt[1]); ?>');
+console.log('<?php print_r($timeOpt[2]); ?>');
+console.log('<?php print_r($timeOpt[3]); ?>');
+console.log('<?php print_r($timeOpt[4]); ?>');
+console.log('<?php echo date("H:i:s"); ?>');
+ */
 /*var ShowHideI = 0;
 $('#show-column, #hide-column').click(function () {
     if (ShowHideI == 0) {
