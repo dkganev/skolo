@@ -294,7 +294,7 @@ return array(
     'Yellow' => 'Jaune',
     'Black' => 'Noir',
     'Red' => 'Rouge',
-    'Blue' => 'Blue',
+    'Blue' => 'Bleu',
     'Green' => 'Vert',
     'Color Scheme' => 'Combinaison de couleurs',
     'Double Zero' => 'Double Zèro',
