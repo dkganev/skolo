@@ -117,19 +117,19 @@
     <h4 style="text-align: center; line-height: 3;">@lang('messages.Bingo Live Feed')</h4>
     <div style="line-height: 0.5;">
         
-        <p style=" margin-right: 20px">@lang('messages.Ticket Value'): <span id="ticket_price" class="pull-right" data-unique_game_seq="{{$GameState->unique_game_seq}}">{{number_format($GameState->ticket_price / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">@lang('messages.Tickets Sold'): <span id="tickets" class="pull-right">{{$GameState->tickets}}</span></p>
-        <p style=" margin-right: 20px">@lang('messages.Active Players'): <span id="players" class="pull-right">{{$GameState->players}}</span></p>
-        <p style=" margin-right: 20px">@lang('messages.Bingo Prize'): <span id="bingo_value" class="pull-right">{{number_format($GameState->bingo_value / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">@lang('messages.Bingo Line'): <span id="line_value" class="pull-right">{{number_format($GameState->line_value / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">@lang('messages.Jackpot Bingo'): <span id="jackpot_bingo" class="pull-right">{{number_format($GameState->jackpot_bingo / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Ticket Value'): <span id="ticket_price" class="pull-right" data-unique_game_seq="{{$GameState ? $GameState->unique_game_seq : 0 }}">{{number_format($GameState ? $GameState->ticket_price : 0 / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Tickets Sold'): <span id="tickets" class="pull-right">{{$GameState ? $GameState->tickets : 0}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Active Players'): <span id="players" class="pull-right">{{$GameState ? $GameState->players : 0}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bingo Prize'): <span id="bingo_value" class="pull-right">{{number_format($GameState ? $GameState->bingo_value : 0 / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bingo Line'): <span id="line_value" class="pull-right">{{number_format($GameState ? $GameState->line_value : 0 / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Jackpot Bingo'): <span id="jackpot_bingo" class="pull-right">{{number_format($GameState ? $GameState->jackpot_bingo : 0 / 100, 2 )}}</span></p>
         <p style=" margin-right: 20px">@lang('messages.Jackpot Bingo Max Ball'): <span id="jackpot_bingo_max_ball" class="pull-right">{{$MainConfig->jackpot_bingo_max_ball}}</span></p>
-        <p style=" margin-right: 20px">@lang('messages.Jackpot Line Prize'): <span id="jackpot_line" class="pull-right">{{number_format($GameState->jackpot_line / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Jackpot Line Prize'): <span id="jackpot_line" class="pull-right">{{number_format($GameState ? $GameState->jackpot_line : 0 / 100, 2 )}}</span></p>
         <p style=" margin-right: 20px">@lang('messages.Jackpot Line Max Ball'): <span id="jackpot_line_max_ball" class="pull-right">{{$MainConfig->jackpot_line_max_ball}}</span></p>
-        <p style=" margin-right: 20px">@lang('messages.My Bonus Prize'): <span id="my_bonus" class="pull-right">{{number_format($GameState->my_bonus / 100, 2 )}}</span></p>
-        <p style=" margin-right: 20px">@lang('messages.Bonus Bingo Prize'): <span id="bonus_bingo" class="pull-right">{{number_format($GameState->bonus_bingo / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.My Bonus Prize'): <span id="my_bonus" class="pull-right">{{number_format($GameState ? $GameState->my_bonus : 0 / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bonus Bingo Prize'): <span id="bonus_bingo" class="pull-right">{{number_format($GameState ? $GameState->bonus_bingo : 0 / 100, 2 )}}</span></p>
         <p style=" margin-right: 20px">@lang('messages.Bonus Bingo Max Ball'): <span id="bonus_bingo_max_ball" class="pull-right">{{$MainConfig->bonus_bingo_max_ball}}</span></p>
-        <p style=" margin-right: 20px">@lang('messages.Bonus Line Prize'): <span id="bonus_line" class="pull-right">{{number_format($GameState->bonus_line / 100, 2 )}}</span></p>
+        <p style=" margin-right: 20px">@lang('messages.Bonus Line Prize'): <span id="bonus_line" class="pull-right">{{number_format($GameState ? $GameState->bonus_line : 0 / 100, 2 )}}</span></p>
         <p style=" margin-right: 20px">@lang('messages.Bonus Line Max Ball'): <span id="bonus_line_max_ball" class="pull-right">{{$MainConfig->bonus_line_max_ball}}</span></p>
     </div>
 </div>

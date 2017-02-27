@@ -866,6 +866,15 @@ class StatisticsController extends Controller
                 ORDER BY '. $page['OrderQuery'].' '.$page['OrderDesc'].' 
                 LIMIT '.$page['rowsPerPage'].' OFFSET '. $page['StartAt'] . '    
                 ');
+         
+        /*$historys = DB::connection('pgsql3')->select(' 
+                SELECT *
+                FROM bingo_history2 
+                WHERE 1 = 1'. $wherQuery . '
+                ORDER BY '. $page['OrderQuery'].' '.$page['OrderDesc'].' 
+                LIMIT '.$page['rowsPerPage'].' OFFSET '. $page['StartAt'] . '    
+                ');*/
+        
         $timeOpt[4] = date("H:i:s");
         
                 //$historys->currentPage() = 1;
