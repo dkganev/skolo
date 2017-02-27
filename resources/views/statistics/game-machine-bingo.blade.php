@@ -2,13 +2,10 @@
     <div class="row">
       <div class="col-md-9">
         <ul class="breadcrumb">
-          <li><a href="javascript:ajaxLoad('{{url('statistics/game-machine-blackjack')}}')">@lang('messages.Blackjack')</a></li>
-          
-          <li class="active"><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-bingo')}}')">@lang('messages.Bingo')</a></li>
-  
-          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl1')}}')">@lang('messages.Roulette') 1</a></li>
-
-          <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl2')}}')">@lang('messages.Roulette') 2</a></li>
+            <li class="active"><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-bingo')}}')">@lang('messages.Bingo')</a></li>
+            <li><a href="javascript:ajaxLoad('{{url('statistics/game-machine-blackjack')}}')">@lang('messages.Blackjack')</a></li>
+            <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl1')}}')">@lang('messages.Roulette') 1</a></li>
+            <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-rl2')}}')">@lang('messages.Roulette') 2</a></li>
         </ul>
       </div>
     </div>

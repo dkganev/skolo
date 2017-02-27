@@ -10,7 +10,7 @@
                 <li><a href="javascript:ajaxLoad('{{url('statistics/history')}}')">@lang('messages.Game History')</a></li>
                 @endhasanyrole
 
-                <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-blackjack')}}')">@lang('messages.Machine Game Statistics')</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('/statistics/game-machine-bingo')}}')">@lang('messages.Machine Game Statistics')</a></li>
 
                 <li><a href="javascript:ajaxLoad('{{url('/statistics/user-logs')}}')">@lang('messages.User Logs')</a></li>
             </ul>
