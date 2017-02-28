@@ -228,6 +228,7 @@ if (pageSortMenuOpen == 1){
     sortTimer123 = setTimeout(function(){ $('.EventsSort').show(); }, 200);
 }else{
     sortTimer123 = setTimeout(function(){ $('.EventsSort').hide(); }, 200);
+    sortMenuRV = 0;
 }    
 
     

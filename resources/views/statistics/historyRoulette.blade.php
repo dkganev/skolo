@@ -361,6 +361,7 @@ if (pageSortMenuOpen == 1){
     sortTimer123 = setTimeout(function(){ $('.RouletteSort').show(); }, 200);
 }else{
     sortTimer123 = setTimeout(function(){ $('.RouletteSort').hide(); }, 200);
+    sortMenuRV = 0;
 }    
 //$("#rouletteHistory_modal").css({'overflow': 'scroll'});
 </script>
