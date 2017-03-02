@@ -62,7 +62,7 @@
 
           <div class="form-group">
               <label style="color: #474747">@lang('messages.Game ID'):</label><br>
-              <input name="game_id" value="{{ $main_config->game_id }}" type="text" class="form-control text-center">
+              <input disabled name="game_id" value="{{ $main_config->game_id }}" type="text" class="form-control text-center">
           </div>
 
           <div class="form-group">

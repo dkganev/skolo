@@ -406,6 +406,7 @@ return array(
     'Six Number Max Bet must be bigger than Six Number Min Bet' => 'Six Number Max Bet must be bigger than Six Number Min Bet',
     'Dozen Max Bett must be bigger than Dozen Min Bet' => 'Dozen Max Bett must be bigger than Dozen Min Bet',
     'Even Max Bet must be bigger than Even Min Bet' => 'Even Max Bet must be bigger than Even Min Bet',
+    'Wheel Statistics' => 'Wheel Statistics',
     
     
     

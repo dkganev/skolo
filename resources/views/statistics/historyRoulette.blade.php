@@ -23,7 +23,17 @@
         </div>
         
     </div>
-
+    <div class=" "> 
+        <div class="" style="">
+            <ul class="breadcrumb">
+                <li class="active"><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">@lang('messages.Roulette History Statistics')</a></li>
+                <li><a href="javascript:ajaxLoad('{{url('statistics/winRTL1')}}')">@lang('messages.Wheel Statistics') </a></li>
+                <!--<li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>-->
+                <!--<li><a href="javascript:ajaxLoad('#')">Slots </a></li>-->
+            </ul>
+        </div>
+    </div>
+    
 
 <div class="row" >
     <div class="col-md-12" style="width: 1000px">

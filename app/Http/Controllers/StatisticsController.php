@@ -19,6 +19,7 @@ use App\Models\Bingo\psTicketsArchive;
 use App\Models\Bingo\psTickets;
 use App\Models\Accounting\ServerPs;
 use App\Models\Roulette\GameHistory;
+use App\Models\Roulette\WinStats;
 use App\Models\Blackjack\BlackjackGameHistory;
 use Smiarowski\Postgres\Model\Traits\PostgresArray;
 use Excel;
@@ -1920,6 +1921,68 @@ class StatisticsController extends Controller
             });
         })->export('xls');
     }
+    
+    public function winRTL1(Request $request)
+    {
+        //$historyClas = new WinStats();
+        //$historyClas->setConnection('pgsql4');
+        //$historys = $historyClas->select('wins as wins1')->first();
+        $historys = collect(\DB::connection('pgsql4')->select('
+            SELECT  
+                    wins[0] as wins0,
+                    wins[1] as wins1,
+                    wins[2] as wins2,
+                    wins[3] as wins3,
+                    wins[4] as wins4,
+                    wins[5] as wins5,
+                    wins[6] as wins6,
+                    wins[7] as wins7,
+                    wins[8] as wins8,
+                    wins[9] as wins9,
+                    wins[10] as wins10,
+                    wins[11] as wins11,
+                    wins[12] as wins12,
+                    wins[13] as wins13,
+                    wins[14] as wins14,
+                    wins[15] as wins15,
+                    wins[16] as wins16,
+                    wins[17] as wins17,
+                    wins[18] as wins18,
+                    wins[19] as wins19,
+                    wins[20] as wins20,
+                    wins[21] as wins21,
+                    wins[22] as wins22,
+                    wins[23] as wins23,
+                    wins[24] as wins24,
+                    wins[25] as wins25,
+                    wins[26] as wins26,
+                    wins[27] as wins27,
+                    wins[28] as wins28,
+                    wins[29] as wins29,
+                    wins[30] as wins30,
+                    wins[31] as wins31,
+                    wins[32] as wins32,
+                    wins[33] as wins33,
+                    wins[34] as wins34,
+                    wins[35] as wins35,
+                    wins[36] as wins36,
+                    wins[37] as wins37,
+                    wins[38] as wins38
+                FROM win_stats 
+                '))->first();
+        $winsTotal = $historys->wins0 + $historys->wins1 + $historys->wins2 + $historys->wins3 + $historys->wins4 + $historys->wins5 + $historys->wins6 + $historys->wins7  + $historys->wins8 + $historys->wins9 ;
+        $winsTotal += $historys->wins10 + $historys->wins11 + $historys->wins12 + $historys->wins13 + $historys->wins14 + $historys->wins15 + $historys->wins16 + $historys->wins17  + $historys->wins18 + $historys->wins19 ;
+        $winsTotal += $historys->wins20 + $historys->wins21 + $historys->wins22 + $historys->wins23 + $historys->wins24 + $historys->wins25 + $historys->wins26 + $historys->wins27  + $historys->wins28 + $historys->wins29 ;
+        $winsTotal += $historys->wins30 + $historys->wins31 + $historys->wins32 + $historys->wins33 + $historys->wins34 + $historys->wins35 + $historys->wins36 + $historys->wins37  + $historys->wins38 ;
+        //foreach ($historys as $val){
+            
+        //}
+            
+
+
+        //return "test"; //WinStats
+        return view('statistics.winRTL1', ['historys' => $historys, 'winsTotal' => $winsTotal]); 
+    }        
    
     
     //end Roulette
@@ -2329,7 +2392,69 @@ class StatisticsController extends Controller
         })->export('xls');
     }
    
-    //end Roulette
+    public function winRTL2(Request $request)
+    {
+        //$historyClas = new WinStats();
+        //$historyClas->setConnection('pgsql4');
+        //$historys = $historyClas->select('wins as wins1')->first();
+        $historys = collect(\DB::connection('pgsql6')->select('
+            SELECT  
+                    wins[0] as wins0,
+                    wins[1] as wins1,
+                    wins[2] as wins2,
+                    wins[3] as wins3,
+                    wins[4] as wins4,
+                    wins[5] as wins5,
+                    wins[6] as wins6,
+                    wins[7] as wins7,
+                    wins[8] as wins8,
+                    wins[9] as wins9,
+                    wins[10] as wins10,
+                    wins[11] as wins11,
+                    wins[12] as wins12,
+                    wins[13] as wins13,
+                    wins[14] as wins14,
+                    wins[15] as wins15,
+                    wins[16] as wins16,
+                    wins[17] as wins17,
+                    wins[18] as wins18,
+                    wins[19] as wins19,
+                    wins[20] as wins20,
+                    wins[21] as wins21,
+                    wins[22] as wins22,
+                    wins[23] as wins23,
+                    wins[24] as wins24,
+                    wins[25] as wins25,
+                    wins[26] as wins26,
+                    wins[27] as wins27,
+                    wins[28] as wins28,
+                    wins[29] as wins29,
+                    wins[30] as wins30,
+                    wins[31] as wins31,
+                    wins[32] as wins32,
+                    wins[33] as wins33,
+                    wins[34] as wins34,
+                    wins[35] as wins35,
+                    wins[36] as wins36,
+                    wins[37] as wins37,
+                    wins[38] as wins38
+                FROM win_stats 
+                '))->first();
+        $winsTotal = $historys->wins0 + $historys->wins1 + $historys->wins2 + $historys->wins3 + $historys->wins4 + $historys->wins5 + $historys->wins6 + $historys->wins7  + $historys->wins8 + $historys->wins9 ;
+        $winsTotal += $historys->wins10 + $historys->wins11 + $historys->wins12 + $historys->wins13 + $historys->wins14 + $historys->wins15 + $historys->wins16 + $historys->wins17  + $historys->wins18 + $historys->wins19 ;
+        $winsTotal += $historys->wins20 + $historys->wins21 + $historys->wins22 + $historys->wins23 + $historys->wins24 + $historys->wins25 + $historys->wins26 + $historys->wins27  + $historys->wins28 + $historys->wins29 ;
+        $winsTotal += $historys->wins30 + $historys->wins31 + $historys->wins32 + $historys->wins33 + $historys->wins34 + $historys->wins35 + $historys->wins36 + $historys->wins37  + $historys->wins38 ;
+        //foreach ($historys as $val){
+            
+        //}
+            
+
+
+        //return "test"; //WinStats
+        return view('statistics.winRTL2', ['historys' => $historys, 'winsTotal' => $winsTotal]); 
+    }        
+   
+    //end Roulette 2
     //start BJ
     public function historyBlackjack(Request $request)
     {   
