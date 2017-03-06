@@ -555,7 +555,11 @@ function cleanSortFunctionBingo() {
     
 }
 function datetimepicker22() {
-        $('.switch').attr('colspan', 5);
+        //$('.switch').attr('colspan', '3');
+        //setTimeout(function(){ $('th.switch').attr('colspan', '3'); }, 2000);
+        setTimeout(function(){ $('th.switch').removeClass('switch'); }, 100);
+        //$('th.switch').removeClass('switch');
+        //$('tr .switch').attr('colspan', '3');
         FromGameTs = $('#datetimepicker2I').val();
         ToGameTs = $('#datetimepicker3I').val();
         var d = new Date();
@@ -572,7 +576,9 @@ function datetimepicker22() {
         }
 }
 function datetimepicker33() {
-        $('.switch').attr('colspan', 5);
+        //$('.switch').attr('colspan', 5);
+        setTimeout(function(){ $('th.switch').removeClass('switch'); }, 100);
+        //$('th.switch').removeClass('switch');
         FromGameTs = $('#datetimepicker2I').val();
         ToGameTs = $('#datetimepicker3I').val();
         var d = new Date();
@@ -1218,7 +1224,8 @@ function sortFunction() {
     //}, 500);
 }
 function datetimepicker66() {
-        $('.switch').attr('colspan', 5);
+        //$('.switch').attr('colspan', 5);
+        setTimeout(function(){ $('th.switch').removeClass('switch'); }, 100);
         FromGameTs = $('#datetimepicker6I').val();
         ToGameTs = $('#datetimepicker7I').val();
         var d = new Date();
@@ -1235,7 +1242,8 @@ function datetimepicker66() {
         }
 }
 function datetimepicker77() {
-        $('.switch').attr('colspan', 5);
+        //$('.switch').attr('colspan', 5);
+        setTimeout(function(){ $('th.switch').removeClass('switch'); }, 100);
         FromGameTs = $('#datetimepicker6I').val();
         ToGameTs = $('#datetimepicker7I').val();
         var d = new Date();
@@ -1731,7 +1739,8 @@ function sortFunctionR() {
     //}, 500);
 }
 function datetimepicker44() {
-        $('.switch').attr('colspan', 5);
+        //$('.switch').attr('colspan', 5);
+        setTimeout(function(){ $('th.switch').removeClass('switch'); }, 100);
         FromGameTs = $('#datetimepicker4I').val();
         ToGameTs = $('#datetimepicker5I').val();
         var d = new Date();
@@ -1748,7 +1757,8 @@ function datetimepicker44() {
         }
 }
 function datetimepicker55() {
-        $('.switch').attr('colspan', 5);
+        //$('.switch').attr('colspan', 5);
+        setTimeout(function(){ $('th.switch').removeClass('switch'); }, 100);
         FromGameTs = $('#datetimepicker4I').val();
         ToGameTs = $('#datetimepicker5I').val();
         var d = new Date();
