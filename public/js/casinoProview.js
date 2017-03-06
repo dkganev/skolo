@@ -232,8 +232,7 @@ function cleanSortFunctionEvents() {
     
 }
 function datetimepicker44() {
-        //$('.switch').attr('colspan', 5);
-        setTimeout(function(){ $('th.switch').removeClass('switch'); }, 100);
+        setTimeout(function(){ $('th.switch').css('display', "table-cell"); }, 100);
         FromGameTs = $('#datetimepicker4I').val();
         ToGameTs = $('#datetimepicker5I').val();
         var d = new Date();
@@ -250,8 +249,7 @@ function datetimepicker44() {
         }
 }
 function datetimepicker55() {
-        //$('.switch').attr('colspan', 5);
-        setTimeout(function(){ $('th.switch').removeClass('switch'); }, 100);
+        setTimeout(function(){ $('th.switch').css('display', "table-cell"); }, 100);
         FromGameTs = $('#datetimepicker4I').val();
         ToGameTs = $('#datetimepicker5I').val();
         var d = new Date();
