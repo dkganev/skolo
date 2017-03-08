@@ -50,7 +50,7 @@ class RouletteTwoController extends Controller
         ]);
 
         event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Roulette 2 Wheel Settings Updated', 2));
-        $affected = \DB::connection('pgsql6')->table('mainconf')->update(['game_id' => $request->game_id]);
+        //$affected = \DB::connection('pgsql6')->table('mainconf')->update(['game_id' => $request->game_id]);
         $affected = \DB::connection('pgsql6')->table('mainconf')->update(['url' => $request->stream_url]);
     }
 

@@ -16,7 +16,7 @@
   <div class="well">
 
   <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-12">
       <button id="toggle-game-type-form" class="btn btn-primary btn-sm">
           @lang('messages.Add Next Game')
           <span style="margin-left: 6px;" class="caret"></span>
@@ -26,6 +26,9 @@
           @lang('messages.Load Template')
           <span style="margin-left: 6px;" class="caret"></span>
       </button>
+        <button id="cancel-game" type="submit" style=" " class="btn btn-primary pull-right">
+            @lang('messages.Cancel Bingo Game')
+	</button>
     </div><!-- End Col-->
   </div>
 
@@ -152,6 +155,23 @@
 </div><!-- End Container-->
 
 <script>
+    $('button#cancel-game').on('click', function(event) {
+        event.preventDefault();
+        var token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            method: 'POST',
+	    url: '/settings/bingo/mainconfig/cancel-game',
+	    data: { _token: token },
+            success: function() {
+	        $('.cancel-game').delay(50).fadeIn(function() {
+	            $(this).delay(1500).fadeOut()
+	        })
+	    },
+	    error: function (error) {
+	        console.log("Error " + error);
+	    }
+	})
+    });
     $(".up,.down").click(function() {
         var row = $(this).parents("tr:first");
         if ($(this).is(".up")) {

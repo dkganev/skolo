@@ -51,7 +51,7 @@ class RouletteController extends Controller
 
         // MainConfig::all()->update(['game_id' => $request->game_id]); $main_config->url = ($request->stream_url);
         event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Roulette 1 Wheel Settings Updated', 2));
-        $affected = \DB::connection('pgsql4')->table('mainconf')->update(['game_id' => $request->game_id]);
+        //$affected = \DB::connection('pgsql4')->table('mainconf')->update(['game_id' => $request->game_id]);
         $affected = \DB::connection('pgsql4')->table('mainconf')->update(['url' => $request->stream_url]);
     }
 
