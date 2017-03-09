@@ -13,7 +13,7 @@
 
             <tr>
                 <td class="ng-binding">{{$psTicketsArchive->psid}}<!--{{$server_ps->where('psid', $psTicketsArchive->psid)->count() ? $server_ps->where('psid', $psTicketsArchive->psid)->first()->seatid : "Missing saitid"}}--></td>
-                <td class="ng-binding">{{$psTicketsArchive->BingoWins_History()->where('psid', $psTicketsArchive->psid)->first()->seatid}}<!--{{$server_ps->where('psid', $psTicketsArchive->psid)->count() ? $server_ps->where('psid', $psTicketsArchive->psid)->first()->seatid : "Missing saitid"}}--></td>
+                <td class="ng-binding"><?PHP /*var_dump($psTicketsArchive->BingoWins_History()->where('psid', $psTicketsArchive->psid)->count() )*/?>{{ $psTicketsArchive->BingoWins_History()->where('psid', $psTicketsArchive->psid)->count() != 0  ? $psTicketsArchive->BingoWins_History()->where('psid', $psTicketsArchive->psid)->first()->seatid : "--"}} <!--{{$server_ps->where('psid', $psTicketsArchive->psid)->count() ? $server_ps->where('psid', $psTicketsArchive->psid)->first()->seatid : "Missing saitid"}}--></td>
                 <td class="ng-binding">{{$psTicketsArchive->num_tickets }}</td>
                 <td class="ng-binding">{{number_format($psTicketsArchive->BingoHistory->ticket_cost / 100, 2 )}}</td>
                 <td class="ng-binding">{{number_format($psTicketsArchive->BingoWins_History()->where('psid', $psTicketsArchive->psid)->sum('win_val') / 100, 2 )}}</td>
