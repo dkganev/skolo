@@ -17,7 +17,9 @@ use App\Events\TerminalAdded;
 class RouletteController extends Controller
 {
     public function wheel_settings_index() {
-    	$wheel_settings = WheelSettings::first();
+    	session(['last_page' => 'settings/roulette1/wheelsettings']);
+        session(['last_menu' => 'menuRoulette1']);
+        $wheel_settings = WheelSettings::first();
         $main_config = MainConfig::first();
 
         return view('settings.roulette.roulette1.wheel-settings', compact('wheel_settings', 'main_config'));
@@ -57,7 +59,9 @@ class RouletteController extends Controller
 
     public function wheel_config_index()
     {
-    	$wheel_config = WheelConfig::first();
+    	session(['last_page' => 'settings/roulette1/wheelconfig']);
+        session(['last_menu' => 'menuRoulette1']);
+        $wheel_config = WheelConfig::first();
     	return view('settings.roulette.roulette1.wheel-config', compact('wheel_config'));
     }
 
@@ -71,6 +75,8 @@ class RouletteController extends Controller
 
     public function ps_config_index(Request $request)
     {
+        session(['last_page' => 'settings/roulette1/psconfig']);
+        session(['last_menu' => 'menuRoulette1']);
         if ($request['pageID']) {
             $page['pageID'] = $request['pageID'];
         
@@ -90,6 +96,8 @@ class RouletteController extends Controller
 
     public function acc_config_index()
     {
+        session(['last_page' => 'settings/roulette1/accconfig']);
+        session(['last_menu' => 'menuRoulette1']);
         $acc_config = AccConfig::first();
         return view('settings.roulette.roulette1.acc-config', compact('acc_config'));
     }

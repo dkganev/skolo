@@ -34,7 +34,9 @@ class TerminalsController extends Controller
 
     public function terminals()
     {
-    	$server_ps = ServerPs::orderBy('psid', 'asc')->get();
+    	session(['last_page' => 'settings/terminals']);
+        session(['last_menu' => 'menuTerminals']);
+        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
         $casinos = Casinos::select(['casinoid', 'casinoname'])->get();
         $languages = Langs::orderBy('langid', 'asc')->get();
         $clientgameids = ClientGameIds::orderBy('client_game_id', 'asc')->get();

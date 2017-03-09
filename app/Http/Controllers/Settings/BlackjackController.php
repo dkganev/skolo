@@ -19,6 +19,8 @@ class BlackjackController extends Controller
 {
     public function main_config_index()
     {
+        session(['last_page' => 'settings/blackjack/mainconfig']);
+        session(['last_menu' => 'menuBlackjack']);
         $config = MainConfig::first();
 
         return view('settings.blackjack.main-config', ['config' => $config]);
@@ -44,6 +46,8 @@ class BlackjackController extends Controller
 
     public function tables_index()
     {
+        session(['last_page' => 'settings/blackjack/tables']);
+        session(['last_menu' => 'menuBlackjack']);
         $tables = BlackjackTable::orderBy('table_id', 'asc')->get();
         $enabled = EnabledTables::first();
 
@@ -187,6 +191,8 @@ class BlackjackController extends Controller
 
     public function ps_config_index(Request $request)
     {
+        session(['last_page' => 'settings/blackjack/psconfig']);
+        session(['last_menu' => 'menuBlackjack']);
         if ($request['pageID']) {
             $page['pageID'] = $request['pageID'];
         
@@ -206,6 +212,8 @@ class BlackjackController extends Controller
     
     public function acc_config_index(Request $request)
     {
+        session(['last_page' => 'settings/blackjack/accconfig']);
+        session(['last_menu' => 'menuBlackjack']);
         $acc_config = AccConfig::first();
         return view('settings.blackjack.acc-config', compact('acc_config'));
     }

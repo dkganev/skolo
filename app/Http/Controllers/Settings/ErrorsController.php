@@ -14,7 +14,9 @@ use Excel;
 class ErrorsController extends Controller
 {
     public function getErrors() {
-    	$error_lvls = PsErrorLevels::orderBy('err_level', 'asc')->get();
+    	session(['last_page' => 'settings/errors']);
+        session(['last_menu' => 'menuErrors']);
+        $error_lvls = PsErrorLevels::orderBy('err_level', 'asc')->get();
         $error_list = PsErrorsList::orderBy('err_code', 'asc')->get();
 
     	return view('settings.errors', ['error_lvls' => $error_lvls, 'error_list' => $error_list]);

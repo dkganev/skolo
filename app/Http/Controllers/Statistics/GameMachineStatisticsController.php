@@ -18,6 +18,8 @@ class GameMachineStatisticsController extends Controller
     public function index_blackjack(BjPsCounters $BjPsCounters, Request $request)
     {
         
+        session(['last_page' => 'statistics/game-machine-blackjack']);
+        session(['last_menu' => 'menuGameMachineBingo']);
         if ($request['OrderQuery']) {
             $page['OrderQuery'] = $request['OrderQuery'];
         } else {
@@ -115,6 +117,8 @@ class GameMachineStatisticsController extends Controller
 
     public function index_bingo(BingoPsCounters $BingoPsCounters, Request $request)
     {
+        session(['last_page' => 'statistics/game-machine-bingo']);
+        session(['last_menu' => 'menuGameMachineBingo']);
         if ($request['OrderQuery']) {
             $page['OrderQuery'] = $request['OrderQuery'];
         } else {
@@ -208,6 +212,8 @@ class GameMachineStatisticsController extends Controller
 
     public function index_rlt1(RLT1PsCounters $RLT1PsCounters, Request $request)
     {
+        session(['last_page' => 'statistics/game-machine-rl1']);
+        session(['last_menu' => 'menuGameMachineBingo']);
         if ($request['OrderQuery']) {
             $page['OrderQuery'] = $request['OrderQuery'];
         } else {
@@ -303,6 +309,8 @@ class GameMachineStatisticsController extends Controller
 
     public function index_rlt2(RLT2PsCounters $RLT2PsCounters, Request $request)
     {
+        session(['last_page' => 'statistics/game-machine-rl2']);
+        session(['last_menu' => 'menuGameMachineBingo']);
         if ($request['OrderQuery']) {
             $page['OrderQuery'] = $request['OrderQuery'];
         } else {

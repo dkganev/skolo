@@ -13,8 +13,10 @@ class BingoPlaylistController extends Controller
 {
     public function index_playlist()
     {
-    	$playlists = Playlist::orderBy('idx', 'asc')->get();
-		$templates = Templates::orderBy('template_id', 'asc')->get();
+    	session(['last_page' => 'casino/playlist']);
+        session(['last_menu' => 'menuPlaylist']);
+        $playlists = Playlist::orderBy('idx', 'asc')->get();
+	$templates = Templates::orderBy('template_id', 'asc')->get();
 
         return view('casino.bingo-playlist.playlist', ['playlists' => $playlists, 'templates' => $templates]);
     }
@@ -158,7 +160,9 @@ class BingoPlaylistController extends Controller
 
     public function index_templates()
     {
-    	$templates = Templates::orderBy('template_id', 'asc')->get();
+    	session(['last_page' => 'casino/templates']);
+        session(['last_menu' => 'menuPlaylist']);
+        $templates = Templates::orderBy('template_id', 'asc')->get();
 
         return view('casino.bingo-playlist.templates', compact('templates'));
     }

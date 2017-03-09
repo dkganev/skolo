@@ -12,6 +12,8 @@ class UserLogsController extends Controller
 {
     public function index(Request $request)
     {
+        session(['last_page' => 'statistics/user-logs']);
+        session(['last_menu' => 'menuUserLogs']);
         if ($request['rowsPerPage']) {
             $page['rowsPerPage'] = $request['rowsPerPage'];
         
@@ -172,6 +174,8 @@ class UserLogsController extends Controller
     //system
     public function system(Request $request)
     {
+        session(['last_page' => 'statistics/user-logs-system']);
+        session(['last_menu' => 'menuUserLogs']);
         if ($request['rowsPerPage']) {
             $page['rowsPerPage'] = $request['rowsPerPage'];
         
@@ -334,6 +338,8 @@ class UserLogsController extends Controller
     
     public function settings(Request $request)
     {
+        session(['last_page' => 'statistics/user-logs-settings']);
+        session(['last_menu' => 'menuUserLogs']);
         if ($request['rowsPerPage']) {
             $page['rowsPerPage'] = $request['rowsPerPage'];
         

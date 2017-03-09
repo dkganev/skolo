@@ -33,6 +33,9 @@ class StatisticsController extends Controller
 
     public function terminals_statistics(Request $request)
     {
+        session(['last_page' => 'statistics/terminals']);
+        session(['last_menu' => 'menuTerminals']);
+            
         if ($request['OrderQuery']) {
             $page['OrderQuery'] = $request['OrderQuery'];
         } else {
@@ -178,6 +181,8 @@ class StatisticsController extends Controller
 
     public function games_statistics(Request $request)
     {
+        session(['last_page' => 'statistics/games']);
+        session(['last_menu' => 'menuGames']);
         if ($request['OrderQuery']) {
             $page['OrderQuery'] = $request['OrderQuery'];
         } else {
@@ -265,6 +270,8 @@ class StatisticsController extends Controller
     // start bingo
     public function history_statistics(Request $request)
     {
+        session(['last_page' => 'statistics/history']);
+        session(['last_menu' => 'menuHistory']);
         $timeOpt[0] = date("H:i:s");
         if ($request['arr']) {
             $page['arrayReq']= explode(",",$request['arr']);
@@ -1283,6 +1290,8 @@ class StatisticsController extends Controller
     //start Roulette 
     public function historyRoulette_statistics(Request $request)
     {
+        session(['last_page' => 'statistics/historyRoulette']);
+        session(['last_menu' => 'menuHistory']);
         if ($request['rowsPerPage']) {
             $page['rowsPerPage'] = $request['rowsPerPage'];
         
@@ -1927,6 +1936,8 @@ class StatisticsController extends Controller
         //$historyClas = new WinStats();
         //$historyClas->setConnection('pgsql4');
         //$historys = $historyClas->select('wins as wins1')->first();
+        session(['last_page' => 'statistics/winRTL1']);
+        session(['last_menu' => 'menuHistory']);
         $historys = collect(\DB::connection('pgsql4')->select('
             SELECT  
                     wins[0] as wins0,
@@ -1989,6 +2000,8 @@ class StatisticsController extends Controller
     //start Roulette2
     public function historyRoulette2_statistics(Request $request)
     {
+        session(['last_page' => 'statistics/historyRoulette2']);
+        session(['last_menu' => 'menuHistory']);
         if ($request['rowsPerPage']) {
             $page['rowsPerPage'] = $request['rowsPerPage'];
         
@@ -2397,6 +2410,8 @@ class StatisticsController extends Controller
         //$historyClas = new WinStats();
         //$historyClas->setConnection('pgsql4');
         //$historys = $historyClas->select('wins as wins1')->first();
+        session(['last_page' => 'statistics/winRTL2']);
+        session(['last_menu' => 'menuHistory']);
         $historys = collect(\DB::connection('pgsql6')->select('
             SELECT  
                     wins[0] as wins0,
@@ -2458,6 +2473,8 @@ class StatisticsController extends Controller
     //start BJ
     public function historyBlackjack(Request $request)
     {   
+        session(['last_page' => 'statistics/historyBlackjack']);
+        session(['last_menu' => 'menuHistory']);
         if ($request['rowsPerPage']) {
             $page['rowsPerPage'] = $request['rowsPerPage'];
         

@@ -13,7 +13,9 @@ class System extends Controller
 {
      public function System()
     {
-    	//$settings = Settings::first();
+    	session(['last_page' => 'settings/System']);
+        session(['last_menu' => 'menuSystem']);
+        //$settings = Settings::first();
         return view('settings.System.System');
     }
     

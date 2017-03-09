@@ -20,7 +20,9 @@ class BingoController extends Controller
 {
     public function main_config()
     {
-    	$bingo = MainConfig::first();
+    	session(['last_page' => 'settings/bingo/mainconfig']);
+        session(['last_menu' => 'menuBingo']);
+        $bingo = MainConfig::first();
         $bingo_line_total = $bingo->bingo_win_pr * 100 +  $bingo->bingo_line_pr * 100;
         $bingo_visible_total = $bingo->mybonus_pr_visible * 100 + $bingo->bonus_line_pr_visible * 100 + $bingo->bonus_bingo_pr_visible * 100 + $bingo->jackpot_line_pr_visible * 100 + $bingo->jackpot_bingo_pr_visible * 100;
 
@@ -83,7 +85,9 @@ class BingoController extends Controller
 
     public function my_bonus()
     {
-    	$my_bonus = MyBonus::orderBy('id', 'asc')->get();
+    	session(['last_page' => 'settings/bingo/mybonus']);
+        session(['last_menu' => 'menuBingo']);
+        $my_bonus = MyBonus::orderBy('id', 'asc')->get();
 
     	return view('settings.bingo.my-bonus', ['my_bonus' => $my_bonus]);
     }
@@ -132,6 +136,8 @@ class BingoController extends Controller
 
     public function max_balls_index()
     {
+        session(['last_page' => 'settings/bingo/maxballs']);
+        session(['last_menu' => 'menuBingo']);
         $jackpot_steps = JackpotSteps::orderBy('id', 'asc')->get();
 
     	return view('settings.bingo.max-balls', ['jackpot_steps' => $jackpot_steps]);
@@ -227,6 +233,8 @@ class BingoController extends Controller
 
     public function sphere_config_index()
     {
+        session(['last_page' => 'settings/bingo/sphereconfig']);
+        session(['last_menu' => 'menuBingo']);
         $sphere_config = SphereConfig::first();
         return view('settings.bingo.sphere-config', compact('sphere_config'));
     }
@@ -239,6 +247,8 @@ class BingoController extends Controller
 
     public function acc_config_index()
     {
+        session(['last_page' => 'settings/bingo/accconfig']);
+        session(['last_menu' => 'menuBingo']);
         $acc_config = AccConfig::first();
         return view('settings.bingo.acc-config', compact('acc_config'));
     }

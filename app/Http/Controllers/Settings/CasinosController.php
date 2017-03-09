@@ -15,8 +15,10 @@ class CasinosController extends Controller
 {
 	public function getCasinos()
 	{
-		$casinos = Casinos::orderBy('casinoid', 'asc')->get();
-        return view('settings.casinos', ['casinos' => $casinos]);
+		session(['last_page' => 'settings/casinos']);
+                session(['last_menu' => 'menuCasinos']);
+                $casinos = Casinos::orderBy('casinoid', 'asc')->get();
+                return view('settings.casinos', ['casinos' => $casinos]);
 	}
 
 	public function addCasino(Request $request)

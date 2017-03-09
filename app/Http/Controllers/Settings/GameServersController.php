@@ -17,6 +17,8 @@ class GameServersController extends Controller
 {
 	public function getGameServers()
 	{
+            session(['last_page' => 'settings/gameservers']);
+            session(['last_menu' => 'menuGameservers']);
             $game_clients = ClientGameIds::orderBy('client_game_id','asc')->get();
             $games = Games::orderBy('gameid', 'asc')->get();
             $categories = Categories::orderBy('idx', 'asc')->get();

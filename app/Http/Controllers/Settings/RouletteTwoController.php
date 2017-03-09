@@ -17,7 +17,9 @@ class RouletteTwoController extends Controller
 {
     public function wheel_settings_index()
     {
-    	$wheel_settings = WheelSettings::first();
+    	session(['last_page' => 'settings/roulette2/wheelsettings']);
+        session(['last_menu' => 'menuRoulette1']);
+        $wheel_settings = WheelSettings::first();
         $main_config = MainConfig::first();
 
         return view('settings.roulette.roulette2.wheel-settings', compact('wheel_settings', 'main_config'));
@@ -56,7 +58,9 @@ class RouletteTwoController extends Controller
 
     public function wheel_config_index()
     {
-    	$wheel_config = WheelConfig::first();
+    	session(['last_page' => 'settings/roulette2/wheelconfig']);
+        session(['last_menu' => 'menuRoulette1']);
+        $wheel_config = WheelConfig::first();
     	return view('settings.roulette.roulette2.wheel-config', compact('wheel_config'));
     }
 
@@ -68,6 +72,8 @@ class RouletteTwoController extends Controller
 
     public function ps_config_index(Request $request)
     {
+        session(['last_page' => 'settings/roulette2/psconfig']);
+        session(['last_menu' => 'menuRoulette1']);
         if ($request['pageID']) {
             $page['pageID'] = $request['pageID'];
         
@@ -87,6 +93,8 @@ class RouletteTwoController extends Controller
 
     public function acc_config_index()
     {
+        session(['last_page' => 'settings/roulette2/accconfig']);
+        session(['last_menu' => 'menuRoulette1']);
         $acc_config = AccConfig::first();
         return view('settings.roulette.roulette2.acc-config', compact('acc_config'));
     }

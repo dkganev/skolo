@@ -26,6 +26,8 @@ class CasinoController extends Controller
 
     public function getEvents(Request $request)
     {
+        session(['last_page' => 'casino/events']);
+        session(['last_menu' => 'menuEvents']);
         if ($request['rowsPerPage']) {
             $page['rowsPerPage'] = $request['rowsPerPage'];
         
@@ -188,6 +190,8 @@ class CasinoController extends Controller
 
     public function getCasino()
     {
+        session(['last_page' => 'casino/casino']);
+        session(['last_menu' => 'menuCasino']);
         // get current casino and display its terminals
         $casino = session()->get('casino');
         $games = Games::orderBy('gameid', 'asc')->get();

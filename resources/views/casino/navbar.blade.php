@@ -1,17 +1,21 @@
 <div class="row">
     <div class="col-md-12 "> 
         <ul class="breadcrumb">
-            <li>
+            <li id="menuCasino">
                 <a id="CasinoCasino" href="javascript:ajaxLoad('{{url('casino/casino')}}')" data-url="{{substr(url(''),0,-5)}}">
                     @lang('messages.Preview')
                 </a>
             </li>
-            <li>
+            <li id="menuEvents">
                 <a id="CasinoEvents" href="javascript:ajaxLoad('{{url('casino/events')}}')">
                     @lang('messages.events')
                 </a>
             </li>
-            <li><a href="javascript:ajaxLoad('{{url('casino/playlist')}}')">@lang('messages.Bingo Playlist')</a></li>
+            <li id="menuPlaylist">
+                <a href="javascript:ajaxLoad('{{url('casino/playlist')}}')">
+                    @lang('messages.Bingo Playlist')
+                </a>
+            </li>
         </ul>
     </div>
 </div>

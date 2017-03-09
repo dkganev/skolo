@@ -15,9 +15,11 @@ use App\Events\TerminalAdded;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-    	$users = User::orderBy('id', 'asc')->get();
+        session(['last_page' => 'settings/users']);
+    	session(['last_menu' => 'menuUsers']);
+        $users = User::orderBy('id', 'asc')->get();
         $roles = Role::all();
         //$CmsLangs = CmsLangs::get();
         return view('settings.users', compact('users', 'roles') );

@@ -14,7 +14,9 @@ class LangsController extends Controller
 {
     public function getLangs()
     {
-    	$languages = Langs::orderBy('langid', 'asc')->get();
+    	session(['last_page' => 'settings/langs']);
+        session(['last_menu' => 'menuLangs']);
+        $languages = Langs::orderBy('langid', 'asc')->get();
 
     	return view('settings.langs',['languages' => $languages]);
     }

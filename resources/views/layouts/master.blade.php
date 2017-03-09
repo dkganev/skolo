@@ -58,7 +58,32 @@
 <div style="display:none; " id="content"></div>
 @yield('content')
 
+
 <script>
+    lastPage = '{{ Session::get('last_page') }}';
+    lastMenu = '{{ Session::get('last_menu') }}';
+    pageHref = '<?php echo url("" . Session::get('last_page'). ""); ?> ';
+    pageRequest ='<?php echo Request::path()."/" ; ?>';
+    if ( lastMenu != ''&& pageHref.indexOf(pageRequest) != -1 ){
+        $('#' + lastMenu).addClass('active');
+    }
+    if (typeof id1 === 'undefined'){
+        var id1 = 0;
+    }
+    if ( lastPage != '' && pageHref.indexOf(pageRequest) != -1 ) {
+        if (id1 == 0){
+            //sortTimer123 = setTimeout(function(){ ajaxLoad( pageHref ); }, 2000);
+            ajaxLoad( pageHref );
+            //window.location.href = pageHref;
+            id1 = 1;
+        }else{
+          id1 = 0;  
+        }
+        
+    }else{ 
+        id1 = 0;
+    };
+    
     function ajaxLoad(filename, content) {
         content = typeof content !== 'undefined' ? content : 'content';
         $('body').append( "<div class='modal-backdrop fade in pageReload' ><div class='faSpinnerBingo' style=' left: 800px; top: 400px; position: absolute; z-index: 10000;'><i class='fa fa-spinner fa-spin' style='font-size:34px; color: #ffffff;'></i></div></div>" );
