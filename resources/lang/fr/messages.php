@@ -407,6 +407,9 @@ return array(
     'Dozen Max Bett must be bigger than Dozen Min Bet' => 'Dozen Max Bett must be bigger than Dozen Min Bet',
     'Even Max Bet must be bigger than Even Min Bet' => 'Even Max Bet must be bigger than Even Min Bet',
     'Wheel Statistics' => 'Wheel Statistics',
+    'Number' => 'Number',
+    'Hits' => 'Hits',
+    'Percentage Distribution' => 'Percentage <br />Distribution',
     
     
     

@@ -44,6 +44,28 @@
                 <div class="panel-body" >
                     <div class="col-md-6">
                         <table class="table " >
+                            <thead class="w3-dark-grey">
+                        
+                                <tr>
+                                    <th>
+                                        @lang('messages.Number') 
+                                    </th>
+                                    <th>
+                                        @lang('messages.Hits')
+                                    </th>
+                                    <th>
+                                        @lang('messages.Percentage Distribution')
+                                    </th>
+                                     <th>
+                                        @lang('messages.Number') 
+                                    </th>
+                                    <th>
+                                        @lang('messages.Hits')
+                                    </th>
+                                    <th>
+                                        @lang('messages.Percentage <br />Distribution')
+                                </tr>
+                            </thead>
                             <tbody >
                                 <tr>
                                     <td>
@@ -436,10 +458,10 @@
                                        {{number_format(($historys->wins19/$winsTotal)*100 , 2 ) }}%
                                     </td>
                                     <td>
-
+                                        @lang('messages.TOTAL'):
                                     </td>
                                     <td>
-
+                                        {{$winsTotal}}
                                     </td>
                                     <td>
 
@@ -452,7 +474,7 @@
                         <div class="col-md-1">
                         </div>    
                         <div class="col-md-6">   
-                            @lang('messages.TOTAL'): {{$winsTotal}}
+                            <!--@lang('messages.TOTAL'): {{$winsTotal}} -->
 
 
 
