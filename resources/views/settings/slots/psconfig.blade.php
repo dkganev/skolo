@@ -12,7 +12,7 @@
 <div class="container-fluid">
     <div class="row" >
         <div class="col-md-12">
-            <div class="panel panel-default" id="panelBingoContend">
+            <div class="panel panel-default" id="panelSlotsContend">
                 <div class="panel-heading">
                     <div>
                         <h2 style="display: inline; color:#fff; font-family: 'italic';  padding-left: 35%;">
@@ -84,11 +84,11 @@
                                 <!-- Secondary Navigation -->
                                 
                                 <ul class="breadcrumb">
-                                  <li class="active"><a onclick="ChaneMenu( 'psconf' );">@lang('messages.Wheel Config')</a></li>
-                                  <li><a >@lang('messages.Gamble')</a></li>
+                                  <li id="psconf" class="active"><a onclick="ChaneMenu( 'psconf' );">@lang('messages.Wheel Config')</a></li>
+                                  <!--<li><a >@lang('messages.Gamble')</a></li>
                                   <li><a >@lang('messages.Denominations')</a></li>
-                                  <li><a >@lang('messages.betschemes')</a></li>
-                                  <li><a onclick="ChaneMenu( 'acc_config' );">@lang('messages.Accounting Config')</a></li>
+                                  <li><a >@lang('messages.betschemes')</a></li> -->
+                                  <li id="acc_config"><a onclick="ChaneMenu( 'acc_config' );">@lang('messages.Accounting Config')</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -99,12 +99,12 @@
                                         @lang('messages.Game'): {{$varFval->description}}   @lang('messages.PS ID'): {{$server_ps->first()->psid}}
                                     </h2>
 
-                                    <a class="btn btn-warning  pull-right" onclick="export2excelBingo();"> 
+                                    <!--<a class="btn btn-warning  pull-right" onclick="export2excelBingo();"> 
                                         <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
                                         @lang('messages.Export')
                                     </a>
-                                    <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>
-                                    <a  class="btn btn-warning  pull-right" onclick="ExportToPNGBingoTable();">
+                                    <span class="pull-right">&nbsp;&nbsp;&nbsp;</span>-->
+                                    <a  class="btn btn-warning  pull-right" onclick="ExportToPNG();">
                                         @lang('messages.Export to PNG')
                                     </a>
                                 </div>
@@ -238,9 +238,12 @@ tbody{
                     //alert ("Success");
                     $('#subPageHeader').text("@lang('messages.Accounting Config')" );
                     $('#subPageBody').html(data.html);
-                    //$('#pageReload').attr('data-psid', psid);
-                    //$('#formUdate').val(token);
-                    //$('#gameUdate').val(gameid);
+                    //$('#pageReload').attr('data-table', table);
+                    $('#formUdate').val(token);
+                    $('#gameUdate').val(gameid);
+                    $('.active').removeClass('active');
+                    $('#' + table).addClass('active');
+                    
                 }
             },
             error: function (error) {
@@ -254,26 +257,77 @@ tbody{
     function UpdateGame() {
         pageHref = "/statistics/psconfUpdate";
         $.ajax({
-        type:'POST',
-        url:pageHref,
-        dataType: "json",
-        data: $("#registerSubmit").serialize(),
-        success:function(data){
-            if (data.success == "success"){
-                alert ("Success");
-                //$('#subPageHeader').text("@lang('messages.Game'): " + data.description + "  @lang('messages.PS ID'): " + data.psid );
-               // $('#subPageBody').html(data.html);
+            type:'POST',
+            url:pageHref,
+            dataType: "json",
+            data: $("#registerSubmit").serialize(),
+            success:function(data){
+                if (data.success == "success"){
+                    $('#OK').show();
+                    UpdateTimer123 = setTimeout(function(){ $('#OK').hide(); }, 10000);
+                    //alert ("Success");
+                    //$('#subPageHeader').text("@lang('messages.Game'): " + data.description + "  @lang('messages.PS ID'): " + data.psid );
+                // $('#subPageBody').html(data.html);
             
+                }
+            },
+            error: function (error) {
+                alert ("Unexpected wrong.");
+                console.log("Error " + error);
+                $('#remove').show();
+                UpdateTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
             }
-        },
-        error: function (error) {
-            alert ("Unexpected wrong.");
-        }
     
         
-    });
+        });
 
 
     }
    // });
+   function UpdateAcc() {
+        pageHref = "/statistics/accUpdate";
+        $.ajax({
+            type:'POST',
+            url:pageHref,
+            dataType: "json",
+            data: $("#registerSubmit").serialize(),
+            success:function(data){
+                if (data.success == "success"){
+                    $('#OK').show();
+                    UpdateTimer123 = setTimeout(function(){ $('#OK').hide(); }, 10000);
+                    //alert ("Success");
+                    //$('#subPageHeader').text("@lang('messages.Game'): " + data.description + "  @lang('messages.PS ID'): " + data.psid );
+                // $('#subPageBody').html(data.html);
+            
+                }
+            },
+            error: function (error) {
+                alert ("Unexpected wrong.");
+                console.log("Error " + error);
+                $('#remove').show();
+                UpdateTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
+            }
+    
+        
+        });
+
+
+    }
+    
+    function ExportToPNG() {
+    html2canvas($('#panelSlotsContend'), {
+            onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+        });
+    }
+   
 </script>

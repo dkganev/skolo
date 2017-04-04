@@ -201,7 +201,8 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     Route::get('/settings/slots/psconfig', 'Settings\SlotsController@psconfig_index');
     Route::post('/SlotsChaneGame', 'Settings\SlotsController@SlotsChaneGame');
     Route::post('/statistics/psconfUpdate', 'Settings\SlotsController@psconfUpdate');
-
+    Route::post('/statistics/accUpdate', 'Settings\SlotsController@accUpdate');
+    
     
 
     /**

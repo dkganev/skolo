@@ -14,7 +14,7 @@ use Excel;
 use App\Models\Accounting\Games;
 use App\Models\Accounting\ServerPs;
 use App\Models\Slots\PsConf;
-
+use App\Models\Slots\AccConf;
 
 
 class SlotsController extends Controller
@@ -94,4 +94,30 @@ class SlotsController extends Controller
     
     
      }
+     
+     public function accUpdate(Request $request){
+        $gameid = $request['gameid'];
+        $dbID = 100 + $gameid;
+        $AccConf = new AccConf();
+        $AccConf->setConnection('pgsql'. $dbID);
+        $AccConf->first()->update($request->except(['_token', 'gameid']) ); 
+        
+        $dataArray1 = array(
+            "success" => "success",
+            //"gameid" => $gameid,
+            //"description" => $description,
+            //"psid" => $psid,
+            //"table" => $table,
+            //"result" => $result ,
+            //"html" => $testPage,
+        );
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->ps_id , 'Slot Acc Gonfig Settings Were Updated!', 2));
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+         
+         
+    
+    
+     }
+     
+     
 }

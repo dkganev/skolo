@@ -1,83 +1,143 @@
 <form id="registerSubmit">
-@foreach($results as $conf)
+    @foreach($results as $conf)
+        <div class="col-lg-4">
+            <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Gamble'):<br/>&nbsp;</h3>
+            <hr style="margin: 7px 0 12px 0;">
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="bonus_type">@lang('messages.Gamble Type'):</label><br>
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <select name="bonus_type" class="col-lg-12" '>
+                            <option {{ $conf->bonus_type == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">Red/Black</option>
+                            <option {{ $conf->bonus_type == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">5 Cards</option>
+                    </select>    
+                </div> 
+            </div> 
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="gamblemaxamount">@lang('messages.Max Ammount'):</label><br>
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <input name="gamblemaxamount" style=" " value="{{ $conf->gamblemaxamount ? $conf->gamblemaxamount : ''}}" type="text" class="form-control text-center " placeholder="Game Min Bet" aria-describedby="sizing-addon2">
+                </div> 
+            </div>
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="gamblemaxattempt">@lang('messages.Max Attempt'):</label><br>
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <input name="gamblemaxattempt"   style=" "  value="{{ $conf->gamblemaxattempt ? $conf->gamblemaxattempt : ''}}" type="text" class="form-control text-center " placeholder="Game Min Bet" aria-describedby="sizing-addon2">
+                </div> 
+            </div> 
+            <br /><br /><br />
+            <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Bet Buttons multipliers')<br/>(@lang('messages.per line, credits') ):</h3>
+            <hr style="margin: 7px 0 12px 0;">
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <select name="betsbuttonsidx" class="col-lg-12" '>
+                        <option {{ $conf->betsbuttonsidx == 0 ? 'selected="true"' : '' }} value="0" data_sort="1">1|2|3|4|5</option>
+                        <option {{ $conf->betsbuttonsidx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">1|2|3|5|10</option>
+                        <option {{ $conf->betsbuttonsidx == 2 ? 'selected="true"' : '' }} value="2" data_sort="1">1|2|5|10|20</option>
+                        <option {{ $conf->betsbuttonsidx == 3 ? 'selected="true"' : '' }} value="3" data_sort="1">1|2|5|10|30</option>
+                        <option {{ $conf->betsbuttonsidx == 66 ? 'selected="true"' : '' }} value="66" data_sort="1">1|5|10|10|40</option>
+                        <option {{ $conf->betsbuttonsidx == 4 ? 'selected="true"' : '' }} value="4" data_sort="1">1|5|10|20|40</option>
+                        <option {{ $conf->betsbuttonsidx == 5 ? 'selected="true"' : '' }} value="5" data_sort="1">1|5|10|30|50</option>
+                        <option {{ $conf->betsbuttonsidx == 65 ? 'selected="true"' : '' }} value="65" data_sort="1">1|10|20|30|50</option>
+                        <option {{ $conf->betsbuttonsidx == 6 ? 'selected="true"' : '' }} value="6" data_sort="1">1|10|20|50|100</option>
+                        <option {{ $conf->betsbuttonsidx == 7 ? 'selected="true"' : '' }} value="7" data_sort="1">1|20|50|100|200</option>
+                        <option {{ $conf->betsbuttonsidx == 8 ? 'selected="true"' : '' }} value="8" data_sort="1">1|20|50|100|300</option>
+                        <option {{ $conf->betsbuttonsidx == 9 ? 'selected="true"' : '' }} value="9" data_sort="1">1|50|100|200|400</option>
+                        <option {{ $conf->betsbuttonsidx == 10 ? 'selected="true"' : '' }} value="10" data_sort="1">1|50|100|300|500</option>
+                        <option {{ $conf->betsbuttonsidx == 11 ? 'selected="true"' : '' }} value="11" data_sort="1">2|2|3|4|5</option>
+                        <option {{ $conf->betsbuttonsidx == 12 ? 'selected="true"' : '' }} value="12" data_sort="1">2|2|3|4|10</option>
+                        <option {{ $conf->betsbuttonsidx == 13 ? 'selected="true"' : '' }} value="13" data_sort="1">2|2|5|10|20</option>
+                        <option {{ $conf->betsbuttonsidx == 14 ? 'selected="true"' : '' }} value="14" data_sort="1">2|2|5|10|30</option>
+                        <option {{ $conf->betsbuttonsidx == 15 ? 'selected="true"' : '' }} value="15" data_sort="1">2|5|10|20|40</option>
+                        <option {{ $conf->betsbuttonsidx == 16 ? 'selected="true"' : '' }} value="16" data_sort="1">2|5|10|30|50</option>
+                        <option {{ $conf->betsbuttonsidx == 17 ? 'selected="true"' : '' }} value="17" data_sort="1">2|10|20|50|100</option>
+                        <option {{ $conf->betsbuttonsidx == 18 ? 'selected="true"' : '' }} value="18" data_sort="1">2|20|50|100|200</option>
+                        <option {{ $conf->betsbuttonsidx == 19 ? 'selected="true"' : '' }} value="19" data_sort="1">2|20|50|100|300</option>
+                        <option {{ $conf->betsbuttonsidx == 20 ? 'selected="true"' : '' }} value="20" data_sort="1">2|50|100|200|400</option>
+                        <option {{ $conf->betsbuttonsidx == 21 ? 'selected="true"' : '' }} value="21" data_sort="1">2|50|100|300|500</option>
+                        <option {{ $conf->betsbuttonsidx == 22 ? 'selected="true"' : '' }} value="22" data_sort="1">3|3|3|4|5</option>
+                        <option {{ $conf->betsbuttonsidx == 23 ? 'selected="true"' : '' }} value="23" data_sort="1">3|3|3|5|10</option>
+                        <option {{ $conf->betsbuttonsidx == 24 ? 'selected="true"' : '' }} value="24" data_sort="1">3|3|5|10|20</option>
+                        <option {{ $conf->betsbuttonsidx == 25 ? 'selected="true"' : '' }} value="25" data_sort="1">3|3|5|10|30</option>
+                        <option {{ $conf->betsbuttonsidx == 26 ? 'selected="true"' : '' }} value="26" data_sort="1">3|5|10|20|40</option>
+                        <option {{ $conf->betsbuttonsidx == 27 ? 'selected="true"' : '' }} value="27" data_sort="1">3|5|10|30|50</option>
+                        <option {{ $conf->betsbuttonsidx == 28 ? 'selected="true"' : '' }} value="28" data_sort="1">3|10|20|50|100</option>
+                        <option {{ $conf->betsbuttonsidx == 29 ? 'selected="true"' : '' }} value="29" data_sort="1">3|20|50|100|200</option>
+                        <option {{ $conf->betsbuttonsidx == 30 ? 'selected="true"' : '' }} value="30" data_sort="1">3|20|50|100|300</option>
+                        <option {{ $conf->betsbuttonsidx == 31 ? 'selected="true"' : '' }} value="31" data_sort="1">3|50|100|200|400</option>
+                        <option {{ $conf->betsbuttonsidx == 32 ? 'selected="true"' : '' }} value="32" data_sort="1">3|50|100|300|500</option>
+                        <option {{ $conf->betsbuttonsidx == 33 ? 'selected="true"' : '' }} value="33" data_sort="1">4|4|4|4|5</option>
+                        <option {{ $conf->betsbuttonsidx == 34 ? 'selected="true"' : '' }} value="34" data_sort="1">4|4|4|5|10</option>
+                        <option {{ $conf->betsbuttonsidx == 35 ? 'selected="true"' : '' }} value="35" data_sort="1">4|4|5|10|20</option>
+                        <option {{ $conf->betsbuttonsidx == 36 ? 'selected="true"' : '' }} value="36" data_sort="1">4|4|5|10|30</option>
+                        <option {{ $conf->betsbuttonsidx == 37 ? 'selected="true"' : '' }} value="37" data_sort="1">4|5|10|20|40</option>
+                        <option {{ $conf->betsbuttonsidx == 38 ? 'selected="true"' : '' }} value="38" data_sort="1">4|5|10|30|50</option>
+                        <option {{ $conf->betsbuttonsidx == 39 ? 'selected="true"' : '' }} value="39" data_sort="1">4|10|20|50|100</option>
+                        <option {{ $conf->betsbuttonsidx == 40 ? 'selected="true"' : '' }} value="40" data_sort="1">4|20|50|100|200</option>
+                        <option {{ $conf->betsbuttonsidx == 41 ? 'selected="true"' : '' }} value="41" data_sort="1">4|20|50|100|300</option>
+                        <option {{ $conf->betsbuttonsidx == 42 ? 'selected="true"' : '' }} value="42" data_sort="1">4|50|100|200|400</option>
+                        <option {{ $conf->betsbuttonsidx == 43 ? 'selected="true"' : '' }} value="43" data_sort="1">4|50|100|300|500</option>
+                        <option {{ $conf->betsbuttonsidx == 44 ? 'selected="true"' : '' }} value="44" data_sort="1">5|5|5|5|5</option>
+                        <option {{ $conf->betsbuttonsidx == 45 ? 'selected="true"' : '' }} value="45" data_sort="1">5|5|5|5|10</option>
+                        <option {{ $conf->betsbuttonsidx == 46 ? 'selected="true"' : '' }} value="46" data_sort="1">5|5|5|10|20</option>
+                        <option {{ $conf->betsbuttonsidx == 47 ? 'selected="true"' : '' }} value="47" data_sort="1">5|5|5|10|30</option>
+                        <option {{ $conf->betsbuttonsidx == 48 ? 'selected="true"' : '' }} value="48" data_sort="1">5|5|10|20|40</option>
+                        <option {{ $conf->betsbuttonsidx == 49 ? 'selected="true"' : '' }} value="49" data_sort="1">5|5|10|30|50</option>
+                        <option {{ $conf->betsbuttonsidx == 50 ? 'selected="true"' : '' }} value="50" data_sort="1">5|10|20|50|100</option>
+                        <option {{ $conf->betsbuttonsidx == 51 ? 'selected="true"' : '' }} value="51" data_sort="1">5|10|20|50|200</option>
+                        <option {{ $conf->betsbuttonsidx == 52 ? 'selected="true"' : '' }} value="52" data_sort="1">5|20|50|100|300</option>
+                        <option {{ $conf->betsbuttonsidx == 53 ? 'selected="true"' : '' }} value="53" data_sort="1">5|20|50|200|400</option>
+                        <option {{ $conf->betsbuttonsidx == 54 ? 'selected="true"' : '' }} value="54" data_sort="1">5|20|50|300|500</option>
+                        <option {{ $conf->betsbuttonsidx == 55 ? 'selected="true"' : '' }} value="55" data_sort="1">10|10|10|10|10</option>
+                        <option {{ $conf->betsbuttonsidx == 56 ? 'selected="true"' : '' }} value="56" data_sort="1">10|10|10|10|20</option>
+                        <option {{ $conf->betsbuttonsidx == 57 ? 'selected="true"' : '' }} value="57" data_sort="1">10|10|10|10|30</option>
+                        <option {{ $conf->betsbuttonsidx == 58 ? 'selected="true"' : '' }} value="58" data_sort="1">10|10|10|20|40</option>
+                        <option {{ $conf->betsbuttonsidx == 59 ? 'selected="true"' : '' }} value="59" data_sort="1">10|10|10|30|50</option>
+                        <option {{ $conf->betsbuttonsidx == 60 ? 'selected="true"' : '' }} value="60" data_sort="1">10|10|20|50|100</option>
+                        <option {{ $conf->betsbuttonsidx == 61 ? 'selected="true"' : '' }} value="61" data_sort="1">10|20|50|100|200</option>
+                        <option {{ $conf->betsbuttonsidx == 62 ? 'selected="true"' : '' }} value="62" data_sort="1">10|20|50|100|300</option>
+                        <option {{ $conf->betsbuttonsidx == 63 ? 'selected="true"' : '' }} value="63" data_sort="1">10|50|100|200|400</option>
+                        <option {{ $conf->betsbuttonsidx == 64 ? 'selected="true"' : '' }} value="64" data_sort="1">10|50|100|300|500</option>
+                    </select>    
+                </div> 
+            </div> 
+        </div>    
     <div class="col-lg-4">
-        <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Gamble'):<br/>&nbsp;</h3>
+        <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations'):<br/>&nbsp;</h3>
         <hr style="margin: 7px 0 12px 0;">
+
         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="bonus_type">@lang('messages.Gamble Type'):</label><br>
+            <label for="denomination_1_idx">@lang('messages.Denomination') #1:</label><br>
             <div class="input-group" style="width:100%; display: inline-block;">
-                <select name="bonus_type" class="col-lg-12" '>
-                        <option {{ $conf->bonus_type == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">Red/Black</option>
-                        <option {{ $conf->bonus_type == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">5 Cards</option>
-                </select>    
-            </div> 
-        </div> 
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="gamblemaxamount">@lang('messages.Max Ammount'):</label><br>
-            <div class="input-group" style="width:100%; display: inline-block;">
-                <input name="gamblemaxamount" style=" " value="{{ $conf->gamblemaxamount ? $conf->gamblemaxamount : ''}}" type="text" class="form-control text-center " placeholder="Game Min Bet" aria-describedby="sizing-addon2">
-            </div> 
+                <select name="denomination_1_idx" class="col-lg-12" style='display: block;'>
+                    <option {{ $conf->denomination_1_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
+                    <option {{ $conf->denomination_1_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
+                    <option {{ $conf->denomination_1_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
+                    <option {{ $conf->denomination_1_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
+                    <option {{ $conf->denomination_1_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
+                    <option {{ $conf->denomination_1_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
+                    <option {{ $conf->denomination_1_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
+                    <option {{ $conf->denomination_1_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
+                    <option {{ $conf->denomination_1_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
+                    <option {{ $conf->denomination_1_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
+                    <option {{ $conf->denomination_1_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
+                    <option {{ $conf->denomination_1_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
+                    <option {{ $conf->denomination_1_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
+                    <option {{ $conf->denomination_1_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
+                    <option {{ $conf->denomination_1_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
+                    <option {{ $conf->denomination_1_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
+                    <option {{ $conf->denomination_1_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
+                    <option {{ $conf->denomination_1_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
+                    <option {{ $conf->denomination_1_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
+                    <option {{ $conf->denomination_1_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
+                    <option {{ $conf->denomination_1_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
+                    <option {{ $conf->denomination_1_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
+                    <option {{ $conf->denomination_1_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
+                    <option {{ $conf->denomination_1_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
+                    <option {{ $conf->denomination_1_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
+                    <option {{ $conf->denomination_1_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
+                </select>
+            </div>
         </div>
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="gamblemaxattempt">@lang('messages.Max Attempt'):</label><br>
-            <div class="input-group" style="width:100%; display: inline-block;">
-                <input name="gamblemaxattempt"   style=" "  value="{{ $conf->gamblemaxattempt ? $conf->gamblemaxattempt : ''}}" type="text" class="form-control text-center " placeholder="Game Min Bet" aria-describedby="sizing-addon2">
-            </div> 
-        </div> 
-        <br /><br /><br />
-        <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Bet Buttons multipliers')<br/>(@lang('messages.per line, credits') ):</h3>
-        <hr style="margin: 7px 0 12px 0;">
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <div class="input-group" style="width:100%; display: inline-block;">
-                <select name="betsbuttonsidx" class="col-lg-12" '>
-                    <option {{ $conf->betsbuttonsidx == 0 ? 'selected="true"' : '' }} value="0" data_sort="1">1|2|3|4|5</option>
-                    <option {{ $conf->betsbuttonsidx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">1|2|3|5|10</option>
-                    <option {{ $conf->betsbuttonsidx == 2 ? 'selected="true"' : '' }} value="2" data_sort="1">1|2|5|10|20</option>
-                    <option {{ $conf->betsbuttonsidx == 3 ? 'selected="true"' : '' }} value="3" data_sort="1">1|2|5|10|30</option>
-                    <option {{ $conf->betsbuttonsidx == 4 ? 'selected="true"' : '' }} value="4" data_sort="1">1|5|10|20|40</option>
-                    <option {{ $conf->betsbuttonsidx == 5 ? 'selected="true"' : '' }} value="5" data_sort="1">1|5|10|30|50</option>
-                    <option {{ $conf->betsbuttonsidx == 6 ? 'selected="true"' : '' }} value="6" data_sort="1">1|10|20|50|100</option>
-                </select>    
-            </div> 
-        </div> 
-    </div>    
-<div class="col-lg-4">
-    <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations'):<br/>&nbsp;</h3>
-    <hr style="margin: 7px 0 12px 0;">
-    
-    <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-        <label for="denomination_1_idx">@lang('messages.Denomination') #1:</label><br>
-        <div class="input-group" style="width:100%; display: inline-block;">
-            <select name="denomination_1_idx" class="col-lg-12" style='display: block;'>
-                <option {{ $conf->denomination_1_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
-                <option {{ $conf->denomination_1_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
-                <option {{ $conf->denomination_1_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
-                <option {{ $conf->denomination_1_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
-                <option {{ $conf->denomination_1_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
-                <option {{ $conf->denomination_1_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
-                <option {{ $conf->denomination_1_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
-                <option {{ $conf->denomination_1_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
-                <option {{ $conf->denomination_1_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
-                <option {{ $conf->denomination_1_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
-                <option {{ $conf->denomination_1_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
-                <option {{ $conf->denomination_1_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
-                <option {{ $conf->denomination_1_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
-                <option {{ $conf->denomination_1_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
-                <option {{ $conf->denomination_1_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
-                <option {{ $conf->denomination_1_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
-                <option {{ $conf->denomination_1_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
-                <option {{ $conf->denomination_1_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
-                <option {{ $conf->denomination_1_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
-                <option {{ $conf->denomination_1_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
-                <option {{ $conf->denomination_1_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
-                <option {{ $conf->denomination_1_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
-                <option {{ $conf->denomination_1_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
-                <option {{ $conf->denomination_1_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
-                <option {{ $conf->denomination_1_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
-                <option {{ $conf->denomination_1_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
-            </select>
-        </div>
-    </div>
                         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                             <label for="denomination_2_idx">@lang('messages.Denomination') #2:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
@@ -311,102 +371,104 @@
                         </div>
     
                                         
-</div>    
-<div class="col-lg-4">
-    <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations') RTP:<br/>&nbsp;</h3>
-    <hr style="margin: 7px 0 12px 0;">
-    
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="mathdenom1_idx" style="margin-top: 0px;">@lang('messages.Denominations') RTP 1:</label><br>
-            <div class="input-group" >
-                <span class="input-group-addon"  >%</span>
-                <select name="mathdenom1_idx" class="form-control imput-sm " >
-                    <option {{ $conf->mathdenom1_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                    <option {{ $conf->mathdenom1_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
-                </select>    
+    </div>    
+    <div class="col-lg-4">
+        <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations') RTP:<br/>&nbsp;</h3>
+        <hr style="margin: 7px 0 12px 0;">
+
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="mathdenom1_idx" style="margin-top: 0px;">@lang('messages.Denominations') RTP 1:</label><br>
+                <div class="input-group" >
+                    <span class="input-group-addon"  >%</span>
+                    <select name="mathdenom1_idx" class="form-control imput-sm " >
+                        <option {{ $conf->mathdenom1_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
+                        <option {{ $conf->mathdenom1_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                    </select>    
+                </div> 
             </div> 
-        </div> 
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="mathdenom2_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 2:</label><br>
-            <div class="input-group" >
-                <span class="input-group-addon"  >%</span>
-                <select name="mathdenom2_idx" class="form-control imput-sm " >
-                    <option {{ $conf->mathdenom2_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                    <option {{ $conf->mathdenom2_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
-                </select>    
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="mathdenom2_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 2:</label><br>
+                <div class="input-group" >
+                    <span class="input-group-addon"  >%</span>
+                    <select name="mathdenom2_idx" class="form-control imput-sm " >
+                        <option {{ $conf->mathdenom2_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
+                        <option {{ $conf->mathdenom2_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                    </select>    
+                </div> 
             </div> 
-        </div> 
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="mathdenom3_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 3:</label><br>
-            <div class="input-group" >
-                <span class="input-group-addon"  >%</span>
-                <select name="mathdenom3_idx" class="form-control imput-sm " >
-                    <option {{ $conf->mathdenom3_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                    <option {{ $conf->mathdenom3_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
-                </select>    
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="mathdenom3_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 3:</label><br>
+                <div class="input-group" >
+                    <span class="input-group-addon"  >%</span>
+                    <select name="mathdenom3_idx" class="form-control imput-sm " >
+                        <option {{ $conf->mathdenom3_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
+                        <option {{ $conf->mathdenom3_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                    </select>    
+                </div> 
             </div> 
-        </div> 
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="mathdenom4_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 4:</label><br>
-            <div class="input-group" >
-                <span class="input-group-addon"  >%</span>
-                <select name="mathdenom4_idx" class="form-control imput-sm " >
-                    <option {{ $conf->mathdenom4_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                    <option {{ $conf->mathdenom4_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
-                </select>    
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="mathdenom4_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 4:</label><br>
+                <div class="input-group" >
+                    <span class="input-group-addon"  >%</span>
+                    <select name="mathdenom4_idx" class="form-control imput-sm " >
+                        <option {{ $conf->mathdenom4_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
+                        <option {{ $conf->mathdenom4_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                    </select>    
+                </div> 
             </div> 
-        </div> 
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="mathdenom5_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 5:</label><br>
-            <div class="input-group" >
-                <span class="input-group-addon"  >%</span>
-                <select name="mathdenom5_idx" class="form-control imput-sm " >
-                    <option {{ $conf->mathdenom5_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                    <option {{ $conf->mathdenom5_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
-                </select>    
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="mathdenom5_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 5:</label><br>
+                <div class="input-group" >
+                    <span class="input-group-addon"  >%</span>
+                    <select name="mathdenom5_idx" class="form-control imput-sm " >
+                        <option {{ $conf->mathdenom5_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
+                        <option {{ $conf->mathdenom5_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                    </select>    
+                </div> 
             </div> 
-        </div> 
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="mathdenom6_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 6:</label><br>
-            <div class="input-group" >
-                <span class="input-group-addon"  >%</span>
-                <select name="mathdenom6_idx" class="form-control imput-sm " >
-                    <option {{ $conf->mathdenom6_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                    <option {{ $conf->mathdenom6_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
-                </select>    
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="mathdenom6_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 6:</label><br>
+                <div class="input-group" >
+                    <span class="input-group-addon"  >%</span>
+                    <select name="mathdenom6_idx" class="form-control imput-sm " >
+                        <option {{ $conf->mathdenom6_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
+                        <option {{ $conf->mathdenom6_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                    </select>    
+                </div> 
             </div> 
-        </div> 
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="mathdenom7_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 7:</label><br>
-            <div class="input-group" >
-                <span class="input-group-addon"  >%</span>
-                <select name="mathdenom7_idx" class="form-control imput-sm " >
-                    <option {{ $conf->mathdenom7_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                    <option {{ $conf->mathdenom7_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
-                </select>    
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="mathdenom7_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 7:</label><br>
+                <div class="input-group" >
+                    <span class="input-group-addon"  >%</span>
+                    <select name="mathdenom7_idx" class="form-control imput-sm " >
+                        <option {{ $conf->mathdenom7_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
+                        <option {{ $conf->mathdenom7_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                    </select>    
+                </div> 
             </div> 
-        </div> 
-        <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-            <label for="mathdenom8_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 8:</label><br>
-            <div class="input-group" >
-                <span class="input-group-addon"  >%</span>
-                <select name="mathdenom8_idx" class="form-control imput-sm " >
-                    <option {{ $conf->mathdenom8_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                    <option {{ $conf->mathdenom8_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
-                </select>    
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <label for="mathdenom8_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 8:</label><br>
+                <div class="input-group" >
+                    <span class="input-group-addon"  >%</span>
+                    <select name="mathdenom8_idx" class="form-control imput-sm " >
+                        <option {{ $conf->mathdenom8_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
+                        <option {{ $conf->mathdenom8_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                    </select>    
+                </div> 
             </div> 
-        </div> 
-        
-    
-</div>    
-<input id="formUdate" name="_token" value="1234" type="hidden" data-table="psconf"    />
-<input id="gameUdate" name="gameid" value="1234" type="hidden" data-table="psconf"    />
-<input name="ps_id" value="{{ $conf->ps_id }}" type="hidden" data-table="psconf"    />
+
+
+    </div>    
+    <input id="formUdate" name="_token" value="1234" type="hidden" data-table="psconf"    />
+    <input id="gameUdate" name="gameid" value="1234" type="hidden" data-table="psconf"    />
+    <input name="ps_id" value="{{ $conf->ps_id }}" type="hidden" data-table="psconf"    />
 @endforeach
     <a  onclick="UpdateGame();"
         style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
         class="btn btn-danger pull-right ps-config-submit"
     >
+        <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+        <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
         @lang('messages.Update')
     </a>
 </form>

@@ -32,11 +32,16 @@
             </div>
         @endforeach
         <br /><br /><br />
+        <input id="formUdate" name="_token" value="1234" type="hidden" data-table="psconf"    />
+        <input id="gameUdate" name="gameid" value="1234" type="hidden" data-table="psconf"    />
+
         <div class="form-group" style=" display: inline-block;">
             <a  onclick="UpdateAcc();"
                 accesskey=""style="width:300px;  " 
                 contenteditable=""class="btn btn-danger pull-right ps-config-submit"
             >
+                <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
                 @lang('messages.Update')
             </a>
         </div>    
