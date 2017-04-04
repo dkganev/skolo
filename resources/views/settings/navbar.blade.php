@@ -52,6 +52,11 @@
                             @lang('messages.Roulette')
                         </a>
                     </li>
+                    <li id="menuSlots">
+                        <a href="javascript:ajaxLoad('{{url('/settings/slots/psconfig')}}')">
+                            @lang('messages.Slots')
+                        </a>
+                    </li>
                     <!--<li><a href="javascript:ajaxLoad('{{url('/settings/PBS/BonusPoints2Money')}}')">PBS</a></li> -->
                     <li id="menuSystem">
                         <a href="javascript:ajaxLoad('{{url('/settings/System')}}')">

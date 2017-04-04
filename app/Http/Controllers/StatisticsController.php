@@ -836,7 +836,7 @@ class StatisticsController extends Controller
              $page['StartAt'] = 0;
         }
         
-        $historyClas = new  BingoHistory();
+        //$historyClas = new  BingoHistory();
         //$testHis = $historyClas->where('unique_game_seq', '1476367263723 36364')->first();
         //$testHis = BingoWins_History::where('bingo_seq', 25298)->sum('win_val') ;
         //var_dump($testHis);

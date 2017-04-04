@@ -195,6 +195,14 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
 
     Route::get('/settings/roulette2/accconfig', 'Settings\RouletteTwoController@acc_config_index');
     Route::post('/settings/roulette2/accconfig/edit', 'Settings\RouletteTwoController@acc_config_edit');
+     /**
+     * SETTINGS / SLOTS
+     */
+    Route::get('/settings/slots/psconfig', 'Settings\SlotsController@psconfig_index');
+    Route::post('/SlotsChaneGame', 'Settings\SlotsController@SlotsChaneGame');
+    Route::post('/statistics/psconfUpdate', 'Settings\SlotsController@psconfUpdate');
+
+    
 
     /**
      * SETTINGS / PBS
@@ -209,9 +217,9 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     Route::post('/ajax_SaveAddBet2BonusPoints', 'Settings\PBS@SaveAddBet2BonusPoints');
     Route::get('/export2excelBet2BonusPoints', 'Settings\PBS@export2excelBet2BonusPoints')->name('export2excelBet2BonusPoints');
 
-    Route::get('/settings/PBS/CardTypeBonusPeriod', 'Settings\PBS@CardTypeBonusPeriod');
+    Route::get('/settings/PBS/CardTypeBonusPeriod', 'Settings\PBS@CardTypeBonusPeriod'); 
     Route::post('/ajax_CardTypeBonusPeriod', 'Settings\PBS@ajax_CardTypeBonusPeriod');
-
+    
     /**
      * SETTINGS / System
      */

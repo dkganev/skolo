@@ -410,6 +410,14 @@ return array(
     'Number' => 'Number',
     'Hits' => 'Hits',
     'Percentage Distribution' => 'Percentage <br />Distribution',
+    'Slots' => 'Slots',
+    'Gamble' => 'Gamble',
+    'Gamble Type' => 'Gamble Type',
+    'Max Ammount' => 'Max Ammount',
+    'Max Attempt' => 'Max Attempt',
+    'Bet Buttons multipliers' => 'Bet Buttons multipliers',
+    'per line, credits' => 'per line, credits',
+    'B' => 'B',
     'B' => 'B',
     
     

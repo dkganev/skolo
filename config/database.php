@@ -161,6 +161,50 @@ return [
             'sslmode' => 'prefer',
         ],       
 
+        'pgsql107' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST107', '10.0.0.199'),
+            'port' => env('DB_PORT107', '5432'),
+            'database' => env('DB_DATABASE107', 'forge'),
+            'username' => env('DB_USERNAME107', 'forge'),
+            'password' => env('DB_PASSWORD107', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],       
+
+        'pgsql110' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST110', '10.0.0.199'),
+            'port' => env('DB_PORT110', '5432'),
+            'database' => env('DB_DATABASE110', 'forge'),
+            'username' => env('DB_USERNAME110', 'forge'),
+            'password' => env('DB_PASSWORD110', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],       
+
+
+        'pgsql111' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST111', '10.0.0.199'),
+            'port' => env('DB_PORT111', '5432'),
+            'database' => env('DB_DATABASE111', 'forge'),
+            'username' => env('DB_USERNAME111', 'forge'),
+            'password' => env('DB_PASSWORD111', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],       
+
+
 
     ],
 
