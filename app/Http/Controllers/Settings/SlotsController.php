@@ -23,12 +23,47 @@ class SlotsController extends Controller
         session(['last_page' => '/settings/slots/psconfig']);
         session(['last_menu' => 'menuSlots']);
         $games = Games::orderBy('gameid', 'asc')->get();
-        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
+        //$server_ps = ServerPs::orderBy('psid', 'asc')->get();
         
         
-    return view('settings.slots.psconfig', ['games' => $games, 'server_ps' => $server_ps]);
+        return view('settings.slots.psconfig', ['games' => $games, ]);
     }
     
+    public function SlotsChanePS(Request $request){
+        $gameid = $request['gameid'];
+        //$description = $request['description'];
+        //$psid = $request['psid']; 
+        //$table = $request['table']; 
+        $dbID = 100 + $gameid;
+        $server_ps = ServerPs::orderBy('psid', 'asc')->get();
+            $results = DB::connection('pgsql'. $dbID)->select(' 
+               SELECT
+                ps_id
+                FROM psconf
+               ');
+            $idArray = array();
+            foreach ($results as $key => $val){
+                $idArray[$key] = $val->ps_id;
+                
+            }
+        
+        $testPage = view('settings.slots.psTable', ['server_ps' => $server_ps, 'idArray' => $idArray ])->render();
+        $dataArray1 = array(
+            "success" => "success",
+            //"gameid" => $gameid,
+            //"description" => $description,
+            //"psid" => $psid,
+            //"table" => $table,
+            //"result" => $idArray ,
+            "html" => $testPage,
+        );
+        
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+        
+        
+        
+    //return view('settings.slots.psconfig', ['games' => $games, 'server_ps' => $server_ps]);
+    }
     public function SlotsChaneGame(Request $request){
         $gameid = $request['gameid'];
         $description = $request['description'];

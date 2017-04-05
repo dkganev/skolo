@@ -26,10 +26,10 @@
                 <label>@lang('messages.Game Port'):</label><br>
                 <input class="form-control text-center" type="text" name="game_port" value="{{ $conf->game_port }}">
             </div>
-            <div class="form-group" style="width:300px; display: inline-block;">
+            <!--<div class="form-group" style="width:300px; display: inline-block;">
                 <label>@lang('messages.generate_dummy_stop_positions'):</label><br>
                 <input class="form-control text-center" type="text" name="game_port" value="{{ $conf->generate_dummy_stop_positions }}">
-            </div>
+            </div>-->
         @endforeach
         <br /><br /><br />
         <input id="formUdate" name="_token" value="1234" type="hidden" data-table="psconf"    />

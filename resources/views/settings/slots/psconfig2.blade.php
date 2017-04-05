@@ -6,7 +6,7 @@
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                 <label for="bonus_type">@lang('messages.Gamble Type'):</label><br>
                 <div class="input-group" style="width:100%; display: inline-block;">
-                    <select name="bonus_type" class="col-lg-12" '>
+                    <select name="bonus_type" class="form-control imput-sm  col-lg-12" '>
                             <option {{ $conf->bonus_type == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">Red/Black</option>
                             <option {{ $conf->bonus_type == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">5 Cards</option>
                     </select>    
@@ -29,7 +29,7 @@
             <hr style="margin: 7px 0 12px 0;">
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                 <div class="input-group" style="width:100%; display: inline-block;">
-                    <select name="betsbuttonsidx" class="col-lg-12" '>
+                    <select name="betsbuttonsidx" class="form-control imput-sm col-lg-12" '>
                         <option {{ $conf->betsbuttonsidx == 0 ? 'selected="true"' : '' }} value="0" data_sort="1">1|2|3|4|5</option>
                         <option {{ $conf->betsbuttonsidx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">1|2|3|5|10</option>
                         <option {{ $conf->betsbuttonsidx == 2 ? 'selected="true"' : '' }} value="2" data_sort="1">1|2|5|10|20</option>
@@ -100,6 +100,16 @@
                     </select>    
                 </div> 
             </div> 
+            
+            <br /><br /><br />
+            <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Min Lines of play'):</h3>
+            <hr style="margin: 7px 0 12px 0;">
+            
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <input name=""   style=" "  value="{{ isset($conf->minlines) ? $conf->minlines : ''}}" type="text" class="form-control text-center " placeholder="Game Min Bet" aria-describedby="sizing-addon2">
+                </div> 
+            </div> 
         </div>    
     <div class="col-lg-4">
         <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations'):<br/>&nbsp;</h3>
@@ -108,7 +118,7 @@
         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
             <label for="denomination_1_idx">@lang('messages.Denomination') #1:</label><br>
             <div class="input-group" style="width:100%; display: inline-block;">
-                <select name="denomination_1_idx" class="col-lg-12" style='display: block;'>
+                <select name="denomination_1_idx" class="form-control imput-sm col-lg-12" style='display: block;'>
                     <option {{ $conf->denomination_1_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
                     <option {{ $conf->denomination_1_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
                     <option {{ $conf->denomination_1_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
@@ -141,7 +151,7 @@
                         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                             <label for="denomination_2_idx">@lang('messages.Denomination') #2:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
-                                <select name="denomination_2_idx" class="col-lg-12" style='display: block;'>
+                                <select name="denomination_2_idx" class="form-control imput-sm col-lg-12" style='display: block;'>
                                     <option {{ $conf->denomination_2_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
                                     <option {{ $conf->denomination_2_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
                                     <option {{ $conf->denomination_2_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
@@ -174,7 +184,7 @@
                         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                             <label for="denomination_3_idx">@lang('messages.Denomination') #3:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
-                                <select name="denomination_3_idx" class="col-lg-12" style='display: block;'>
+                                <select name="denomination_3_idx" class="form-control imput-sm col-lg-12" style='display: block;'>
                                     <option {{ $conf->denomination_3_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
                                     <option {{ $conf->denomination_3_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
                                     <option {{ $conf->denomination_3_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
@@ -207,7 +217,7 @@
                         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                             <label for="denomination_4_idx">@lang('messages.Denomination') #4:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
-                                <select name="denomination_4_idx" class="col-lg-12" style='display: block;'>
+                                <select name="denomination_4_idx" class="form-control imput-sm col-lg-12" style='display: block;'>
                                     <option {{ $conf->denomination_4_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
                                     <option {{ $conf->denomination_4_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
                                     <option {{ $conf->denomination_4_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
@@ -240,7 +250,7 @@
                         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                             <label for="denomination_5_idx">@lang('messages.Denomination') #5:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
-                                <select name="denomination_5_idx" class="col-lg-12" style='display: block;'>
+                                <select name="denomination_5_idx" class="form-control imput-sm col-lg-12" style='display: block;'>
                                     <option {{ $conf->denomination_5_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
                                     <option {{ $conf->denomination_5_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
                                     <option {{ $conf->denomination_5_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
@@ -271,9 +281,9 @@
                             </div>
                         </div>
                         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                            <label for="denomination_7_idx">@lang('messages.Denomination') #6:</label><br>
+                            <label for="denomination_6_idx">@lang('messages.Denomination') #6:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
-                                <select name="denomination_7_idx" class="col-lg-12" style='display: block;'>
+                                <select name="denomination_6_idx" class="form-control imput-sm col-lg-12" style='display: block;'>
                                     <option {{ $conf->denomination_6_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
                                     <option {{ $conf->denomination_6_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
                                     <option {{ $conf->denomination_6_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
@@ -306,7 +316,7 @@
                         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                             <label for="denomination_7_idx">@lang('messages.Denomination') #7:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
-                                <select name="denomination_7_idx" class="col-lg-12" style='display: block;'>
+                                <select name="denomination_7_idx" class="form-control imput-sm col-lg-12" style='display: block;'>
                                     <option {{ $conf->denomination_7_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
                                     <option {{ $conf->denomination_7_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
                                     <option {{ $conf->denomination_7_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
@@ -339,7 +349,7 @@
                         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                             <label for="denomination_8_idx">@lang('messages.Denomination') #8:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
-                                <select name="denomination_8_idx" class="col-lg-12" style='display: block;'>
+                                <select name="denomination_8_idx" class="form-control imput-sm col-lg-12" style='display: block;'>
                                     <option {{ $conf->denomination_8_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
                                     <option {{ $conf->denomination_8_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
                                     <option {{ $conf->denomination_8_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
@@ -387,7 +397,7 @@
                 </div> 
             </div> 
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                <label for="mathdenom2_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 2:</label><br>
+                <label for="mathdenom2_idx" style="margin-top: 6px;">@lang('messages.Denominations') RTP 2:</label><br>
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom2_idx" class="form-control imput-sm " >
@@ -397,7 +407,7 @@
                 </div> 
             </div> 
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                <label for="mathdenom3_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 3:</label><br>
+                <label for="mathdenom3_idx" style="margin-top: 6px;">@lang('messages.Denominations') RTP 3:</label><br>
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom3_idx" class="form-control imput-sm " >
@@ -407,7 +417,7 @@
                 </div> 
             </div> 
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                <label for="mathdenom4_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 4:</label><br>
+                <label for="mathdenom4_idx" style="margin-top: 6px;">@lang('messages.Denominations') RTP 4:</label><br>
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom4_idx" class="form-control imput-sm " >
@@ -417,7 +427,7 @@
                 </div> 
             </div> 
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                <label for="mathdenom5_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 5:</label><br>
+                <label for="mathdenom5_idx" style="margin-top: 6px;">@lang('messages.Denominations') RTP 5:</label><br>
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom5_idx" class="form-control imput-sm " >
@@ -427,7 +437,7 @@
                 </div> 
             </div> 
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                <label for="mathdenom6_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 6:</label><br>
+                <label for="mathdenom6_idx" style="margin-top: 6px;">@lang('messages.Denominations') RTP 6:</label><br>
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom6_idx" class="form-control imput-sm " >
@@ -437,7 +447,7 @@
                 </div> 
             </div> 
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                <label for="mathdenom7_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 7:</label><br>
+                <label for="mathdenom7_idx" style="margin-top: 6px;">@lang('messages.Denominations') RTP 7:</label><br>
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom7_idx" class="form-control imput-sm " >
@@ -447,7 +457,7 @@
                 </div> 
             </div> 
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                <label for="mathdenom8_idx" style="margin-top: 8px;">@lang('messages.Denominations') RTP 8:</label><br>
+                <label for="mathdenom8_idx" style="margin-top: 6px;">@lang('messages.Denominations') RTP 8:</label><br>
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom8_idx" class="form-control imput-sm " >
