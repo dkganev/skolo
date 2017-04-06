@@ -1,3 +1,4 @@
+@include('modals.casinoTerminalInfo-modals')
 <link rel="stylesheet" href="/css/casinoProview.css">
 
 <div class="container-full">
