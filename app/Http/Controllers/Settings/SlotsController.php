@@ -106,7 +106,7 @@ class SlotsController extends Controller
     }    
     
     
-     public function psconfUpdate(Request $request){
+    public function psconfUpdate(Request $request){
         $gameid = $request['gameid'];
         $dbID = 100 + $gameid;
         $PsConf = new PsConf();
@@ -124,11 +124,38 @@ class SlotsController extends Controller
         );
         event(new TerminalAdded(request()->ip(), request()->user()->name, $request->ps_id , 'Slot Game Gonfig Settings Were Updated!', 2));
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
-         
-         
+    }
     
-    
-     }
+    public function psconfUpdateAll(Request $request){
+        $gameid = $request['gameid'];
+        $dbID = 100 + $gameid;
+        $results = DB::connection('pgsql'. $dbID)->select(' 
+               SELECT
+                ps_id
+                FROM psconf
+               ');
+            $idArray = array();
+        $PsConf = new PsConf();
+        $PsConf->setConnection('pgsql'. $dbID);
+        //$PsConf->get()->update($request->except(['_token', 'gameid', 'ps_id']) ); 
+            foreach ($results as $key => $val){
+                $PsConf->where('ps_id', $val->ps_id)->first()->update($request->except(['_token', 'gameid', 'ps_id']) ); 
+        
+            }
+        //$PsConf->get()->update($request->except(['_token', 'gameid']) ); 
+        
+        $dataArray1 = array(
+            "success" => "success",
+            //"gameid" => $gameid,
+            //"description" => $description,
+            //"psid" => $psid,
+            //"table" => $table,
+            //"result" => $result ,
+            //"html" => $testPage,
+        );
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->ps_id , 'Slot Game Gonfig Settings Were Updated!', 2));
+        return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);
+    }
      
      public function accUpdate(Request $request){
         $gameid = $request['gameid'];

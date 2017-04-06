@@ -476,7 +476,7 @@ $('select').on('change', function() {
     denomNew = parseInt($(this).find(":selected").attr("data_sort"));
     denomNewVal = parseInt($(this).val());
         if (denomID != 5){
-            if ((denom[1] != denomNew && denom[2] != denomNew  && denom[3] != denomNew  && denom[4] != denomNew) || denomNew == 0 ){
+            if ((denom[1] != denomNew && denom[2] != denomNew  && denom[3] != denomNew  && denom[4] != denomNew && denom[5] != denomNew && denom[6] != denomNew && denom[7] != denomNew && denom[8] != denomNew) || denomNew == 0 ){
                 if (denomID == 1 && ((denom[2] > denomNew && denomNew != 0) || (denom[2] == 0 && denomNew != 0))){
                     denom[denomID] = denomNew;
                     denomPrev[denomID] = denomNewVal;

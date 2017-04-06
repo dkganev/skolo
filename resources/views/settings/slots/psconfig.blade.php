@@ -112,8 +112,6 @@ tbody{
 <script>
     Timer123 = setTimeout(function(){ ChaneGame( {{$varFval->gameid}}, '{{$varFval->description}}'); }, 200);
     
-    
-    
     function ChaneGame(gameid, description) {
         //pageHref = $('#pageReload').attr('data-URL');
         //gameid = $('#pageReload').attr('data-gameid');
@@ -146,10 +144,10 @@ tbody{
             success:function(data){
                 if (data.success == "success"){
                     //alert ("Success");
-                    if (data.psid == 0){
-                        $('#subPageHeader').text("@lang('messages.Game'): " + data.description + "  @lang('messages.DEFAULT PS - Config'): " );
+                    if (psid == 0){
+                        $('#subPageHeader').html("@lang('messages.Game'): " + data.description + "<br/>   @lang('messages.DEFAULT PS - Config'): " );
                     } else {
-                        $('#subPageHeader').text("@lang('messages.Game'): " + data.description + "  @lang('messages.PS ID'): " + data.psid );
+                        $('#subPageHeader').html("@lang('messages.Game'): " + data.description + "  @lang('messages.PS ID'): " + data.psid );
                     }
                     $('#subPageBody').html(data.html);
                     $('#pageReload').attr('data-gameid', gameid);
@@ -190,7 +188,12 @@ tbody{
             success:function(data){
                 if (data.success == "success"){
                     //alert ("Success");
-                    $('#subPageHeader').text("@lang('messages.Game'): " + data.description + "  @lang('messages.PS ID'): " + data.psid );
+                    if (psid == 0){
+                        $('#subPageHeader').html("@lang('messages.Game'): " + data.description + "<br/>   @lang('messages.DEFAULT PS - Config'): " );
+                    } else {
+                        $('#subPageHeader').html("@lang('messages.Game'): " + data.description + "  @lang('messages.PS ID'): " + data.psid );
+                    }
+                    //$('#subPageHeader').text("@lang('messages.Game'): " + data.description + "  @lang('messages.PS ID'): " + data.psid );
                     $('#subPageBody').html(data.html);
                     $('.yelow-color').css('font-weight', 'normal');
                     //$('#yelow-span' + gameid ).css('color', '#ffe630');
@@ -228,10 +231,10 @@ tbody{
                 if (data.success == "success"){
                     //alert ("Success");
                     if (table == 'psconf') {
-                        if (data.psid == 0){
-                            $('#subPageHeader').text("@lang('messages.Game'): " + data.description + "  @lang('messages.DEFAULT PS - Config'): " );
+                        if (psid == 0){
+                            $('#subPageHeader').html("@lang('messages.Game'): " + data.description + "<br/>  @lang('messages.DEFAULT PS - Config'): " );
                         } else {
-                            $('#subPageHeader').text("@lang('messages.Game'): " + description + "  @lang('messages.PS ID'): " + psid );
+                            $('#subPageHeader').html("@lang('messages.Game'): " + description + "  @lang('messages.PS ID'): " + psid );
                         }
                     
                     } else if (table == 'acc_config') {
@@ -283,8 +286,37 @@ tbody{
 
 
     }
+    function UpdateAllGame() {
+        pageHref = "/statistics/psconfUpdateAll";
+        $.ajax({
+            type:'POST',
+            url:pageHref,
+            dataType: "json",
+            data: $("#registerSubmit").serialize(),
+            success:function(data){
+                if (data.success == "success"){
+                    $('#OK').show();
+                    UpdateTimer123 = setTimeout(function(){ $('#OK').hide(); }, 10000);
+                    //alert ("Success");
+                    //$('#subPageHeader').text("@lang('messages.Game'): " + data.description + "  @lang('messages.PS ID'): " + data.psid );
+                // $('#subPageBody').html(data.html);
+            
+                }
+            },
+            error: function (error) {
+                alert ("Unexpected wrong.");
+                console.log("Error " + error);
+                $('#remove').show();
+                UpdateTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
+            }
+    
+        
+        });
+
+
+    }
    // });
-   function UpdateAcc() {
+    function UpdateAcc() {
         pageHref = "/statistics/accUpdate";
         $.ajax({
             type:'POST',

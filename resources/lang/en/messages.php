@@ -419,7 +419,7 @@ return array(
     'per line, credits' => 'per line, credits',
     'DEFAULT PS - Config' => 'DEFAULT PS - Config',
     'Min Lines of play' => 'Min Lines of play',
-    'B' => 'B',
+    'Update to All' => 'Update to All',
     'B' => 'B',
     'B' => 'B',
     'B' => 'B',

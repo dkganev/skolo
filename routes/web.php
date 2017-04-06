@@ -202,6 +202,7 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     Route::post('/SlotsChanePS', 'Settings\SlotsController@SlotsChanePS');
     Route::post('/SlotsChaneGame', 'Settings\SlotsController@SlotsChaneGame');
     Route::post('/statistics/psconfUpdate', 'Settings\SlotsController@psconfUpdate');
+    Route::post('/statistics/psconfUpdateAll', 'Settings\SlotsController@psconfUpdateAll');
     Route::post('/statistics/accUpdate', 'Settings\SlotsController@accUpdate');
     
     
