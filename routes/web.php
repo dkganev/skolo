@@ -253,7 +253,10 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     Route::get('statistics/terminals', 'StatisticsController@terminals_statistics');
     Route::post('statistics/terminals', 'StatisticsController@terminals_statistics');
     Route::get('export2excelTerminalsStatistics', 'StatisticsController@export2excelTerminalsStatistics')->name('export2excelTerminalsStatistics');
-
+ 
+    Route::get('statistics/psAccounting', 'Statistics\PsAccounting@psAccounting_index');
+    Route::get('export2excelPsAccounting', 'Statistics\PsAccounting@export2excelPsAccounting')->name('export2excelPsAccounting');
+ 
     Route::get('statistics/games', 'StatisticsController@games_statistics');
     Route::get('export2excelGamesStatistics', 'StatisticsController@export2excelGamesStatistics')->name('export2excelGamesStatistics');
 

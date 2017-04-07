@@ -35,7 +35,7 @@
                                         <div class="form-group form-group-sm">
                                             <div class="input-group">
                                                 <!--<span id="yelow-span{{$val->gameid}}" class="input-group-addon yelow-color" onclick="ChaneGame( {{$val->gameid}}, '{{$val->description}}' );" style="background: darkgray;">{{ $val->gameid }}</span> -->
-                                                <input id="yelow-input{{$val->gameid}}" class="form-control text-center yelow-color" name="game_min_bet" readonly no  onclick="ChaneGame( {{$val->gameid}}, '{{$val->description}}' );" style=" background: darkgray; color: #333; " value="{{ $val->description }}" type="text"  placeholder="Game Min Bet" aria-describedby="sizing-addon2">
+                                                <input id="yelow-input{{$val->gameid}}" class="form-control text-center yelow-color" name="game_min_bet" readonly no  onclick="ChaneGame( {{$val->gameid}}, '{{$val->description}}' );" style=" background: darkgray; color: #333; " value="{{ $val->description }}" type="text" >
                                             </div>
                                         </div>
                                         <?PHP if ($varF == 0) {$varF = 1;$varFval = $val; } ?>

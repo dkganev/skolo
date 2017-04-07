@@ -410,6 +410,19 @@ return array(
     'Number' => 'Number',
     'Hits' => 'Hits',
     'Percentage Distribution' => 'Percentage <br />Distribution',
+    'Slots' => 'Slots',
+    'Gamble' => 'Gamble',
+    'Gamble Type' => 'Gamble Type',
+    'Max Ammount' => 'Max Ammount',
+    'Max Attempt' => 'Max Attempt',
+    'Bet Buttons multipliers' => 'Bet Buttons multipliers',
+    'per line, credits' => 'per line, credits',
+    'DEFAULT PS - Config' => 'DEFAULT PS - Config',
+    'Min Lines of play' => 'Min Lines of play',
+    'Update to All' => 'Update to All',
+    'Playstation Info' => 'Playstation Info',
+    'PS Accounting' => 'PS Accounting',
+    'Search' => 'Search',
     
     
     

@@ -3,6 +3,7 @@
         <div style="padding-top:6px; margin-top: 0px;">
             <ul class="breadcrumb">
                 <li id="menuTerminals"><a  id="MachineStatistics" data-url="{{substr(url(''),0,-5)}}" href="javascript:ajaxLoad('{{url('statistics/terminals')}}')" >@lang('messages.Machine Statistics')  </a> </li>
+                <li id="menuPsAccounting"><a  id="MachineStatistics" data-url="{{substr(url(''),0,-5)}}" href="javascript:ajaxLoad('{{url('statistics/psAccounting')}}')" >@lang('messages.PS Accounting')  </a> </li>
 
                 @hasanyrole(['Casino Admin', 'Owner', 'Super User'])
                 <li id="menuGames"><a href="javascript:ajaxLoad('{{url('statistics/games')}}')">@lang('messages.Game Statistics')</a></li>

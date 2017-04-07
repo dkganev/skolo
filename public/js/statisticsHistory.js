@@ -2096,6 +2096,49 @@ function ExportToPNGTerminatsTable() {
 }
 
 //end Statistics scripts
+//start psAccounting scripts 
+function searchPsAccounting() {
+    pageHref = $('#pageReload').attr('data-URL');
+    
+    startDate = $('#datetimepicker2I').val();
+    endDate = $('#datetimepicker3I').val();
+    
+    pageHref = pageHref + 
+            "?startDate=" + startDate + 
+            "&endDate=" + endDate + 
+            "')" 
+    window.location.href = pageHref; 
+    
+    
+}    
+function export2excelPsAccounting() {
+    pageHref = $('#pageReload').attr('data-excel-url');
+    
+    startDate = $('#datetimepicker2I').val();
+    endDate = $('#datetimepicker3I').val();
+    
+    pageHref = pageHref + 
+            "?startDate=" + startDate + 
+            "&endDate=" + endDate ; 
+    window.location.href = pageHref; 
+}
+function ExportToPNGpsAccounting() {
+    html2canvas($('#panelPsAccounting'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            $(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            $(".faSpinner").hide();
+        }
+    });
+}
+
+//end psAccounting scripts
 //start User-log-all scripts 
 function changeRowsPerPageAll(rowsPerPage) {
     pageHref = $('#pageReload').attr('data-URL');
@@ -2331,6 +2374,4 @@ function export2excelGameBJ() {
     window.location.href = pageHref; 
 }
 
-
-
-//start Game Statistics scripts
+//end Game Statistics scripts

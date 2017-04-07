@@ -15,13 +15,13 @@
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                 <label for="gamblemaxamount">@lang('messages.Max Ammount'):</label><br>
                 <div class="input-group" style="width:100%; display: inline-block;">
-                    <input name="gamblemaxamount" style=" " value="{{ $conf->gamblemaxamount ? $conf->gamblemaxamount : ''}}" type="text" class="form-control text-center " placeholder="Game Min Bet" aria-describedby="sizing-addon2">
+                    <input name="gamblemaxamount" style=" " value="{{ $conf->gamblemaxamount ? $conf->gamblemaxamount : ''}}" type="text" class="form-control text-center " placeholder="Max Ammount" aria-describedby="sizing-addon2">
                 </div> 
             </div>
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                 <label for="gamblemaxattempt">@lang('messages.Max Attempt'):</label><br>
                 <div class="input-group" style="width:100%; display: inline-block;">
-                    <input name="gamblemaxattempt"   style=" "  value="{{ $conf->gamblemaxattempt ? $conf->gamblemaxattempt : ''}}" type="text" class="form-control text-center " placeholder="Game Min Bet" aria-describedby="sizing-addon2">
+                    <input name="gamblemaxattempt"   style=" "  value="{{ $conf->gamblemaxattempt ? $conf->gamblemaxattempt : ''}}" type="text" class="form-control text-center " placeholder="Max Attempt" aria-describedby="sizing-addon2">
                 </div> 
             </div> 
             <br /><br /><br />
@@ -107,7 +107,7 @@
             
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                 <div class="input-group" style="width:100%; display: inline-block;">
-                    <input name=""   style=" "  value="{{ isset($conf->minlines) ? $conf->minlines : ''}}" type="text" class="form-control text-center " placeholder="Game Min Bet" aria-describedby="sizing-addon2">
+                    <input name="minlines"   style=" "  value="{{ isset($conf->minlines) ? $conf->minlines : ''}}" type="text" class="form-control text-center " placeholder="Min Lines of play" aria-describedby="sizing-addon2">
                 </div> 
             </div> 
         </div>    
