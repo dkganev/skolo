@@ -49,8 +49,8 @@
                         <tbody>
                             @foreach($ps_conf as $conf)
                                 <tr style="height: 20px">
-                                    <td>{{ $conf->ps_id }}</td>
-                                    <td>{{ $conf->seat_id }}</td>
+                                    <td class = "td{{ $conf->ps_id }}">{{ $conf->ps_id }}</td>
+                                    <td class = "td{{ $conf->ps_id }}">{{ $conf->seat_id }}</td>
                                     <td>
                                         <button class="btn btn-primary btn-xs ps-config-toggle"
                                             type="submit"
@@ -468,7 +468,7 @@
 var denomPrev = new Array("0", $('#denom1').val(), $('#denom2').val(), $('#denom3').val(), $('#denom4').val()); //$('#denom1').attr('data-prev', denom[1]);
 var denom = new Array("0", $('#denom1').find(":selected").attr("data_sort"), $('#denom2').find(":selected").attr("data_sort"), $('#denom3').find(":selected").attr("data_sort"), $('#denom4').find(":selected").attr("data_sort")); //$('#denom1').attr('data-prev', denom[1]);
 var  pageID = {{$page['pageID']}};
-Timer123 = setTimeout(function(){ $('form').css('display', 'none'); $('#ps-config-form-' + pageID).fadeIn(); }, 200);
+Timer123 = setTimeout(function(){ $('form').css('display', 'none'); $('.td' + pageID).css('font-weight', 'bold'); $('#ps-config-form-' + pageID).fadeIn(); }, 200);
 
 
 $('select').on('change', function() {
