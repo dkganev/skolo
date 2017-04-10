@@ -22,15 +22,19 @@ class About extends Controller
      public function index(Request $request){
         session(['last_page' => '/settings/About']);
         session(['last_menu' => 'menuAbout']);
+        //$shellOutput = [];
+        //exec('git log -n1 HEAD', $shellOutput);
+        //$arrayS = explode(" ", $shellOutput[2]);
+        //$aboutArray['commitDate'] = $arrayS[3] .' '. $arrayS[4] .' '. $arrayS[5] .' '. $arrayS[6] .' '. $arrayS[7] .' '. $arrayS[8];
         $shellOutput = [];
-        exec('git log -n1 HEAD', $shellOutput);
-        $arrayS = explode(" ", $shellOutput[2]);
-        $aboutArray['commitDate'] = $arrayS[3] .' '. $arrayS[4] .' '. $arrayS[5] .' '. $arrayS[6] .' '. $arrayS[7] .' '. $arrayS[8];
+        exec('git log --pretty="%ci" -n1 HEAD', $shellOutput);
+        //$arrayS = explode(" ", $shellOutput[0]);
+        $aboutArray['commitDate'] = $shellOutput[0];
         
         $shellOutput = [];
         exec('git log --pretty="%H" -n1 HEAD', $shellOutput);
-        $arrayS = explode(" ", $shellOutput[0]);
-        $aboutArray['commit'] = $arrayS[0];  
+        //$arrayS = explode(" ", $shellOutput[0]);
+        $aboutArray['commit'] = $shellOutput[0];  
         
         $shellOutput = [];
         exec('git log --pretty="%d" -n1 HEAD', $shellOutput);
@@ -48,7 +52,9 @@ class About extends Controller
         
         $shellOutput = [];
         exec('git status --porcelain', $shellOutput);
+        $shellOutput2 = [];
+        exec('git describe --tags --abbrev=0', $shellOutput2);
         
-        return view('settings.about', ['shellOutput' => $shellOutput, 'aboutArray' => $aboutArray]);
+        return view('settings.about', ['shellOutput' => $shellOutput, 'aboutArray' => $aboutArray,'shellOutput2' => $shellOutput2]);
     }
 }

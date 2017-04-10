@@ -24,7 +24,7 @@
                            <h2>{{$var}} </h2>
                         @endforeach
                     @endif
-                           
+                           {{var_dump($shellOutput2)}}       
             </div>
         </div>
     </div>
