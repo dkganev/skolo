@@ -52,8 +52,9 @@ class About extends Controller
         
         $shellOutput = [];
         exec('git status --porcelain', $shellOutput);
+        
         $shellOutput2 = [];
-        exec('git describe --tags --abbrev=0', $shellOutput2);
+        exec('git describe --tags ', $shellOutput2);
         
         return view('settings.about', ['shellOutput' => $shellOutput, 'aboutArray' => $aboutArray,'shellOutput2' => $shellOutput2]);
     }
