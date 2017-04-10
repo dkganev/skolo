@@ -40,7 +40,9 @@ class About extends Controller
                 $arrayS2 = explode("tag: ", $val);
                 $arrayS3 = explode("-", $arrayS2[1]);
                 $aboutArray['version'] = $arrayS3[0];
-                $aboutArray['update'] = $arrayS3[1];
+                //$arrayS4 = explode(")", $arrayS3[1]);
+                //$aboutArray['update'] = $arrayS4[0];
+                $aboutArray['update'] = trim($arrayS3[1],")");
             }
         }
         
