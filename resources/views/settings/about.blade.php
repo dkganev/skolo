@@ -12,10 +12,10 @@
                 </div>
                 <div class="panel-body">
                     <h2 style="text-align: center;"> CMS - Control Management System</h2>    
-                    <h2> Product Version: {{$aboutArray['version']}}</h2>
-                    <h2> Updates: {{$aboutArray['update']}}</h2>
-                    <h2> Commit: {{$aboutArray['commit']}} </h2>
-                    <h2> Date: {{$aboutArray['commitDate']}}</h2>
+                    <h2> Product Version: {{!empty($aboutArray['version']) ? $aboutArray['version'] : ""}}</h2>
+                    <h2> Updates: {{!empty($aboutArray['version']) ? $aboutArray['update'] : ""}}</h2>
+                    <h2> Commit: {{!empty($aboutArray['version']) ? $aboutArray['commit'] : ""}} </h2>
+                    <h2> Date: {{!empty($aboutArray['version']) ? $aboutArray['commitDate'] : ""}}</h2>
                     @if (empty($shellOutput))
                         <br /><h2> Original version</h2>
                     @else
@@ -23,7 +23,10 @@
                         @foreach ($shellOutput as $var)
                            <h2>{{$var}} </h2>
                         @endforeach
-                    @endif    
+                    @endif
+                           
+                    <h2> Date: {{var_dump($shellOutput2)}}</h2>       
+                           
             </div>
         </div>
     </div>

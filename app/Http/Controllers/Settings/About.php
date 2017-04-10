@@ -22,12 +22,8 @@ class About extends Controller
      public function index(Request $request){
         session(['last_page' => '/settings/About']);
         session(['last_menu' => 'menuAbout']);
-        //$games = Games::orderBy('description', 'asc')->get();
-        //$server_ps = ServerPs::orderBy('psid', 'asc')->get();
         $shellOutput = [];
         exec('git log -n1 HEAD', $shellOutput);
-        //$arrayS = explode(" ", $shellOutput[0]);
-        //$aboutArray['commit'] = $arrayS[1];  
         $arrayS = explode(" ", $shellOutput[2]);
         $aboutArray['commitDate'] = $arrayS[3] .' '. $arrayS[4] .' '. $arrayS[5] .' '. $arrayS[6] .' '. $arrayS[7] .' '. $arrayS[8];
         
@@ -35,11 +31,10 @@ class About extends Controller
         exec('git log --pretty="%H" -n1 HEAD', $shellOutput);
         $arrayS = explode(" ", $shellOutput[0]);
         $aboutArray['commit'] = $arrayS[0];  
+        
         $shellOutput = [];
         exec('git log --pretty="%d" -n1 HEAD', $shellOutput);
         $arrayS = explode(",", $shellOutput[0]);
-        
-        
         foreach ($arrayS as $key => $val){
             if (strpos($val, 'tag:') !== false) {
                 $arrayS2 = explode("tag: ", $val);
@@ -48,8 +43,12 @@ class About extends Controller
                 $aboutArray['update'] = $arrayS3[1];
             }
         }
+        
         $shellOutput = [];
         exec('git status --porcelain', $shellOutput);
+        
+        $shellOutput2 = [];
+        exec('git log --pretty="%d" -n1 HEAD', $shellOutput2);
         //$aboutArray['version'] = $arrayS[1];  git diff-index --quiet HEAD --
         //$aboutArray['update'] = $arrayS[2];
         //var_dump($shellOutput);
@@ -60,6 +59,6 @@ class About extends Controller
         }*/
         
         
-        return view('settings.about', ['shellOutput' => $shellOutput, 'aboutArray' => $aboutArray ]);
+        return view('settings.about', ['shellOutput' => $shellOutput, 'aboutArray' => $aboutArray, 'shellOutput2' => $shellOutput2 ]);
     }
 }
