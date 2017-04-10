@@ -47,18 +47,6 @@ class About extends Controller
         $shellOutput = [];
         exec('git status --porcelain', $shellOutput);
         
-        $shellOutput2 = [];
-        exec('git log --pretty="%d" -n1 HEAD', $shellOutput2);
-        //$aboutArray['version'] = $arrayS[1];  git diff-index --quiet HEAD --
-        //$aboutArray['update'] = $arrayS[2];
-        //var_dump($shellOutput);
-        /*foreach ($shellOutput as $line) {
-            if (strpos($line, '* ') !== false) {
-                return trim(strtolower(str_replace('* ', '', $line)));
-            }
-        }*/
-        
-        
-        return view('settings.about', ['shellOutput' => $shellOutput, 'aboutArray' => $aboutArray, 'shellOutput2' => $shellOutput2 ]);
+        return view('settings.about', ['shellOutput' => $shellOutput, 'aboutArray' => $aboutArray]);
     }
 }

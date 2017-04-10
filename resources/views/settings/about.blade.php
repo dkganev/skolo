@@ -25,8 +25,6 @@
                         @endforeach
                     @endif
                            
-                    <h2> Date: {{var_dump($shellOutput2)}}</h2>       
-                           
             </div>
         </div>
     </div>
