@@ -423,7 +423,7 @@ return array(
     'Playstation Info' => 'Playstation Info',
     'PS Accounting' => 'PS Accounting',
     'Search' => 'Search',
-    'B' => 'B',
+    'About' => 'About',
     'B' => 'B',
     'B' => 'B',
     'B' => 'B',

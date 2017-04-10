@@ -226,6 +226,7 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     /**
      * SETTINGS / System
      */
+    Route::get('/settings/About', 'Settings\About@index');
     Route::get('/settings/System', 'Settings\System@system');
 
 

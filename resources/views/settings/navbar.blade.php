@@ -58,6 +58,11 @@
                         </a>
                     </li>
                     <!--<li><a href="javascript:ajaxLoad('{{url('/settings/PBS/BonusPoints2Money')}}')">PBS</a></li> -->
+                    <li id="menuAbout">
+                        <a href="javascript:ajaxLoad('{{url('/settings/About')}}')">
+                            @lang('messages.About')
+                        </a>
+                    </li>
                     <li id="menuSystem">
                         <a href="javascript:ajaxLoad('{{url('/settings/System')}}')">
                             @lang('messages.System')
