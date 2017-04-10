@@ -399,8 +399,9 @@
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom1_idx" class="form-control imput-sm " >
-                        <option {{ $conf->mathdenom1_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                        <option {{ $conf->mathdenom1_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                        @foreach($denomRTP as $key => $val)
+                            <option {{ $conf->mathdenom1_idx == $key ? 'selected="true"' : '' }} value="{{$key}}" data_sort="1">{{ number_format($val / 100, 2 ) }}</option>
+                        @endforeach
                     </select>    
                 </div> 
             </div> 
@@ -409,8 +410,9 @@
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom2_idx" class="form-control imput-sm " >
-                        <option {{ $conf->mathdenom2_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                        <option {{ $conf->mathdenom2_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                        @foreach($denomRTP as $key => $val)
+                            <option {{ $conf->mathdenom2_idx == $key ? 'selected="true"' : '' }} value="{{$key}}" data_sort="1">{{ number_format($val / 100, 2 ) }}</option>
+                        @endforeach
                     </select>    
                 </div> 
             </div> 
@@ -419,8 +421,9 @@
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom3_idx" class="form-control imput-sm " >
-                        <option {{ $conf->mathdenom3_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                        <option {{ $conf->mathdenom3_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                        @foreach($denomRTP as $key => $val)
+                            <option {{ $conf->mathdenom3_idx == $key ? 'selected="true"' : '' }} value="{{$key}}" data_sort="1">{{ number_format($val / 100, 2 ) }}</option>
+                        @endforeach
                     </select>    
                 </div> 
             </div> 
@@ -429,8 +432,9 @@
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom4_idx" class="form-control imput-sm " >
-                        <option {{ $conf->mathdenom4_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                        <option {{ $conf->mathdenom4_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                        @foreach($denomRTP as $key => $val)
+                            <option {{ $conf->mathdenom4_idx == $key ? 'selected="true"' : '' }} value="{{$key}}" data_sort="1">{{ number_format($val / 100, 2 ) }}</option>
+                        @endforeach
                     </select>    
                 </div> 
             </div> 
@@ -439,8 +443,9 @@
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom5_idx" class="form-control imput-sm " >
-                        <option {{ $conf->mathdenom5_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                        <option {{ $conf->mathdenom5_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                        @foreach($denomRTP as $key => $val)
+                            <option {{ $conf->mathdenom5_idx == $key ? 'selected="true"' : '' }} value="{{$key}}" data_sort="1">{{ number_format($val / 100, 2 ) }}</option>
+                        @endforeach
                     </select>    
                 </div> 
             </div> 
@@ -449,8 +454,9 @@
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom6_idx" class="form-control imput-sm " >
-                        <option {{ $conf->mathdenom6_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                        <option {{ $conf->mathdenom6_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                        @foreach($denomRTP as $key => $val)
+                            <option {{ $conf->mathdenom6_idx == $key ? 'selected="true"' : '' }} value="{{$key}}" data_sort="1">{{ number_format($val / 100, 2 ) }}</option>
+                        @endforeach
                     </select>    
                 </div> 
             </div> 
@@ -459,8 +465,9 @@
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom7_idx" class="form-control imput-sm " >
-                        <option {{ $conf->mathdenom7_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                        <option {{ $conf->mathdenom7_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                        @foreach($denomRTP as $key => $val)
+                            <option {{ $conf->mathdenom7_idx == $key ? 'selected="true"' : '' }} value="{{$key}}" data_sort="1">{{ number_format($val / 100, 2 ) }}</option>
+                        @endforeach
                     </select>    
                 </div> 
             </div> 
@@ -469,8 +476,9 @@
                 <div class="input-group" >
                     <span class="input-group-addon"  >%</span>
                     <select name="mathdenom8_idx" class="form-control imput-sm " >
-                        <option {{ $conf->mathdenom8_idx == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">96.45</option>
-                        <option {{ $conf->mathdenom8_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">93.98</option>
+                        @foreach($denomRTP as $key => $val)
+                            <option {{ $conf->mathdenom8_idx == $key ? 'selected="true"' : '' }} value="{{$key}}" data_sort="1">{{ number_format($val / 100, 2 ) }}</option>
+                        @endforeach
                     </select>    
                 </div> 
             </div> 
