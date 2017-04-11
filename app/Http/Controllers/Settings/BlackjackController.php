@@ -208,7 +208,17 @@ class BlackjackController extends Controller
     {
         event(new TerminalAdded(request()->ip(), request()->user()->name, $request->ps_id , 'BJ Terminals Config Updated', 2));
         PsConf::where('ps_id', $request->ps_id)->first()->update($request->except('_token'));  
-    }        
+    }
+    
+    public function ps_config_editAll(Request $request)
+    {
+        event(new TerminalAdded(request()->ip(), request()->user()->name, $request->ps_id , 'BJ Terminals Config Updated All', 2));
+        $psidArray = PsConf::get();
+        foreach ($psidArray as $val){
+            PsConf::where('ps_id', $val->ps_id)->first()->update($request->except(['_token', 'ps_id'])); 
+        }
+        //PsConf::where('ps_id', $request->ps_id)->first()->update($request->except('_token'));  
+    } 
     
     public function acc_config_index(Request $request)
     {

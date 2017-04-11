@@ -446,12 +446,28 @@
                         <hr class="col-lg-11">
                         {{ csrf_field() }}
                         <input type="hidden" value="{{ $conf->ps_id }}" name="ps_id">
-                        <button data-id="{{ $conf->ps_id }}" type="submit" 
-                            style="width:315px; margin: 55px 10px 10px 17px; position: inherit; bottom: 0px; right: 5px" 
-                            class="btn btn-danger pull-right ps-config-submit"
-                        >
-                            @lang('messages.Update')
-                        </button>
+                        @if ( isset($conf->ps_id))
+                            @if ( $conf->ps_id == 0 )
+                                <a  data-id="{{ $conf->ps_id }}"
+                                    style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
+                                    class="btn btn-danger pull-right ps-config-submit-all "
+                                >
+                                    <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                                    <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                    @lang('messages.Update to All')
+                                </a>
+
+
+                            @else
+                                <button data-id="{{ $conf->ps_id }}" type="submit" 
+                                    style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
+                                    class="btn btn-danger pull-right ps-config-submit"
+                               >
+                                    @lang('messages.Update')
+                                </button>
+                            @endif
+                        @endif
+                        
                       </div>
                       </form>
                         @endif
@@ -569,6 +585,79 @@ $('.ps-config-submit').on('click', function(event) {
     $.ajax({
         method: 'POST',
         url: '/settings/roulette2/psconfig/edit',
+        data: $(this).parents('form:first').serialize(),
+    })
+    .done(function () {
+          pageHref="javascript:ajaxLoad('{{url('/settings/roulette2/psconfig')}}";
+          pageHref = pageHref + "?pageID=" + dataID +"')"
+          window.location.href = pageHref; 
+    });
+});
+
+$('.ps-config-submit-all').on('click', function(event) {
+    event.preventDefault();
+    firmID = $(this).parents('form:first').attr('id');
+    errorVal = 0;
+    $(".updateForm").hide();
+    gameMaxBet = parseInt($("#" + firmID).find('input[name="game_max_bet"]').val());
+    gameMinBet = parseInt($("#" + firmID).find('input[name="game_min_bet"]').val());
+    if (gameMaxBet < gameMinBet){
+        $("#" + firmID).find('label[name="game_max_bet"]').show()
+        errorVal = 1;
+    }
+    straight_max = parseInt($("#" + firmID).find('input[name="straight_max"]').val());
+    straight_min = parseInt($("#" + firmID).find('input[name="straight_min"]').val());
+    if (straight_max < straight_min){
+        $("#" + firmID).find('label[name="straight_max"]').show()
+        errorVal = 1;
+    }
+    split_max = parseInt($("#" + firmID).find('input[name="split_max"]').val());
+    split_min = parseInt($("#" + firmID).find('input[name="split_min"]').val());
+    if (split_max < split_min){
+        $("#" + firmID).find('label[name="split_max"]').show()
+        errorVal = 1;
+    }
+    basket_a_street_bet_max = parseInt($("#" + firmID).find('input[name="basket_a_street_bet_max"]').val());
+    basket_a_street_bet_min = parseInt($("#" + firmID).find('input[name="basket_a_street_bet_min"]').val());
+    if (basket_a_street_bet_max < basket_a_street_bet_min){
+        $("#" + firmID).find('label[name="basket_a_street_bet_max"]').show()
+        errorVal = 1;
+    }
+    corner_bet_max = parseInt($("#" + firmID).find('input[name="corner_bet_max"]').val());
+    corner_bet_min = parseInt($("#" + firmID).find('input[name="corner_bet_min"]').val());
+    if (corner_bet_max < corner_bet_min){
+        $("#" + firmID).find('label[name="corner_bet_max"]').show()
+        errorVal = 1;
+    }
+    six_number_line_max = parseInt($("#" + firmID).find('input[name="six_number_line_max"]').val());
+    six_number_line_min = parseInt($("#" + firmID).find('input[name="six_number_line_min"]').val());
+    if (six_number_line_max < six_number_line_min){
+        $("#" + firmID).find('label[name="six_number_line_max"]').show()
+        errorVal = 1;
+    }
+    dozen_bet_max = parseInt($("#" + firmID).find('input[name="dozen_bet_max"]').val());
+    dozen_bet_min = parseInt($("#" + firmID).find('input[name="dozen_bet_min"]').val());
+    if (dozen_bet_max < dozen_bet_min){
+        $("#" + firmID).find('label[name="dozen_bet_max"]').show()
+        errorVal = 1;
+    }
+    even_bet_max = parseInt($("#" + firmID).find('input[name="even_bet_max"]').val());
+    even_bet_min = parseInt($("#" + firmID).find('input[name="even_bet_min"]').val());
+    if (even_bet_max < even_bet_min){
+        $("#" + firmID).find('label[name="even_bet_max"]').show()
+        errorVal = 1;
+    }
+    if (errorVal == 1){
+        //console.log("test");
+        return;
+    }
+    
+    //console.log($("#" + firmID).find('input[name="game_max_bet"]').val());
+    
+    dataID = $(this).attr('data-id');
+    $.ajax({
+        method: 'POST',
+        url: '/settings/roulette2/psconfig/editAll',
         data: $(this).parents('form:first').serialize(),
     })
     .done(function () {

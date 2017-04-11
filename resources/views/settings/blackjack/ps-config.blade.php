@@ -217,12 +217,28 @@
                                     <hr class="col-lg-11">
                                     {{ csrf_field() }}
                                     <input type="hidden" value="{{ $conf->ps_id }}" name="ps_id">
-                                    <button data-id="{{ $conf->ps_id }}" type="submit" 
-                                        style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
-                                        class="btn btn-danger pull-right ps-config-submit"
-                                    >
-                                         @lang('messages.Update')
-                                    </button>
+                                    @if ( isset($conf->ps_id))
+                                        @if ( $conf->ps_id == 0 )
+                                            <a  data-id="{{ $conf->ps_id }}"
+                                                style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
+                                                class="btn btn-danger pull-right ps-config-submit-all "
+                                            >
+                                                <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
+                                                <span id="remove" class="glyphicon glyphicon-remove icon-result icon-error"  style="display: none;"></span>
+                                                @lang('messages.Update to All')
+                                            </a>
+
+
+                                        @else
+                                            <button data-id="{{ $conf->ps_id }}" type="submit" 
+                                                style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
+                                                class="btn btn-danger pull-right ps-config-submit"
+                                            >
+                                                @lang('messages.Update')
+                                            </button>
+                                        @endif
+                                    @endif
+                                    
                                 </div>
                             </form>
                         @endif
@@ -312,6 +328,25 @@ $('.ps-config-submit').on('click', function(event) {
           window.location.href = pageHref; 
     });
 });
+
+$('.ps-config-submit-all').on('click', function(event) {
+    event.preventDefault();
+    firmID = $(this).parents('form:first').attr('id');
+    errorVal = 0;
+    $(".updateForm").hide();
+    dataID = $(this).attr('data-id');
+    $.ajax({
+        method: 'POST',
+        url: '/settings/blackjack/psconfig/editAll',
+        data: $(this).parents('form:first').serialize(),
+    })
+    .done(function () {
+          pageHref="javascript:ajaxLoad('{{url('/settings/blackjack/psconfig')}}";
+          pageHref = pageHref + "?pageID=" + dataID +"')"
+          window.location.href = pageHref; 
+    });
+});
+
 
 $('button.ps-config-toggle').on('click', function(){
     var id = $(this).attr('data-id');

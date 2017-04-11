@@ -167,6 +167,7 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     
     Route::get('/settings/blackjack/psconfig', 'Settings\BlackjackController@ps_config_index');
     Route::post('/settings/blackjack/psconfig/edit', 'Settings\BlackjackController@ps_config_edit');
+    Route::post('/settings/blackjack/psconfig/editAll', 'Settings\BlackjackController@ps_config_editAll');
     
     Route::get('/settings/blackjack/accconfig', 'Settings\BlackjackController@acc_config_index');
     Route::post('/settings/blackjack/accconfig/edit', 'Settings\BlackjackController@acc_config_edit');
@@ -181,6 +182,7 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
 
     Route::get('/settings/roulette1/psconfig', 'Settings\RouletteController@ps_config_index');
     Route::post('/settings/roulette1/psconfig/edit', 'Settings\RouletteController@ps_config_edit');
+    Route::post('/settings/roulette1/psconfig/editAll', 'Settings\RouletteController@ps_config_editAll');
 
     Route::get('/settings/roulette1/accconfig', 'Settings\RouletteController@acc_config_index');
     Route::post('/settings/roulette1/accconfig/edit', 'Settings\RouletteController@acc_config_edit');
@@ -192,6 +194,7 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
 
     Route::get('/settings/roulette2/psconfig', 'Settings\RouletteTwoController@ps_config_index');
     Route::post('/settings/roulette2/psconfig/edit', 'Settings\RouletteTwoController@ps_config_edit');
+    Route::post('/settings/roulette2/psconfig/editAll', 'Settings\RouletteTwoController@ps_config_editAll');
 
     Route::get('/settings/roulette2/accconfig', 'Settings\RouletteTwoController@acc_config_index');
     Route::post('/settings/roulette2/accconfig/edit', 'Settings\RouletteTwoController@acc_config_edit');
