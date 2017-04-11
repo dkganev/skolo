@@ -72,6 +72,15 @@ class SlotsController extends Controller
         $dbID = 100 + $gameid;
         //$denomRTP = array();
         if ($table == 'psconf'){
+            $denominations =DB::connection('pgsql'. $dbID)->select('
+                SELECT
+                *
+                FROM psdenominations
+                ORDER BY valuemoney asc
+               '); 
+
+
+
             $results = DB::connection('pgsql'. $dbID)->select(' 
                SELECT
                 *
@@ -113,7 +122,7 @@ class SlotsController extends Controller
             else if ($gameid == 63){$denomRTP = array(9581);}
             else{$denomRTP = array(9645,9389); }
         
-            $testPage = view('settings.slots.psconfig2', ['results' => $results, 'denomRTP' => $denomRTP  ])->render();
+            $testPage = view('settings.slots.psconfig2', ['results' => $results, 'denomRTP' => $denomRTP, 'denominations' => $denominations   ])->render();
         }else if ($table == 'acc_config'){
             $results = DB::connection('pgsql'. $dbID)->select(' 
                SELECT

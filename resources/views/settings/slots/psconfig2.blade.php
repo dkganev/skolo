@@ -119,33 +119,11 @@
             <label for="denomination_1_idx">@lang('messages.Denomination') #1:</label><br>
             <div class="input-group" style="width:100%; display: inline-block;">
                 <select id="denom1" name="denomination_1_idx" class="form-control imput-sm col-lg-12 denom" style='display: block;' data-id="1">
-                    <option {{ $conf->denomination_1_idx == 0 ? 'selected="true"' : '' }} value="0" data_sort="0">None</option>
-                    <option {{ $conf->denomination_1_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
-                    <option {{ $conf->denomination_1_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
-                    <option {{ $conf->denomination_1_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
-                    <option {{ $conf->denomination_1_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
-                    <option {{ $conf->denomination_1_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
-                    <option {{ $conf->denomination_1_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
-                    <option {{ $conf->denomination_1_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
-                    <option {{ $conf->denomination_1_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
-                    <option {{ $conf->denomination_1_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
-                    <option {{ $conf->denomination_1_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
-                    <option {{ $conf->denomination_1_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
-                    <option {{ $conf->denomination_1_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
-                    <option {{ $conf->denomination_1_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
-                    <option {{ $conf->denomination_1_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
-                    <option {{ $conf->denomination_1_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
-                    <option {{ $conf->denomination_1_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
-                    <option {{ $conf->denomination_1_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
-                    <option {{ $conf->denomination_1_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
-                    <option {{ $conf->denomination_1_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
-                    <option {{ $conf->denomination_1_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
-                    <option {{ $conf->denomination_1_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
-                    <option {{ $conf->denomination_1_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
-                    <option {{ $conf->denomination_1_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
-                    <option {{ $conf->denomination_1_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
-                    <option {{ $conf->denomination_1_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
-                    <option {{ $conf->denomination_1_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
+                    <?php $idxNum = 0; ?>
+                    @foreach ($denominations as $val)
+                        <option {{ $conf->denomination_1_idx == $val->idx ? 'selected="true"' : '' }} value="{{$val->idx}}" data_sort="{{$idxNum}}">{{ $val->valuemoney == 0 ? "None" : number_format($val->valuemoney/100, 2)}}</option>
+                        <?php $idxNum += 1; ?>
+                    @endforeach
                 </select>
             </div>
         </div>
