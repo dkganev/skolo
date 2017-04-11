@@ -131,33 +131,11 @@
                             <label for="denomination_2_idx">@lang('messages.Denomination') #2:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
                                 <select id="denom2" name="denomination_2_idx" class="form-control imput-sm col-lg-12 denom" style='display: block;' data-id="2">
-                                    <option {{ $conf->denomination_2_idx == 0 ? 'selected="true"' : '' }} value="0" data_sort="0">None</option>
-                                    <option {{ $conf->denomination_2_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
-                                    <option {{ $conf->denomination_2_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
-                                    <option {{ $conf->denomination_2_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
-                                    <option {{ $conf->denomination_2_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
-                                    <option {{ $conf->denomination_2_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
-                                    <option {{ $conf->denomination_2_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
-                                    <option {{ $conf->denomination_2_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
-                                    <option {{ $conf->denomination_2_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
-                                    <option {{ $conf->denomination_2_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
-                                    <option {{ $conf->denomination_2_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
-                                    <option {{ $conf->denomination_2_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
-                                    <option {{ $conf->denomination_2_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
-                                    <option {{ $conf->denomination_2_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
-                                    <option {{ $conf->denomination_2_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
-                                    <option {{ $conf->denomination_2_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
-                                    <option {{ $conf->denomination_2_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
-                                    <option {{ $conf->denomination_2_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
-                                    <option {{ $conf->denomination_2_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
-                                    <option {{ $conf->denomination_2_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
-                                    <option {{ $conf->denomination_2_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
-                                    <option {{ $conf->denomination_2_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
-                                    <option {{ $conf->denomination_2_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
-                                    <option {{ $conf->denomination_2_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
-                                    <option {{ $conf->denomination_2_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
-                                    <option {{ $conf->denomination_2_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
-                                    <option {{ $conf->denomination_2_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
+                                    <?php $idxNum = 0; ?>
+                                    @foreach ($denominations as $val)
+                                        <option {{ $conf->denomination_2_idx == $val->idx ? 'selected="true"' : '' }} value="{{$val->idx}}" data_sort="{{$idxNum}}">{{ $val->valuemoney == 0 ? "None" : number_format($val->valuemoney/100, 2)}}</option>
+                                        <?php $idxNum += 1; ?>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -165,33 +143,11 @@
                             <label for="denomination_3_idx">@lang('messages.Denomination') #3:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
                                 <select id="denom3" name="denomination_3_idx" class="form-control imput-sm col-lg-12 denom" style='display: block;' data-id="3">
-                                    <option {{ $conf->denomination_3_idx == 0 ? 'selected="true"' : '' }} value="0" data_sort="0">None</option>
-                                    <option {{ $conf->denomination_3_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
-                                    <option {{ $conf->denomination_3_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
-                                    <option {{ $conf->denomination_3_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
-                                    <option {{ $conf->denomination_3_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
-                                    <option {{ $conf->denomination_3_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
-                                    <option {{ $conf->denomination_3_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
-                                    <option {{ $conf->denomination_3_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
-                                    <option {{ $conf->denomination_3_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
-                                    <option {{ $conf->denomination_3_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
-                                    <option {{ $conf->denomination_3_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
-                                    <option {{ $conf->denomination_3_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
-                                    <option {{ $conf->denomination_3_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
-                                    <option {{ $conf->denomination_3_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
-                                    <option {{ $conf->denomination_3_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
-                                    <option {{ $conf->denomination_3_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
-                                    <option {{ $conf->denomination_3_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
-                                    <option {{ $conf->denomination_3_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
-                                    <option {{ $conf->denomination_3_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
-                                    <option {{ $conf->denomination_3_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
-                                    <option {{ $conf->denomination_3_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
-                                    <option {{ $conf->denomination_3_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
-                                    <option {{ $conf->denomination_3_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
-                                    <option {{ $conf->denomination_3_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
-                                    <option {{ $conf->denomination_3_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
-                                    <option {{ $conf->denomination_3_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
-                                    <option {{ $conf->denomination_3_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
+                                    <?php $idxNum = 0; ?>
+                                    @foreach ($denominations as $val)
+                                        <option {{ $conf->denomination_3_idx == $val->idx ? 'selected="true"' : '' }} value="{{$val->idx}}" data_sort="{{$idxNum}}">{{ $val->valuemoney == 0 ? "None" : number_format($val->valuemoney/100, 2)}}</option>
+                                        <?php $idxNum += 1; ?>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -199,33 +155,11 @@
                             <label for="denomination_4_idx">@lang('messages.Denomination') #4:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
                                 <select id="denom4" name="denomination_4_idx" class="form-control imput-sm col-lg-12 denom" style='display: block;' data-id="4">
-                                    <option {{ $conf->denomination_4_idx == 0 ? 'selected="true"' : '' }} value="0" data_sort="0">None</option>
-                                    <option {{ $conf->denomination_4_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
-                                    <option {{ $conf->denomination_4_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
-                                    <option {{ $conf->denomination_4_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
-                                    <option {{ $conf->denomination_4_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
-                                    <option {{ $conf->denomination_4_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
-                                    <option {{ $conf->denomination_4_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
-                                    <option {{ $conf->denomination_4_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
-                                    <option {{ $conf->denomination_4_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
-                                    <option {{ $conf->denomination_4_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
-                                    <option {{ $conf->denomination_4_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
-                                    <option {{ $conf->denomination_4_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
-                                    <option {{ $conf->denomination_4_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
-                                    <option {{ $conf->denomination_4_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
-                                    <option {{ $conf->denomination_4_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
-                                    <option {{ $conf->denomination_4_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
-                                    <option {{ $conf->denomination_4_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
-                                    <option {{ $conf->denomination_4_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
-                                    <option {{ $conf->denomination_4_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
-                                    <option {{ $conf->denomination_4_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
-                                    <option {{ $conf->denomination_4_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
-                                    <option {{ $conf->denomination_4_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
-                                    <option {{ $conf->denomination_4_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
-                                    <option {{ $conf->denomination_4_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
-                                    <option {{ $conf->denomination_4_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
-                                    <option {{ $conf->denomination_4_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
-                                    <option {{ $conf->denomination_4_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
+                                    <?php $idxNum = 0; ?>
+                                    @foreach ($denominations as $val)
+                                        <option {{ $conf->denomination_4_idx == $val->idx ? 'selected="true"' : '' }} value="{{$val->idx}}" data_sort="{{$idxNum}}">{{ $val->valuemoney == 0 ? "None" : number_format($val->valuemoney/100, 2)}}</option>
+                                        <?php $idxNum += 1; ?>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -233,33 +167,11 @@
                             <label for="denomination_5_idx">@lang('messages.Denomination') #5:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
                                 <select id="denom5" name="denomination_5_idx" class="form-control imput-sm col-lg-12 denom" style='display: block;' data-id="5">
-                                    <option {{ $conf->denomination_5_idx == 0 ? 'selected="true"' : '' }} value="0" data_sort="0">None</option>
-                                    <option {{ $conf->denomination_5_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
-                                    <option {{ $conf->denomination_5_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
-                                    <option {{ $conf->denomination_5_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
-                                    <option {{ $conf->denomination_5_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
-                                    <option {{ $conf->denomination_5_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
-                                    <option {{ $conf->denomination_5_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
-                                    <option {{ $conf->denomination_5_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
-                                    <option {{ $conf->denomination_5_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
-                                    <option {{ $conf->denomination_5_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
-                                    <option {{ $conf->denomination_5_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
-                                    <option {{ $conf->denomination_5_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
-                                    <option {{ $conf->denomination_5_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
-                                    <option {{ $conf->denomination_5_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
-                                    <option {{ $conf->denomination_5_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
-                                    <option {{ $conf->denomination_5_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
-                                    <option {{ $conf->denomination_5_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
-                                    <option {{ $conf->denomination_5_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
-                                    <option {{ $conf->denomination_5_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
-                                    <option {{ $conf->denomination_5_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
-                                    <option {{ $conf->denomination_5_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
-                                    <option {{ $conf->denomination_5_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
-                                    <option {{ $conf->denomination_5_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
-                                    <option {{ $conf->denomination_5_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
-                                    <option {{ $conf->denomination_5_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
-                                    <option {{ $conf->denomination_5_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
-                                    <option {{ $conf->denomination_5_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
+                                    <?php $idxNum = 0; ?>
+                                    @foreach ($denominations as $val)
+                                        <option {{ $conf->denomination_5_idx == $val->idx ? 'selected="true"' : '' }} value="{{$val->idx}}" data_sort="{{$idxNum}}">{{ $val->valuemoney == 0 ? "None" : number_format($val->valuemoney/100, 2)}}</option>
+                                        <?php $idxNum += 1; ?>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -267,33 +179,11 @@
                             <label for="denomination_6_idx">@lang('messages.Denomination') #6:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
                                 <select id="denom6" name="denomination_6_idx" class="form-control imput-sm col-lg-12 denom" style='display: block;' data-id="6">
-                                    <option {{ $conf->denomination_6_idx == 0 ? 'selected="true"' : '' }} value="0" data_sort="0">None</option>
-                                    <option {{ $conf->denomination_6_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
-                                    <option {{ $conf->denomination_6_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
-                                    <option {{ $conf->denomination_6_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
-                                    <option {{ $conf->denomination_6_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
-                                    <option {{ $conf->denomination_6_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
-                                    <option {{ $conf->denomination_6_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
-                                    <option {{ $conf->denomination_6_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
-                                    <option {{ $conf->denomination_6_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
-                                    <option {{ $conf->denomination_6_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
-                                    <option {{ $conf->denomination_6_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
-                                    <option {{ $conf->denomination_6_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
-                                    <option {{ $conf->denomination_6_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
-                                    <option {{ $conf->denomination_6_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
-                                    <option {{ $conf->denomination_6_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
-                                    <option {{ $conf->denomination_6_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
-                                    <option {{ $conf->denomination_6_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
-                                    <option {{ $conf->denomination_6_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
-                                    <option {{ $conf->denomination_6_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
-                                    <option {{ $conf->denomination_6_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
-                                    <option {{ $conf->denomination_6_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
-                                    <option {{ $conf->denomination_6_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
-                                    <option {{ $conf->denomination_6_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
-                                    <option {{ $conf->denomination_6_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
-                                    <option {{ $conf->denomination_6_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
-                                    <option {{ $conf->denomination_6_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
-                                    <option {{ $conf->denomination_6_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
+                                    <?php $idxNum = 0; ?>
+                                    @foreach ($denominations as $val)
+                                        <option {{ $conf->denomination_6_idx == $val->idx ? 'selected="true"' : '' }} value="{{$val->idx}}" data_sort="{{$idxNum}}">{{ $val->valuemoney == 0 ? "None" : number_format($val->valuemoney/100, 2)}}</option>
+                                        <?php $idxNum += 1; ?>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -301,33 +191,11 @@
                             <label for="denomination_7_idx">@lang('messages.Denomination') #7:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
                                 <select id="denom7" name="denomination_7_idx" class="form-control imput-sm col-lg-12 denom" style='display: block;' data-id="7">
-                                    <option {{ $conf->denomination_7_idx == 0 ? 'selected="true"' : '' }} value="0" data_sort="0">None</option>
-                                    <option {{ $conf->denomination_7_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
-                                    <option {{ $conf->denomination_7_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
-                                    <option {{ $conf->denomination_7_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
-                                    <option {{ $conf->denomination_7_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
-                                    <option {{ $conf->denomination_7_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
-                                    <option {{ $conf->denomination_7_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
-                                    <option {{ $conf->denomination_7_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
-                                    <option {{ $conf->denomination_7_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
-                                    <option {{ $conf->denomination_7_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
-                                    <option {{ $conf->denomination_7_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
-                                    <option {{ $conf->denomination_7_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
-                                    <option {{ $conf->denomination_7_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
-                                    <option {{ $conf->denomination_7_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
-                                    <option {{ $conf->denomination_7_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
-                                    <option {{ $conf->denomination_7_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
-                                    <option {{ $conf->denomination_7_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
-                                    <option {{ $conf->denomination_7_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
-                                    <option {{ $conf->denomination_7_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
-                                    <option {{ $conf->denomination_7_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
-                                    <option {{ $conf->denomination_7_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
-                                    <option {{ $conf->denomination_7_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
-                                    <option {{ $conf->denomination_7_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
-                                    <option {{ $conf->denomination_7_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
-                                    <option {{ $conf->denomination_7_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
-                                    <option {{ $conf->denomination_7_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
-                                    <option {{ $conf->denomination_7_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
+                                    <?php $idxNum = 0; ?>
+                                    @foreach ($denominations as $val)
+                                        <option {{ $conf->denomination_7_idx == $val->idx ? 'selected="true"' : '' }} value="{{$val->idx}}" data_sort="{{$idxNum}}">{{ $val->valuemoney == 0 ? "None" : number_format($val->valuemoney/100, 2)}}</option>
+                                        <?php $idxNum += 1; ?>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -335,33 +203,11 @@
                             <label for="denomination_8_idx">@lang('messages.Denomination') #8:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
                                 <select id="denom8" name="denomination_8_idx" class="form-control imput-sm col-lg-12 denom" style='display: block;' data-id="8">
-                                    <option {{ $conf->denomination_8_idx == 0 ? 'selected="true"' : '' }} value="0" data_sort="0">None</option>
-                                    <option {{ $conf->denomination_8_idx == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">$0.01</option>
-                                    <option {{ $conf->denomination_8_idx == 23 ? 'selected="true"' : '' }} value="23" data_sort="2">$0.02</option>
-                                    <option {{ $conf->denomination_8_idx == 24 ? 'selected="true"' : '' }} value="24" data_sort="3">$0.03</option>
-                                    <option {{ $conf->denomination_8_idx == 2 ? 'selected="true"' : '' }} value="2" data_sort="4">$0.05</option>
-                                    <option {{ $conf->denomination_8_idx == 3 ? 'selected="true"' : '' }} value="3" data_sort="5">$0.10</option>
-                                    <option {{ $conf->denomination_8_idx == 25 ? 'selected="true"' : '' }} value="25" data_sort="6">$0.15</option>
-                                    <option {{ $conf->denomination_8_idx == 11 ? 'selected="true"' : '' }} value="11" data_sort="7">$0.20</option>
-                                    <option {{ $conf->denomination_8_idx == 4 ? 'selected="true"' : '' }} value="4" data_sort="8">$0.25</option>
-                                    <option {{ $conf->denomination_8_idx == 26 ? 'selected="true"' : '' }} value="26" data_sort="9">$0.40</option>
-                                    <option {{ $conf->denomination_8_idx == 5 ? 'selected="true"' : '' }} value="5" data_sort="10">$0.50</option>
-                                    <option {{ $conf->denomination_8_idx == 6 ? 'selected="true"' : '' }} value="6" data_sort="11">$1.00</option>
-                                    <option {{ $conf->denomination_8_idx == 12 ? 'selected="true"' : '' }} value="12" data_sort="12">$2.00</option>
-                                    <option {{ $conf->denomination_8_idx == 13 ? 'selected="true"' : '' }} value="13" data_sort="13">$2.50</option>
-                                    <option {{ $conf->denomination_8_idx == 7 ? 'selected="true"' : '' }} value="7" data_sort="14">$5.00</option>
-                                    <option {{ $conf->denomination_8_idx == 8 ? 'selected="true"' : '' }} value="8" data_sort="15">$10.00</option>
-                                    <option {{ $conf->denomination_8_idx == 9 ? 'selected="true"' : '' }} value="9" data_sort="16">$20.00</option>
-                                    <option {{ $conf->denomination_8_idx == 14 ? 'selected="true"' : '' }} value="14" data_sort="17">$25.00</option>
-                                    <option {{ $conf->denomination_8_idx == 15 ? 'selected="true"' : '' }} value="15" data_sort="18">$50.00</option>
-                                    <option {{ $conf->denomination_8_idx == 10 ? 'selected="true"' : '' }} value="10" data_sort="19">$100.00</option>
-                                    <option {{ $conf->denomination_8_idx == 16 ? 'selected="true"' : '' }} value="16" data_sort="20">$200.00</option>
-                                    <option {{ $conf->denomination_8_idx == 17 ? 'selected="true"' : '' }} value="17" data_sort="21">$250.00</option>
-                                    <option {{ $conf->denomination_8_idx == 18 ? 'selected="true"' : '' }} value="18" data_sort="22">$500.00</option>
-                                    <option {{ $conf->denomination_8_idx == 19 ? 'selected="true"' : '' }} value="19" data_sort="23">$1000.00</option>
-                                    <option {{ $conf->denomination_8_idx == 20 ? 'selected="true"' : '' }} value="20" data_sort="24">$2000.00</option>
-                                    <option {{ $conf->denomination_8_idx == 21 ? 'selected="true"' : '' }} value="21" data_sort="25">$2500.00</option>
-                                    <option {{ $conf->denomination_8_idx == 22 ? 'selected="true"' : '' }} value="22" data_sort="26">$5000.00</option>
+                                    <?php $idxNum = 0; ?>
+                                    @foreach ($denominations as $val)
+                                        <option {{ $conf->denomination_8_idx == $val->idx ? 'selected="true"' : '' }} value="{{$val->idx}}" data_sort="{{$idxNum}}">{{ $val->valuemoney == 0 ? "None" : number_format($val->valuemoney/100, 2)}}</option>
+                                        <?php $idxNum += 1; ?>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -509,37 +355,37 @@
                         denom[denomID] = denomNew;
                         denomPrev[denomID] = denomNewVal;
                         if (denomNew == 0){
-                            $('#denom3').val('0').change();
+                            $('#denom3').val('26').change();
                         }
                     }else if (denomID == 3 && (((denom[4] > denomNew || denom[4] == 0) && denom[2] < denomNew && denom[2] != 0) || denomNew == 0) ){
                         denom[denomID] = denomNew;
                         denomPrev[denomID] = denomNewVal;
                         if (denomNew == 0){
-                            $('#denom4').val('0').change();
+                            $('#denom4').val('26').change();
                         }
                     }else if (denomID == 4 && (((denom[5] > denomNew || denom[5] == 0) && denom[3] < denomNew && denom[3] != 0) || denomNew == 0) ){
                         denom[denomID] = denomNew;
                         denomPrev[denomID] = denomNewVal;
                         if (denomNew == 0){
-                            $('#denom5').val('0').change();
+                            $('#denom5').val('26').change();
                         }
                     }else if (denomID == 5 && (((denom[6] > denomNew || denom[6] == 0) && denom[4] < denomNew && denom[4] != 0) || denomNew == 0) ){
                         denom[denomID] = denomNew;
                         denomPrev[denomID] = denomNewVal;
                         if (denomNew == 0){
-                            $('#denom6').val('0').change();
+                            $('#denom6').val('26').change();
                         }
                     }else if (denomID == 6 && (((denom[7] > denomNew || denom[7] == 0) && denom[5] < denomNew && denom[5] != 0) || denomNew == 0) ){
                         denom[denomID] = denomNew;
                         denomPrev[denomID] = denomNewVal;
                         if (denomNew == 0){
-                            $('#denom7').val('0').change();
+                            $('#denom7').val('26').change();
                         }
                     }else if (denomID == 7 && (((denom[8] > denomNew || denom[8] == 0) && denom[6] < denomNew && denom[6] != 0) || denomNew == 0) ){
                         denom[denomID] = denomNew;
                         denomPrev[denomID] = denomNewVal;
                         if (denomNew == 0){
-                            $('#denom8').val('0').change();
+                            $('#denom8').val('26').change();
                         }
                     }else if (denomID == 8 && ((denom[7] < denomNew && denom[7] != 0) || denomNew == 0) ){
                         denom[denomID] = denomNew;
