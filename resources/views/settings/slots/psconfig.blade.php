@@ -131,7 +131,7 @@ tbody{
                 }
             },
             error: function (error) {
-                alert ("Unexpected wrong.");
+                alert ("Unexpected error.");
             }
 
         });
@@ -163,7 +163,7 @@ tbody{
                 }
             },
             error: function (error) {
-                alert ("Unexpected wrong.");
+                alert ("Unexpected error.");
             }
 
         });
@@ -206,7 +206,7 @@ tbody{
                 }
             },
             error: function (error) {
-                alert ("Unexpected wrong.");
+                alert ("Unexpected error.");
             }
 
         });
@@ -250,7 +250,7 @@ tbody{
                 }
             },
             error: function (error) {
-                alert ("Unexpected wrong.");
+                alert ("Unexpected error.");
             }
 
         });
@@ -275,7 +275,7 @@ tbody{
                 }
             },
             error: function (error) {
-                alert ("Unexpected wrong.");
+                alert ("Unexpected error.");
                 console.log("Error " + error);
                 $('#remove').show();
                 UpdateTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
@@ -304,7 +304,7 @@ tbody{
                 }
             },
             error: function (error) {
-                alert ("Unexpected wrong.");
+                alert ("Unexpected error.");
                 console.log("Error " + error);
                 $('#remove').show();
                 UpdateTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
@@ -334,7 +334,7 @@ tbody{
                 }
             },
             error: function (error) {
-                alert ("Unexpected wrong.");
+                alert ("Unexpected error.");
                 console.log("Error " + error);
                 $('#remove').show();
                 UpdateTimer123 = setTimeout(function(){ $('#remove').hide(); }, 10000);
