@@ -104,12 +104,22 @@
             <br /><br /><br />
             <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Min Lines of play'):</h3>
             <hr style="margin: 7px 0 12px 0;">
-            
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                 <div class="input-group" style="width:100%; display: inline-block;">
-                    <input name="minlines"   style=" "  value="{{ isset($conf->minlines) ? $conf->minlines : ''}}" type="text" class="form-control text-center " placeholder="Min Lines of play" aria-describedby="sizing-addon2">
+                    <select name="minlines" class="form-control imput-sm col-lg-12 " style='display: block;'>
+                        <?php $idxNum = 0; ?>
+                        @foreach ($minLine as $val)
+                            <option {{ $conf->minlines == $val ? 'selected="true"' : '' }} value="{{$val}}" >{{ $val }}</option>
+                            <?php $idxNum += 1; ?>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <!--<div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <input name="minlines" {{ array_key_exists($gameid, $minLine)  ? " readonly " : "" }}  style="{{  array_key_exists($gameid, $minLine)  && $minLine[$gameid] != $conf->minlines ? 'color: red' : ''  }}"  value="{{ array_key_exists($gameid, $minLine)  && $minLine[$gameid] != $conf->minlines ? $minLine[$gameid] :  $conf->minlines }}" type="text" class="form-control text-center " placeholder="Min Lines of play" aria-describedby="sizing-addon2">
                 </div> 
-            </div> 
+            </div> -->
         </div>    
     <div class="col-lg-4">
         <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations'):<br/>&nbsp;</h3>
@@ -130,7 +140,7 @@
                         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                             <label for="denomination_2_idx">@lang('messages.Denomination') #2:</label><br>
                             <div class="input-group" style="width:100%; display: inline-block;">
-                                <select id="denom2" name="denomination_2_idx" class="form-control imput-sm col-lg-12 denom" style='display: block;' data-id="2">
+                                <select id="denom2" name="denomination_2_idx" class="form-control imput-sm col-lg-12 denom" style='display: block; ' data-id="2">
                                     <?php $idxNum = 0; ?>
                                     @foreach ($denominations as $val)
                                         <option {{ $conf->denomination_2_idx == $val->idx ? 'selected="true"' : '' }} value="{{$val->idx}}" data_sort="{{$idxNum}}">{{ $val->valuemoney == 0 ? "None" : number_format($val->valuemoney/100, 2)}}</option>
