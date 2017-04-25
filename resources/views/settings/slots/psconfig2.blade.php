@@ -7,8 +7,8 @@
                 <label for="bonus_type">@lang('messages.Gamble Type'):</label><br>
                 <div class="input-group" style="width:100%; display: inline-block;">
                     <select name="bonus_type" class="form-control imput-sm  col-lg-12" '>
-                            <option {{ $conf->bonus_type == 0 ? 'selected="true"' : '' }} value="1" data_sort="1">Red/Black</option>
-                            <option {{ $conf->bonus_type == 1 ? 'selected="true"' : '' }} value="1" data_sort="1">5 Cards</option>
+                            <option {{ $conf->bonus_type == 0 ? 'selected="true"' : '' }} value="0" >Red/Black</option>
+                            <option {{ $conf->bonus_type == 1 ? 'selected="true"' : '' }} value="1" >5 Cards</option>
                     </select>    
                 </div> 
             </div> 
