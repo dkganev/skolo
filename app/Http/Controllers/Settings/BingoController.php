@@ -75,6 +75,9 @@ class BingoController extends Controller
                   "bonus_line_max_ball" => $request->bonus_line_max_ball,
                   "bonus_bingo_max_ball" => $request->bonus_bingo_max_ball,
                   "mybonus_max_ball" => $request->mybonus_max_ball,
+                  "draw_ball_time" => $request->draw_ball_time,
+                  "bingo_bet_time_val" => $request->bingo_bet_time_val,
+                
             ]);
 
         if($updated) {
