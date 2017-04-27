@@ -423,6 +423,10 @@ return array(
     'Playstation Info' => 'Playstation Info',
     'PS Accounting' => 'PS Accounting',
     'Search' => 'Search',
+    'About' => 'About',
+    'Bet Time' => 'Bet Time',
+    'Draw Ball Interval' => 'Draw Ball Interval',
+    
     
     
     

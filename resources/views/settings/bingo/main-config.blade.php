@@ -80,6 +80,15 @@
 		    	<label style="color: #474747">@lang('messages.URL'):</label><br>
 				<input name="url" value="{{ $bingo->url }}" type="text" class="form-control text-center" placeholder="URL">
 			</div>
+                        
+                        <div class="form-group">
+		    	<label style="color: #474747">@lang('messages.Bet Time'):</label><br>
+				<input name="bingo_bet_time_val" value="{{ $bingo->bingo_bet_time_val }}" type="text" class="form-control text-center" placeholder="URL">
+			</div>
+                        <div class="form-group">
+		    	<label style="color: #474747">@lang('messages.Draw Ball Interval'):</label><br>
+				<input name="draw_ball_time" value="{{ $bingo->draw_ball_time }}" type="text" class="form-control text-center" placeholder="URL">
+			</div>
 		</div><!-- End Col -->
 
 		<!-- VISIBLE -->

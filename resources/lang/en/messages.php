@@ -424,8 +424,8 @@ return array(
     'PS Accounting' => 'PS Accounting',
     'Search' => 'Search',
     'About' => 'About',
-    'B' => 'B',
-    'B' => 'B',
+    'Bet Time' => 'Bet Time',
+    'Draw Ball Interval' => 'Draw Ball Interval',
     'B' => 'B',
     
     
