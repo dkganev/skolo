@@ -426,6 +426,7 @@ return array(
     'About' => 'About',
     'Bet Time' => 'Bet Time',
     'Draw Ball Interval' => 'Draw Ball Interval',
+    'Sphere Vaprel IP' => 'Sphere Vaprel IP',
     
 
     'welcome' => 'Welcome to our application'

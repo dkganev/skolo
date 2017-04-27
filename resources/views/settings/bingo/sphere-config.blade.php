@@ -50,6 +50,14 @@
           <label>@lang('messages.Sphere Port'):</label><br>
           <input class="form-control text-center" type="text" name="sphere_port" value="{{ $sphere_config->sphere_port }}">
         </div>
+          
+        <div class="form-group" style="width:300px; display: inline-block;">
+          <label>@lang('messages.Sphere Vaprel IP'):</label><br>
+          <input class="form-control text-center" type="text" name="sphere_vaprel_config" value="{{ $sphere_vaprel_config->sphere_ip }}">
+        </div>
+  
+       
+
 
       </div><!-- End Col -->
 

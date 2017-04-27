@@ -9,7 +9,8 @@ use App\Http\Requests;
 use App\Models\Bingo\MainConfig;
 use App\Models\Bingo\MyBonus;
 use App\Models\Bingo\JackpotSteps;
-use App\Models\Bingo\SphereConfig;
+use App\Models\Bingo\SphereConfig; 
+use App\Models\Bingo\SphereVaprel; 
 use App\Models\Bingo\AccConfig;
 use App\Events\TerminalAdded;
 //use App\Models\Bingo\JackpotSteps;
@@ -238,14 +239,17 @@ class BingoController extends Controller
     {
         session(['last_page' => 'settings/bingo/sphereconfig']);
         session(['last_menu' => 'menuBingo']);
-        $sphere_config = SphereConfig::first();
-        return view('settings.bingo.sphere-config', compact('sphere_config'));
+        $sphere_config = SphereConfig::first(); 
+        $sphere_vaprel_config = SphereVaprel::first(); 
+        return view('settings.bingo.sphere-config', compact('sphere_config', 'sphere_vaprel_config'));
     }
 
     public function sphere_config_edit(Request $request)
     {
         event(new TerminalAdded(request()->ip(), request()->user()->name, NULL , 'Bingo Sphere Config Updated', 2));
-        SphereConfig::first()->update($request->except('_token'));
+        SphereConfig::first()->update($request->except(['_token', 'sphere_vaprel_config']));
+        DB::connection('pgsql3')->table('sphere_vaprel')->update(['sphere_ip' => $request->sphere_vaprel_config]);
+        
     }
 
     public function acc_config_index()
