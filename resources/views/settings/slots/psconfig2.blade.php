@@ -356,7 +356,7 @@
     @if ( isset($conf->ps_id))
         @if ( $conf->ps_id == 0 )
             <a  onclick="UpdateAllGame();"
-                style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
+                style="width:315px; margin: 0px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
                 class="btn btn-danger pull-right ps-config-submit"
             >
                 <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
