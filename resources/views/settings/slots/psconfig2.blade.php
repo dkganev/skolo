@@ -1,7 +1,7 @@
 <form id="registerSubmit">
     @foreach($results as $conf)
         <div class="col-lg-4">
-            <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Gamble'):<br/>&nbsp;</h3>
+            <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Gamble'):</h3>
             <hr style="margin: 7px 0 12px 0;">
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                 <label for="bonus_type">@lang('messages.Gamble Type'):</label><br>
@@ -24,8 +24,8 @@
                     <input name="gamblemaxattempt"   style=" "  value="{{ $conf->gamblemaxattempt ? $conf->gamblemaxattempt : ''}}" type="text" class="form-control text-center " placeholder="Max Attempt" aria-describedby="sizing-addon2">
                 </div> 
             </div> 
-            <br /><br /><br />
-            <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Bet Buttons multipliers')<br/>(@lang('messages.per line, credits') ):</h3>
+            <br />
+            <!--<h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Bet Buttons multipliers')<br/>(@lang('messages.per line, credits') ):</h3>
             <hr style="margin: 7px 0 12px 0;">
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                 <div class="input-group" style="width:100%; display: inline-block;">
@@ -99,10 +99,44 @@
                         <option {{ $conf->betsbuttonsidx == 64 ? 'selected="true"' : '' }} value="64" data_sort="1">10|50|100|300|500</option>
                     </select>    
                 </div> 
-            </div> 
+            </div> -->
             
-            <br /><br /><br />
-            <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Min Lines of play'):</h3>
+            <label for="bonus_type">@lang('messages.Bet Buttons multipliers')<br/>(@lang('messages.per line, credits') )</label><br />
+            <hr style="margin: 7px 0 12px 0;">
+            <label for="button1value">@lang('messages.Button') 1:</label>
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <input name="button1value" style=";"  value="{{$conf->button1value }}" type="text" class="form-control text-center buttonvalue" placeholder="Min Lines of play" aria-describedby="sizing-addon2">
+                </div> 
+            </div>
+            <label for="bonus_type">@lang('messages.Button') 2:</label><br>
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <input name="button2value" style=""  value="{{$conf->button2value }}" type="text" class="form-control text-center buttonvalue" placeholder="Min Lines of play" aria-describedby="sizing-addon2">
+                </div> 
+            </div>
+            <label for="bonus_type">@lang('messages.Button') 3:</label><br>
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <input name="button3value" style=""  value="{{$conf->button3value }}" type="text" class="form-control text-center buttonvalue" placeholder="Min Lines of play" aria-describedby="sizing-addon2">
+                </div> 
+            </div>
+            <label for="bonus_type">@lang('messages.Button') 4:</label><br>
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <input name="button4value" style=""  value="{{$conf->button4value }}" type="text" class="form-control text-center buttonvalue" placeholder="Min Lines of play" aria-describedby="sizing-addon2">
+                </div> 
+            </div>
+            <label for="bonus_type">@lang('messages.Button') 5:</label><br>
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <input name="button5value" style=""  value="{{$conf->button5value }}" type="text" class="form-control text-center buttonvalue" placeholder="Min Lines of play" aria-describedby="sizing-addon2">
+                </div> 
+            </div>
+            
+            <br />
+            <!--<h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Min Lines of play'):</h3>-->
+            <label for="bonus_type">@lang('messages.Min Lines of play'):</label><br>
             <hr style="margin: 7px 0 12px 0;">
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
                 <div class="input-group" style="width:100%; display: inline-block;">
@@ -115,14 +149,10 @@
                     </select>
                 </div>
             </div>
-            <!--<div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                <div class="input-group" style="width:100%; display: inline-block;">
-                    <input name="minlines" {{ array_key_exists($gameid, $minLine)  ? " readonly " : "" }}  style="{{  array_key_exists($gameid, $minLine)  && $minLine[$gameid] != $conf->minlines ? 'color: red' : ''  }}"  value="{{ array_key_exists($gameid, $minLine)  && $minLine[$gameid] != $conf->minlines ? $minLine[$gameid] :  $conf->minlines }}" type="text" class="form-control text-center " placeholder="Min Lines of play" aria-describedby="sizing-addon2">
-                </div> 
-            </div> -->
+            
         </div>    
     <div class="col-lg-4">
-        <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations'):<br/>&nbsp;</h3>
+        <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations'):</h3>
         <hr style="margin: 7px 0 12px 0;">
 
         <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
@@ -225,7 +255,7 @@
                                         
     </div>    
     <div class="col-lg-4">
-        <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations') RTP:<br/>&nbsp;</h3>
+        <h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Denominations') RTP:</h3>
         <hr style="margin: 7px 0 12px 0;">
 
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
@@ -351,7 +381,11 @@
 <script>
     var denomPrev = new Array("0", $('#denom1').val(), $('#denom2').val(), $('#denom3').val(), $('#denom4').val(), $('#denom5').val(), $('#denom6').val(), $('#denom7').val(), $('#denom8').val()); //$('#denom1').attr('data-prev', denom[1]);
     var denom = new Array("0", $('#denom1').find(":selected").attr("data_sort"), $('#denom2').find(":selected").attr("data_sort"), $('#denom3').find(":selected").attr("data_sort"), $('#denom4').find(":selected").attr("data_sort"), $('#denom5').find(":selected").attr("data_sort"), $('#denom6').find(":selected").attr("data_sort"), $('#denom7').find(":selected").attr("data_sort"), $('#denom8').find(":selected").attr("data_sort")); //$('#denom1').attr('data-prev', denom[1]);
-
+ 
+    $( ".buttonvalue" ).change(function() {
+        value = Math.abs(Math.round($(this).val()));
+        $(this).val(value);
+    });
     $('select.denom').on('change', function() {
         denomID =  parseInt($(this).attr("data-id"));
         denomNew = parseInt($(this).find(":selected").attr("data_sort"));
