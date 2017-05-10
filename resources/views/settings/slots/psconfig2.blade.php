@@ -101,7 +101,7 @@
                 </div> 
             </div> -->
             
-            <label for="bonus_type">@lang('messages.Bet Buttons multipliers')<br/>(@lang('messages.per line, credits') )</label><br />
+            <label for="bonus_type" style="margin: 15px 0px 0px 0px;">@lang('messages.Bet Buttons multipliers')<br/>(@lang('messages.per line, credits') )</label><br />
             <hr style="margin: 7px 0 12px 0;">
             <label for="button1value">@lang('messages.Button') 1:</label>
             <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
@@ -135,20 +135,7 @@
             </div>
             
             <br />
-            <!--<h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Min Lines of play'):</h3>-->
-            <label for="bonus_type">@lang('messages.Min Lines of play'):</label><br>
-            <hr style="margin: 7px 0 12px 0;">
-            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
-                <div class="input-group" style="width:100%; display: inline-block;">
-                    <select name="minlines" class="form-control imput-sm col-lg-12 " style='display: block;'>
-                        <?php $idxNum = 0; ?>
-                        @foreach ($minLine as $val)
-                            <option {{ $conf->minlines == $val ? 'selected="true"' : '' }} value="{{$val}}" >{{ $val }}</option>
-                            <?php $idxNum += 1; ?>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+            
             
         </div>    
     <div class="col-lg-4">
@@ -251,7 +238,20 @@
                                 </select>
                             </div>
                         </div>
-    
+            <!--<h3 style="margin: 0; padding: 0; text-align: center; color: #474747; font-family: sans-serif; font-size: 21px;">   @lang('messages.Min Lines of play'):</h3>-->
+            <label for="bonus_type">@lang('messages.Min Lines of play'):</label><br>
+            <!--<hr style="margin: 7px 0 12px 0;"> -->
+            <div class="form-group form-group-sm" style="width:100%; display: inline-block;">
+                <div class="input-group" style="width:100%; display: inline-block;">
+                    <select name="minlines" class="form-control imput-sm col-lg-12 " style='display: block;'>
+                        <?php $idxNum = 0; ?>
+                        @foreach ($minLine as $val)
+                            <option {{ $conf->minlines == $val ? 'selected="true"' : '' }} value="{{$val}}" >{{ $val }}</option>
+                            <?php $idxNum += 1; ?>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
                                         
     </div>    
     <div class="col-lg-4">
@@ -367,7 +367,7 @@
 
             @else
             <a  onclick="UpdateGame();"
-                style="width:315px; margin: 55px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
+                style="width:315px; margin: 10px 10px 10px 17px; position: relative; bottom: 0px; right: 5px;" 
                 class="btn btn-danger pull-right ps-config-submit"
             >
                 <span id="OK" class="glyphicon glyphicon-ok icon-result icon-success "  style="display: none;"></span>
