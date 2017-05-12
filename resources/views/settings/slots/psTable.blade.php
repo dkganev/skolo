@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (in_array( 0, $idArray)) 
+         
             <tr >
                 <td id="yelow-psid0" class="yelow-color" >0</td>
                 <td id="yelow-seatid0" class="yelow-color" >deff</td>
@@ -23,7 +23,8 @@
                     </button>
                 </td>
             </tr>
-        @endif
+            
+        
                                
         @foreach($server_ps as $val)
             @if (in_array($val->psid, $idArray))

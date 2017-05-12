@@ -116,13 +116,21 @@ class SlotsController extends Controller
                '); 
 
 
-
-            $results = DB::connection('pgsql'. $dbID)->select(' 
-               SELECT
-                *
-                FROM ' . $table . '
-                WHERE ps_id = '. $psid . '
-               ');
+            if ($psid == 0 ){
+                $results = DB::connection('pgsql'. $dbID)->select(' 
+                   SELECT
+                    *
+                    FROM psconf_defaults
+                    
+                   ');
+            } else {
+                $results = DB::connection('pgsql'. $dbID)->select(' 
+                   SELECT
+                    *
+                    FROM ' . $table . '
+                    WHERE ps_id = '. $psid . '
+                   ');
+            }    
             $denomRTPArray = array(
             '7'  => array(9645,9389),
             '10' => array(9601,9504,9414,9318,9230,9131,9028,8915,8814), 
@@ -194,7 +202,7 @@ class SlotsController extends Controller
             else if ($gameid == 63){$denomRTP = array(9581);}
             else{$denomRTP = array(9645,9389); }
             */
-            $testPage = view('settings.slots.psconfig2', ['results' => $results, 'denomRTP' => $denomRTP, 'denominations' => $denominations, 'minLine' => $minLine, 'gameid' => $gameid    ])->render();
+            $testPage = view('settings.slots.psconfig2', ['results' => $results, 'denomRTP' => $denomRTP, 'denominations' => $denominations, 'minLine' => $minLine, 'gameid' => $gameid, 'psid'  => $psid   ])->render();
         }else if ($table == 'acc_config'){
             $results = DB::connection('pgsql'. $dbID)->select(' 
                SELECT

@@ -276,10 +276,10 @@
     </div>    
     <input id="formUdate" name="_token" value="1234" type="hidden" data-table="psconf"    />
     <input id="gameUdate" name="gameid" value="1234" type="hidden" data-table="psconf"    />
-    <input name="ps_id" value="{{ $conf->ps_id }}" type="hidden" data-table="psconf"    />
+    <input name="ps_id" value="{{ $psid }}" type="hidden" data-table="psconf"    />
 @endforeach
-    @if ( isset($conf->ps_id))
-        @if ( $conf->ps_id == 0 )
+    @if ( isset($psid))
+        @if ( $psid == 0 )
             <a  onclick="UpdateAllGame();"
                 style="width:315px; margin: 0px 10px 10px 17px; position: relative; bottom: 0px; right: 5px" 
                 class="btn btn-danger pull-right ps-config-submit"
