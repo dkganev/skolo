@@ -253,22 +253,32 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
      * STATISTICS
      */
     Route::get('statistics', 'StatisticsController@index');
-
+    // Machine Statistics 
     Route::get('statistics/terminals', 'StatisticsController@terminals_statistics');
     Route::post('statistics/terminals', 'StatisticsController@terminals_statistics');
     Route::get('export2excelTerminalsStatistics', 'StatisticsController@export2excelTerminalsStatistics')->name('export2excelTerminalsStatistics');
  
+    //psAccounting Statistics 
     Route::get('statistics/psAccounting', 'Statistics\PsAccounting@psAccounting_index');
     Route::get('export2excelPsAccounting', 'Statistics\PsAccounting@export2excelPsAccounting')->name('export2excelPsAccounting');
  
+    // Game Statistics 
     Route::get('statistics/games', 'StatisticsController@games_statistics');
     Route::get('export2excelGamesStatistics', 'StatisticsController@export2excelGamesStatistics')->name('export2excelGamesStatistics');
-
+    // Statistics Bingo History
     Route::get('statistics/history', 'StatisticsController@history_statistics');
     Route::post('/ajax_statBingoHistory', 'StatisticsController@ajax_statBingoHistory');
     Route::post('/ajax_statBingoHistoryTickets', 'StatisticsController@ajax_statBingoHistoryTickets');
     Route::get('/export2excelBingo', 'StatisticsController@export2excelBingo')->name('export2excelBingo');
+    
+    // Statistics Blackjack History
+    Route::get('statistics/historyBlackjack', 'StatisticsController@historyBlackjack');
+    Route::post('/ajax_statBJHistory', 'StatisticsController@ajax_statBJHistory');
+    Route::post('/ajax_nextPrevBJHistory', 'StatisticsController@ajax_nextPrevBJHistory');
+    Route::post('/ajax_sortBJHistory', 'StatisticsController@ajax_sortBJHistory');
+    Route::get('/export2excelBJ', 'StatisticsController@export2excelBJ')->name('export2excelBJ');
 
+    // Statistics Roulette 1 History
     Route::get('statistics/historyRoulette', 'StatisticsController@historyRoulette_statistics');
     Route::post('/ajax_statRouletteHistory', 'StatisticsController@ajax_statRouletteHistory');
     Route::post('/ajax_nextPrevRouletteHistory', 'StatisticsController@ajax_nextPrevRouletteHistory');
@@ -276,20 +286,21 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     Route::get('/export2excelR', 'StatisticsController@export2excelR')->name('export2excelR');
     Route::get('statistics/winRTL1', 'StatisticsController@winRTL1');
     
-
+    // Statistics Roulette 2 History
     Route::get('statistics/historyRoulette2', 'StatisticsController@historyRoulette2_statistics');
     Route::post('/ajax_statRoulette2History', 'StatisticsController@ajax_statRoulette2History');
     Route::post('/ajax_nextPrevRoulette2History', 'StatisticsController@ajax_nextPrevRoulette2History');
     Route::get('/export2excelR2', 'StatisticsController@export2excelR2')->name('export2excelR2');
     Route::get('statistics/winRTL2', 'StatisticsController@winRTL2');
     
-
-    Route::get('statistics/historyBlackjack', 'StatisticsController@historyBlackjack');
-    Route::post('/ajax_statBJHistory', 'StatisticsController@ajax_statBJHistory');
-    Route::post('/ajax_nextPrevBJHistory', 'StatisticsController@ajax_nextPrevBJHistory');
-    Route::post('/ajax_sortBJHistory', 'StatisticsController@ajax_sortBJHistory');
-    Route::get('/export2excelBJ', 'StatisticsController@export2excelBJ')->name('export2excelBJ');
-
+    // Statistics Slots History  
+    Route::get('statistics/historySlots', 'Statistics\HistorySlots@historySlotsIndex');
+    Route::post('/ajax_SlotModalHistory', 'Statistics\HistorySlots@ajax_SlotModalHistory');
+    
+    
+    
+    
+    // Statistics User Logs
     Route::get('statistics/user-logs', 'Statistics\UserLogsController@index');
     Route::get('/export2excelAll', 'Statistics\UserLogsController@export2excelAll')->name('export2excelAll');
     Route::get('statistics/user-logs-system', 'Statistics\UserLogsController@system');

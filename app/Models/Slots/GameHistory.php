@@ -4,11 +4,11 @@ namespace App\Models\Slots;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AccConf extends Model
+class GameHistory extends Model
 {
 	protected $connection = 'pgsql107';
 
-	protected $table = 'acc_config';
+	protected $table = 'game_history';
 
 	public $timestamps = false;
 

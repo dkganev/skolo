@@ -17,7 +17,7 @@
               <li ><a id="historyRoulette" href="javascript:ajaxLoad('{{url('statistics/historyRoulette')}}')">@lang('messages.Roulette') 1</a></li>
               <li><a href="javascript:ajaxLoad('{{url('statistics/historyRoulette2')}}')">@lang('messages.Roulette') 2</a></li>
               <!--<li><a href="javascript:ajaxLoad('#')">Lucky Circle</a></li>-->
-              <!--<li><a href="javascript:ajaxLoad('#')">Slots </a></li>-->
+              <li><a href="javascript:ajaxLoad('{{url('statistics/historySlots')}}')">@lang('messages.Slots') </a></li>
             </ul>
         </div>
 </div>

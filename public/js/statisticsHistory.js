@@ -2039,6 +2039,394 @@ $(document).on("click","tr.rowsR2 td", function(e){
 });    
 
 //end Roulete scripts
+//start Slots scripts
+$(document).on("click","tr.rowsSlot td", function(e){
+    wTop = $(window).height() / 2;
+    wLeft = $(window).width() / 2;
+    $(".faSpinner").css('top', wTop );
+    $(".faSpinner").css("left", wLeft);
+    $(".faSpinner").show();
+    rowID = parseInt($(this).parent("tr").attr('data-psid'));
+    rowTS = $(this).parent("tr").attr('data-timestamp');
+    rowGS = $(this).parent("tr").attr('data-game_sequence');
+    rowBet = $(this).parent("tr").attr('data-bet');
+    rowWin = $(this).parent("tr").attr('data-paytable-win');     
+    SlotID = $('#pageReload').attr('data-slotId');
+    token = $('meta[name="csrf-token"]').attr('content');
+    //alert (rowTS);
+    //alert (rowGS);
+    //alert (rowID);
+    $.ajax({
+        type:'POST',
+        url:'ajax_SlotModalHistory',
+        dataType: "json",
+        data:{'rowID': rowID, 'rowTS': rowTS, 'rowGS': rowGS, 'SlotID': SlotID, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#SlotHead1').html(rowID); 
+                $('#SlotHead2').html(rowTS);
+                $('#totalBet').html(rowBet); 
+                $('#totalWin').html(rowWin); 
+                $('#Lines').html(data.gameHistoryRes.lines_of_play);
+                size = 15;
+                for (i = 1; i <= size; i++){
+                   $('#SlotWin' + i).css('background-position', data.game_id[i] * 122 + 'px 0'); 
+                }
+                $('#totalLinesPlayed').html(data.gameHistoryRes.lines_of_play);
+                //$('#totalLinesPlayed').html(data.gameHistoryRes.win);
+                $('#totalBetPerLine').html(data.gameHistoryRes.bet);
+                $('#totalDenomination').html(data.gameHistoryRes.denomination);
+                //$('#jackpotWon').html(data.jackpotWon);
+                //$('#next-prevR').attr("data-Id", rowIds);
+                //$('#next-prevR').attr("data-ts", rowTS);
+                
+                $(".faSpinner").hide();
+                
+            }
+            $(".faSpinner").hide();
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+             $(".faSpinner").hide();
+        }
+        
+    });
+    
+    
+    
+});    
+function changeRowsPerPageSlot(rowsPerPage) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = rowsPerPage; // $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    pageSlotID = $('#pageReload').attr('data-slotId');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    GameSeq = $('#GameSeq').val();
+    PSID = $('#PSID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+    FromGameJackpot = $('#FromGameJackpot').val();
+    ToGameJackpot = $('#ToGameJackpot').val();
+    FromGameGamble = $('#FromGameGamble').val();
+    ToGameGamble = $('#ToGameGamble').val();
+    FromGameGambleWin = $('#FromGameGambleWin').val();
+    ToGameGambleWin = $('#ToGameGambleWin').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&arr=" + pageRowsPerPage + 
+            "," + pageOrder + 
+            "," + pageDesc + 
+            "," + pageSlotID + 
+            "," + sortMenuOpen +
+            "&array=" + FromGameTs + 
+            "," + ToGameTs + 
+            "," + GameSeq + 
+            "," + PSID +
+            "," + FromGameBet +
+            "," + ToGameBet +
+            "," + FromGameWin +
+            "," + ToGameWin +
+            "," + FromGameJackpot +
+            "," + ToGameJackpot +
+            "," + FromGameGamble +
+            "," + ToGameGamble +
+            "," + FromGameGambleWin +
+            "," + ToGameGambleWin +
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageNumSlot(PageNum1) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = PageNum1 //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    pageSlotID = $('#pageReload').attr('data-slotId');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    GameSeq = $('#GameSeq').val();
+    PSID = $('#PSID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+    FromGameJackpot = $('#FromGameJackpot').val();
+    ToGameJackpot = $('#ToGameJackpot').val();
+    FromGameGamble = $('#FromGameGamble').val();
+    ToGameGamble = $('#ToGameGamble').val();
+    FromGameGambleWin = $('#FromGameGambleWin').val();
+    ToGameGambleWin = $('#ToGameGambleWin').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&arr=" + pageRowsPerPage + 
+            "," + pageOrder + 
+            "," + pageDesc + 
+            "," + pageSlotID + 
+            "," + sortMenuOpen +
+            "&array=" + FromGameTs + 
+            "," + ToGameTs + 
+            "," + GameSeq + 
+            "," + PSID +
+            "," + FromGameBet +
+            "," + ToGameBet +
+            "," + FromGameWin +
+            "," + ToGameWin +
+            "," + FromGameJackpot +
+            "," + ToGameJackpot +
+            "," + FromGameGamble +
+            "," + ToGameGamble +
+            "," + FromGameGambleWin +
+            "," + ToGameGambleWin +
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageSortSlot(pageOrderV, pageDescV) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = pageOrderV; //  $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  pageDescV; // $('#pageReload').attr('data-desc');
+    pageSlotID = $('#pageReload').attr('data-slotId');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    GameSeq = $('#GameSeq').val();
+    PSID = $('#PSID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+    FromGameJackpot = $('#FromGameJackpot').val();
+    ToGameJackpot = $('#ToGameJackpot').val();
+    FromGameGamble = $('#FromGameGamble').val();
+    ToGameGamble = $('#ToGameGamble').val();
+    FromGameGambleWin = $('#FromGameGambleWin').val();
+    ToGameGambleWin = $('#ToGameGambleWin').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&arr=" + pageRowsPerPage + 
+            "," + pageOrder + 
+            "," + pageDesc + 
+            "," + pageSlotID + 
+            "," + sortMenuOpen +
+            "&array=" + FromGameTs + 
+            "," + ToGameTs + 
+            "," + GameSeq + 
+            "," + PSID +
+            "," + FromGameBet +
+            "," + ToGameBet +
+            "," + FromGameWin +
+            "," + ToGameWin +
+            "," + FromGameJackpot +
+            "," + ToGameJackpot +
+            "," + FromGameGamble +
+            "," + ToGameGamble +
+            "," + FromGameGambleWin +
+            "," + ToGameGambleWin +
+            "')" 
+    window.location.href = pageHref; 
+}
+function changePageSortMenuSlot() {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    pageSlotID = $('#pageReload').attr('data-slotId');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    GameSeq = $('#GameSeq').val();
+    PSID = $('#PSID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+    FromGameJackpot = $('#FromGameJackpot').val();
+    ToGameJackpot = $('#ToGameJackpot').val();
+    FromGameGamble = $('#FromGameGamble').val();
+    ToGameGamble = $('#ToGameGamble').val();
+    FromGameGambleWin = $('#FromGameGambleWin').val();
+    ToGameGambleWin = $('#ToGameGambleWin').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&arr=" + pageRowsPerPage + 
+            "," + pageOrder + 
+            "," + pageDesc + 
+            "," + pageSlotID + 
+            "," + sortMenuOpen +
+            "&array=" + FromGameTs + 
+            "," + ToGameTs + 
+            "," + GameSeq + 
+            "," + PSID +
+            "," + FromGameBet +
+            "," + ToGameBet +
+            "," + FromGameWin +
+            "," + ToGameWin +
+            "," + FromGameJackpot +
+            "," + ToGameJackpot +
+            "," + FromGameGamble +
+            "," + ToGameGamble +
+            "," + FromGameGambleWin +
+            "," + ToGameGambleWin +
+            "')" 
+    window.location.href = pageHref; 
+}
+function cleanSortFunctionSlot() {
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+    $('#datetimepicker4').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setEndDate', output );
+    $('#datetimepicker5').datetimepicker('setStartDate', "");
+    $('#datetimepicker4I').val("");
+    $('#datetimepicker5I').val("");
+    $('#GameSeq').val("");
+    $('#PSID').val("");
+    $('#FromGameBet').val("");
+    $('#ToGameBet').val("");
+    $('#FromGameWin').val("");
+    $('#ToGameWin').val("");
+    $('#FromGameJackpot').val("");
+    $('#ToGameJackpot').val("");
+    $('#FromGameGamble').val("");
+    $('#ToGameGamble').val("");
+    $('#FromGameGambleWin').val("");
+    $('#ToGameGambleWin').val("");
+    changePageSortMenuSlot();
+    
+}
+function sortMenuSlot() {
+    if (sortMenuRV == 0) {
+        $('.RouletteSort').show();
+        sortMenuRV = 1;
+    }else{
+        $('.RouletteSort').hide();
+        sortMenuRV = 0;
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var output = d.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day + " 23:55";
+        $('#datetimepicker4').datetimepicker('setEndDate', output );
+        $('#datetimepicker5').datetimepicker('setEndDate', output );
+        $('#datetimepicker5').datetimepicker('setStartDate', "");
+        $('#datetimepicker4I').val("");
+        $('#datetimepicker5I').val("");
+        $('#GameSeq').val("");
+        $('#PSID').val("");
+        $('#FromGameBet').val("");
+        $('#ToGameBet').val("");
+        $('#FromGameWin').val("");
+        $('#ToGameWin').val("");
+        $('#FromGameJackpot').val("");
+        $('#ToGameJackpot').val("");
+        $('#FromGameGamble').val("");
+        $('#ToGameGamble').val("");
+        $('#FromGameGambleWin').val("");
+        $('#ToGameGambleWin').val("");
+
+        //changePageSortMenuR();
+        
+    }
+    
+}
+function changeSlotGame() {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    pageSlotID = $('#SlotGame').val(); //$('#pageReload').attr('data-slotId');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    GameSeq = $('#GameSeq').val();
+    PSID = $('#PSID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+    FromGameJackpot = $('#FromGameJackpot').val();
+    ToGameJackpot = $('#ToGameJackpot').val();
+    FromGameGamble = $('#FromGameGamble').val();
+    ToGameGamble = $('#ToGameGamble').val();
+    FromGameGambleWin = $('#FromGameGambleWin').val();
+    ToGameGambleWin = $('#ToGameGambleWin').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&arr=" + pageRowsPerPage + 
+            "," + pageOrder + 
+            "," + pageDesc + 
+            "," + pageSlotID + 
+            "," + sortMenuOpen +
+            "&array=" + FromGameTs + 
+            "," + ToGameTs + 
+            "," + GameSeq + 
+            "," + PSID +
+            "," + FromGameBet +
+            "," + ToGameBet +
+            "," + FromGameWin +
+            "," + ToGameWin +
+            "," + FromGameJackpot +
+            "," + ToGameJackpot +
+            "," + FromGameGamble +
+            "," + ToGameGamble +
+            "," + FromGameGambleWin +
+            "," + ToGameGambleWin +
+            "')" 
+    window.location.href = pageHref; 
+}
+function ExportToPNGSlot() {
+    html2canvas($('#SlotHistory_modal'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            document.body.appendChild(canvas);
+            $(".faSpinnerBJ").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            document.body.removeChild(canvas);
+            $(".faSpinnerBJ").hide();
+        }
+    });
+}
+
+
+function ExportToPNGSlotTable() {
+    html2canvas($('#SlotBody'), {
+        onrendered: function(canvas) {
+            theCanvas = canvas;
+            //document.body.appendChild(canvas);
+            //$(".faSpinner").show();
+            // Convert and download as image 
+            Canvas2Image.saveAsPNG(canvas); 
+            //document.body.append(canvas);
+            // Clean up 
+            //document.body.removeChild(canvas);
+            //$(".faSpinner").hide();
+        }
+    });
+}
+//end Slots scripts
 //start Statistics scripts 
 function ExportToPNGGameTable() {
     html2canvas($('#panelGameContend'), {
