@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body" >
                 <div style="display: table-cell;vertical-align: top; padding-right: 20px; width: 400px">
-                    <div>
+                    <!--<div>
                         @lang('messages.Wins'):
                         <b id='Wins'></b>
                     </div>
@@ -33,15 +33,15 @@
                         
                         <b id='totalBet3'></b>
                     </div>
-                    <hr />
+                    <hr /> -->
                     <div>
                         @lang('messages.Lines Played'):
                         <b id='totalLinesPlayed'></b>
                     </div>
-                    <div>
+                    <!--<div>
                         @lang('messages.Bet per Line'):
                         <b id='totalBetPerLine'></b>
-                    </div>
+                    </div>-->
                     <div>
                         @lang('messages.Denomination'):
                         <b id='totalDenomination'></b>

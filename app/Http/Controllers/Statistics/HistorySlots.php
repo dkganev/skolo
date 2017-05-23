@@ -12,6 +12,7 @@ use App\Models\Accounting\Games;
 use App\Models\Slots\BetWinHistory; 
 use App\Models\Slots\GameHistory; 
 use App\Models\Slots\Historylog; 
+use App\Models\Slots\Cachelog; 
 //use Smiarowski\Postgres\Model\Traits\PostgresArray;
 use Excel;
 
@@ -151,21 +152,131 @@ class HistorySlots extends Controller
         $parse = array();
         $offset = 15;
         //$game_id = unpack('h30', stream_get_contents($historylogRes->data, -1, $offset));
-        if (isset($historylogRes->data)){
-            $game_id = unpack('C15', stream_get_contents($historylogRes->data, -1, $offset));
-            $parse['message_id'] = $historylogRes->message_id;  
-            //$parse['game_id'] = $game_id[1];
+        $GamePositions = array(
+            7  => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            10 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            11 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            12 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            13 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            14 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            15 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            16 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            17 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            18 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            19 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            20 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            21 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            22 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+            24 => [0 => 6, 1 => 4,  2=> 0, 3 => 8, 4=> 3, 5 => 2, 6 => 9, 7 => 1, 8 => 5, 9 => 10, 10 => 7],
+        );    
+        $GameProperty = array(
+            7  => ['width' => 122, 'numPerRow' => 15],
+            10 => ['width' => 122, 'numPerRow' => 15],
+            11 => ['width' => 122, 'numPerRow' => 15],
+            12 => ['width' => 122, 'numPerRow' => 15],
+            13 => ['width' => 163, 'numPerRow' => 15],
+            14 => ['width' => 122, 'numPerRow' => 15],
+            15 => ['width' => 122, 'numPerRow' => 15],
+            16 => ['width' => 122, 'numPerRow' => 15],
+            17 => ['width' => 122, 'numPerRow' => 15],
+            18 => ['width' => 208, 'numPerRow' =>  9],
+            19 => ['width' => 122, 'numPerRow' => 15],
+            20 => ['width' => 208, 'numPerRow' =>  9],
+            21 => ['width' => 120, 'numPerRow' => 15],
+            22 => ['width' => 122, 'numPerRow' => 15],
+            24 => ['width' => 122, 'numPerRow' => 15],
             
+        );
+        if (isset($historylogRes->data)){
+            $game_id2 = unpack('C15', stream_get_contents($historylogRes->data, -1, $offset));
+            $parse['message_id'] = $historylogRes->message_id;
+            $parse['GameProperty'] = $GameProperty[$SlotID];
+            if ($GameProperty[$SlotID]['numPerRow'] == 9 ){
+                $freeArray = array(3,6,9);
+                $freeArray2 = array(5,10,15);
+                
+                $i = 1;
+                foreach ($game_id2 as $key => $val){
+                    if (in_array($key, $freeArray)){
+                        $game_id3[$i] = $val;
+                        $game_id3[$i + 1] = 100;
+                        $game_id3[$i + 2] = 100; 
+                        $i += 3;
+                    }else if ($key >= 10) {
+                     
+                    } else {
+                        $game_id3[$i] = $val;
+                        $i += 1;        
+                    }
+                          
+                }
+                foreach ($game_id3 as $key => $val){
+                    if ($val != 100 ){
+                        $game_id[$key] = $GamePositions[$SlotID][$val];
+                    } else {
+                        $game_id[$key]= 100;
+                    }
+                }
+                
+            } else {
+                
+                foreach ($game_id2 as $key => $val){
+                    $game_id[$key] = $GamePositions[$SlotID][$val];
+                }
+                
+                //$game_id = $game_id2;
+            }
         } else {
-            $game_id = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            $parse['message_id'] = 0;  
+            $historylog = new Cachelog();
+            $historylog->setConnection('pgsql'. $dbID);
+            $wherQuery = array(['psid', '=', $rowID ],['game_sequence', '=', $rowGS ], ['event_type', '=', 128 ] );
+            $historylogRes = $historylog->where($wherQuery)->first();
+            $game_id2 = unpack('C15', stream_get_contents($historylogRes->data, -1, $offset));
+            $parse['message_id'] = $historylogRes->message_id;
+            $parse['GameProperty'] = $GameProperty[$SlotID];
+            //$game_id = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            //$parse['message_id'] = 0;  
             //$parse['game_id'] = 0;
+            if ($GameProperty[$SlotID]['numPerRow'] == 9 ){
+                $freeArray = array(3,6,9);
+                $freeArray2 = array(5,10,15);
+                
+                $i = 1;
+                foreach ($game_id2 as $key => $val){
+                    if (in_array($key, $freeArray)){
+                        $game_id3[$i] = $val;
+                        $game_id3[$i + 1] = 100;
+                        $game_id3[$i + 2] = 100; 
+                        $i += 3;
+                    }else if ($key >= 10) {
+                     
+                    } else {
+                        $game_id3[$i] = $val;
+                        $i += 1;        
+                    }
+                          
+                }
+                foreach ($game_id3 as $key => $val){
+                    if ($val != 100 ){
+                        $game_id[$key] = $GamePositions[$SlotID][$val];
+                    } else {
+                        $game_id[$key]= 100;
+                    }
+                }
+                
+            } else {
+                foreach ($game_id2 as $key => $val){
+                    $game_id[$key] = $GamePositions[$SlotID][$val];
+                }
+                //$game_id = $game_id2;
+            }
         }
         $dataArray1 = array( 
             "success" => "success",
             "gameHistoryRes" => $gameHistoryRes,
             "historylogRes" => $parse,
             "game_id" => $game_id,
+            //"game_id2" => $game_id2,
             //"gameIDArrow" => $historys->rlt_seq,
             //"winNumber" => $historys->win_num,
             //"totalBet" =>  number_format($historys->bet / 100, 2),
