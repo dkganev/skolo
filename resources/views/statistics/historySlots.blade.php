@@ -22,13 +22,40 @@
             </ul>
         </div>
     </div>
+    <div class=""> 
+        <div class="" style="">
+            
+            <ul class="breadcrumb " >  
+                <li class="dropdown"  >
+                    <a href="" data-toggle="dropdown">
+                        <strong class="nav-secondary">@lang('messages.Slot') :</strong>
+                        <strong class="nav-secondary">{{ $page['gamesDescription'] }}</strong>
+                        <span class="caret"></span> 
+                    </a>
+
+                    <!-- Secondary Navigation -->
+                    <ul class="dropdown-menu" role="menu" style=" background-color: #333;">
+                        @foreach($games as $val)
+                            <li >
+                              <a href="#"  onclick="changeSlotGame2({{$val->gameid}})">
+
+                                  {{$val->description}}
+                              </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+            </ul>    
+        </div>
+    </div>
+    
     <div class="row" >
         <div class="col-md-12" style="">
 
             <div class="panel panel-default" id="SlotBody">
                 <div class="panel-heading">
                     <div>
-                        <div class=" form-group-sm col-md-3" style="padding-left: 0%;  display: block;">
+                        <!--<div class=" form-group-sm col-md-3" style="padding-left: 0%;  display: block;">
                             <div class="">
                                 <select id = "SlotGame" name="bonus_type" class="form-control imput-sm " onchange="changeSlotGame()">
                                     @foreach($games as $val)
@@ -40,12 +67,12 @@
                             </div>
                             
                         </div> 
-                         
+                        --> 
                                        
                                     
                         
                         <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 20%;">
-                            @lang('messages.Slots')
+                            @lang('messages.Slot') - {{ $page['gamesDescription'] }}
                         </h2>
                         <a class="btn btn-warning  pull-right" onclick="export2excelSlot();">
                             <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 

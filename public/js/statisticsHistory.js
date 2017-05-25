@@ -2403,6 +2403,54 @@ function changeSlotGame() {
             "')" 
     window.location.href = pageHref; 
 }
+function changeSlotGame2(SlotID) {
+    pageHref = $('#pageReload').attr('data-URL');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = 1; //$('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc = $('#pageReload').attr('data-desc');
+    pageSlotID = SlotID; //$('#SlotGame').val(); //$('#pageReload').attr('data-slotId');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    GameSeq = $('#GameSeq').val();
+    PSID = $('#PSID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+    FromGameJackpot = $('#FromGameJackpot').val();
+    ToGameJackpot = $('#ToGameJackpot').val();
+    FromGameGamble = $('#FromGameGamble').val();
+    ToGameGamble = $('#ToGameGamble').val();
+    FromGameGambleWin = $('#FromGameGambleWin').val();
+    ToGameGambleWin = $('#ToGameGambleWin').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&arr=" + pageRowsPerPage + 
+            "," + pageOrder + 
+            "," + pageDesc + 
+            "," + pageSlotID + 
+            "," + sortMenuOpen +
+            "&array=" + FromGameTs + 
+            "," + ToGameTs + 
+            "," + GameSeq + 
+            "," + PSID +
+            "," + FromGameBet +
+            "," + ToGameBet +
+            "," + FromGameWin +
+            "," + ToGameWin +
+            "," + FromGameJackpot +
+            "," + ToGameJackpot +
+            "," + FromGameGamble +
+            "," + ToGameGamble +
+            "," + FromGameGambleWin +
+            "," + ToGameGambleWin +
+            "')" 
+    window.location.href = pageHref; 
+}
 function ExportToPNGSlot() {
     html2canvas($('#SlotHistory_modal'), {
         onrendered: function(canvas) {
