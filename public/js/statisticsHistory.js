@@ -2049,13 +2049,8 @@ $(document).on("click","tr.rowsSlot td", function(e){
     rowID = parseInt($(this).parent("tr").attr('data-psid'));
     rowTS = $(this).parent("tr").attr('data-timestamp');
     rowGS = $(this).parent("tr").attr('data-game_sequence');
-    rowBet = $(this).parent("tr").attr('data-bet');
-    rowWin = $(this).parent("tr").attr('data-paytable-win');     
     SlotID = $('#pageReload').attr('data-slotId');
     token = $('meta[name="csrf-token"]').attr('content');
-    //alert (rowTS);
-    //alert (rowGS);
-    //alert (rowID);
     $.ajax({
         type:'POST',
         url:'ajax_SlotModalHistory',
@@ -2065,8 +2060,8 @@ $(document).on("click","tr.rowsSlot td", function(e){
             if (data.success == "success"){
                 $('#SlotHead1').html(rowID); 
                 $('#SlotHead2').html(rowTS);
-                $('#totalBet').html(rowBet); 
-                $('#totalWin').html(rowWin); 
+                $('#totalBet').html(data.gameHistoryRes.bet); 
+                $('#totalWin').html(data.gameHistoryRes.win); 
                 $('#Lines').html(data.gameHistoryRes.lines_of_play);
                 if (SlotID != 40 && SlotID != 41 && SlotID != 42 && SlotID != 53){
                     size = 20;
@@ -2079,8 +2074,6 @@ $(document).on("click","tr.rowsSlot td", function(e){
                        $('#SlotWin' + i).css('background-image', 'url("images/Slots/'+ SlotID +'_115.png")');
                        $('#SlotWin' + i).css('width', data.historylogRes.GameProperty.width  + 'px');
                        $('#SlotWin' + i).css('background-position', -1 * data.historylogRes.GameProperty.width * data.game_id[i] + 'px 0');
-                       //$('#SlotWin' + i).css('width', data.GameProperty.width  + 'px');
-                       //console.log(data.game_id[i]);
                     }
                 } else {
                     size = 20;
@@ -2093,18 +2086,19 @@ $(document).on("click","tr.rowsSlot td", function(e){
                        $('#SlotWin' + i).css('background-image', 'url("images/Slots/'+ SlotID +'_115.png")');
                        $('#SlotWin' + i).css('width', data.historylogRes.GameProperty.width  + 'px');
                        $('#SlotWin' + i).css('background-position', -1 * data.historylogRes.GameProperty.width * data.game_id[i].x + 'px ' + -115 * data.game_id[i].y + 'px ' );
-                       //$('#SlotWin' + i).css('background-position', -1 * data.historylogRes.GameProperty.width * data.game_id[i].x + 'px 0');
-                       //$('#SlotWin' + i).css('width', data.GameProperty.width  + 'px');
                        //console.log(data.game_id[i]);
                     }
                 }
                 $('#totalLinesPlayed').html(data.gameHistoryRes.lines_of_play);
-                //$('#totalLinesPlayed').html(data.gameHistoryRes.win);
                 $('#totalBetPerLine').html(data.gameHistoryRes.bet);
                 $('#totalDenomination').html(data.gameHistoryRes.denomination);
                 $('#gameIDArrow').html(data.gameHistoryRes.game_sequence);
-                //$('#next-prevSlot').attr("data-Id", rowIds);
-                $('#next-prev').attr("data-ts", rowTS);
+                $('#next-prev').attr("data-ts", data.gameHistoryRes.timestamp);
+                $('#next-prev').attr("data-PSID", data.gameHistoryRes.ps_id);
+                $('#next-prev').attr("data-next", data.dataNext);
+                $('#next-prev').attr("data-prev", data.dataPrev);
+                $('#next-prev').attr("data-nextTs", data.dataNextTs);
+                $('#next-prev').attr("data-prevTs", data.dataPrevTs);
                 if (data.nextArrow == 0){
                     $('#nextArrow').hide();
                 } else {
@@ -2494,6 +2488,96 @@ function ExportToPNGSlot() {
         }
     });
 }
+function NextPrevModalWindowSlot(NextPrev) {
+    wTop = $(window).height() / 2;
+    wLeft = $(window).width() / 2;
+    $(".faSpinner").css('top', wTop );
+    $(".faSpinner").css("left", wLeft);
+    $(".faSpinner").show();
+    rowID = $('#next-prev').attr("data-PSID");
+    if (NextPrev == "Prev"){
+        rowGS = $('#next-prev').attr('data-prev');
+        rowTS = $('#next-prev').attr('data-prevTs');
+    }else{
+        rowGS = $('#next-prev').attr('data-next');
+        rowTS = $('#next-prev').attr('data-nextTs');
+    }
+    SlotID = $('#pageReload').attr('data-slotId');
+    token = $('meta[name="csrf-token"]').attr('content');
+    
+    
+   $.ajax({
+        type:'POST',
+        url:'ajax_SlotModalHistory',
+        dataType: "json",
+        data:{'rowID': rowID, 'rowTS': rowTS, 'rowGS': rowGS, 'SlotID': SlotID, _token: token},
+        success:function(data){
+            if (data.success == "success"){
+                $('#SlotHead1').html(rowID); 
+                $('#SlotHead2').html(rowTS);
+                $('#totalBet').html(data.gameHistoryRes.bet); 
+                $('#totalWin').html(data.gameHistoryRes.win); 
+                $('#Lines').html(data.gameHistoryRes.lines_of_play);
+                if (SlotID != 40 && SlotID != 41 && SlotID != 42 && SlotID != 53){
+                    size = 20;
+                    for (i = 1; i <= size; i++){
+                       if (data.game_id[i] == 100 ){
+                           $('#SlotWin' + i).hide();
+                       } else {
+                           $('#SlotWin' + i).show();
+                       }
+                       $('#SlotWin' + i).css('background-image', 'url("images/Slots/'+ SlotID +'_115.png")');
+                       $('#SlotWin' + i).css('width', data.historylogRes.GameProperty.width  + 'px');
+                       $('#SlotWin' + i).css('background-position', -1 * data.historylogRes.GameProperty.width * data.game_id[i] + 'px 0');
+                    }
+                } else {
+                    size = 20;
+                    for (i = 1; i <= size; i++){
+                       if (data.game_id[i] == 100 ){
+                           $('#SlotWin' + i).hide();
+                       } else {
+                           $('#SlotWin' + i).show();
+                       }
+                       $('#SlotWin' + i).css('background-image', 'url("images/Slots/'+ SlotID +'_115.png")');
+                       $('#SlotWin' + i).css('width', data.historylogRes.GameProperty.width  + 'px');
+                       $('#SlotWin' + i).css('background-position', -1 * data.historylogRes.GameProperty.width * data.game_id[i].x + 'px ' + -115 * data.game_id[i].y + 'px ' );
+                    }
+                }
+                $('#totalLinesPlayed').html(data.gameHistoryRes.lines_of_play);
+                $('#totalBetPerLine').html(data.gameHistoryRes.bet);
+                $('#totalDenomination').html(data.gameHistoryRes.denomination);
+                $('#gameIDArrow').html(data.gameHistoryRes.game_sequence);
+                $('#next-prev').attr("data-ts", data.gameHistoryRes.timestamp);
+                $('#next-prev').attr("data-PSID", data.gameHistoryRes.ps_id);
+                $('#next-prev').attr("data-next", data.dataNext);
+                $('#next-prev').attr("data-prev", data.dataPrev);
+                $('#next-prev').attr("data-nextTs", data.dataNextTs);
+                $('#next-prev').attr("data-prevTs", data.dataPrevTs);
+                if (data.nextArrow == 0){
+                    $('#nextArrow').hide();
+                } else {
+                    $('#nextArrow').show();
+                }
+                if (data.prevArrow == 0){
+                    $('#prevArrow').hide();
+                } else {
+                    $('#prevArrow').show();
+                }
+                
+                
+                $(".faSpinner").hide();
+                
+            }
+            $(".faSpinner").hide();
+        },
+        error: function (error) {
+            alert ("Unexpected wrong.");
+             $(".faSpinner").hide();
+        }
+        
+    });
+    
+}    
 
 
 function ExportToPNGSlotTable() {

@@ -96,9 +96,9 @@
                 <br />
                 <div style='text-align: center;'>
                     <input id='next-prev' type="hidden" data-table='' data-ts='' >
-                    <a style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;<i id='prevArrow' class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='changeModalWindow("Prev");'></i>&nbsp;&nbsp;</a>
+                    <a style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;<i id='prevArrow' class="fa fa-angle-left" style="color: #333; font-size: 20px;" onclick='NextPrevModalWindowSlot("Prev");'></i>&nbsp;&nbsp;</a>
                     @lang('messages.Game'): <span id="gameIDArrow">&nbsp;&nbsp;&nbsp;</span>
-                    <a style="text-decoration: none;">&nbsp;&nbsp;<i id='nextArrow' class="fa fa-angle-right" style="color: #333; font-size: 20px;" onclick='changeModalWindow("Next");'></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a style="text-decoration: none;">&nbsp;&nbsp;<i id='nextArrow' class="fa fa-angle-right" style="color: #333; font-size: 20px;" onclick='NextPrevModalWindowSlot("Next");'></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </div>
             </div> 
             

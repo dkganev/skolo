@@ -137,23 +137,26 @@ class HistorySlots extends Controller
     
     public function ajax_SlotModalHistory(Request $request){
         $rowID = $request['rowID'];
-        $rowTS = $request['rowTS'];
+        $rowTS = date("Y-m-d H:", strtotime($request['rowTS'])); // $request['rowTS'];
+        //$rowTS = $request['rowTS'];
+        //var_dump($rowTS);
         $rowGS = $request['rowGS'];
         $SlotID = $request['SlotID'];
         $dbID = 100 + $SlotID;
         $gameHistory = new GameHistory();
         $gameHistory->setConnection('pgsql'. $dbID);
         //$wherQuery = array(['ps_id', '=', $rowID ],['game_sequence', '=', $rowGS ], ['timestamp', '=', $rowTS]);
-        $wherQuery = array(['ps_id', '=', $rowID ],['game_sequence', '=', $rowGS ]);
+        $wherQuery = array(['ps_id', '=', $rowID ],['game_sequence', '=', $rowGS ],['timestamp', '>=', $rowTS ]);
         $gameHistoryRes = $gameHistory->where($wherQuery)->first();
-        
+        $rowTS2 =  date("Y-m-d H:", strtotime($gameHistoryRes->timestamp)); //$gameHistoryRes->timestamp 
         
         $historylog = new Historylog();
         $historylog->setConnection('pgsql'. $dbID);
         //$game_id = unpack('S', stream_get_contents($blob, 2, $this->offset)); //Historylog
         //$wherQuery = array(['psid', '=', $rowID ],['game_sequence', '=', $rowGS ], ['event_type', '=', 1 ] );
-        $wherQuery = array(['psid', '=', $rowID ],['game_sequence', '=', $rowGS ], ['event_type', '=', 128 ], ['timestamp', '>', $rowTS ] );
-        $historylogRes = $historylog->where($wherQuery)->orderBy('timestamp', 'desc')->first();
+        $wherQuery = array(['psid', '=', $rowID ],['game_sequence', '=', $rowGS ], ['event_type', '=', 128 ], ['timestamp', '>=', $rowTS ] );
+        //var_dump($gameHistoryRes->timestamp);
+        $historylogRes = $historylog->where($wherQuery)->orderBy('timestamp', 'asc')->first();
         $parse = array();
         $offset = 15;
         //$game_id = unpack('h30', stream_get_contents($historylogRes->data, -1, $offset));
@@ -320,12 +323,23 @@ class HistorySlots extends Controller
         //$gameHistoryRes2 = $gameHistory->where($wherQuery2)->orderBy('timestamp', 'asc')->first();
         if (!$gameHistory->where($wherQuery2)->count()){
             $prevArrow = 0;
+            $dataPrev = 0;
+            $dataPrevTs = 0;
+        } else {
+            $dataPrev = $gameHistory->where($wherQuery2)->orderBy('timestamp', 'desc')->first()->game_sequence ;
+            $dataPrevTs = $gameHistory->where($wherQuery2)->orderBy('timestamp', 'desc')->first()->timestamp ;
         }
         
         $wherQuery2 = array(['ps_id', '=', $rowID ],['timestamp', '>', $gameHistoryRes['timestamp'] ]);
         //$gameHistoryRes2 = $gameHistory->where($wherQuery2)->orderBy('timestamp', 'desc')->first();
         if (!$gameHistory->where($wherQuery2)->count()){
             $nextArrow = 0;
+            $dataNext = 0;
+            $dataNextTs = 0;
+        }else {
+            $dataNext = $gameHistory->where($wherQuery2)->first()->game_sequence ;
+            $dataNextTs = $gameHistory->where($wherQuery2)->first()->timestamp ;
+            //$dataNext2 = $gameHistory->where($wherQuery2)->first();
         }
         
         
@@ -336,6 +350,11 @@ class HistorySlots extends Controller
             "game_id" => $game_id,
             "nextArrow" => $nextArrow,
             "prevArrow" =>  $prevArrow,
+            "dataNext" =>  $dataNext,
+            "dataPrev" =>  $dataPrev,
+            //"dataNext2" =>  $dataNext2,
+            "dataNextTs" =>  $dataNextTs,
+            "dataPrevTs" =>  $dataPrevTs,
         );
         
         return \Response::json($dataArray1, 200, [], JSON_PRETTY_PRINT);  
