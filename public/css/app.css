@@ -223,8 +223,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9aacb6', end
 
 
 }
+
 .breadcrumb a {
-  color:white !important;
+  color: white !important;
+  font-family: arial;
+  font-size: 13pt;
+}
+.breadcrumb .dropdown .dropdown-menu a{
+  color: #333 !important;
   font-family: arial;
   font-size: 13pt;
 }

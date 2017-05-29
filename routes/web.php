@@ -296,7 +296,7 @@ Route::group(['middleware' => ['web', 'resetLastActive' , 'auth']], function () 
     // Statistics Slots History  
     Route::get('statistics/historySlots', 'Statistics\HistorySlots@historySlotsIndex');
     Route::post('/ajax_SlotModalHistory', 'Statistics\HistorySlots@ajax_SlotModalHistory');
-    
+    Route::get('/export2excelSlots', 'Statistics\HistorySlots@export2excelSlots')->name('export2excelSlots');
     
     
     

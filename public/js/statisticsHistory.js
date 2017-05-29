@@ -2068,26 +2068,41 @@ $(document).on("click","tr.rowsSlot td", function(e){
                 $('#totalBet').html(rowBet); 
                 $('#totalWin').html(rowWin); 
                 $('#Lines').html(data.gameHistoryRes.lines_of_play);
-                size = 15;
-                for (i = 1; i <= size; i++){
-                   if (data.game_id[i] == 100){
-                       $('#SlotWin' + i).hide();
-                   } else {
-                       $('#SlotWin' + i).show();
-                   }
-                   $('#SlotWin' + i).css('background-image', 'url("images/Slots/'+ SlotID +'_115.png")');
-                   $('#SlotWin' + i).css('width', data.historylogRes.GameProperty.width  + 'px');
-                   $('#SlotWin' + i).css('background-position', -1 * data.historylogRes.GameProperty.width * data.game_id[i] + 'px 0');
-                   //$('#SlotWin' + i).css('width', data.GameProperty.width  + 'px');
-                   console.log(data.game_id[i]);
+                if (SlotID != 40){
+                    size = 20;
+                    for (i = 1; i <= size; i++){
+                       if (data.game_id[i] == 100 ){
+                           $('#SlotWin' + i).hide();
+                       } else {
+                           $('#SlotWin' + i).show();
+                       }
+                       $('#SlotWin' + i).css('background-image', 'url("images/Slots/'+ SlotID +'_115.png")');
+                       $('#SlotWin' + i).css('width', data.historylogRes.GameProperty.width  + 'px');
+                       $('#SlotWin' + i).css('background-position', -1 * data.historylogRes.GameProperty.width * data.game_id[i] + 'px 0');
+                       //$('#SlotWin' + i).css('width', data.GameProperty.width  + 'px');
+                       //console.log(data.game_id[i]);
+                    }
+                } else {
+                    
                 }
                 $('#totalLinesPlayed').html(data.gameHistoryRes.lines_of_play);
                 //$('#totalLinesPlayed').html(data.gameHistoryRes.win);
                 $('#totalBetPerLine').html(data.gameHistoryRes.bet);
                 $('#totalDenomination').html(data.gameHistoryRes.denomination);
-                //$('#jackpotWon').html(data.jackpotWon);
-                //$('#next-prevR').attr("data-Id", rowIds);
-                //$('#next-prevR').attr("data-ts", rowTS);
+                $('#gameIDArrow').html(data.gameHistoryRes.game_sequence);
+                //$('#next-prevSlot').attr("data-Id", rowIds);
+                $('#next-prev').attr("data-ts", rowTS);
+                if (data.nextArrow == 0){
+                    $('#nextArrow').hide();
+                } else {
+                    $('#nextArrow').show();
+                }
+                if (data.prevArrow == 0){
+                    $('#prevArrow').hide();
+                } else {
+                    $('#prevArrow').show();
+                }
+                
                 
                 $(".faSpinner").hide();
                 
@@ -2483,6 +2498,56 @@ function ExportToPNGSlotTable() {
         }
     });
 }
+function export2excelSlots() {
+    pageHref = $('#pageReload').attr('data-excel-url');
+    pageRowsPerPage = $('#pageReload').attr('data-rowsPerPage');
+    pageNum = $('#pageReload').attr('data-page');
+    pageOrder = $('#pageReload').attr('data-OrderQuery');
+    pageDesc =  $('#pageReload').attr('data-desc');
+    pageSlotID = $('#pageReload').attr('data-slotId');
+    
+    sortMenuOpen = sortMenuRV;
+    FromGameTs = $('#datetimepicker4I').val();
+    ToGameTs = $('#datetimepicker5I').val();
+    GameSeq = $('#GameSeq').val();
+    PSID = $('#PSID').val();
+    FromGameBet = $('#FromGameBet').val();
+    ToGameBet = $('#ToGameBet').val();
+    FromGameWin = $('#FromGameWin').val();
+    ToGameWin = $('#ToGameWin').val();
+    FromGameJackpot = $('#FromGameJackpot').val();
+    ToGameJackpot = $('#ToGameJackpot').val();
+    FromGameGamble = $('#FromGameGamble').val();
+    ToGameGamble = $('#ToGameGamble').val();
+    FromGameGambleWin = $('#FromGameGambleWin').val();
+    ToGameGambleWin = $('#ToGameGambleWin').val();
+    
+    pageHref = pageHref + 
+            "?page=" + pageNum + 
+            "&arr=" + pageRowsPerPage + 
+            "," + pageOrder + 
+            "," + pageDesc + 
+            "," + pageSlotID + 
+            "," + sortMenuOpen +
+            "&array=" + FromGameTs + 
+            "," + ToGameTs + 
+            "," + GameSeq + 
+            "," + PSID +
+            "," + FromGameBet +
+            "," + ToGameBet +
+            "," + FromGameWin +
+            "," + ToGameWin +
+            "," + FromGameJackpot +
+            "," + ToGameJackpot +
+            "," + FromGameGamble +
+            "," + ToGameGamble +
+            "," + FromGameGambleWin +
+            "," + ToGameGambleWin ; 
+    
+    
+    window.location.href = pageHref; 
+}
+
 //end Slots scripts
 //start Statistics scripts 
 function ExportToPNGGameTable() {

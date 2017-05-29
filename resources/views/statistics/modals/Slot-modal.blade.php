@@ -75,6 +75,12 @@
                     <div id="SlotWin13" style="background-image: url('images/Slots/10_115.png'); background-position: 487px 0; width: 122px;  height: 115px; position: relative; display: inline-block;"></div>
                     <div id="SlotWin14" style="background-image: url('images/Slots/10_115.png'); background-position: 487px 0; width: 122px;  height: 115px; position: relative; display: inline-block;"></div>
                     <div id="SlotWin15" style="background-image: url('images/Slots/10_115.png'); background-position: 487px 0; width: 122px;  height: 115px; position: relative; display: inline-block;"></div>
+                    <br />
+                    <div id="SlotWin16" style="background-image: url('images/Slots/10_115.png'); background-position: 487px 0; width: 122px;  height: 115px; position: relative; display: inline-block; "></div>
+                    <div id="SlotWin17" style="background-image: url('images/Slots/10_115.png'); background-position: 487px 0; width: 122px;  height: 115px; position: relative; display: inline-block; "></div>
+                    <div id="SlotWin18" style="background-image: url('images/Slots/10_115.png'); background-position: 487px 0; width: 122px;  height: 115px; position: relative; display: inline-block;"></div>
+                    <div id="SlotWin19" style="background-image: url('images/Slots/10_115.png'); background-position: 487px 0; width: 122px;  height: 115px; position: relative; display: inline-block;"></div>
+                    <div id="SlotWin20" style="background-image: url('images/Slots/10_115.png'); background-position: 487px 0; width: 122px;  height: 115px; position: relative; display: inline-block;"></div>
                     <!--
                     <div style="background-image: url('images/Slots/10_115.png'); width: 122px;  height: 115px; position: relative; "></div>
                     <div class="rlt_board"  aria-hidden="false" style="background-image: url('images/BJ/ebj_mg_bgr.png'); background-size: 1200px; height: 750px; position: relative; width: 1200px;">

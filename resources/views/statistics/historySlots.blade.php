@@ -25,7 +25,7 @@
     <div class=""> 
         <div class="" style="">
             
-            <ul class="breadcrumb " >  
+            <ul class="breadcrumb dropdown2" >  
                 <li class="dropdown"  >
                     <a href="" data-toggle="dropdown">
                         <strong class="nav-secondary">@lang('messages.Slot') :</strong>
@@ -34,14 +34,16 @@
                     </a>
 
                     <!-- Secondary Navigation -->
-                    <ul class="dropdown-menu" role="menu" style=" background-color: #333;">
+                    <ul class="dropdown-menu" role="menu">
                         @foreach($games as $val)
-                            <li >
-                              <a href="#"  onclick="changeSlotGame2({{$val->gameid}})">
+                            @if (!in_array($val->gameid, $discard) )
+                                <li >
+                                  <a href="#"  onclick="changeSlotGame2({{$val->gameid}})">
 
-                                  {{$val->description}}
-                              </a>
-                            </li>
+                                      {{$val->description}}
+                                  </a>
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                 </li>
@@ -74,7 +76,7 @@
                         <h2 class='text-center' style="display: inline; color:#fff; font-family: 'italic';  padding-left: 20%;">
                             @lang('messages.Slot') - {{ $page['gamesDescription'] }}
                         </h2>
-                        <a class="btn btn-warning  pull-right" onclick="export2excelSlot();">
+                        <a class="btn btn-warning  pull-right" onclick="export2excelSlots();">
                             <i class="fa fa-btn fa-file-excel-o fa-lg" aria-hidden="true"></i> 
                             @lang('messages.Export')
                         </a>
@@ -107,7 +109,7 @@
                         </span>
                     </div>&nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="pagination" style="margin: 0px; ">
-                    <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-slotId="{{$page['slotID']}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historySlots')}}" data-excel-url="{{ route('export2excelR2') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
+                    <input id="pageReload" type="hidden" val="" data-page="{{$historys->currentPage()}}" data-slotId="{{$page['slotID']}}" data-rowsPerPage="{{$page['rowsPerPage']}}" data-URL="javascript:ajaxLoad('{{url('statistics/historySlots')}}" data-excel-url="{{ route('export2excelSlots') }}" data-OrderQuery="{{ $page['OrderQuery']}}" data-desc="{{ $page['OrderDesc']}}" data-sortMenuOpen="{{ $page['sortMenuOpen']}}"> 
                     <ul class="pagination" style="margin: 0px;">
                         @if ( !$historys->lastPage()  )
                             <li class="page-number active" >
@@ -393,7 +395,7 @@
                         <tbody>
                             @foreach($historys as $history)
                                 <tr id='Row{{ $history->ps_id }}' data-psid='{{ $history->ps_id }}' 
-                                        data-timestamp='{{ $history->timestamp }}' 
+                                        data-timestamp='<?php echo date("Y-m-d H:i", strtotime($history->timestamp)); ?>' 
                                         data-game_sequence='{{$history->game_sequence }}' 
                                         data-bet='{{ number_format($history->bet / 100, 2 ) }}' 
                                         data-paytable-win='{{ number_format($history->paytable_win / 100, 2 ) }}' 
