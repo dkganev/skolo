@@ -2068,7 +2068,7 @@ $(document).on("click","tr.rowsSlot td", function(e){
                 $('#totalBet').html(rowBet); 
                 $('#totalWin').html(rowWin); 
                 $('#Lines').html(data.gameHistoryRes.lines_of_play);
-                if (SlotID != 40){
+                if (SlotID != 40 && SlotID != 41 && SlotID != 42 && SlotID != 53){
                     size = 20;
                     for (i = 1; i <= size; i++){
                        if (data.game_id[i] == 100 ){
@@ -2083,7 +2083,20 @@ $(document).on("click","tr.rowsSlot td", function(e){
                        //console.log(data.game_id[i]);
                     }
                 } else {
-                    
+                    size = 20;
+                    for (i = 1; i <= size; i++){
+                       if (data.game_id[i] == 100 ){
+                           $('#SlotWin' + i).hide();
+                       } else {
+                           $('#SlotWin' + i).show();
+                       }
+                       $('#SlotWin' + i).css('background-image', 'url("images/Slots/'+ SlotID +'_115.png")');
+                       $('#SlotWin' + i).css('width', data.historylogRes.GameProperty.width  + 'px');
+                       $('#SlotWin' + i).css('background-position', -1 * data.historylogRes.GameProperty.width * data.game_id[i].x + 'px ' + -115 * data.game_id[i].y + 'px ' );
+                       //$('#SlotWin' + i).css('background-position', -1 * data.historylogRes.GameProperty.width * data.game_id[i].x + 'px 0');
+                       //$('#SlotWin' + i).css('width', data.GameProperty.width  + 'px');
+                       //console.log(data.game_id[i]);
+                    }
                 }
                 $('#totalLinesPlayed').html(data.gameHistoryRes.lines_of_play);
                 //$('#totalLinesPlayed').html(data.gameHistoryRes.win);
