@@ -31,7 +31,7 @@ class PsAccounting extends Controller
     {
         session(['last_page' => 'statistics/psAccounting']);
         session(['last_menu' => 'menuPsAccounting']);
-        
+        //$timeOpt[1000] = date("H:i:s");
         /*if ($request['OrderQuery']) {
             $page['OrderQuery'] = $request['OrderQuery'];
         } else {
@@ -74,7 +74,133 @@ class PsAccounting extends Controller
         $totals['totalBet'] = 0;
         $totals['totalWin'] = 0;
         $totals['totalCredit'] = 0;
+        //$timeOpt[1111] = date("H:i:s");
         foreach($counters as $counter) {
+            
+            //// start----1 wariant -----
+            
+            //$timeOpt['1-'.$counter->psid] = date("H:i:s");    
+            $counters = DB::connection('pgsql')->select("  
+            SELECT *
+              FROM (
+                    SELECT
+                    c.psid as psid,
+                    c.timestamp as timestamp,
+                    (SELECT sps.dallasid FROM server_ps as sps WHERE sps.psid = c.psid ) as dallasid,
+                    c.counter as counter,
+                    row_number() over (order by timestamp ASC) as rn,
+                    count(*) over () as total_count 
+                FROM ps_counters_history as c
+                WHERE 
+                    psid = " . $counter->psid  . " AND
+                    timestamp >= '" . $startDate . "' AND
+                    timestamp <='" . $endDate . "'    
+            ) t
+            WHERE rn = total_count
+            ORDER BY timestamp ASC
+            ");
+            $countersMax = $counters[0]->counter ;
+            $countersMax = str_replace("[0:255]=","","$countersMax");
+            $countersMax = str_replace("{","","$countersMax");
+            $countersMax = str_replace("}","","$countersMax");
+            $countersMaxArray = explode(",",$countersMax);
+            $total_in_max = $countersMaxArray[11] + $countersMaxArray[21] + $countersMaxArray[23];  
+            $total_out_max = $countersMaxArray[2] + $countersMaxArray[3] + $countersMaxArray[22] + $countersMaxArray[24];  
+            
+            $total_bet_max = $countersMaxArray[0];  
+            $total_win_max = $countersMaxArray[34];  
+            $total_credit_max = $countersMaxArray[12];
+            //var_dump($countersMaxArray);
+            //print_r($countersMaxArray[0]);
+            //echo ('<br />');
+            /*$counters = DB::connection('pgsql')->select("  
+            SELECT *
+              FROM (
+                    SELECT
+                    c.psid as psid,
+                    c.timestamp as timestamp,
+                    (SELECT sps.dallasid FROM server_ps as sps WHERE sps.psid = c.psid ) as dallasid,
+                    (c.counter[11] + c.counter[21] + c.counter[23] )  as total_in, 
+                    (c.counter[2] + c.counter[3] + c.counter[22] + c.counter[24] )  as total_out, 
+                    c.counter[0]  as total_bet, 
+                    c.counter[34] as total_win, 
+                    c.counter[12] as total_credit,
+                    row_number() over (order by timestamp ASC) as rn,
+                    count(*) over () as total_count 
+                FROM ps_counters_history as c
+                WHERE 
+                    psid = " . $counter->psid  . " AND
+                    timestamp >= '" . $startDate . "' AND
+                    timestamp <='" . $endDate . "'    
+            ) t
+            WHERE rn = 1
+                  OR rn = total_count
+            ORDER BY timestamp ASC
+            ");*/
+            //$timeOpt['2-'.$counter->psid] = date("H:i:s");
+            $countersMin = DB::connection('pgsql')->select("  
+            SELECT *
+              FROM (
+                    SELECT
+                    c.psid as psid,
+                    c.timestamp as timestamp,
+                    c.counter as counter,
+                    row_number() over (order by timestamp ASC) as rn,
+                    count(*) over () as total_count 
+                FROM ps_counters_history as c
+                WHERE 
+                    psid = " . $counter->psid  . " AND
+                    timestamp < '" . $startDate . "'   
+            ) t
+            WHERE rn = total_count
+            ORDER BY timestamp ASC
+            ");
+            //$timeOpt['3-'.$counter->psid] = date("H:i:s");
+            $countersMin = $countersMin[0]->counter ;
+            $countersMin = str_replace("[0:255]=","","$countersMin");
+            $countersMin = str_replace("{","","$countersMin");
+            $countersMin = str_replace("}","","$countersMin");
+            $countersMinArray = explode(",",$countersMin);
+            $total_in_min = $countersMinArray[11] + $countersMinArray[21] + $countersMinArray[23];  
+            $total_out_min = $countersMinArray[2] + $countersMinArray[3] + $countersMinArray[22] + $countersMinArray[24];  
+            $total_bet_min = $countersMinArray[0];  
+            $total_win_min = $countersMinArray[34];  
+            $total_credit_min = $countersMinArray[12];  
+            //var_dump($countersMinArray);
+            //echo ('<br />');
+            //if (array_key_exists(1, $counters)){
+                
+                $psAccounting[$counter->psid]['psid'] = $counter->psid  ;
+                $psAccounting[$counter->psid]['dallasid'] = $counters[0]->dallasid  ;
+                $psAccounting[$counter->psid]['total_in'] = $total_in_max - $total_in_min;
+                $psAccounting[$counter->psid]['total_out'] = $total_out_max - $total_out_min;
+                $psAccounting[$counter->psid]['total_bet'] = $total_bet_max - $total_bet_min ;
+                $psAccounting[$counter->psid]['total_win'] = $total_win_max - $total_win_min ;
+                $psAccounting[$counter->psid]['total_credit'] = $total_credit_max - $total_credit_min;
+                $totals['totalIn'] += $psAccounting[$counter->psid]['total_in'];
+                $totals['totalOut'] += $psAccounting[$counter->psid]['total_out'];
+                $totals['totalBet'] += $psAccounting[$counter->psid]['total_bet'];
+                $totals['totalWin'] += $psAccounting[$counter->psid]['total_win'];
+                $totals['totalCredit'] += $psAccounting[$counter->psid]['total_credit'];
+            //} else {
+                /*
+                $psAccounting[$counter->psid]['dallasid'] = $counters[0]->dallasid  ;
+                $psAccounting[$counter->psid]['total_in'] = 0;
+                $psAccounting[$counter->psid]['total_out'] = 0;
+                $psAccounting[$counter->psid]['total_bet'] = 0 ;
+                $psAccounting[$counter->psid]['total_win'] = 0 ;
+                $psAccounting[$counter->psid]['total_credit'] = 0;
+                $totals['totalIn'] += $psAccounting[$counter->psid]['total_in'];
+                $totals['totalOut'] += $psAccounting[$counter->psid]['total_out'];
+                $totals['totalBet'] += $psAccounting[$counter->psid]['total_bet'];
+                $totals['totalWin'] += $psAccounting[$counter->psid]['total_win'];
+                $totals['totalCredit'] += $psAccounting[$counter->psid]['total_credit'];
+                 */
+            //}
+            /// start----1 wariant -----
+            /*
+            //// start----2 wariant ----- 
+            $timeOpt['1-'.$counter->psid] = date("H:i:s");
             $countersMin = DB::connection('pgsql')->select(" 
                 SELECT
                     c.psid as psid,
@@ -89,7 +215,7 @@ class PsAccounting extends Controller
                 ORDER BY timestamp asc
                 LIMIT 1
             ");
-            
+            $timeOpt['2-'.$counter->psid] = date("H:i:s");
             $countersMax = DB::connection('pgsql')->select(" 
                 SELECT
                     c.psid as psid,
@@ -103,6 +229,7 @@ class PsAccounting extends Controller
                 ORDER BY timestamp desc
                 LIMIT 1
             ");
+            $timeOpt['3-'.$counter->psid] = date("H:i:s");
             $psAccounting[$counter->psid]['psid'] = $counter->psid ;
             $psAccounting[$counter->psid]['dallasid'] = $countersMin[0]->dallasid ;
             $psAccounting[$counter->psid]['total_in'] = $countersMax[0]->total_in - $countersMin[0]->total_in ;
@@ -115,6 +242,8 @@ class PsAccounting extends Controller
             $totals['totalBet'] += $psAccounting[$counter->psid]['total_bet'];
             $totals['totalWin'] += $psAccounting[$counter->psid]['total_win'];
             $totals['totalCredit'] += $psAccounting[$counter->psid]['total_credit'];
+            //// end----2 wariant ----- 
+            */ 
         }
         
         
@@ -141,6 +270,9 @@ class PsAccounting extends Controller
         
         
         //return var_dump($psAccounting);
+        //$timeOpt[3333] = date("H:i:s");
+        //var_dump($timeOpt);
+        
         return view('statistics.psAccounting', ['counters' => $psAccounting , 'totals' => $totals, 'page' => $page ]);
     }
     
