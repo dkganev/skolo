@@ -38,7 +38,7 @@ class CasinoController extends Controller
         if ($request['OrderQuery']) {
             $page['OrderQuery'] = $request['OrderQuery'];
         } else {
-            $page['OrderQuery'] = 'time';
+            $page['OrderQuery'] = 'time_server';
         }
         if ($request['OrderDesc']) {
             $page['OrderDesc'] = $request['OrderDesc'];
@@ -52,13 +52,13 @@ class CasinoController extends Controller
         }
         $SortQuery = array();
         if ($request['FromGameTs']){
-            array_push($SortQuery,['time', '>=', $request['FromGameTs']]);
+            array_push($SortQuery,['time_server', '>=', $request['FromGameTs']]);
             $page['FromGameTs'] = $request['FromGameTs'];
         }else{
             $page['FromGameTs'] = "";
         }
         if ($request['ToGameTs']){
-             array_push($SortQuery,['time', '<=', $request['ToGameTs']]);
+             array_push($SortQuery,['time_server', '<=', $request['ToGameTs']]);
             $page['ToGameTs'] = $request['ToGameTs'];
         }else{
             $page['ToGameTs'] = "";
@@ -105,7 +105,7 @@ class CasinoController extends Controller
         if ($request['OrderQuery']) {
             $page['OrderQuery'] = $request['OrderQuery'];
         } else {
-            $page['OrderQuery'] = 'time';
+            $page['OrderQuery'] = 'time_server';
         }
         if ($request['OrderDesc']) {
             $page['OrderDesc'] = $request['OrderDesc'];
@@ -119,13 +119,13 @@ class CasinoController extends Controller
         }
         $SortQuery = array();
         if ($request['FromGameTs']){
-            array_push($SortQuery,['time', '>=', $request['FromGameTs']]);
+            array_push($SortQuery,['time_server', '>=', $request['FromGameTs']]);
             $page['FromGameTs'] = $request['FromGameTs'];
         }else{
             $page['FromGameTs'] = "";
         }
         if ($request['ToGameTs']){
-             array_push($SortQuery,['time', '<=', $request['ToGameTs']]);
+             array_push($SortQuery,['time_server', '<=', $request['ToGameTs']]);
             $page['ToGameTs'] = $request['ToGameTs'];
         }else{
             $page['ToGameTs'] = "";

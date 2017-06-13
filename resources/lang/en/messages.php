@@ -438,7 +438,7 @@ return array(
     'Bet per Line' => 'Bet per Line',
     'Current Slot' => 'Current Slot',
     'Event ID' => 'Event ID',
-    'B' => 'B',
+    'Sequence' => 'Sequence',
     'B' => 'B',
     'B' => 'B',
     
