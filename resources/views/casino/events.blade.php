@@ -1,6 +1,6 @@
 <div class="container">
 <div class="row">
-    <div class="col-lg-10">
+    <div class="col-lg-12">
         <div class="panel panel-default" id="panelEventsContend">
             <div class="panel-heading">
                 <div>
@@ -156,8 +156,9 @@
                     >
                     <thead class="w3-dark-grey">
                         <tr>
+                            <th class="EventsSort  col-lg-2" style="display: none;" data-sortable="true"><input class="form-control" type='number' style="color: #333" value="{{$page['EventID'] == "" ? "" : $page['EventID']}}" id='EventID' ></th>
                             <th class="EventsSort " style="display: none;" data-sortable="true"><input class="form-control" type='number' style="color: #333" value="{{$page['PSID'] == "" ? "" : $page['PSID']}}" id='PSID' ></th>
-                            <th class="EventsSort " style="display: none;" data-sortable="true"><input class="form-control" type='number' style="color: #333" value="{{$page['ErrorCode'] == "" ? "" : $page['ErrorCode']}}" id='ErrorCode' ></th>
+                            <th class="EventsSort  col-lg-2" style="display: none;" data-sortable="true"><input class="form-control" type='number' style="color: #333" value="{{$page['ErrorCode'] == "" ? "" : $page['ErrorCode']}}" id='ErrorCode' ></th>
                             <th class="EventsSort " style="display: none;" data-sortable="true"><input class="form-control" type='text' style="color: #333" value="{{$page['ErrorText'] == "" ? "" : $page['ErrorText']}}" id='ErrorText' ></th>
                             <th class="EventsSort " style="display: none;">
                                <div class="row">
@@ -196,8 +197,9 @@
                             </th>
                         </tr>
                         <tr>
+                            <th class="text-center " data-sortable="true" onclick="changePageSortEvents('sequence', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Event ID')<i class="fa {{ $page['OrderQuery'] == 'sequence' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center col-lg-1" data-sortable="true" onclick="changePageSortEvents('psid', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.PS ID')<i class="fa {{ $page['OrderQuery'] == 'psid' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
-                            <th class="text-center col-lg-1" data-sortable="true" onclick="changePageSortEvents('err_code', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Error Code')<i class="fa {{ $page['OrderQuery'] == 'err_code' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
+                            <th class="text-center " data-sortable="true" onclick="changePageSortEvents('err_code', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Error Code')<i class="fa {{ $page['OrderQuery'] == 'err_code' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center" data-sortable="true" onclick="changePageSortEvents('error', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Error Text')<i class="fa {{ $page['OrderQuery'] == 'error' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                             <th class="text-center col-lg-3" data-sortable="true" onclick="changePageSortEvents('time', '{{ $page['OrderDesc'] == 'asc' ? 'desc' : 'asc' }}');">@lang('messages.Time')<i class="fa {{ $page['OrderQuery'] == 'time' ? ( $page['OrderDesc'] == 'asc' ? 'fa-sort-asc' : 'fa-sort-desc' ) : 'fa-sort' }} pull-right" aria-hidden="true"></i></th>
                         </tr>
@@ -205,6 +207,7 @@
                     <tbody>
                         @foreach($historys as $history)
                             <tr class="tr-class">
+                                <td class="text-right">{{ $history->sequence }}</td>
                                 <td class="text-right">{{ $history->psid }}</td>
                                 <td class="text-right">{{ $history->err_code }}</td>
                                 <td>{{ $history->error }}</td>

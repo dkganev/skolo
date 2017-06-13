@@ -63,6 +63,12 @@ class CasinoController extends Controller
         }else{
             $page['ToGameTs'] = "";
         }
+        if ($request['EventID']) {
+            array_push($SortQuery,['sequence', '=', $request['EventID']]);
+            $page['EventID'] = $request['EventID'];
+        } else {
+            $page['EventID'] = "";
+        }
         if ($request['PSID']) {
             array_push($SortQuery,['psid', '=', $request['PSID']]);
             $page['PSID'] = $request['PSID'];
@@ -124,6 +130,12 @@ class CasinoController extends Controller
         }else{
             $page['ToGameTs'] = "";
         }
+        if ($request['EventID']) {
+            array_push($SortQuery,['sequence', '=', $request['EventID']]);
+            $page['EventID'] = $request['EventID'];
+        } else {
+            $page['EventID'] = "";
+        }
         if ($request['PSID']){
             array_push($SortQuery,['psid', '=', $request['PSID']]);
             $page['PSID'] = $request['PSID'];
@@ -152,6 +164,7 @@ class CasinoController extends Controller
         $export = array();
         foreach ($historys as $key => $history) {
             $export[$key] = array(
+                'Event ID' => $history->sequence, 
                 'PS ID' => $history->psid, 
                 'Error Code' => $history->err_code,
                 'Error Text' =>  $history->error, 

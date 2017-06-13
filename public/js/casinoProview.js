@@ -111,6 +111,7 @@ function changeRowsPerPageEvents(rowsPerPage) {
     pageDesc = $('#pageReload').attr('data-desc');
     
     sortMenuOpen = sortMenuRV;
+    EventID = $('#EventID').val();
     PSID = $('#PSID').val();
     ErrorCode = $('#ErrorCode').val();
     ErrorText = $('#ErrorText').val();
@@ -123,6 +124,7 @@ function changeRowsPerPageEvents(rowsPerPage) {
             "&OrderDesc=" + pageDesc + 
             "&OrderQuery=" + pageOrder + 
             "&sortMenuOpen=" + sortMenuOpen + 
+            "&EventID=" + EventID + 
             "&PSID=" + PSID + 
             "&ErrorCode=" + ErrorCode + 
             "&ErrorText=" + ErrorText + 
@@ -139,6 +141,7 @@ function changePageNumEvents(PageNum1) {
     pageDesc = $('#pageReload').attr('data-desc');
     
     sortMenuOpen = sortMenuRV;
+    EventID = $('#EventID').val();
     PSID = $('#PSID').val();
     ErrorCode = $('#ErrorCode').val();
     ErrorText = $('#ErrorText').val();
@@ -151,6 +154,7 @@ function changePageNumEvents(PageNum1) {
             "&OrderDesc=" + pageDesc + 
             "&OrderQuery=" + pageOrder + 
             "&sortMenuOpen=" + sortMenuOpen + 
+            "&EventID=" + EventID + 
             "&PSID=" + PSID + 
             "&ErrorCode=" + ErrorCode + 
             "&ErrorText=" + ErrorText + 
@@ -167,6 +171,7 @@ function changePageSortEvents(pageOrderV, pageDescV) {
     pageDesc =  pageDescV; // $('#pageReload').attr('data-desc');
     
     sortMenuOpen = sortMenuRV;
+    EventID = $('#EventID').val();
     PSID = $('#PSID').val();
     ErrorCode = $('#ErrorCode').val();
     ErrorText = $('#ErrorText').val();
@@ -179,6 +184,7 @@ function changePageSortEvents(pageOrderV, pageDescV) {
             "&OrderDesc=" + pageDesc + 
             "&OrderQuery=" + pageOrder + 
             "&sortMenuOpen=" + sortMenuOpen + 
+            "&EventID=" + EventID + 
             "&PSID=" + PSID + 
             "&ErrorCode=" + ErrorCode + 
             "&ErrorText=" + ErrorText + 
@@ -195,6 +201,7 @@ function changePageSortMenuEvents() {
     pageDesc =  $('#pageReload').attr('data-desc');
     
     sortMenuOpen = sortMenuRV;
+    EventID = $('#EventID').val();
     PSID = $('#PSID').val();
     ErrorCode = $('#ErrorCode').val();
     ErrorText = $('#ErrorText').val();
@@ -207,6 +214,7 @@ function changePageSortMenuEvents() {
             "&OrderDesc=" + pageDesc + 
             "&OrderQuery=" + pageOrder + 
             "&sortMenuOpen=" + sortMenuOpen + 
+            "&EventID=" + EventID + 
             "&PSID=" + PSID + 
             "&ErrorCode=" + ErrorCode + 
             "&ErrorText=" + ErrorText + 
@@ -225,6 +233,7 @@ function cleanSortFunctionEvents() {
     $('#datetimepicker5').datetimepicker('setStartDate', "");
     $('#datetimepicker4I').val("");
     $('#datetimepicker5I').val("");
+    $('#EventID').val("");
     $('#PSID').val("");
     $('#ErrorText').val("");
     $('#ErrorCode').val("");
@@ -306,6 +315,7 @@ function sortMenuEvents() {
         $('#datetimepicker5').datetimepicker('setStartDate', "");
         $('#datetimepicker4I').val("");
         $('#datetimepicker5I').val("");
+        $('#EventID').val("");
         $('#PSID').val("");
         $('#ErrorText').val("");
         $('#ErrorCode').val("");
@@ -322,6 +332,7 @@ function export2excelEvents() {
     pageDesc =  $('#pageReload').attr('data-desc');
     
     sortMenuOpen = sortMenuRV;
+    EventID = $('#EventID').val();
     PSID = $('#PSID').val();
     ErrorCode = $('#ErrorCode').val();
     ErrorText = $('#ErrorText').val();
@@ -334,6 +345,7 @@ function export2excelEvents() {
             "&OrderDesc=" + pageDesc + 
             "&OrderQuery=" + pageOrder + 
             "&sortMenuOpen=" + sortMenuOpen + 
+            "&EventID=" + EventID + 
             "&PSID=" + PSID + 
             "&ErrorCode=" + ErrorCode + 
             "&ErrorText=" + ErrorText + 
