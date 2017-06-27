@@ -115,7 +115,7 @@
                                     </div>
 
                                     <div class="form-group form-group-sm">
-                                        <label style="color: #474747">@lang('messages.Basket & Street Min Bet'):</label><br>
+                                        <label style="color: #474747">@lang('messages.Street Min Bet'):</label><br>
                                       <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
                                         <input name="basket_a_street_bet_min" value="{{ $conf->basket_a_street_bet_min }}" type="text" class="form-control text-center" placeholder="Basket & Street Min Bet" aria-describedby="sizing-addon2">
@@ -123,7 +123,7 @@
                                     </div>
 
                                     <div class="form-group form-group-sm">
-                                        <label style="color: #474747">@lang('messages.Corner Min Bet'):</label><br>
+                                        <label style="color: #474747">@lang('messages.Basket & Corner Min Bet'):</label><br>
                                       <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
                                         <input name="corner_bet_min" value="{{ $conf->corner_bet_min }}" type="text" class="form-control text-center" placeholder="Corner Bet Min" aria-describedby="sizing-addon2">
@@ -190,7 +190,7 @@
                                     </div>
 
                                     <div class="form-group form-group-sm">
-                                        <label style="color: #474747">@lang('messages.Basket & Street Max Bet'):</label>
+                                        <label style="color: #474747">@lang('messages.Street Max Bet'):</label>
                                         <label class="updateForm" name="basket_a_street_bet_max" style="color: red; display: none;">@lang('messages.Basket & Street Max Bet must be bigger than Basket & Street Min Bet').</label><br>
                                         <div class="input-group">
                                             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>
@@ -199,7 +199,7 @@
                                     </div>
 
                                     <div class="form-group form-group-sm">
-                                        <label style="color: #474747">@lang('messages.Corner Max Bet'):</label>
+                                        <label style="color: #474747">@lang('messages.Basket & Corner Max Bet'):</label>
                                         <label class="updateForm" name="corner_bet_max" style="color: red; display: none;">@lang('messages.Corner Max Bet must be bigger than Corner Min Bet').</label><br>
                                         <div class="input-group">
                                             <span class="input-group-addon" id="sizing-addon2"><strong>$</strong></span>

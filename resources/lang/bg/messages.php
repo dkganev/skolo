@@ -439,6 +439,10 @@ return array(
     'Current Slot' => 'Current Slot',
     'Event ID' => 'Event ID',
     'Sequence' => 'Sequence',
+    'Basket & Corner Max Bet' => 'Basket & Corner Max Bet',
+    'Street Max Bet' => 'Street Max Bet',
+    'Street Min Bet' => 'Street Min Bet',
+    'Basket & Corner Min Bet' => 'Basket & Corner Min Bet',
     
 
     'welcome' => 'Welcome to our application'
