@@ -1,0 +1,22 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+#html {
+    background: $background;
+}
+
+body {
+	@include bg-gradient();
+}
+
+.btn-primary {
+	background-color: $brand-primary;
+}
+

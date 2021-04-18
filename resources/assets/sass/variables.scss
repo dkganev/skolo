@@ -1,0 +1,51 @@
+
+// Body
+$body-bg: #f5f8fa;
+
+// Borders
+$laravel-border-color: darken($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+
+// Brands
+$brand-primary: #3097D1;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger:  #bf5329;
+
+// Typography
+$font-family-sans-serif: "Raleway", sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.6;
+$text-color: #636b6f;
+
+// Navbar
+$navbar-default-bg: #fff;
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;
+
+// Background
+$background: url('images/bgr1.png');
+
+@mixin bg-gradient() {
+background: rgba(0,0,0,1);
+background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(97,96,97,0.72) 82%, rgba(0,0,0,0.87) 99%, rgba(0,0,0,0.87) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,1)), color-stop(16%, rgba(89,89,89,0.95)), color-stop(82%, rgba(97,96,97,0.72)), color-stop(99%, rgba(0,0,0,0.87)), color-stop(100%, rgba(0,0,0,0.87)));
+background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(97,96,97,0.72) 82%, rgba(0,0,0,0.87) 99%, rgba(0,0,0,0.87) 100%);
+background: -o-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(97,96,97,0.72) 82%, rgba(0,0,0,0.87) 99%, rgba(0,0,0,0.87) 100%);
+background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(97,96,97,0.72) 82%, rgba(0,0,0,0.87) 99%, rgba(0,0,0,0.87) 100%);
+background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(89,89,89,0.95) 16%, rgba(97,96,97,0.72) 82%, rgba(0,0,0,0.87) 99%, rgba(0,0,0,0.87) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
+}
